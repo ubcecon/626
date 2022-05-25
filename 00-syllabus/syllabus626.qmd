@@ -1,0 +1,12 @@
+---
+title: "Syllabus for ECON 626: Econometric Theory I"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  html:
+  revealjs:
+---
+
+#
+
+#

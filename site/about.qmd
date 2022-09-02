@@ -1,0 +1,15 @@
+---
+title: "About"
+author: "Paul Schrimpf"
+---
+
+This is the website for ECON 626: Econometric Theory I at UBC
+in 2022. The course aims to equip students with introductory knowledge
+in probability, statistics, and econometrics so that students become
+familiar with basic concepts underlying empirical and methodological
+research in economics.
+
+This site was created using [Quarto](https://quarto.org/docs/websites).
+
+Source code is available [on github](https://github.com/ubcecon/626)
+with a [CC-by-SA license](https://github.com/ubcecon/626/blob/main/LICENSE).

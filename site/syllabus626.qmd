@@ -2,9 +2,6 @@
 title: "Syllabus for ECON 626: Econometric Theory I"
 author: "Paul Schrimpf"
 date: last-modified
-format:
-  html:
-  revealjs:
 ---
 
 ## Basic Information
@@ -70,20 +67,19 @@ research in economics.
 
 # Outline
 
-
 ## Part I: Basics
 
-    -  Probability
+  -  Probability
         - Random Variables, and Distributions
         - Conditional Expectations and Conditional Distributions
         - Family of Distributions
-    - Basics of Inference
+  - Basics of Inference
         - Estimation
         - Hypothesis Testing
 
 ## Part II: Generalized Linear Model
 
-    - Preliminaries of Projection Geometry
+   - Preliminaries of Projection Geometry
     - Generalized Linear Models and Gauss-Markov Theorem
     - Tests of Linear Hypothesis
 
@@ -99,6 +95,8 @@ research in economics.
    - Identification through IV and Inference
 
 
+
+::: {.callout-note icon=false}
 
 ### UBC values and policies
 
@@ -116,3 +114,5 @@ actions. Details of the policies and how to access support are
 available here
 (https://senate.ubc.ca/policiesresources-support-student-success
 )
+
+:::

@@ -1,0 +1,40 @@
+---
+title: "ECON 626: Econometric Theory I"
+author: "Paul Schrimpf"
+bibliography: 626.bib
+---
+
+# Part I: Basics
+
+## Measure and Integration
+
+Required reading: @song2021  Chapter 1
+
+Supplementary reading: @pollard2002, @tao2011
+
+[Slides](measure/measure.qmd)
+
+-  Probability
+        - Random Variables, and Distributions
+        - Conditional Expectations and Conditional Distributions
+        - Family of Distributions
+  - Basics of Inference
+        - Estimation
+        - Hypothesis Testing
+
+# Part II: Generalized Linear Model
+
+   - Preliminaries of Projection Geometry
+    - Generalized Linear Models and Gauss-Markov Theorem
+    - Tests of Linear Hypothesis
+
+# Part III: Tools of Asymptotic Theory
+
+   - Modes of Convergence
+   - Slutsky’s Lemma/Continuous Mapping Theorem
+   - Delta Methods
+
+# Part V: Linear Models with Endogeneity
+
+   - Identification and Endogeneity
+   - Identification through IV and Inference

@@ -10,9 +10,10 @@ website:
       - href: syllabus626.qmd
         text: Syllabus
       - about.qmd
+      - slides.qmd
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
     toc: true

@@ -18,50 +18,46 @@ bibliography: ../626.bib
 
 ## Why Measure Theory?
 
-::: fragment
+::: {.incremental}
 1. Simplifies some arguments
-
-::: fragment
-    - Example from @pollard2002
-    - Define independence as factorization of distribution functions
+    - Example from @pollard2002, define independence as factorization of distribution functions
     $$ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) $$
-    - If $X_1, X_2, _X_3, X_4$ are independent, show that
+    - If $X_1 , X_2 , _X_3 , X_4$ are independent, show that
     $$ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) $$
     is independent of
     $$ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) $$
-:::
-:::
+::::
 
-::: fragment
+## Why Measure Theory?
+
+
+1. Simplifies some arguments
+
+::: {.incremental}
+
 2. Unifies treatment
    - discrete vs continuous
    - uni- vs multi-variate
-:::
-
-::: fragment
 3. Resolves some difficulties with infinity
+
 :::
 
 ## Measure Space
 
-::: fragment
+::: {.incremental}
 1. A set $\Omega$
-:::
-::: fragment
 2. A collection of subsets, $\mathscr{F}$, of $\Omega$ that is a $\sigma$*-field* (aka $\sigma$*-algebra*) , that is
     1. $\Omega \in \mathscr{F}$
     2. If $A \in \mathscr{F}$, then $A^c \in \mathscr{F}$
     3. If $A_1, A_2, ... \in \mathscr{F}$, then
     $\cup_{j=1}^\infty A_j \in \mathscr{F}$
-:::
-::: fragment
 3. A measure, $\mu: \mathcal{F} \to [0, \infty]$ s.t.
-    1. $\mu(\null) = 0$
+    1. $\mu(\emptyset) = 0$
     2. If $A_1, A_2, ... \in \mathscr{F}$ are pairwise disjoint, then
-    $\mu\left(\cup_{j=1}^\infy A_j \right) = \sum_{j=1}^\infy \mu(A_j)$
+    $\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)$
 :::
 
-::: note
+::: {.notes}
 
 Example of sigma fields
 
@@ -69,9 +65,9 @@ Example of sigma fields
 
 ## Measurable Function
 
-- Given a topology on $\Omega$, the **Borel $\sigma$-field**, $\mathscr{B}(\Omega)$, is the smallest $\sigma$-field containing all open subsets of $\Omega$
+- Given a topology on $\Omega$, the **Borel** $\sigma$-**field**, $\mathscr{B}(\Omega)$, is the smallest $\sigma$-field containing all open subsets of $\Omega$
 
-::: note
+::: {.notes}
 
 When working with $R^d$, we will generally use $\mathscr{B}(\mathbf{R}^d)$ as our $\sigma$-field.
 
@@ -80,4 +76,132 @@ When working with $R^d$, we will generally use $\mathscr{B}(\mathbf{R}^d)$ as ou
 - $f: \Omega \to \mathbf{R}$ is ($\mathscr{F}$-)**measurable** if $\forall$
 $B \in \mathscr{B}(\mathbf{R})$, $f^{-1}(B) \in \mathscr{F}$
 
+- a statement holds *almost everywhere* (a.e.) if the measure of the set where the statement is false is 0
+
+<!-- ::: {.callout-note icon=false} -->
+
+<!-- ### Exercise -->
+
+<!-- Show that if $f_1, f_2, f_3, ...$ are measurable, then -->
+<!-- $\sum_{j=1}^\infty f_j$ is measurable -->
+
+<!-- ::: -->
+
 # Integration
+
+## Simple Functions
+
+- Assume $\mu(\Omega) < \infty$
+- $f$ is a **simple function** if
+$f = \sum_{j=1}^n a_j 1\{\omega \in E_j \}$ for $a_j \in \mathbf{R}$ and
+$E_j \in \mathscr{F}$
+- Integral of simple functions:
+$$ \int f d \mu = \sum_{j=1}^n a_j \mu(E_j) $$
+
+---
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Show that if $f$ is simple, then $f$ is measurable.
+
+:::
+
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Show that if $f$ and $g$ are simple, then
+
+1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+
+2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+
+3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
+
+:::
+
+## Bounded Functions
+
+- Let $E$ such that $\mu (E)<\infty $
+- Let $f$ be bounded function and $f(x) = 0 \forall x \in E^c$
+- Define:
+$$
+ \int f d\mu \equiv \sup_{\varphi \leq f: \varphi \text{ simple}} \int \varphi d\mu =\inf_{\varphi \geq f: \varphi \text{ simple}} \int \varphi d\mu
+$$
+
+----
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Show the second equality above.
+
+:::
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Show that for all bounded $f$ and $g$ that vanish outside a finite measure set,
+
+1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+
+2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+
+3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
+
+:::
+
+## Nonnegative Functions
+
+- If $f \geq 0$, define
+$$
+\int fd\mu =\sup_{f_n \text{ simple, bounded+}} \int f_{n}d\mu
+$$
+
+---
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Show that for all $f \geq 0$,
+
+1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+
+2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+
+3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
+
+:::
+
+## Measurable Functions
+
+- If $f$ is measurable, let $f^{+} = \max\{f, 0\}$ and
+$f^{-} = \max\{-f, 0\}$ and define the *Lesbegue integral*
+
+$$ \int f d\mu = \int f^{+} d\mu - \int f^{-} d\mu $$
+
+---
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Show that for all measurable $f$
+
+1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+
+2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+
+3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
+
+:::
+
+
+
+# References

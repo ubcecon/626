@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This site was created using Quarto.\nSource code is available on github with a CC-by-SA license."
+  },
+  {
+    "objectID": "measure/measure.html#references",
+    "href": "measure/measure.html#references",
+    "title": "Measure and Probability",
+    "section": "References",
+    "text": "References\n\n** Song (2021) chapter 1 **\nPollard (2002)\nTao (2011)"
+  },
+  {
+    "objectID": "measure/measure.html#why-measure-theory",
+    "href": "measure/measure.html#why-measure-theory",
+    "title": "Measure and Probability",
+    "section": "Why Measure Theory?",
+    "text": "Why Measure Theory?\n\n\nSimplifies some arguments\n\n\n- Example from @pollard2002\n- Define independence as factorization of distribution functions\n$$ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) $$\n- If $X_1, X_2, _X_3, X_4$ are independent, show that\n$$ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) $$\nis independent of\n$$ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) $$\n\n\n\n\nUnifies treatment\n\ndiscrete vs continuous\nuni- vs multi-variate\n\n\n\n\n\nResolves some difficulties with infinity"
+  },
+  {
+    "objectID": "measure/measure.html#measure-space",
+    "href": "measure/measure.html#measure-space",
+    "title": "Measure and Probability",
+    "section": "Measure Space",
+    "text": "Measure Space\n\n\nA set \\(\\Omega\\)\n\n\n\n\nA collection of subsets, \\(\\mathscr{F}\\), of \\(\\Omega\\) that is a \\(\\sigma\\)-field (aka \\(\\sigma\\)-algebra) , that is\n\n\\(\\Omega \\in \\mathscr{F}\\)\nIf \\(A \\in \\mathscr{F}\\), then \\(A^c \\in \\mathscr{F}\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\), then \\(\\cup_{j=1}^\\infty A_j \\in \\mathscr{F}\\)\n\n\n\n\n\nA measure, \\(\\mu: \\mathcal{F} \\to [0, \\infty]\\) s.t.\n\n\\(\\mu(\\null) = 0\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\) are pairwise disjoint, then \\(\\mu\\left(\\cup_{j=1}^\\infy A_j \\right) = \\sum_{j=1}^\\infy \\mu(A_j)\\)\n\n\n\n\nExample of sigma fields"
+  },
+  {
+    "objectID": "measure/measure.html#measurable-function",
+    "href": "measure/measure.html#measurable-function",
+    "title": "Measure and Probability",
+    "section": "Measurable Function",
+    "text": "Measurable Function\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\)\n\n\nWhen working with \\(R^d\\), we will generally use \\(\\mathscr{B}(\\mathbf{R}^d)\\) as our \\(\\sigma\\)-field.\n\n\n\\(f: \\Omega \\to \\mathbf{R}\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\mathscr{B}(\\mathbf{R})\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)"
+  },
+  {
+    "objectID": "syllabus626.html",
+    "href": "syllabus626.html",
+    "title": "Syllabus for ECON 626: Econometric Theory I",
+    "section": "",
+    "text": "Paul Schrimpf\n107 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 11:30am-12:30pm\n\n\n\nYige Duan\nyige.duan@gmail.com\nOffice Hours: TBA\n\n\n\nMondays and Wednesdays 10:00am - 11:20am, Iona 633\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
+  },
+  {
+    "objectID": "syllabus626.html#grading",
+    "href": "syllabus626.html#grading",
+    "title": "Syllabus for ECON 626: Econometric Theory I",
+    "section": "Grading",
+    "text": "Grading\n\nProblem Sets (30%)\nThere will be 6-9 problem sets. A problem set with the lowest grade will be dropped from final grading.\n\n\nMidterm Exam (30%)\nGiven in class on Wednesday, October 26. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (40%) and the final exam (60%).\n\n\nFinal Exam (40%)\nClosed books and notes."
+  },
+  {
+    "objectID": "syllabus626.html#part-i-basics",
+    "href": "syllabus626.html#part-i-basics",
+    "title": "Syllabus for ECON 626: Econometric Theory I",
+    "section": "Part I: Basics",
+    "text": "Part I: Basics\n\nProbability\n\nRandom Variables, and Distributions\nConditional Expectations and Conditional Distributions\nFamily of Distributions\n\nBasics of Inference - Estimation - Hypothesis Testing"
+  },
+  {
+    "objectID": "syllabus626.html#part-ii-generalized-linear-model",
+    "href": "syllabus626.html#part-ii-generalized-linear-model",
+    "title": "Syllabus for ECON 626: Econometric Theory I",
+    "section": "Part II: Generalized Linear Model",
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry - Generalized Linear Models and Gauss-Markov Theorem - Tests of Linear Hypothesis"
+  },
+  {
+    "objectID": "syllabus626.html#part-iii-tools-of-asymptotic-theory",
+    "href": "syllabus626.html#part-iii-tools-of-asymptotic-theory",
+    "title": "Syllabus for ECON 626: Econometric Theory I",
+    "section": "Part III: Tools of Asymptotic Theory",
+    "text": "Part III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods"
+  },
+  {
+    "objectID": "syllabus626.html#part-v-linear-models-with-endogeneity",
+    "href": "syllabus626.html#part-v-linear-models-with-endogeneity",
+    "title": "Syllabus for ECON 626: Econometric Theory I",
+    "section": "Part V: Linear Models with Endogeneity",
+    "text": "Part V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\n\nUBC values and policies\n\n\n\nUBC provides resources to support student learning and to maintain healthy lifestyles but recognizes that sometimes crises arise and so there are additional resources to access including those for survivors of sexual violence. UBC values respect for the person and ideas of all members of the academic community. Harassment and discrimination are not tolerated nor is suppression of academic freedom. UBC provides appropriate accommodation for students with disabilities and for religious and cultural observances. UBC values academic honesty and students are expected to acknowledge the ideas generated by others and to uphold the highest academic standards in all of their actions. Details of the policies and how to access support are available here (https://senate.ubc.ca/policiesresources-support-student-success )"
+  },
+  {
+    "objectID": "slides.html",
+    "href": "slides.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Sep 6, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ECON 626: Econometric Theory I",
+    "section": "",
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry - Generalized Linear Models and Gauss-Markov Theorem - Tests of Linear Hypothesis\n\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+  }
+]

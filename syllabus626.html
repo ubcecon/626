@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.163">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paul Schrimpf">
+<meta name="dcterms.date" content="2022-09-06">
+
+<title>ECON 626 - Syllabus for ECON 626: Econometric Theory I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ECON 626</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./syllabus626.html" aria-current="page">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./slides.html">Slides</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-information" id="toc-basic-information" class="nav-link active" data-scroll-target="#basic-information">Basic Information</a>
+  <ul class="collapse">
+  <li><a href="#instructor" id="toc-instructor" class="nav-link" data-scroll-target="#instructor">Instructor</a></li>
+  <li><a href="#ta" id="toc-ta" class="nav-link" data-scroll-target="#ta">TA</a></li>
+  <li><a href="#time-and-place" id="toc-time-and-place" class="nav-link" data-scroll-target="#time-and-place">Time and Place</a></li>
+  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
+  </ul></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
+  <ul class="collapse">
+  <li><a href="#problem-sets-30" id="toc-problem-sets-30" class="nav-link" data-scroll-target="#problem-sets-30">Problem Sets (30%)</a></li>
+  <li><a href="#midterm-exam-30" id="toc-midterm-exam-30" class="nav-link" data-scroll-target="#midterm-exam-30">Midterm Exam (30%)</a></li>
+  <li><a href="#final-exam-40" id="toc-final-exam-40" class="nav-link" data-scroll-target="#final-exam-40">Final Exam (40%)</a></li>
+  </ul></li>
+  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course Description</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a>
+  <ul class="collapse">
+  <li><a href="#part-i-basics" id="toc-part-i-basics" class="nav-link" data-scroll-target="#part-i-basics">Part I: Basics</a></li>
+  <li><a href="#part-ii-generalized-linear-model" id="toc-part-ii-generalized-linear-model" class="nav-link" data-scroll-target="#part-ii-generalized-linear-model">Part II: Generalized Linear Model</a></li>
+  <li><a href="#part-iii-tools-of-asymptotic-theory" id="toc-part-iii-tools-of-asymptotic-theory" class="nav-link" data-scroll-target="#part-iii-tools-of-asymptotic-theory">Part III: Tools of Asymptotic Theory</a></li>
+  <li><a href="#part-v-linear-models-with-endogeneity" id="toc-part-v-linear-models-with-endogeneity" class="nav-link" data-scroll-target="#part-v-linear-models-with-endogeneity">Part V: Linear Models with Endogeneity</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Syllabus for ECON 626: Econometric Theory I</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paul Schrimpf </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 6, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="basic-information" class="level2">
+<h2 class="anchored" data-anchor-id="basic-information">Basic Information</h2>
+<section id="instructor" class="level3">
+<h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
+<p>Paul Schrimpf</p>
+<p>107 Iona</p>
+<p>paul.schrimpf@ubc.ca</p>
+<p>Office Hours: Wednesday 11:30am-12:30pm</p>
+</section>
+<section id="ta" class="level3">
+<h3 class="anchored" data-anchor-id="ta">TA</h3>
+<p>Yige Duan</p>
+<p>yige.duan@gmail.com</p>
+<p>Office Hours: TBA</p>
+</section>
+<section id="time-and-place" class="level3">
+<h3 class="anchored" data-anchor-id="time-and-place">Time and Place</h3>
+<p>Mondays and Wednesdays 10:00am - 11:20am, Iona 633</p>
+</section>
+<section id="textbooks" class="level3">
+<h3 class="anchored" data-anchor-id="textbooks">Textbooks</h3>
+<p>Our primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:</p>
+<ul>
+<li>Bruce Hansen (2022) <em>Probability and Statistics for Economists</em> and <em>Econometrics</em></li>
+<li>Fumio Hayashi (2000) <em>Econometrics</em></li>
+<li>George Casella and Roger L. Berger (2002) <em>Statistical Inference</em></li>
+<li>Takeshi Amemiya (1985) <em>Advanced Econometrics</em></li>
+</ul>
+</section>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
+<section id="problem-sets-30" class="level3">
+<h3 class="anchored" data-anchor-id="problem-sets-30">Problem Sets (30%)</h3>
+<p>There will be 6-9 problem sets. A problem set with the lowest grade will be dropped from final grading.</p>
+</section>
+<section id="midterm-exam-30" class="level3">
+<h3 class="anchored" data-anchor-id="midterm-exam-30">Midterm Exam (30%)</h3>
+<p>Given in class on Wednesday, October 26. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (40%) and the final exam (60%).</p>
+</section>
+<section id="final-exam-40" class="level3">
+<h3 class="anchored" data-anchor-id="final-exam-40">Final Exam (40%)</h3>
+<p>Closed books and notes.</p>
+</section>
+</section>
+<section id="course-description" class="level1">
+<h1>Course Description</h1>
+<p>The course aims to equip students with introductory knowledge in probability, statistics, and econometrics so that students become familiar with basic concepts underlying empirical and methodological research in economics.</p>
+</section>
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<section id="part-i-basics" class="level2">
+<h2 class="anchored" data-anchor-id="part-i-basics">Part I: Basics</h2>
+<ul>
+<li>Probability
+<ul>
+<li>Random Variables, and Distributions</li>
+<li>Conditional Expectations and Conditional Distributions</li>
+<li>Family of Distributions</li>
+</ul></li>
+<li>Basics of Inference - Estimation - Hypothesis Testing</li>
+</ul>
+</section>
+<section id="part-ii-generalized-linear-model" class="level2">
+<h2 class="anchored" data-anchor-id="part-ii-generalized-linear-model">Part II: Generalized Linear Model</h2>
+<ul>
+<li>Preliminaries of Projection Geometry - Generalized Linear Models and Gauss-Markov Theorem - Tests of Linear Hypothesis</li>
+</ul>
+</section>
+<section id="part-iii-tools-of-asymptotic-theory" class="level2">
+<h2 class="anchored" data-anchor-id="part-iii-tools-of-asymptotic-theory">Part III: Tools of Asymptotic Theory</h2>
+<ul>
+<li>Modes of Convergence</li>
+<li>Slutsky’s Lemma/Continuous Mapping Theorem</li>
+<li>Delta Methods</li>
+</ul>
+</section>
+<section id="part-v-linear-models-with-endogeneity" class="level2">
+<h2 class="anchored" data-anchor-id="part-v-linear-models-with-endogeneity">Part V: Linear Models with Endogeneity</h2>
+<ul>
+<li>Identification and Endogeneity</li>
+<li>Identification through IV and Inference</li>
+</ul>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+UBC values and policies
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>UBC provides resources to support student learning and to maintain healthy lifestyles but recognizes that sometimes crises arise and so there are additional resources to access including those for survivors of sexual violence. UBC values respect for the person and ideas of all members of the academic community. Harassment and discrimination are not tolerated nor is suppression of academic freedom. UBC provides appropriate accommodation for students with disabilities and for religious and cultural observances. UBC values academic honesty and students are expected to acknowledge the ideas generated by others and to uphold the highest academic standards in all of their actions. Details of the policies and how to access support are available here (https://senate.ubc.ca/policiesresources-support-student-success )</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

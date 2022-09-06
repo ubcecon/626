@@ -351,9 +351,9 @@
 <section id="references" class="slide level2">
 <h2>References</h2>
 <ul>
-<li>** <span class="citation" data-cites="song2021">Song (<a href="#/integration" role="doc-biblioref" onclick="">2021</a>)</span> chapter 1 **</li>
-<li><span class="citation" data-cites="pollard2002">Pollard (<a href="#/integration" role="doc-biblioref" onclick="">2002</a>)</span></li>
-<li><span class="citation" data-cites="tao2011">Tao (<a href="#/integration" role="doc-biblioref" onclick="">2011</a>)</span></li>
+<li>** <span class="citation" data-cites="song2021">Song (<a href="#/references-1" role="doc-biblioref" onclick="">2021</a>)</span> chapter 1 **</li>
+<li><span class="citation" data-cites="pollard2002">Pollard (<a href="#/references-1" role="doc-biblioref" onclick="">2002</a>)</span></li>
+<li><span class="citation" data-cites="tao2011">Tao (<a href="#/references-1" role="doc-biblioref" onclick="">2011</a>)</span></li>
 </ul>
 </section>
 <section>
@@ -363,79 +363,224 @@
 </section>
 <section id="why-measure-theory" class="slide level2">
 <h2>Why Measure Theory?</h2>
-<div class="fragment">
+<div>
 <ol type="1">
-<li>Simplifies some arguments</li>
-</ol>
-<div class="fragment">
-<pre><code>- Example from @pollard2002
-- Define independence as factorization of distribution functions
-$$ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) $$
-- If $X_1, X_2, _X_3, X_4$ are independent, show that
-$$ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) $$
-is independent of
-$$ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) $$</code></pre>
-</div>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li>Unifies treatment
+<li class="fragment">Simplifies some arguments
 <ul>
-<li>discrete vs continuous</li>
-<li>uni- vs multi-variate</li>
+<li class="fragment">Example from <span class="citation" data-cites="pollard2002">Pollard (<a href="#/references-1" role="doc-biblioref" onclick="">2002</a>)</span>, define independence as factorization of distribution functions <span class="math display">\[ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) \]</span></li>
+<li class="fragment">If <span class="math inline">\(X_1 , X_2 , _X_3 , X_4\)</span> are independent, show that <span class="math display">\[ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) \]</span> is independent of <span class="math display">\[ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) \]</span></li>
 </ul></li>
 </ol>
 </div>
-<div class="fragment">
-<ol start="3" type="1">
-<li>Resolves some difficulties with infinity</li>
+</section>
+<section id="why-measure-theory-1" class="slide level2">
+<h2>Why Measure Theory?</h2>
+<ol type="1">
+<li>Simplifies some arguments</li>
+</ol>
+<div>
+<ol start="2" type="1">
+<li class="fragment">Unifies treatment
+<ul>
+<li class="fragment">discrete vs continuous</li>
+<li class="fragment">uni- vs multi-variate</li>
+</ul></li>
+<li class="fragment">Resolves some difficulties with infinity</li>
 </ol>
 </div>
 </section>
 <section id="measure-space" class="slide level2">
 <h2>Measure Space</h2>
-<div class="fragment">
+<div>
 <ol type="1">
-<li>A set <span class="math inline">\(\Omega\)</span></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li>A collection of subsets, <span class="math inline">\(\mathscr{F}\)</span>, of <span class="math inline">\(\Omega\)</span> that is a <span class="math inline">\(\sigma\)</span><em>-field</em> (aka <span class="math inline">\(\sigma\)</span><em>-algebra</em>) , that is
+<li class="fragment">A set <span class="math inline">\(\Omega\)</span></li>
+<li class="fragment">A collection of subsets, <span class="math inline">\(\mathscr{F}\)</span>, of <span class="math inline">\(\Omega\)</span> that is a <span class="math inline">\(\sigma\)</span><em>-field</em> (aka <span class="math inline">\(\sigma\)</span><em>-algebra</em>) , that is
 <ol type="1">
-<li><span class="math inline">\(\Omega \in \mathscr{F}\)</span></li>
-<li>If <span class="math inline">\(A \in \mathscr{F}\)</span>, then <span class="math inline">\(A^c \in \mathscr{F}\)</span></li>
-<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span>, then <span class="math inline">\(\cup_{j=1}^\infty A_j \in \mathscr{F}\)</span></li>
+<li class="fragment"><span class="math inline">\(\Omega \in \mathscr{F}\)</span></li>
+<li class="fragment">If <span class="math inline">\(A \in \mathscr{F}\)</span>, then <span class="math inline">\(A^c \in \mathscr{F}\)</span></li>
+<li class="fragment">If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span>, then <span class="math inline">\(\cup_{j=1}^\infty A_j \in \mathscr{F}\)</span></li>
+</ol></li>
+<li class="fragment">A measure, <span class="math inline">\(\mu: \mathcal{F} \to [0, \infty]\)</span> s.t.
+<ol type="1">
+<li class="fragment"><span class="math inline">\(\mu(\emptyset) = 0\)</span></li>
+<li class="fragment">If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span> are pairwise disjoint, then <span class="math inline">\(\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)\)</span></li>
 </ol></li>
 </ol>
 </div>
-<div class="fragment">
-<ol start="3" type="1">
-<li>A measure, <span class="math inline">\(\mu: \mathcal{F} \to [0, \infty]\)</span> s.t.
-<ol type="1">
-<li><span class="math inline">\(\mu(\null) = 0\)</span></li>
-<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span> are pairwise disjoint, then <span class="math inline">\(\mu\left(\cup_{j=1}^\infy A_j \right) = \sum_{j=1}^\infy \mu(A_j)\)</span></li>
-</ol></li>
-</ol>
-</div>
-<div class="note">
+<aside class="notes">
 <p>Example of sigma fields</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="measurable-function" class="slide level2">
 <h2>Measurable Function</h2>
 <ul>
-<li>Given a topology on <span class="math inline">\(\Omega\)</span>, the <strong>Borel <span class="math inline">\(\sigma\)</span>-field</strong>, <span class="math inline">\(\mathscr{B}(\Omega)\)</span>, is the smallest <span class="math inline">\(\sigma\)</span>-field containing all open subsets of <span class="math inline">\(\Omega\)</span></li>
+<li>Given a topology on <span class="math inline">\(\Omega\)</span>, the <strong>Borel</strong> <span class="math inline">\(\sigma\)</span>-<strong>field</strong>, <span class="math inline">\(\mathscr{B}(\Omega)\)</span>, is the smallest <span class="math inline">\(\sigma\)</span>-field containing all open subsets of <span class="math inline">\(\Omega\)</span></li>
 </ul>
-<div class="note">
+<aside class="notes">
 <p>When working with <span class="math inline">\(R^d\)</span>, we will generally use <span class="math inline">\(\mathscr{B}(\mathbf{R}^d)\)</span> as our <span class="math inline">\(\sigma\)</span>-field.</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <ul>
-<li><span class="math inline">\(f: \Omega \to \mathbf{R}\)</span> is (<span class="math inline">\(\mathscr{F}\)</span>-)<strong>measurable</strong> if <span class="math inline">\(\forall\)</span> <span class="math inline">\(B \in \mathscr{B}(\mathbf{R})\)</span>, <span class="math inline">\(f^{-1}(B) \in \mathscr{F}\)</span></li>
+<li><p><span class="math inline">\(f: \Omega \to \mathbf{R}\)</span> is (<span class="math inline">\(\mathscr{F}\)</span>-)<strong>measurable</strong> if <span class="math inline">\(\forall\)</span> <span class="math inline">\(B \in \mathscr{B}(\mathbf{R})\)</span>, <span class="math inline">\(f^{-1}(B) \in \mathscr{F}\)</span></p></li>
+<li><p>a statement holds <em>almost everywhere</em> (a.e.) if the measure of the set where the statement is false is 0</p></li>
 </ul>
+<!-- ::: {.callout-note icon=false} -->
+<!-- ### Exercise -->
+<!-- Show that if $f_1, f_2, f_3, ...$ are measurable, then -->
+<!-- $\sum_{j=1}^\infty f_j$ is measurable -->
+<!-- ::: -->
 </section></section>
-<section id="integration" class="title-slide slide level1 smaller scrollable">
+<section>
+<section id="integration" class="title-slide slide level1 center">
 <h1>Integration</h1>
+
+</section>
+<section id="simple-functions" class="slide level2">
+<h2>Simple Functions</h2>
+<ul>
+<li>Assume <span class="math inline">\(\mu(\Omega) &lt; \infty\)</span></li>
+<li><span class="math inline">\(f\)</span> is a <strong>simple function</strong> if <span class="math inline">\(f = \sum_{j=1}^n a_j 1\{\omega \in E_j \}\)</span> for <span class="math inline">\(a_j \in \mathbf{R}\)</span> and <span class="math inline">\(E_j \in \mathscr{F}\)</span></li>
+<li>Integral of simple functions: <span class="math display">\[ \int f d \mu = \sum_{j=1}^n a_j \mu(E_j) \]</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<p>Show that if <span class="math inline">\(f\)</span> is simple, then <span class="math inline">\(f\)</span> is measurable.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<p>Show that if <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are simple, then</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
+<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
+<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="bounded-functions" class="slide level2">
+<h2>Bounded Functions</h2>
+<ul>
+<li>Let <span class="math inline">\(E\)</span> such that $(E)&lt;$</li>
+<li>Let <span class="math inline">\(f\)</span> be bounded function and <span class="math inline">\(f(x) = 0 \forall x \in E^c\)</span></li>
+<li>Define: <span class="math display">\[
+\int f d\mu \equiv \sup_{\varphi \leq f: \varphi \text{ simple}} \int \varphi d\mu =\inf_{\varphi \geq f: \varphi \text{ simple}} \int \varphi d\mu
+\]</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<p>Show the second equality above.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<p>Show that for all bounded <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> that vanish outside a finite measure set,</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
+<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
+<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="nonnegative-functions" class="slide level2">
+<h2>Nonnegative Functions</h2>
+<ul>
+<li>If <span class="math inline">\(f \geq 0\)</span>, define <span class="math display">\[
+\int fd\mu =\sup_{f_n \text{ simple, bounded+}} \int f_{n}d\mu
+\]</span></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<p>Show that for all <span class="math inline">\(f \geq 0\)</span>,</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
+<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
+<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="measurable-functions" class="slide level2">
+<h2>Measurable Functions</h2>
+<ul>
+<li>If <span class="math inline">\(f\)</span> is measurable, let <span class="math inline">\(f^{+} = \max\{f, 0\}\)</span> and <span class="math inline">\(f^{-} = \max\{-f, 0\}\)</span> and define the <em>Lesbegue integral</em></li>
+</ul>
+<p><span class="math display">\[ \int f d\mu = \int f^{+} d\mu - \int f^{-} d\mu \]</span></p>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<p>Show that for all measurable <span class="math inline">\(f\)</span></p>
+<ol type="1">
+<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
+<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
+<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section></section>
+<section id="references-1" class="title-slide slide level1 smaller scrollable">
+<h1>References</h1>
 
 <div class="footer footer-default">
 

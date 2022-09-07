@@ -345,20 +345,20 @@
 <section id="title-slide" class="center">
   <h1 class="title">Measure and Probability</h1>
   <p class="author">Paul Schrimpf</p>
-  <p class="date">9/6/22</p>
+  <p class="date">9/7/22</p>
 </section>
 
 <section id="references" class="slide level2">
 <h2>References</h2>
 <ul>
-<li>** <span class="citation" data-cites="song2021">Song (<a href="#/references-1" role="doc-biblioref" onclick="">2021</a>)</span> chapter 1 **</li>
+<li><strong><span class="citation" data-cites="song2021">Song (<a href="#/references-1" role="doc-biblioref" onclick="">2021</a>)</span> chapter 1</strong> (which is the basis for these slides)</li>
 <li><span class="citation" data-cites="pollard2002">Pollard (<a href="#/references-1" role="doc-biblioref" onclick="">2002</a>)</span></li>
 <li><span class="citation" data-cites="tao2011">Tao (<a href="#/references-1" role="doc-biblioref" onclick="">2011</a>)</span></li>
 </ul>
 </section>
 <section>
-<section id="measure" class="title-slide slide level1 center">
-<h1>Measure</h1>
+<section id="measures" class="title-slide slide level1 center">
+<h1>Measures</h1>
 
 </section>
 <section id="why-measure-theory" class="slide level2">
@@ -368,7 +368,7 @@
 <li class="fragment">Simplifies some arguments
 <ul>
 <li class="fragment">Example from <span class="citation" data-cites="pollard2002">Pollard (<a href="#/references-1" role="doc-biblioref" onclick="">2002</a>)</span>, define independence as factorization of distribution functions <span class="math display">\[ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) \]</span></li>
-<li class="fragment">If <span class="math inline">\(X_1 , X_2 , _X_3 , X_4\)</span> are independent, show that <span class="math display">\[ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) \]</span> is independent of <span class="math display">\[ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) \]</span></li>
+<li class="fragment">If <span class="math inline">\(X_1,X_2,X_3, X_4\)</span> are independent, show that <span class="math display">\[ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) \]</span> is independent of <span class="math display">\[ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) \]</span></li>
 </ul></li>
 </ol>
 </div>
@@ -493,7 +493,7 @@
 <section id="bounded-functions" class="slide level2">
 <h2>Bounded Functions</h2>
 <ul>
-<li>Let <span class="math inline">\(E\)</span> such that $(E)&lt;$</li>
+<li>Let <span class="math inline">\(E\)</span> be such that <span class="math inline">\(\mu(E)&lt;\infty\)</span></li>
 <li>Let <span class="math inline">\(f\)</span> be bounded function and <span class="math inline">\(f(x) = 0 \forall x \in E^c\)</span></li>
 <li>Define: <span class="math display">\[
 \int f d\mu \equiv \sup_{\varphi \leq f: \varphi \text{ simple}} \int \varphi d\mu =\inf_{\varphi \geq f: \varphi \text{ simple}} \int \varphi d\mu
@@ -512,6 +512,9 @@
 </div>
 </div>
 </div>
+</section>
+<section id="section" class="slide level2">
+<h2><!-- graph showing f, \psi_n, \varphi_n --></h2>
 <div class="callout callout-note no-icon callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -578,6 +581,182 @@
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="radon-nikodym-derivatives" class="title-slide slide level1 center">
+<h1>Radon-Nikodym Derivatives</h1>
+
+</section>
+<section id="finite-measure" class="slide level2">
+<h2>Finite Measure</h2>
+<ul>
+<li>Measure <span class="math inline">\(\mu\)</span> is <em>finite</em> if <span class="math inline">\(\mu(\Omega)\)</span> is finite</li>
+<li><span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-<em>finite</em> if <span class="math inline">\(\exists\)</span> <span class="math inline">\(\{A_n\}_{n=1}^\infty \in \mathscr{F}\)</span> s.t. <span class="math inline">\(\mu(A_n)\)</span> is finite <span class="math inline">\(\forall n\)</span> and <span class="math inline">\(\cup_{n=1}^\infty A_n = \Omega\)</span></li>
+</ul>
+<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(\Omega\)</span> be countable with any <span class="math inline">\(\mathscr{F}\)</span>, define <span class="math inline">\(\mu(A)\)</span> as the number of elements of <span class="math inline">\(A\)</span>. Show <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span> finite.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="lebesgue-measure" class="slide level2">
+<h2>Lebesgue Measure</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>There exists a unique <span class="math inline">\(\sigma\)</span>-finite measure <span class="math inline">\(\mu\)</span> on <span class="math inline">\((\mathbf{R},\mathscr{B}(\mathbf{R}))\)</span> such that for any <span class="math inline">\(a\leq b\)</span> with <span class="math inline">\(a,b\in \mathbf{R}\)</span>, <span class="math display">\[
+\mu ((a,b])=b-a
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="absolute-continuity" class="slide level2">
+<h2>Absolute Continuity</h2>
+<ul>
+<li>Measure <span class="math inline">\(\nu\)</span> is <strong>absolutely continuous</strong> with respect to <span class="math inline">\(\mu\)</span> if for <span class="math inline">\(A \in \mathscr{F}\)</span>, <span class="math inline">\(\mu(A) = 0\)</span> implies <span class="math inline">\(\nu(A) = 0\)</span>
+<ul>
+<li>denotate as <span class="math inline">\(\nu \ll \mu\)</span></li>
+<li><span class="math inline">\(\mu\)</span> is called a <strong>dominating measure</strong></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Relation with continuity?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="radon-nikodym-derivative" class="slide level2">
+<h2>Radon-Nikodym Derivative</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\((\Omega,\mathscr{F},\mu)\)</span> be a measure space, and let <span class="math inline">\(\nu\)</span> and <span class="math inline">\(\mu\)</span> be <span class="math inline">\(\sigma\)</span>-finite measures defined on <span class="math inline">\(\mathscr{F}\)</span> and <span class="math inline">\(\nu \ll \mu\)</span>. Then there is a nonnegative measurable function <span class="math inline">\(f\)</span> such that for each set <span class="math inline">\(A\in \mathscr{F}\)</span>, <span class="math display">\[
+\nu (A)=\int_{A}fd\mu
+\]</span> For any such <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, <span class="math inline">\(\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})=0\)</span></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Denote $f = </p>
+<p>Exercise: show coincides with usual derivative?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="convergence-theorems" class="title-slide slide level1 center">
+<h1>Convergence Theorems</h1>
+
+</section>
+<section id="sequences-of-sets" class="slide level2">
+<h2>Sequences of Sets</h2>
+<ul>
+<li><span class="math inline">\(\{E_n\}_{n \geq 1} \in \mathscr{F}\)</span>
+<ul>
+<li><em>increasing</em> if <span class="math inline">\(E_1 \subset E_2 \subset ...\)</span></li>
+<li><em>decreasing</em> if <span class="math inline">\(E_1 \supset E_2 \supset ...\)</span></li>
+<li><em>monotone</em> if either increasing or decreasing</li>
+</ul></li>
+<li>For increasing <span class="math inline">\(E_n\)</span>, define <span class="math inline">\(\lim_{n \to \infty} E_n =\cup_{n=1}^\infty E_n\)</span></li>
+<li>For decreasing <span class="math inline">\(E_n\)</span>, define <span class="math inline">\(\lim_{n \to \infty} E_n =\cap_{n=1}^\infty E_n\)</span></li>
+</ul>
+</section>
+<section id="continuity-of-measure" class="slide level2">
+<h2>Continuity of Measure</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Lemma</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose that <span class="math inline">\(\{E_{n}\}\)</span> is a monotone sequence of events. Then <span class="math display">\[
+\mu \left( \lim_{n\rightarrow \infty}E_{n}\right) =\lim_{n\rightarrow \infty }\mu (E_{n}).
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="monotone-convergence-theorem" class="slide level2">
+<h2>Monotone Convergence Theorem</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Lemma</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="fatous-lemma" class="slide level2">
+<h2>Fatou’s Lemma</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Lemma</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, then <span class="math display">\[
+\int \left( \text{liminf}_{n\rightarrow \infty }f_{n}d\mu \right) \leq \text{liminf}_{n\rightarrow \infty }\int f_{n}d\mu
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="dominated-convergence-theorem" class="slide level2">
+<h2>Dominated Convergence Theorem</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Lemma</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>The measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section id="references-1" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>

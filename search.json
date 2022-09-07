@@ -11,14 +11,14 @@
     "href": "measure/measure.html#references",
     "title": "Measure and Probability",
     "section": "References",
-    "text": "References\n\n** Song (2021) chapter 1 **\nPollard (2002)\nTao (2011)"
+    "text": "References\n\nSong (2021) chapter 1 (which is the basis for these slides)\nPollard (2002)\nTao (2011)"
   },
   {
     "objectID": "measure/measure.html#why-measure-theory",
     "href": "measure/measure.html#why-measure-theory",
     "title": "Measure and Probability",
     "section": "Why Measure Theory?",
-    "text": "Why Measure Theory?\n\n\nSimplifies some arguments\n\nExample from Pollard (2002), define independence as factorization of distribution functions \\[ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) \\]\nIf \\(X_1 , X_2 , _X_3 , X_4\\) are independent, show that \\[ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) \\] is independent of \\[ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) \\]"
+    "text": "Why Measure Theory?\n\n\nSimplifies some arguments\n\nExample from Pollard (2002), define independence as factorization of distribution functions \\[ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) \\]\nIf \\(X_1,X_2,X_3, X_4\\) are independent, show that \\[ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) \\] is independent of \\[ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) \\]"
   },
   {
     "objectID": "measure/measure.html#why-measure-theory-1",
@@ -53,7 +53,14 @@
     "href": "measure/measure.html#bounded-functions",
     "title": "Measure and Probability",
     "section": "Bounded Functions",
-    "text": "Bounded Functions\n\nLet \\(E\\) such that $(E)<$\nLet \\(f\\) be bounded function and \\(f(x) = 0 \\forall x \\in E^c\\)\nDefine: \\[\n\\int f d\\mu \\equiv \\sup_{\\varphi \\leq f: \\varphi \\text{ simple}} \\int \\varphi d\\mu =\\inf_{\\varphi \\geq f: \\varphi \\text{ simple}} \\int \\varphi d\\mu\n\\]"
+    "text": "Bounded Functions\n\nLet \\(E\\) be such that \\(\\mu(E)<\\infty\\)\nLet \\(f\\) be bounded function and \\(f(x) = 0 \\forall x \\in E^c\\)\nDefine: \\[\n\\int f d\\mu \\equiv \\sup_{\\varphi \\leq f: \\varphi \\text{ simple}} \\int \\varphi d\\mu =\\inf_{\\varphi \\geq f: \\varphi \\text{ simple}} \\int \\varphi d\\mu\n\\]"
+  },
+  {
+    "objectID": "measure/measure.html#section",
+    "href": "measure/measure.html#section",
+    "title": "Measure and Probability",
+    "section": "",
+    "text": "Exercise\n\n\nShow that for all bounded \\(f\\) and \\(g\\) that vanish outside a finite measure set,\n\nIf \\(f \\geq 0\\) a.e., then \\(\\int f d\\mu \\geq 0\\)\n\\(\\forall a \\in \\mathbf{R}\\) , \\(\\int a f d\\mu = a \\int f d\\mu\\)\n\\(\\int (f + g) d\\mu = \\int f d\\mu + \\int g d \\mu\\)"
   },
   {
     "objectID": "measure/measure.html#nonnegative-functions",
@@ -68,6 +75,69 @@
     "title": "Measure and Probability",
     "section": "Measurable Functions",
     "text": "Measurable Functions\n\nIf \\(f\\) is measurable, let \\(f^{+} = \\max\\{f, 0\\}\\) and \\(f^{-} = \\max\\{-f, 0\\}\\) and define the Lesbegue integral\n\n\\[ \\int f d\\mu = \\int f^{+} d\\mu - \\int f^{-} d\\mu \\]"
+  },
+  {
+    "objectID": "measure/measure.html#finite-measure",
+    "href": "measure/measure.html#finite-measure",
+    "title": "Measure and Probability",
+    "section": "Finite Measure",
+    "text": "Finite Measure\n\nMeasure \\(\\mu\\) is finite if \\(\\mu(\\Omega)\\) is finite\n\\(\\mu\\) is \\(\\sigma\\)-finite if \\(\\exists\\) \\(\\{A_n\\}_{n=1}^\\infty \\in \\mathscr{F}\\) s.t. \\(\\mu(A_n)\\) is finite \\(\\forall n\\) and \\(\\cup_{n=1}^\\infty A_n = \\Omega\\)\n\n\n\n\nExercise\n\n\nLet \\(\\Omega\\) be countable with any \\(\\mathscr{F}\\), define \\(\\mu(A)\\) as the number of elements of \\(A\\). Show \\(\\mu\\) is \\(\\sigma\\) finite."
+  },
+  {
+    "objectID": "measure/measure.html#lebesgue-measure",
+    "href": "measure/measure.html#lebesgue-measure",
+    "title": "Measure and Probability",
+    "section": "Lebesgue Measure",
+    "text": "Lebesgue Measure\n\n\n\nTheorem\n\n\nThere exists a unique \\(\\sigma\\)-finite measure \\(\\mu\\) on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that for any \\(a\\leq b\\) with \\(a,b\\in \\mathbf{R}\\), \\[\n\\mu ((a,b])=b-a\n\\]"
+  },
+  {
+    "objectID": "measure/measure.html#absolute-continuity",
+    "href": "measure/measure.html#absolute-continuity",
+    "title": "Measure and Probability",
+    "section": "Absolute Continuity",
+    "text": "Absolute Continuity\n\nMeasure \\(\\nu\\) is absolutely continuous with respect to \\(\\mu\\) if for \\(A \\in \\mathscr{F}\\), \\(\\mu(A) = 0\\) implies \\(\\nu(A) = 0\\)\n\ndenotate as \\(\\nu \\ll \\mu\\)\n\\(\\mu\\) is called a dominating measure\n\n\n\nRelation with continuity?"
+  },
+  {
+    "objectID": "measure/measure.html#radon-nikodym-derivative",
+    "href": "measure/measure.html#radon-nikodym-derivative",
+    "title": "Measure and Probability",
+    "section": "Radon-Nikodym Derivative",
+    "text": "Radon-Nikodym Derivative\n\n\n\nTheorem\n\n\nLet \\((\\Omega,\\mathscr{F},\\mu)\\) be a measure space, and let \\(\\nu\\) and \\(\\mu\\) be \\(\\sigma\\)-finite measures defined on \\(\\mathscr{F}\\) and \\(\\nu \\ll \\mu\\). Then there is a nonnegative measurable function \\(f\\) such that for each set \\(A\\in \\mathscr{F}\\), \\[\n\\nu (A)=\\int_{A}fd\\mu\n\\] For any such \\(f\\) and \\(g\\), \\(\\mu (\\{\\omega \\in \\Omega:f(\\omega )\\neq g(\\omega )\\})=0\\)\n\n\n\n\nDenote $f = \nExercise: show coincides with usual derivative?"
+  },
+  {
+    "objectID": "measure/measure.html#sequences-of-sets",
+    "href": "measure/measure.html#sequences-of-sets",
+    "title": "Measure and Probability",
+    "section": "Sequences of Sets",
+    "text": "Sequences of Sets\n\n\\(\\{E_n\\}_{n \\geq 1} \\in \\mathscr{F}\\)\n\nincreasing if \\(E_1 \\subset E_2 \\subset ...\\)\ndecreasing if \\(E_1 \\supset E_2 \\supset ...\\)\nmonotone if either increasing or decreasing\n\nFor increasing \\(E_n\\), define \\(\\lim_{n \\to \\infty} E_n =\\cup_{n=1}^\\infty E_n\\)\nFor decreasing \\(E_n\\), define \\(\\lim_{n \\to \\infty} E_n =\\cap_{n=1}^\\infty E_n\\)"
+  },
+  {
+    "objectID": "measure/measure.html#continuity-of-measure",
+    "href": "measure/measure.html#continuity-of-measure",
+    "title": "Measure and Probability",
+    "section": "Continuity of Measure",
+    "text": "Continuity of Measure\n\n\n\nLemma\n\n\nSuppose that \\(\\{E_{n}\\}\\) is a monotone sequence of events. Then \\[\n\\mu \\left( \\lim_{n\\rightarrow \\infty}E_{n}\\right) =\\lim_{n\\rightarrow \\infty }\\mu (E_{n}).\n\\]"
+  },
+  {
+    "objectID": "measure/measure.html#monotone-convergence-theorem",
+    "href": "measure/measure.html#monotone-convergence-theorem",
+    "title": "Measure and Probability",
+    "section": "Monotone Convergence Theorem",
+    "text": "Monotone Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\uparrow f(\\omega )\\), then \\(\\int f_{n}d\\mu \\uparrow \\int fd\\mu\\) as \\(n\\rightarrow \\infty\\)"
+  },
+  {
+    "objectID": "measure/measure.html#fatous-lemma",
+    "href": "measure/measure.html#fatous-lemma",
+    "title": "Measure and Probability",
+    "section": "Fatou’s Lemma",
+    "text": "Fatou’s Lemma\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), then \\[\n\\int \\left( \\text{liminf}_{n\\rightarrow \\infty }f_{n}d\\mu \\right) \\leq \\text{liminf}_{n\\rightarrow \\infty }\\int f_{n}d\\mu\n\\]"
+  },
+  {
+    "objectID": "measure/measure.html#dominated-convergence-theorem",
+    "href": "measure/measure.html#dominated-convergence-theorem",
+    "title": "Measure and Probability",
+    "section": "Dominated Convergence Theorem",
+    "text": "Dominated Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu <\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)\n\n\n\n\nThe measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory."
   },
   {
     "objectID": "syllabus626.html",
@@ -116,7 +186,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 6, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Sep 7, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

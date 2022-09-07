@@ -10,7 +10,7 @@ bibliography: ../626.bib
 
 ## References
 
-- ** @song2021 chapter 1 **
+- ** @song2021 chapter 1 ** (which is the basis for these slides)
 - @pollard2002
 - @tao2011
 
@@ -202,6 +202,141 @@ Show that for all measurable $f$
 
 :::
 
+
+# Radon-Nikodym Derivatives
+
+## Finite Measure
+
+- Measure $\mu$ is *finite* if $\mu(\Omega)$ is finite
+- $\mu$ is $\sigma$-*finite* if $\exists$ $\{A_n\}_{n=1}^\infty \in
+\mathscr{F}$ s.t. $\mu(A_n)$ is finite $\forall n$ and
+$\cup_{n=1}^\infty A_n = \Omega$
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Let $\Omega$ be countable with any $\mathscr{F}$, define $\mu(A)$ as the number of elements of $A$. Show $\mu$ is $\sigma$ finite.
+
+
+:::
+
+
+## Lebesgue Measure
+
+::: {.callout-warning icon=false}
+
+### Theorem
+
+There exists a unique $\sigma $-finite measure $\mu $ on $(\mathbf{R},\mathscr{B}(\mathbf{R}))$  such that for any $a\leq b$ with $a,b\in \mathbf{R}$,
+$$
+\mu ((a,b])=b-a
+$$
+
+:::
+
+## Absolute Continuity
+
+- Measure $\vu$ is **absolutely continuous** with respect to $\mu$ if
+for $A \in \mathscr{F}$, $\mu(A) = 0$ implies $\nu(A) = 0$
+    - denotate as $\nu \ll \mu$
+    - $\mu$ is called a **dominating measure**
+
+::: {.note}
+
+Relation with continuity?
+
+:::
+
+## Radon-Nikodym Derivative
+
+::: {.callout-warning icon=false}
+
+### Theorem
+
+Let $(\Omega,\mathscr{F},\mu)$ be a measure space, and let $\nu$
+and $\mu$ be $\sigma$-finite measures defined on $\mathscr{F}$ and $\nu \ll \mu$. Then there is
+a nonnegative measurable function $f$ such that for each set $A\in \mathscr{F}$,
+$$
+\nu (A)=\int_{A}fd\mu
+$$
+For any such $f$ and $g$, $\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})=0$
+
+:::
+
+::: {.note}
+
+Denote $f = \frac{d\nu}{d\mu}
+
+Exercise: show coincides with usual derivative?
+
+:::
+
+# Convergence Theorems
+
+## Sequences of Sets
+
+- $\{E_n\}_{n \geq 1} \in \mathscr{F}$
+    - *increasing* if $E_1 \subset E_2 \subset ... $
+    - *decreasing* if $E_1 \supset E_2 \supset ... $
+    - *monotone* if either increasing or decreasing
+- For increasing $E_n$, define
+$\lim_{n \to \infty} E_n =\cup_{n=1}^\infty E_n$
+- For decreasing $E_n$, define
+$\lim_{n \to \infty} E_n =\cap_{n=1}^\infty E_n$
+
+## Continuity of Measure
+
+::: {.callout-warning icon=false}
+
+### Lemma
+
+Suppose that $\{E_{n}\}$ is a monotone sequence of events. Then
+$$
+\mu \left( \lim_{n\rightarrow \infty}E_{n}\right) =\lim_{n\rightarrow \infty }\mu (E_{n}).
+$$
+
+:::
+
+## Monotone Convergence Theorem
+
+::: {.callout-warning icon=false}
+
+### Lemma
+
+
+If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\omega \in \Omega $, $f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu $ as $n\rightarrow \infty$
+
+:::
+
+## Fatou's Lemma
+
+::: {.callout-warning icon=false}
+
+### Lemma
+
+If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, then $\int \left( \text{liminf}_{n\rightarrow \infty }f_{n}d\mu \right)
+\leq $liminf$_{n\rightarrow \infty }\int f_{n}d\mu $
+
+:::
+
+
+## Dominated Convergence Theorem
+
+::: {.callout-warning icon=false}
+
+### Lemma
+
+If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu $
+
+:::
+
+::: {.note}
+
+The measurable condition here can be dropped and outermeasure used
+instead. This simplifies some proofs in asymptotic theory.
+
+:::
 
 
 # References

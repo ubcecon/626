@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ubcecon.github.io/626/about.html</loc>
-    <lastmod>2022-09-07T16:42:30.281Z</lastmod>
+    <lastmod>2022-09-07T21:47:18.625Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/01/ps01.html</loc>
+    <lastmod>2022-09-07T21:47:19.105Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/measure/measure.html</loc>
-    <lastmod>2022-09-07T16:42:30.858Z</lastmod>
+    <lastmod>2022-09-07T21:47:19.595Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/syllabus626.html</loc>
-    <lastmod>2022-09-07T16:42:31.271Z</lastmod>
+    <lastmod>2022-09-07T21:47:19.961Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/slides.html</loc>
-    <lastmod>2022-09-07T16:42:31.658Z</lastmod>
+    <lastmod>2022-09-07T21:47:20.361Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/index.html</loc>
-    <lastmod>2022-09-07T16:42:32.021Z</lastmod>
+    <lastmod>2022-09-07T21:47:20.775Z</lastmod>
   </url>
 </urlset>

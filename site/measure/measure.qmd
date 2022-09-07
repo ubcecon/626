@@ -163,7 +163,7 @@ Show that for all bounded $f$ and $g$ that vanish outside a finite measure set,
 
 - If $f \geq 0$, define
 $$
-\int fd\mu =\sup_{f_n \text{ simple, bounded+}} \int f_{n}d\mu
+\int fd\mu =\sup_{f_n \leq f \text{ simple, bounded+}} \int f_{n}d\mu
 $$
 
 ---

@@ -10,11 +10,11 @@ bibliography: ../626.bib
 
 ## References
 
-- ** @song2021 chapter 1 ** (which is the basis for these slides)
+- **@song2021 chapter 1** (which is the basis for these slides)
 - @pollard2002
 - @tao2011
 
-# Measure
+# Measures
 
 ## Why Measure Theory?
 
@@ -22,7 +22,7 @@ bibliography: ../626.bib
 1. Simplifies some arguments
     - Example from @pollard2002, define independence as factorization of distribution functions
     $$ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) $$
-    - If $X_1 , X_2 , _X_3 , X_4$ are independent, show that
+    - If $X_1,X_2,X_3, X_4$ are independent, show that
     $$ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) $$
     is independent of
     $$ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) $$
@@ -125,7 +125,7 @@ Show that if $f$ and $g$ are simple, then
 
 ## Bounded Functions
 
-- Let $E$ such that $\mu (E)<\infty $
+- Let $E$ be such that $\mu(E)<\infty$
 - Let $f$ be bounded function and $f(x) = 0 \forall x \in E^c$
 - Define:
 $$
@@ -141,6 +141,9 @@ $$
 Show the second equality above.
 
 :::
+
+<!-- graph showing f, \psi_n, \varphi_n -->
+----
 
 ::: {.callout-note icon=false}
 
@@ -228,7 +231,7 @@ Let $\Omega$ be countable with any $\mathscr{F}$, define $\mu(A)$ as the number 
 
 ### Theorem
 
-There exists a unique $\sigma $-finite measure $\mu $ on $(\mathbf{R},\mathscr{B}(\mathbf{R}))$  such that for any $a\leq b$ with $a,b\in \mathbf{R}$,
+There exists a unique $\sigma$-finite measure $\mu$ on $(\mathbf{R},\mathscr{B}(\mathbf{R}))$  such that for any $a\leq b$ with $a,b\in \mathbf{R}$,
 $$
 \mu ((a,b])=b-a
 $$
@@ -237,12 +240,12 @@ $$
 
 ## Absolute Continuity
 
-- Measure $\vu$ is **absolutely continuous** with respect to $\mu$ if
+- Measure $\nu$ is **absolutely continuous** with respect to $\mu$ if
 for $A \in \mathscr{F}$, $\mu(A) = 0$ implies $\nu(A) = 0$
     - denotate as $\nu \ll \mu$
     - $\mu$ is called a **dominating measure**
 
-::: {.note}
+::: {.notes}
 
 Relation with continuity?
 
@@ -264,7 +267,7 @@ For any such $f$ and $g$, $\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})
 
 :::
 
-::: {.note}
+::: {.notes}
 
 Denote $f = \frac{d\nu}{d\mu}
 
@@ -277,8 +280,8 @@ Exercise: show coincides with usual derivative?
 ## Sequences of Sets
 
 - $\{E_n\}_{n \geq 1} \in \mathscr{F}$
-    - *increasing* if $E_1 \subset E_2 \subset ... $
-    - *decreasing* if $E_1 \supset E_2 \supset ... $
+    - *increasing* if $E_1 \subset E_2 \subset ...$
+    - *decreasing* if $E_1 \supset E_2 \supset ...$
     - *monotone* if either increasing or decreasing
 - For increasing $E_n$, define
 $\lim_{n \to \infty} E_n =\cup_{n=1}^\infty E_n$
@@ -305,7 +308,8 @@ $$
 ### Lemma
 
 
-If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\omega \in \Omega $, $f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu $ as $n\rightarrow \infty$
+If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\omega \in \Omega$,
+$f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu$ as $n\rightarrow \infty$
 
 :::
 
@@ -315,8 +319,10 @@ If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\ome
 
 ### Lemma
 
-If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, then $\int \left( \text{liminf}_{n\rightarrow \infty }f_{n}d\mu \right)
-\leq $liminf$_{n\rightarrow \infty }\int f_{n}d\mu $
+If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, then
+$$
+\int \left( \text{liminf}_{n\rightarrow \infty }f_{n}d\mu \right) \leq \text{liminf}_{n\rightarrow \infty }\int f_{n}d\mu
+$$
 
 :::
 
@@ -327,11 +333,11 @@ If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, then $\int \left( 
 
 ### Lemma
 
-If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu $
+If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu$
 
 :::
 
-::: {.note}
+::: {.notes}
 
 The measurable condition here can be dropped and outermeasure used
 instead. This simplifies some proofs in asymptotic theory.

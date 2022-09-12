@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ubcecon.github.io/626/about.html</loc>
-    <lastmod>2022-09-09T23:47:05.999Z</lastmod>
+    <lastmod>2022-09-12T16:08:12.152Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/01/ps01.html</loc>
-    <lastmod>2022-09-09T23:47:06.430Z</lastmod>
+    <lastmod>2022-09-12T16:08:12.612Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/measure/measure.html</loc>
-    <lastmod>2022-09-09T23:47:43.670Z</lastmod>
+    <lastmod>2022-09-12T16:08:49.622Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/syllabus626.html</loc>
-    <lastmod>2022-09-09T23:47:44.083Z</lastmod>
+    <lastmod>2022-09-12T16:08:49.992Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/slides.html</loc>
-    <lastmod>2022-09-09T23:47:45.373Z</lastmod>
+    <lastmod>2022-09-12T16:08:52.022Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/probability/probability.html</loc>
+    <lastmod>2022-09-12T16:09:07.956Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/index.html</loc>
-    <lastmod>2022-09-09T23:47:45.917Z</lastmod>
+    <lastmod>2022-09-12T16:09:08.586Z</lastmod>
   </url>
 </urlset>

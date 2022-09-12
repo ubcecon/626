@@ -193,7 +193,119 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 10, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "probability/probability.html#reading",
+    "href": "probability/probability.html#reading",
+    "title": "Probability",
+    "section": "Reading",
+    "text": "Reading\n\nSong (2021) chapter 2 (which is the basis for these slides)\nPollard (2002)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
+  },
+  {
+    "objectID": "probability/probability.html#probability-space",
+    "href": "probability/probability.html#probability-space",
+    "title": "Probability",
+    "section": "Probability Space",
+    "text": "Probability Space\n\n\n\nDefinitions\n\n\n\nGiven a measure space \\((\\Omega ,\\mathscr{F})\\), a probability (or probability measure)\\(\\ P\\) is a measure s.t. \\(P(\\Omega )=1\\)\n\\((\\Omega ,\\mathscr{F}, P)\\) is a probability space\n\\(\\Omega\\) is a sample space\n\\(\\omega \\in \\Omega\\) is an outcome\n\\(A \\in \\mathscr{F}\\) is an event"
+  },
+  {
+    "objectID": "probability/probability.html#random-variable",
+    "href": "probability/probability.html#random-variable",
+    "title": "Probability",
+    "section": "Random Variable",
+    "text": "Random Variable\n\n\n\nDefinition\n\n\nA random variable \\(X\\) is a measurable function from \\(\\Omega\\) to \\(\\mathbf{R}\\)"
+  },
+  {
+    "objectID": "probability/probability.html#distribution",
+    "href": "probability/probability.html#distribution",
+    "title": "Probability",
+    "section": "Distribution",
+    "text": "Distribution\n\n\n\nDefinition\n\n\nLet \\((\\Omega ,\\mathscr{F},P)\\) be a probability space, \\(X\\) a random variable on \\((\\Omega ,\\mathscr{F})\\). A distribution \\(P_{X}\\) induced by \\(X\\) is a probability measure on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that : \\(\\forall B\\in \\mathscr{B}(\\mathbf{R})\\), \\[\nP_{X}(B)\\equiv P\\left\\{ \\omega \\in \\Omega :X(\\omega )\\in B\\right\\}\n\\]"
+  },
+  {
+    "objectID": "probability/probability.html#distribution-function",
+    "href": "probability/probability.html#distribution-function",
+    "title": "Probability",
+    "section": "Distribution Function",
+    "text": "Distribution Function\n\n\n\nDefinition\n\n\nThe CDF of a random variable \\(X\\) with distribution \\(P_{X}\\) is defined to be a function \\(F:\\mathbf{R}\\rightarrow [0,1]\\) such that \\[\nF(t)=P_{X}\\left( (-\\infty ,t]\\right) .\n\\]"
+  },
+  {
+    "objectID": "probability/probability.html#stochastic-dominance",
+    "href": "probability/probability.html#stochastic-dominance",
+    "title": "Probability",
+    "section": "Stochastic Dominance",
+    "text": "Stochastic Dominance\n\n\n\nDefinition\n\n\nSuppose that two random variables \\(X_1\\) and \\(X_2\\) have CDFs \\(F_1\\) and \\(F_2\\).\n\nSuppose that \\(F_1(x) \\le F_2(x)\\) for all \\(x \\in \\mathbf{R}\\). Then \\(X_1\\) first order stochastically dominates (FOSD) \\(X_2\\).\nSuppose that for all \\(y \\in \\mathbf{R}\\), \\[\n     \\int_{-\\infty}^y F_1(x) dx \\le \\int_{-\\infty}^y F_2(x) dx.\n\\] Then \\(X_1\\) second order stochastically dominates (SOSD) \\(X_2\\)"
+  },
+  {
+    "objectID": "probability/probability.html#density",
+    "href": "probability/probability.html#density",
+    "title": "Probability",
+    "section": "Density",
+    "text": "Density\n\n\n\nDefinition\n\n\n\nLet \\(X\\) be a random variable with distribution \\(P_{X}\\). When \\(P_{X}\\ll \\lambda\\), we call \\(X\\) a continuous random variable, and call the Radon-Nikodym derivative \\(f\\equiv dP_{X}/d\\lambda\\) the (probability) density function of \\(P_{X}\\).\nWe say that \\(X\\) is a discrete random variable, if there exists a countable set \\(A\\subset \\mathbf{R}\\) and such that \\(P_{X}A^{c}=0\\)\n\n\n\n\n\nDensity wrt to other measures? e.g. dirac?"
+  },
+  {
+    "objectID": "probability/probability.html#markovs",
+    "href": "probability/probability.html#markovs",
+    "title": "Probability",
+    "section": "Markov’s",
+    "text": "Markov’s\n\n\n\nMarkov’s Inequality\n\n\n\\(P(|X|>\\epsilon) \\leq \\frac{\\Er[|X|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon > 0, k > 0\\)"
+  },
+  {
+    "objectID": "probability/probability.html#jensens",
+    "href": "probability/probability.html#jensens",
+    "title": "Probability",
+    "section": "Jensen’s",
+    "text": "Jensen’s\n\n\n\nJensen’s Inequality\n\n\nSuppose that \\(g\\) is convex and \\(X\\) and \\(g(X)\\) are integrable, then \\(g(\\Er X) \\leq \\Er[g(X)]\\)"
+  },
+  {
+    "objectID": "probability/probability.html#cauchy-schwarz",
+    "href": "probability/probability.html#cauchy-schwarz",
+    "title": "Probability",
+    "section": "Cauchy-Schwarz",
+    "text": "Cauchy-Schwarz\n\n\n\nCauchy-Schwarz Inequality\n\n\n\\(\\left(\\Er[XY]\\right)^2 \\leq \\Er[X^2] \\Er[Y^2]\\)"
+  },
+  {
+    "objectID": "probability/probability.html#generated-sigma-field",
+    "href": "probability/probability.html#generated-sigma-field",
+    "title": "Probability",
+    "section": "Generated \\(\\sigma\\)-field",
+    "text": "Generated \\(\\sigma\\)-field\n\n\\(\\sigma(X)\\) is \\(\\sigma\\)-field generated by \\(X\\)\n\nsmallest \\(\\sigma\\)-field w.r.t. which \\(X\\) is measurable\n\\(\\sigma(X) = \\{X^{-1}(B): B \\in \\mathscr{B}(\\R)\\}\\)"
+  },
+  {
+    "objectID": "probability/probability.html#information",
+    "href": "probability/probability.html#information",
+    "title": "Probability",
+    "section": "Information",
+    "text": "Information\n\n\\(\\forall E \\in \\sigma(X)\\), observing value \\(x\\) of \\(X\\), tells us whether \\(E\\) occurred\nif \\(\\sigma(X_1) \\subset \\sigma(X_2)\\), then \\(\\sigma(X_2)\\) has more information than \\(\\sigma(X_1)\\)\n\n\nExample 4.3 in Song (2021)."
+  },
+  {
+    "objectID": "probability/probability.html#dependence",
+    "href": "probability/probability.html#dependence",
+    "title": "Probability",
+    "section": "Dependence",
+    "text": "Dependence\n\n\n\nTheorem 4.2\n\n\nSuppose \\(\\sigma(W) \\subset \\sigma(X)\\), then \\(\\exists\\) Borel measurable \\(g\\) s.t. \\(W=g(X)\\)"
+  },
+  {
+    "objectID": "probability/probability.html#independence-1",
+    "href": "probability/probability.html#independence-1",
+    "title": "Probability",
+    "section": "Independence",
+    "text": "Independence\n\n\n\nDefinition\n\n\n\nEvents \\(A_1, ..., A_m\\) are independent if for any sub-collection \\(A_{i_1}, ..., A_{i_s}\\) \\[\nP\\left(\\cap_{j=1}^s A_{i_j}\\right) = \\prod_{j=1}^s P(A_{i_j})\n\\]\n\\(\\sigma\\)-fields, \\(\\mathscr{F}_1, .., \\mathscr{F}_m \\subset \\mathscr{F}\\) are **independnet if for any {i_1}, .., {i_s}$ and \\(E_j \\in \\mathscr{F}_j\\), \\[\nP\\left(\\cap_{j=1}^s E_{i_j}\\right) = \\prod_{j=1}^s P(E_{i_j})\n\\]\nRandom variables \\(X_1, ..., X_m\\) are independent if \\(\\sigma(X_1), ..., \\sigma(X_m)\\) are independent"
+  },
+  {
+    "objectID": "probability/probability.html#random-vectors",
+    "href": "probability/probability.html#random-vectors",
+    "title": "Probability",
+    "section": "Random Vectors",
+    "text": "Random Vectors\n\nmeasurable \\(X: \\Omega \\to \\R^n\\)\n\\(\\sigma(X) = \\{X^{-1}(B): B \\in \\mathscr{B}(\\R^n)\\} =\\) smallest \\(\\sigma\\)-field containing \\(\\cup_{i=1}^n\\) (X_i)$\n\n\n\n\nTheorem\n\n\nSuppose that \\(X=(X_1, X_2)\\) and \\(Y=(Y_1, Y_2)\\) are independent, then \\(f(X)\\) and \\(g(Y)\\) are independent\n\n\n\n\nAs promised, an easy way to show obvious independence without any tedious calculations."
+  },
+  {
+    "objectID": "probability/probability.html#conditional-expectation",
+    "href": "probability/probability.html#conditional-expectation",
+    "title": "Probability",
+    "section": "Conditional Expectation",
+    "text": "Conditional Expectation\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| < \\infty\\), then **the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t. 1. \\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable 2. \\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\n\n\n\\(\\Er[Y|X] \\equiv \\Er[Y|\\sigma(X)]\\)\n\n\nExample calculation immediately after definition in Song (2021)\nExistence from Radon-Nikodym theorem."
   },
   {
     "objectID": "index.html",

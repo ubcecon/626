@@ -1,0 +1,194 @@
+---
+title: "ECON 626: Problem Set 1"
+#author: "Paul Schrimpf"
+date: Due 2022-09-15
+bibliography: ../../626.bib
+format: html
+---
+
+# Problem 1
+
+The proofs convergence theorems in chapter 1 of the notes assumed $\{f_n\}$ are measurable. There are situations where measurability is difficult to verify and can fail to hold with respect to what seems a natural Borel $\sigma$-algebra to use (see @vw1996 page 3 for an example).  One way to proceed in these situations, is to instead use outer measure and outer integrals, which we introduce in this exercise.
+
+Let  $(\Omega,\mathscr{F},\mu)$ be a measure space,
+$f : \Omega \to \mathbf{R}$. Define the **outer integral** of $f$ with respect to $\mu$ as
+$$
+\int^* f d\mu = \inf_{g:\Omega \to \bar{\mathbf{R}}, g \geq f, g \text{ measurable}} \int g d\mu
+$$
+
+Let $f_n: \Omega \to \mathbf{R}$. Assume $L \leq f_1(\omega) \leq f_2(\omega)
+\leq f_3(\omega) ...$ for all $\omega$, and $\lim_{n \to \infty} f_n (\omega) = f(\omega)$.
+Show the monotone convergence theorem for outer integrals, i.e.
+$$
+\lim_{n \to \infty} \int^* f_n d\mu = \int^* f d\mu
+$$
+
+## Suggested steps:
+
+1. Show that there exists a minimal measurable majorant of $f$,
+  i.e. a measurable $f^* \geq f$ such that if $g \geq f$ and $g$ is measurable,
+  then $f^* \leq g$ a.e. To do this, choose a sequence $h_n$
+  such that $\int h_n d\mu \downarrow \int^* f d\mu$, and let
+  $f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n}
+  h_k(\omega)$. State why such $h_n$ exist and why this limit exists
+  (recall the monotone convergence theorem for sequences of real numbers).
+
+2. Use $f_n^*$, $f^*$, and the monotone convergence theorem for
+   integrals of measurable functions to obtain the result.
+
+## Solution
+
+### Part 1
+
+The set
+$G = \{g:\Omega \to \bar{\mathbf{R}}, g \geq f, g \text{measurable}\}$
+is not empty since $g_\infty(\omega) = \inf$ is in $G$. If
+$\int^* f d\mu = \infty$, then $f^* = g_\infty$.  Otherwise, choose
+any $\epsilon_n \downarrow 0$. For each $\epsilon_n$, choose $h_n \in G$ such that
+$\int h_n d\mu < \int^* f d\mu + \epsilon_n$.
+
+Let $\tilde{h}_n(\omega) = \inf_{1 \leq k \leq n} h_k(\omega)$.
+
+#### Showing $\lim \int \tilde{h}_n d\mu = \int^* f d\mu$
+
+By construction $\int h_n dmu \to  \int^* f d\mu$. Also, note that $\tilde{h}_n$ are measurable because
+$$
+\begin{align*}
+\tilde{h}_n^{-1}((-\infty, x]) & = \{\omega: \inf_{k \leq n} h_k(\omega) \leq x \} \\
+& = \cup_{k \leq n} \{\omega: h_k(\omega) \leq x \} \\
+& = \cup_{k \leq n} h_k^{-1}((-\infty, x])
+\end{align*}
+$$
+Since $h_k$ are measurable,  $h_k^{-1}((-\infty, x]) \in \mathscr{F}$ for each $k$, so their union is as well.
+Hence, $\tilde{h}_n \in G$. By definition of $G$ and inf,
+$\int \tilde{h}_n d\mu \geq \int^* f d\mu$, but by construction,
+$\int \tilde{h}_n d\mu \leq \int h_n d\mu < \int^* f d \mu + \epsilon_n$.
+Hence, $\int \tilde{h}_n d\mu \to \int^* f d\mu$.
+
+#### Showing $f^* = \lim \tilde{h}_n$ is measurable
+
+For each $\omega$, the sequence , $\tilde{h}_n(\omega) = \inf_{1 \leq k \leq n} h_k(\omega)$
+is weakly decreasing as $n$ increases. If this sequence is bounded, then it converges.
+Since, we are allowing values in $\bar{\mathbb{R}}$, the sequence is always bounded by $-\infty$, so
+$f^*(\omega) = \lim_{n\to \infty} \tilde{h}_n(\omega)$ exists for each $\omega$.
+
+To show that, $f^*$ is measurable, note that for a decreasing
+sequence,
+$$ \lim_{n \to \infty} \tilde{h}_n(\omega) = \inf_{n \in \mathbb{N}} \tilde{h}_n(\omega). $$
+Therefore, for any $x \in \mathbb{R}$,
+
+$$
+\begin{align*}
+{f^*}^{-1}( (-\infty, x]) & =  \{\omega: \inf_{n \in \mathbb{N}} \tilde{h}_n(\omega) \leq x \} \\
+= & \cap_{j \in \mathbb{N}} \cup_n \{\omega: \tilde{h}_n(\omega) < x + 1/j \} \\
+= & \cap_j \cup_n \tilde{h}_n^{-1}( (-\infty, x+1/j) )
+\end{align*}
+$$
+
+We showed above that $\tilde{h}_n$ are measurable. Therefore, $\tilde{h}_n^{-1}( (-\infty, x+1/j]) \in \mathscr{F}$,
+and so is any countable union or intersection of such sets. Since the
+collection $\{(-\infty, x]\}_{x\in \mathbb{R}}$ generates $\mathscr{B}(\mathbb{R})$, we can conclude that
+${f^*}^{-1}(B) \in \mathscr{F}$ for any $B \in \mathscr{B}(\mathbb{R})$, i.e. $f^*$ is measurable.
+
+####  $f^*$ is the minimal measurable majorant
+
+By the monotone convergence theorem for measurable functions,
+$\lim \int \tilde{h}_n d \mu = \int f^* d\mu$. We also showed that
+$\lim \int \tilde{h}_n d \mu = \int^* f d\mu$. Hence,
+$\int f^* d\mu = \int^* f d\mu$.
+
+### Part 2
+
+From part 1, $\exists$ measurable $f_n^*$ such that $\int^* f_n d\mu =
+\int f^*_n d\mu$, and similarly for $f^*$. We will show that these measurable
+majorants satisfy the conditions of the monotone convergence theorem.
+
+#### $f^*_n$ increasing
+
+By assumption $f_n \leq f_{n+1} \leq f_{n+1}^*$. Hence $f_{n+1}^*$ is a
+measurable majorant of $f_n$. However, by definition, $f_n^*$ is the
+**minimal** measurable majorant, so $f_n^*  \leq f_{n+1}^*$
+
+#### $f^*_n \to f^*$
+
+First, note for all $n$, $f^*_n \leq f^*$, since $f^*_n$ and $f^*$ are both measureable majorants of $f_n$. Therefore,
+$\lim f^*_n \leq f^*$.
+
+On the other hand, the same basic argument used to show that $\lim \tilde{h}_n$ is measurable also
+applies to $\liminf f^*_n$, i.e.
+$$
+\begin{align*}
+(\lim_{n\to \infty} \inf_{k \geq n} f^*_k )^{-1} ((-\infty, x]) & = (\sup_n \inf_{k \geq n} f^*_k )^{-1} ((-\infty, x]) \\
+& = \cap_{j \in \mathbb{N}} \cap_{n} \{\omega: f_k^*(\omega) < x + 1/j \text{ for some } k \geq n\} \\
+& = \cap_{j \in \mathbb{N}} \cap_{n}  \cup_{k \geq n} {f_k^*}^{-1}((-\infty, x + 1/j))
+\end{align*}
+$$
+so $\liminf f^*_n$ is measurable.
+
+Also, since $f^*_n \geq f_n$, we have
+$$
+\liminf f^*_n \geq \liminf f_n = \lim f_n = f
+$$
+Hence, $\liminf f^*_n$ is a measurable majorant of $f$. But, then
+$$
+f^* \leq  \liminf f^*_n \leq \lim f^*_n \leq f^*
+$$
+Thus, $f^* = \lim_n f^*_n$.
+
+#### Conclusion
+
+By the monotone convergence theorem for measurable functions,
+$$
+\lim \int f^*_n d\mu = \int f^* d\mu = \int^* f d\mu
+$$
+
+# Problem 2
+
+@song2021 exercise 4.1.
+
+For a collection $\mathscr{C}$ of sets, we write $\sigma (\mathscr{C})$ to
+denote the smallest $\sigma$-field that contains $\mathscr{C}$, and say
+that $\sigma (\mathscr{C})$ is the $\sigma$-field generated by $\mathscr{C}$.
+
+1. Let $X$ be a random variable on $(\Omega ,\mathscr{F})$ and let
+$\mathscr{G}$ be the collection of the sets of the form
+$\{\omega \in \Omega :X(\omega )\in B\}$ with
+$B\in \mathscr{B}(\mathbf{R})$. Then show that $\mathscr{G}$ is a $\sigma$-field.
+
+2. Show that $\{X^{-1}(A):A\in \sigma (\mathscr{C})\}=\sigma(\{X^{-1}(A):A\in \mathscr{C}\})$
+for any subset $\mathscr{C}$ of
+$\mathscr{B}(\mathbf{R})$.
+
+## Solution
+
+### Part 1
+
+1. $\Omega \in \mathscr{G}$ because $\Omega = X^{-1}(\mathbb{R})$
+2. Let $A \in \mathscr{G}$. Then $\exists B \in
+\mathscr{B}(\mathbb{R})$ s.t. A = X^{-1}(B)$. Also, $X^{-1}(B^c) = \{
+\omega: X(\omega) \not\in B\} = A^c$, so $A^c \in \mathscr{G}$.
+3. Let $A_1, A_2, ...  \in \mathscr{G}$, then $\exists B_1, B_2, ... \in \mathscr{B}(\mathbb{R})$ s.t. X^{-1}(B_i) = A_i$. Also,
+$\cup A_i \equiv \cup X^{-1}(B_i) = X^{-1}( \cup B_i )$. Since $\cup
+B_i  \in \mathscr{B}$, we conclude $\cup A_i \in \mathscr{G}$.
+
+### Part 2
+
+Consider  $X^{-1}(A)$ for some $A \in \sigma(\mathscr{C})$. By
+definition of $\sigma(\mathscr{C})$, there exists a countable
+collection $A_1, A_2, ... \in \sigma(\mathscr{C})$ such that at least one of
+$A_i$ or $A_i^c$ is in $\mathscr{C}$ and $\cup_i A_i = A$. Therefore,
+$$
+\begin{align*}
+X^{-1}(A) & = X^{-1}( \cup_i A_i) \\
+& = \{\omega :  X(\omega) \in A_i \text{ for some } i \} \\
+& = \cup_i X^{-1}(A_i)
+\end{align*}
+$$
+and clearly, $\cup_i X^{-1}(A_i) \in \sigma(\{X^{-1}(A) : A \in \mathscr{G})$.
+Thus, $\{X^{-1}(A):A\in \sigma (\mathscr{C})\} \subseteq \sigma(\{X^{-1}(A):A\in \mathscr{C}\})$
+
+Conversely, given $B \in \sigma(\{X^{-1}(A):A\in \mathscr{C}\})$,
+$\exists A_1, ... \in \mathscr{C}$ s.t. $B = \cup_i X^{-1}(A_i)^{d_i}$
+where $d_i$ denotes either the set or its complement. Noting that
+$X^{-1}(A)^c = X^{-1}(A^c)$, we have
+$B =  X^{-1}(\cup_i A_i^{d_i}) \in \{X^{-1}(A):A\in \sigma (\mathscr{C})\}$.

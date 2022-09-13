@@ -172,9 +172,36 @@ div.csl-indent {
 <section id="suggested-steps" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-steps">Suggested steps:</h2>
 <ol type="1">
-<li><p>Show that there exists a minimal measurable majorant of <span class="math inline">\(f\)</span>, i.e.&nbsp;a measurable <span class="math inline">\(f^* \geq f\)</span> such that if <span class="math inline">\(g \geq f\)</span> and <span class="math inline">\(g\)</span> is measurable, then <span class="math inline">\(f^* \leq g\)</span> a.e. To do this, choose a decreasing sequence <span class="math inline">\(h_n\)</span> such that <span class="math inline">\(\int h_n d\mu \downarrow \int^* f d\mu\)</span>, and let <span class="math inline">\(f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n}  h_k(\omega)\)</span>. State why such <span class="math inline">\(h_n\)</span> exist and why this limit exists (recall the monotone convergence theorem for sequences of real numbers).</p></li>
+<li><p>Show that there exists a minimal measurable majorant of <span class="math inline">\(f\)</span>, i.e.&nbsp;a measurable <span class="math inline">\(f^* \geq f\)</span> such that if <span class="math inline">\(g \geq f\)</span> and <span class="math inline">\(g\)</span> is measurable, then <span class="math inline">\(f^* \leq g\)</span> a.e. To do this, choose a sequence <span class="math inline">\(h_n\)</span> such that <span class="math inline">\(\int h_n d\mu \downarrow \int^* f d\mu\)</span>, and let <span class="math inline">\(f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n}  h_k(\omega)\)</span>. State why such <span class="math inline">\(h_n\)</span> exist and why this limit exists (recall the monotone convergence theorem for sequences of real numbers).</p></li>
 <li><p>Use <span class="math inline">\(f_n^*\)</span>, <span class="math inline">\(f^*\)</span>, and the monotone convergence theorem for integrals of measurable functions to obtain the result.</p></li>
 </ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(g_1, g_2, ....\)</span> are an increasing sequence of measurable functions from <span class="math inline">\(\Omega \to \mathbb{R}\)</span>, and <span class="math inline">\(g_n \to g\)</span>, then notice that since <span class="math inline">\(g_n\)</span> are increasing, <span class="math inline">\(\lim_{n\to \infty} g_n = \sup_n g_n\)</span>. <span class="math display">\[
+\begin{align*}
+g^{-1}((-\infty,x]) = &amp; \{\omega: \lim g_n(\omega) \leq x \} \\
+= &amp; \{ \omega: \sup g_n(\omega) \leq x \} \\
+= &amp; \{ \omega: g_n(\omega) &lt; x + \epsilon \forall n, \epsilon&gt;0 \} \\
+= &amp; \{ \omega: g_n(\omega) &lt; x + 1/j  \forall n, j \in \mathbb{N} \} \\
+= &amp; \cap_j \cap_n \{ \omega: g_n(\omega) &lt; x + 1/j  \} \\
+= &amp; \cap_j \cap_n g_n^{-1}((-\infty, x+1/j))
+\end{align*}
+\]</span> Each <span class="math inline">\(g_n\)</span> is measurable, so <span class="math inline">\(g_n^{-1}((-\infty, x+1/j)) \in \mathscr{F}\)</span>. The right hand side is a countable intersection, so it must also be in <span class="math inline">\(\mathscr{F}\)</span>. Thus, <span class="math inline">\(g^{-1}((-\infty, x]) \in \mathscr{F}\)</span>. The collection of all such sets generates <span class="math inline">\(\mathscr{B}(\mathbb{R})\)</span>, so <span class="math inline">\(g^{-1}(B) \in \mathscr{F}\)</span> for any <span class="math inline">\(B \in \mathscr{B}(\mathbb{R})\)</span>, that is, <span class="math inline">\(g\)</span> is measurable.</p>
+<ul>
+<li>An analogous arguments would apply to a decreasing sequence.</li>
+<li>For any convergent sequence, <span class="math inline">\(\lim g_n = \lim_n \inf_{k \geq n} g_k = \lim_n \sup_{k \geq n} g_k\)</span>, and the <span class="math inline">\(\inf\)</span> and <span class="math inline">\(\sup\)</span> are increasing and decreasing, so you can generalize this argument to any sequence.</li>
+<li>The separability of <span class="math inline">\(\mathbb{R}\)</span> is needed here to replace all <span class="math inline">\(\epsilon &gt; 0\)</span> with the countable set <span class="math inline">\(1/j\)</span> for <span class="math inline">\(j \in  \mathbb{N}\)</span>. This argument wouldn’t work for functions onto a nonseparable space, e.g.&nbsp;<span class="math inline">\(g_n: \Omega \to \ell^\infty\)</span></li>
+</ul>
+</div>
+</div>
 </section>
 </section>
 <section id="problem-2" class="level1">

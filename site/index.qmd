@@ -12,9 +12,9 @@ Required reading: @song2021  Chapter 1
 
 Supplementary reading: @pollard2002, @tao2011
 
-[Slides](measure/measure.qmd)
+- [Measure slides](measure/measure.qmd)
 
--  Probability
+-  [Probability slides](probability/probability.qmd)
         - Random Variables, and Distributions
         - Conditional Expectations and Conditional Distributions
         - Family of Distributions

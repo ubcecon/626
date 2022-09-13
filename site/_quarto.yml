@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "!problemsets/*/sol*qmd"
 
 website:
   title: "ECON 626"

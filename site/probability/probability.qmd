@@ -10,9 +10,9 @@ format:
     min-scale: 0.1
 bibliography: ../626.bib
 
-jupyter: julia-1.8
-execute:
-  cache: false
+# jupyter: julia-1.8
+# execute:
+#   cache: false
 ---
 
 
@@ -27,6 +27,11 @@ $$
 $$
 
 # Probability
+
+
+> Mathematically, a probability space is a special measure space where the measure has total mass one. But, our attitude and emotional response toward one is entirely diﬀerent from those toward the other. On a measure space everything is deterministicand certain, on a probability space we face randomness and uncertainty.
+
+@cinlar2011
 
 ## Probability Space
 
@@ -50,11 +55,17 @@ measure s.t. $P(\Omega )=1$
 ### Exercise
 
 Show $\forall A, B \in \mathscr{F}$
+
 1. $P(\varnothing )=0$
+
 2. $P(A)\leq 1.$
+
 3. $P(A^{c})=1-P(A)$
+
 4. $P(A\cup B)=P(A)+P(B)-P(A\cap B)$
+
 5. If $A\subset B$, then $P(A)\leq P(B)$
+
 6. $P(B\cap A^{c})=P(B)-P(A\cap B)$
 
 :::
@@ -199,7 +210,7 @@ $g(\Er X) \leq \Er[g(X)]$
 
 ---
 
-::: {.callout-info icon=false}
+::: {.callout-note icon=false}
 
 ### Exercise
 
@@ -240,7 +251,7 @@ Example 4.3 in @song2021.
 
 ---
 
-::: {.callout-info icon=false}
+::: {.callout-note icon=false}
 
 ### Exercise 4.7
 

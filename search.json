@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
   },
   {
     "objectID": "measure/measure.html#references",
@@ -242,21 +242,21 @@
     "href": "probability/probability.html#independence-1",
     "title": "Probability",
     "section": "Independence",
-    "text": "Independence\n\n\n\nDefinition\n\n\n\nEvents \\(A_1, ..., A_m\\) are independent if for any sub-collection \\(A_{i_1}, ..., A_{i_s}\\) \\[\nP\\left(\\cap_{j=1}^s A_{i_j}\\right) = \\prod_{j=1}^s P(A_{i_j})\n\\]\n\\(\\sigma\\)-fields, \\(\\mathscr{F}_1, .., \\mathscr{F}_m \\subset \\mathscr{F}\\) are independent if for any {i_1}, .., {i_s}$ and \\(E_j \\in \\mathscr{F}_j\\), \\[\nP\\left(\\cap_{j=1}^s E_{i_j}\\right) = \\prod_{j=1}^s P(E_{i_j})\n\\]\nRandom variables \\(X_1, ..., X_m\\) are independent if \\(\\sigma(X_1), ..., \\sigma(X_m)\\) are independent"
+    "text": "Independence\n\n\n\nDefinition\n\n\n\nEvents \\(A_1, ..., A_m\\) are independent if for any sub-collection \\(A_{i_1}, ..., A_{i_s}\\) \\[\nP\\left(\\cap_{j=1}^s A_{i_j}\\right) = \\prod_{j=1}^s P(A_{i_j})\n\\]\n\\(\\sigma\\)-fields, \\(\\mathscr{F}_1, .., \\mathscr{F}_m \\subset \\mathscr{F}\\) are independent if for any \\(\\mathscr{F}_{i_1}, .., \\mathscr{F}_{i_s}\\) and \\(E_j \\in \\mathscr{F}_j\\), \\[\nP\\left(\\cap_{j=1}^s E_{i_j}\\right) = \\prod_{j=1}^s P(E_{i_j})\n\\]\nRandom variables \\(X_1, ..., X_m\\) are independent if \\(\\sigma(X_1), ..., \\sigma(X_m)\\) are independent"
   },
   {
     "objectID": "probability/probability.html#random-vectors",
     "href": "probability/probability.html#random-vectors",
     "title": "Probability",
     "section": "Random Vectors",
-    "text": "Random Vectors\n\nmeasurable \\(X: \\Omega \\to \\R^n\\)\n\\(\\sigma(X) = \\{X^{-1}(B): B \\in \\mathscr{B}(\\R^n)\\} =\\) smallest \\(\\sigma\\)-field containing \\(\\cup_{i=1}^n\\) (X_i)$\n\n\n\n\nTheorem\n\n\nSuppose that \\(X=(X_1, X_2)\\) and \\(Y=(Y_1, Y_2)\\) are independent, then \\(f(X)\\) and \\(g(Y)\\) are independent\n\n\n\n\nAs promised, an easy way to show obvious independence without any tedious calculations."
+    "text": "Random Vectors\n\nmeasurable \\(X: \\Omega \\to \\R^n\\)\n\\(\\sigma(X) = \\{X^{-1}(B): B \\in \\mathscr{B}(\\R^n)\\} =\\) smallest \\(\\sigma\\)-field containing \\(\\cup_{i=1}^n \\sigma(X_i)\\)\n\n\n\n\nTheorem\n\n\nSuppose that \\(X=(X_1, X_2)\\) and \\(Y=(Y_1, Y_2)\\) are independent, then \\(f(X)\\) and \\(g(Y)\\) are independent\n\n\n\n\nAs promised, an easy way to show obvious independence without any tedious calculations."
   },
   {
     "objectID": "probability/probability.html#conditional-expectation",
     "href": "probability/probability.html#conditional-expectation",
     "title": "Probability",
     "section": "Conditional Expectation",
-    "text": "Conditional Expectation\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| < \\infty\\), then **the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t.\n\n\\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable\n\\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\n\n\n\n\nEx: {E_k}_{k=1}^m partition of \\(\\Omega\\), let \\(\\mathscr{G} = \\sigma(\\{E_k\\}_{k=1}^m)\\)\n\n\\(\\Er[Y | \\mathscr{G}](\\omega) = \\sum_{k=1}^m c_k 1\\{\\omega \\in E_k\\}\\)\n\nExistence from Radon-Nikodym theorem\n\\(\\Er[Y|X] \\equiv \\Er[Y|\\sigma(X)]\\)"
+    "text": "Conditional Expectation\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| < \\infty\\), then the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t.\n\n\\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable\n\\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\n\n\n\n\nEx: \\(\\{E_k\\}_{k=1}^m\\) partition of \\(\\Omega\\), let \\(\\mathscr{G} = \\sigma(\\{E_k\\}_{k=1}^m)\\)\n\n\\(\\Er[Y | \\mathscr{G}](\\omega) = \\sum_{k=1}^m c_k 1\\{\\omega \\in E_k\\}\\)\n\nExistence from Radon-Nikodym theorem\n\\(\\Er[Y|X] \\equiv \\Er[Y|\\sigma(X)]\\)"
   },
   {
     "objectID": "probability/probability.html#properties-of-conditional-expectation",
@@ -298,7 +298,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 13, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

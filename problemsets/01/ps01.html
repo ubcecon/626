@@ -189,16 +189,13 @@ Tip
 \begin{align*}
 g^{-1}((-\infty,x]) = &amp; \{\omega: \lim g_n(\omega) \leq x \} \\
 = &amp; \{ \omega: \sup g_n(\omega) \leq x \} \\
-= &amp; \{ \omega: g_n(\omega) &lt; x + \epsilon \forall n, \epsilon&gt;0 \} \\
-= &amp; \{ \omega: g_n(\omega) &lt; x + 1/j  \forall n, j \in \mathbb{N} \} \\
-= &amp; \cap_j \cap_n \{ \omega: g_n(\omega) &lt; x + 1/j  \} \\
-= &amp; \cap_j \cap_n g_n^{-1}((-\infty, x+1/j))
+= &amp; \{ \omega: g_n(\omega) \leq x \forall n\} \\
+= &amp; \cap_n g_n^{-1}((-\infty, x])
 \end{align*}
-\]</span> Each <span class="math inline">\(g_n\)</span> is measurable, so <span class="math inline">\(g_n^{-1}((-\infty, x+1/j)) \in \mathscr{F}\)</span>. The right hand side is a countable intersection, so it must also be in <span class="math inline">\(\mathscr{F}\)</span>. Thus, <span class="math inline">\(g^{-1}((-\infty, x]) \in \mathscr{F}\)</span>. The collection of all such sets generates <span class="math inline">\(\mathscr{B}(\mathbb{R})\)</span>, so <span class="math inline">\(g^{-1}(B) \in \mathscr{F}\)</span> for any <span class="math inline">\(B \in \mathscr{B}(\mathbb{R})\)</span>, that is, <span class="math inline">\(g\)</span> is measurable.</p>
+\]</span> Each <span class="math inline">\(g_n\)</span> is measurable, so <span class="math inline">\(g_n^{-1}((-\infty, x]) \in \mathscr{F}\)</span>. The right hand side is a countable intersection, so it must also be in <span class="math inline">\(\mathscr{F}\)</span>. Thus, <span class="math inline">\(g^{-1}((-\infty, x]) \in \mathscr{F}\)</span>. The collection of all such sets generates <span class="math inline">\(\mathscr{B}(\mathbb{R})\)</span>, so <span class="math inline">\(g^{-1}(B) \in \mathscr{F}\)</span> for any <span class="math inline">\(B \in \mathscr{B}(\mathbb{R})\)</span>, that is, <span class="math inline">\(g\)</span> is measurable.</p>
 <ul>
 <li>An analogous arguments would apply to a decreasing sequence.</li>
 <li>For any convergent sequence, <span class="math inline">\(\lim g_n = \lim_n \inf_{k \geq n} g_k = \lim_n \sup_{k \geq n} g_k\)</span>, and the <span class="math inline">\(\inf\)</span> and <span class="math inline">\(\sup\)</span> are increasing and decreasing, so you can generalize this argument to any sequence.</li>
-<li>The separability of <span class="math inline">\(\mathbb{R}\)</span> is needed here to replace all <span class="math inline">\(\epsilon &gt; 0\)</span> with the countable set <span class="math inline">\(1/j\)</span> for <span class="math inline">\(j \in  \mathbb{N}\)</span>. This argument wouldn’t work for functions onto a nonseparable space, e.g.&nbsp;<span class="math inline">\(g_n: \Omega \to \ell^\infty\)</span></li>
 </ul>
 </div>
 </div>

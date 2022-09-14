@@ -345,7 +345,7 @@
 <section id="title-slide" class="center">
   <h1 class="title">Probability</h1>
   <p class="author">Paul Schrimpf</p>
-  <p class="date">9/13/22</p>
+  <p class="date">9/14/22</p>
 </section>
 
 <section id="reading" class="slide level2">
@@ -694,7 +694,7 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 <li>Events <span class="math inline">\(A_1, ..., A_m\)</span> are <strong>independent</strong> if for any sub-collection <span class="math inline">\(A_{i_1}, ..., A_{i_s}\)</span> <span class="math display">\[
 P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
 \]</span></li>
-<li><span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(\mathscr{F}_1, .., \mathscr{F}_m \subset \mathscr{F}\)</span> are <strong>independent</strong> if for any <em>{i_1}, .., </em>{i_s}$ and <span class="math inline">\(E_j \in \mathscr{F}_j\)</span>, <span class="math display">\[
+<li><span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(\mathscr{F}_1, .., \mathscr{F}_m \subset \mathscr{F}\)</span> are <strong>independent</strong> if for any <span class="math inline">\(\mathscr{F}_{i_1}, .., \mathscr{F}_{i_s}\)</span> and <span class="math inline">\(E_j \in \mathscr{F}_j\)</span>, <span class="math display">\[
 P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 \]</span></li>
 <li>Random variables <span class="math inline">\(X_1, ..., X_m\)</span> are <strong>independent</strong> if <span class="math inline">\(\sigma(X_1), ..., \sigma(X_m)\)</span> are independent</li>
@@ -707,7 +707,7 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 <h2>Random Vectors</h2>
 <ul>
 <li>measurable <span class="math inline">\(X: \Omega \to \R^n\)</span></li>
-<li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R^n)\} =\)</span> smallest <span class="math inline">\(\sigma\)</span>-field containing <span class="math inline">\(\cup_{i=1}^n\)</span> (X_i)$</li>
+<li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R^n)\} =\)</span> smallest <span class="math inline">\(\sigma\)</span>-field containing <span class="math inline">\(\cup_{i=1}^n \sigma(X_i)\)</span></li>
 </ul>
 <div class="callout callout-warning no-icon callout-captioned callout-style-default">
 <div class="callout-body">
@@ -746,7 +746,7 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(\mathscr{G} \subset \mathscr{F}\)</span> be <span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(Y\)</span> a random variable with <span class="math inline">\(\Er |Y| &lt; \infty\)</span>, then **the conditional expectation of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\mathscr{G}\)</span> is <span class="math inline">\(\Er[Y|\mathscr{G}](\cdot): \Omega \to \R\)</span> s.t.</p>
+<p>Let <span class="math inline">\(\mathscr{G} \subset \mathscr{F}\)</span> be <span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(Y\)</span> a random variable with <span class="math inline">\(\Er |Y| &lt; \infty\)</span>, then the <strong>conditional expectation</strong> of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\mathscr{G}\)</span> is <span class="math inline">\(\Er[Y|\mathscr{G}](\cdot): \Omega \to \R\)</span> s.t.</p>
 <ol type="1">
 <li><p><span class="math inline">\(\Er[Y|\mathscr{G}](\cdot)\)</span> is <span class="math inline">\(\mathscr{G}\)</span> measurable</p></li>
 <li><p><span class="math inline">\(\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in \mathscr{G}\)</span></p></li>
@@ -756,7 +756,7 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 </div>
 <div>
 <ul>
-<li class="fragment">Ex: {E_k}_{k=1}^m partition of <span class="math inline">\(\Omega\)</span>, let <span class="math inline">\(\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)\)</span>
+<li class="fragment">Ex: <span class="math inline">\(\{E_k\}_{k=1}^m\)</span> partition of <span class="math inline">\(\Omega\)</span>, let <span class="math inline">\(\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)\)</span>
 <ul>
 <li class="fragment"><span class="math inline">\(\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}\)</span></li>
 </ul></li>

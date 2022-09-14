@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry - Generalized Linear Models and Gauss-Markov Theorem - Tests of Linear Hypothesis\n\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
   },
   {
     "objectID": "measure/measure.html#references",
@@ -207,7 +207,7 @@
     "href": "probability/probability.html#jensens",
     "title": "Probability",
     "section": "Jensen’s",
-    "text": "Jensen’s\n\n\n\nJensen’s Inequality\n\n\nSuppose that \\(g\\) is convex and \\(X\\) and \\(g(X)\\) are integrable, then \\(g(\\Er X) \\leq \\Er[g(X)]\\)"
+    "text": "Jensen’s\n\n\n\nJensen’s Inequality\n\n\nSuppose that \\(g\\) is convex and \\(X\\) and \\(g(X)\\) are integrable, then \\(g(\\Er X) \\leq \\Er[g(X)]\\)\n\n\n\n\n\n\nExercise\n\n\nShow \\(\\Er[|X|^p] \\leq \\left(\\Er[|X|^q] \\right)^{p/q}\\) for all \\(0 < p \\leq q\\)."
   },
   {
     "objectID": "probability/probability.html#cauchy-schwarz",
@@ -235,14 +235,14 @@
     "href": "probability/probability.html#dependence",
     "title": "Probability",
     "section": "Dependence",
-    "text": "Dependence\n\n\n\nTheorem 4.2\n\n\nSuppose \\(\\sigma(W) \\subset \\sigma(X)\\), then \\(\\exists\\) Borel measurable \\(g\\) s.t. \\(W=g(X)\\)"
+    "text": "Dependence\n\n\n\nTheorem 4.2\n\n\nSuppose \\(\\sigma(W) \\subset \\sigma(X)\\), then \\(\\exists\\) Borel measurable \\(g\\) s.t. \\(W=g(X)\\)\n\n\n\n\nProof in Çinlar (2011) chapter 2, section 4."
   },
   {
     "objectID": "probability/probability.html#independence-1",
     "href": "probability/probability.html#independence-1",
     "title": "Probability",
     "section": "Independence",
-    "text": "Independence\n\n\n\nDefinition\n\n\n\nEvents \\(A_1, ..., A_m\\) are independent if for any sub-collection \\(A_{i_1}, ..., A_{i_s}\\) \\[\nP\\left(\\cap_{j=1}^s A_{i_j}\\right) = \\prod_{j=1}^s P(A_{i_j})\n\\]\n\\(\\sigma\\)-fields, \\(\\mathscr{F}_1, .., \\mathscr{F}_m \\subset \\mathscr{F}\\) are **independnet if for any {i_1}, .., {i_s}$ and \\(E_j \\in \\mathscr{F}_j\\), \\[\nP\\left(\\cap_{j=1}^s E_{i_j}\\right) = \\prod_{j=1}^s P(E_{i_j})\n\\]\nRandom variables \\(X_1, ..., X_m\\) are independent if \\(\\sigma(X_1), ..., \\sigma(X_m)\\) are independent"
+    "text": "Independence\n\n\n\nDefinition\n\n\n\nEvents \\(A_1, ..., A_m\\) are independent if for any sub-collection \\(A_{i_1}, ..., A_{i_s}\\) \\[\nP\\left(\\cap_{j=1}^s A_{i_j}\\right) = \\prod_{j=1}^s P(A_{i_j})\n\\]\n\\(\\sigma\\)-fields, \\(\\mathscr{F}_1, .., \\mathscr{F}_m \\subset \\mathscr{F}\\) are independent if for any {i_1}, .., {i_s}$ and \\(E_j \\in \\mathscr{F}_j\\), \\[\nP\\left(\\cap_{j=1}^s E_{i_j}\\right) = \\prod_{j=1}^s P(E_{i_j})\n\\]\nRandom variables \\(X_1, ..., X_m\\) are independent if \\(\\sigma(X_1), ..., \\sigma(X_m)\\) are independent"
   },
   {
     "objectID": "probability/probability.html#random-vectors",
@@ -256,7 +256,35 @@
     "href": "probability/probability.html#conditional-expectation",
     "title": "Probability",
     "section": "Conditional Expectation",
-    "text": "Conditional Expectation\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| < \\infty\\), then **the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t. 1. \\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable 2. \\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\n\n\n\\(\\Er[Y|X] \\equiv \\Er[Y|\\sigma(X)]\\)\n\n\nExample calculation immediately after definition in Song (2021)\nExistence from Radon-Nikodym theorem."
+    "text": "Conditional Expectation\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| < \\infty\\), then **the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t.\n\n\\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable\n\\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\n\n\n\n\nEx: {E_k}_{k=1}^m partition of \\(\\Omega\\), let \\(\\mathscr{G} = \\sigma(\\{E_k\\}_{k=1}^m)\\)\n\n\\(\\Er[Y | \\mathscr{G}](\\omega) = \\sum_{k=1}^m c_k 1\\{\\omega \\in E_k\\}\\)\n\nExistence from Radon-Nikodym theorem\n\\(\\Er[Y|X] \\equiv \\Er[Y|\\sigma(X)]\\)"
+  },
+  {
+    "objectID": "probability/probability.html#properties-of-conditional-expectation",
+    "href": "probability/probability.html#properties-of-conditional-expectation",
+    "title": "Probability",
+    "section": "Properties of Conditional Expectation",
+    "text": "Properties of Conditional Expectation\n\n\nIf \\(X\\) is \\(\\mathscr{G}\\) measurable, then \\(\\Er[XY| \\mathscr{G}] = X \\Er[Y|\\mathscr{G}]\\) a.e.\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[XY|Z] = X \\Er[Y|Z]\\)\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[\\Er[Y|Z]|X] = \\Er[Y|X]\\)\nIf \\(Y\\) and \\(X\\) are independent, then \\(\\Er[Y | X ] = \\Er[Y]\\)"
+  },
+  {
+    "objectID": "probability/probability.html#erymathscrg-as-orthogonal-projection",
+    "href": "probability/probability.html#erymathscrg-as-orthogonal-projection",
+    "title": "Probability",
+    "section": "\\(\\Er[Y|\\mathscr{G}]\\) as Orthogonal Projection",
+    "text": "\\(\\Er[Y|\\mathscr{G}]\\) as Orthogonal Projection\n\n\n\nWarning\n\n\nLet \\((\\Omega, \\mathscr{F}, P)\\) be a probability space, \\(\\mathscr{G}\\) a sub \\(\\sigma\\)-field, then for any \\(Y \\in \\mathcal{L}^2(\\Omega, \\mathscr{F}, P) = \\{X: \\Omega \\to \\mathbb{R} \\text{ s.t. } X \\text{ }\\mathscr{F}\\text{-measurable, } \\int X^2 dP < \\infty \\}\\), \\[\n\\inf_{W \\in \\mathcal{L}^2(\\Omega, \\mathscr{G}, P)} \\Er[(Y-W)^2] = \\Er[ Y - \\Er[Y | \\mathscr{G}]\n\\]"
+  },
+  {
+    "objectID": "probability/probability.html#conditional-measure",
+    "href": "probability/probability.html#conditional-measure",
+    "title": "Probability",
+    "section": "Conditional Measure",
+    "text": "Conditional Measure\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G}\\) be a sub \\(\\sigma\\)-field of \\(\\mathscr{F}\\). Tthe conditional probability measure given \\(\\mathscr{G}\\) is defined to be a map \\(P(\\cdot \\mid \\mathscr{G})(\\cdot ):\\mathscr{F}\\times \\Omega \\rightarrow [0,1]\\) such that\n\nFor each \\(A\\in \\mathscr{F}\\), \\(P(A \\mid \\mathscr{G})(\\cdot )=\\mathbf{E}\\left[ 1\\{\\omega \\in A\\} \\mid \\mathscr{G}\\right] (\\cdot )\\), a.e.\nfor each \\(\\omega \\in \\Omega\\), \\(P(\\cdot \\mid \\mathscr{G})(\\omega )\\) is a probability measure on \\((\\Omega ,\\mathscr{F}).\\)"
+  },
+  {
+    "objectID": "probability/probability.html#conditional-independence",
+    "href": "probability/probability.html#conditional-independence",
+    "title": "Probability",
+    "section": "Conditional Independence",
+    "text": "Conditional Independence\n\n\n\nDefinition\n\n\n\nEvents \\(A_1, ..., A_m \\in \\mathscr{F}\\) are conditionally independent given \\(\\mathscr{G}\\) if for any sub-collection, \\[\nP\\left( \\cap_{j=1}^s A_{i_j} | \\mathscr{G} \\right) = \\prod_{j=1}^s P(A_{i_j} | \\mathscr{G})\n\\]\nSub \\(\\sigma\\)-fields \\(\\mathscr{F}_1, ..., \\mathscr{F}_m\\) are conditionally independent given \\(\\mathscr{G}\\) if for any sub-collection and events, \\(E_i \\in \\mathscr{F}_i\\), \\[\nP\\left( \\cap_{j=1}^s E_{i_j} | \\mathscr{G} \\right) = \\prod_{j=1}^s P(E_{i_j} | \\mathscr{G})\n\\]\nRandom variables \\(X_1, ..., X_m\\) are conditionally independent given \\(\\mathscr{G}\\) if \\(\\sigma(X_1), ..., \\sigma(X_m)\\) are conditionally independent given \\(\\mathscr{G}\\)"
   },
   {
     "objectID": "problemsets/01/ps01.html",
@@ -270,7 +298,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 13, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

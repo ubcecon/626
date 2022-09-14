@@ -8,22 +8,27 @@ bibliography: 626.bib
 
 ## Measure and Integration
 
-Required reading: @song2021  Chapter 1
-
-Supplementary reading: @pollard2002, @tao2011
 
 - [Measure slides](measure/measure.qmd)
 
+   - Required reading: @song2021  Chapter 1
+   - Supplementary reading: @pollard2002, @tao2011
+
+
 -  [Probability slides](probability/probability.qmd)
 
-    - Random Variables, and Distributions
-    - Conditional Expectations and Conditional Distributions
-    - Family of Distributions
+   - Required reading: @song2021  Chapter 2
+   - Supplementary reading: @pollard2002, @cinlar2011
+   - Random Variables, and Distributions
+   - Conditional Expectations and Conditional Distributions
 
-  - Basics of Inference
+- Family of Distributions : we will not cover in class, read and refer to @song2021 Chapter 3 as needed
 
-     - Estimation
-     - Hypothesis Testing
+- [Basics of Inference](inference/inference.qmd)
+
+   - Required reading: @song2021 Chapter 4
+   - Estimation
+   - Hypothesis Testing
 
 # Part II: Generalized Linear Model
 

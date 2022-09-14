@@ -288,7 +288,7 @@ $$
 P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
 $$
 - $\sigma$-fields, $\mathscr{F}_1, .., \mathscr{F}_m \subset
-\mathscr{F}$ are **independent** if for any \mathscr{F}_{i_1}, ..,
+\mathscr{F}$ are **independent** if for any $\mathscr{F}_{i_1}, ..,
 \mathscr{F}_{i_s}$ and $E_j \in \mathscr{F}_j$,
 $$
 P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
@@ -302,7 +302,7 @@ $\sigma(X_1), ..., \sigma(X_m)$ are independent
 
 - measurable $X: \Omega \to \R^n$
 - $\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R^n)\} =$ smallest
-$\sigma$-field containing $\cup_{i=1}^n$ \sigma(X_i)$
+$\sigma$-field containing $\cup_{i=1}^n \sigma(X_i)$
 
 ::: {.callout-warning icon=false}
 
@@ -329,7 +329,7 @@ As promised, an easy way to show obvious independence without any tedious calcul
 ### Definition
 
 Let $\mathscr{G} \subset \mathscr{F}$ be $\sigma$-fields, $Y$ a random
-variable with $\Er |Y| < \infty$, then **the conditional expectation
+variable with $\Er |Y| < \infty$, then the **conditional expectation**
 of $Y$ given $\mathscr{G}$ is $\Er[Y|\mathscr{G}](\cdot): \Omega \to \R$ s.t.
 
 1. $\Er[Y|\mathscr{G}](\cdot)$ is $\mathscr{G}$ measurable
@@ -340,7 +340,7 @@ of $Y$ given $\mathscr{G}$ is $\Er[Y|\mathscr{G}](\cdot): \Omega \to \R$ s.t.
 
 ::: {.incremental}
 
-- Ex: \{E_k\}_{k=1}^m partition of $\Omega$, let
+- Ex: $\{E_k\}_{k=1}^m$ partition of $\Omega$, let
 $\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
    - $\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}$
 - Existence from Radon-Nikodym theorem

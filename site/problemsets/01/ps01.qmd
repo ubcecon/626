@@ -45,13 +45,11 @@ $$
 \begin{align*}
 g^{-1}((-\infty,x]) = & \{\omega: \lim g_n(\omega) \leq x \} \\
 = & \{ \omega: \sup g_n(\omega) \leq x \} \\
-= & \{ \omega: g_n(\omega) < x + \epsilon \forall n, \epsilon>0 \} \\
-= & \{ \omega: g_n(\omega) < x + 1/j  \forall n, j \in \mathbb{N} \} \\
-= & \cap_j \cap_n \{ \omega: g_n(\omega) < x + 1/j  \} \\
-= & \cap_j \cap_n g_n^{-1}((-\infty, x+1/j))
+= & \{ \omega: g_n(\omega) \leq x \forall n\} \\
+= & \cap_n g_n^{-1}((-\infty, x])
 \end{align*}
 $$
-Each $g_n$ is measurable, so $g_n^{-1}((-\infty, x+1/j)) \in
+Each $g_n$ is measurable, so $g_n^{-1}((-\infty, x]) \in
 \mathscr{F}$.  The right hand side is a countable intersection, so it
 must also be in $\mathscr{F}$. Thus, $g^{-1}((-\infty, x]) \in
 \mathscr{F}$. The collection of all such sets generates
@@ -61,10 +59,6 @@ $B \in \mathscr{B}(\mathbb{R})$, that is, $g$ is measurable.
   - An analogous arguments would apply to a decreasing sequence.
   - For any convergent sequence,
   $\lim g_n = \lim_n \inf_{k \geq n}   g_k = \lim_n \sup_{k \geq n} g_k$, and the $\inf$ and $\sup$ are increasing and decreasing, so you can generalize this argument to any sequence.
-  - The separability of $\mathbb{R}$ is needed here to replace all
-  $\epsilon > 0$ with the countable set $1/j$ for $j \in
-  \mathbb{N}$. This argument wouldn't work for functions onto a
-  nonseparable space, e.g. $g_n: \Omega \to \ell^\infty$
 
 :::
 

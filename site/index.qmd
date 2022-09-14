@@ -15,26 +15,29 @@ Supplementary reading: @pollard2002, @tao2011
 - [Measure slides](measure/measure.qmd)
 
 -  [Probability slides](probability/probability.qmd)
-        - Random Variables, and Distributions
-        - Conditional Expectations and Conditional Distributions
-        - Family of Distributions
+
+    - Random Variables, and Distributions
+    - Conditional Expectations and Conditional Distributions
+    - Family of Distributions
+
   - Basics of Inference
-        - Estimation
-        - Hypothesis Testing
+
+     - Estimation
+     - Hypothesis Testing
 
 # Part II: Generalized Linear Model
 
-   - Preliminaries of Projection Geometry
-    - Generalized Linear Models and Gauss-Markov Theorem
-    - Tests of Linear Hypothesis
+- Preliminaries of Projection Geometry
+- Generalized Linear Models and Gauss-Markov Theorem
+- Tests of Linear Hypothesis
 
 # Part III: Tools of Asymptotic Theory
 
-   - Modes of Convergence
-   - Slutsky’s Lemma/Continuous Mapping Theorem
-   - Delta Methods
+- Modes of Convergence
+- Slutsky’s Lemma/Continuous Mapping Theorem
+- Delta Methods
 
 # Part V: Linear Models with Endogeneity
 
-   - Identification and Endogeneity
-   - Identification through IV and Inference
+- Identification and Endogeneity
+- Identification through IV and Inference

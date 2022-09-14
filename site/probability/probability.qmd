@@ -5,8 +5,8 @@ date: last-modified
 format:
   revealjs:
     theme: moon
-    width: 1820
-    height: 1000
+    width: 1600
+    height: 900
     min-scale: 0.1
 bibliography: ../626.bib
 
@@ -194,7 +194,6 @@ Expand on how $\int_{\R} x dP_X(x)$ relates to Lebesgue measure for continuous r
 
 $P(|X|>\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}$
 $\forall \epsilon > 0, k > 0$
-
 :::
 
 ## Jensen's
@@ -207,8 +206,6 @@ Suppose that $g$ is convex and $X$ and $g(X)$ are integrable, then
 $g(\Er X) \leq \Er[g(X)]$
 
 :::
-
----
 
 ::: {.callout-note icon=false}
 
@@ -271,6 +268,12 @@ Suppose $\sigma(W) \subset \sigma(X)$, then $\exists$ Borel measurable $g$ s.t. 
 
 :::
 
+::: {.notes}
+
+Proof in @cinlar2011 chapter 2, section 4.
+
+:::
+
 # Independence
 
 ## Independence
@@ -285,7 +288,7 @@ $$
 P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
 $$
 - $\sigma$-fields, $\mathscr{F}_1, .., \mathscr{F}_m \subset
-\mathscr{F}$ are **independnet if for any \mathscr{F}_{i_1}, ..,
+\mathscr{F}$ are **independent** if for any \mathscr{F}_{i_1}, ..,
 \mathscr{F}_{i_s}$ and $E_j \in \mathscr{F}_j$,
 $$
 P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
@@ -328,18 +331,84 @@ As promised, an easy way to show obvious independence without any tedious calcul
 Let $\mathscr{G} \subset \mathscr{F}$ be $\sigma$-fields, $Y$ a random
 variable with $\Er |Y| < \infty$, then **the conditional expectation
 of $Y$ given $\mathscr{G}$ is $\Er[Y|\mathscr{G}](\cdot): \Omega \to \R$ s.t.
+
 1. $\Er[Y|\mathscr{G}](\cdot)$ is $\mathscr{G}$ measurable
+
 2. $\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP$ $\forall A \in \mathscr{G}$
 
 :::
 
+::: {.incremental}
+
+- Ex: \{E_k\}_{k=1}^m partition of $\Omega$, let
+$\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
+   - $\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}$
+- Existence from Radon-Nikodym theorem
 - $\Er[Y|X] \equiv \Er[Y|\sigma(X)]$
 
-::: {.notes}
+:::
 
-Example calculation immediately after definition in @song2021
 
-Existence from Radon-Nikodym theorem.
+## Properties of Conditional Expectation
+
+::: {.incremental}
+
+- If $X$ is $\mathscr{G}$ measurable, then $\Er[XY| \mathscr{G}] = X \Er[Y|\mathscr{G}]$ a.e.
+- If $\sigma(X) \subset \sigma(Z)$, then $\Er[XY|Z] = X \Er[Y|Z]$
+- If $\sigma(X) \subset \sigma(Z)$, then $\Er[\Er[Y|Z]|X] = \Er[Y|X]$
+- If $Y$ and $X$ are independent, then $\Er[Y | X ] = \Er[Y]$
+
+:::
+
+## $\Er[Y|\mathscr{G}]$ as Orthogonal Projection
+
+::: {.callout-warning icon=false}
+
+Let $(\Omega, \mathscr{F}, P)$ be a probability space, $\mathscr{G}$ a sub $\sigma$-field,
+then for any
+$Y \in \mathcal{L}^2(\Omega, \mathscr{F}, P) = \{X: \Omega \to \mathbb{R} \text{ s.t. } X \text{ }\mathscr{F}\text{-measurable, } \int X^2 dP < \infty \}$,
+$$
+\inf_{W \in \mathcal{L}^2(\Omega, \mathscr{G}, P)} \Er[(Y-W)^2] = \Er[ Y - \Er[Y | \mathscr{G}]
+$$
+
+:::
+
+## Conditional Measure
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+Let $\mathscr{G}$ be a sub $\sigma$-field of $\mathscr{F}$. Tthe **conditional probability measure**
+given $\mathscr{G}$ is defined to be a map $P(\cdot \mid \mathscr{G})(\cdot ):\mathscr{F}\times \Omega \rightarrow [0,1]$ such that
+
+1. For each $A\in \mathscr{F}$, $P(A \mid \mathscr{G})(\cdot )=\mathbf{E}\left[ 1\{\omega \in A\} \mid \mathscr{G}\right] (\cdot )$, a.e.
+
+2. for each $\omega \in \Omega$, $P(\cdot \mid \mathscr{G})(\omega )$ is a probability measure on $(\Omega ,\mathscr{F}).$
+
+:::
+
+## Conditional Independence
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+1. Events $A_1, ..., A_m \in \mathscr{F}$ are **conditionally independent** given $\mathscr{G}$ if for any sub-collection,
+$$
+P\left( \cap_{j=1}^s A_{i_j} | \mathscr{G} \right) = \prod_{j=1}^s P(A_{i_j} | \mathscr{G})
+$$
+
+2. Sub $\sigma$-fields $\mathscr{F}_1, ..., \mathscr{F}_m$ are
+**conditionally independent** given $\mathscr{G}$ if for any
+sub-collection and events, $E_i \in \mathscr{F}_i$,
+$$
+P\left( \cap_{j=1}^s E_{i_j} | \mathscr{G} \right) = \prod_{j=1}^s P(E_{i_j} | \mathscr{G})
+$$
+
+3. Random variables $X_1, ..., X_m$ are **conditionally independent**
+given $\mathscr{G}$ if $\sigma(X_1), ..., \sigma(X_m)$ are conditionally independent given $\mathscr{G}$
+
 
 :::
 

@@ -14,6 +14,13 @@
     "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
   },
   {
+    "objectID": "inference/inference.html#reading",
+    "href": "inference/inference.html#reading",
+    "title": "Inference",
+    "section": "Reading",
+    "text": "Reading\n\nSong (2021) chapter 4 (which is the basis for these slides)\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
+  },
+  {
     "objectID": "measure/measure.html#references",
     "href": "measure/measure.html#references",
     "title": "Measure",
@@ -270,7 +277,7 @@
     "href": "probability/probability.html#erymathscrg-as-orthogonal-projection",
     "title": "Probability",
     "section": "\\(\\Er[Y|\\mathscr{G}]\\) as Orthogonal Projection",
-    "text": "\\(\\Er[Y|\\mathscr{G}]\\) as Orthogonal Projection\n\n\n\nWarning\n\n\nLet \\((\\Omega, \\mathscr{F}, P)\\) be a probability space, \\(\\mathscr{G}\\) a sub \\(\\sigma\\)-field, then for any \\(Y \\in \\mathcal{L}^2(\\Omega, \\mathscr{F}, P) = \\{X: \\Omega \\to \\mathbb{R} \\text{ s.t. } X \\text{ }\\mathscr{F}\\text{-measurable, } \\int X^2 dP < \\infty \\}\\), \\[\n\\inf_{W \\in \\mathcal{L}^2(\\Omega, \\mathscr{G}, P)} \\Er[(Y-W)^2] = \\Er[ Y - \\Er[Y | \\mathscr{G}]\n\\]"
+    "text": "\\(\\Er[Y|\\mathscr{G}]\\) as Orthogonal Projection\n\n\n\nWarning\n\n\nLet \\((\\Omega, \\mathscr{F}, P)\\) be a probability space, \\(\\mathscr{G}\\) a sub \\(\\sigma\\)-field, then for any \\(Y \\in \\mathcal{L}^2(\\Omega, \\mathscr{F}, P) = \\{X: \\Omega \\to \\mathbb{R} \\text{ s.t. } X \\text{ }\\mathscr{F}\\text{-measurable, } \\int X^2 dP < \\infty \\}\\), \\[\n\\inf_{W \\in \\mathcal{L}^2(\\Omega, \\mathscr{G}, P)} \\Er[(Y-W)^2] = \\Er[ (Y - \\Er[Y | \\mathscr{G}])^2]\n\\]"
   },
   {
     "objectID": "probability/probability.html#conditional-measure",
@@ -298,7 +305,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

@@ -3,6 +3,7 @@
     "listing": "/slides.html",
     "items": [
       "/problemsets/01/ps01.html",
+      "/problemsets/02/ps02.html",
       "/inference/inference.html",
       "/measure/measure.html",
       "/probability/probability.html"

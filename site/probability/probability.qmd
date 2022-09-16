@@ -368,7 +368,7 @@ Let $(\Omega, \mathscr{F}, P)$ be a probability space, $\mathscr{G}$ a sub $\sig
 then for any
 $Y \in \mathcal{L}^2(\Omega, \mathscr{F}, P) = \{X: \Omega \to \mathbb{R} \text{ s.t. } X \text{ }\mathscr{F}\text{-measurable, } \int X^2 dP < \infty \}$,
 $$
-\inf_{W \in \mathcal{L}^2(\Omega, \mathscr{G}, P)} \Er[(Y-W)^2] = \Er[ Y - \Er[Y | \mathscr{G}]
+\inf_{W \in \mathcal{L}^2(\Omega, \mathscr{G}, P)} \Er[(Y-W)^2] = \Er[ (Y - \Er[Y | \mathscr{G}])^2]
 $$
 
 :::

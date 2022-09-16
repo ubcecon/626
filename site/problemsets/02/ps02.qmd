@@ -1,0 +1,38 @@
+---
+title: "ECON 626: Problem Set 1"
+#author: "Paul Schrimpf"
+date: Due 2022-09-22
+bibliography: ../../626.bib
+---
+
+$$
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+$$
+
+# Problem 1
+
+Let $\Omega = \{1, 2, 3, 4\}$, $\mathscr{F} = 2^\Omega$, and $X =
+1\{\omega > 2 \}$. What is $\sigma(X)$?
+
+# Problem 2
+
+Let $f: \R^2 \to \R$. Assume $f(\cdot, y): \R \to \R$ is measurable
+for all $y : |y - y_0| < \epsilon$ for some $\epsilon>0$. Also assume
+that $f(x, \dot): \R \to \R$ is differentiable at $y_0$ for all $x \in
+A \subset \R$ and $\left\vert \frac{\partial f}{\partial y}(x, y_0)
+\right \vert \leq M(x)$ for all $x \in A$ and $M(x)$ is integrable. Show that
+$$
+\frac{d}{dy} \int_A f(\cdot, y) d\mu \vert_{y=y_0} = \int_A \frac{\partial f}{\partial y} f(\cdot, y_0) d\mu.
+$$
+
+# Problem 3
+
+Let $X: \Omega \to \R$, $W:  \Omega \to \R$, $Z: \Omega \to \R$, and $D: \Omega \to \{0, 1\}$ be random variables.
+Let $Y = D X + (1-D) W$.  Suppose that $Y$, $D$, and $Z$ are observed, but $X$ and $W$ are not.
+
+1. Suppose $D$ is independent of $X$, $W$.  Then show that $\Er[X - W]$ is identified.
+
+2. Suppose $Z$ is independent of $X$ and $W$, and
+$\exists E_1, E_0 \in \sigma(Z)$ such that $P(D=1 | E_1) = 1$ and  $P(D=0|E_0) = 1$.
+Then show that $\Er[X-W]$ is identified.

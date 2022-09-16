@@ -1,0 +1,29 @@
+---
+title: "Inference"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1600
+    height: 900
+    min-scale: 0.1
+bibliography: ../626.bib
+
+# jupyter: julia-1.8
+# execute:
+#   cache: false
+---
+
+
+## Reading
+
+- **@song2021 chapter 4** (which is the basis for these slides)
+-
+$$
+\def\Er{{\mathrm{E}}}
+\def\R{{\mathbb{R}}}
+$$
+
+
+# References

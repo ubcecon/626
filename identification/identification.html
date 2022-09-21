@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="Paul Schrimpf">
-  <title>ECON 626 - Measure</title>
+  <title>ECON 626 - Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -343,72 +343,101 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">Measure</h1>
+  <h1 class="title">Identification</h1>
   <p class="author">Paul Schrimpf</p>
-  <p class="date">9/16/22</p>
+  <p class="date">9/21/22</p>
 </section>
 
-<section id="references" class="slide level2">
-<h2>References</h2>
+<section id="reading" class="slide level2">
+<h2>Reading</h2>
 <ul>
-<li><strong><span class="citation" data-cites="song2021">Song (<a href="#/references-1" role="doc-biblioref" onclick="">2021</a>)</span> chapter 1</strong> (which is the basis for these slides)</li>
-<li><span class="citation" data-cites="pollard2002">Pollard (<a href="#/references-1" role="doc-biblioref" onclick="">2002</a>)</span></li>
-<li><span class="citation" data-cites="tao2011">Tao (<a href="#/references-1" role="doc-biblioref" onclick="">2011</a>)</span></li>
+<li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 4</strong> (which is the basis for these slides)</li>
+<li>Recommended: <span class="citation" data-cites="lewbel2019">Lewbel (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
+<li>Supplementary: <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="matzkin2013">Rosa L. Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
 </ul>
+<p><span class="math display">\[
+\def\Er{{\mathrm{E}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\]</span></p>
+<aside class="notes">
+<p>Motivate by wanting to go from data to parameters …</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
+<section id="identification" class="title-slide slide level1 center">
+<h1>Identification</h1>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(X\)</span> be an observed random vector with distribution <span class="math inline">\(P_X\)</span>. Let <span class="math inline">\(\mathcal{P}\)</span> be a<strong>probability model</strong> — a collection of probabilities such that <span class="math inline">\(P_X \in \mathcal{P}\)</span>. Then <span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t.</p>
+<p><span class="math display">\[
+\theta_0 = \psi(P_X)
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+
 <section>
-<section id="measures" class="title-slide slide level1 center">
-<h1>Measures</h1>
+<section id="examples" class="title-slide slide level1 center">
+<h1>Examples</h1>
 
 </section>
-<section id="why-measure-theory" class="slide level2">
-<h2>Why Measure Theory?</h2>
+<section id="example-descriptive-statistics" class="slide level2">
+<h2>Example: Descriptive Statistics</h2>
 <div>
-<ol type="1">
-<li class="fragment">Simplifies some arguments
 <ul>
-<li class="fragment">Example from <span class="citation" data-cites="pollard2002">Pollard (<a href="#/references-1" role="doc-biblioref" onclick="">2002</a>)</span>, define independence as factorization of distribution functions <span class="math display">\[ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) \]</span></li>
-<li class="fragment">If <span class="math inline">\(X_1,X_2,X_3, X_4\)</span> are independent, show that <span class="math display">\[ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) \]</span> is independent of <span class="math display">\[ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) \]</span></li>
-</ul></li>
-</ol>
+<li class="fragment"><p><span class="math inline">\(\theta_0 =\)</span> mean of <span class="math inline">\(X\)</span>, then <span class="math inline">\(\theta_0\)</span> is identified by <span class="math display">\[
+\psi_u(P) = \int x dP(x)
+\]</span> in <span class="math inline">\(\mathcal{P} = \{P : \int x dP(x) &lt; \infty \}\)</span></p></li>
+<li class="fragment"><p>Generally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist</p></li>
+</ul>
 </div>
 </section>
-<section id="why-measure-theory-1" class="slide level2">
-<h2>Why Measure Theory?</h2>
-<ol type="1">
-<li>Simplifies some arguments</li>
-</ol>
-<div>
-<ol start="2" type="1">
-<li class="fragment">Unifies treatment
+<section id="example-linear-model" class="slide level2">
+<h2>Example: Linear Model</h2>
+<p><span class="math display">\[
+Y = \alpha + \beta X + \epsilon
+\]</span></p>
 <ul>
-<li class="fragment">discrete vs continuous</li>
-<li class="fragment">uni- vs multi-variate</li>
-</ul></li>
-<li class="fragment">Resolves some difficulties with infinity</li>
-</ol>
-</div>
-</section>
-<section id="measure-space" class="slide level2">
-<h2>Measure Space</h2>
-<div>
+<li><p><span class="math inline">\(\mathcal{P} = \{P_{X,Y}:\)</span></p>
 <ol type="1">
-<li class="fragment">A set <span class="math inline">\(\Omega\)</span></li>
-<li class="fragment">A collection of subsets, <span class="math inline">\(\mathscr{F}\)</span>, of <span class="math inline">\(\Omega\)</span> that is a <span class="math inline">\(\sigma\)</span><em>-field</em> (aka <span class="math inline">\(\sigma\)</span><em>-algebra</em>) , that is
-<ol type="1">
-<li class="fragment"><span class="math inline">\(\Omega \in \mathscr{F}\)</span></li>
-<li class="fragment">If <span class="math inline">\(A \in \mathscr{F}\)</span>, then <span class="math inline">\(A^c \in \mathscr{F}\)</span></li>
-<li class="fragment">If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span>, then <span class="math inline">\(\cup_{j=1}^\infty A_j \in \mathscr{F}\)</span></li>
+<li><p><span class="math inline">\(| \mathrm{Cov}(X,Y) | &lt; \infty\)</span>, <span class="math inline">\(0 &lt; \mathrm{Var}(X) &lt; \infty\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{Cov}(X, \epsilon) = 0\)</span> <span class="math inline">\(\}\)</span></p></li>
 </ol></li>
-<li class="fragment">A measure, <span class="math inline">\(\mu: \mathcal{F} \to [0, \infty]\)</span> s.t.
+<li><p><span class="math inline">\(\beta\)</span> identified as</p></li>
+</ul>
+<p><span class="math display">\[
+\beta = \frac{\int (x - \Er X) (y - \Er Y ) dP_{X,Y}(x,y)}
+{\int (x - \Er X)^2 dP_{X}(x)}  = \frac{ \cov(X,Y) }{ \var(X) }
+\]</span></p>
+<div class="fragment">
+<ul>
+<li>Identification requires:
 <ol type="1">
-<li class="fragment"><span class="math inline">\(\mu(\emptyset) = 0\)</span></li>
-<li class="fragment">If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span> are pairwise disjoint, then <span class="math inline">\(\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)\)</span></li>
+<li>Usually innocuous regularity conditions</li>
+<li><strong>Substantive exogeneity restriction</strong></li>
 </ol></li>
-</ol>
+<li>Evaluating plausibility of exogeneity restrictions requires a priori knowledge of data context and related economic theory</li>
+</ul>
 </div>
 <aside class="notes">
-<p>Example of sigma fields</p>
+<p>Examples of production function and returns to schooling here?</p>
+<p>2 is more difficult to get right and more context dependent, so we will first tackle the easier problem of 1.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -421,13 +450,30 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="measurable-function" class="slide level2">
-<h2>Measurable Function</h2>
+<section id="example-multiple-regression" class="slide level2">
+<h2>Example: Multiple Regression</h2>
+<p><span class="math display">\[
+Y = X'\beta + \epsilon
+\]</span></p>
 <ul>
-<li>Given a topology on <span class="math inline">\(\Omega\)</span>, the <strong>Borel</strong> <span class="math inline">\(\sigma\)</span>-<strong>field</strong>, <span class="math inline">\(\mathscr{B}(\Omega)\)</span>, is the smallest <span class="math inline">\(\sigma\)</span>-field containing all open subsets of <span class="math inline">\(\Omega\)</span></li>
+<li><span class="math inline">\(\mathcal{P} = \{P: \Er X \epsilon = 0, \Er X X' \text{ invertible} \}\)</span></li>
 </ul>
+</section>
+<section id="example-binary-choice" class="slide level2">
+<h2>Example: Binary Choice</h2>
+<p><span class="math display">\[
+Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathcal{P} = \{P: u \sim N(0,1), 0&lt; \var(X) &lt; \infty \}\)</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Is <span class="math inline">\(u \sim N(0,1)\)</span> innocuous?</li>
+</ul>
+</div>
 <aside class="notes">
-<p>When working with <span class="math inline">\(R^d\)</span>, we will generally use <span class="math inline">\(\mathscr{B}(\mathbf{R}^d)\)</span> as our <span class="math inline">\(\sigma\)</span>-field.</p>
+<p>More generally, think about importance of statistical assumptions in terms of how they affect identifiable quantities and counterfactuals of interest.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -439,227 +485,160 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="example-potential-outcomes" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
 <ul>
-<li><p><span class="math inline">\(f: \Omega \to \mathbf{R}\)</span> is (<span class="math inline">\(\mathscr{F}\)</span>-)<strong>measurable</strong> if <span class="math inline">\(\forall\)</span> <span class="math inline">\(B \in \mathscr{B}(\mathbf{R})\)</span>, <span class="math inline">\(f^{-1}(B) \in \mathscr{F}\)</span></p></li>
-<li><p>a statement holds <em>almost everywhere</em> (a.e.) if the measure of the set where the statement is false is 0</p></li>
+<li><p>Data:</p>
+<ul>
+<li>Treatment <span class="math inline">\(D_i\)</span></li>
+<li>Potential outcomes <span class="math inline">\((Y_{i,0}, Y_{i,1})\)</span>, observed outcome <span class="math inline">\(Y_i = D_i Y_{i,1} + (1-D_i) Y_{i,0}\)</span></li>
+<li>Covarites <span class="math inline">\(X_i\)</span></li>
+</ul></li>
+<li><p>Parameter: <span class="math inline">\(\theta_0 = \Er[Y_{i,1} - Y_{i,0}] =\)</span> average treatment effect</p></li>
+<li><p>Assume:</p>
+<ol type="1">
+<li>Unconfoundedness: <span class="math inline">\((Y_{i,0}, Y_{i,1})\)</span> conditionally independent of <span class="math inline">\(D_i\)</span> given <span class="math inline">\(X_i\)</span></li>
+<li>Overlap: <span class="math inline">\(\epsilon &lt; P(D=1|X=x) &lt; 1-\epsilon\)</span> for some <span class="math inline">\(\epsilon &gt; 0\)</span> and all <span class="math inline">\(x\)</span></li>
+</ol></li>
 </ul>
-<!-- ::: {.callout-note icon=false} -->
-<!-- ### Exercise -->
-<!-- Show that if $f_1, f_2, f_3, ...$ are measurable, then -->
-<!-- $\sum_{j=1}^\infty f_j$ is measurable -->
-<!-- ::: -->
 </section></section>
 <section>
-<section id="integration" class="title-slide slide level1 center">
-<h1>Integration</h1>
+<section id="non-constructive-identification" class="title-slide slide level1 center">
+<h1>Non-constructive Identification</h1>
 
 </section>
-<section id="simple-functions" class="slide level2">
-<h2>Simple Functions</h2>
+<section id="non-constructive-identification-1" class="slide level2">
+<h2>Non-constructive Identification</h2>
 <ul>
-<li>Assume <span class="math inline">\(\mu(\Omega) &lt; \infty\)</span></li>
-<li><span class="math inline">\(f\)</span> is a <strong>simple function</strong> if <span class="math inline">\(f = \sum_{j=1}^n a_j 1\{\omega \in E_j \}\)</span> for <span class="math inline">\(a_j \in \mathbf{R}\)</span> and <span class="math inline">\(E_j \in \mathscr{F}\)</span></li>
-<li>Integral of simple functions: <span class="math display">\[ \int f d \mu = \sum_{j=1}^n a_j \mu(E_j) \]</span></li>
+<li>Identification sometimes defined without explicit mapping from data to parameters, e.g. <span class="citation" data-cites="hsiao1983">Hsiao (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>, <span class="citation" data-cites="matzkin2007">Rosa L. Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></li>
+</ul>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition: Observationally Equivalent</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Let <span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></p>
+<ul>
+<li>Let <span class="math inline">\(\Gamma(\theta, S) = \{P(\dot; s) | s \in S, \theta = \lambda(s) \}\)</span>, then <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\tilde{\theta}\)</span> are observationally equivalent iff <span class="math inline">\(\Gamma(\theta,S) \cap \Gamma(\tilde{\theta}, S) \neq \emptyset\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="non-constructive-identification-2" class="slide level2">
+<h2>Non-constructive Identification</h2>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition: (Non-Constructive) Identification</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></p></li>
+<li><p><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></p>
+<ul>
+<li>i.e.&nbsp;<span class="math inline">\(\Gamma(\theta_0, S) \cap \Gamma(\theta, S) = \emptyset\)</span> <span class="math inline">\(\forall \theta \neq \theta_0\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>Compared to constructive definition with <span class="math inline">\(\theta_0 = \psi(P)\)</span>:
+<ul>
+<li>Less clear how to use identification to estimate</li>
+<li>Easier to show non-identification</li>
+</ul></li>
 </ul>
 </section>
-<section class="slide level2">
-
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that if <span class="math inline">\(f\)</span> is simple, then <span class="math inline">\(f\)</span> is measurable.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that if <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are simple, then</p>
-<ol type="1">
-<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
-<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
-<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
-</ol>
-</div>
-</div>
+<section id="example-multiple-regression-1" class="slide level2">
+<h2>Example: Multiple Regression</h2>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
+\]</span></p>
+<div>
+<ul>
+<li class="fragment"><p><span class="math inline">\(X = [X_1\, X_2]'\)</span>, if rank <span class="math inline">\(\Er X X' = 1\)</span>, then <span class="math inline">\(\beta_1, \beta_2\)</span> is observationally equivalent to any <span class="math inline">\(\tilde{\beta}_1, \tilde{\beta}_2\)</span> s.t. <span class="math display">\[
+\tilde{\beta}_1 + \tilde{\beta}_2 = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_2)}
+\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2\)</span> is identified if rank <span class="math inline">\(\Er X X' \geq 1\)</span></p></li>
+</ul>
 </div>
 </section>
-<section id="bounded-functions" class="slide level2">
-<h2>Bounded Functions</h2>
+<section id="example-random-coefficients-logit" class="slide level2">
+<h2>Example: Random Coefficients Logit</h2>
 <ul>
-<li>Let <span class="math inline">\(E\)</span> be such that <span class="math inline">\(\mu(E)&lt;\infty\)</span></li>
-<li>Let <span class="math inline">\(f\)</span> be bounded function and <span class="math inline">\(f(x) = 0 \forall x \in E^c\)</span></li>
-<li>Define: <span class="math display">\[
-\int f d\mu \equiv \sup_{\varphi \leq f: \varphi \text{ simple}} \int \varphi d\mu =\inf_{\varphi \geq f: \varphi \text{ simple}} \int \varphi d\mu
+<li><p><span class="math inline">\(Y_i = 1\{\beta_0 + \beta_i X_i \geq U_i \}\)</span></p>
+<ul>
+<li><span class="math inline">\(U\)</span> independent <span class="math inline">\(X_i,\beta_i\)</span>,</li>
+<li><span class="math inline">\(\beta_i\)</span> indepedent <span class="math inline">\(X_i\)</span>,</li>
+<li><span class="math inline">\(F_u(z) = \frac{e^z}{1+e^z}\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(Er[Y|X] = \int \frac{e^{\beta_0 + \beta X_i}} {1+e^{\beta_0 + \beta X_i}} dF_\beta(\beta)\)</span></p></li>
+<li><p>Non-constructive and constructive identification of <span class="math inline">\(F_\beta\)</span> in <span class="citation" data-cites="fox2012">Fox et al. (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p></li>
+</ul>
+<aside class="notes">
+<p>Hard to give a brief example where non-constructive argument is required. Non constructive identification proofs typically leverage some high level mathematical result.</p>
+<p><span class="citation" data-cites="christensen2015">Christensen (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span> is another example of non-constructive identification.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="descriptive-intrepretation-of-population-estimator" class="title-slide slide level1 center">
+<h1>Descriptive Intrepretation of Population Estimator</h1>
+<ul>
+<li>Analyze familiar estimator under more general assumptions
+<ul>
+<li>Understand bias when exogeneity assumptions fail</li>
+<li>Sometimes give more general interpretation of existing estimator</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-regression" class="slide level2">
+<h2>Example: Regression</h2>
+<ul>
+<li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er X X'\)</span> invertible,</li>
+<li>Population regression <span class="math display">\[
+\begin{align*}
+\theta = &amp; \Er[ X X']^{-1} \Er[ X Y]  \\
+= &amp; \Er[X X']^{-1} \Er[X (X' \beta + \epsilon)] \\
+= &amp; \beta + \Er[X X']^{-1} \Er[X\epsilon]
+\end{align*}
 \]</span></li>
 </ul>
 </section>
-<section class="slide level2">
-
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show the second equality above.</p>
-</div>
-</div>
-</div>
-
-<img data-src="measure_files/figure-revealjs/cell-2-output-1.svg" class="r-stretch"></section>
-<section id="section" class="slide level2">
-<h2><!-- graph showing f, \psi_n, \varphi_n --></h2>
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that for all bounded <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> that vanish outside a finite measure set,</p>
-<ol type="1">
-<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
-<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
-<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<section id="nonnegative-functions" class="slide level2">
-<h2>Nonnegative Functions</h2>
+<section id="example-regression-1" class="slide level2">
+<h2>Example: Regression</h2>
 <ul>
-<li>If <span class="math inline">\(f \geq 0\)</span>, define <span class="math display">\[
-\int fd\mu =\sup_{f_n \leq f \text{ simple, bounded+}} \int f_{n}d\mu
+<li>If relevant moments exist (no linear model required) population regression solves <span class="math display">\[
+\Er[ X X']^{-1} \Er[ X Y]  \in \mathrm{arg}\min_b \Er[ (X'b - \Er[Y|X])^2 ]
 \]</span></li>
 </ul>
 </section>
-<section class="slide level2">
-
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that for all <span class="math inline">\(f \geq 0\)</span>,</p>
-<ol type="1">
-<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
-<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
-<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<section id="measurable-functions" class="slide level2">
-<h2>Measurable Functions</h2>
+<section id="example-potential-outcomes-1" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
 <ul>
-<li>If <span class="math inline">\(f\)</span> is measurable, let <span class="math inline">\(f^{+} = \max\{f, 0\}\)</span> and <span class="math inline">\(f^{-} = \max\{-f, 0\}\)</span> and define the <em>Lesbegue integral</em></li>
-</ul>
-<p><span class="math display">\[ \int f d\mu = \int f^{+} d\mu - \int f^{-} d\mu \]</span></p>
-</section>
-<section class="slide level2">
-
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that for all measurable <span class="math inline">\(f\)</span></p>
-<ol type="1">
-<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
-<li><p><span class="math inline">\(\forall a \in \mathbf{R}\)</span> , <span class="math inline">\(\int a f d\mu = a \int f d\mu\)</span></p></li>
-<li><p><span class="math inline">\(\int (f + g) d\mu = \int f d\mu + \int g d \mu\)</span></p></li>
-</ol>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="radon-nikodym-derivatives" class="title-slide slide level1 center">
-<h1>Radon-Nikodym Derivatives</h1>
-
-</section>
-<section id="finite-measure" class="slide level2">
-<h2>Finite Measure</h2>
-<ul>
-<li>Measure <span class="math inline">\(\mu\)</span> is <em>finite</em> if <span class="math inline">\(\mu(\Omega)\)</span> is finite</li>
-<li><span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span>-<em>finite</em> if <span class="math inline">\(\exists\)</span> <span class="math inline">\(\{A_n\}_{n=1}^\infty \in \mathscr{F}\)</span> s.t. <span class="math inline">\(\mu(A_n)\)</span> is finite <span class="math inline">\(\forall n\)</span> and <span class="math inline">\(\cup_{n=1}^\infty A_n = \Omega\)</span></li>
-</ul>
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(\Omega\)</span> be countable with any <span class="math inline">\(\mathscr{F}\)</span>, define <span class="math inline">\(\mu(A)\)</span> as the number of elements of <span class="math inline">\(A\)</span>. Show <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma\)</span> finite.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="lebesgue-measure" class="slide level2">
-<h2>Lebesgue Measure</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem</strong></p>
-</div>
-<div class="callout-content">
-<p>There exists a unique <span class="math inline">\(\sigma\)</span>-finite measure <span class="math inline">\(\mu\)</span> on <span class="math inline">\((\mathbf{R},\mathscr{B}(\mathbf{R}))\)</span> such that for any <span class="math inline">\(a\leq b\)</span> with <span class="math inline">\(a,b\in \mathbf{R}\)</span>, <span class="math display">\[
-\mu ((a,b])=b-a
-\]</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="absolute-continuity" class="slide level2">
-<h2>Absolute Continuity</h2>
-<ul>
-<li>Measure <span class="math inline">\(\nu\)</span> is <strong>absolutely continuous</strong> with respect to <span class="math inline">\(\mu\)</span> if for <span class="math inline">\(A \in \mathscr{F}\)</span>, <span class="math inline">\(\mu(A) = 0\)</span> implies <span class="math inline">\(\nu(A) = 0\)</span>
-<ul>
-<li>denotate as <span class="math inline">\(\nu \ll \mu\)</span></li>
-<li><span class="math inline">\(\mu\)</span> is called a <strong>dominating measure</strong></li>
-</ul></li>
+<li>Matching initially studied with a linear regression model, e.g. <span class="citation" data-cites="cochran1953">Cochran (<a href="#/references" role="doc-biblioref" onclick="">1953</a>)</span> <span class="math display">\[
+Y_i = \alpha D_i + X_i' \beta + \epsilon_i
+\]</span></li>
+<li>Implies constant treatment effect <span class="math inline">\(Y_{i,1} - Y_{i,0} = \alpha\)</span></li>
 </ul>
 <aside class="notes">
-<p>Relation with continuity?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="radon-nikodym-derivative" class="slide level2">
-<h2>Radon-Nikodym Derivative</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\((\Omega,\mathscr{F},\mu)\)</span> be a measure space, and let <span class="math inline">\(\nu\)</span> and <span class="math inline">\(\mu\)</span> be <span class="math inline">\(\sigma\)</span>-finite measures defined on <span class="math inline">\(\mathscr{F}\)</span> and <span class="math inline">\(\nu \ll \mu\)</span>. Then there is a nonnegative measurable function <span class="math inline">\(f\)</span> such that for each set <span class="math inline">\(A\in \mathscr{F}\)</span>, <span class="math display">\[
-\nu (A)=\int_{A}fd\mu
-\]</span> For any such <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, <span class="math inline">\(\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})=0\)</span></p>
-</div>
-</div>
-</div>
-<aside class="notes">
-<p>Denote $f = </p>
-<p>Exercise: show coincides with usual derivative?</p>
+<p>The LATE interpretation of IV developed along similar lines – replace a constant treatment effect linear model with a heterogenous effect potential outcomes framework, and see what IV does.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -673,107 +652,74 @@
       }</style></aside>
 </section></section>
 <section>
-<section id="convergence-theorems" class="title-slide slide level1 center">
-<h1>Convergence Theorems</h1>
+<section id="causal-diagrams" class="title-slide slide level1 center">
+<h1>Causal Diagrams</h1>
 
 </section>
-<section id="sequences-of-sets" class="slide level2">
-<h2>Sequences of Sets</h2>
+<section id="causal-diagrams-1" class="slide level2">
+<h2>Causal Diagrams</h2>
 <ul>
-<li><span class="math inline">\(\{E_n\}_{n \geq 1} \in \mathscr{F}\)</span>
+<li>Advocated by Pearl, e.g. <span class="citation" data-cites="pearl2015">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <span class="citation" data-cites="pearl2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
+<li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+<li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
 <ul>
-<li><em>increasing</em> if <span class="math inline">\(E_1 \subset E_2 \subset ...\)</span></li>
-<li><em>decreasing</em> if <span class="math inline">\(E_1 \supset E_2 \supset ...\)</span></li>
-<li><em>monotone</em> if either increasing or decreasing</li>
+<li>e.g. <span class="citation" data-cites="chernozhukov2021">Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
 </ul></li>
-<li>For increasing <span class="math inline">\(E_n\)</span>, define <span class="math inline">\(\lim_{n \to \infty} E_n =\cup_{n=1}^\infty E_n\)</span></li>
-<li>For decreasing <span class="math inline">\(E_n\)</span>, define <span class="math inline">\(\lim_{n \to \infty} E_n =\cap_{n=1}^\infty E_n\)</span></li>
 </ul>
 </section>
-<section id="continuity-of-measure" class="slide level2">
-<h2>Continuity of Measure</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma</strong></p>
-</div>
-<div class="callout-content">
-<p>Suppose that <span class="math inline">\(\{E_{n}\}\)</span> is a monotone sequence of events. Then <span class="math display">\[
-\mu \left( \lim_{n\rightarrow \infty}E_{n}\right) =\lim_{n\rightarrow \infty }\mu (E_{n}).
-\]</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="monotone-convergence-theorem" class="slide level2">
-<h2>Monotone Convergence Theorem</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="fatous-lemma" class="slide level2">
-<h2>Fatou’s Lemma</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, then <span class="math display">\[
-\int \left( \text{liminf}_{n\rightarrow \infty }f_{n}d\mu \right) \leq \text{liminf}_{n\rightarrow \infty }\int f_{n}d\mu
-\]</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="dominated-convergence-theorem" class="slide level2">
-<h2>Dominated Convergence Theorem</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p>
-</div>
-</div>
-</div>
-<aside class="notes">
-<p>The measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section id="references-1" class="title-slide slide level1 smaller scrollable">
+<section id="example-regression-2" class="slide level2">
+<h2>Example: Regression</h2>
+
+<img data-src="identification_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="example-potential-outcomes-2" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
+
+<img data-src="identification_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
 <div class="footer footer-default">
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-pollard2002" class="csl-entry" role="doc-biblioentry">
-Pollard, David. 2002. <em>A User’s Guide to Measure Theoretic Probability</em>. 8. Cambridge University Press.
+<div id="ref-chernozhukov2021" class="csl-entry" role="doc-biblioentry">
+Chernozhukov, Victor, Hiroyuki Kasahara, and Paul Schrimpf. 2021. <span>“Causal Impact of Masks, Policies, Behavior on Early Covid-19 Pandemic in the US.”</span> <em>Journal of Econometrics</em> 220 (1): 23–62.
+</div>
+<div id="ref-christensen2015" class="csl-entry" role="doc-biblioentry">
+Christensen, Timothy M. 2015. <span>“Nonparametric Identification of Positive Eigenfunctions.”</span> <em>Econometric Theory</em> 31 (6): 1310–30.
+</div>
+<div id="ref-cochran1953" class="csl-entry" role="doc-biblioentry">
+Cochran, William G. 1953. <span>“Matching in Analytical Studies.”</span> <em>American Journal of Public Health and the Nations Health</em> 43 (6_Pt_1): 684–91.
+</div>
+<div id="ref-fox2012" class="csl-entry" role="doc-biblioentry">
+Fox, Jeremy T, Kyoo il Kim, Stephen P Ryan, and Patrick Bajari. 2012. <span>“The Random Coefficients Logit Model Is Identified.”</span> <em>Journal of Econometrics</em> 166 (2): 204–12.
+</div>
+<div id="ref-hsiao1983" class="csl-entry" role="doc-biblioentry">
+Hsiao, Cheng. 1983. <span>“Chapter 4 Identification.”</span> In, 1:223–83. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(83)01008-9">https://doi.org/10.1016/S1573-4412(83)01008-9</a>.
+</div>
+<div id="ref-imbens2020" class="csl-entry" role="doc-biblioentry">
+Imbens, Guido W. 2020. <span>“Potential Outcome and Directed Acyclic Graph Approaches to Causality: Relevance for Empirical Practice in Economics.”</span> <em>Journal of Economic Literature</em> 58 (4): 1129–79. <a href="https://doi.org/10.1257/jel.20191597">https://doi.org/10.1257/jel.20191597</a>.
+</div>
+<div id="ref-lewbel2019" class="csl-entry" role="doc-biblioentry">
+Lewbel, Arthur. 2019. <span>“The Identification Zoo: Meanings of Identification in Econometrics.”</span> <em>Journal of Economic Literature</em> 57 (4): 835–903. <a href="https://doi.org/10.1257/jel.20181361">https://doi.org/10.1257/jel.20181361</a>.
+</div>
+<div id="ref-matzkin2013" class="csl-entry" role="doc-biblioentry">
+Matzkin, Rosa L. 2013. <span>“Nonparametric Identification in Structural Economic Models.”</span> <em>Annu. Rev. Econ.</em> 5 (1): 457–86.
+</div>
+<div id="ref-matzkin2007" class="csl-entry" role="doc-biblioentry">
+Matzkin, Rosa L. 2007. <span>“Chapter 73 Nonparametric Identification.”</span> In, edited by James J. Heckman and Edward E. Leamer, 6:5307–68. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
+</div>
+<div id="ref-molinari2020" class="csl-entry" role="doc-biblioentry">
+Molinari, Francesca. 2020. <span>“Chapter 5 - Microeconometrics with Partial Identification.”</span> In <em>Handbook of Econometrics, Volume 7A</em>, edited by Steven N. Durlauf, Lars Peter Hansen, James J. Heckman, and Rosa L. Matzkin, 7:355–486. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/bs.hoe.2020.05.002">https://doi.org/10.1016/bs.hoe.2020.05.002</a>.
+</div>
+<div id="ref-pearl2015" class="csl-entry" role="doc-biblioentry">
+Pearl, Judea. 2015. <span>“TRYGVE HAAVELMO AND THE EMERGENCE OF CAUSAL CALCULUS.”</span> <em>Econometric Theory</em> 31 (1): 152–79. <a href="https://doi.org/10.1017/S0266466614000231">https://doi.org/10.1017/S0266466614000231</a>.
+</div>
+<div id="ref-pearl2018" class="csl-entry" role="doc-biblioentry">
+Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. Basic books.
 </div>
 <div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
-</div>
-<div id="ref-tao2011" class="csl-entry" role="doc-biblioentry">
-Tao, Terence. 2011. <em>An Introduction to Measure Theory</em>. Vol. 126. American Mathematical Society Providence.
 </div>
 </div>
 </section>
@@ -954,9 +900,9 @@ Tao, Terence. 2011. <em>An Introduction to Measure Theory</em>. Vol. 126. Americ
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1820,
+        width: 1600,
 
-        height: 1000,
+        height: 900,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -991,6 +937,48 @@ Tao, Terence. 2011. <em>An Introduction to Measure Theory</em>. Vol. 126. Americ
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

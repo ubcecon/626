@@ -342,7 +342,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="center">
+<section id="title-slide" data-background-image="tricouni.jpg" data-background-size="contain" class="center">
   <h1 class="title">Identification</h1>
   <p class="author">Paul Schrimpf</p>
   <p class="date">9/21/22</p>
@@ -353,7 +353,7 @@
 <ul>
 <li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 4</strong> (which is the basis for these slides)</li>
 <li>Recommended: <span class="citation" data-cites="lewbel2019">Lewbel (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
-<li>Supplementary: <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="matzkin2013">Rosa L. Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+<li>Supplementary: <span class="citation" data-cites="matzkin2013">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
 </ul>
 <p><span class="math display">\[
 \def\Er{{\mathrm{E}}}
@@ -402,7 +402,7 @@
 <div>
 <ul>
 <li class="fragment"><p><span class="math inline">\(\theta_0 =\)</span> mean of <span class="math inline">\(X\)</span>, then <span class="math inline">\(\theta_0\)</span> is identified by <span class="math display">\[
-\psi_u(P) = \int x dP(x)
+\psi_\mu(P) = \int x dP(x)
 \]</span> in <span class="math inline">\(\mathcal{P} = \{P : \int x dP(x) &lt; \infty \}\)</span></p></li>
 <li class="fragment"><p>Generally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist</p></li>
 </ul>
@@ -504,6 +504,86 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </ul>
 </section></section>
 <section>
+<section id="causal-diagrams" class="title-slide slide level1 center">
+<h1>Causal Diagrams</h1>
+
+</section>
+<section id="causal-diagrams-1" class="slide level2">
+<h2>Causal Diagrams</h2>
+<ul>
+<li>Originate with Wright around 1920, e.g. <span class="citation" data-cites="wright1934">Wright (<a href="#/references" role="doc-biblioref" onclick="">1934</a>)</span></li>
+<li>Recently advocated by Pearl, e.g. <span class="citation" data-cites="pearl2015">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <span class="citation" data-cites="pearl2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
+<li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+<li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
+<ul>
+<li>e.g. <span class="citation" data-cites="chernozhukov2021">Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-regression" class="slide level2">
+<h2>Example: Regression</h2>
+
+<img data-src="identification_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="example-potential-outcomes-1" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
+
+<img data-src="identification_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="generalized-andor-descriptive-intrepretation-of-population-estimator" class="title-slide slide level1 center">
+<h1>Generalized and/or Descriptive Intrepretation of Population Estimator</h1>
+<ul>
+<li>Analyze familiar estimator under more general assumptions
+<ul>
+<li>Understand bias when exogeneity assumptions fail</li>
+<li>Sometimes give more general interpretation of existing estimator</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-regression-1" class="slide level2">
+<h2>Example: Regression</h2>
+<ul>
+<li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er X X'\)</span> invertible,</li>
+<li>Population regression <span class="math display">\[
+\begin{align*}
+\theta = &amp; \Er[ X X']^{-1} \Er[ X Y]  \\
+= &amp; \Er[X X']^{-1} \Er[X (X' \beta + \epsilon)] \\
+= &amp; \beta + \Er[X X']^{-1} \Er[X\epsilon]
+\end{align*}
+\]</span></li>
+</ul>
+</section>
+<section id="example-regression-2" class="slide level2">
+<h2>Example: Regression</h2>
+<ul>
+<li>If relevant moments exist (no linear model required) population regression solves <span class="math display">\[
+\Er[ X X']^{-1} \Er[ X Y]  \in \mathrm{arg}\min_b \Er[ (X'b - \Er[Y|X])^2 ]
+\]</span></li>
+</ul>
+</section>
+<section id="example-potential-outcomes-2" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
+<ul>
+<li>Matching initially studied with a linear regression model, e.g. <span class="citation" data-cites="cochran1953">Cochran (<a href="#/references" role="doc-biblioref" onclick="">1953</a>)</span> <span class="math display">\[
+Y_i = \alpha D_i + X_i' \beta + \epsilon_i
+\]</span></li>
+<li>Implies constant treatment effect <span class="math inline">\(Y_{i,1} - Y_{i,0} = \alpha\)</span></li>
+</ul>
+<aside class="notes">
+<p>The LATE interpretation of IV developed along similar lines – replace a constant treatment effect linear model with a heterogenous effect potential outcomes framework, and see what IV does.</p>
+<p>Similarly, the recent literature on difference in differences with staggered treatment timing arises from moving from a model with a constant treatment effect over time to one where treatment effects vary with time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
 <section id="non-constructive-identification" class="title-slide slide level1 center">
 <h1>Non-constructive Identification</h1>
 
@@ -511,7 +591,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <section id="non-constructive-identification-1" class="slide level2">
 <h2>Non-constructive Identification</h2>
 <ul>
-<li>Identification sometimes defined without explicit mapping from data to parameters, e.g. <span class="citation" data-cites="hsiao1983">Hsiao (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>, <span class="citation" data-cites="matzkin2007">Rosa L. Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></li>
+<li>Identification sometimes defined without explicit mapping from data to parameters, e.g. <span class="citation" data-cites="hsiao1983">Hsiao (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>, <span class="citation" data-cites="matzkin2007">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></li>
 </ul>
 <div class="callout callout-tip no-icon callout-captioned callout-style-default">
 <div class="callout-body">
@@ -579,7 +659,7 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 <li><span class="math inline">\(\beta_i\)</span> indepedent <span class="math inline">\(X_i\)</span>,</li>
 <li><span class="math inline">\(F_u(z) = \frac{e^z}{1+e^z}\)</span></li>
 </ul></li>
-<li><p><span class="math inline">\(Er[Y|X] = \int \frac{e^{\beta_0 + \beta X_i}} {1+e^{\beta_0 + \beta X_i}} dF_\beta(\beta)\)</span></p></li>
+<li><p><span class="math inline">\(\Er[Y|X] = \int \frac{e^{\beta_0 + \beta X_i}} {1+e^{\beta_0 + \beta X_i}} dF_\beta(\beta)\)</span></p></li>
 <li><p>Non-constructive and constructive identification of <span class="math inline">\(F_\beta\)</span> in <span class="citation" data-cites="fox2012">Fox et al. (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p></li>
 </ul>
 <aside class="notes">
@@ -597,84 +677,6 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
           display:block!important;
       }</style></aside>
 </section></section>
-<section>
-<section id="descriptive-intrepretation-of-population-estimator" class="title-slide slide level1 center">
-<h1>Descriptive Intrepretation of Population Estimator</h1>
-<ul>
-<li>Analyze familiar estimator under more general assumptions
-<ul>
-<li>Understand bias when exogeneity assumptions fail</li>
-<li>Sometimes give more general interpretation of existing estimator</li>
-</ul></li>
-</ul>
-</section>
-<section id="example-regression" class="slide level2">
-<h2>Example: Regression</h2>
-<ul>
-<li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er X X'\)</span> invertible,</li>
-<li>Population regression <span class="math display">\[
-\begin{align*}
-\theta = &amp; \Er[ X X']^{-1} \Er[ X Y]  \\
-= &amp; \Er[X X']^{-1} \Er[X (X' \beta + \epsilon)] \\
-= &amp; \beta + \Er[X X']^{-1} \Er[X\epsilon]
-\end{align*}
-\]</span></li>
-</ul>
-</section>
-<section id="example-regression-1" class="slide level2">
-<h2>Example: Regression</h2>
-<ul>
-<li>If relevant moments exist (no linear model required) population regression solves <span class="math display">\[
-\Er[ X X']^{-1} \Er[ X Y]  \in \mathrm{arg}\min_b \Er[ (X'b - \Er[Y|X])^2 ]
-\]</span></li>
-</ul>
-</section>
-<section id="example-potential-outcomes-1" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<ul>
-<li>Matching initially studied with a linear regression model, e.g. <span class="citation" data-cites="cochran1953">Cochran (<a href="#/references" role="doc-biblioref" onclick="">1953</a>)</span> <span class="math display">\[
-Y_i = \alpha D_i + X_i' \beta + \epsilon_i
-\]</span></li>
-<li>Implies constant treatment effect <span class="math inline">\(Y_{i,1} - Y_{i,0} = \alpha\)</span></li>
-</ul>
-<aside class="notes">
-<p>The LATE interpretation of IV developed along similar lines – replace a constant treatment effect linear model with a heterogenous effect potential outcomes framework, and see what IV does.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
-<section id="causal-diagrams" class="title-slide slide level1 center">
-<h1>Causal Diagrams</h1>
-
-</section>
-<section id="causal-diagrams-1" class="slide level2">
-<h2>Causal Diagrams</h2>
-<ul>
-<li>Advocated by Pearl, e.g. <span class="citation" data-cites="pearl2015">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <span class="citation" data-cites="pearl2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
-<li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
-<li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
-<ul>
-<li>e.g. <span class="citation" data-cites="chernozhukov2021">Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="example-regression-2" class="slide level2">
-<h2>Example: Regression</h2>
-
-<img data-src="identification_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="example-potential-outcomes-2" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-
-<img data-src="identification_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
@@ -703,11 +705,11 @@ Imbens, Guido W. 2020. <span>“Potential Outcome and Directed Acyclic Graph App
 <div id="ref-lewbel2019" class="csl-entry" role="doc-biblioentry">
 Lewbel, Arthur. 2019. <span>“The Identification Zoo: Meanings of Identification in Econometrics.”</span> <em>Journal of Economic Literature</em> 57 (4): 835–903. <a href="https://doi.org/10.1257/jel.20181361">https://doi.org/10.1257/jel.20181361</a>.
 </div>
-<div id="ref-matzkin2013" class="csl-entry" role="doc-biblioentry">
-Matzkin, Rosa L. 2013. <span>“Nonparametric Identification in Structural Economic Models.”</span> <em>Annu. Rev. Econ.</em> 5 (1): 457–86.
-</div>
 <div id="ref-matzkin2007" class="csl-entry" role="doc-biblioentry">
 Matzkin, Rosa L. 2007. <span>“Chapter 73 Nonparametric Identification.”</span> In, edited by James J. Heckman and Edward E. Leamer, 6:5307–68. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
+</div>
+<div id="ref-matzkin2013" class="csl-entry" role="doc-biblioentry">
+———. 2013. <span>“Nonparametric Identification in Structural Economic Models.”</span> <em>Annu. Rev. Econ.</em> 5 (1): 457–86.
 </div>
 <div id="ref-molinari2020" class="csl-entry" role="doc-biblioentry">
 Molinari, Francesca. 2020. <span>“Chapter 5 - Microeconometrics with Partial Identification.”</span> In <em>Handbook of Econometrics, Volume 7A</em>, edited by Steven N. Durlauf, Lars Peter Hansen, James J. Heckman, and Rosa L. Matzkin, 7:355–486. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/bs.hoe.2020.05.002">https://doi.org/10.1016/bs.hoe.2020.05.002</a>.
@@ -720,6 +722,9 @@ Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of 
 </div>
 <div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
+</div>
+<div id="ref-wright1934" class="csl-entry" role="doc-biblioentry">
+Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>The Annals of Mathematical Statistics</em> 5 (3): 161–215. <a href="http://www.jstor.org/stable/2957502">http://www.jstor.org/stable/2957502</a>.
 </div>
 </div>
 </section>

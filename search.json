@@ -11,14 +11,14 @@
     "href": "identification/identification.html#reading",
     "title": "Identification",
     "section": "Reading",
-    "text": "Reading\n\nRequired: Song (2021) chapter 4 (which is the basis for these slides)\nRecommended: Lewbel (2019)\nSupplementary: Molinari (2020) , Rosa L. Matzkin (2013), Imbens (2020)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]\n\nMotivate by wanting to go from data to parameters …"
+    "text": "Reading\n\nRequired: Song (2021) chapter 4 (which is the basis for these slides)\nRecommended: Lewbel (2019)\nSupplementary: Matzkin (2013), Molinari (2020) , Imbens (2020)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]\n\nMotivate by wanting to go from data to parameters …"
   },
   {
     "objectID": "identification/identification.html#example-descriptive-statistics",
     "href": "identification/identification.html#example-descriptive-statistics",
     "title": "Identification",
     "section": "Example: Descriptive Statistics",
-    "text": "Example: Descriptive Statistics\n\n\n\\(\\theta_0 =\\) mean of \\(X\\), then \\(\\theta_0\\) is identified by \\[\n\\psi_u(P) = \\int x dP(x)\n\\] in \\(\\mathcal{P} = \\{P : \\int x dP(x) < \\infty \\}\\)\nGenerally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist"
+    "text": "Example: Descriptive Statistics\n\n\n\\(\\theta_0 =\\) mean of \\(X\\), then \\(\\theta_0\\) is identified by \\[\n\\psi_\\mu(P) = \\int x dP(x)\n\\] in \\(\\mathcal{P} = \\{P : \\int x dP(x) < \\infty \\}\\)\nGenerally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist"
   },
   {
     "objectID": "identification/identification.html#example-linear-model",
@@ -49,11 +49,53 @@
     "text": "Example: Potential Outcomes\n\nData:\n\nTreatment \\(D_i\\)\nPotential outcomes \\((Y_{i,0}, Y_{i,1})\\), observed outcome \\(Y_i = D_i Y_{i,1} + (1-D_i) Y_{i,0}\\)\nCovarites \\(X_i\\)\n\nParameter: \\(\\theta_0 = \\Er[Y_{i,1} - Y_{i,0}] =\\) average treatment effect\nAssume:\n\nUnconfoundedness: \\((Y_{i,0}, Y_{i,1})\\) conditionally independent of \\(D_i\\) given \\(X_i\\)\nOverlap: \\(\\epsilon < P(D=1|X=x) < 1-\\epsilon\\) for some \\(\\epsilon > 0\\) and all \\(x\\)"
   },
   {
+    "objectID": "identification/identification.html#causal-diagrams-1",
+    "href": "identification/identification.html#causal-diagrams-1",
+    "title": "Identification",
+    "section": "Causal Diagrams",
+    "text": "Causal Diagrams\n\nOriginate with Wright around 1920, e.g. Wright (1934)\nRecently advocated by Pearl, e.g. Pearl (2015), Pearl and Mackenzie (2018)\nRecommended introduction Imbens (2020)\nSometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach\n\ne.g. Chernozhukov, Kasahara, and Schrimpf (2021)"
+  },
+  {
+    "objectID": "identification/identification.html#example-regression",
+    "href": "identification/identification.html#example-regression",
+    "title": "Identification",
+    "section": "Example: Regression",
+    "text": "Example: Regression"
+  },
+  {
+    "objectID": "identification/identification.html#example-potential-outcomes-1",
+    "href": "identification/identification.html#example-potential-outcomes-1",
+    "title": "Identification",
+    "section": "Example: Potential Outcomes",
+    "text": "Example: Potential Outcomes"
+  },
+  {
+    "objectID": "identification/identification.html#example-regression-1",
+    "href": "identification/identification.html#example-regression-1",
+    "title": "Identification",
+    "section": "Example: Regression",
+    "text": "Example: Regression\n\nIn linear model \\(Y_i = X_i'\\beta + \\epsilon_i\\), if just assume \\(\\Er X X'\\) invertible,\nPopulation regression \\[\n\\begin{align*}\n\\theta = & \\Er[ X X']^{-1} \\Er[ X Y]  \\\\\n= & \\Er[X X']^{-1} \\Er[X (X' \\beta + \\epsilon)] \\\\\n= & \\beta + \\Er[X X']^{-1} \\Er[X\\epsilon]\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "identification/identification.html#example-regression-2",
+    "href": "identification/identification.html#example-regression-2",
+    "title": "Identification",
+    "section": "Example: Regression",
+    "text": "Example: Regression\n\nIf relevant moments exist (no linear model required) population regression solves \\[\n\\Er[ X X']^{-1} \\Er[ X Y]  \\in \\mathrm{arg}\\min_b \\Er[ (X'b - \\Er[Y|X])^2 ]\n\\]"
+  },
+  {
+    "objectID": "identification/identification.html#example-potential-outcomes-2",
+    "href": "identification/identification.html#example-potential-outcomes-2",
+    "title": "Identification",
+    "section": "Example: Potential Outcomes",
+    "text": "Example: Potential Outcomes\n\nMatching initially studied with a linear regression model, e.g. Cochran (1953) \\[\nY_i = \\alpha D_i + X_i' \\beta + \\epsilon_i\n\\]\nImplies constant treatment effect \\(Y_{i,1} - Y_{i,0} = \\alpha\\)\n\n\nThe LATE interpretation of IV developed along similar lines – replace a constant treatment effect linear model with a heterogenous effect potential outcomes framework, and see what IV does.\nSimilarly, the recent literature on difference in differences with staggered treatment timing arises from moving from a model with a constant treatment effect over time to one where treatment effects vary with time."
+  },
+  {
     "objectID": "identification/identification.html#non-constructive-identification-1",
     "href": "identification/identification.html#non-constructive-identification-1",
     "title": "Identification",
     "section": "Non-constructive Identification",
-    "text": "Non-constructive Identification\n\nIdentification sometimes defined without explicit mapping from data to parameters, e.g. Hsiao (1983), Rosa L. Matzkin (2007)\n\n\n\n\nDefinition: Observationally Equivalent\n\n\n\nLet \\(\\mathcal{P} = \\{ P(\\cdot; s) : s \\in S \\}\\), two structures \\(s\\) and \\(\\tilde{s}\\) in \\(S\\) are observationally equivalent if they imply the same distribution for the observed data, i.e. \\[ P(B;s) = P(B; \\tilde{s}) \\] for all \\(B \\in \\sigma(X)\\).\nLet \\(\\lambda: S \\to \\R^k\\), \\(\\theta\\) is observationally equivalent to \\(\\tilde{\\theta}\\) if \\(\\exists s, \\tilde{s} \\in S\\) that are observationally equivalent and \\(\\theta = \\lambda(s)\\) and \\(\\tilde{\\theta} = \\lambda(\\tilde{s})\\)\n\nLet \\(\\Gamma(\\theta, S) = \\{P(\\dot; s) | s \\in S, \\theta = \\lambda(s) \\}\\), then \\(\\theta\\) and \\(\\tilde{\\theta}\\) are observationally equivalent iff \\(\\Gamma(\\theta,S) \\cap \\Gamma(\\tilde{\\theta}, S) \\neq \\emptyset\\)"
+    "text": "Non-constructive Identification\n\nIdentification sometimes defined without explicit mapping from data to parameters, e.g. Hsiao (1983), Matzkin (2007)\n\n\n\n\nDefinition: Observationally Equivalent\n\n\n\nLet \\(\\mathcal{P} = \\{ P(\\cdot; s) : s \\in S \\}\\), two structures \\(s\\) and \\(\\tilde{s}\\) in \\(S\\) are observationally equivalent if they imply the same distribution for the observed data, i.e. \\[ P(B;s) = P(B; \\tilde{s}) \\] for all \\(B \\in \\sigma(X)\\).\nLet \\(\\lambda: S \\to \\R^k\\), \\(\\theta\\) is observationally equivalent to \\(\\tilde{\\theta}\\) if \\(\\exists s, \\tilde{s} \\in S\\) that are observationally equivalent and \\(\\theta = \\lambda(s)\\) and \\(\\tilde{\\theta} = \\lambda(\\tilde{s})\\)\n\nLet \\(\\Gamma(\\theta, S) = \\{P(\\dot; s) | s \\in S, \\theta = \\lambda(s) \\}\\), then \\(\\theta\\) and \\(\\tilde{\\theta}\\) are observationally equivalent iff \\(\\Gamma(\\theta,S) \\cap \\Gamma(\\tilde{\\theta}, S) \\neq \\emptyset\\)"
   },
   {
     "objectID": "identification/identification.html#non-constructive-identification-2",
@@ -74,49 +116,7 @@
     "href": "identification/identification.html#example-random-coefficients-logit",
     "title": "Identification",
     "section": "Example: Random Coefficients Logit",
-    "text": "Example: Random Coefficients Logit\n\n\\(Y_i = 1\\{\\beta_0 + \\beta_i X_i \\geq U_i \\}\\)\n\n\\(U\\) independent \\(X_i,\\beta_i\\),\n\\(\\beta_i\\) indepedent \\(X_i\\),\n\\(F_u(z) = \\frac{e^z}{1+e^z}\\)\n\n\\(Er[Y|X] = \\int \\frac{e^{\\beta_0 + \\beta X_i}} {1+e^{\\beta_0 + \\beta X_i}} dF_\\beta(\\beta)\\)\nNon-constructive and constructive identification of \\(F_\\beta\\) in Fox et al. (2012)\n\n\nHard to give a brief example where non-constructive argument is required. Non constructive identification proofs typically leverage some high level mathematical result.\nChristensen (2015) is another example of non-constructive identification."
-  },
-  {
-    "objectID": "identification/identification.html#example-regression",
-    "href": "identification/identification.html#example-regression",
-    "title": "Identification",
-    "section": "Example: Regression",
-    "text": "Example: Regression\n\nIn linear model \\(Y_i = X_i'\\beta + \\epsilon_i\\), if just assume \\(\\Er X X'\\) invertible,\nPopulation regression \\[\n\\begin{align*}\n\\theta = & \\Er[ X X']^{-1} \\Er[ X Y]  \\\\\n= & \\Er[X X']^{-1} \\Er[X (X' \\beta + \\epsilon)] \\\\\n= & \\beta + \\Er[X X']^{-1} \\Er[X\\epsilon]\n\\end{align*}\n\\]"
-  },
-  {
-    "objectID": "identification/identification.html#example-regression-1",
-    "href": "identification/identification.html#example-regression-1",
-    "title": "Identification",
-    "section": "Example: Regression",
-    "text": "Example: Regression\n\nIf relevant moments exist (no linear model required) population regression solves \\[\n\\Er[ X X']^{-1} \\Er[ X Y]  \\in \\mathrm{arg}\\min_b \\Er[ (X'b - \\Er[Y|X])^2 ]\n\\]"
-  },
-  {
-    "objectID": "identification/identification.html#example-potential-outcomes-1",
-    "href": "identification/identification.html#example-potential-outcomes-1",
-    "title": "Identification",
-    "section": "Example: Potential Outcomes",
-    "text": "Example: Potential Outcomes\n\nMatching initially studied with a linear regression model, e.g. Cochran (1953) \\[\nY_i = \\alpha D_i + X_i' \\beta + \\epsilon_i\n\\]\nImplies constant treatment effect \\(Y_{i,1} - Y_{i,0} = \\alpha\\)\n\n\nThe LATE interpretation of IV developed along similar lines – replace a constant treatment effect linear model with a heterogenous effect potential outcomes framework, and see what IV does."
-  },
-  {
-    "objectID": "identification/identification.html#causal-diagrams-1",
-    "href": "identification/identification.html#causal-diagrams-1",
-    "title": "Identification",
-    "section": "Causal Diagrams",
-    "text": "Causal Diagrams\n\nAdvocated by Pearl, e.g. Pearl (2015), Pearl and Mackenzie (2018)\nRecommended introduction Imbens (2020)\nSometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach\n\ne.g. Chernozhukov, Kasahara, and Schrimpf (2021)"
-  },
-  {
-    "objectID": "identification/identification.html#example-regression-2",
-    "href": "identification/identification.html#example-regression-2",
-    "title": "Identification",
-    "section": "Example: Regression",
-    "text": "Example: Regression"
-  },
-  {
-    "objectID": "identification/identification.html#example-potential-outcomes-2",
-    "href": "identification/identification.html#example-potential-outcomes-2",
-    "title": "Identification",
-    "section": "Example: Potential Outcomes",
-    "text": "Example: Potential Outcomes"
+    "text": "Example: Random Coefficients Logit\n\n\\(Y_i = 1\\{\\beta_0 + \\beta_i X_i \\geq U_i \\}\\)\n\n\\(U\\) independent \\(X_i,\\beta_i\\),\n\\(\\beta_i\\) indepedent \\(X_i\\),\n\\(F_u(z) = \\frac{e^z}{1+e^z}\\)\n\n\\(\\Er[Y|X] = \\int \\frac{e^{\\beta_0 + \\beta X_i}} {1+e^{\\beta_0 + \\beta X_i}} dF_\\beta(\\beta)\\)\nNon-constructive and constructive identification of \\(F_\\beta\\) in Fox et al. (2012)\n\n\nHard to give a brief example where non-constructive argument is required. Non constructive identification proofs typically leverage some high level mathematical result.\nChristensen (2015) is another example of non-constructive identification."
   },
   {
     "objectID": "index.html",

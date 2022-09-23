@@ -24,9 +24,10 @@ bibliography: 626.bib
 
 - Family of Distributions : we will not cover in class, read and refer to @song2021 Chapter 3 as needed
 
-- [Basics of Inference](inference/inference.qmd)
+- Basics of Inference
 
    - Required reading: @song2021 Chapter 4
+   - [Identification](identification/identification.qmd)
    - Estimation
    - Hypothesis Testing
 

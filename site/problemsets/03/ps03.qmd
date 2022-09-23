@@ -1,0 +1,45 @@
+---
+title: "ECON 626: Problem Set 3"
+#author: "Paul Schrimpf"
+date: 2022-09-30
+bibliography: ../../626.bib
+---
+
+$$
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+$$
+
+# Problem 1
+
+(This was problem 3 last week)
+
+Let $X: \Omega \to \R$, $W:  \Omega \to \R$, $Z: \Omega \to \R$, and $D: \Omega \to \{0, 1\}$ be random variables.
+Let $Y = D X + (1-D) W$.  Suppose that $Y$, $D$, and $Z$ are observed, but $X$ and $W$ are not.
+
+1. Suppose $D$ is independent of $X$, $W$.  Then show that $\Er[X - W]$ is identified.
+
+2. Suppose $Z$ is independent of $X$ and $W$, and
+$\exists E_1, E_0 \in \sigma(Z)$ such that $P(D=1 | E_1) = 1$ and  $P(D=0|E_0) = 1$.
+Then show that $\Er[X-W]$ is identified.^[An assumption like this is used in nonparametric selection estimators.
+One way to have such $E_1$ and $E_0$ is if $D = 1\{Z \gamma \geq U\}$
+and $Z$ has unbounded supported. Then $E_0$ and $E_1$ are sets where
+$Z \to \pm \infty$. Accordingly, this is sometimes called an *identification at infinity* assumption.
+See @heckman2004 for more information, and a comparison between this case, and the (conditional) independence assumption of part 1.
+(This footnote and that paper are extra information, not hints to help answer the question).]
+
+
+# Problem 2
+
+In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\var(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent.
+
+
+# Problem 3
+
+@song2021 Chatper 4, exercise 1.3.
+
+Consider the binary choice model in Example 1.3 and assume that
+$\tilde{\beta}_0$ and $\tilde{\beta}_1$ have appropriate estimators
+$\hat{\beta}_0$ and $\hat{\beta}_1$. Provide a sample analogue
+estimator of the average derivative, replacing $\tilde{\beta}_0$ and
+$\tilde{\beta}_1$ with $\hat{\beta}_0$ and $\hat{\beta}_1$

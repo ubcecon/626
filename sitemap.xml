@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ubcecon.github.io/626/about.html</loc>
-    <lastmod>2022-09-23T18:48:26.318Z</lastmod>
+    <lastmod>2022-09-28T00:58:34.223Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/estimation/estimation.html</loc>
+    <lastmod>2022-09-28T00:58:34.706Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/identification/identification.html</loc>
-    <lastmod>2022-09-23T18:48:29.881Z</lastmod>
+    <lastmod>2022-09-28T00:58:38.253Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/index.html</loc>
-    <lastmod>2022-09-23T18:48:31.398Z</lastmod>
+    <lastmod>2022-09-28T00:58:39.633Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/measure/measure.html</loc>
-    <lastmod>2022-09-23T18:49:09.002Z</lastmod>
+    <lastmod>2022-09-28T00:59:13.980Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/probability/probability.html</loc>
-    <lastmod>2022-09-23T18:49:09.532Z</lastmod>
+    <lastmod>2022-09-28T00:59:14.467Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/01/ps01.html</loc>
-    <lastmod>2022-09-23T18:49:09.962Z</lastmod>
+    <lastmod>2022-09-28T00:59:14.894Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/02/ps02.html</loc>
-    <lastmod>2022-09-23T18:49:10.292Z</lastmod>
+    <lastmod>2022-09-28T00:59:15.250Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/03/ps03.html</loc>
-    <lastmod>2022-09-23T18:49:10.685Z</lastmod>
+    <lastmod>2022-09-28T00:59:15.624Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/slides.html</loc>
-    <lastmod>2022-09-23T18:49:12.099Z</lastmod>
+    <lastmod>2022-09-28T00:59:17.074Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/syllabus626.html</loc>
-    <lastmod>2022-09-23T18:49:12.459Z</lastmod>
+    <lastmod>2022-09-28T00:59:17.444Z</lastmod>
   </url>
 </urlset>

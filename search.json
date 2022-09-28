@@ -7,6 +7,104 @@
     "text": "This site was created using Quarto.\nSource code is available on github with a CC-by-SA license."
   },
   {
+    "objectID": "estimation/estimation.html#reading",
+    "href": "estimation/estimation.html#reading",
+    "title": "Estimation",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 4, sections 1.2 and 2 (which is the basis for these slides)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
+  },
+  {
+    "objectID": "estimation/estimation.html#estimator",
+    "href": "estimation/estimation.html#estimator",
+    "title": "Estimation",
+    "section": "Estimator",
+    "text": "Estimator\n\n\n\nDef\n\n\n\nGiven a parameter of interest \\(\\theta_0\\), an estimator is a measurable function of an observed random vector X, i.e. \\(\\hat{\\theta} = \\tau(X)\\) for some known map \\(\\tau\\)\nAn estimate given \\(X=x\\) is \\(\\tau(x)\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#sample-analogue-estimation",
+    "href": "estimation/estimation.html#sample-analogue-estimation",
+    "title": "Estimation",
+    "section": "Sample Analogue Estimation",
+    "text": "Sample Analogue Estimation\n\ni.i.d. observations from \\(P\\), \\(X = (X_1, ...., X_n)\\)\nconstructively identified parameter \\(\\theta_0 = \\psi(P)\\)\nempirical measure: \\[\n\\hat{P}(B) = \\frac{1}{n} \\sum_{i=1}^n 1\\{X_i \\in B \\}.\n\\]\nSample analogue estimator \\[\n\\hat{\\theta} = \\psi(\\hat{P})\n\\]"
+  },
+  {
+    "objectID": "estimation/estimation.html#sample-analogue-estimation---examples",
+    "href": "estimation/estimation.html#sample-analogue-estimation---examples",
+    "title": "Estimation",
+    "section": "Sample Analogue Estimation - Examples",
+    "text": "Sample Analogue Estimation - Examples\n\n\nMean\nOLS\n\n\n\nGo over some examples. Introduce empirical expectation.\nMention idea of conditions on \\(\\psi\\) and \\(\\hat{P}\\) such that estimator has good properties."
+  },
+  {
+    "objectID": "estimation/estimation.html#maximum-likelihood-estimation",
+    "href": "estimation/estimation.html#maximum-likelihood-estimation",
+    "title": "Estimation",
+    "section": "Maximum Likelihood Estimation",
+    "text": "Maximum Likelihood Estimation\n\n\\(X \\in \\R^n\\) distribution \\(P_X \\in \\mathcal{P} = \\{P_\\theta: \\theta \\in \\Theta \\subset \\R^d \\}\\)\n\\(P_\\theta\\) dominated by \\(\\sigma\\)-finite \\(\\mu\\) with density \\(f_X(\\cdot;\\theta)\\)\nLikelihood \\(\\ell(\\cdot, X): \\Theta \\to [0,\\infty)\\) \\[\n\\ell(\\theta; X)= f(X; \\theta)\n\\]\nMaximum likelihood estimator \\[\n\\hat{\\theta}_{MLE} = \\textrm{arg}\\max_{\\theta \\in \\Theta} \\ell(\\theta;X)\n\\]\n\n\nNormal mean example.\nLog-likelihood."
+  },
+  {
+    "objectID": "estimation/estimation.html#mle-examples",
+    "href": "estimation/estimation.html#mle-examples",
+    "title": "Estimation",
+    "section": "MLE: Examples",
+    "text": "MLE: Examples\n\n\n\\(X_i \\sim N(\\mu, 1)\\)\n\\(Y_i = \\alpha_0 + \\beta_0 X_i + \\epsilon_i\\), \\(\\epsilon_i \\sim N(0, \\sigma_0^2)\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#mle-invariance",
+    "href": "estimation/estimation.html#mle-invariance",
+    "title": "Estimation",
+    "section": "MLE: Invariance",
+    "text": "MLE: Invariance\n\n\n\nTheorem 1.1\n\n\nIf \\(\\hat{\\theta}\\) is the MLE of \\(\\theta\\), then for any function \\(g:\\Theta \\to G\\), the MLE of \\(g(\\theta)\\) is \\(g(\\hat{\\theta})\\)."
+  },
+  {
+    "objectID": "estimation/estimation.html#mean-squared-error",
+    "href": "estimation/estimation.html#mean-squared-error",
+    "title": "Estimation",
+    "section": "Mean Squared Error",
+    "text": "Mean Squared Error\n\nLoss function \\(L: \\R^d \\times \\Theta \\to [0,\\infty)\\) with \\(L(\\theta,\\theta)=0\\)\nRisk of at \\(\\theta_0\\) \\(\\Er[L(\\hat{\\theta}, \\theta_0)]\\)\nSquared error loss \\(L_2(\\theta, \\theta_0) = (\\theta-\\theta_0)'(\\theta-\\theta_0)\\)\nMean squared error \\[\nMSE(\\hat{\\theta}) = \\Er[ (\\theta-\\theta_0)'(\\theta-\\theta_0) ]\n\\]\nBias-variance decomposition \\[\nMSE(\\hat{\\theta}) = \\textrm{Bias}(\\hat{\\theta})'\\textrm{Bias}(\\hat{\\theta}) + \\textrm{tr}(\\var(\\hat{\\theta}))\n\\]"
+  },
+  {
+    "objectID": "estimation/estimation.html#setup",
+    "href": "estimation/estimation.html#setup",
+    "title": "Estimation",
+    "section": "Setup",
+    "text": "Setup\n\n\\(X \\in \\R^n\\) distribution \\(P_X \\in \\mathcal{P} = \\{P_\\theta: \\theta \\in \\Theta \\subset \\R^d \\}\\), likelihood \\(\\ell(\\theta;x) = f_X(x;\\theta)\\)\nQuestion: if an estimator is unbiased, what is the smallest possible variance?"
+  },
+  {
+    "objectID": "estimation/estimation.html#score-equality",
+    "href": "estimation/estimation.html#score-equality",
+    "title": "Estimation",
+    "section": "Score Equality",
+    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =  \\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\unbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{\"score\"}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]"
+  },
+  {
+    "objectID": "estimation/estimation.html#information-equality",
+    "href": "estimation/estimation.html#information-equality",
+    "title": "Estimation",
+    "section": "Information Equality",
+    "text": "Information Equality\n\nFischer Information \\(I(\\theta) = \\int s(x,\\theta) s(x,\\theta)' dP_\\theta(x)\\)\nIf \\(\\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} \\int f_X(x;\\theta) d\\mu(x) =  \\int \\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} f_X(x;\\theta)  d\\mu(x)\\), then \\[\nI(\\theta) = -\\int \\underbrace{\\frac{\\partial^2 \\ell(\\theta;x)}{\\partial \\theta \\partial \\theta'}}_{\\text{\"Hessian\"}=h(x,\\theta)} dP_\\theta(x)\n\\]"
+  },
+  {
+    "objectID": "estimation/estimation.html#section",
+    "href": "estimation/estimation.html#section",
+    "title": "Estimation",
+    "section": "",
+    "text": "If \\(T = \\tau(X)\\) is an unbiased estimator for \\(\\theta\\) and \\[\n\\frac{\\partial}{\\partial \\theta} \\int \\tau(x) f_X(x;\\theta) d\\mu(x) =\n\\int \\tau(x) \\frac{\\partial f_X(x,\\theta)}{\\partial \\theta\\partial \\theta'} d\\mu(x)\n\\] then \\[\n\\int \\tau(x) s(x,\\theta)'dP_\\theta(x) = I\n\\]"
+  },
+  {
+    "objectID": "estimation/estimation.html#cramér-rao-bound",
+    "href": "estimation/estimation.html#cramér-rao-bound",
+    "title": "Estimation",
+    "section": "Cramér-Rao Bound",
+    "text": "Cramér-Rao Bound\n\n\n\nCramér-Rao Bound\n\n\nLet \\(T = \\tau(X)\\) be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then, \\[\n\\var_theta(\\tau(X)) \\equiv \\int (\\tau(x) - \\int \\tau(x) dP_\\theta)(\\tau(x) - \\int \\tau(x) dP_\\theta)' dP\\theta \\geq I(\\theta)^{-1}\n\\]"
+  },
+  {
+    "objectID": "estimation/estimation.html#neyman-pearson-lemma",
+    "href": "estimation/estimation.html#neyman-pearson-lemma",
+    "title": "Estimation",
+    "section": "Neyman-Pearson Lemma",
+    "text": "Neyman-Pearson Lemma"
+  },
+  {
     "objectID": "identification/identification.html#reading",
     "href": "identification/identification.html#reading",
     "title": "Identification",
@@ -424,7 +522,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

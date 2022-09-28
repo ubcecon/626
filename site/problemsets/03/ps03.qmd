@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 3"
 #author: "Paul Schrimpf"
-date: 2022-09-30
+date: 2022-09-29
 bibliography: ../../626.bib
 ---
 
@@ -31,7 +31,7 @@ See @heckman2004 for more information, and a comparison between this case, and t
 
 # Problem 2
 
-In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\var(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent.
+In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\mathrm{Var}(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent.
 
 
 # Problem 3

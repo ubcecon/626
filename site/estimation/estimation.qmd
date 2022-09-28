@@ -1,0 +1,197 @@
+---
+title: "Estimation"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1600
+    height: 900
+    min-scale: 0.1
+    chalkboard:
+      chalk-width: 6
+      chalk-effect: 0.5
+    title-slide-attributes:
+      data-background-image: "widowmaker.jpg"
+      data-background-size: contain
+bibliography: ../626.bib
+
+# jupyter: julia-1.8
+# execute:
+#   cache: false
+---
+
+
+## Reading
+
+- Required: **@song2021 chapter 4, sections 1.2 and 2** (which is the basis for these slides)
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+$$
+
+# Estimation
+
+## Estimator
+
+::: {.callout-def icon=false}
+
+- Given a parameter of interest $\theta_0$, an **estimator** is a measurable function of an observed random vector X, i.e.
+$\hat{\theta} = \tau(X)$ for some known map $\tau$
+
+- An **estimate** given $X=x$ is $\tau(x)$
+
+:::
+
+## Sample Analogue Estimation
+
+- i.i.d. observations from $P$, $X = (X_1, ...., X_n)$
+- constructively identified parameter $\theta_0 = \psi(P)$
+- empirical measure:
+$$
+\hat{P}(B) = \frac{1}{n} \sum_{i=1}^n 1\{X_i \in B \}.
+$$
+- Sample analogue estimator
+$$
+\hat{\theta} = \psi(\hat{P})
+$$
+
+## Sample Analogue Estimation - Examples
+
+::: {.incremental}
+
+- Mean
+- OLS
+
+:::
+
+::: {.notes}
+
+Go over some examples. Introduce empirical expectation.
+
+Mention idea of conditions on $\psi$ and $\hat{P}$ such that estimator
+has good properties.
+
+:::
+
+## Maximum Likelihood Estimation
+
+- $X \in \R^n$ distribution $P_X \in \mathcal{P} = \{P_\theta: \theta
+\in \Theta \subset \R^d \}$
+- $P_\theta$ dominated by $\sigma$-finite $\mu$ with density
+$f_X(\cdot;\theta)$
+- **Likelihood** $\ell(\cdot, X): \Theta \to [0,\infty)$
+$$
+\ell(\theta; X)= f(X; \theta)
+$$
+
+- **Maximum likelihood estimator**
+$$
+\hat{\theta}_{MLE} = \textrm{arg}\max_{\theta \in \Theta} \ell(\theta;X)
+$$
+
+::: {.notes}
+
+Normal mean example.
+
+Log-likelihood.
+
+:::
+
+## MLE: Examples
+
+::: {.incremental}
+
+- $X_i \sim N(\mu, 1)$
+- $Y_i = \alpha_0 + \beta_0 X_i + \epsilon_i$, $\epsilon_i \sim N(0, \sigma_0^2)$
+
+:::
+
+## MLE: Invariance
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.1
+
+If $\hat{\theta}$ is the MLE of $\theta$, then for any function
+$g:\Theta \to G$, the MLE of $g(\theta)$ is $g(\hat{\theta})$.
+
+:::
+
+# Quality of Estimators
+
+## Mean Squared Error
+
+- **Loss function** $L: \R^d \times \Theta \to [0,\infty)$ with $L(\theta,\theta)=0$
+- **Risk** of \hat{\theta} at $\theta_0$ $\Er[L(\hat{\theta}, \theta_0)]$
+- Squared error loss $L_2(\theta, \theta_0) = (\theta-\theta_0)'(\theta-\theta_0)$
+- Mean squared error
+$$
+MSE(\hat{\theta}) = \Er[ (\theta-\theta_0)'(\theta-\theta_0) ]
+$$
+- Bias-variance decomposition
+$$
+MSE(\hat{\theta}) = \textrm{Bias}(\hat{\theta})'\textrm{Bias}(\hat{\theta}) + \textrm{tr}(\var(\hat{\theta}))
+$$
+
+# Optimal Estimation in Parametric Models
+
+## Setup
+
+- $X \in \R^n$ distribution $P_X \in \mathcal{P} = \{P_\theta: \theta
+\in \Theta \subset \R^d \}$, likelihood $\ell(\theta;x) = f_X(x;\theta)$
+
+- Question: if an estimator is unbiased, what is the smallest possible variance?
+
+## Score Equality
+
+- If $\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =
+ \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)$, then
+ $$
+ \int \unbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
+ $$
+
+## Information Equality
+
+- Fischer Information $I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x)$
+- If $\frac{\partial^2}{\partial \theta\partial \theta'} \int f_X(x;\theta) d\mu(x) =
+ \int \frac{\partial^2}{\partial \theta\partial \theta'} f_X(x;\theta)
+ d\mu(x)$, then
+ $$
+ I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{"Hessian"}=h(x,\theta)} dP_\theta(x)
+ $$
+
+##
+
+- If $T = \tau(X)$ is an unbiased estimator for $\theta$ and
+$$
+\frac{\partial}{\partial \theta} \int \tau(x) f_X(x;\theta) d\mu(x) =
+ \int \tau(x) \frac{\partial f_X(x,\theta)}{\partial \theta\partial \theta'} d\mu(x)
+$$
+then
+$$
+\int \tau(x) s(x,\theta)'dP_\theta(x) = I
+$$
+
+## Cramér-Rao Bound
+
+::: {.callout-warning icon=false}
+
+### Cramér-Rao Bound
+
+Let $T = \tau(X)$ be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then,
+$$
+\var_theta(\tau(X)) \equiv \int (\tau(x) - \int \tau(x) dP_\theta)(\tau(x) - \int \tau(x) dP_\theta)' dP\theta \geq I(\theta)^{-1}
+$$
+
+:::
+
+# Hypothesis Testing
+
+## Neyman-Pearson Lemma
+
+
+# References

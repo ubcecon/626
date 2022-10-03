@@ -28,7 +28,7 @@ bibliography: 626.bib
 
    - Required reading: @song2021 Chapter 4
    - [Identification](identification/identification.qmd)
-   - Estimation
+   - [Estimation](estimation/estimation.qmd)
    - Hypothesis Testing
 
 # Part II: Generalized Linear Model

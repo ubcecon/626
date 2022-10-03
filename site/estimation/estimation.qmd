@@ -151,7 +151,7 @@ $$
 - If $\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =
  \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)$, then
  $$
- \int \unbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
+ \int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
  $$
 
 ## Information Equality
@@ -184,14 +184,119 @@ $$
 
 Let $T = \tau(X)$ be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then,
 $$
-\var_theta(\tau(X)) \equiv \int (\tau(x) - \int \tau(x) dP_\theta)(\tau(x) - \int \tau(x) dP_\theta)' dP\theta \geq I(\theta)^{-1}
+\var_\theta(\tau(X)) \equiv \int \left(\tau(x) - \int \tau(x) dP_\theta\right)\left(\tau(x) - \int \tau(x) dP_\theta\right)' dP\theta \geq I(\theta)^{-1}
 $$
 
 :::
 
 # Hypothesis Testing
 
-## Neyman-Pearson Lemma
+::: {.notes}
+
+Caution against over relying on hypothesis testing. We start with it because it is central to practice, and we get a nice, clear theory (the Neyman-Pearson Lemma), but care is needed.
+
+:::
+
+## Hypothesis Testing
+
+- $X \in \mathcal{X} \subset \R^n$, distribution $P_x \in \mathcal{P}$
+- Partition $\mathcal{P} = \mathcal{P}_0 \cup \mathcal{P}_1$
+- Null and alternative hypotheses:
+     - $H_0: \; P_x \in \mathcal{P}_0$
+     - $H_1: \; P_x \in \mathcal{P}_1$
+
+## Hypothesis Testing
+
+- Test partitions $\mathcal{X} = \underbrace{C}_{\text{critical region}} \cup A$
+     - Reject null if $X \in C$
+     - Often $C = \{x \in \mathcal{X}:
+     \underbrace{\tau(x)}_{\text{test statistic}} >
+     \underbrace{c}_{\text{critical value}} \}$
+
+## Hypothesis Testing
+
+- $P(\text{reject } H_0 | P_x \in \mathcal{P}_0)$=*Type I error* $=P_x(C)$
+- $P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)$=*Type II error*
+- $P(\text{reject } H_0 | P_x \in \mathcal{P}_1)$ = *power*
+- $\sup_{P_x \in \mathcal{P}_0} P_x(C)$ = *size of test*
+
+::: {.notes}
+
+Illustrate schematically how these vary with $C$
+
+:::
+
+## p-value
+
+- test statistic $\tau(X)$ , define
+$$ G_P(t)  =  P(\tau(X) > t) $$
+- *p-value* is
+$$
+p= \sup_{P \in \mathcal{P}_0} G_P(\tau(X))
+$$
+
+::: {.fragment}
+
+- if $\mathcal{P}_0 = \{P_0\}$, critical value $c$, let $\alpha = G_{P_0}(c)$, then $\tau(X) > c$
+iff $p < \alpha$
+
+:::
+
+## Testing in Parametric Family
+
+- Parametric family $\mathcal{P} = \{P_\theta: \theta  \in \Theta\}$
+   - $\Theta_0 = \{\theta \in \Theta: P_\theta \in \mathcal{P}_0\}$
+   - $\Theta_1 = \{\theta \in \Theta: P_\theta \in \mathcal{P}_1\}$
+- Hypotheses
+   - $H_0 : \theta  \in \Theta_0$
+   - $H_1: \theta \in \Theta_1$
+- **Power function** of test $C$
+$$\pi:\Theta \to [0,1] , \;\;  \pi(\theta) = P_\theta(C)$$
+- Size $= \sup_{\theta \in \Theta_0} \pi(\theta)$
+
+
+## More Powerful
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+- For test $C_1$ and $C_2$ with same size, $C_1$ is **more powerful** at
+$\theta \in \Theta_1$ than $C_2$ if $P_\theta(C_1) \geq P_\theta(C_2)$
+- $C$ is **most powerful** at $\theta \in \Theta_1$ if is more powerfull than any test of the same size
+- $C$ is **uniformly most powerful** if it is most powerful at any $\theta \in \Theta_1$
+
+:::
+
+## Neyman-Pearson
+
+::: {.callout-warning icon=false}
+
+### Lemma (Neyman-Pearson)
+
+Let $\Theta = \{0, 1\}$,  $f_0$ and $f_1$ be densities of $P_0$ and $P_1$,
+$\tau(x) =f_1(x)/f_0(x) $ and $C^* =\{x \in X: \tau(x) > c\}$. Then among all
+tests $C$ s.t. $P_0(C) = P_0(C^*)$, $C^*$ is most powerful.
+
+:::
+
+## Example
+
+- $X_i \sim N(\mu, 1)$
+- $H_0: \mu = 0$ against $H_1: \mu = 1$
+- Find a most powerful test
+
+::: {.fragment}
+- What is the most powerful test if $H_1: \mu = a$ for $a>0$ instead?
+:::
+
+::: {.fragment}
+- What is the uniformly most powerful test if $H_1: \mu > 0$ ?
+:::
+
+::: {.fragment}
+- What is the uniformly most powerful test if $H_1: \mu \neq 0$ ?
+:::
 
 
 # References

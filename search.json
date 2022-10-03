@@ -74,7 +74,7 @@
     "href": "estimation/estimation.html#score-equality",
     "title": "Estimation",
     "section": "Score Equality",
-    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =  \\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\unbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{\"score\"}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]"
+    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =  \\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\underbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{\"score\"}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#information-equality",
@@ -95,14 +95,63 @@
     "href": "estimation/estimation.html#cramér-rao-bound",
     "title": "Estimation",
     "section": "Cramér-Rao Bound",
-    "text": "Cramér-Rao Bound\n\n\n\nCramér-Rao Bound\n\n\nLet \\(T = \\tau(X)\\) be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then, \\[\n\\var_theta(\\tau(X)) \\equiv \\int (\\tau(x) - \\int \\tau(x) dP_\\theta)(\\tau(x) - \\int \\tau(x) dP_\\theta)' dP\\theta \\geq I(\\theta)^{-1}\n\\]"
+    "text": "Cramér-Rao Bound\n\n\n\nCramér-Rao Bound\n\n\nLet \\(T = \\tau(X)\\) be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then, \\[\n\\var_\\theta(\\tau(X)) \\equiv \\int \\left(\\tau(x) - \\int \\tau(x) dP_\\theta\\right)\\left(\\tau(x) - \\int \\tau(x) dP_\\theta\\right)' dP\\theta \\geq I(\\theta)^{-1}\n\\]"
   },
   {
-    "objectID": "estimation/estimation.html#neyman-pearson-lemma",
-    "href": "estimation/estimation.html#neyman-pearson-lemma",
+    "objectID": "estimation/estimation.html#hypothesis-testing-1",
+    "href": "estimation/estimation.html#hypothesis-testing-1",
     "title": "Estimation",
-    "section": "Neyman-Pearson Lemma",
-    "text": "Neyman-Pearson Lemma"
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\n\\(X \\in \\mathcal{X} \\subset \\R^n\\), distribution \\(P_x \\in \\mathcal{P}\\)\nPartition \\(\\mathcal{P} = \\mathcal{P}_0 \\cup \\mathcal{P}_1\\)\nNull and alternative hypotheses:\n\n\\(H_0: \\; P_x \\in \\mathcal{P}_0\\)\n\\(H_1: \\; P_x \\in \\mathcal{P}_1\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#hypothesis-testing-2",
+    "href": "estimation/estimation.html#hypothesis-testing-2",
+    "title": "Estimation",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\nTest partitions \\(\\mathcal{X} = \\underbrace{C}_{\\text{critical region}} \\cup A\\)\n\nReject null if \\(X \\in C\\)\nOften \\(C = \\{x \\in \\mathcal{X}:  \\underbrace{\\tau(x)}_{\\text{test statistic}} >  \\underbrace{c}_{\\text{critical value}} \\}\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#hypothesis-testing-3",
+    "href": "estimation/estimation.html#hypothesis-testing-3",
+    "title": "Estimation",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\n\\(P(\\text{reject } H_0 | P_x \\in \\mathcal{P}_0)\\)=Type I error \\(=P_x(C)\\)\n\\(P(\\text{fail to reject } H_0 | P_x \\in \\mathcal{P}_1)\\)=Type II error\n\\(P(\\text{reject } H_0 | P_x \\in \\mathcal{P}_1)\\) = power\n\\(\\sup_{P_x \\in \\mathcal{P}_0} P_x(C)\\) = size of test\n\n\nIllustrate schematically how these vary with \\(C\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#p-value",
+    "href": "estimation/estimation.html#p-value",
+    "title": "Estimation",
+    "section": "p-value",
+    "text": "p-value\n\ntest statistic \\(\\tau(X)\\) , define \\[ G_P(t)  =  P(\\tau(X) > t) \\]\np-value is \\[\np= \\sup_{P \\in \\mathcal{P}_0} G_P(\\tau(X))\n\\]\n\n\n\nif \\(\\mathcal{P}_0 = \\{P_0\\}\\), critical value \\(c\\), let \\(\\alpha = G_{P_0}(c)\\), then \\(\\tau(X) > c\\) iff \\(p < \\alpha\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#testing-in-parametric-family",
+    "href": "estimation/estimation.html#testing-in-parametric-family",
+    "title": "Estimation",
+    "section": "Testing in Parametric Family",
+    "text": "Testing in Parametric Family\n\nParametric family \\(\\mathcal{P} = \\{P_\\theta: \\theta \\in \\Theta\\}\\)\n\n\\(\\Theta_0 = \\{\\theta \\in \\Theta: P_\\theta \\in \\mathcal{P}_0\\}\\)\n\\(\\Theta_1 = \\{\\theta \\in \\Theta: P_\\theta \\in \\mathcal{P}_1\\}\\)\n\nHypotheses\n\n\\(H_0 : \\theta \\in \\Theta_0\\)\n\\(H_1: \\theta \\in \\Theta_1\\)\n\nPower function of test \\(C\\) \\[\\pi:\\Theta \\to [0,1] , \\;\\;  \\pi(\\theta) = P_\\theta(C)\\]\nSize \\(= \\sup_{\\theta \\in \\Theta_0} \\pi(\\theta)\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#more-powerful",
+    "href": "estimation/estimation.html#more-powerful",
+    "title": "Estimation",
+    "section": "More Powerful",
+    "text": "More Powerful\n\n\n\nDefinition\n\n\n\nFor test \\(C_1\\) and \\(C_2\\) with same size, \\(C_1\\) is more powerful at \\(\\theta \\in \\Theta_1\\) than \\(C_2\\) if \\(P_\\theta(C_1) \\geq P_\\theta(C_2)\\)\n\\(C\\) is most powerful at \\(\\theta \\in \\Theta_1\\) if is more powerfull than any test of the same size\n\\(C\\) is uniformly most powerful if it is most powerful at any \\(\\theta \\in \\Theta_1\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#neyman-pearson",
+    "href": "estimation/estimation.html#neyman-pearson",
+    "title": "Estimation",
+    "section": "Neyman-Pearson",
+    "text": "Neyman-Pearson\n\n\n\nLemma (Neyman-Pearson)\n\n\nLet \\(\\Theta = \\{0, 1\\}\\), \\(f_0\\) and \\(f_1\\) be densities of \\(P_0\\) and \\(P_1\\), $(x) =f_1(x)/f_0(x) $ and \\(C^* =\\{x \\in X: \\tau(x) > c\\}\\). Then among all tests \\(C\\) s.t. \\(P_0(C) = P_0(C^*)\\), \\(C^*\\) is most powerful."
+  },
+  {
+    "objectID": "estimation/estimation.html#example",
+    "href": "estimation/estimation.html#example",
+    "title": "Estimation",
+    "section": "Example",
+    "text": "Example\n\n\\(X_i \\sim N(\\mu, 1)\\)\n\\(H_0: \\mu = 0\\) against \\(H_1: \\mu = 1\\)\nFind a most powerful test\n\n\n\nWhat is the most powerful test if \\(H_1: \\mu = a\\) for \\(a>0\\) instead?\n\n\n\n\nWhat is the uniformly most powerful test if \\(H_1: \\mu > 0\\) ?\n\n\n\n\nWhat is the uniformly most powerful test if \\(H_1: \\mu \\neq 0\\) ?"
   },
   {
     "objectID": "identification/identification.html#reading",
@@ -522,7 +571,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

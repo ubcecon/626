@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="Paul Schrimpf">
-  <title>ECON 626 - Estimation</title>
+  <title>ECON 626 - Least Squares as a Projection</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -344,8 +344,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="widowmaker.jpg" data-background-size="contain" class="center">
-  <h1 class="title">Estimation</h1>
+<section id="title-slide" data-background-image="wedge.jpg" data-background-size="contain" class="center">
+  <h1 class="title">Least Squares as a Projection</h1>
   <p class="author">Paul Schrimpf</p>
   <p class="date">10/5/22</p>
 </section>
@@ -353,340 +353,68 @@
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
-<li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 4, sections 1.2 and 2</strong> (which is the basis for these slides)</li>
-<li>Supplemental: <span class="citation" data-cites="lehmann2005">Erich Leo Lehmann and Romano (<a href="#/references" role="doc-biblioref" onclick="">n.d.</a>)</span> , <span class="citation" data-cites="lehmann2006">Erich L. Lehmann and Casella (<a href="#/references" role="doc-biblioref" onclick="">2006</a>)</span></li>
+<li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 5</strong> (which is the basis for these slides)</li>
+<li>Supplemental: <span class="citation" data-cites="schrimpf2018">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span>, <span class="citation" data-cites="schrimpf2013">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span></li>
 </ul>
 <p><span class="math display">\[
 \def\Er{{\mathrm{E}}}
 \def\cov{{\mathrm{Cov}}}
 \def\var{{\mathrm{Var}}}
 \def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
 \]</span></p>
 </section>
 <section>
-<section id="estimation" class="title-slide slide level1 center">
-<h1>Estimation</h1>
+<section id="projection-geometry-and-quadratic-forms" class="title-slide slide level1 center">
+<h1>Projection Geometry and Quadratic Forms</h1>
 
 </section>
-<section id="estimator" class="slide level2">
-<h2>Estimator</h2>
-<div class="callout callout-def no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Def</strong></p>
-</div>
-<div class="callout-content">
+<section id="orthogonal-subspaces" class="slide level2">
+<h2>Orthogonal Subspaces</h2>
 <ul>
-<li><p>Given a parameter of interest <span class="math inline">\(\theta_0\)</span>, an <strong>estimator</strong> is a measurable function of an observed random vector X, i.e. <span class="math inline">\(\hat{\theta} = \tau(X)\)</span> for some known map <span class="math inline">\(\tau\)</span></p></li>
-<li><p>An <strong>estimate</strong> given <span class="math inline">\(X=x\)</span> is <span class="math inline">\(\tau(x)\)</span></p></li>
+<li><span class="math inline">\(V \subseteq \R^n\)</span>, <strong>inner product space</strong></li>
+<li><span class="math inline">\(L \subset V\)</span> a subspace</li>
 </ul>
-</div>
-</div>
-</div>
+<p>::: {.callout-tip icon=false</p>
+<h3 id="definition">Definition</h3>
+<p>An <span class="math inline">\(L \subset V\)</span> is a <strong>subspace</strong> if <span class="math inline">\(\forall x, y \in L\)</span>, <span class="math inline">\(\alpha, \beta \in \R\)</span>, <span class="math inline">\(\alpha x + \beta y \in L\)</span></p>
+<p>:::</p>
 </section>
-<section id="sample-analogue-estimation" class="slide level2">
-<h2>Sample Analogue Estimation</h2>
+<section id="orthogonal-subspaces-1" class="slide level2">
+<h2>Orthogonal Subspaces</h2>
 <ul>
-<li>i.i.d. observations from <span class="math inline">\(P\)</span>, <span class="math inline">\(X = (X_1, ...., X_n)\)</span></li>
-<li>constructively identified parameter <span class="math inline">\(\theta_0 = \psi(P)\)</span></li>
-<li>empirical measure: <span class="math display">\[
-\hat{P}(B) = \frac{1}{n} \sum_{i=1}^n 1\{X_i \in B \}.
-\]</span></li>
-<li>Sample analogue estimator <span class="math display">\[
-\hat{\theta} = \psi(\hat{P})
-\]</span></li>
+<li><span class="math inline">\(V \subseteq \R^n\)</span>, <strong>inner product space</strong></li>
+<li><span class="math inline">\(L \subset V\)</span> a subspace</li>
+</ul>
+<p>::: {.callout-tip icon=false</p>
+<h3 id="definition-1">Definition</h3>
+<p>Given a subspace <span class="math inline">\(L \subset V\)</span> <strong>the orthogonal complement</strong> of <span class="math inline">\(L\)</span> is <span class="math display">\[
+L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
+\]</span></p>
+<p>:::</p>
+<ul>
+<li>For any <span class="math inline">\(y \in V\)</span>, <span class="math inline">\(\exists y_1 \in L\)</span>, <span class="math inline">\(y_2 \in L^\perp\)</span> s.t. <span class="math inline">\(y = y_1 + y_2\)</span></li>
 </ul>
 </section>
-<section id="sample-analogue-estimation---examples" class="slide level2">
-<h2>Sample Analogue Estimation - Examples</h2>
-<div>
-<ul>
-<li class="fragment">Mean</li>
-<li class="fragment">OLS</li>
-</ul>
-</div>
-<aside class="notes">
-<p>Go over some examples. Introduce empirical expectation.</p>
-<p>Mention idea of conditions on <span class="math inline">\(\psi\)</span> and <span class="math inline">\(\hat{P}\)</span> such that estimator has good properties.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="maximum-likelihood-estimation" class="slide level2">
-<h2>Maximum Likelihood Estimation</h2>
-<ul>
-<li><p><span class="math inline">\(X \in \R^n\)</span> distribution <span class="math inline">\(P_X \in \mathcal{P} = \{P_\theta: \theta \in \Theta \subset \R^d \}\)</span></p></li>
-<li><p><span class="math inline">\(P_\theta\)</span> dominated by <span class="math inline">\(\sigma\)</span>-finite <span class="math inline">\(\mu\)</span> with density <span class="math inline">\(f_X(\cdot;\theta)\)</span></p></li>
-<li><p><strong>Likelihood</strong> <span class="math inline">\(\ell(\cdot, X): \Theta \to [0,\infty)\)</span> <span class="math display">\[
-\ell(\theta; X)= f(X; \theta)
-\]</span></p></li>
-<li><p><strong>Maximum likelihood estimator</strong> <span class="math display">\[
-\hat{\theta}_{MLE} = \textrm{arg}\max_{\theta \in \Theta} \ell(\theta;X)
-\]</span></p></li>
-</ul>
-<aside class="notes">
-<p>Normal mean example.</p>
-<p>Log-likelihood.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="mle-examples" class="slide level2">
-<h2>MLE: Examples</h2>
-<div>
-<ul>
-<li class="fragment"><span class="math inline">\(X_i \sim N(\mu, 1)\)</span></li>
-<li class="fragment"><span class="math inline">\(Y_i = \alpha_0 + \beta_0 X_i + \epsilon_i\)</span>, <span class="math inline">\(\epsilon_i \sim N(0, \sigma_0^2)\)</span></li>
-</ul>
-</div>
-</section>
-<section id="mle-invariance" class="slide level2">
-<h2>MLE: Invariance</h2>
+<section id="orthogonal-subspaces-2" class="slide level2">
+<h2>Orthogonal Subspaces</h2>
 <div class="callout callout-warning no-icon callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
-<p><strong>Theorem 1.1</strong></p>
+<p><strong>Lemma 1.1</strong></p>
 </div>
 <div class="callout-content">
-<p>If <span class="math inline">\(\hat{\theta}\)</span> is the MLE of <span class="math inline">\(\theta\)</span>, then for any function <span class="math inline">\(g:\Theta \to G\)</span>, the MLE of <span class="math inline">\(g(\theta)\)</span> is <span class="math inline">\(g(\hat{\theta})\)</span>.</p>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="quality-of-estimators" class="title-slide slide level1 center">
-<h1>Quality of Estimators</h1>
-
-</section>
-<section id="mean-squared-error" class="slide level2">
-<h2>Mean Squared Error</h2>
-<ul>
-<li><strong>Loss function</strong> <span class="math inline">\(L: \R^d \times \Theta \to [0,\infty)\)</span> with <span class="math inline">\(L(\theta,\theta)=0\)</span></li>
-<li><strong>Risk</strong> of at <span class="math inline">\(\theta_0\)</span> <span class="math inline">\(\Er[L(\hat{\theta}, \theta_0)]\)</span></li>
-<li>Squared error loss <span class="math inline">\(L_2(\theta, \theta_0) = (\theta-\theta_0)'(\theta-\theta_0)\)</span></li>
-<li>Mean squared error <span class="math display">\[
-MSE(\hat{\theta}) = \Er[ (\theta-\theta_0)'(\theta-\theta_0) ]
-\]</span></li>
-<li>Bias-variance decomposition <span class="math display">\[
-MSE(\hat{\theta}) = \textrm{Bias}(\hat{\theta})'\textrm{Bias}(\hat{\theta}) + \textrm{tr}(\var(\hat{\theta}))
-\]</span></li>
-</ul>
-</section></section>
-<section>
-<section id="optimal-estimation-in-parametric-models" class="title-slide slide level1 center">
-<h1>Optimal Estimation in Parametric Models</h1>
-
-</section>
-<section id="setup" class="slide level2">
-<h2>Setup</h2>
-<ul>
-<li><p><span class="math inline">\(X \in \R^n\)</span> distribution <span class="math inline">\(P_X \in \mathcal{P} = \{P_\theta: \theta \in \Theta \subset \R^d \}\)</span>, likelihood <span class="math inline">\(\ell(\theta;x) = f_X(x;\theta)\)</span></p></li>
-<li><p>Question: if an estimator is unbiased, what is the smallest possible variance?</p></li>
-</ul>
-</section>
-<section id="score-equality" class="slide level2">
-<h2>Score Equality</h2>
-<ul>
-<li>If <span class="math inline">\(\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =  \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)\)</span>, then <span class="math display">\[
-\int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
-\]</span></li>
-</ul>
-</section>
-<section id="information-equality" class="slide level2">
-<h2>Information Equality</h2>
-<ul>
-<li>Fischer Information <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x)\)</span></li>
-<li>If <span class="math inline">\(\frac{\partial^2}{\partial \theta\partial \theta'} \int f_X(x;\theta) d\mu(x) =  \int \frac{\partial^2}{\partial \theta\partial \theta'} f_X(x;\theta)  d\mu(x)\)</span>, then <span class="math display">\[
-I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{"Hessian"}=h(x,\theta)} dP_\theta(x)
-\]</span></li>
-</ul>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-<ul>
-<li>If <span class="math inline">\(T = \tau(X)\)</span> is an unbiased estimator for <span class="math inline">\(\theta\)</span> and <span class="math display">\[
-\frac{\partial}{\partial \theta} \int \tau(x) f_X(x;\theta) d\mu(x) =
-\int \tau(x) \frac{\partial f_X(x,\theta)}{\partial \theta\partial \theta'} d\mu(x)
-\]</span> then <span class="math display">\[
-\int \tau(x) s(x,\theta)'dP_\theta(x) = I
-\]</span></li>
-</ul>
-</section>
-<section id="cramér-rao-bound" class="slide level2">
-<h2>Cramér-Rao Bound</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Cramér-Rao Bound</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(T = \tau(X)\)</span> be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then, <span class="math display">\[
-\var_\theta(\tau(X)) \equiv \int \left(\tau(x) - \int \tau(x) dP_\theta\right)\left(\tau(x) - \int \tau(x) dP_\theta\right)' dP\theta \geq I(\theta)^{-1}
+<p>Let <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> be subspaces of <span class="math inline">\(V\)</span>, then <span class="math display">\[
+(\underbrace{L_1 + L_2}_{\{x \in V: x = l_1 + l_2 \text{ for some } l_1 \in L_2, l_2 \in L_2\}})^\perp = L_1^\perp \cap L_2^\perp
+\]</span> and <span class="math display">\[
+(L_1 \cap L_2)^\perp = L_1^\perp + L_2^\perp
 \]</span></p>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="hypothesis-testing" class="title-slide slide level1 center">
-<h1>Hypothesis Testing</h1>
-<aside class="notes">
-<p>Caution against over relying on hypothesis testing. We start with it because it is central to practice, and we get a nice, clear theory (the Neyman-Pearson Lemma), but care is needed.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="hypothesis-testing-1" class="slide level2">
-<h2>Hypothesis Testing</h2>
-<ul>
-<li><span class="math inline">\(X \in \mathcal{X} \subset \R^n\)</span>, distribution <span class="math inline">\(P_x \in \mathcal{P}\)</span></li>
-<li>Partition <span class="math inline">\(\mathcal{P} = \mathcal{P}_0 \cup \mathcal{P}_1\)</span></li>
-<li>Null and alternative hypotheses:
-<ul>
-<li><span class="math inline">\(H_0: \; P_x \in \mathcal{P}_0\)</span></li>
-<li><span class="math inline">\(H_1: \; P_x \in \mathcal{P}_1\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="hypothesis-testing-2" class="slide level2">
-<h2>Hypothesis Testing</h2>
-<ul>
-<li>Test partitions <span class="math inline">\(\mathcal{X} = \underbrace{C}_{\text{critical region}} \cup A\)</span>
-<ul>
-<li>Reject null if <span class="math inline">\(X \in C\)</span></li>
-<li>Often <span class="math inline">\(C = \{x \in \mathcal{X}:  \underbrace{\tau(x)}_{\text{test statistic}} &gt;  \underbrace{c}_{\text{critical value}} \}\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="hypothesis-testing-3" class="slide level2">
-<h2>Hypothesis Testing</h2>
-<ul>
-<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_0)\)</span>=<em>Type I error</em> <span class="math inline">\(=P_x(C)\)</span></li>
-<li><span class="math inline">\(P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)\)</span>=<em>Type II error</em></li>
-<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_1)\)</span> = <em>power</em></li>
-<li><span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} P_x(C)\)</span> = <em>size of test</em></li>
-</ul>
-<aside class="notes">
-<p>Illustrate schematically how these vary with <span class="math inline">\(C\)</span></p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="p-value" class="slide level2">
-<h2>p-value</h2>
-<ul>
-<li>test statistic <span class="math inline">\(\tau(X)\)</span> , define <span class="math display">\[ G_P(t)  =  P(\tau(X) &gt; t) \]</span></li>
-<li><em>p-value</em> is <span class="math display">\[
-p= \sup_{P \in \mathcal{P}_0} G_P(\tau(X))
-\]</span></li>
-</ul>
-<div class="fragment">
-<ul>
-<li>if <span class="math inline">\(\mathcal{P}_0 = \{P_0\}\)</span>, critical value <span class="math inline">\(c\)</span>, let <span class="math inline">\(\alpha = G_{P_0}(c)\)</span>, then <span class="math inline">\(\tau(X) &gt; c\)</span> iff <span class="math inline">\(p &lt; \alpha\)</span></li>
-</ul>
-</div>
-</section>
-<section id="testing-in-parametric-family" class="slide level2">
-<h2>Testing in Parametric Family</h2>
-<ul>
-<li>Parametric family <span class="math inline">\(\mathcal{P} = \{P_\theta: \theta \in \Theta\}\)</span>
-<ul>
-<li><span class="math inline">\(\Theta_0 = \{\theta \in \Theta: P_\theta \in \mathcal{P}_0\}\)</span></li>
-<li><span class="math inline">\(\Theta_1 = \{\theta \in \Theta: P_\theta \in \mathcal{P}_1\}\)</span></li>
-</ul></li>
-<li>Hypotheses
-<ul>
-<li><span class="math inline">\(H_0 : \theta \in \Theta_0\)</span></li>
-<li><span class="math inline">\(H_1: \theta \in \Theta_1\)</span></li>
-</ul></li>
-<li><strong>Power function</strong> of test <span class="math inline">\(C\)</span> <span class="math display">\[\pi:\Theta \to [0,1] , \;\;  \pi(\theta) = P_\theta(C)\]</span></li>
-<li>Size <span class="math inline">\(= \sup_{\theta \in \Theta_0} \pi(\theta)\)</span></li>
-</ul>
-</section>
-<section id="more-powerful" class="slide level2">
-<h2>More Powerful</h2>
-<div class="callout callout-tip no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Definition</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>For test <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> with same size, <span class="math inline">\(C_1\)</span> is <strong>more powerful</strong> at <span class="math inline">\(\theta \in \Theta_1\)</span> than <span class="math inline">\(C_2\)</span> if <span class="math inline">\(P_\theta(C_1) \geq P_\theta(C_2)\)</span></li>
-<li><span class="math inline">\(C\)</span> is <strong>most powerful</strong> at <span class="math inline">\(\theta \in \Theta_1\)</span> if is more powerfull than any test of the same size</li>
-<li><span class="math inline">\(C\)</span> is <strong>uniformly most powerful</strong> if it is most powerful at any <span class="math inline">\(\theta \in \Theta_1\)</span></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section id="neyman-pearson" class="slide level2">
-<h2>Neyman-Pearson</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma (Neyman-Pearson)</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(\Theta = \{0, 1\}\)</span>, <span class="math inline">\(f_0\)</span> and <span class="math inline">\(f_1\)</span> be densities of <span class="math inline">\(P_0\)</span> and <span class="math inline">\(P_1\)</span>, $(x) =f_1(x)/f_0(x) $ and <span class="math inline">\(C^* =\{x \in X: \tau(x) &gt; c\}\)</span>. Then among all tests <span class="math inline">\(C\)</span> s.t. <span class="math inline">\(P_0(C) = P_0(C^*)\)</span>, <span class="math inline">\(C^*\)</span> is most powerful.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<ul>
-<li><span class="math inline">\(X_i \sim N(\mu, 1)\)</span></li>
-<li><span class="math inline">\(H_0: \mu = 0\)</span> against <span class="math inline">\(H_1: \mu = 1\)</span></li>
-<li>Find a most powerful test</li>
-</ul>
-<div class="fragment">
-<ul>
-<li>What is the most powerful test if <span class="math inline">\(H_1: \mu = a\)</span> for <span class="math inline">\(a&gt;0\)</span> instead?</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>What is the uniformly most powerful test if <span class="math inline">\(H_1: \mu &gt; 0\)</span> ?</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>What is the uniformly most powerful test if <span class="math inline">\(H_1: \mu \neq 0\)</span> ?</li>
-</ul>
-</div>
+<section id="projection" class="slide level2">
+<h2>Projection</h2>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -695,11 +423,11 @@ p= \sup_{P \in \mathcal{P}_0} G_P(\tau(X))
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-lehmann2006" class="csl-entry" role="doc-biblioentry">
-Lehmann, Erich L, and George Casella. 2006. <em>Theory of Point Estimation</em>. Springer Science &amp; Business Media. <a href="https://link.springer.com/book/10.1007/b98854">https://link.springer.com/book/10.1007/b98854</a>.
+<div id="ref-schrimpf2013" class="csl-entry" role="doc-biblioentry">
+Schrimpf, Paul. 2013. <span>“Vector Spaces.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/lec04vectorspaces.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/lec04vectorspaces.pdf</a>.
 </div>
-<div id="ref-lehmann2005" class="csl-entry" role="doc-biblioentry">
-Lehmann, Erich Leo, and Joseph P Romano. n.d. <em>Testing Statistical Hypotheses</em>. Vol. 3. Springer. <a href="https://link.springer.com/book/10.1007/0-387-27605-X">https://link.springer.com/book/10.1007/0-387-27605-X</a>.
+<div id="ref-schrimpf2018" class="csl-entry" role="doc-biblioentry">
+———. 2018. <span>“Linearity.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/linear-526.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/linear-526.pdf</a>.
 </div>
 <div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>

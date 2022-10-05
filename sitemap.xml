@@ -2,46 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ubcecon.github.io/626/about.html</loc>
-    <lastmod>2022-10-03T16:50:27.944Z</lastmod>
+    <lastmod>2022-10-05T16:46:58.362Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/estimation/estimation.html</loc>
-    <lastmod>2022-10-03T16:50:28.454Z</lastmod>
+    <lastmod>2022-10-05T16:46:58.885Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/identification/identification.html</loc>
-    <lastmod>2022-10-03T16:50:32.001Z</lastmod>
+    <lastmod>2022-10-05T16:47:02.219Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/index.html</loc>
-    <lastmod>2022-10-03T16:50:33.314Z</lastmod>
+    <lastmod>2022-10-05T16:47:03.525Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/measure/measure.html</loc>
-    <lastmod>2022-10-03T16:51:07.995Z</lastmod>
+    <lastmod>2022-10-05T16:47:38.319Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/probability/probability.html</loc>
-    <lastmod>2022-10-03T16:51:08.495Z</lastmod>
+    <lastmod>2022-10-05T16:47:38.789Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/01/ps01.html</loc>
-    <lastmod>2022-10-03T16:51:08.881Z</lastmod>
+    <lastmod>2022-10-05T16:47:39.203Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/02/ps02.html</loc>
-    <lastmod>2022-10-03T16:51:09.198Z</lastmod>
+    <lastmod>2022-10-05T16:47:39.523Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/03/ps03.html</loc>
-    <lastmod>2022-10-03T16:51:09.541Z</lastmod>
+    <lastmod>2022-10-05T16:47:39.856Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/04/ps04.html</loc>
+    <lastmod>2022-10-05T16:47:40.169Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/projection/projection.html</loc>
+    <lastmod>2022-10-05T16:47:40.516Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/slides.html</loc>
-    <lastmod>2022-10-03T16:51:10.891Z</lastmod>
+    <lastmod>2022-10-05T16:47:41.703Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/syllabus626.html</loc>
-    <lastmod>2022-10-03T16:51:11.238Z</lastmod>
+    <lastmod>2022-10-05T16:47:42.069Z</lastmod>
   </url>
 </urlset>

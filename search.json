@@ -11,7 +11,7 @@
     "href": "estimation/estimation.html#reading",
     "title": "Estimation",
     "section": "Reading",
-    "text": "Reading\n\nRequired: Song (2021) chapter 4, sections 1.2 and 2 (which is the basis for these slides)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
+    "text": "Reading\n\nRequired: Song (2021) chapter 4, sections 1.2 and 2 (which is the basis for these slides)\nSupplemental: Erich Leo Lehmann and Romano (n.d.) , Erich L. Lehmann and Casella (2006)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#estimator",
@@ -567,11 +567,53 @@
     "text": "Problem 1\n(This was problem 3 last week)\nLet \\(X: \\Omega \\to \\R\\), \\(W: \\Omega \\to \\R\\), \\(Z: \\Omega \\to \\R\\), and \\(D: \\Omega \\to \\{0, 1\\}\\) be random variables. Let \\(Y = D X + (1-D) W\\). Suppose that \\(Y\\), \\(D\\), and \\(Z\\) are observed, but \\(X\\) and \\(W\\) are not.\n\nSuppose \\(D\\) is independent of \\(X\\), \\(W\\). Then show that \\(\\Er[X - W]\\) is identified.\nSuppose \\(Z\\) is independent of \\(X\\) and \\(W\\), and \\(\\exists E_1, E_0 \\in \\sigma(Z)\\) such that \\(P(D=1 | E_1) = 1\\) and \\(P(D=0|E_0) = 1\\). Then show that \\(\\Er[X-W]\\) is identified.1\n\n\n\nProblem 2\nIn the linear model, \\(Y = \\alpha + \\beta X + \\epsilon\\), assume \\(\\mathrm{Var}(X)>0\\) and \\(\\Er[\\epsilon] = 0\\). Show that without any more assumptions, \\(\\beta\\) is not identified by finding values of \\(\\beta\\) that are observationally equivalent.\n\n\nProblem 3\nSong (2021) Chatper 4, exercise 1.3.\nConsider the binary choice model in Example 1.3 and assume that \\(\\tilde{\\beta}_0\\) and \\(\\tilde{\\beta}_1\\) have appropriate estimators \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\). Provide a sample analogue estimator of the average derivative, replacing \\(\\tilde{\\beta}_0\\) and \\(\\tilde{\\beta}_1\\) with \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\)\n\n\n\n\n\n\nReferences\n\nHeckman, James, and Salvador Navarro-Lozano. 2004. “Using Matching, Instrumental Variables, and Control Functions to Estimate Economic Choice Models.” The Review of Economics and Statistics 86 (1): 30–57. https://doi.org/10.1162/003465304323023660.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\nFootnotes\n\n\nAn assumption like this is used in nonparametric selection estimators. One way to have such \\(E_1\\) and \\(E_0\\) is if \\(D = 1\\{Z \\gamma \\geq U\\}\\) and \\(Z\\) has unbounded supported. Then \\(E_0\\) and \\(E_1\\) are sets where \\(Z \\to \\pm \\infty\\). Accordingly, this is sometimes called an identification at infinity assumption. See Heckman and Navarro-Lozano (2004) for more information, and a comparison between this case, and the (conditional) independence assumption of part 1. (This footnote and that paper are extra information, not hints to help answer the question).↩︎"
   },
   {
+    "objectID": "problemsets/04/ps04.html",
+    "href": "problemsets/04/ps04.html",
+    "title": "ECON 626: Problem Set 4",
+    "section": "",
+    "text": "Problem 1\nThe exponential distribution has density (with respect to Lesbegue measure) \\[\nf(X;\\lambda) = \\frac{1}{\\lambda} e^{-X/\\lambda} 1\\{X > 0\\}\n\\] for \\(\\lambda>0\\). Suppose \\(X_1, ... , X_n\\) are independently exponential\\((\\lambda)\\) distributed .\n\nShow that the maximum likelihood estimator for \\(\\lambda\\) is \\(\\hat{\\lambda}^{MLE} = \\frac{1}{n} \\sum_{i=1}^n X_i\\)\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\lambda\\). Is \\(\\hat{\\lambda}^{MLE}\\) a minimum variance unbiased estimator?\nFind the most powerful test of size \\(\\alpha\\) for testing \\(H_0: \\lambda = \\lambda_0\\) versus \\(H_1:\\lambda = \\lambda_1\\).\n\n\n\nProblem 2\nSuppose \\(X_1, ... , X_n\\) are independently uniformly distributed on \\((0,\\theta)\\).\n\nShow that \\(2 \\bar{X} = \\frac{1}{n} \\sum_{i=1}^n X_i\\) is an unbiased estimator for \\(\\theta\\).\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\theta\\). Is \\(2 \\bar{X}\\) a minimum variance unbiased estimator?\nShow that \\(\\hat{\\theta} = \\frac{n+1}{n} \\max_{1 \\leq i \\leq n} X_i\\) is a minimum variance unbiased estimator for \\(\\theta\\).\n\n\n\nProblem 3"
+  },
+  {
+    "objectID": "projection/projection.html#reading",
+    "href": "projection/projection.html#reading",
+    "title": "Least Squares as a Projection",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 5 (which is the basis for these slides)\nSupplemental: Schrimpf (2018), Schrimpf (2013)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\]"
+  },
+  {
+    "objectID": "projection/projection.html#orthogonal-subspaces",
+    "href": "projection/projection.html#orthogonal-subspaces",
+    "title": "Least Squares as a Projection",
+    "section": "Orthogonal Subspaces",
+    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n::: {.callout-tip icon=false\nDefinition\nAn \\(L \\subset V\\) is a subspace if \\(\\forall x, y \\in L\\), \\(\\alpha, \\beta \\in \\R\\), \\(\\alpha x + \\beta y \\in L\\)\n:::"
+  },
+  {
+    "objectID": "projection/projection.html#orthogonal-subspaces-1",
+    "href": "projection/projection.html#orthogonal-subspaces-1",
+    "title": "Least Squares as a Projection",
+    "section": "Orthogonal Subspaces",
+    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n::: {.callout-tip icon=false\nDefinition\nGiven a subspace \\(L \\subset V\\) the orthogonal complement of \\(L\\) is \\[\nL^\\perp = \\{x \\in V: x' l = 0 \\,\\forall l \\in L\\}\n\\]\n:::\n\nFor any \\(y \\in V\\), \\(\\exists y_1 \\in L\\), \\(y_2 \\in L^\\perp\\) s.t. \\(y = y_1 + y_2\\)"
+  },
+  {
+    "objectID": "projection/projection.html#orthogonal-subspaces-2",
+    "href": "projection/projection.html#orthogonal-subspaces-2",
+    "title": "Least Squares as a Projection",
+    "section": "Orthogonal Subspaces",
+    "text": "Orthogonal Subspaces\n\n\n\nLemma 1.1\n\n\nLet \\(L_1\\) and \\(L_2\\) be subspaces of \\(V\\), then \\[\n(\\underbrace{L_1 + L_2}_{\\{x \\in V: x = l_1 + l_2 \\text{ for some } l_1 \\in L_2, l_2 \\in L_2\\}})^\\perp = L_1^\\perp \\cap L_2^\\perp\n\\] and \\[\n(L_1 \\cap L_2)^\\perp = L_1^\\perp + L_2^\\perp\n\\]"
+  },
+  {
+    "objectID": "projection/projection.html#projection",
+    "href": "projection/projection.html#projection",
+    "title": "Least Squares as a Projection",
+    "section": "Projection",
+    "text": "Projection"
+  },
+  {
     "objectID": "slides.html",
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

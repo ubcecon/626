@@ -25,6 +25,7 @@ bibliography: ../626.bib
 ## Reading
 
 - Required: **@song2021 chapter 4, sections 1.2 and 2** (which is the basis for these slides)
+- Supplemental: @lehmann2005 , @lehmann2006
 
 $$
 \def\Er{{\mathrm{E}}}

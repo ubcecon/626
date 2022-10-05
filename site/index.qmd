@@ -33,7 +33,7 @@ bibliography: 626.bib
 
 # Part II: Generalized Linear Model
 
-- Preliminaries of Projection Geometry
+- [Preliminaries of Projection Geometry](projection/projection.qmd)
 - Generalized Linear Models and Gauss-Markov Theorem
 - Tests of Linear Hypothesis
 

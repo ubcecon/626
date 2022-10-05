@@ -1,0 +1,93 @@
+---
+title: "Least Squares as a Projection"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1600
+    height: 900
+    min-scale: 0.1
+    chalkboard:
+      chalk-width: 6
+      chalk-effect: 0.5
+    title-slide-attributes:
+      data-background-image: "wedge.jpg"
+      data-background-size: contain
+bibliography: ../626.bib
+
+# jupyter: julia-1.8
+# execute:
+#   cache: false
+---
+
+
+## Reading
+
+- Required: **@song2021 chapter 5** (which is the basis for these slides)
+- Supplemental: @schrimpf2018, @schrimpf2013
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+$$
+
+# Projection Geometry and Quadratic Forms
+
+## Orthogonal Subspaces
+
+- $V \subseteq \R^n$, **inner product space**
+- $L \subset V$ a subspace
+
+::: {.callout-tip icon=false
+
+### Definition
+
+An $L \subset V$ is a **subspace** if $\forall x, y \in L$, $\alpha,
+\beta \in \R$, $\alpha x + \beta y \in L$
+
+:::
+
+## Orthogonal Subspaces
+
+- $V \subseteq \R^n$, **inner product space**
+- $L \subset V$ a subspace
+
+::: {.callout-tip icon=false
+
+### Definition
+
+Given a subspace $L \subset V$ **the orthogonal complement** of $L$ is
+$$
+L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
+$$
+
+:::
+
+- For any $y \in V$,  $\exists y_1 \in L$, $y_2 \in L^\perp$ s.t.
+$y = y_1 + y_2$
+
+## Orthogonal Subspaces
+
+::: {.callout-warning icon=false}
+
+### Lemma 1.1
+
+Let $L_1$ and $L_2$ be subspaces of $V$, then
+$$
+(\underbrace{L_1 + L_2}_{\{x \in V: x = l_1 + l_2 \text{ for some } l_1 \in L_2, l_2 \in L_2\}})^\perp = L_1^\perp \cap L_2^\perp
+$$
+and
+$$
+(L_1 \cap L_2)^\perp = L_1^\perp + L_2^\perp
+$$
+
+:::
+
+## Projection
+
+
+# References

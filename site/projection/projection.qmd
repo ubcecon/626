@@ -25,7 +25,7 @@ bibliography: ../626.bib
 ## Reading
 
 - Required: **@song2021 chapter 5** (which is the basis for these slides)
-- Supplemental: @schrimpf2018, @schrimpf2013
+- Supplemental: @schrimpf2018, @schrimpf2013a, @schrimpf2013b, @schrimpf2013c, @schrimpf2013o
 
 $$
 \def\Er{{\mathrm{E}}}
@@ -43,7 +43,7 @@ $$
 - $V \subseteq \R^n$, **inner product space**
 - $L \subset V$ a subspace
 
-::: {.callout-tip icon=false
+::: {.callout-tip icon=false}
 
 ### Definition
 
@@ -57,7 +57,7 @@ An $L \subset V$ is a **subspace** if $\forall x, y \in L$, $\alpha,
 - $V \subseteq \R^n$, **inner product space**
 - $L \subset V$ a subspace
 
-::: {.callout-tip icon=false
+::: {.callout-tip icon=false}
 
 ### Definition
 
@@ -79,7 +79,7 @@ $y = y_1 + y_2$
 
 Let $L_1$ and $L_2$ be subspaces of $V$, then
 $$
-(\underbrace{L_1 + L_2}_{\{x \in V: x = l_1 + l_2 \text{ for some } l_1 \in L_2, l_2 \in L_2\}})^\perp = L_1^\perp \cap L_2^\perp
+(\underbrace{L_1 + L_2}_{\{l_1 + l_2 \in V:  l_1 \in L_2, l_2 \in L_2\}})^\perp = L_1^\perp \cap L_2^\perp
 $$
 and
 $$
@@ -96,7 +96,7 @@ $$
 
 $P_L y \in  L$ is the **projection** of $y$ on $L$ if
 $$
-\norm{y - P_L y } = \inf_{w \in L} \norm(y - w}
+\norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
 $$
 
 :::
@@ -131,14 +131,16 @@ $\forall y \in L$ and $Gy = 0$ $\forall y \in L^\perp$
 
 ## Projection Map
 
-:::{.callout-tipicon=false}
+:::{.callout-tip icon=false}
 
 ### Definition
 
 Linear $G: V \to V$ is
-- **idempotent** if $G (G y) =  G y$ $\forall y \in V$
-- **symmetric** if $G'y = G y$ $\forall y \in V$
 
+- **idempotent** if $G (G y) =  G y$ $\forall y \in V$
+
+- **symmetric** if $G'y = G y$ $\forall y \in V$
+:::
 
 :::{.callout-warning icon=false}
 
@@ -227,22 +229,25 @@ The eigenvalues of a symmetric and idempotent matrix, $P$ are either $0$ or $1$.
 $$
 Y = \theta + u
 $$
-- $\theta \in L \subset \R^n$, $L$ a known subspace
-- $u \in \R^n$ unobserved
+
+-  $\theta \in L \subset \R^n$, $L$ a known subspace
+
+-  $u \in \R^n$ unobserved
 
 :::{.fragment}
 - Example:
 $$
-Y_i = x_{i,1} \beta_1 + \cdots + \x_{i,k} \beta_k + u_i
+Y_i = x_{i,1} \beta_1 + \cdots + x_{i,k} \beta_k + u_i
 $$
-    - $X_k \equiv (x_{1,k}, ... , x{n,k})' $, $X \equiv(X_1, ...,  X_k)$, $\beta \equiv (\beta_1, ..., \beta_k)'$,
+    - $X_k \equiv (x_{1,k}, ... , x{n,k})'$, $X \equiv(X_1, ...,  X_k)$, $\beta \equiv (\beta_1, ..., \beta_k)'$,
       $y \equiv (Y_1, ..., Y_n)'$, $u \equiv (u_1, ..., u_n)'$
-    - $y= X\beta + u$ fits setup with $L = \mathcal{R}(X)$
+    $$y= X\beta + u$$
+    fits setup with $L = \mathcal{R}(X)$
 :::
 
 ## Least-Squares
 
-- $\hat{\theta} = P_L y$, i.e. $\norm{y - \hat{\theta} y } = \inf_{w \in L} \norm(y - w}$
+- $\hat{\theta} = P_L y$, i.e. $\norm{y - \hat{\theta} y } = \inf_{w \in L} \norm{y - w}$
 
 
 # Gauss-Markov Theorem

@@ -33,6 +33,7 @@ $$
 \def\var{{\mathrm{Var}}}
 \def\R{{\mathbb{R}}}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
 $$
 
 # Projection Geometry and Quadratic Forms
@@ -88,6 +89,192 @@ $$
 :::
 
 ## Projection
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+$P_L y \in  L$ is the **projection** of $y$ on $L$ if
+$$
+\norm{y - P_L y } = \inf_{w \in L} \norm(y - w}
+$$
+
+:::
+
+:::{.fragment}
+
+:::{.callout-warning icon=false}
+
+### Projection Theorem
+
+1. $P_L y$ exists, is unique, and is a linear function of $y$
+
+2. For any $y_1^* \in L$, $y_1^* = P_L y$ iff $y- y_1^* \perp L$
+
+:::
+
+- 2 implies if $y = y_1 + y_2$ with $y_1 \in L$ and $y_2 \in L^\perp$,
+then $y_1 = P_L y$
+
+:::
+
+
+## Projection Map
+
+:::{.callout-warning icon=false}
+
+### Theorem 1.2
+
+A linear map $G: V \to L$ is the projection map onto $L$ iff $Gy = y$
+$\forall y \in L$ and $Gy = 0$ $\forall y \in L^\perp$
+:::
+
+## Projection Map
+
+:::{.callout-tipicon=false}
+
+### Definition
+
+Linear $G: V \to V$ is
+- **idempotent** if $G (G y) =  G y$ $\forall y \in V$
+- **symmetric** if $G'y = G y$ $\forall y \in V$
+
+
+:::{.callout-warning icon=false}
+
+### Theorem 1.3
+
+A linear map $G: V \to V$ is a projection map onto its range, $\mathcal{R}(G)$, iff $G$ is idempotent and symmetric.
+
+:::
+
+## Projection Differences
+
+:::{.callout-warning icon=false}
+
+### Theorem 1.4
+
+Let $L \subset V$ and $L_0 \subset L$ be subspaces. Then
+$P_L - P_{L_0} = P_{L \cap L_0^\perp}$
+
+:::
+
+## Projection onto $X$
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+For linear $H: \R^s \to \R^r$, the **g-inverse** of $H$ is any $H^{-}$
+s.t. $H H^{-} H = H$
+
+:::
+
+:::{.fragment}
+
+:::{.callout-warning icon=false}
+
+### Theorem 1.5
+
+Let $X: \R^k \to \R^n$ be linear. The projection onto $\mathcal{R}(X)$
+is $P_X = X(X'X)^- X'$ where $(X'X)^{-}$ is any g-inverse of $X'X$
+
+:::
+
+:::
+
+## Projection Spectrum
+
+:::{.callout-tip icon=false}
+
+### Definition
+
+Let $A: V \to V$ be linear. Then $\lambda$ is an **eigenvalue**  of $A$  and $v \neq 0$ is an associated **eigenvector** if
+$A v = \lambda v$
+
+:::
+
+:::{.notes}
+
+Existence of (possibly complex) eigenvalues as roots of characteristic polynomial
+
+:::
+
+:::{.callout-warning icon=false}
+
+### Lemma 1.2
+
+The eigenvalues of a symmetric and idempotent matrix, $P$ are either $0$ or $1$. Furthmore rank of $P$ is the sum of its eigenvalues.
+
+:::
+
+## Projection Rank
+
+:::{.callout-warning icon=false}
+
+### Theorem 1.6
+
+1. $\mathrm{rank}(P_X) = \mathrm{rank}(X)$
+
+2. $\rank(I-P_X) = n - \rank(X)$
+
+:::
+
+# Generalized Linear Model
+
+## Generalized Linear Model
+
+$$
+Y = \theta + u
+$$
+- $\theta \in L \subset \R^n$, $L$ a known subspace
+- $u \in \R^n$ unobserved
+
+:::{.fragment}
+- Example:
+$$
+Y_i = x_{i,1} \beta_1 + \cdots + \x_{i,k} \beta_k + u_i
+$$
+    - $X_k \equiv (x_{1,k}, ... , x{n,k})' $, $X \equiv(X_1, ...,  X_k)$, $\beta \equiv (\beta_1, ..., \beta_k)'$,
+      $y \equiv (Y_1, ..., Y_n)'$, $u \equiv (u_1, ..., u_n)'$
+    - $y= X\beta + u$ fits setup with $L = \mathcal{R}(X)$
+:::
+
+## Least-Squares
+
+- $\hat{\theta} = P_L y$, i.e. $\norm{y - \hat{\theta} y } = \inf_{w \in L} \norm(y - w}$
+
+
+# Gauss-Markov Theorem
+
+## Gauss-Markov Theorem
+
+:::{.callout-warning icon=false}
+
+### Theorem: Gauss-Markov
+
+If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the best linear unbiased estimator (BLUE) of $a'\theta = $a'\hat{\theta}$
+where $\hat{\theta} = P_L y$
+
+:::
+
+:::{.fragment}
+
+:::{.callout-warning icon=false}
+
+### Corollary
+
+If
+$$
+y = X'\beta + u
+$$
+and $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the BLUE of $c'\beta$ is $c'\hat{\beta}$ with $\hat{\beta} =
+(X'X)^{-} X' y$
+
+:::
+
+:::
+
 
 
 # References

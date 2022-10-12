@@ -10,6 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="Paul Schrimpf">
+  <meta name="dcterms.date" content="2022-10-12">
   <title>ECON 626 - Least Squares as a Projection</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -347,14 +348,14 @@
 <section id="title-slide" data-background-image="wedge.jpg" data-background-size="contain" class="center">
   <h1 class="title">Least Squares as a Projection</h1>
   <p class="author">Paul Schrimpf</p>
-  <p class="date">10/5/22</p>
+  <p class="date">10/12/22</p>
 </section>
 
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
 <li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 5</strong> (which is the basis for these slides)</li>
-<li>Supplemental: <span class="citation" data-cites="schrimpf2018">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span>, <span class="citation" data-cites="schrimpf2013">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span></li>
+<li>Supplemental: <span class="citation" data-cites="schrimpf2018">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span>, <span class="citation" data-cites="schrimpf2013a">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2013b</a>)</span>, <span class="citation" data-cites="schrimpf2013b">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2013a</a>)</span>, <span class="citation" data-cites="schrimpf2013c">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2013d</a>)</span>, <span class="citation" data-cites="schrimpf2013o">Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2013c</a>)</span></li>
 </ul>
 <p><span class="math display">\[
 \def\Er{{\mathrm{E}}}
@@ -362,6 +363,7 @@
 \def\var{{\mathrm{Var}}}
 \def\R{{\mathbb{R}}}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
 \]</span></p>
 </section>
 <section>
@@ -375,10 +377,16 @@
 <li><span class="math inline">\(V \subseteq \R^n\)</span>, <strong>inner product space</strong></li>
 <li><span class="math inline">\(L \subset V\)</span> a subspace</li>
 </ul>
-<p>::: {.callout-tip icon=false</p>
-<h3 id="definition">Definition</h3>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
 <p>An <span class="math inline">\(L \subset V\)</span> is a <strong>subspace</strong> if <span class="math inline">\(\forall x, y \in L\)</span>, <span class="math inline">\(\alpha, \beta \in \R\)</span>, <span class="math inline">\(\alpha x + \beta y \in L\)</span></p>
-<p>:::</p>
+</div>
+</div>
+</div>
 </section>
 <section id="orthogonal-subspaces-1" class="slide level2">
 <h2>Orthogonal Subspaces</h2>
@@ -386,12 +394,18 @@
 <li><span class="math inline">\(V \subseteq \R^n\)</span>, <strong>inner product space</strong></li>
 <li><span class="math inline">\(L \subset V\)</span> a subspace</li>
 </ul>
-<p>::: {.callout-tip icon=false</p>
-<h3 id="definition-1">Definition</h3>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
 <p>Given a subspace <span class="math inline">\(L \subset V\)</span> <strong>the orthogonal complement</strong> of <span class="math inline">\(L\)</span> is <span class="math display">\[
 L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
 \]</span></p>
-<p>:::</p>
+</div>
+</div>
+</div>
 <ul>
 <li>For any <span class="math inline">\(y \in V\)</span>, <span class="math inline">\(\exists y_1 \in L\)</span>, <span class="math inline">\(y_2 \in L^\perp\)</span> s.t. <span class="math inline">\(y = y_1 + y_2\)</span></li>
 </ul>
@@ -405,7 +419,7 @@ L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
 </div>
 <div class="callout-content">
 <p>Let <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> be subspaces of <span class="math inline">\(V\)</span>, then <span class="math display">\[
-(\underbrace{L_1 + L_2}_{\{x \in V: x = l_1 + l_2 \text{ for some } l_1 \in L_2, l_2 \in L_2\}})^\perp = L_1^\perp \cap L_2^\perp
+(\underbrace{L_1 + L_2}_{\{l_1 + l_2 \in V:  l_1 \in L_2, l_2 \in L_2\}})^\perp = L_1^\perp \cap L_2^\perp
 \]</span> and <span class="math display">\[
 (L_1 \cap L_2)^\perp = L_1^\perp + L_2^\perp
 \]</span></p>
@@ -415,6 +429,229 @@ L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
 </section>
 <section id="projection" class="slide level2">
 <h2>Projection</h2>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(P_L y \in L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
+\norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Projection Theorem</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><p><span class="math inline">\(P_L y\)</span> exists, is unique, and is a linear function of <span class="math inline">\(y\)</span></p></li>
+<li><p>For any <span class="math inline">\(y_1^* \in L\)</span>, <span class="math inline">\(y_1^* = P_L y\)</span> iff <span class="math inline">\(y- y_1^* \perp L\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<ul>
+<li>2 implies if <span class="math inline">\(y = y_1 + y_2\)</span> with <span class="math inline">\(y_1 \in L\)</span> and <span class="math inline">\(y_2 \in L^\perp\)</span>, then <span class="math inline">\(y_1 = P_L y\)</span></li>
+</ul>
+</div>
+</section>
+<section id="projection-map" class="slide level2">
+<h2>Projection Map</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem 1.2</strong></p>
+</div>
+<div class="callout-content">
+<p>A linear map <span class="math inline">\(G: V \to L\)</span> is the projection map onto <span class="math inline">\(L\)</span> iff <span class="math inline">\(Gy = y\)</span> <span class="math inline">\(\forall y \in L\)</span> and <span class="math inline">\(Gy = 0\)</span> <span class="math inline">\(\forall y \in L^\perp\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="projection-map-1" class="slide level2">
+<h2>Projection Map</h2>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>Linear <span class="math inline">\(G: V \to V\)</span> is</p>
+<ul>
+<li><p><strong>idempotent</strong> if <span class="math inline">\(G (G y) = G y\)</span> <span class="math inline">\(\forall y \in V\)</span></p></li>
+<li><p><strong>symmetric</strong> if <span class="math inline">\(G'y = G y\)</span> <span class="math inline">\(\forall y \in V\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem 1.3</strong></p>
+</div>
+<div class="callout-content">
+<p>A linear map <span class="math inline">\(G: V \to V\)</span> is a projection map onto its range, <span class="math inline">\(\mathcal{R}(G)\)</span>, iff <span class="math inline">\(G\)</span> is idempotent and symmetric.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="projection-differences" class="slide level2">
+<h2>Projection Differences</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem 1.4</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(L \subset V\)</span> and <span class="math inline">\(L_0 \subset L\)</span> be subspaces. Then <span class="math inline">\(P_L - P_{L_0} = P_{L \cap L_0^\perp}\)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="projection-onto-x" class="slide level2">
+<h2>Projection onto <span class="math inline">\(X\)</span></h2>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>For linear <span class="math inline">\(H: \R^s \to \R^r\)</span>, the <strong>g-inverse</strong> of <span class="math inline">\(H\)</span> is any <span class="math inline">\(H^{-}\)</span> s.t. <span class="math inline">\(H H^{-} H = H\)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem 1.5</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(X: \R^k \to \R^n\)</span> be linear. The projection onto <span class="math inline">\(\mathcal{R}(X)\)</span> is <span class="math inline">\(P_X = X(X'X)^- X'\)</span> where <span class="math inline">\((X'X)^{-}\)</span> is any g-inverse of <span class="math inline">\(X'X\)</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="projection-spectrum" class="slide level2">
+<h2>Projection Spectrum</h2>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(A: V \to V\)</span> be linear. Then <span class="math inline">\(\lambda\)</span> is an <strong>eigenvalue</strong> of <span class="math inline">\(A\)</span> and <span class="math inline">\(v \neq 0\)</span> is an associated <strong>eigenvector</strong> if <span class="math inline">\(A v = \lambda v\)</span></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Existence of (possibly complex) eigenvalues as roots of characteristic polynomial</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Lemma 1.2</strong></p>
+</div>
+<div class="callout-content">
+<p>The eigenvalues of a symmetric and idempotent matrix, <span class="math inline">\(P\)</span> are either <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>. Furthmore rank of <span class="math inline">\(P\)</span> is the sum of its eigenvalues.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="projection-rank" class="slide level2">
+<h2>Projection Rank</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem 1.6</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><p><span class="math inline">\(\mathrm{rank}(P_X) = \mathrm{rank}(X)\)</span></p></li>
+<li><p><span class="math inline">\(\rank(I-P_X) = n - \rank(X)\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="generalized-linear-model" class="title-slide slide level1 center">
+<h1>Generalized Linear Model</h1>
+
+</section>
+<section id="generalized-linear-model-1" class="slide level2">
+<h2>Generalized Linear Model</h2>
+<p><span class="math display">\[
+Y = \theta + u
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\theta \in L \subset \R^n\)</span>, <span class="math inline">\(L\)</span> a known subspace</p></li>
+<li><p><span class="math inline">\(u \in \R^n\)</span> unobserved</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Example: <span class="math display">\[
+Y_i = x_{i,1} \beta_1 + \cdots + x_{i,k} \beta_k + u_i
+\]</span>
+<ul>
+<li><span class="math inline">\(X_k \equiv (x_{1,k}, ... , x{n,k})'\)</span>, <span class="math inline">\(X \equiv(X_1, ..., X_k)\)</span>, <span class="math inline">\(\beta \equiv (\beta_1, ..., \beta_k)'\)</span>, <span class="math inline">\(y \equiv (Y_1, ..., Y_n)'\)</span>, <span class="math inline">\(u \equiv (u_1, ..., u_n)'\)</span> <span class="math display">\[y= X\beta + u\]</span> fits setup with <span class="math inline">\(L = \mathcal{R}(X)\)</span></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="least-squares" class="slide level2">
+<h2>Least-Squares</h2>
+<ul>
+<li><span class="math inline">\(\hat{\theta} = P_L y\)</span>, i.e.&nbsp;<span class="math inline">\(\norm{y - \hat{\theta} y } = \inf_{w \in L} \norm{y - w}\)</span></li>
+</ul>
+</section></section>
+<section>
+<section id="gauss-markov-theorem" class="title-slide slide level1 center">
+<h1>Gauss-Markov Theorem</h1>
+
+</section>
+<section id="gauss-markov-theorem-1" class="slide level2">
+<h2>Gauss-Markov Theorem</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem: Gauss-Markov</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of $a’= <span class="math inline">\(a'\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Corollary</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math display">\[
+y = X'\beta + u
+\]</span> and <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the BLUE of <span class="math inline">\(c'\beta\)</span> is <span class="math inline">\(c'\hat{\beta}\)</span> with <span class="math inline">\(\hat{\beta} = (X'X)^{-} X' y\)</span></p>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -423,8 +660,17 @@ L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-schrimpf2013" class="csl-entry" role="doc-biblioentry">
-Schrimpf, Paul. 2013. <span>“Vector Spaces.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/lec04vectorspaces.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/lec04vectorspaces.pdf</a>.
+<div id="ref-schrimpf2013b" class="csl-entry" role="doc-biblioentry">
+Schrimpf, Paul. 2013a. <span>“Matrix Algebra and Introduction to Vector Spaces.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/lec03matrixAlgebra.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/lec03matrixAlgebra.pdf</a>.
+</div>
+<div id="ref-schrimpf2013a" class="csl-entry" role="doc-biblioentry">
+———. 2013b. <span>“Systems of Linear Equations.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/lec02systemsOfLinearEquations.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/lec02systemsOfLinearEquations.pdf</a>.
+</div>
+<div id="ref-schrimpf2013o" class="csl-entry" role="doc-biblioentry">
+———. 2013c. <span>“Unconstrained Optimization (Especially Section 4 on Eigendecomposition).”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/lec10optimization.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/lec10optimization.pdf</a>.
+</div>
+<div id="ref-schrimpf2013c" class="csl-entry" role="doc-biblioentry">
+———. 2013d. <span>“Vector Spaces.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/lec04vectorspaces.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/lec04vectorspaces.pdf</a>.
 </div>
 <div id="ref-schrimpf2018" class="csl-entry" role="doc-biblioentry">
 ———. 2018. <span>“Linearity.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/linear-526.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/linear-526.pdf</a>.

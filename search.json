@@ -571,49 +571,112 @@
     "href": "problemsets/04/ps04.html",
     "title": "ECON 626: Problem Set 4",
     "section": "",
-    "text": "Problem 1\nThe exponential distribution has density (with respect to Lesbegue measure) \\[\nf(X;\\lambda) = \\frac{1}{\\lambda} e^{-X/\\lambda} 1\\{X > 0\\}\n\\] for \\(\\lambda>0\\). Suppose \\(X_1, ... , X_n\\) are independently exponential\\((\\lambda)\\) distributed .\n\nShow that the maximum likelihood estimator for \\(\\lambda\\) is \\(\\hat{\\lambda}^{MLE} = \\frac{1}{n} \\sum_{i=1}^n X_i\\)\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\lambda\\). Is \\(\\hat{\\lambda}^{MLE}\\) a minimum variance unbiased estimator?\nFind the most powerful test of size \\(\\alpha\\) for testing \\(H_0: \\lambda = \\lambda_0\\) versus \\(H_1:\\lambda = \\lambda_1\\).\n\n\n\nProblem 2\nSuppose \\(X_1, ... , X_n\\) are independently uniformly distributed on \\((0,\\theta)\\).\n\nShow that \\(2 \\bar{X} = \\frac{1}{n} \\sum_{i=1}^n X_i\\) is an unbiased estimator for \\(\\theta\\).\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\theta\\). Is \\(2 \\bar{X}\\) a minimum variance unbiased estimator?\nShow that \\(\\hat{\\theta} = \\frac{n+1}{n} \\max_{1 \\leq i \\leq n} X_i\\) is a minimum variance unbiased estimator for \\(\\theta\\)."
+    "text": "Problem 1\nThe exponential distribution has density (with respect to Lesbegue measure) \\[\nf(X;\\lambda) = \\frac{1}{\\lambda} e^{-X/\\lambda} 1\\{X > 0\\}\n\\] for \\(\\lambda>0\\). Suppose \\(X_1, ... , X_n\\) are independently exponential\\((\\lambda)\\) distributed .\n\nShow that the maximum likelihood estimator for \\(\\lambda\\) is \\(\\hat{\\lambda}^{MLE} = \\frac{1}{n} \\sum_{i=1}^n X_i\\)\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\lambda\\). Is \\(\\hat{\\lambda}^{MLE}\\) a minimum variance unbiased estimator?\nFind the most powerful test of size \\(\\alpha\\) for testing \\(H_0: \\lambda = \\lambda_0\\) versus \\(H_1:\\lambda = \\lambda_1\\).\n\n\n\nProblem 2\nSuppose \\(X_1, ... , X_n\\) are independently uniformly distributed on \\((0,\\theta)\\).\n\nShow that \\(2 \\bar{X} = \\frac{2}{n} \\sum_{i=1}^n X_i\\) is an unbiased estimator for \\(\\theta\\).\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\theta\\). Is \\(2 \\bar{X}\\) a minimum variance unbiased estimator?\nShow that \\(\\hat{\\theta} = \\frac{n+1}{n} \\max_{1 \\leq i \\leq n} X_i\\) is a minimum variance unbiased estimator for \\(\\theta\\)."
   },
   {
     "objectID": "projection/projection.html#reading",
     "href": "projection/projection.html#reading",
     "title": "Least Squares as a Projection",
     "section": "Reading",
-    "text": "Reading\n\nRequired: Song (2021) chapter 5 (which is the basis for these slides)\nSupplemental: Schrimpf (2018), Schrimpf (2013)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\]"
+    "text": "Reading\n\nRequired: Song (2021) chapter 5 (which is the basis for these slides)\nSupplemental: Schrimpf (2018), Schrimpf (2013b), Schrimpf (2013a), Schrimpf (2013d), Schrimpf (2013c)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\]"
   },
   {
     "objectID": "projection/projection.html#orthogonal-subspaces",
     "href": "projection/projection.html#orthogonal-subspaces",
     "title": "Least Squares as a Projection",
     "section": "Orthogonal Subspaces",
-    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n::: {.callout-tip icon=false\nDefinition\nAn \\(L \\subset V\\) is a subspace if \\(\\forall x, y \\in L\\), \\(\\alpha, \\beta \\in \\R\\), \\(\\alpha x + \\beta y \\in L\\)\n:::"
+    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n\n\n\nDefinition\n\n\nAn \\(L \\subset V\\) is a subspace if \\(\\forall x, y \\in L\\), \\(\\alpha, \\beta \\in \\R\\), \\(\\alpha x + \\beta y \\in L\\)"
   },
   {
     "objectID": "projection/projection.html#orthogonal-subspaces-1",
     "href": "projection/projection.html#orthogonal-subspaces-1",
     "title": "Least Squares as a Projection",
     "section": "Orthogonal Subspaces",
-    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n::: {.callout-tip icon=false\nDefinition\nGiven a subspace \\(L \\subset V\\) the orthogonal complement of \\(L\\) is \\[\nL^\\perp = \\{x \\in V: x' l = 0 \\,\\forall l \\in L\\}\n\\]\n:::\n\nFor any \\(y \\in V\\), \\(\\exists y_1 \\in L\\), \\(y_2 \\in L^\\perp\\) s.t. \\(y = y_1 + y_2\\)"
+    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n\n\n\nDefinition\n\n\nGiven a subspace \\(L \\subset V\\) the orthogonal complement of \\(L\\) is \\[\nL^\\perp = \\{x \\in V: x' l = 0 \\,\\forall l \\in L\\}\n\\]\n\n\n\n\nFor any \\(y \\in V\\), \\(\\exists y_1 \\in L\\), \\(y_2 \\in L^\\perp\\) s.t. \\(y = y_1 + y_2\\)"
   },
   {
     "objectID": "projection/projection.html#orthogonal-subspaces-2",
     "href": "projection/projection.html#orthogonal-subspaces-2",
     "title": "Least Squares as a Projection",
     "section": "Orthogonal Subspaces",
-    "text": "Orthogonal Subspaces\n\n\n\nLemma 1.1\n\n\nLet \\(L_1\\) and \\(L_2\\) be subspaces of \\(V\\), then \\[\n(\\underbrace{L_1 + L_2}_{\\{x \\in V: x = l_1 + l_2 \\text{ for some } l_1 \\in L_2, l_2 \\in L_2\\}})^\\perp = L_1^\\perp \\cap L_2^\\perp\n\\] and \\[\n(L_1 \\cap L_2)^\\perp = L_1^\\perp + L_2^\\perp\n\\]"
+    "text": "Orthogonal Subspaces\n\n\n\nLemma 1.1\n\n\nLet \\(L_1\\) and \\(L_2\\) be subspaces of \\(V\\), then \\[\n(\\underbrace{L_1 + L_2}_{\\{l_1 + l_2 \\in V:  l_1 \\in L_2, l_2 \\in L_2\\}})^\\perp = L_1^\\perp \\cap L_2^\\perp\n\\] and \\[\n(L_1 \\cap L_2)^\\perp = L_1^\\perp + L_2^\\perp\n\\]"
   },
   {
     "objectID": "projection/projection.html#projection",
     "href": "projection/projection.html#projection",
     "title": "Least Squares as a Projection",
     "section": "Projection",
-    "text": "Projection"
+    "text": "Projection\n\n\n\nDefinition\n\n\n\\(P_L y \\in L\\) is the projection of \\(y\\) on \\(L\\) if \\[\n\\norm{y - P_L y } = \\inf_{w \\in L} \\norm{y - w}\n\\]\n\n\n\n\n\n\n\nProjection Theorem\n\n\n\n\\(P_L y\\) exists, is unique, and is a linear function of \\(y\\)\nFor any \\(y_1^* \\in L\\), \\(y_1^* = P_L y\\) iff \\(y- y_1^* \\perp L\\)\n\n\n\n\n\n2 implies if \\(y = y_1 + y_2\\) with \\(y_1 \\in L\\) and \\(y_2 \\in L^\\perp\\), then \\(y_1 = P_L y\\)"
+  },
+  {
+    "objectID": "projection/projection.html#projection-map",
+    "href": "projection/projection.html#projection-map",
+    "title": "Least Squares as a Projection",
+    "section": "Projection Map",
+    "text": "Projection Map\n\n\n\nTheorem 1.2\n\n\nA linear map \\(G: V \\to L\\) is the projection map onto \\(L\\) iff \\(Gy = y\\) \\(\\forall y \\in L\\) and \\(Gy = 0\\) \\(\\forall y \\in L^\\perp\\)"
+  },
+  {
+    "objectID": "projection/projection.html#projection-map-1",
+    "href": "projection/projection.html#projection-map-1",
+    "title": "Least Squares as a Projection",
+    "section": "Projection Map",
+    "text": "Projection Map\n\n\n\nDefinition\n\n\nLinear \\(G: V \\to V\\) is\n\nidempotent if \\(G (G y) = G y\\) \\(\\forall y \\in V\\)\nsymmetric if \\(G'y = G y\\) \\(\\forall y \\in V\\)\n\n\n\n\n\n\n\nTheorem 1.3\n\n\nA linear map \\(G: V \\to V\\) is a projection map onto its range, \\(\\mathcal{R}(G)\\), iff \\(G\\) is idempotent and symmetric."
+  },
+  {
+    "objectID": "projection/projection.html#projection-differences",
+    "href": "projection/projection.html#projection-differences",
+    "title": "Least Squares as a Projection",
+    "section": "Projection Differences",
+    "text": "Projection Differences\n\n\n\nTheorem 1.4\n\n\nLet \\(L \\subset V\\) and \\(L_0 \\subset L\\) be subspaces. Then \\(P_L - P_{L_0} = P_{L \\cap L_0^\\perp}\\)"
+  },
+  {
+    "objectID": "projection/projection.html#projection-onto-x",
+    "href": "projection/projection.html#projection-onto-x",
+    "title": "Least Squares as a Projection",
+    "section": "Projection onto \\(X\\)",
+    "text": "Projection onto \\(X\\)\n\n\n\nDefinition\n\n\nFor linear \\(H: \\R^s \\to \\R^r\\), the g-inverse of \\(H\\) is any \\(H^{-}\\) s.t. \\(H H^{-} H = H\\)\n\n\n\n\n\n\n\nTheorem 1.5\n\n\nLet \\(X: \\R^k \\to \\R^n\\) be linear. The projection onto \\(\\mathcal{R}(X)\\) is \\(P_X = X(X'X)^- X'\\) where \\((X'X)^{-}\\) is any g-inverse of \\(X'X\\)"
+  },
+  {
+    "objectID": "projection/projection.html#projection-spectrum",
+    "href": "projection/projection.html#projection-spectrum",
+    "title": "Least Squares as a Projection",
+    "section": "Projection Spectrum",
+    "text": "Projection Spectrum\n\n\n\nDefinition\n\n\nLet \\(A: V \\to V\\) be linear. Then \\(\\lambda\\) is an eigenvalue of \\(A\\) and \\(v \\neq 0\\) is an associated eigenvector if \\(A v = \\lambda v\\)\n\n\n\n\nExistence of (possibly complex) eigenvalues as roots of characteristic polynomial\n\n\n\n\nLemma 1.2\n\n\nThe eigenvalues of a symmetric and idempotent matrix, \\(P\\) are either \\(0\\) or \\(1\\). Furthmore rank of \\(P\\) is the sum of its eigenvalues."
+  },
+  {
+    "objectID": "projection/projection.html#projection-rank",
+    "href": "projection/projection.html#projection-rank",
+    "title": "Least Squares as a Projection",
+    "section": "Projection Rank",
+    "text": "Projection Rank\n\n\n\nTheorem 1.6\n\n\n\n\\(\\mathrm{rank}(P_X) = \\mathrm{rank}(X)\\)\n\\(\\rank(I-P_X) = n - \\rank(X)\\)"
+  },
+  {
+    "objectID": "projection/projection.html#generalized-linear-model-1",
+    "href": "projection/projection.html#generalized-linear-model-1",
+    "title": "Least Squares as a Projection",
+    "section": "Generalized Linear Model",
+    "text": "Generalized Linear Model\n\\[\nY = \\theta + u\n\\]\n\n\\(\\theta \\in L \\subset \\R^n\\), \\(L\\) a known subspace\n\\(u \\in \\R^n\\) unobserved\n\n\n\nExample: \\[\nY_i = x_{i,1} \\beta_1 + \\cdots + x_{i,k} \\beta_k + u_i\n\\]\n\n\\(X_k \\equiv (x_{1,k}, ... , x{n,k})'\\), \\(X \\equiv(X_1, ..., X_k)\\), \\(\\beta \\equiv (\\beta_1, ..., \\beta_k)'\\), \\(y \\equiv (Y_1, ..., Y_n)'\\), \\(u \\equiv (u_1, ..., u_n)'\\) \\[y= X\\beta + u\\] fits setup with \\(L = \\mathcal{R}(X)\\)"
+  },
+  {
+    "objectID": "projection/projection.html#least-squares",
+    "href": "projection/projection.html#least-squares",
+    "title": "Least Squares as a Projection",
+    "section": "Least-Squares",
+    "text": "Least-Squares\n\n\\(\\hat{\\theta} = P_L y\\), i.e. \\(\\norm{y - \\hat{\\theta} y } = \\inf_{w \\in L} \\norm{y - w}\\)"
+  },
+  {
+    "objectID": "projection/projection.html#gauss-markov-theorem-1",
+    "href": "projection/projection.html#gauss-markov-theorem-1",
+    "title": "Least Squares as a Projection",
+    "section": "Gauss-Markov Theorem",
+    "text": "Gauss-Markov Theorem\n\n\n\nTheorem: Gauss-Markov\n\n\nIf \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of $a’= \\(a'\\hat{\\theta}\\) where \\(\\hat{\\theta} = P_L y\\)\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\[\ny = X'\\beta + u\n\\] and \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the BLUE of \\(c'\\beta\\) is \\(c'\\hat{\\beta}\\) with \\(\\hat{\\beta} = (X'X)^{-} X' y\\)"
   },
   {
     "objectID": "slides.html",
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

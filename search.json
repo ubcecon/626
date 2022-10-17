@@ -669,7 +669,7 @@
     "href": "projection/projection.html#gauss-markov-theorem-1",
     "title": "Least Squares as a Projection",
     "section": "Gauss-Markov Theorem",
-    "text": "Gauss-Markov Theorem\n\n\n\nTheorem: Gauss-Markov\n\n\nIf \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of \\(a'\\theta = a'\\hat{\\theta}\\) where \\(\\hat{\\theta} = P_L y\\)\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\[\ny = X'\\beta + u\n\\] and \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the BLUE of \\(c'\\beta\\) is \\(c'\\hat{\\beta}\\) with \\(\\hat{\\beta} = (X'X)^{-} X' y\\)"
+    "text": "Gauss-Markov Theorem\n\n\n\nTheorem: Gauss-Markov\n\n\nIf \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of \\(a'\\theta = a'\\hat{\\theta}\\) where \\(\\hat{\\theta} = P_L y\\)\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\[\ny = X'\\beta + u\n\\] and \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the BLUE of \\(c'\\beta\\) is \\(c'\\hat{\\beta}\\) with \\(\\hat{\\beta} = (X'X)^{-1} X' y\\)"
   },
   {
     "objectID": "slides.html",

@@ -669,14 +669,14 @@
     "href": "projection/projection.html#gauss-markov-theorem-1",
     "title": "Least Squares as a Projection",
     "section": "Gauss-Markov Theorem",
-    "text": "Gauss-Markov Theorem\n\n\n\nTheorem: Gauss-Markov\n\n\nIf \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of $a’= \\(a'\\hat{\\theta}\\) where \\(\\hat{\\theta} = P_L y\\)\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\[\ny = X'\\beta + u\n\\] and \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the BLUE of \\(c'\\beta\\) is \\(c'\\hat{\\beta}\\) with \\(\\hat{\\beta} = (X'X)^{-} X' y\\)"
+    "text": "Gauss-Markov Theorem\n\n\n\nTheorem: Gauss-Markov\n\n\nIf \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of \\(a'\\theta = a'\\hat{\\theta}\\) where \\(\\hat{\\theta} = P_L y\\)\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\[\ny = X'\\beta + u\n\\] and \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the BLUE of \\(c'\\beta\\) is \\(c'\\hat{\\beta}\\) with \\(\\hat{\\beta} = (X'X)^{-} X' y\\)"
   },
   {
     "objectID": "slides.html",
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 17, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

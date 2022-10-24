@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-10-24">
+
+<title>ECON 626 - ECON 626: Midterm Review</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ECON 626</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus626.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides.html">Slides</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#list-of-definitions-and-results" id="toc-list-of-definitions-and-results" class="nav-link active" data-scroll-target="#list-of-definitions-and-results">List of Definitions and Results</a>
+  <ul class="collapse">
+  <li><a href="#measure-theory" id="toc-measure-theory" class="nav-link" data-scroll-target="#measure-theory">Measure Theory</a>
+  <ul class="collapse">
+  <li><a href="#measure-space" id="toc-measure-space" class="nav-link" data-scroll-target="#measure-space">Measure Space</a></li>
+  <li><a href="#lesbegue-integral" id="toc-lesbegue-integral" class="nav-link" data-scroll-target="#lesbegue-integral">Lesbegue Integral</a></li>
+  <li><a href="#convergence-theorems" id="toc-convergence-theorems" class="nav-link" data-scroll-target="#convergence-theorems">Convergence Theorems</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a>
+  <ul class="collapse">
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables">Random Variables</a>
+  <ul class="collapse">
+  <li><a href="#distribution" id="toc-distribution" class="nav-link" data-scroll-target="#distribution">Distribution</a></li>
+  <li><a href="#cdf" id="toc-cdf" class="nav-link" data-scroll-target="#cdf">CDF</a></li>
+  <li><a href="#pdf" id="toc-pdf" class="nav-link" data-scroll-target="#pdf">PDF</a></li>
+  </ul></li>
+  <li><a href="#inequalities" id="toc-inequalities" class="nav-link" data-scroll-target="#inequalities">Inequalities</a>
+  <ul class="collapse">
+  <li><a href="#markovs-inequality" id="toc-markovs-inequality" class="nav-link" data-scroll-target="#markovs-inequality">Markov’s Inequality</a></li>
+  <li><a href="#jensens-inequality" id="toc-jensens-inequality" class="nav-link" data-scroll-target="#jensens-inequality">Jensen’s Inequality</a></li>
+  <li><a href="#cauchy-schwarz-inequality" id="toc-cauchy-schwarz-inequality" class="nav-link" data-scroll-target="#cauchy-schwarz-inequality">Cauchy-Schwarz Inequality</a></li>
+  </ul></li>
+  <li><a href="#dependence-and-information" id="toc-dependence-and-information" class="nav-link" data-scroll-target="#dependence-and-information">Dependence and Information</a>
+  <ul class="collapse">
+  <li><a href="#generated-sigma-field" id="toc-generated-sigma-field" class="nav-link" data-scroll-target="#generated-sigma-field">Generated <span class="math inline">\(\sigma\)</span>-field</a></li>
+  <li><a href="#information" id="toc-information" class="nav-link" data-scroll-target="#information">Information</a></li>
+  <li><a href="#dependence" id="toc-dependence" class="nav-link" data-scroll-target="#dependence">Dependence</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">Independence</a></li>
+  </ul></li>
+  <li><a href="#conditional-expectation" id="toc-conditional-expectation" class="nav-link" data-scroll-target="#conditional-expectation">Conditional Expectation</a>
+  <ul class="collapse">
+  <li><a href="#properties" id="toc-properties" class="nav-link" data-scroll-target="#properties">Properties</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a>
+  <ul class="collapse">
+  <li><a href="#observationally-equivalent" id="toc-observationally-equivalent" class="nav-link" data-scroll-target="#observationally-equivalent">Observationally Equivalent</a></li>
+  <li><a href="#non-constructive-identification" id="toc-non-constructive-identification" class="nav-link" data-scroll-target="#non-constructive-identification">(Non-Constructive) Identification</a></li>
+  </ul></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation">Estimation</a>
+  <ul class="collapse">
+  <li><a href="#sample-analogue-estimation" id="toc-sample-analogue-estimation" class="nav-link" data-scroll-target="#sample-analogue-estimation">Sample Analogue Estimation</a></li>
+  <li><a href="#maximum-likelihood-estimation" id="toc-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#maximum-likelihood-estimation">Maximum Likelihood Estimation</a></li>
+  <li><a href="#cramer-rao-lower-bound" id="toc-cramer-rao-lower-bound" class="nav-link" data-scroll-target="#cramer-rao-lower-bound">Cramer-Rao Lower Bound</a></li>
+  <li><a href="#score-equality" id="toc-score-equality" class="nav-link" data-scroll-target="#score-equality">Score Equality</a>
+  <ul class="collapse">
+  <li><a href="#information-equality" id="toc-information-equality" class="nav-link" data-scroll-target="#information-equality">Information Equality</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2</a></li>
+  <li><a href="#cramér-rao-bound" id="toc-cramér-rao-bound" class="nav-link" data-scroll-target="#cramér-rao-bound">Cramér-Rao Bound</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#neyman-pearson-lemma" id="toc-neyman-pearson-lemma" class="nav-link" data-scroll-target="#neyman-pearson-lemma">Neyman-Pearson Lemma</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#projection" id="toc-projection" class="nav-link" data-scroll-target="#projection">Projection</a>
+  <ul class="collapse">
+  <li><a href="#gauss-markov-theorem" id="toc-gauss-markov-theorem" class="nav-link" data-scroll-target="#gauss-markov-theorem">Gauss-Markov Theorem</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ECON 626: Midterm Review</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 24, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<p><span class="math display">\[
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\cov{{\mathrm{Cov}}}
+\]</span></p>
+<section id="list-of-definitions-and-results" class="level1">
+<h1>List of Definitions and Results</h1>
+<section id="measure-theory" class="level2">
+<h2 class="anchored" data-anchor-id="measure-theory">Measure Theory</h2>
+<section id="measure-space" class="level3">
+<h3 class="anchored" data-anchor-id="measure-space">Measure Space</h3>
+<ol type="1">
+<li>A set <span class="math inline">\(\Omega\)</span></li>
+<li>A collection of subsets, <span class="math inline">\(\mathscr{F}\)</span>, of <span class="math inline">\(\Omega\)</span> that is a <span class="math inline">\(\sigma\)</span><em>-field</em> (aka <span class="math inline">\(\sigma\)</span><em>-algebra</em>) , that is
+<ol type="1">
+<li><span class="math inline">\(\Omega \in \mathscr{F}\)</span></li>
+<li>If <span class="math inline">\(A \in \mathscr{F}\)</span>, then <span class="math inline">\(A^c \in \mathscr{F}\)</span></li>
+<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span>, then <span class="math inline">\(\cup_{j=1}^\infty A_j \in \mathscr{F}\)</span></li>
+</ol></li>
+<li>A measure, <span class="math inline">\(\mu: \mathcal{F} \to [0, \infty]\)</span> s.t.
+<ol type="1">
+<li><span class="math inline">\(\mu(\emptyset) = 0\)</span></li>
+<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span> are pairwise disjoint, then <span class="math inline">\(\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)\)</span></li>
+</ol></li>
+</ol>
+<p>Given a topology on <span class="math inline">\(\Omega\)</span>, the <strong>Borel</strong> <span class="math inline">\(\sigma\)</span>-<strong>field</strong>, <span class="math inline">\(\mathscr{B}(\Omega)\)</span>, is the smallest <span class="math inline">\(\sigma\)</span>-field containing all open subsets of <span class="math inline">\(\Omega\)</span>.</p>
+<ul>
+<li><span class="math inline">\(f: \Omega \to \mathbf{R}\)</span> is (<span class="math inline">\(\mathscr{F}\)</span>-)<strong>measurable</strong> if <span class="math inline">\(\forall\)</span> <span class="math inline">\(B \in \mathscr{B}(\mathbf{R})\)</span>, <span class="math inline">\(f^{-1}(B) \in \mathscr{F}\)</span></li>
+</ul>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 1, exercises 1.1, 1.2,</p>
+</div>
+</div>
+</section>
+<section id="lesbegue-integral" class="level3">
+<h3 class="anchored" data-anchor-id="lesbegue-integral">Lesbegue Integral</h3>
+<p>The <strong>Lesbegue integral</strong> satisfies:</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></p></li>
+<li><p>Linearity: <span class="math inline">\(\int (af + bg) d\mu = a\int f d\mu + b \int g d \mu\)</span></p></li>
+</ol>
+<ul>
+<li>Measure <span class="math inline">\(\nu\)</span> is <strong>absolutely continuous</strong> with respect to <span class="math inline">\(\mu\)</span> if for <span class="math inline">\(A \in \mathscr{F}\)</span>, <span class="math inline">\(\mu(A) = 0\)</span> implies <span class="math inline">\(\nu(A) = 0\)</span>
+<ul>
+<li>denotate as <span class="math inline">\(\nu \ll \mu\)</span></li>
+<li><span class="math inline">\(\mu\)</span> is called a <strong>dominating measure</strong></li>
+</ul></li>
+</ul>
+<section id="radon-nikodym-derivative" class="level4">
+<h4 class="anchored" data-anchor-id="radon-nikodym-derivative">Radon-Nikodym Derivative</h4>
+<p>Let <span class="math inline">\((\Omega,\mathscr{F},\mu)\)</span> be a measure space, and let <span class="math inline">\(\nu\)</span> and <span class="math inline">\(\mu\)</span> be <span class="math inline">\(\sigma\)</span>-finite measures defined on <span class="math inline">\(\mathscr{F}\)</span> and <span class="math inline">\(\nu \ll \mu\)</span>. Then there is a nonnegative measurable function <span class="math inline">\(f\)</span> such that for each set <span class="math inline">\(A\in \mathscr{F}\)</span>, <span class="math display">\[
+\nu (A)=\int_{A}fd\mu
+\]</span> For any such <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, <span class="math inline">\(\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})=0\)</span></p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 1, exercises 3.1, 3.2</p>
+</div>
+</div>
+</section>
+</section>
+<section id="convergence-theorems" class="level3">
+<h3 class="anchored" data-anchor-id="convergence-theorems">Convergence Theorems</h3>
+<section id="continuity-of-measure" class="level4">
+<h4 class="anchored" data-anchor-id="continuity-of-measure">Continuity of Measure</h4>
+<p>Suppose that <span class="math inline">\(\{E_{n}\}\)</span> is a monotone sequence of events. Then <span class="math display">\[
+\mu \left( \lim_{n\rightarrow \infty}E_{n}\right) =\lim_{n\rightarrow \infty }\mu (E_{n}).
+\]</span></p>
+</section>
+<section id="monotone-convergence-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="monotone-convergence-theorem">Monotone Convergence Theorem</h4>
+<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p>
+</section>
+<section id="fatous-lemma" class="level4">
+<h4 class="anchored" data-anchor-id="fatous-lemma">Fatou’s Lemma</h4>
+<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, then <span class="math display">\[
+\int \left( \text{liminf}_{n\rightarrow \infty }f_{n}d\mu \right) \leq \text{liminf}_{n\rightarrow \infty }\int f_{n}d\mu
+\]</span></p>
+</section>
+<section id="dominated-convergence-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="dominated-convergence-theorem">Dominated Convergence Theorem</h4>
+<p>If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p>
+</section>
+</section>
+</section>
+</section>
+<section id="probability" class="level1">
+<h1>Probability</h1>
+<ul>
+<li>Given a measure space <span class="math inline">\((\Omega ,\mathscr{F})\)</span>, a <strong>probability</strong> (or <strong>probability measure</strong>)<span class="math inline">\(\ P\)</span> is a measure s.t. <span class="math inline">\(P(\Omega )=1\)</span></li>
+</ul>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 2, exercise 1.1</p>
+</div>
+</div>
+<section id="random-variables" class="level2">
+<h2 class="anchored" data-anchor-id="random-variables">Random Variables</h2>
+<p>A <strong>random variable</strong> <span class="math inline">\(X\)</span> is a measurable function from <span class="math inline">\(\Omega\)</span> to <span class="math inline">\(\mathbf{R}\)</span></p>
+<section id="distribution" class="level3">
+<h3 class="anchored" data-anchor-id="distribution">Distribution</h3>
+<p>Let <span class="math inline">\((\Omega ,\mathscr{F},P)\)</span> be a probability space, <span class="math inline">\(X\)</span> a random variable on <span class="math inline">\((\Omega ,\mathscr{F})\)</span>. A <strong>distribution</strong> <span class="math inline">\(P_{X}\)</span> induced by <span class="math inline">\(X\)</span> is a probability measure on <span class="math inline">\((\mathbf{R},\mathscr{B}(\mathbf{R}))\)</span> such that : <span class="math inline">\(\forall B\in \mathscr{B}(\mathbf{R})\)</span>, <span class="math display">\[
+P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
+\]</span></p>
+</section>
+<section id="cdf" class="level3">
+<h3 class="anchored" data-anchor-id="cdf">CDF</h3>
+<p>The CDF of a random variable <span class="math inline">\(X\)</span> with distribution <span class="math inline">\(P_{X}\)</span> is defined to be a function <span class="math inline">\(F:\mathbf{R}\rightarrow [0,1]\)</span> such that <span class="math display">\[
+F(t)=P_{X}\left( (-\infty ,t]\right) .
+\]</span></p>
+</section>
+<section id="pdf" class="level3">
+<h3 class="anchored" data-anchor-id="pdf">PDF</h3>
+<p>Let <span class="math inline">\(X\)</span> be a random variable with distribution <span class="math inline">\(P_{X}\)</span>. When <span class="math inline">\(P_{X}\ll \lambda\)</span>, we call <span class="math inline">\(X\)</span> a <strong>continuous random variable</strong>, and call the Radon-Nikodym derivative <span class="math inline">\(f\equiv dP_{X}/d\lambda\)</span> the (probability) <strong>density function</strong> of <span class="math inline">\(P_{X}\)</span>.</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 2, exercise 2.1, 2.2, 2.3</p>
+</div>
+</div>
+</section>
+</section>
+<section id="inequalities" class="level2">
+<h2 class="anchored" data-anchor-id="inequalities">Inequalities</h2>
+<section id="markovs-inequality" class="level3">
+<h3 class="anchored" data-anchor-id="markovs-inequality">Markov’s Inequality</h3>
+<p><span class="math inline">\(P(|X|&gt;\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p>
+</section>
+<section id="jensens-inequality" class="level3">
+<h3 class="anchored" data-anchor-id="jensens-inequality">Jensen’s Inequality</h3>
+<p>Suppose that <span class="math inline">\(g\)</span> is convex and <span class="math inline">\(X\)</span> and <span class="math inline">\(g(X)\)</span> are integrable, then <span class="math inline">\(g(\Er X) \leq \Er[g(X)]\)</span></p>
+</section>
+<section id="cauchy-schwarz-inequality" class="level3">
+<h3 class="anchored" data-anchor-id="cauchy-schwarz-inequality">Cauchy-Schwarz Inequality</h3>
+<p><span class="math inline">\(\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]\)</span></p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 2, exercise 3.1</p>
+</div>
+</div>
+</section>
+</section>
+<section id="dependence-and-information" class="level2">
+<h2 class="anchored" data-anchor-id="dependence-and-information">Dependence and Information</h2>
+<section id="generated-sigma-field" class="level3">
+<h3 class="anchored" data-anchor-id="generated-sigma-field">Generated <span class="math inline">\(\sigma\)</span>-field</h3>
+<ul>
+<li><span class="math inline">\(\sigma(X)\)</span> is <span class="math inline">\(\sigma\)</span><strong>-field generated by</strong> <span class="math inline">\(X\)</span>
+<ul>
+<li>smallest <span class="math inline">\(\sigma\)</span>-field w.r.t. which <span class="math inline">\(X\)</span> is measurable</li>
+<li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="information" class="level3">
+<h3 class="anchored" data-anchor-id="information">Information</h3>
+<ul>
+<li><span class="math inline">\(\forall E \in \sigma(X)\)</span>, observing value <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span>, tells us whether <span class="math inline">\(E\)</span> occurred</li>
+<li>if <span class="math inline">\(\sigma(X_1) \subset \sigma(X_2)\)</span>, then <span class="math inline">\(\sigma(X_2)\)</span> <strong>has more information</strong> than <span class="math inline">\(\sigma(X_1)\)</span></li>
+</ul>
+</section>
+<section id="dependence" class="level3">
+<h3 class="anchored" data-anchor-id="dependence">Dependence</h3>
+<p>Suppose <span class="math inline">\(g:\R \to \R\)</span> is Borel measurable, then <span class="math inline">\(\sigma(g(X)) \subset \sigma(X)\)</span></p>
+<p>Suppose <span class="math inline">\(\sigma(W) \subset \sigma(X)\)</span>, then <span class="math inline">\(\exists\)</span> Borel measurable <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(W=g(X)\)</span></p>
+</section>
+<section id="independence" class="level3">
+<h3 class="anchored" data-anchor-id="independence">Independence</h3>
+<ul>
+<li>Events <span class="math inline">\(A_1, ..., A_m\)</span> are <strong>independent</strong> if for any sub-collection <span class="math inline">\(A_{i_1}, ..., A_{i_s}\)</span> <span class="math display">\[
+P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
+\]</span></li>
+<li><span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(\mathscr{F}_1, .., \mathscr{F}_m \subset \mathscr{F}\)</span> are <strong>independent</strong> if for any <span class="math inline">\(\mathscr{F}_{i_1}, .., \mathscr{F}_{i_s}\)</span> and <span class="math inline">\(E_j \in \mathscr{F}_j\)</span>, <span class="math display">\[
+P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
+\]</span></li>
+<li>Random variables <span class="math inline">\(X_1, ..., X_m\)</span> are <strong>independent</strong> if <span class="math inline">\(\sigma(X_1), ..., \sigma(X_m)\)</span> are independent</li>
+</ul>
+<p>Suppose that <span class="math inline">\(X=(X_1, X_2)\)</span> and <span class="math inline">\(Y=(Y_1, Y_2)\)</span> are independent, then <span class="math inline">\(f(X)\)</span> and <span class="math inline">\(g(Y)\)</span> are independent</p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 2, exercises 4.1-4.8</p>
+</div>
+</div>
+</section>
+</section>
+<section id="conditional-expectation" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-expectation">Conditional Expectation</h2>
+<p>Let <span class="math inline">\(\mathscr{G} \subset \mathscr{F}\)</span> be <span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(Y\)</span> a random variable with <span class="math inline">\(\Er |Y| &lt; \infty\)</span>, then the <strong>conditional expectation</strong> of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\mathscr{G}\)</span> is <span class="math inline">\(\Er[Y|\mathscr{G}](\cdot): \Omega \to \R\)</span> s.t.</p>
+<ol type="1">
+<li><p><span class="math inline">\(\Er[Y|\mathscr{G}](\cdot)\)</span> is <span class="math inline">\(\mathscr{G}\)</span> measurable</p></li>
+<li><p><span class="math inline">\(\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in \mathscr{G}\)</span></p></li>
+</ol>
+<section id="properties" class="level3">
+<h3 class="anchored" data-anchor-id="properties">Properties</h3>
+<ul>
+<li>If <span class="math inline">\(X\)</span> is <span class="math inline">\(\mathscr{G}\)</span> measurable, then <span class="math inline">\(\Er[XY| \mathscr{G}] = X \Er[Y|\mathscr{G}]\)</span> a.e.</li>
+<li>If <span class="math inline">\(\sigma(X) \subset \sigma(Z)\)</span>, then <span class="math inline">\(\Er[XY|Z] = X \Er[Y|Z]\)</span></li>
+<li>If <span class="math inline">\(\sigma(X) \subset \sigma(Z)\)</span>, then <span class="math inline">\(\Er[\Er[Y|Z]|X] = \Er[Y|X]\)</span></li>
+<li>If <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are independent, then <span class="math inline">\(\Er[Y | X ] = \Er[Y]\)</span></li>
+</ul>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 2, exercise 5.1, 5.2, 5.3</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="identification" class="level1">
+<h1>Identification</h1>
+<p>Let <span class="math inline">\(X\)</span> be an observed random vector with distribution <span class="math inline">\(P_X\)</span>. Let <span class="math inline">\(\mathcal{P}\)</span> be a<strong>probability model</strong> — a collection of probabilities such that <span class="math inline">\(P_X \in \mathcal{P}\)</span>. Then <span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t.</p>
+<p><span class="math display">\[
+\theta_0 = \psi(P_X)
+\]</span></p>
+<section id="observationally-equivalent" class="level2">
+<h2 class="anchored" data-anchor-id="observationally-equivalent">Observationally Equivalent</h2>
+<ul>
+<li><p>Let <span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></p>
+<ul>
+<li>Let <span class="math inline">\(\Gamma(\theta, S) = \{P(\dot; s) | s \in S, \theta = \lambda(s) \}\)</span>, then <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\tilde{\theta}\)</span> are observationally equivalent iff <span class="math inline">\(\Gamma(\theta,S) \cap \Gamma(\tilde{\theta}, S) \neq \emptyset\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="non-constructive-identification" class="level2">
+<h2 class="anchored" data-anchor-id="non-constructive-identification">(Non-Constructive) Identification</h2>
+<ul>
+<li><p><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></p></li>
+<li><p><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></p>
+<ul>
+<li>i.e.&nbsp;<span class="math inline">\(\Gamma(\theta_0, S) \cap \Gamma(\theta, S) = \emptyset\)</span> <span class="math inline">\(\forall \theta \neq \theta_0\)</span></li>
+</ul></li>
+</ul>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 3, exercise 1.1, 1.2</p>
+</div>
+</div>
+</section>
+</section>
+<section id="estimation" class="level1">
+<h1>Estimation</h1>
+<section id="sample-analogue-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="sample-analogue-estimation">Sample Analogue Estimation</h2>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 3, exercise 1.3, 1.4</p>
+</div>
+</div>
+</section>
+<section id="maximum-likelihood-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="maximum-likelihood-estimation">Maximum Likelihood Estimation</h2>
+</section>
+<section id="cramer-rao-lower-bound" class="level2">
+<h2 class="anchored" data-anchor-id="cramer-rao-lower-bound">Cramer-Rao Lower Bound</h2>
+<ul>
+<li><span class="math inline">\(X \in \R^n\)</span> distribution <span class="math inline">\(P_X \in \mathcal{P} = \{P_\theta: \theta \in \Theta \subset \R^d \}\)</span>, likelihood <span class="math inline">\(\ell(\theta;x) = f_X(x;\theta)\)</span></li>
+</ul>
+</section>
+<section id="score-equality" class="level2">
+<h2 class="anchored" data-anchor-id="score-equality">Score Equality</h2>
+<ul>
+<li>If <span class="math inline">\(\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =  \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)\)</span>, then <span class="math display">\[
+\int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
+\]</span></li>
+</ul>
+<section id="information-equality" class="level3">
+<h3 class="anchored" data-anchor-id="information-equality">Information Equality</h3>
+<ul>
+<li>Fischer Information <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x)\)</span></li>
+<li>If <span class="math inline">\(\frac{\partial^2}{\partial \theta\partial \theta'} \int f_X(x;\theta) d\mu(x) =  \int \frac{\partial^2}{\partial \theta\partial \theta'} f_X(x;\theta)  d\mu(x)\)</span>, then <span class="math display">\[
+I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{"Hessian"}=h(x,\theta)} dP_\theta(x)
+\]</span></li>
+</ul>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">2</h3>
+<ul>
+<li>If <span class="math inline">\(T = \tau(X)\)</span> is an unbiased estimator for <span class="math inline">\(\theta\)</span> and <span class="math display">\[
+\frac{\partial}{\partial \theta} \int \tau(x) f_X(x;\theta) d\mu(x) =
+\int \tau(x) \frac{\partial f_X(x,\theta)}{\partial \theta\partial \theta'} d\mu(x)
+\]</span> then <span class="math display">\[
+\int \tau(x) s(x,\theta)'dP_\theta(x) = I
+\]</span></li>
+</ul>
+</section>
+<section id="cramér-rao-bound" class="level3">
+<h3 class="anchored" data-anchor-id="cramér-rao-bound">Cramér-Rao Bound</h3>
+<p>Let <span class="math inline">\(T = \tau(X)\)</span> be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then, <span class="math display">\[
+\var_\theta(\tau(X)) \equiv \int \left(\tau(x) - \int \tau(x) dP_\theta\right)\left(\tau(x) - \int \tau(x) dP_\theta\right)' dP\theta \geq I(\theta)^{-1}
+\]</span></p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 3, exercise 1.5</p>
+</div>
+</div>
+</section>
+</section>
+<section id="hypothesis-testing" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h2>
+<ul>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_0)\)</span>=<em>Type I error</em> <span class="math inline">\(=P_x(C)\)</span></li>
+<li><span class="math inline">\(P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)\)</span>=<em>Type II error</em></li>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_1)\)</span> = <em>power</em></li>
+<li><span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} P_x(C)\)</span> = <em>size of test</em></li>
+</ul>
+<section id="neyman-pearson-lemma" class="level3">
+<h3 class="anchored" data-anchor-id="neyman-pearson-lemma">Neyman-Pearson Lemma</h3>
+<p>Let <span class="math inline">\(\Theta = \{0, 1\}\)</span>, <span class="math inline">\(f_0\)</span> and <span class="math inline">\(f_1\)</span> be densities of <span class="math inline">\(P_0\)</span> and <span class="math inline">\(P_1\)</span>, $(x) =f_1(x)/f_0(x) $ and <span class="math inline">\(C^* =\{x \in X: \tau(x) &gt; c\}\)</span>. Then among all tests <span class="math inline">\(C\)</span> s.t. <span class="math inline">\(P_0(C) = P_0(C^*)\)</span>, <span class="math inline">\(C^*\)</span> is most powerful.</p>
+</section>
+</section>
+</section>
+<section id="projection" class="level1">
+<h1>Projection</h1>
+<p><span class="math inline">\(P_L y \in L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
+\norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+\]</span></p>
+<ol type="1">
+<li><p><span class="math inline">\(P_L y\)</span> exists, is unique, and is a linear function of <span class="math inline">\(y\)</span></p></li>
+<li><p>For any <span class="math inline">\(y_1^* \in L\)</span>, <span class="math inline">\(y_1^* = P_L y\)</span> iff <span class="math inline">\(y- y_1^* \perp L\)</span></p></li>
+<li><p><span class="math inline">\(G = P_L\)</span> iff <span class="math inline">\(Gy = y \forall y \in L\)</span> and <span class="math inline">\(Gy = 0 \forall y \in L^\perp\)</span></p></li>
+<li><p>Linear <span class="math inline">\(G: V \to V\)</span> is a projection map onto its range, <span class="math inline">\(\mathcal{R}(G)\)</span>, iff <span class="math inline">\(G\)</span> is idempotent and symmetric.</p></li>
+</ol>
+<p>Let <span class="math inline">\(L \subset V\)</span> and <span class="math inline">\(L_0 \subset L\)</span> be subspaces. Then <span class="math inline">\(P_L - P_{L_0} = P_{L \cap L_0^\perp}\)</span></p>
+<p>Let <span class="math inline">\(X: \R^k \to \R^n\)</span> be linear. The projection onto <span class="math inline">\(\mathcal{R}(X)\)</span> is <span class="math inline">\(P_X = X(X'X)^- X'\)</span> where <span class="math inline">\((X'X)^{-}\)</span> is any g-inverse of <span class="math inline">\(X'X\)</span></p>
+<section id="gauss-markov-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="gauss-markov-theorem">Gauss-Markov Theorem</h2>
+<p><span class="math display">\[
+Y = \theta + u
+\]</span> with <span class="math inline">\(\theta \in L \subset \R^n\)</span>, <span class="math inline">\(L\)</span> a known subspace. If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a'\theta = a'\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p>
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chapter 4, exercise 2.1</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

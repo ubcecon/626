@@ -49,11 +49,11 @@
     "text": "MLE: Examples\n\n\n\\(X_i \\sim N(\\mu, 1)\\)\n\\(Y_i = \\alpha_0 + \\beta_0 X_i + \\epsilon_i\\), \\(\\epsilon_i \\sim N(0, \\sigma_0^2)\\)"
   },
   {
-    "objectID": "estimation/estimation.html#mle-invariance",
-    "href": "estimation/estimation.html#mle-invariance",
+    "objectID": "estimation/estimation.html#mle-equivariance",
+    "href": "estimation/estimation.html#mle-equivariance",
     "title": "Estimation",
-    "section": "MLE: Invariance",
-    "text": "MLE: Invariance\n\n\n\nTheorem 1.1\n\n\nIf \\(\\hat{\\theta}\\) is the MLE of \\(\\theta\\), then for any function \\(g:\\Theta \\to G\\), the MLE of \\(g(\\theta)\\) is \\(g(\\hat{\\theta})\\)."
+    "section": "MLE: Equivariance",
+    "text": "MLE: Equivariance\n\n\n\nTheorem 1.1\n\n\nIf \\(\\hat{\\theta}\\) is the MLE of \\(\\theta\\), then for any function \\(g:\\Theta \\to G\\), the MLE of \\(g(\\theta)\\) is \\(g(\\hat{\\theta})\\)."
   },
   {
     "objectID": "estimation/estimation.html#mean-squared-error",
@@ -270,7 +270,7 @@
     "href": "index.html",
     "title": "ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
   },
   {
     "objectID": "measure/measure.html#references",
@@ -574,6 +574,104 @@
     "text": "Problem 1\nThe exponential distribution has density (with respect to Lesbegue measure) \\[\nf(X;\\lambda) = \\frac{1}{\\lambda} e^{-X/\\lambda} 1\\{X > 0\\}\n\\] for \\(\\lambda>0\\). Suppose \\(X_1, ... , X_n\\) are independently exponential\\((\\lambda)\\) distributed .\n\nShow that the maximum likelihood estimator for \\(\\lambda\\) is \\(\\hat{\\lambda}^{MLE} = \\frac{1}{n} \\sum_{i=1}^n X_i\\)\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\lambda\\). Is \\(\\hat{\\lambda}^{MLE}\\) a minimum variance unbiased estimator?\nFind the most powerful test of size \\(\\alpha\\) for testing \\(H_0: \\lambda = \\lambda_0\\) versus \\(H_1:\\lambda = \\lambda_1\\).\n\n\n\nProblem 2\nSuppose \\(X_1, ... , X_n\\) are independently uniformly distributed on \\((0,\\theta)\\).\n\nShow that \\(2 \\bar{X} = \\frac{2}{n} \\sum_{i=1}^n X_i\\) is an unbiased estimator for \\(\\theta\\).\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\theta\\). Is \\(2 \\bar{X}\\) a minimum variance unbiased estimator?\nShow that \\(\\hat{\\theta} = \\frac{n+1}{n} \\max_{1 \\leq i \\leq n} X_i\\) is a minimum variance unbiased estimator for \\(\\theta\\)."
   },
   {
+    "objectID": "problemsets/midterm_review/midterm_review.html",
+    "href": "problemsets/midterm_review/midterm_review.html",
+    "title": "ECON 626: Midterm Review",
+    "section": "",
+    "text": "\\[\n\\def\\R{{\\mathbb{R}}}\n\\def\\Er{{\\mathrm{E}}}\n\\def\\var{{\\mathrm{Var}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\cov{{\\mathrm{Cov}}}\n\\]"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#measure-theory",
+    "href": "problemsets/midterm_review/midterm_review.html#measure-theory",
+    "title": "ECON 626: Midterm Review",
+    "section": "Measure Theory",
+    "text": "Measure Theory\n\nMeasure Space\n\nA set \\(\\Omega\\)\nA collection of subsets, \\(\\mathscr{F}\\), of \\(\\Omega\\) that is a \\(\\sigma\\)-field (aka \\(\\sigma\\)-algebra) , that is\n\n\\(\\Omega \\in \\mathscr{F}\\)\nIf \\(A \\in \\mathscr{F}\\), then \\(A^c \\in \\mathscr{F}\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\), then \\(\\cup_{j=1}^\\infty A_j \\in \\mathscr{F}\\)\n\nA measure, \\(\\mu: \\mathcal{F} \\to [0, \\infty]\\) s.t.\n\n\\(\\mu(\\emptyset) = 0\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\) are pairwise disjoint, then \\(\\mu\\left(\\cup_{j=1}^\\infty A_j \\right) = \\sum_{j=1}^\\infty \\mu(A_j)\\)\n\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\).\n\n\\(f: \\Omega \\to \\mathbf{R}\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\mathscr{B}(\\mathbf{R})\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)\n\n\n\n\n\n\n\nTip\n\n\n\nChapter 1, exercises 1.1, 1.2,\n\n\n\n\nLesbegue Integral\nThe Lesbegue integral satisfies:\n\nIf \\(f \\geq 0\\) a.e., then \\(\\int f d\\mu \\geq 0\\)\nLinearity: \\(\\int (af + bg) d\\mu = a\\int f d\\mu + b \\int g d \\mu\\)\n\n\nMeasure \\(\\nu\\) is absolutely continuous with respect to \\(\\mu\\) if for \\(A \\in \\mathscr{F}\\), \\(\\mu(A) = 0\\) implies \\(\\nu(A) = 0\\)\n\ndenotate as \\(\\nu \\ll \\mu\\)\n\\(\\mu\\) is called a dominating measure\n\n\n\nRadon-Nikodym Derivative\nLet \\((\\Omega,\\mathscr{F},\\mu)\\) be a measure space, and let \\(\\nu\\) and \\(\\mu\\) be \\(\\sigma\\)-finite measures defined on \\(\\mathscr{F}\\) and \\(\\nu \\ll \\mu\\). Then there is a nonnegative measurable function \\(f\\) such that for each set \\(A\\in \\mathscr{F}\\), \\[\n\\nu (A)=\\int_{A}fd\\mu\n\\] For any such \\(f\\) and \\(g\\), \\(\\mu (\\{\\omega \\in \\Omega:f(\\omega )\\neq g(\\omega )\\})=0\\)\n\n\n\n\n\n\nTip\n\n\n\nChapter 1, exercises 3.1, 3.2\n\n\n\n\n\nConvergence Theorems\n\nContinuity of Measure\nSuppose that \\(\\{E_{n}\\}\\) is a monotone sequence of events. Then \\[\n\\mu \\left( \\lim_{n\\rightarrow \\infty}E_{n}\\right) =\\lim_{n\\rightarrow \\infty }\\mu (E_{n}).\n\\]\n\n\nMonotone Convergence Theorem\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\uparrow f(\\omega )\\), then \\(\\int f_{n}d\\mu \\uparrow \\int fd\\mu\\) as \\(n\\rightarrow \\infty\\)\n\n\nFatou’s Lemma\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), then \\[\n\\int \\left( \\text{liminf}_{n\\rightarrow \\infty }f_{n}d\\mu \\right) \\leq \\text{liminf}_{n\\rightarrow \\infty }\\int f_{n}d\\mu\n\\]\n\n\nDominated Convergence Theorem\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu <\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#random-variables",
+    "href": "problemsets/midterm_review/midterm_review.html#random-variables",
+    "title": "ECON 626: Midterm Review",
+    "section": "Random Variables",
+    "text": "Random Variables\nA random variable \\(X\\) is a measurable function from \\(\\Omega\\) to \\(\\mathbf{R}\\)\n\nDistribution\nLet \\((\\Omega ,\\mathscr{F},P)\\) be a probability space, \\(X\\) a random variable on \\((\\Omega ,\\mathscr{F})\\). A distribution \\(P_{X}\\) induced by \\(X\\) is a probability measure on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that : \\(\\forall B\\in \\mathscr{B}(\\mathbf{R})\\), \\[\nP_{X}(B)\\equiv P\\left\\{ \\omega \\in \\Omega :X(\\omega )\\in B\\right\\}\n\\]\n\n\nCDF\nThe CDF of a random variable \\(X\\) with distribution \\(P_{X}\\) is defined to be a function \\(F:\\mathbf{R}\\rightarrow [0,1]\\) such that \\[\nF(t)=P_{X}\\left( (-\\infty ,t]\\right) .\n\\]\n\n\nPDF\nLet \\(X\\) be a random variable with distribution \\(P_{X}\\). When \\(P_{X}\\ll \\lambda\\), we call \\(X\\) a continuous random variable, and call the Radon-Nikodym derivative \\(f\\equiv dP_{X}/d\\lambda\\) the (probability) density function of \\(P_{X}\\).\n\n\n\n\n\n\nTip\n\n\n\nChapter 2, exercise 2.1, 2.2, 2.3"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#inequalities",
+    "href": "problemsets/midterm_review/midterm_review.html#inequalities",
+    "title": "ECON 626: Midterm Review",
+    "section": "Inequalities",
+    "text": "Inequalities\n\nMarkov’s Inequality\n\\(P(|X|>\\epsilon) \\leq \\frac{\\Er[|X|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon > 0, k > 0\\)\n\n\nJensen’s Inequality\nSuppose that \\(g\\) is convex and \\(X\\) and \\(g(X)\\) are integrable, then \\(g(\\Er X) \\leq \\Er[g(X)]\\)\n\n\nCauchy-Schwarz Inequality\n\\(\\left(\\Er[XY]\\right)^2 \\leq \\Er[X^2] \\Er[Y^2]\\)\n\n\n\n\n\n\nTip\n\n\n\nChapter 2, exercise 3.1"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#dependence-and-information",
+    "href": "problemsets/midterm_review/midterm_review.html#dependence-and-information",
+    "title": "ECON 626: Midterm Review",
+    "section": "Dependence and Information",
+    "text": "Dependence and Information\n\nGenerated \\(\\sigma\\)-field\n\n\\(\\sigma(X)\\) is \\(\\sigma\\)-field generated by \\(X\\)\n\nsmallest \\(\\sigma\\)-field w.r.t. which \\(X\\) is measurable\n\\(\\sigma(X) = \\{X^{-1}(B): B \\in \\mathscr{B}(\\R)\\}\\)\n\n\n\n\nInformation\n\n\\(\\forall E \\in \\sigma(X)\\), observing value \\(x\\) of \\(X\\), tells us whether \\(E\\) occurred\nif \\(\\sigma(X_1) \\subset \\sigma(X_2)\\), then \\(\\sigma(X_2)\\) has more information than \\(\\sigma(X_1)\\)\n\n\n\nDependence\nSuppose \\(g:\\R \\to \\R\\) is Borel measurable, then \\(\\sigma(g(X)) \\subset \\sigma(X)\\)\nSuppose \\(\\sigma(W) \\subset \\sigma(X)\\), then \\(\\exists\\) Borel measurable \\(g\\) s.t. \\(W=g(X)\\)\n\n\nIndependence\n\nEvents \\(A_1, ..., A_m\\) are independent if for any sub-collection \\(A_{i_1}, ..., A_{i_s}\\) \\[\nP\\left(\\cap_{j=1}^s A_{i_j}\\right) = \\prod_{j=1}^s P(A_{i_j})\n\\]\n\\(\\sigma\\)-fields, \\(\\mathscr{F}_1, .., \\mathscr{F}_m \\subset \\mathscr{F}\\) are independent if for any \\(\\mathscr{F}_{i_1}, .., \\mathscr{F}_{i_s}\\) and \\(E_j \\in \\mathscr{F}_j\\), \\[\nP\\left(\\cap_{j=1}^s E_{i_j}\\right) = \\prod_{j=1}^s P(E_{i_j})\n\\]\nRandom variables \\(X_1, ..., X_m\\) are independent if \\(\\sigma(X_1), ..., \\sigma(X_m)\\) are independent\n\nSuppose that \\(X=(X_1, X_2)\\) and \\(Y=(Y_1, Y_2)\\) are independent, then \\(f(X)\\) and \\(g(Y)\\) are independent\n\n\n\n\n\n\nTip\n\n\n\nChapter 2, exercises 4.1-4.8"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#conditional-expectation",
+    "href": "problemsets/midterm_review/midterm_review.html#conditional-expectation",
+    "title": "ECON 626: Midterm Review",
+    "section": "Conditional Expectation",
+    "text": "Conditional Expectation\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| < \\infty\\), then the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t.\n\n\\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable\n\\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\nProperties\n\nIf \\(X\\) is \\(\\mathscr{G}\\) measurable, then \\(\\Er[XY| \\mathscr{G}] = X \\Er[Y|\\mathscr{G}]\\) a.e.\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[XY|Z] = X \\Er[Y|Z]\\)\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[\\Er[Y|Z]|X] = \\Er[Y|X]\\)\nIf \\(Y\\) and \\(X\\) are independent, then \\(\\Er[Y | X ] = \\Er[Y]\\)\n\n\n\n\n\n\n\nTip\n\n\n\nChapter 2, exercise 5.1, 5.2, 5.3"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#observationally-equivalent",
+    "href": "problemsets/midterm_review/midterm_review.html#observationally-equivalent",
+    "title": "ECON 626: Midterm Review",
+    "section": "Observationally Equivalent",
+    "text": "Observationally Equivalent\n\nLet \\(\\mathcal{P} = \\{ P(\\cdot; s) : s \\in S \\}\\), two structures \\(s\\) and \\(\\tilde{s}\\) in \\(S\\) are observationally equivalent if they imply the same distribution for the observed data, i.e. \\[ P(B;s) = P(B; \\tilde{s}) \\] for all \\(B \\in \\sigma(X)\\).\nLet \\(\\lambda: S \\to \\R^k\\), \\(\\theta\\) is observationally equivalent to \\(\\tilde{\\theta}\\) if \\(\\exists s, \\tilde{s} \\in S\\) that are observationally equivalent and \\(\\theta = \\lambda(s)\\) and \\(\\tilde{\\theta} = \\lambda(\\tilde{s})\\)\n\nLet \\(\\Gamma(\\theta, S) = \\{P(\\dot; s) | s \\in S, \\theta = \\lambda(s) \\}\\), then \\(\\theta\\) and \\(\\tilde{\\theta}\\) are observationally equivalent iff \\(\\Gamma(\\theta,S) \\cap \\Gamma(\\tilde{\\theta}, S) \\neq \\emptyset\\)"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#non-constructive-identification",
+    "href": "problemsets/midterm_review/midterm_review.html#non-constructive-identification",
+    "title": "ECON 626: Midterm Review",
+    "section": "(Non-Constructive) Identification",
+    "text": "(Non-Constructive) Identification\n\n\\(s_0 \\in S\\) is identified if there is no \\(s\\) that is observationally equivalent to \\(s_0\\)\n\\(\\theta_0\\) is identified (in \\(S\\)) if there is no observationally equivalent \\(\\theta \\neq \\theta_0\\)\n\ni.e. \\(\\Gamma(\\theta_0, S) \\cap \\Gamma(\\theta, S) = \\emptyset\\) \\(\\forall \\theta \\neq \\theta_0\\)\n\n\n\n\n\n\n\n\nTip\n\n\n\nChapter 3, exercise 1.1, 1.2"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#sample-analogue-estimation",
+    "href": "problemsets/midterm_review/midterm_review.html#sample-analogue-estimation",
+    "title": "ECON 626: Midterm Review",
+    "section": "Sample Analogue Estimation",
+    "text": "Sample Analogue Estimation\n\n\n\n\n\n\nTip\n\n\n\nChapter 3, exercise 1.3, 1.4"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#maximum-likelihood-estimation",
+    "href": "problemsets/midterm_review/midterm_review.html#maximum-likelihood-estimation",
+    "title": "ECON 626: Midterm Review",
+    "section": "Maximum Likelihood Estimation",
+    "text": "Maximum Likelihood Estimation"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#cramer-rao-lower-bound",
+    "href": "problemsets/midterm_review/midterm_review.html#cramer-rao-lower-bound",
+    "title": "ECON 626: Midterm Review",
+    "section": "Cramer-Rao Lower Bound",
+    "text": "Cramer-Rao Lower Bound\n\n\\(X \\in \\R^n\\) distribution \\(P_X \\in \\mathcal{P} = \\{P_\\theta: \\theta \\in \\Theta \\subset \\R^d \\}\\), likelihood \\(\\ell(\\theta;x) = f_X(x;\\theta)\\)"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#score-equality",
+    "href": "problemsets/midterm_review/midterm_review.html#score-equality",
+    "title": "ECON 626: Midterm Review",
+    "section": "Score Equality",
+    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =  \\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\underbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{\"score\"}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]\n\n\nInformation Equality\n\nFischer Information \\(I(\\theta) = \\int s(x,\\theta) s(x,\\theta)' dP_\\theta(x)\\)\nIf \\(\\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} \\int f_X(x;\\theta) d\\mu(x) =  \\int \\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} f_X(x;\\theta)  d\\mu(x)\\), then \\[\nI(\\theta) = -\\int \\underbrace{\\frac{\\partial^2 \\ell(\\theta;x)}{\\partial \\theta \\partial \\theta'}}_{\\text{\"Hessian\"}=h(x,\\theta)} dP_\\theta(x)\n\\]\n\n\n\n2\n\nIf \\(T = \\tau(X)\\) is an unbiased estimator for \\(\\theta\\) and \\[\n\\frac{\\partial}{\\partial \\theta} \\int \\tau(x) f_X(x;\\theta) d\\mu(x) =\n\\int \\tau(x) \\frac{\\partial f_X(x,\\theta)}{\\partial \\theta\\partial \\theta'} d\\mu(x)\n\\] then \\[\n\\int \\tau(x) s(x,\\theta)'dP_\\theta(x) = I\n\\]\n\n\n\nCramér-Rao Bound\nLet \\(T = \\tau(X)\\) be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then, \\[\n\\var_\\theta(\\tau(X)) \\equiv \\int \\left(\\tau(x) - \\int \\tau(x) dP_\\theta\\right)\\left(\\tau(x) - \\int \\tau(x) dP_\\theta\\right)' dP\\theta \\geq I(\\theta)^{-1}\n\\]\n\n\n\n\n\n\nTip\n\n\n\nChapter 3, exercise 1.5"
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#hypothesis-testing",
+    "href": "problemsets/midterm_review/midterm_review.html#hypothesis-testing",
+    "title": "ECON 626: Midterm Review",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\n\\(P(\\text{reject } H_0 | P_x \\in \\mathcal{P}_0)\\)=Type I error \\(=P_x(C)\\)\n\\(P(\\text{fail to reject } H_0 | P_x \\in \\mathcal{P}_1)\\)=Type II error\n\\(P(\\text{reject } H_0 | P_x \\in \\mathcal{P}_1)\\) = power\n\\(\\sup_{P_x \\in \\mathcal{P}_0} P_x(C)\\) = size of test\n\n\nNeyman-Pearson Lemma\nLet \\(\\Theta = \\{0, 1\\}\\), \\(f_0\\) and \\(f_1\\) be densities of \\(P_0\\) and \\(P_1\\), $(x) =f_1(x)/f_0(x) $ and \\(C^* =\\{x \\in X: \\tau(x) > c\\}\\). Then among all tests \\(C\\) s.t. \\(P_0(C) = P_0(C^*)\\), \\(C^*\\) is most powerful."
+  },
+  {
+    "objectID": "problemsets/midterm_review/midterm_review.html#gauss-markov-theorem",
+    "href": "problemsets/midterm_review/midterm_review.html#gauss-markov-theorem",
+    "title": "ECON 626: Midterm Review",
+    "section": "Gauss-Markov Theorem",
+    "text": "Gauss-Markov Theorem\n\\[\nY = \\theta + u\n\\] with \\(\\theta \\in L \\subset \\R^n\\), \\(L\\) a known subspace. If \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of \\(a'\\theta = a'\\hat{\\theta}\\) where \\(\\hat{\\theta} = P_L y\\)\n\n\n\n\n\n\nTip\n\n\n\nChapter 4, exercise 2.1"
+  },
+  {
     "objectID": "projection/projection.html#reading",
     "href": "projection/projection.html#reading",
     "title": "Least Squares as a Projection",
@@ -676,7 +774,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Sep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 17, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Oct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

@@ -258,8 +258,8 @@ $$
 
 ### Theorem: Gauss-Markov
 
-If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the best linear unbiased estimator (BLUE) of $a'\theta = $a'\hat{\theta}$
-where $\hat{\theta} = P_L y$
+If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the best linear unbiased estimator (BLUE) of
+$a'\theta = a'\hat{\theta}$ where $\hat{\theta} = P_L y$
 
 :::
 
@@ -274,7 +274,7 @@ $$
 y = X'\beta + u
 $$
 and $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the BLUE of $c'\beta$ is $c'\hat{\beta}$ with $\hat{\beta} =
-(X'X)^{-} X' y$
+(X'X)^{-1} X' y$
 
 :::
 

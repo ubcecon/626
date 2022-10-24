@@ -111,7 +111,7 @@ Log-likelihood.
 
 :::
 
-## MLE: Invariance
+## MLE: Equivariance
 
 ::: {.callout-warning icon=false}
 

@@ -1,0 +1,393 @@
+---
+title: "ECON 626: Midterm Solutions"
+author: "Paul Schrimpf"
+date: "2022-10-26"
+#bibliography: ~/626/site/626.bib
+
+format:
+  html:
+    css: styles.css
+---
+
+
+\rule{\linewidth}{1pt}
+
+$$
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+$$
+
+# Problem 1
+
+Suppose $Y_i = m(X_i' \beta + u_i)$ for $i=1, ... , n$ with $X_i \in \R^k$
+and  $m:\R \to \R$ is a known function. Throughout, assume that observations are independent across $i$, $\Er[u] =0$,
+and $u$ is independent of $X$, and $\Er[XX']$ is nonsingular. $Y$ and $X$ are observed, but $u$ is not.
+
+## Identification
+
+1. If $m$ is strictly increasing show that $\beta$ is identified by explicitly writing $\beta$ as a function of the distribution of $X$ and $Y$.
+
+::: {.solution}
+
+Since $m$ is increasing, $m^{-1}$ exists. We can then identify $\beta$ as
+$$
+\begin{aligned}
+\beta = & \Er[X_iX_i']^{-1} \Er[X_i m^{-1}(Y_i)] \\
+= & \Er[X_iX_i']^{-1} \Er[X_i (X_i' \beta + u_i)]  = \beta
+\end{aligned}
+$$
+
+::::
+
+2. Suppose $m(z) = 1\{z \geq 0\}$. For simplicitly, let $k=1$ and $X_i \in \{-1, 1\}$. Show that $\beta$ is not identified by finding an observationally equivalent $\tilde{\beta}$.
+
+::: {.solution}
+
+Since $Y \in \{0,1\}$ and $P(Y=0|X) = 1-P(Y=1|X)$, just looking at
+$P(Y=1|X)$ completely describes $P(Y|X)$. For any $\beta$, we have
+$$
+\begin{aligned}
+P_{Y,X}(\dot|\beta, F_u) = & P(Y=1|X;\beta, F_u) P(X) \\
+= & P(X\beta + u \geq 0 | X; F_u) P(X) \\
+= & \left[ 1 - F_u(-X\beta) \right] P(X) \\
+= & \begin{cases} \left[ 1 - F_u(\beta) \right] P(X=-1) & \text{ if} X=-1 \\
+\left[ 1 - F_u(-\beta) \right] P(X=1) & \text{ if} X=1
+\end{cases}
+\end{aligned}
+$$
+If $\beta \neq 0$, $\beta$ is observationally equivalent to
+$\tilde{\beta} = s \beta$ for any $s \neq 0$ with $\tilde{u} = s
+u$. The even $X\beta + u \geq 0$ is not affected by multiplying by
+$s$, so $P(X\beta + u \geq 0 | X; F_u) P(X)  = P(X\tilde{\beta} + \tilde{u} \geq 0 | X; F_\tilde{u}) P(X)$.
+
+If $\beta = 0$, then $\beta$ is observationally equivalent to any $\tilde{\beta}>0$ (also negative ones with an appropriate modified $\tilde{u}$)
+and $\tilde{u}$ with
+$$
+F_{\tilde{u}}(x) = \begin{cases} F_u(x + \tilde{\beta}) & \text{ if } x < -\tilde{\beta} \\
+F_u(0) & \text{ if } -\tilde{\beta} < x < \tilde{\beta} \\
+F_u(x-\tilde{\beta}) & \text{ if } \tilde{\beta} < x \\
+\end{cases}
+$$
+
+:::
+
+## Estimation
+
+Construct a sample analogue estimator for $\beta$ based on your
+answer to 1.i.1.^[If you could not answer that part, suppose you had
+shown that $\beta = \Er[X_i X_i']^{-1} \Er[X_i m^{-1}(Y_i)]$.]
+Show whether your estimator is unbiased.
+
+::: {.solution}
+
+The sample analogue estimator is
+$$
+\hat{\beta} = \left( \sum_{i=1}^n X_i X_i' \right)^{-1} \left(\sum_{i=1}^n X_i m^{-1}(Y_i) \right)
+$$
+It is unbiased because
+$$
+\begin{aligned}
+\Er[\hat{\beta}] & = \Er\left[\left( \sum_{i=1}^n X_i X_i'\right)^{-1} (\sum_{i=1}^n X_i m^{-1}(Y_i) ) \right] \\
+& = \Er\left[\left( \sum_{i=1}^n X_i X_i'\right)^{-1} \sum_{i=1}^n X_i (X_i' \beta + u_i) \right] \\
+& = \beta + \Er\left[\left( \sum_{i=1}^n X_i X_i'\right)^{-1} \sum_{i=1}^n X_i u_i  \right] \\
+& = \beta
+\end{aligned}
+$$
+where the final equality is because $X$ and $u$ are independent and $\Er[u]=0$.
+
+:::
+
+## Efficiency
+
+Let $X = (X_1, ..., X_n)'$ denote the $n \times k$ matrix of $X_i$,
+and $m^{-1}(y) = (m^{-1}(Y_i), ..., m^{-1}(Y_n))$
+For this section, you may treat $X$ as non-stochastic.
+
+1. Assume that $\Er[uu'] = \sigma^2 I_n$. What is the minimal variance
+unbiased estimator for $c'\beta$ that is a linear function of $m^{-1}(y)$?
+
+::: {.solution}
+
+By the Gauss Markov Theorem, $\hat{\beta}$ is the best linear unbiased estimator.
+
+:::
+
+2. Assume $u_i = S_i \epsilon_i$ with $S_i$ observed, $\Er[\epsilon] =0$, and $\Er[\epsilon\epsilon'] = I_n$.  What is the minimal variance
+unbiased estimator that is a linear function of $m^{-1}(y)?$
+
+::: {.solution}
+
+If we let $\tilde{y}_i = S_i^{-1} m^{-1}(Y_i)$ and $\tilde{X}_i =
+S_i^{-1} X_i$, then we have the linear model
+$$
+\tilde{y}_i = \tilde{X}_i \beta + \underbrace{\epsilon_i }_{\equiv S_i^{-1} u_i}
+$$
+This model has $\Er[\epsilon]=0$ and $\Er[\epsilon\epsilon'] = I_n$,
+so the Gauss-Markov theorem applies. The best linear (in
+$\tilde{y}_i)$ unbiased estimator $c'\beta$
+is $c'\hat{\beta}^W = c'(\tilde{X}' \tilde{X})^{-1} \tilde{X}' \tilde{y}$.
+Note that
+$$
+c' \hat{\beta}^W = c'(X' diag(S)^{-2}X)^{-1} X' diag(S)^{-2} \tilde{y}
+$$
+so this estimator is linear in $m^{-1}(y)$, and thus is the best linear in $m^{-1}(y)$ unbiased estimator.
+
+:::
+
+3. Suppose that $u_i \sim N(0, \sigma^2)$. Show that $c'(X'X)^{-1}X'm^{-1}(y)$ is the minimal variance unbiased estimator for $c'\beta$.
+
+::: {.solution}
+
+The log likelihood is
+$$
+\ell(\beta) = -\frac{n}{2} \log(2\pi \sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^n (m^{-1}(y_i) - X_i' \beta)^2
+$$
+The score is
+$$
+s(\beta) = \frac{1}{\sigma^2} \sum_{i=1}^n X_i (m^{-1}(y_i) - X_i' \beta)
+$$
+The hessian is
+$$
+H(\beta) = \frac{1}{\sigma^2} \sum_{i=1}^n -X_i X_i'
+$$
+The Cramer-Rao Lower bound is
+$$
+I(\beta) = \Er[-H^{-1}] = \sigma^2 (X'X)^{-1}
+$$
+We must compare this with $\var(\hat{\beta})$.
+$$
+\begin{aligned}
+\var(\hat{\beta}) = & \var( (X'X)^{-1} X'm^{-1}(y)) \\
+= & (X'X)^{-1} \var(X'm^{-1}(y)) (X'X)^{-1} \\
+= & (X'X)^{-1} \var(X'u) (X'X)^{-1} \\
+= & (X'X)^{-1} X'X \sigma^2 (X'X)^{-1} \\
+= & (X'X)^{-1}\sigma^2  = I(\beta)
+\end{aligned}
+$$
+
+:::
+
+\newpage
+
+# Problem 2
+
+Suppose $u_i \in \{1, 2, 3, ..., K\}$ and $Y_i = g(u_i)$ for some
+known $g:\{1,..., K\} \to \R$.  Observations are independent and $Y_1,
+..., Y_n$ are observed, but $u_i$ are not. Let $\theta_k = \Pr(u_i = k)$.
+
+## $\sigma$ fields
+
+1. Suppose $K=5$ and $g(u) = |u - (K+1)/2|$. What is $\sigma(Y)$?
+
+::: {.solution}
+
+The support of $Y$ is $\{0, 1, 2\}$. The preimage of these sets are
+$\{3\}$, $\{2,4\}$, and $\{1, 5\}$. $\sigma(Y)$ additionally contains unions, complements, and intersections of these sets, so
+$$
+\sigma(Y) = \{ \emptyset, \{3\}, \{1, 5\}, \{2, 4\}, \{2,3,4\}, \{1, 3, 5\}, \{1, 2, 4, 5\}, \{1, 2, 3, 4, 5\} \}
+$$
+
+(If we interpret $u$ as a random variable, then actually, we should replace the sets listed as $\sigma(Y)$ with $u^{-1}$ of these sets, so that we end up with sets in some unspecified sample space, $\Omega$).
+:::
+
+2. Suppose $g$ is one to one. What is $\sigma(Y)$?
+
+::: {.solution}
+
+Then for any $A \subset \{1, ..., K\}$, $g^{-1}(g(A)) = A$, so
+$\sigma(Y) = \sigma(U) =$ power set of $\{u^{-1}(1) ,..., u^{-1}(K) \}$.
+
+:::
+
+## Identification
+
+Show that if if $g$ is one to one, then $\theta_1, ... , \theta_k$ are identified.
+
+::: {.solution}
+
+If $g$ is one to one, then $\theta_j = P(Y=g(j))$ identifies $\theta_j$.
+
+:::
+
+## Estimation
+
+Assuming $g$ is one to one, find the maximum likelihood estimator for $\theta$, and show whether it is unbiased.
+
+::: {.solution}
+
+The likelihood is
+$$
+\begin{aligned}
+\ell(\theta; Y) = & \prod_{i=1}^n \prod_{j=1}^K \theta_j^{1\{Y_i = g(j) \}} \\
+= & \prod_{j=1}^K \theta_j^{\sum_{i=1}^n 1\{Y_i = g(j) \}} \\
+\log \ell (\theta; Y) = & \sum_{j=1}^K \left( \sum_{i=1}^n 1\{Y_i = g(j) \} \right) \log \theta_j
+\end{aligned}
+$$
+To simplify notation, let $n_k = \sum_{i=1}^n  1\{Y_i = g(k) \}$. We want to solve
+$$
+\max_\theta \sum_{k=1}^K n_k \log \theta_k \text{ s.t. } \sum_{k=1}^K \theta_k = 1
+$$
+The first order conditions are
+$$
+\frac{n_k}{\theta_k} = \lambda
+$$
+or $n_k = \lambda \theta_k$. Summing across $k$, and using the constraint we have $\lambda =
+\sum_{k} n_k = n$. Thus,
+$$
+\hat{\theta}_k = \frac{n_k}{n}
+$$
+
+This is unbiased because
+$$
+\Er[\hat{\theta}_k] = \Er\left[ \frac{1}{n} \sum_i 1\{Y_i = g(k) \}  \right] = P(U_i = k) = \theta_k
+$$
+
+:::
+
+
+## Testing
+
+1. For $K=2$, find the most powerful test for testing $H_0: \theta_1 = \theta_1^0$ against $H_1: \theta_1 = \theta_1^a$.
+
+::: {.solution}
+
+By the Neyman-Pearson Lemma, the likelihood ratio test is most powerfull. The likelihood here is:
+$$
+\begin{aligned}
+f(Y;\theta) & = \prod_{i=1}^n \theta^{1\{Y_i = g(1)\}} (1-\theta)^{1\{Y_i = g(2) \}} \\
+& = \theta^{n_1}(1-\theta)^{n_2}
+\end{aligned}
+$$
+where $n_j = \sum_i 1\{Y_i = g(j)\}$. Note that $n_2 = n-n_1$
+
+The likelihood ratio is then
+$$
+\tau(Y) = \frac{(\theta_1^a)^{n_1} (1-\theta_1^a)^{n-n_1}} { (\theta_1^0)^{n_1} (1-\theta_1^0)^{n-n_1}}
+$$
+To find a critical region, notice that this only depend on the data
+through $n_1$. Under $H_0$, the distribution of $n_1$ is
+$$
+P(n_1 = m) = \frac{n!}{m!(n-m)!} (\theta_1^0)^m (1-\theta_1^0)^{n - m}
+$$
+(After writing the rest of the solution, I suppose this formula isn't really needed).
+
+To proceed further, assume that $\theta_1^a > \theta_1^0$, then $\tau(Y) \equiv \tau(n_1)$ is increasing as a function $n_1$, and
+$$
+P(\tau(n_1) > \tau(c) | H_0) = P(n_1 > c | H_0)
+$$
+For a test of size $\alpha$, we choose $c$ such that $P(n_1 > c | H_0)
+= \alpha$, and reject $H_0$ if $n_1 > c$.
+
+For $\theta_1^a < \theta_1^0$, by similar reasoning, we have
+$$
+P(\tau(n_1) > \tau(c) | H_0) = P(n_1 < c | H_0)
+$$
+where the second inequality is flipped because now $\tau$ decreases
+with $n_1$. Thus, the critical region is $\{n_1: n_1 < c\}$
+
+:::
+
+2. Is this test also most powerful against the alternative $H_1: \theta_1 \neq \theta_1^0$?
+(Hint: does the critical region depend on $\theta_1^a$?)
+
+::: {.solution}
+
+The critical region above does not depend on the exact value of $\theta_1^a$ because $P(n_1 > c | H_0)$ does not depend on $\theta_1^a$.
+However, it does depend on whether $\theta_1^a$ is less than or
+greater than $\theta_1^0$. Hence, the test is most powerful against
+$H_1: \theta_1 > \theta_1^0$ or $H_1: \theta_1 < \theta_1^0$, but not $H_1: \theta_1 \neq \theta_1^0$.
+
+:::
+
+\newpage
+
+# Definitions and Results
+
+- Measure and Probability:
+
+    - A collection of subsets, $\mathscr{F}$, of $\Omega$ is a $\sigma$*-field* , if
+       1. $\Omega \in \mathscr{F}$
+       2. If $A \in \mathscr{F}$, then $A^c \in \mathscr{F}$
+       3. If $A_1, A_2, ... \in \mathscr{F}$, then $\cup_{j=1}^\infty A_j \in \mathscr{F}$
+
+    - A measure, $\mu: \mathcal{F} \to [0, \infty]$ s.t.
+       1. $\mu(\emptyset) = 0$
+       2. If $A_1, A_2, ... \in \mathscr{F}$ are pairwise disjoint, then $\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)$
+
+    - Lesbegue integral is
+       1. positive: if $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+       2. Linear:  $\int (af + bg) d\mu = a\int f d\mu + b \int g d \mu$
+
+    - Radon-Nikodym derivative: if $\nu \ll \mu$, then $\exists$ nonnegative measureable function, $\frac{d\nu}{d\mu}$, s.t.
+       $$
+       \nu(A) = \int_A \frac{d\nu}{d\mu} d\mu
+       $$
+
+    - Monotone convergence: If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\omega \in \Omega$,
+$f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu$ as $n\rightarrow \infty$
+
+    - Dominated converegence: If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu$
+
+   - Markov's inequality: $P(|X|>\epsilon) \leq  \frac{\Er[|X|^k]}{\epsilon^k}$ $\forall \epsilon > 0, k > 0$
+
+   - Jensen's inequality: if $g$ is convex, then $g(\Er[X]) \leq \Er[g(X)]$
+
+   - Cauchy-Schwarz inequality: $\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]$
+
+   - $\sigma(X)$ is $\sigma$**-field generated by** $X$, it is
+       - smallest $\sigma$-field w.r.t. which $X$ is measurable
+       - $\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}$
+
+    - $\sigma(W) \subset \sigma(X)$ iff $\exists$ $g$ s.t. $W = g(X)$
+
+    - Events $A_1, ..., A_m$ are **independent** if for any sub-collection $A_{i_1}, ..., A_{i_s}$
+    $$
+    P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
+    $$
+    $\sigma$-fields are independent if this is true for any events from them. Random variables are independent if their $\sigma$-fields are.
+
+    - Conditional expection of $Y$ given $\sigma$-field $\mathscr{G}$ satisfies
+    $\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP$ $\forall A \in  \mathscr{G}$
+
+\newpage
+
+- Identification $X$ observed, distribution $P_X$, probability model $\mathcal{P}$
+   -  $\theta_0 \in \R^k$ is **identified** in $\mathcal{P}$ if there exists a known
+      $\psi: \mathcal{P} \to \R^k$ s.t. $\theta_0 = \psi(P_X)$
+  - $\mathcal{P} = \{ P(\cdot; s) : s \in S \}$,  two structures $s$ and $\tilde{s}$ in $S$ are **observationally equivalent**  if they imply the same distribution for the observed data, i.e.
+  $$ P(B;s) = P(B; \tilde{s}) $$
+  for all $B \in \sigma(X)$.
+  - Let $\lambda: S \to \R^k$, $\theta$ is **observationally equivalent** to $\tilde{\theta}$ if $\exists s, \tilde{s} \in S$  that are observationally equivalent and $\theta = \lambda(s)$ and $\tilde{\theta} = \lambda(\tilde{s})$
+  - $s_0 \in S$ is **identified** if there is no $s \neq s_0$ that is observationally equivalent to $s_0$
+  - $\theta_0$ is **identified** (in $S$) if there is no observationally equivalent $\theta \neq \theta_0$
+
+- Cramér-Rao Bound: in the parametric model $P_X \in \{P_\theta:
+\theta \in \R^d\}$ wiht likelihood $\ell(\theta;x)$, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator $\tau(X)$,
+$$
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+$$
+where $I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x)$ and
+$s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}$
+
+- Hypothesis testing:
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_0)$=*Type I error rate* $=P_x(C)$
+  - $P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)$=*Type II error rate*
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_1)$ = *power*
+  - $\sup_{P_x \in \mathcal{P}_0} P_x(C)$ = *size of test*
+  - Neyman-Pearson Lemma: Let $\Theta = \{0, 1\}$,  $f_0$ and $f_1$ be densities of $P_0$ and $P_1$,
+    $\tau(x) =f_1(x)/f_0(x)$ and $C^* =\{x \in X: \tau(x) > c\}$. Then among all
+    tests $C$ s.t. $P_0(C) = P_0(C^*)$, $C^*$ is most powerful.
+
+- Projection: $P_L y \in  L$ is the **projection** of $y$ on $L$ if
+  $$
+  \norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+  $$
+  1. $P_L y$ exists, is unique, and is a linear function of $y$
+  2. For any $y_1^* \in L$, $y_1^* = P_L y$ iff $y- y_1^* \perp L$
+  3. $G = P_L$ iff $Gy = y \forall y \in L$ and $Gy = 0 \forall y \in
+  L^\perp$
+  4.  Linear $G: V \to V$ is a projection map onto its range, $\mathcal{R}(G)$, iff $G$ is idempotent and symmetric.
+
+- Gauss-Markov: $Y = \theta + u$ with $\theta \in L \subset \R^n$, a known subspace. If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the best linear unbiased estimator (BLUE) of $a'\theta = a'\hat{\theta}$ where $\hat{\theta} = P_L y$

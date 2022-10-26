@@ -37,6 +37,8 @@ bibliography: 626.bib
 - [Generalized Linear Models and Gauss-Markov Theorem](projection/projection.qmd)
 - Tests of Linear Hypothesis
 
+[Midterm Review](problemsets/midterm_review/midterm_review.qmd)
+
 # Part III: Tools of Asymptotic Theory
 
 - Modes of Convergence

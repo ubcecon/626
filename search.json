@@ -322,13 +322,6 @@
     "text": "Bounded Functions\n\nLet \\(E\\) be such that \\(\\mu(E)<\\infty\\)\nLet \\(f\\) be bounded function and \\(f(x) = 0 \\forall x \\in E^c\\)\nDefine: \\[\n\\int f d\\mu \\equiv \\sup_{\\varphi \\leq f: \\varphi \\text{ simple}} \\int \\varphi d\\mu =\\inf_{\\varphi \\geq f: \\varphi \\text{ simple}} \\int \\varphi d\\mu\n\\]"
   },
   {
-    "objectID": "measure/measure.html#section",
-    "href": "measure/measure.html#section",
-    "title": "Measure",
-    "section": "",
-    "text": "Exercise\n\n\nShow that for all bounded \\(f\\) and \\(g\\) that vanish outside a finite measure set,\n\nIf \\(f \\geq 0\\) a.e., then \\(\\int f d\\mu \\geq 0\\)\n\\(\\forall a \\in \\mathbf{R}\\) , \\(\\int a f d\\mu = a \\int f d\\mu\\)\n\\(\\int (f + g) d\\mu = \\int f d\\mu + \\int g d \\mu\\)"
-  },
-  {
     "objectID": "measure/measure.html#nonnegative-functions",
     "href": "measure/measure.html#nonnegative-functions",
     "title": "Measure",
@@ -404,6 +397,13 @@
     "title": "Measure",
     "section": "Dominated Convergence Theorem",
     "text": "Dominated Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu <\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)\n\n\n\n\nThe measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory."
+  },
+  {
+    "objectID": "measure/test.html#test",
+    "href": "measure/test.html#test",
+    "title": "Measure",
+    "section": "Test",
+    "text": "Test"
   },
   {
     "objectID": "probability/probability.html#reading",
@@ -572,6 +572,62 @@
     "title": "ECON 626: Problem Set 4",
     "section": "",
     "text": "Problem 1\nThe exponential distribution has density (with respect to Lesbegue measure) \\[\nf(X;\\lambda) = \\frac{1}{\\lambda} e^{-X/\\lambda} 1\\{X > 0\\}\n\\] for \\(\\lambda>0\\). Suppose \\(X_1, ... , X_n\\) are independently exponential\\((\\lambda)\\) distributed .\n\nShow that the maximum likelihood estimator for \\(\\lambda\\) is \\(\\hat{\\lambda}^{MLE} = \\frac{1}{n} \\sum_{i=1}^n X_i\\)\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\lambda\\). Is \\(\\hat{\\lambda}^{MLE}\\) a minimum variance unbiased estimator?\nFind the most powerful test of size \\(\\alpha\\) for testing \\(H_0: \\lambda = \\lambda_0\\) versus \\(H_1:\\lambda = \\lambda_1\\).\n\n\n\nProblem 2\nSuppose \\(X_1, ... , X_n\\) are independently uniformly distributed on \\((0,\\theta)\\).\n\nShow that \\(2 \\bar{X} = \\frac{2}{n} \\sum_{i=1}^n X_i\\) is an unbiased estimator for \\(\\theta\\).\nDerive the Cramér Rao lower bound for any unbiased estimator for \\(\\theta\\). Is \\(2 \\bar{X}\\) a minimum variance unbiased estimator?\nShow that \\(\\hat{\\theta} = \\frac{n+1}{n} \\max_{1 \\leq i \\leq n} X_i\\) is a minimum variance unbiased estimator for \\(\\theta\\)."
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html",
+    "href": "problemsets/midterm2022/midterm2022_solution.html",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "",
+    "text": "\\[\n\\def\\R{{\\mathbb{R}}}\n\\def\\Er{{\\mathrm{E}}}\n\\def\\var{{\\mathrm{Var}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\]"
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html#identification",
+    "href": "problemsets/midterm2022/midterm2022_solution.html#identification",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "Identification",
+    "text": "Identification\n\nIf \\(m\\) is strictly increasing show that \\(\\beta\\) is identified by explicitly writing \\(\\beta\\) as a function of the distribution of \\(X\\) and \\(Y\\).\n\n\nSolution. Since \\(m\\) is increasing, \\(m^{-1}\\) exists. We can then identify \\(\\beta\\) as \\[\n\\begin{aligned}\n\\beta = & \\Er[X_iX_i']^{-1} \\Er[X_i m^{-1}(Y_i)] \\\\\n= & \\Er[X_iX_i']^{-1} \\Er[X_i (X_i' \\beta + u_i)]  = \\beta\n\\end{aligned}\n\\]\n\n\nSuppose \\(m(z) = 1\\{z \\geq 0\\}\\). For simplicitly, let \\(k=1\\) and \\(X_i \\in \\{-1, 1\\}\\). Show that \\(\\beta\\) is not identified by finding an observationally equivalent \\(\\tilde{\\beta}\\).\n\n\nSolution. Since \\(Y \\in \\{0,1\\}\\) and \\(P(Y=0|X) = 1-P(Y=1|X)\\), just looking at \\(P(Y=1|X)\\) completely describes \\(P(Y|X)\\). For any \\(\\beta\\), we have \\[\n\\begin{aligned}\nP_{Y,X}(\\dot|\\beta, F_u) = & P(Y=1|X;\\beta, F_u) P(X) \\\\\n= & P(X\\beta + u \\geq 0 | X; F_u) P(X) \\\\\n= & \\left[ 1 - F_u(-X\\beta) \\right] P(X) \\\\\n= & \\begin{cases} \\left[ 1 - F_u(\\beta) \\right] P(X=-1) & \\text{ if} X=-1 \\\\\n\\left[ 1 - F_u(-\\beta) \\right] P(X=1) & \\text{ if} X=1\n\\end{cases}\n\\end{aligned}\n\\] If \\(\\beta \\neq 0\\), \\(\\beta\\) is observationally equivalent to \\(\\tilde{\\beta} = s \\beta\\) for any \\(s \\neq 0\\) with \\(\\tilde{u} = s u\\). The even \\(X\\beta + u \\geq 0\\) is not affected by multiplying by \\(s\\), so \\(P(X\\beta + u \\geq 0 | X; F_u) P(X) = P(X\\tilde{\\beta} + \\tilde{u} \\geq 0 | X; F_\\tilde{u}) P(X)\\).\nIf \\(\\beta = 0\\), then \\(\\beta\\) is observationally equivalent to any \\(\\tilde{\\beta}>0\\) (also negative ones with an appropriate modified \\(\\tilde{u}\\)) and \\(\\tilde{u}\\) with \\[\nF_{\\tilde{u}}(x) = \\begin{cases} F_u(x + \\tilde{\\beta}) & \\text{ if } x < -\\tilde{\\beta} \\\\\nF_u(0) & \\text{ if } -\\tilde{\\beta} < x < \\tilde{\\beta} \\\\\nF_u(x-\\tilde{\\beta}) & \\text{ if } \\tilde{\\beta} < x \\\\\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html#estimation",
+    "href": "problemsets/midterm2022/midterm2022_solution.html#estimation",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "Estimation",
+    "text": "Estimation\nConstruct a sample analogue estimator for \\(\\beta\\) based on your answer to 1.i.1.1 Show whether your estimator is unbiased.\n\nSolution. The sample analogue estimator is \\[\n\\hat{\\beta} = \\left( \\sum_{i=1}^n X_i X_i' \\right)^{-1} \\left(\\sum_{i=1}^n X_i m^{-1}(Y_i) \\right)\n\\] It is unbiased because \\[\n\\begin{aligned}\n\\Er[\\hat{\\beta}] & = \\Er\\left[\\left( \\sum_{i=1}^n X_i X_i'\\right)^{-1} (\\sum_{i=1}^n X_i m^{-1}(Y_i) ) \\right] \\\\\n& = \\Er\\left[\\left( \\sum_{i=1}^n X_i X_i'\\right)^{-1} \\sum_{i=1}^n X_i (X_i' \\beta + u_i) \\right] \\\\\n& = \\beta + \\Er\\left[\\left( \\sum_{i=1}^n X_i X_i'\\right)^{-1} \\sum_{i=1}^n X_i u_i  \\right] \\\\\n& = \\beta\n\\end{aligned}\n\\] where the final equality is because \\(X\\) and \\(u\\) are independent and \\(\\Er[u]=0\\)."
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html#efficiency",
+    "href": "problemsets/midterm2022/midterm2022_solution.html#efficiency",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "Efficiency",
+    "text": "Efficiency\nLet \\(X = (X_1, ..., X_n)'\\) denote the \\(n \\times k\\) matrix of \\(X_i\\), and \\(m^{-1}(y) = (m^{-1}(Y_i), ..., m^{-1}(Y_n))\\) For this section, you may treat \\(X\\) as non-stochastic.\n\nAssume that \\(\\Er[uu'] = \\sigma^2 I_n\\). What is the minimal variance unbiased estimator for \\(c'\\beta\\) that is a linear function of \\(m^{-1}(y)\\)?\n\n\nSolution. By the Gauss Markov Theorem, \\(\\hat{\\beta}\\) is the best linear unbiased estimator.\n\n\nAssume \\(u_i = S_i \\epsilon_i\\) with \\(S_i\\) observed, \\(\\Er[\\epsilon] =0\\), and \\(\\Er[\\epsilon\\epsilon'] = I_n\\). What is the minimal variance unbiased estimator that is a linear function of \\(m^{-1}(y)?\\)\n\n\nSolution. If we let \\(\\tilde{y}_i = S_i^{-1} m^{-1}(Y_i)\\) and \\(\\tilde{X}_i = S_i^{-1} X_i\\), then we have the linear model \\[\n\\tilde{y}_i = \\tilde{X}_i \\beta + \\underbrace{\\epsilon_i }_{\\equiv S_i^{-1} u_i}\n\\] This model has \\(\\Er[\\epsilon]=0\\) and \\(\\Er[\\epsilon\\epsilon'] = I_n\\), so the Gauss-Markov theorem applies. The best linear (in \\(\\tilde{y}_i)\\) unbiased estimator \\(c'\\beta\\) is \\(c'\\hat{\\beta}^W = c'(\\tilde{X}' \\tilde{X})^{-1} \\tilde{X}' \\tilde{y}\\). Note that \\[\nc' \\hat{\\beta}^W = c'(X' diag(S)^{-2}X)^{-1} X' diag(S)^{-2} \\tilde{y}\n\\] so this estimator is linear in \\(m^{-1}(y)\\), and thus is the best linear in \\(m^{-1}(y)\\) unbiased estimator.\n\n\nSuppose that \\(u_i \\sim N(0, \\sigma^2)\\). Show that \\(c'(X'X)^{-1}X'm^{-1}(y)\\) is the minimal variance unbiased estimator for \\(c'\\beta\\).\n\n\nSolution. The log likelihood is \\[\n\\ell(\\beta) = -\\frac{n}{2} \\log(2\\pi \\sigma^2) - \\frac{1}{2\\sigma^2} \\sum_{i=1}^n (m^{-1}(y_i) - X_i' \\beta)^2\n\\] The score is \\[\ns(\\beta) = \\frac{1}{\\sigma^2} \\sum_{i=1}^n X_i (m^{-1}(y_i) - X_i' \\beta)\n\\] The hessian is \\[\nH(\\beta) = \\frac{1}{\\sigma^2} \\sum_{i=1}^n -X_i X_i'\n\\] The Cramer-Rao Lower bound is \\[\nI(\\beta) = \\Er[-H^{-1}] = \\sigma^2 (X'X)^{-1}\n\\] We must compare this with \\(\\var(\\hat{\\beta})\\). \\[\n\\begin{aligned}\n\\var(\\hat{\\beta}) = & \\var( (X'X)^{-1} X'm^{-1}(y)) \\\\\n= & (X'X)^{-1} \\var(X'm^{-1}(y)) (X'X)^{-1} \\\\\n= & (X'X)^{-1} \\var(X'u) (X'X)^{-1} \\\\\n= & (X'X)^{-1} X'X \\sigma^2 (X'X)^{-1} \\\\\n= & (X'X)^{-1}\\sigma^2  = I(\\beta)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html#sigma-fields",
+    "href": "problemsets/midterm2022/midterm2022_solution.html#sigma-fields",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "\\(\\sigma\\) fields",
+    "text": "\\(\\sigma\\) fields\n\nSuppose \\(K=5\\) and \\(g(u) = |u - (K+1)/2|\\). What is \\(\\sigma(Y)\\)?\n\n\nSolution. The support of \\(Y\\) is \\(\\{0, 1, 2\\}\\). The preimage of these sets are \\(\\{3\\}\\), \\(\\{2,4\\}\\), and \\(\\{1, 5\\}\\). \\(\\sigma(Y)\\) additionally contains unions, complements, and intersections of these sets, so \\[\n\\sigma(Y) = \\{ \\emptyset, \\{3\\}, \\{1, 5\\}, \\{2, 4\\}, \\{2,3,4\\}, \\{1, 3, 5\\}, \\{1, 2, 4, 5\\}, \\{1, 2, 3, 4, 5\\} \\}\n\\]\n(If we interpret \\(u\\) as a random variable, then actually, we should replace the sets listed as \\(\\sigma(Y)\\) with \\(u^{-1}\\) of these sets, so that we end up with sets in some unspecified sample space, \\(\\Omega\\)).\n\n\nSuppose \\(g\\) is one to one. What is \\(\\sigma(Y)\\)?\n\n\nSolution. Then for any \\(A \\subset \\{1, ..., K\\}\\), \\(g^{-1}(g(A)) = A\\), so \\(\\sigma(Y) = \\sigma(U) =\\) power set of \\(\\{u^{-1}(1) ,..., u^{-1}(K) \\}\\)."
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html#identification-1",
+    "href": "problemsets/midterm2022/midterm2022_solution.html#identification-1",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "Identification",
+    "text": "Identification\nShow that if if \\(g\\) is one to one, then \\(\\theta_1, ... , \\theta_k\\) are identified.\n\nSolution. If \\(g\\) is one to one, then \\(\\theta_j = P(Y=g(j))\\) identifies \\(\\theta_j\\)."
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html#estimation-1",
+    "href": "problemsets/midterm2022/midterm2022_solution.html#estimation-1",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "Estimation",
+    "text": "Estimation\nAssuming \\(g\\) is one to one, find the maximum likelihood estimator for \\(\\theta\\), and show whether it is unbiased.\n\nSolution. The likelihood is \\[\n\\begin{aligned}\n\\ell(\\theta; Y) = & \\prod_{i=1}^n \\prod_{j=1}^K \\theta_j^{1\\{Y_i = g(j) \\}} \\\\\n= & \\prod_{j=1}^K \\theta_j^{\\sum_{i=1}^n 1\\{Y_i = g(j) \\}} \\\\\n\\log \\ell (\\theta; Y) = & \\sum_{j=1}^K \\left( \\sum_{i=1}^n 1\\{Y_i = g(j) \\} \\right) \\log \\theta_j\n\\end{aligned}\n\\] To simplify notation, let \\(n_k = \\sum_{i=1}^n 1\\{Y_i = g(k) \\}\\). We want to solve \\[\n\\max_\\theta \\sum_{k=1}^K n_k \\log \\theta_k \\text{ s.t. } \\sum_{k=1}^K \\theta_k = 1\n\\] The first order conditions are \\[\n\\frac{n_k}{\\theta_k} = \\lambda\n\\] or \\(n_k = \\lambda \\theta_k\\). Summing across \\(k\\), and using the constraint we have \\(\\lambda = \\sum_{k} n_k = n\\). Thus, \\[\n\\hat{\\theta}_k = \\frac{n_k}{n}\n\\]\nThis is unbiased because \\[\n\\Er[\\hat{\\theta}_k] = \\Er\\left[ \\frac{1}{n} \\sum_i 1\\{Y_i = g(k) \\}  \\right] = P(U_i = k) = \\theta_k\n\\]"
+  },
+  {
+    "objectID": "problemsets/midterm2022/midterm2022_solution.html#testing",
+    "href": "problemsets/midterm2022/midterm2022_solution.html#testing",
+    "title": "ECON 626: Midterm Solutions",
+    "section": "Testing",
+    "text": "Testing\n\nFor \\(K=2\\), find the most powerful test for testing \\(H_0: \\theta_1 = \\theta_1^0\\) against \\(H_1: \\theta_1 = \\theta_1^a\\).\n\n\nSolution. By the Neyman-Pearson Lemma, the likelihood ratio test is most powerfull. The likelihood here is: \\[\n\\begin{aligned}\nf(Y;\\theta) & = \\prod_{i=1}^n \\theta^{1\\{Y_i = g(1)\\}} (1-\\theta)^{1\\{Y_i = g(2) \\}} \\\\\n& = \\theta^{n_1}(1-\\theta)^{n_2}\n\\end{aligned}\n\\] where \\(n_j = \\sum_i 1\\{Y_i = g(j)\\}\\). Note that \\(n_2 = n-n_1\\)\nThe likelihood ratio is then \\[\n\\tau(Y) = \\frac{(\\theta_1^a)^{n_1} (1-\\theta_1^a)^{n-n_1}} { (\\theta_1^0)^{n_1} (1-\\theta_1^0)^{n-n_1}}\n\\] To find a critical region, notice that this only depend on the data through \\(n_1\\). Under \\(H_0\\), the distribution of \\(n_1\\) is \\[\nP(n_1 = m) = \\frac{n!}{m!(n-m)!} (\\theta_1^0)^m (1-\\theta_1^0)^{n - m}\n\\] (After writing the rest of the solution, I suppose this formula isn’t really needed).\nTo proceed further, assume that \\(\\theta_1^a > \\theta_1^0\\), then \\(\\tau(Y) \\equiv \\tau(n_1)\\) is increasing as a function \\(n_1\\), and \\[\nP(\\tau(n_1) > \\tau(c) | H_0) = P(n_1 > c | H_0)\n\\] For a test of size \\(\\alpha\\), we choose \\(c\\) such that \\(P(n_1 > c | H_0) = \\alpha\\), and reject \\(H_0\\) if \\(n_1 > c\\).\nFor \\(\\theta_1^a < \\theta_1^0\\), by similar reasoning, we have \\[\nP(\\tau(n_1) > \\tau(c) | H_0) = P(n_1 < c | H_0)\n\\] where the second inequality is flipped because now \\(\\tau\\) decreases with \\(n_1\\). Thus, the critical region is \\(\\{n_1: n_1 < c\\}\\)\n\n\nIs this test also most powerful against the alternative \\(H_1: \\theta_1 \\neq \\theta_1^0\\)? (Hint: does the critical region depend on \\(\\theta_1^a\\)?)\n\n\nSolution. The critical region above does not depend on the exact value of \\(\\theta_1^a\\) because \\(P(n_1 > c | H_0)\\) does not depend on \\(\\theta_1^a\\). However, it does depend on whether \\(\\theta_1^a\\) is less than or greater than \\(\\theta_1^0\\). Hence, the test is most powerful against \\(H_1: \\theta_1 > \\theta_1^0\\) or \\(H_1: \\theta_1 < \\theta_1^0\\), but not \\(H_1: \\theta_1 \\neq \\theta_1^0\\)."
   },
   {
     "objectID": "problemsets/midterm_review/midterm_review.html",
@@ -774,7 +830,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Oct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Oct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

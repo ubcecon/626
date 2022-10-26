@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paul Schrimpf">
+<meta name="dcterms.date" content="2022-10-26">
+
+<title>ECON 626 - ECON 626: Midterm Solutions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ECON 626</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus626.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides.html">Slides</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
+  <ul class="collapse">
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a></li>
+  <li><a href="#estimation" id="toc-estimation" class="nav-link" data-scroll-target="#estimation">Estimation</a></li>
+  <li><a href="#efficiency" id="toc-efficiency" class="nav-link" data-scroll-target="#efficiency">Efficiency</a></li>
+  </ul></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a>
+  <ul class="collapse">
+  <li><a href="#sigma-fields" id="toc-sigma-fields" class="nav-link" data-scroll-target="#sigma-fields"><span class="math inline">\(\sigma\)</span> fields</a></li>
+  <li><a href="#identification-1" id="toc-identification-1" class="nav-link" data-scroll-target="#identification-1">Identification</a></li>
+  <li><a href="#estimation-1" id="toc-estimation-1" class="nav-link" data-scroll-target="#estimation-1">Estimation</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
+  </ul></li>
+  <li><a href="#definitions-and-results" id="toc-definitions-and-results" class="nav-link" data-scroll-target="#definitions-and-results">Definitions and Results</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ECON 626: Midterm Solutions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paul Schrimpf </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 26, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<p><span class="math display">\[
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\]</span></p>
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<p>Suppose <span class="math inline">\(Y_i = m(X_i' \beta + u_i)\)</span> for <span class="math inline">\(i=1, ... , n\)</span> with <span class="math inline">\(X_i \in \R^k\)</span> and <span class="math inline">\(m:\R \to \R\)</span> is a known function. Throughout, assume that observations are independent across <span class="math inline">\(i\)</span>, <span class="math inline">\(\Er[u] =0\)</span>, and <span class="math inline">\(u\)</span> is independent of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\Er[XX']\)</span> is nonsingular. <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are observed, but <span class="math inline">\(u\)</span> is not.</p>
+<section id="identification" class="level2">
+<h2 class="anchored" data-anchor-id="identification">Identification</h2>
+<ol type="1">
+<li>If <span class="math inline">\(m\)</span> is strictly increasing show that <span class="math inline">\(\beta\)</span> is identified by explicitly writing <span class="math inline">\(\beta\)</span> as a function of the distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Since <span class="math inline">\(m\)</span> is increasing, <span class="math inline">\(m^{-1}\)</span> exists. We can then identify <span class="math inline">\(\beta\)</span> as <span class="math display">\[
+\begin{aligned}
+\beta = &amp; \Er[X_iX_i']^{-1} \Er[X_i m^{-1}(Y_i)] \\
+= &amp; \Er[X_iX_i']^{-1} \Er[X_i (X_i' \beta + u_i)]  = \beta
+\end{aligned}
+\]</span></p>
+</div>
+<ol start="2" type="1">
+<li>Suppose <span class="math inline">\(m(z) = 1\{z \geq 0\}\)</span>. For simplicitly, let <span class="math inline">\(k=1\)</span> and <span class="math inline">\(X_i \in \{-1, 1\}\)</span>. Show that <span class="math inline">\(\beta\)</span> is not identified by finding an observationally equivalent <span class="math inline">\(\tilde{\beta}\)</span>.</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Since <span class="math inline">\(Y \in \{0,1\}\)</span> and <span class="math inline">\(P(Y=0|X) = 1-P(Y=1|X)\)</span>, just looking at <span class="math inline">\(P(Y=1|X)\)</span> completely describes <span class="math inline">\(P(Y|X)\)</span>. For any <span class="math inline">\(\beta\)</span>, we have <span class="math display">\[
+\begin{aligned}
+P_{Y,X}(\dot|\beta, F_u) = &amp; P(Y=1|X;\beta, F_u) P(X) \\
+= &amp; P(X\beta + u \geq 0 | X; F_u) P(X) \\
+= &amp; \left[ 1 - F_u(-X\beta) \right] P(X) \\
+= &amp; \begin{cases} \left[ 1 - F_u(\beta) \right] P(X=-1) &amp; \text{ if} X=-1 \\
+\left[ 1 - F_u(-\beta) \right] P(X=1) &amp; \text{ if} X=1
+\end{cases}
+\end{aligned}
+\]</span> If <span class="math inline">\(\beta \neq 0\)</span>, <span class="math inline">\(\beta\)</span> is observationally equivalent to <span class="math inline">\(\tilde{\beta} = s \beta\)</span> for any <span class="math inline">\(s \neq 0\)</span> with <span class="math inline">\(\tilde{u} = s u\)</span>. The even <span class="math inline">\(X\beta + u \geq 0\)</span> is not affected by multiplying by <span class="math inline">\(s\)</span>, so <span class="math inline">\(P(X\beta + u \geq 0 | X; F_u) P(X) = P(X\tilde{\beta} + \tilde{u} \geq 0 | X; F_\tilde{u}) P(X)\)</span>.</p>
+<p>If <span class="math inline">\(\beta = 0\)</span>, then <span class="math inline">\(\beta\)</span> is observationally equivalent to any <span class="math inline">\(\tilde{\beta}&gt;0\)</span> (also negative ones with an appropriate modified <span class="math inline">\(\tilde{u}\)</span>) and <span class="math inline">\(\tilde{u}\)</span> with <span class="math display">\[
+F_{\tilde{u}}(x) = \begin{cases} F_u(x + \tilde{\beta}) &amp; \text{ if } x &lt; -\tilde{\beta} \\
+F_u(0) &amp; \text{ if } -\tilde{\beta} &lt; x &lt; \tilde{\beta} \\
+F_u(x-\tilde{\beta}) &amp; \text{ if } \tilde{\beta} &lt; x \\
+\end{cases}
+\]</span></p>
+</div>
+</section>
+<section id="estimation" class="level2">
+<h2 class="anchored" data-anchor-id="estimation">Estimation</h2>
+<p>Construct a sample analogue estimator for <span class="math inline">\(\beta\)</span> based on your answer to 1.i.1.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Show whether your estimator is unbiased.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The sample analogue estimator is <span class="math display">\[
+\hat{\beta} = \left( \sum_{i=1}^n X_i X_i' \right)^{-1} \left(\sum_{i=1}^n X_i m^{-1}(Y_i) \right)
+\]</span> It is unbiased because <span class="math display">\[
+\begin{aligned}
+\Er[\hat{\beta}] &amp; = \Er\left[\left( \sum_{i=1}^n X_i X_i'\right)^{-1} (\sum_{i=1}^n X_i m^{-1}(Y_i) ) \right] \\
+&amp; = \Er\left[\left( \sum_{i=1}^n X_i X_i'\right)^{-1} \sum_{i=1}^n X_i (X_i' \beta + u_i) \right] \\
+&amp; = \beta + \Er\left[\left( \sum_{i=1}^n X_i X_i'\right)^{-1} \sum_{i=1}^n X_i u_i  \right] \\
+&amp; = \beta
+\end{aligned}
+\]</span> where the final equality is because <span class="math inline">\(X\)</span> and <span class="math inline">\(u\)</span> are independent and <span class="math inline">\(\Er[u]=0\)</span>.</p>
+</div>
+</section>
+<section id="efficiency" class="level2">
+<h2 class="anchored" data-anchor-id="efficiency">Efficiency</h2>
+<p>Let <span class="math inline">\(X = (X_1, ..., X_n)'\)</span> denote the <span class="math inline">\(n \times k\)</span> matrix of <span class="math inline">\(X_i\)</span>, and <span class="math inline">\(m^{-1}(y) = (m^{-1}(Y_i), ..., m^{-1}(Y_n))\)</span> For this section, you may treat <span class="math inline">\(X\)</span> as non-stochastic.</p>
+<ol type="1">
+<li>Assume that <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>. What is the minimal variance unbiased estimator for <span class="math inline">\(c'\beta\)</span> that is a linear function of <span class="math inline">\(m^{-1}(y)\)</span>?</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>By the Gauss Markov Theorem, <span class="math inline">\(\hat{\beta}\)</span> is the best linear unbiased estimator.</p>
+</div>
+<ol start="2" type="1">
+<li>Assume <span class="math inline">\(u_i = S_i \epsilon_i\)</span> with <span class="math inline">\(S_i\)</span> observed, <span class="math inline">\(\Er[\epsilon] =0\)</span>, and <span class="math inline">\(\Er[\epsilon\epsilon'] = I_n\)</span>. What is the minimal variance unbiased estimator that is a linear function of <span class="math inline">\(m^{-1}(y)?\)</span></li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>If we let <span class="math inline">\(\tilde{y}_i = S_i^{-1} m^{-1}(Y_i)\)</span> and <span class="math inline">\(\tilde{X}_i = S_i^{-1} X_i\)</span>, then we have the linear model <span class="math display">\[
+\tilde{y}_i = \tilde{X}_i \beta + \underbrace{\epsilon_i }_{\equiv S_i^{-1} u_i}
+\]</span> This model has <span class="math inline">\(\Er[\epsilon]=0\)</span> and <span class="math inline">\(\Er[\epsilon\epsilon'] = I_n\)</span>, so the Gauss-Markov theorem applies. The best linear (in <span class="math inline">\(\tilde{y}_i)\)</span> unbiased estimator <span class="math inline">\(c'\beta\)</span> is <span class="math inline">\(c'\hat{\beta}^W = c'(\tilde{X}' \tilde{X})^{-1} \tilde{X}' \tilde{y}\)</span>. Note that <span class="math display">\[
+c' \hat{\beta}^W = c'(X' diag(S)^{-2}X)^{-1} X' diag(S)^{-2} \tilde{y}
+\]</span> so this estimator is linear in <span class="math inline">\(m^{-1}(y)\)</span>, and thus is the best linear in <span class="math inline">\(m^{-1}(y)\)</span> unbiased estimator.</p>
+</div>
+<ol start="3" type="1">
+<li>Suppose that <span class="math inline">\(u_i \sim N(0, \sigma^2)\)</span>. Show that <span class="math inline">\(c'(X'X)^{-1}X'm^{-1}(y)\)</span> is the minimal variance unbiased estimator for <span class="math inline">\(c'\beta\)</span>.</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The log likelihood is <span class="math display">\[
+\ell(\beta) = -\frac{n}{2} \log(2\pi \sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^n (m^{-1}(y_i) - X_i' \beta)^2
+\]</span> The score is <span class="math display">\[
+s(\beta) = \frac{1}{\sigma^2} \sum_{i=1}^n X_i (m^{-1}(y_i) - X_i' \beta)
+\]</span> The hessian is <span class="math display">\[
+H(\beta) = \frac{1}{\sigma^2} \sum_{i=1}^n -X_i X_i'
+\]</span> The Cramer-Rao Lower bound is <span class="math display">\[
+I(\beta) = \Er[-H^{-1}] = \sigma^2 (X'X)^{-1}
+\]</span> We must compare this with <span class="math inline">\(\var(\hat{\beta})\)</span>. <span class="math display">\[
+\begin{aligned}
+\var(\hat{\beta}) = &amp; \var( (X'X)^{-1} X'm^{-1}(y)) \\
+= &amp; (X'X)^{-1} \var(X'm^{-1}(y)) (X'X)^{-1} \\
+= &amp; (X'X)^{-1} \var(X'u) (X'X)^{-1} \\
+= &amp; (X'X)^{-1} X'X \sigma^2 (X'X)^{-1} \\
+= &amp; (X'X)^{-1}\sigma^2  = I(\beta)
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+</section>
+<section id="problem-2" class="level1">
+<h1>Problem 2</h1>
+<p>Suppose <span class="math inline">\(u_i \in \{1, 2, 3, ..., K\}\)</span> and <span class="math inline">\(Y_i = g(u_i)\)</span> for some known <span class="math inline">\(g:\{1,..., K\} \to \R\)</span>. Observations are independent and <span class="math inline">\(Y_1, ..., Y_n\)</span> are observed, but <span class="math inline">\(u_i\)</span> are not. Let <span class="math inline">\(\theta_k = \Pr(u_i = k)\)</span>.</p>
+<section id="sigma-fields" class="level2">
+<h2 class="anchored" data-anchor-id="sigma-fields"><span class="math inline">\(\sigma\)</span> fields</h2>
+<ol type="1">
+<li>Suppose <span class="math inline">\(K=5\)</span> and <span class="math inline">\(g(u) = |u - (K+1)/2|\)</span>. What is <span class="math inline">\(\sigma(Y)\)</span>?</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The support of <span class="math inline">\(Y\)</span> is <span class="math inline">\(\{0, 1, 2\}\)</span>. The preimage of these sets are <span class="math inline">\(\{3\}\)</span>, <span class="math inline">\(\{2,4\}\)</span>, and <span class="math inline">\(\{1, 5\}\)</span>. <span class="math inline">\(\sigma(Y)\)</span> additionally contains unions, complements, and intersections of these sets, so <span class="math display">\[
+\sigma(Y) = \{ \emptyset, \{3\}, \{1, 5\}, \{2, 4\}, \{2,3,4\}, \{1, 3, 5\}, \{1, 2, 4, 5\}, \{1, 2, 3, 4, 5\} \}
+\]</span></p>
+<p>(If we interpret <span class="math inline">\(u\)</span> as a random variable, then actually, we should replace the sets listed as <span class="math inline">\(\sigma(Y)\)</span> with <span class="math inline">\(u^{-1}\)</span> of these sets, so that we end up with sets in some unspecified sample space, <span class="math inline">\(\Omega\)</span>).</p>
+</div>
+<ol start="2" type="1">
+<li>Suppose <span class="math inline">\(g\)</span> is one to one. What is <span class="math inline">\(\sigma(Y)\)</span>?</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Then for any <span class="math inline">\(A \subset \{1, ..., K\}\)</span>, <span class="math inline">\(g^{-1}(g(A)) = A\)</span>, so <span class="math inline">\(\sigma(Y) = \sigma(U) =\)</span> power set of <span class="math inline">\(\{u^{-1}(1) ,..., u^{-1}(K) \}\)</span>.</p>
+</div>
+</section>
+<section id="identification-1" class="level2">
+<h2 class="anchored" data-anchor-id="identification-1">Identification</h2>
+<p>Show that if if <span class="math inline">\(g\)</span> is one to one, then <span class="math inline">\(\theta_1, ... , \theta_k\)</span> are identified.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>If <span class="math inline">\(g\)</span> is one to one, then <span class="math inline">\(\theta_j = P(Y=g(j))\)</span> identifies <span class="math inline">\(\theta_j\)</span>.</p>
+</div>
+</section>
+<section id="estimation-1" class="level2">
+<h2 class="anchored" data-anchor-id="estimation-1">Estimation</h2>
+<p>Assuming <span class="math inline">\(g\)</span> is one to one, find the maximum likelihood estimator for <span class="math inline">\(\theta\)</span>, and show whether it is unbiased.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The likelihood is <span class="math display">\[
+\begin{aligned}
+\ell(\theta; Y) = &amp; \prod_{i=1}^n \prod_{j=1}^K \theta_j^{1\{Y_i = g(j) \}} \\
+= &amp; \prod_{j=1}^K \theta_j^{\sum_{i=1}^n 1\{Y_i = g(j) \}} \\
+\log \ell (\theta; Y) = &amp; \sum_{j=1}^K \left( \sum_{i=1}^n 1\{Y_i = g(j) \} \right) \log \theta_j
+\end{aligned}
+\]</span> To simplify notation, let <span class="math inline">\(n_k = \sum_{i=1}^n 1\{Y_i = g(k) \}\)</span>. We want to solve <span class="math display">\[
+\max_\theta \sum_{k=1}^K n_k \log \theta_k \text{ s.t. } \sum_{k=1}^K \theta_k = 1
+\]</span> The first order conditions are <span class="math display">\[
+\frac{n_k}{\theta_k} = \lambda
+\]</span> or <span class="math inline">\(n_k = \lambda \theta_k\)</span>. Summing across <span class="math inline">\(k\)</span>, and using the constraint we have <span class="math inline">\(\lambda = \sum_{k} n_k = n\)</span>. Thus, <span class="math display">\[
+\hat{\theta}_k = \frac{n_k}{n}
+\]</span></p>
+<p>This is unbiased because <span class="math display">\[
+\Er[\hat{\theta}_k] = \Er\left[ \frac{1}{n} \sum_i 1\{Y_i = g(k) \}  \right] = P(U_i = k) = \theta_k
+\]</span></p>
+</div>
+</section>
+<section id="testing" class="level2">
+<h2 class="anchored" data-anchor-id="testing">Testing</h2>
+<ol type="1">
+<li>For <span class="math inline">\(K=2\)</span>, find the most powerful test for testing <span class="math inline">\(H_0: \theta_1 = \theta_1^0\)</span> against <span class="math inline">\(H_1: \theta_1 = \theta_1^a\)</span>.</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>By the Neyman-Pearson Lemma, the likelihood ratio test is most powerfull. The likelihood here is: <span class="math display">\[
+\begin{aligned}
+f(Y;\theta) &amp; = \prod_{i=1}^n \theta^{1\{Y_i = g(1)\}} (1-\theta)^{1\{Y_i = g(2) \}} \\
+&amp; = \theta^{n_1}(1-\theta)^{n_2}
+\end{aligned}
+\]</span> where <span class="math inline">\(n_j = \sum_i 1\{Y_i = g(j)\}\)</span>. Note that <span class="math inline">\(n_2 = n-n_1\)</span></p>
+<p>The likelihood ratio is then <span class="math display">\[
+\tau(Y) = \frac{(\theta_1^a)^{n_1} (1-\theta_1^a)^{n-n_1}} { (\theta_1^0)^{n_1} (1-\theta_1^0)^{n-n_1}}
+\]</span> To find a critical region, notice that this only depend on the data through <span class="math inline">\(n_1\)</span>. Under <span class="math inline">\(H_0\)</span>, the distribution of <span class="math inline">\(n_1\)</span> is <span class="math display">\[
+P(n_1 = m) = \frac{n!}{m!(n-m)!} (\theta_1^0)^m (1-\theta_1^0)^{n - m}
+\]</span> (After writing the rest of the solution, I suppose this formula isn’t really needed).</p>
+<p>To proceed further, assume that <span class="math inline">\(\theta_1^a &gt; \theta_1^0\)</span>, then <span class="math inline">\(\tau(Y) \equiv \tau(n_1)\)</span> is increasing as a function <span class="math inline">\(n_1\)</span>, and <span class="math display">\[
+P(\tau(n_1) &gt; \tau(c) | H_0) = P(n_1 &gt; c | H_0)
+\]</span> For a test of size <span class="math inline">\(\alpha\)</span>, we choose <span class="math inline">\(c\)</span> such that <span class="math inline">\(P(n_1 &gt; c | H_0) = \alpha\)</span>, and reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(n_1 &gt; c\)</span>.</p>
+<p>For <span class="math inline">\(\theta_1^a &lt; \theta_1^0\)</span>, by similar reasoning, we have <span class="math display">\[
+P(\tau(n_1) &gt; \tau(c) | H_0) = P(n_1 &lt; c | H_0)
+\]</span> where the second inequality is flipped because now <span class="math inline">\(\tau\)</span> decreases with <span class="math inline">\(n_1\)</span>. Thus, the critical region is <span class="math inline">\(\{n_1: n_1 &lt; c\}\)</span></p>
+</div>
+<ol start="2" type="1">
+<li>Is this test also most powerful against the alternative <span class="math inline">\(H_1: \theta_1 \neq \theta_1^0\)</span>? (Hint: does the critical region depend on <span class="math inline">\(\theta_1^a\)</span>?)</li>
+</ol>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The critical region above does not depend on the exact value of <span class="math inline">\(\theta_1^a\)</span> because <span class="math inline">\(P(n_1 &gt; c | H_0)\)</span> does not depend on <span class="math inline">\(\theta_1^a\)</span>. However, it does depend on whether <span class="math inline">\(\theta_1^a\)</span> is less than or greater than <span class="math inline">\(\theta_1^0\)</span>. Hence, the test is most powerful against <span class="math inline">\(H_1: \theta_1 &gt; \theta_1^0\)</span> or <span class="math inline">\(H_1: \theta_1 &lt; \theta_1^0\)</span>, but not <span class="math inline">\(H_1: \theta_1 \neq \theta_1^0\)</span>.</p>
+</div>
+</section>
+</section>
+<section id="definitions-and-results" class="level1">
+<h1>Definitions and Results</h1>
+<ul>
+<li><p>Measure and Probability:</p>
+<ul>
+<li><p>A collection of subsets, <span class="math inline">\(\mathscr{F}\)</span>, of <span class="math inline">\(\Omega\)</span> is a <span class="math inline">\(\sigma\)</span><em>-field</em> , if</p>
+<ol type="1">
+<li><span class="math inline">\(\Omega \in \mathscr{F}\)</span></li>
+<li>If <span class="math inline">\(A \in \mathscr{F}\)</span>, then <span class="math inline">\(A^c \in \mathscr{F}\)</span></li>
+<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span>, then <span class="math inline">\(\cup_{j=1}^\infty A_j \in \mathscr{F}\)</span></li>
+</ol></li>
+<li><p>A measure, <span class="math inline">\(\mu: \mathcal{F} \to [0, \infty]\)</span> s.t.</p>
+<ol type="1">
+<li><span class="math inline">\(\mu(\emptyset) = 0\)</span></li>
+<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span> are pairwise disjoint, then <span class="math inline">\(\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)\)</span></li>
+</ol></li>
+<li><p>Lesbegue integral is</p>
+<ol type="1">
+<li>positive: if <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></li>
+<li>Linear: <span class="math inline">\(\int (af + bg) d\mu = a\int f d\mu + b \int g d \mu\)</span></li>
+</ol></li>
+<li><p>Radon-Nikodym derivative: if <span class="math inline">\(\nu \ll \mu\)</span>, then <span class="math inline">\(\exists\)</span> nonnegative measureable function, <span class="math inline">\(\frac{d\nu}{d\mu}\)</span>, s.t. <span class="math display">\[
+\nu(A) = \int_A \frac{d\nu}{d\mu} d\mu
+\]</span></p></li>
+<li><p>Monotone convergence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p></li>
+<li><p>Dominated converegence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p></li>
+<li><p>Markov’s inequality: <span class="math inline">\(P(|X|&gt;\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p></li>
+<li><p>Jensen’s inequality: if <span class="math inline">\(g\)</span> is convex, then <span class="math inline">\(g(\Er[X]) \leq \Er[g(X)]\)</span></p></li>
+<li><p>Cauchy-Schwarz inequality: <span class="math inline">\(\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]\)</span></p></li>
+<li><p><span class="math inline">\(\sigma(X)\)</span> is <span class="math inline">\(\sigma\)</span><strong>-field generated by</strong> <span class="math inline">\(X\)</span>, it is</p>
+<ul>
+<li>smallest <span class="math inline">\(\sigma\)</span>-field w.r.t. which <span class="math inline">\(X\)</span> is measurable</li>
+<li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(\sigma(W) \subset \sigma(X)\)</span> iff <span class="math inline">\(\exists\)</span> <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(W = g(X)\)</span></p></li>
+<li><p>Events <span class="math inline">\(A_1, ..., A_m\)</span> are <strong>independent</strong> if for any sub-collection <span class="math inline">\(A_{i_1}, ..., A_{i_s}\)</span> <span class="math display">\[
+  P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
+  \]</span> <span class="math inline">\(\sigma\)</span>-fields are independent if this is true for any events from them. Random variables are independent if their <span class="math inline">\(\sigma\)</span>-fields are.</p></li>
+<li><p>Conditional expection of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathscr{G}\)</span> satisfies <span class="math inline">\(\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in \mathscr{G}\)</span></p></li>
+</ul></li>
+</ul>
+<ul>
+<li><p>Identification <span class="math inline">\(X\)</span> observed, distribution <span class="math inline">\(P_X\)</span>, probability model <span class="math inline">\(\mathcal{P}\)</span></p>
+<ul>
+<li><span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t. <span class="math inline">\(\theta_0 = \psi(P_X)\)</span></li>
+<li><span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</li>
+<li>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></li>
+<li><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s \neq s_0\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></li>
+<li><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></li>
+</ul></li>
+<li><p>Cramér-Rao Bound: in the parametric model <span class="math inline">\(P_X \in \{P_\theta: \theta \in \R^d\}\)</span> wiht likelihood <span class="math inline">\(\ell(\theta;x)\)</span>, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator <span class="math inline">\(\tau(X)\)</span>, <span class="math display">\[
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+\]</span> where <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x)\)</span> and <span class="math inline">\(s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}\)</span></p></li>
+<li><p>Hypothesis testing:</p>
+<ul>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_0)\)</span>=<em>Type I error rate</em> <span class="math inline">\(=P_x(C)\)</span></li>
+<li><span class="math inline">\(P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)\)</span>=<em>Type II error rate</em></li>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_1)\)</span> = <em>power</em></li>
+<li><span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} P_x(C)\)</span> = <em>size of test</em></li>
+<li>Neyman-Pearson Lemma: Let <span class="math inline">\(\Theta = \{0, 1\}\)</span>, <span class="math inline">\(f_0\)</span> and <span class="math inline">\(f_1\)</span> be densities of <span class="math inline">\(P_0\)</span> and <span class="math inline">\(P_1\)</span>, <span class="math inline">\(\tau(x) =f_1(x)/f_0(x)\)</span> and <span class="math inline">\(C^* =\{x \in X: \tau(x) &gt; c\}\)</span>. Then among all tests <span class="math inline">\(C\)</span> s.t. <span class="math inline">\(P_0(C) = P_0(C^*)\)</span>, <span class="math inline">\(C^*\)</span> is most powerful.</li>
+</ul></li>
+<li><p>Projection: <span class="math inline">\(P_L y \in L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
+\norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+\]</span></p>
+<ol type="1">
+<li><span class="math inline">\(P_L y\)</span> exists, is unique, and is a linear function of <span class="math inline">\(y\)</span></li>
+<li>For any <span class="math inline">\(y_1^* \in L\)</span>, <span class="math inline">\(y_1^* = P_L y\)</span> iff <span class="math inline">\(y- y_1^* \perp L\)</span></li>
+<li><span class="math inline">\(G = P_L\)</span> iff <span class="math inline">\(Gy = y \forall y \in L\)</span> and <span class="math inline">\(Gy = 0 \forall y \in L^\perp\)</span></li>
+<li>Linear <span class="math inline">\(G: V \to V\)</span> is a projection map onto its range, <span class="math inline">\(\mathcal{R}(G)\)</span>, iff <span class="math inline">\(G\)</span> is idempotent and symmetric.</li>
+</ol></li>
+<li><p>Gauss-Markov: <span class="math inline">\(Y = \theta + u\)</span> with <span class="math inline">\(\theta \in L \subset \R^n\)</span>, a known subspace. If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a'\theta = a'\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p></li>
+</ul>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>If you could not answer that part, suppose you had shown that <span class="math inline">\(\beta = \Er[X_i X_i']^{-1} \Er[X_i m^{-1}(Y_i)]\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

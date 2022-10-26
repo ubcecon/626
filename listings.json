@@ -3,6 +3,7 @@
     "listing": "/slides.html",
     "items": [
       "/problemsets/midterm_review/midterm_review.html",
+      "/problemsets/midterm2022/midterm2022_solution.html",
       "/problemsets/01/ps01.html",
       "/problemsets/02/ps02.html",
       "/problemsets/03/ps03.html",
@@ -11,6 +12,7 @@
       "/identification/identification.html",
       "/projection/projection.html",
       "/measure/measure.html",
+      "/measure/test.html",
       "/probability/probability.html"
     ]
   }

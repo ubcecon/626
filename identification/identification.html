@@ -525,37 +525,12 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </section>
 <section id="example-regression" class="slide level2">
 <h2>Example: Regression</h2>
-<!-- ```{r, engine = 'tikz'} -->
-<!-- \usetikzlibrary{positioning} -->
-<!-- \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
-<!--                     obs/.style={circle, draw,black, text=black}] -->
-<!-- \node[obs] (X){$X_i$}; -->
-<!-- \node[obs] (Y) [right=of X] {$Y_i$}; -->
-<!-- \node(E) [below=of Y]{$\epsilon_i$}; -->
-<!-- \path[->] (X) edge (Y); -->
-<!-- \path[->] (E) edge[dashed] (Y); -->
-<!-- \end{tikzpicture} -->
-<!-- ``` -->
-</section>
+
+<img data-src="identification_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
 <section id="example-potential-outcomes-1" class="slide level2">
 <h2>Example: Potential Outcomes</h2>
-<!-- ```{r, engine = 'tikz'} -->
-<!-- \usetikzlibrary{positioning} -->
-<!-- \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
-<!--                     obs/.style={circle, draw,black, text=black}] -->
-<!-- \node[obs](D){$D_i$}; -->
-<!-- \node[obs] (X)[below=of D]{$X_i$}; -->
-<!-- \node[obs] (Y)[right=of D]{$Y_i$}; -->
-<!-- \node(E)[below=of Y]{$\epsilon_i$}; -->
-<!-- \node(U)[left=of D]{$U_i$}; -->
-<!-- \path[->] (X) edge (Y); -->
-<!-- \path[->] (X) edge (D); -->
-<!-- \path[->] (D) edge (Y); -->
-<!-- \path[->](U) edge[dashed] (D); -->
-<!-- \path[->] (E) edge[dashed] (Y); -->
-<!-- \end{tikzpicture} -->
-<!-- ``` -->
-</section></section>
+
+<img data-src="identification_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="generalized-andor-descriptive-intrepretation-of-population-estimator" class="title-slide slide level1 center">
 <h1>Generalized and/or Descriptive Intrepretation of Population Estimator</h1>
@@ -972,6 +947,48 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

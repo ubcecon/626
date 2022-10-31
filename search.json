@@ -7,6 +7,167 @@
     "text": "This site was created using Quarto.\nSource code is available on github with a CC-by-SA license."
   },
   {
+    "objectID": "asymptotics/indistribution.html#reading",
+    "href": "asymptotics/indistribution.html#reading",
+    "title": "Convergence in Distribution",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 10"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#convergence-in-distribution-1",
+    "href": "asymptotics/indistribution.html#convergence-in-distribution-1",
+    "title": "Convergence in Distribution",
+    "section": "Convergence in Distribution",
+    "text": "Convergence in Distribution\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in distribution to the random vector \\(X\\) if for all \\(f \\in \\underbrace{\\mathcal{C}_b}_{\\text{continuous and bounded}}\\) \\[\n\\Er[ f(X_n) ] \\to \\Er[f(X)]\n\\] denoted by \\(X_n \\indist X\\)\n\n\n\n\n\n\n\nTheorem 1.1\n\n\nIf \\(X_n \\indist X\\) if and only if \\(P(X_n \\leq t) \\to P(X \\leq t)\\) for all \\(t\\) where \\(P(X \\leq t)\\) is continuous"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#convergence-in-distribution-2",
+    "href": "asymptotics/indistribution.html#convergence-in-distribution-2",
+    "title": "Convergence in Distribution",
+    "section": "Convergence in Distribution",
+    "text": "Convergence in Distribution\n\n\n\nTheorem 1.2\n\n\nIf \\(X_n \\indist X\\) and \\(X\\) is continuous, then \\[\n\\sup_{t \\in \\R^d} | P(X_n \\leq t) - P(X \\leq t) | \\to 0\n\\]"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#characterizing-convergence-in-distribution",
+    "href": "asymptotics/indistribution.html#characterizing-convergence-in-distribution",
+    "title": "Convergence in Distribution",
+    "section": "Characterizing Convergence in Distribution",
+    "text": "Characterizing Convergence in Distribution\n\n\n\nLemma 1.2\n\n\n\\(X_n \\indist X\\) iff for any open \\(G \\subset \\R^d\\), \\[\n\\liminf P(X_n \\in G) \\geq P(X \\in G)\n\\]\n\n\n\n\nThis and additional characterizations of convergence in distribution are called the Portmanteau Theorem"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#continuous-mapping-theorem",
+    "href": "asymptotics/indistribution.html#continuous-mapping-theorem",
+    "title": "Convergence in Distribution",
+    "section": "Continuous Mapping Theorem",
+    "text": "Continuous Mapping Theorem\n\n\n\nContinuous Mapping Theorem\n\n\nLet \\(X_n \\indist X\\) and \\(g\\) be continuous on a set \\(C\\) with \\(P(X \\in C) = 1\\), then \\[\ng(X_n) \\indist g(X)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#relation-to-convergence-in-probability",
+    "href": "asymptotics/indistribution.html#relation-to-convergence-in-probability",
+    "title": "Convergence in Distribution",
+    "section": "Relation to Convergence in Probability",
+    "text": "Relation to Convergence in Probability\n\n\n\nTheorem 1.4\n\n\n\nIf \\(X_n \\indist X\\), then \\(X_n = O_p(1)\\)\nIf \\(c\\) is a constant, then \\(X_n \\inprob c\\) iff \\(X_n \\indist c\\)\nIf \\(Y_n \\inprob c\\) and \\(X_n \\indist X\\), then \\((Y_n, X_n) \\indist (c, X)\\)\nIf \\(X_n \\inprob X\\), then \\(X_n \\indist X\\)"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#slutskys-lemma",
+    "href": "asymptotics/indistribution.html#slutskys-lemma",
+    "title": "Convergence in Distribution",
+    "section": "Slutsky’s Lemma",
+    "text": "Slutsky’s Lemma\n\n\n\nTheorem 1.5 (Generalized Slutsky’s Lemma)\n\n\nIf \\(Y_n \\inprob c\\), \\(X_n \\indist X\\), and \\(g\\) is continuous, then \\[\ng(Y_n, X_n) \\indist g(c,X)\n\\]\n\n\n\n\nImplies:\n\n\\(Y_n + X_n \\indist c + X\\)\n\\(Y_n X_n \\indist c X\\)\n\\(X_n/Y_n \\indist X/c\\)"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#levys-continuity-theorem",
+    "href": "asymptotics/indistribution.html#levys-continuity-theorem",
+    "title": "Convergence in Distribution",
+    "section": "Levy’s Continuity Theorem",
+    "text": "Levy’s Continuity Theorem\n\n\n\nLemma 2.1 (Levy’s Continuity Theorem)\n\n\n\\(X_n \\indist X\\) iff \\(\\Er[e^{i t'X_n} ] \\to \\Er[e^{i t' X} ]\\) for all \\(t \\in \\R^d\\)\n\n\n\n\nsee Döbler (2022) for a short proof\n\\(\\Er[e^{i t' X}] \\equiv \\varphi(t)\\) is the characteristic function of \\(X\\)"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#law-of-large-numbers-revisited",
+    "href": "asymptotics/indistribution.html#law-of-large-numbers-revisited",
+    "title": "Convergence in Distribution",
+    "section": "Law of Large Numbers Revisited",
+    "text": "Law of Large Numbers Revisited\n\n\n\nLemma 2.2 (Weak Law of Large Numbers)\n\n\nIf \\(X_1, ..., X_n\\) are i.i.d. with \\(\\Er[|X_1|] < \\infty\\), then \\(\\frac{1}{n} \\sum_{i=1}^n X_i \\inprob \\Er[X_1]\\)\n\n\n\n\n\n\n\nTheorem 2.2 (non-iid WLLN)\n\n\nIf $, \\(\\Er[X_i X_j] = 0\\) for all \\(i \\neq j\\) and \\(\\frac{1}{n} \\max_{1 \\leq  j \\leq n} \\Er[X_j^2] \\to 0\\), then \\(\\frac{1}{n} \\sum_{i=1}^n X_i \\inprob 0\\)\n\n\n\n\n\nApply to OLS again and show \\(\\hat{\\sigma}^2\\) is consistent"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#central-limit-theorem-1",
+    "href": "asymptotics/indistribution.html#central-limit-theorem-1",
+    "title": "Convergence in Distribution",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\n\n\nTheorem 2.3\n\n\nSuppose \\(X_1, ..., X_n\\) are i.i.d. with \\(\\Er[X_1] = \\mu\\) and \\(\\var(X_1) = \\sigma^2\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n \\frac{X_i - \\mu}{\\sigma} \\indist N(0,1)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#cramer-wold-device",
+    "href": "asymptotics/indistribution.html#cramer-wold-device",
+    "title": "Convergence in Distribution",
+    "section": "Cramer-Wold Device",
+    "text": "Cramer-Wold Device"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#multivariate-central-limit-theorem",
+    "href": "asymptotics/indistribution.html#multivariate-central-limit-theorem",
+    "title": "Convergence in Distribution",
+    "section": "Multivariate Central Limit Theorem",
+    "text": "Multivariate Central Limit Theorem"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#reading",
+    "href": "asymptotics/inprobability.html#reading",
+    "title": "Convergence in Probability",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 9\nIndependent study: Song (2021) chapters 6-7"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#convergence-in-probability-1",
+    "href": "asymptotics/inprobability.html#convergence-in-probability-1",
+    "title": "Convergence in Probability",
+    "section": "Convergence in Probability",
+    "text": "Convergence in Probability\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in probability to the random vector \\(Y\\) if for all \\(\\epsilon>0\\) \\[\n\\lim_{n \\to \\infty} P\\left( \\norm{X_n - Y} > \\epsilon \\right) = 0\n\\] denoted by \\(X_n \\inprob Y\\) or \\(\\plim_{n \\to \\infty} X_n = Y\\)\n\n\n\n\n\nTypical use: \\(X_n = \\hat{\\theta}_n\\), estimator from \\(n\\) observations, \\(Y=\\theta_0\\), a constant.\nHow to show that \\(\\hat{\\theta}_n \\inprob \\theta_0\\)?"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#lp-convergence",
+    "href": "asymptotics/inprobability.html#lp-convergence",
+    "title": "Convergence in Probability",
+    "section": "\\(L^p\\) convergence",
+    "text": "\\(L^p\\) convergence\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in \\(L^p\\) to the random vector \\(Y\\) if \\[\n\\lim_{n \\to \\infty} \\Er\\left[ \\norm{X_n-Y}^p \\right] \\to 0\n\\]\n\n\n\n\n\\(p=2\\) called convergence in mean square\n\n\n\n\nMarkov’s Inequality\n\n\n\\(P(|X|>\\epsilon) \\leq \\frac{\\Er[|X|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon > 0, k > 0\\)\n\n\n\n\n\\(P\\left( \\norm{X_n - Y} > \\epsilon \\right) \\leq \\frac{\\Er[ \\norm{X_n - y}^k]} {\\epsilon_k}\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#convergence-in-lp-implies-convergence-in-probability",
+    "href": "asymptotics/inprobability.html#convergence-in-lp-implies-convergence-in-probability",
+    "title": "Convergence in Probability",
+    "section": "Convergence in \\(L^p\\) implies convergence in probability",
+    "text": "Convergence in \\(L^p\\) implies convergence in probability\n\n\n\nTheorem 1.1\n\n\nIf \\(X_n\\) converges in \\(L^p\\) to \\(Y\\), then \\(X_n \\inprob Y\\).\n\n\n\n\nAn estimator, \\(\\hat{\\theta}\\) is consistent if \\(\\hat{\\theta} \\inprob \\theta_0\\)\n\n\n\nImplication for estimators: \\[\n\\begin{aligned}\nMSE(\\hat{\\theta}_n) = & \\Er[ \\norm{\\hat{\\theta}_n - \\theta_0}^2 ] \\\\\n= & tr[\\var(\\hat{\\theta}_n)] + Bias(\\hat{\\theta}_n)'Bias(\\hat{\\theta}_n)\n\\end{aligned}\n\\]\nIf \\(MSE(\\hat{\\theta}_n) \\to 0\\), then \\(\\hat{\\theta}_n \\inprob \\theta_0\\)\nIf \\(\\lim_{n \\to \\infty} \\Er[\\hat{\\theta}_n] \\neq \\theta_0\\), then \\(\\plim \\hat{\\theta}_n \\neq \\theta_0\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#consistency-of-least-squares",
+    "href": "asymptotics/inprobability.html#consistency-of-least-squares",
+    "title": "Convergence in Probability",
+    "section": "Consistency of Least-Squares",
+    "text": "Consistency of Least-Squares\n\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} = (X'X)^{-1} X' y\\) \\(\\inprob \\beta_0\\)?\nSufficient that \\(MSE(\\hat{\\beta}) = tr[\\var(\\hat{\\beta})] + Bias(\\hat{\\beta})'Bias(\\hat{\\beta}) \\to 0\\)\n\\(\\var(\\hat{\\beta}) = \\sigma^2 (X'X)^{-1}\\) (treating \\(X\\) as non-stochastic)\n\\(tr((X'X)^{-1}) \\leq \\frac{k}{\\lambda_{ min}(X'X)}\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#convergence-in-probability-of-functions",
+    "href": "asymptotics/inprobability.html#convergence-in-probability-of-functions",
+    "title": "Convergence in Probability",
+    "section": "Convergence in Probability of Functions",
+    "text": "Convergence in Probability of Functions\n\n\n\nTheorem 2.2\n\n\nIf \\(X_n \\inprob X\\), and \\(f\\) is continuous, then \\(f(X_n) \\inprob f(X)\\)\n\n\n\n\n\n\nSlutsky’s Lemma\n\n\nIf \\(Y_n \\inprob c\\) and \\(W_n \\inprob d\\), then\n\n\\(Y_n + W_n \\inprob c+ d\\)\n\\(Y_n W_n \\inprob cd\\)\n\\(Y_n / W_n \\inprob c/d\\) if \\(d \\neq 0\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#weak-law-of-large-numbers",
+    "href": "asymptotics/inprobability.html#weak-law-of-large-numbers",
+    "title": "Convergence in Probability",
+    "section": "Weak Law of Large Numbers",
+    "text": "Weak Law of Large Numbers\n\n\n\nWeak Law of Large Numbers\n\n\nIf \\(X_1, ..., X_n\\) are i.i.d. and \\(\\Er[X^2]\\) exists, then \\[\n\\frac{1}{n} \\sum X_i \\inprob \\Er[X]\n\\]\n\n\n\n\nProof: use Markov’s inequality\nThis is the simplest to prove WLLN, but there are many variants with alternate assumptions that also imply \\(\\frac{1}{n} \\sum X_i \\inprob \\Er[X]\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#consistency-of-least-squares-revisited",
+    "href": "asymptotics/inprobability.html#consistency-of-least-squares-revisited",
+    "title": "Convergence in Probability",
+    "section": "Consistency of Least Squares Revisited",
+    "text": "Consistency of Least Squares Revisited\n\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} \\inprob \\beta_0\\)?\nTreat \\(X\\) as stochastic\n\\(\\hat{\\beta} = \\left(\\frac{1}{n} \\sum_{i=1}^n X_i X_i' \\right)^{-1} \\left(\\frac{1}{n} \\sum_{i=1}^n X_i y_i \\right)\\)\nIf WLLN applies to \\(\\frac{1}{n} \\sum_{i=1}^n X_i X_i'\\) and \\(\\frac{1}{n} \\sum_{i=1}^n X_i y_i\\) (and \\(\\Er[X_i X_i']^{-1}\\) exists)\nSufficient for i.i.d, \\(\\Er[X_i u_i] = 0\\), 4th moments of \\(X_i\\) to exist, \\(\\Er[u_i^2]\\) to exist"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#convergence-rates-1",
+    "href": "asymptotics/inprobability.html#convergence-rates-1",
+    "title": "Convergence in Probability",
+    "section": "Convergence Rates",
+    "text": "Convergence Rates\n\n\n\nDefinition\n\n\nGiven a sequence of random variables, \\(X_1, X_2, ...\\) and constants \\(b_1, b_2, ...\\), then\n\n\\(X_n = O_p(b_n)\\) if for all \\(\\epsilon > 0\\) there exists \\(M_\\epsilon\\) s.t. \\[\n\\lim\\sup P\\left(\\frac{\\norm{X_n}}{b_n} \\geq  M_\\epsilon \\right) < \\epsilon\n\\]\n\\(X_n = o_p(b_n)\\) if \\(\\frac{X_n}{b_n} \\to 0\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#example",
+    "href": "asymptotics/inprobability.html#example",
+    "title": "Convergence in Probability",
+    "section": "Example",
+    "text": "Example\n\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\n\\begin{aligned}\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | > a \\right) \\leq & \\frac{\\var(\\En X_i - \\mu)}{a^2}  \\\\\n\\leq &  \\frac{\\sigma^2}{n a^2}\n\\end{aligned}\n\\]\nLet \\(a = \\epsilon n^{-\\alpha}\\), then \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-\\alpha}} > \\epsilon \\right) \\leq \\frac{\\sigma^2}{n^{1 - 2\\alpha}\\epsilon^2}\n\\]\n\\(|\\En X_i - \\mu | = o_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2)\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#example-1",
+    "href": "asymptotics/inprobability.html#example-1",
+    "title": "Convergence in Probability",
+    "section": "Example",
+    "text": "Example\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\n\\begin{aligned}\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | > a \\right) \\leq & \\frac{\\var(\\En X_i - \\mu)}{a^2}  \\\\\n\\leq &  \\frac{\\sigma^2}{n a^2}\n\\end{aligned}\n\\]\nLet \\(a = \\sigma \\epsilon^{-1/2} n^{-1/2}\\), \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-1/2}} > \\underbrace{\\sigma \\epsilon^{-1/2}}_{M_\\epsilon} \\right) \\leq \\epsilon\n\\] so \\(|\\En X_i - \\mu | = O_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2]\\)"
+  },
+  {
     "objectID": "estimation/estimation.html#reading",
     "href": "estimation/estimation.html#reading",
     "title": "Estimation",
@@ -270,7 +431,7 @@
     "href": "index.html",
     "title": "ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nModes of Convergence\nSlutsky’s Lemma/Continuous Mapping Theorem\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nConvergence in probability\nConvergence in distribution\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
   },
   {
     "objectID": "measure/measure.html#references",
@@ -397,13 +558,6 @@
     "title": "Measure",
     "section": "Dominated Convergence Theorem",
     "text": "Dominated Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu <\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)\n\n\n\n\nThe measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory."
-  },
-  {
-    "objectID": "measure/test.html#test",
-    "href": "measure/test.html#test",
-    "title": "Measure",
-    "section": "Test",
-    "text": "Test"
   },
   {
     "objectID": "probability/probability.html#reading",
@@ -830,7 +984,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Oct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 27, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Oct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

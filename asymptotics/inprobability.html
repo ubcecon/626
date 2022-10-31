@@ -11,7 +11,7 @@
 
   <meta name="author" content="Paul Schrimpf">
   <meta name="dcterms.date" content="2022-10-31">
-  <title>ECON 626 - Identification</title>
+  <title>ECON 626 - Convergence in Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -345,8 +345,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="tricouni.jpg" data-background-size="contain" class="center">
-  <h1 class="title">Identification</h1>
+<section id="title-slide" data-background-image="rexford_g.jpg" data-background-size="contain" class="center">
+  <h1 class="title">Convergence in Probability</h1>
   <p class="author">Paul Schrimpf</p>
   <p class="date">10/31/22</p>
 </section>
@@ -354,356 +354,239 @@
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
-<li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 4</strong> (which is the basis for these slides)</li>
-<li>Recommended: <span class="citation" data-cites="lewbel2019">Lewbel (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
-<li>Supplementary: <span class="citation" data-cites="matzkin2013">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+<li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 9</strong></li>
+<li>Independent study: <span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapters 6-7</li>
 </ul>
+</section>
+<section>
+<section id="convergence-in-probability" class="title-slide slide level1 center">
+<h1>Convergence in Probability</h1>
 <p><span class="math display">\[
 \def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
 \def\cov{{\mathrm{Cov}}}
 \def\var{{\mathrm{Var}}}
 \def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
 \]</span></p>
-<aside class="notes">
-<p>Motivate by wanting to go from data to parameters …</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- \def\plim{{\mathrm{p}}\lim} -->
 </section>
-<section id="identification" class="title-slide slide level1 center">
-<h1>Identification</h1>
+<section id="convergence-in-probability-1" class="slide level2">
+<h2>Convergence in Probability</h2>
 <div class="callout callout-tip no-icon callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(X\)</span> be an observed random vector with distribution <span class="math inline">\(P_X\)</span>. Let <span class="math inline">\(\mathcal{P}\)</span> be a<strong>probability model</strong> — a collection of probabilities such that <span class="math inline">\(P_X \in \mathcal{P}\)</span>. Then <span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t.</p>
-<p><span class="math display">\[
-\theta_0 = \psi(P_X)
-\]</span></p>
+<p>Random vectors <span class="math inline">\(X_1, X_2, ...\)</span> <strong>converge in probability</strong> to the random vector <span class="math inline">\(Y\)</span> if for all <span class="math inline">\(\epsilon&gt;0\)</span> <span class="math display">\[
+\lim_{n \to \infty} P\left( \norm{X_n - Y} &gt; \epsilon \right) = 0
+\]</span> denoted by <span class="math inline">\(X_n \inprob Y\)</span> or <span class="math inline">\(\plim_{n \to \infty} X_n = Y\)</span></p>
 </div>
 </div>
 </div>
-</section>
-
-<section>
-<section id="examples" class="title-slide slide level1 center">
-<h1>Examples</h1>
-
-</section>
-<section id="example-descriptive-statistics" class="slide level2">
-<h2>Example: Descriptive Statistics</h2>
-<div>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\theta_0 =\)</span> mean of <span class="math inline">\(X\)</span>, then <span class="math inline">\(\theta_0\)</span> is identified by <span class="math display">\[
-\psi_\mu(P) = \int x dP(x)
-\]</span> in <span class="math inline">\(\mathcal{P} = \{P : \int x dP(x) &lt; \infty \}\)</span></p></li>
-<li class="fragment"><p>Generally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist</p></li>
-</ul>
-</div>
-</section>
-<section id="example-linear-model" class="slide level2">
-<h2>Example: Linear Model</h2>
-<p><span class="math display">\[
-Y = \alpha + \beta X + \epsilon
-\]</span></p>
-<ul>
-<li><p><span class="math inline">\(\mathcal{P} = \{P_{X,Y}:\)</span> <span class="math inline">\(Y=\alpha + \beta X + \epsilon\)</span>,</p>
-<ol type="1">
-<li><p><span class="math inline">\(| \mathrm{Cov}(X,Y) | &lt; \infty\)</span>, <span class="math inline">\(0 &lt; \mathrm{Var}(X) &lt; \infty\)</span></p></li>
-<li><p><span class="math inline">\(\mathrm{Cov}(X, \epsilon) = 0\)</span> <span class="math inline">\(\}\)</span></p></li>
-</ol></li>
-<li><p><span class="math inline">\(\beta\)</span> identified as</p></li>
-</ul>
-<p><span class="math display">\[
-\beta = \frac{\int (x - \Er X) (y - \Er Y ) dP_{X,Y}(x,y)}
-{\int (x - \Er X)^2 dP_{X}(x)}  = \frac{ \cov(X,Y) }{ \var(X) }
-\]</span></p>
 <div class="fragment">
 <ul>
-<li>Identification requires:
-<ol type="1">
-<li>Usually innocuous regularity conditions</li>
-<li><strong>Substantive exogeneity restriction</strong></li>
-</ol></li>
-<li>Evaluating plausibility of exogeneity restrictions requires a priori knowledge of data context and related economic theory</li>
+<li>Typical use: <span class="math inline">\(X_n = \hat{\theta}_n\)</span>, estimator from <span class="math inline">\(n\)</span> observations, <span class="math inline">\(Y=\theta_0\)</span>, a constant.</li>
+<li>How to show that <span class="math inline">\(\hat{\theta}_n \inprob \theta_0\)</span>?</li>
 </ul>
 </div>
-<aside class="notes">
-<p>Examples of production function and returns to schooling here?</p>
-<p>2 is more difficult to get right and more context dependent, so we will first tackle the easier problem of 1.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
-<section id="example-multiple-regression" class="slide level2">
-<h2>Example: Multiple Regression</h2>
-<p><span class="math display">\[
-Y = X'\beta + \epsilon
-\]</span></p>
-<ul>
-<li><span class="math inline">\(\mathcal{P} = \{P: \Er X \epsilon = 0, \Er X X' \text{ invertible} \}\)</span></li>
-</ul>
-</section>
-<section id="example-binary-choice" class="slide level2">
-<h2>Example: Binary Choice</h2>
-<p><span class="math display">\[
-Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
-\]</span></p>
-<ul>
-<li><span class="math inline">\(\mathcal{P} = \{P: u \sim N(0,1), 0&lt; \var(X) &lt; \infty \}\)</span></li>
-</ul>
-<div class="fragment">
-<ul>
-<li>Is <span class="math inline">\(u \sim N(0,1)\)</span> innocuous?</li>
-</ul>
-</div>
-<aside class="notes">
-<p>More generally, think about importance of statistical assumptions in terms of how they affect identifiable quantities and counterfactuals of interest.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="example-potential-outcomes" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<ul>
-<li><p>Data:</p>
-<ul>
-<li>Treatment <span class="math inline">\(D_i\)</span></li>
-<li>Potential outcomes <span class="math inline">\((Y_{i,0}, Y_{i,1})\)</span>, observed outcome <span class="math inline">\(Y_i = D_i Y_{i,1} + (1-D_i) Y_{i,0}\)</span></li>
-<li>Covarites <span class="math inline">\(X_i\)</span></li>
-</ul></li>
-<li><p>Parameter: <span class="math inline">\(\theta_0 = \Er[Y_{i,1} - Y_{i,0}] =\)</span> average treatment effect</p></li>
-<li><p>Assume:</p>
-<ol type="1">
-<li>Unconfoundedness: <span class="math inline">\((Y_{i,0}, Y_{i,1})\)</span> conditionally independent of <span class="math inline">\(D_i\)</span> given <span class="math inline">\(X_i\)</span></li>
-<li>Overlap: <span class="math inline">\(\epsilon &lt; P(D=1|X=x) &lt; 1-\epsilon\)</span> for some <span class="math inline">\(\epsilon &gt; 0\)</span> and all <span class="math inline">\(x\)</span></li>
-</ol></li>
-</ul>
-</section></section>
-<section>
-<section id="causal-diagrams" class="title-slide slide level1 center">
-<h1>Causal Diagrams</h1>
-
-</section>
-<section id="causal-diagrams-1" class="slide level2">
-<h2>Causal Diagrams</h2>
-<ul>
-<li>Originate with Wright around 1920, e.g. <span class="citation" data-cites="wright1934">Wright (<a href="#/references" role="doc-biblioref" onclick="">1934</a>)</span></li>
-<li>Recently advocated by Pearl, e.g. <span class="citation" data-cites="pearl2015">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <span class="citation" data-cites="pearl2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
-<li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
-<li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
-<ul>
-<li>e.g. <span class="citation" data-cites="chernozhukov2021">Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="example-regression" class="slide level2">
-<h2>Example: Regression</h2>
-<!-- ```{r, engine = 'tikz'} -->
-<!-- \usetikzlibrary{positioning} -->
-<!-- \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
-<!--                     obs/.style={circle, draw,black, text=black}] -->
-<!-- \node[obs] (X){$X_i$}; -->
-<!-- \node[obs] (Y) [right=of X] {$Y_i$}; -->
-<!-- \node(E) [below=of Y]{$\epsilon_i$}; -->
-<!-- \path[->] (X) edge (Y); -->
-<!-- \path[->] (E) edge[dashed] (Y); -->
-<!-- \end{tikzpicture} -->
-<!-- ``` -->
-</section>
-<section id="example-potential-outcomes-1" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<!-- ```{r, engine = 'tikz'} -->
-<!-- \usetikzlibrary{positioning} -->
-<!-- \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
-<!--                     obs/.style={circle, draw,black, text=black}] -->
-<!-- \node[obs](D){$D_i$}; -->
-<!-- \node[obs] (X)[below=of D]{$X_i$}; -->
-<!-- \node[obs] (Y)[right=of D]{$Y_i$}; -->
-<!-- \node(E)[below=of Y]{$\epsilon_i$}; -->
-<!-- \node(U)[left=of D]{$U_i$}; -->
-<!-- \path[->] (X) edge (Y); -->
-<!-- \path[->] (X) edge (D); -->
-<!-- \path[->] (D) edge (Y); -->
-<!-- \path[->](U) edge[dashed] (D); -->
-<!-- \path[->] (E) edge[dashed] (Y); -->
-<!-- \end{tikzpicture} -->
-<!-- ``` -->
-</section></section>
-<section>
-<section id="generalized-andor-descriptive-intrepretation-of-population-estimator" class="title-slide slide level1 center">
-<h1>Generalized and/or Descriptive Intrepretation of Population Estimator</h1>
-<ul>
-<li>Analyze familiar estimator under more general assumptions
-<ul>
-<li>Understand bias when exogeneity assumptions fail</li>
-<li>Sometimes give more general interpretation of existing estimator</li>
-</ul></li>
-</ul>
-</section>
-<section id="example-regression-1" class="slide level2">
-<h2>Example: Regression</h2>
-<ul>
-<li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er X X'\)</span> invertible,</li>
-<li>Population regression <span class="math display">\[
-\begin{align*}
-\theta = &amp; \Er[ X X']^{-1} \Er[ X Y]  \\
-= &amp; \Er[X X']^{-1} \Er[X (X' \beta + \epsilon)] \\
-= &amp; \beta + \Er[X X']^{-1} \Er[X\epsilon]
-\end{align*}
-\]</span></li>
-</ul>
-</section>
-<section id="example-regression-2" class="slide level2">
-<h2>Example: Regression</h2>
-<ul>
-<li>If relevant moments exist (no linear model required) population regression solves <span class="math display">\[
-\Er[ X X']^{-1} \Er[ X Y]  \in \mathrm{arg}\min_b \Er[ (X'b - \Er[Y|X])^2 ]
-\]</span></li>
-</ul>
-</section>
-<section id="example-potential-outcomes-2" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<ul>
-<li>Matching initially studied with a linear regression model, e.g. <span class="citation" data-cites="cochran1953">Cochran (<a href="#/references" role="doc-biblioref" onclick="">1953</a>)</span> <span class="math display">\[
-Y_i = \alpha D_i + X_i' \beta + \epsilon_i
-\]</span></li>
-<li>Implies constant treatment effect <span class="math inline">\(Y_{i,1} - Y_{i,0} = \alpha\)</span></li>
-</ul>
-<aside class="notes">
-<p>The LATE interpretation of IV developed along similar lines – replace a constant treatment effect linear model with a heterogenous effect potential outcomes framework, and see what IV does.</p>
-<p>Similarly, the recent literature on difference in differences with staggered treatment timing arises from moving from a model with a constant treatment effect over time to one where treatment effects vary with time.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
-<section id="non-constructive-identification" class="title-slide slide level1 center">
-<h1>Non-constructive Identification</h1>
-
-</section>
-<section id="non-constructive-identification-1" class="slide level2">
-<h2>Non-constructive Identification</h2>
-<ul>
-<li>Identification sometimes defined without explicit mapping from data to parameters, e.g. <span class="citation" data-cites="hsiao1983">Hsiao (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>, <span class="citation" data-cites="matzkin2007">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></li>
-</ul>
+<section id="lp-convergence" class="slide level2">
+<h2><span class="math inline">\(L^p\)</span> convergence</h2>
 <div class="callout callout-tip no-icon callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
-<p><strong>Definition: Observationally Equivalent</strong></p>
+<p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
+<p>Random vectors <span class="math inline">\(X_1, X_2, ...\)</span> <strong>converge in <span class="math inline">\(L^p\)</span></strong> to the random vector <span class="math inline">\(Y\)</span> if <span class="math display">\[
+\lim_{n \to \infty} \Er\left[ \norm{X_n-Y}^p \right] \to 0
+\]</span></p>
+</div>
+</div>
+</div>
 <ul>
-<li><p>Let <span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></p>
+<li><span class="math inline">\(p=2\)</span> called convergence in mean square</li>
+</ul>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Markov’s Inequality</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(P(|X|&gt;\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p>
+</div>
+</div>
+</div>
 <ul>
-<li>Let <span class="math inline">\(\Gamma(\theta, S) = \{P(\dot; s) | s \in S, \theta = \lambda(s) \}\)</span>, then <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\tilde{\theta}\)</span> are observationally equivalent iff <span class="math inline">\(\Gamma(\theta,S) \cap \Gamma(\tilde{\theta}, S) \neq \emptyset\)</span></li>
-</ul></li>
+<li><span class="math inline">\(P\left( \norm{X_n - Y} &gt; \epsilon \right) \leq \frac{\Er[ \norm{X_n - y}^k]} {\epsilon_k}\)</span></li>
+</ul>
+</section>
+<section id="convergence-in-lp-implies-convergence-in-probability" class="slide level2">
+<h2>Convergence in <span class="math inline">\(L^p\)</span> implies convergence in probability</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem 1.1</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(X_n\)</span> converges in <span class="math inline">\(L^p\)</span> to <span class="math inline">\(Y\)</span>, then <span class="math inline">\(X_n \inprob Y\)</span>.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>An estimator, <span class="math inline">\(\hat{\theta}\)</span> is <strong>consistent</strong> if <span class="math inline">\(\hat{\theta} \inprob \theta_0\)</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Implication for estimators: <span class="math display">\[
+\begin{aligned}
+MSE(\hat{\theta}_n) = &amp; \Er[ \norm{\hat{\theta}_n - \theta_0}^2 ] \\
+= &amp; tr[\var(\hat{\theta}_n)] + Bias(\hat{\theta}_n)'Bias(\hat{\theta}_n)
+\end{aligned}
+\]</span></li>
+<li>If <span class="math inline">\(MSE(\hat{\theta}_n) \to 0\)</span>, then <span class="math inline">\(\hat{\theta}_n \inprob \theta_0\)</span></li>
+<li>If <span class="math inline">\(\lim_{n \to \infty} \Er[\hat{\theta}_n] \neq \theta_0\)</span>, then <span class="math inline">\(\plim \hat{\theta}_n \neq \theta_0\)</span></li>
+</ul>
+</div>
+</section>
+<section id="consistency-of-least-squares" class="slide level2">
+<h2>Consistency of Least-Squares</h2>
+<div>
+<ul>
+<li class="fragment"><p>In <span class="math inline">\(y = X \beta_0 + u\)</span>, when does <span class="math inline">\(\hat{\beta} = (X'X)^{-1} X' y\)</span> <span class="math inline">\(\inprob \beta_0\)</span>?</p></li>
+<li class="fragment"><p>Sufficient that <span class="math inline">\(MSE(\hat{\beta}) = tr[\var(\hat{\beta})] + Bias(\hat{\beta})'Bias(\hat{\beta}) \to 0\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\var(\hat{\beta}) = \sigma^2 (X'X)^{-1}\)</span> (treating <span class="math inline">\(X\)</span> as non-stochastic)</p></li>
+<li class="fragment"><p><span class="math inline">\(tr((X'X)^{-1}) \leq \frac{k}{\lambda_{ min}(X'X)}\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="convergence-in-probability-of-functions" class="slide level2">
+<h2>Convergence in Probability of Functions</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Theorem 2.2</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(X_n \inprob X\)</span>, and <span class="math inline">\(f\)</span> is continuous, then <span class="math inline">\(f(X_n) \inprob f(X)\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Slutsky’s Lemma</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(Y_n \inprob c\)</span> and <span class="math inline">\(W_n \inprob d\)</span>, then</p>
+<ul>
+<li><span class="math inline">\(Y_n + W_n \inprob c+ d\)</span></li>
+<li><span class="math inline">\(Y_n W_n \inprob cd\)</span></li>
+<li><span class="math inline">\(Y_n / W_n \inprob c/d\)</span> if <span class="math inline">\(d \neq 0\)</span></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="non-constructive-identification-2" class="slide level2">
-<h2>Non-constructive Identification</h2>
+<section id="weak-law-of-large-numbers" class="slide level2">
+<h2>Weak Law of Large Numbers</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Weak Law of Large Numbers</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(X_1, ..., X_n\)</span> are i.i.d. and <span class="math inline">\(\Er[X^2]\)</span> exists, then <span class="math display">\[
+\frac{1}{n} \sum X_i \inprob \Er[X]
+\]</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Proof: use Markov’s inequality</p></li>
+<li><p>This is the simplest to prove WLLN, but there are many variants with alternate assumptions that also imply <span class="math inline">\(\frac{1}{n} \sum X_i \inprob \Er[X]\)</span></p></li>
+</ul>
+</section>
+<section id="consistency-of-least-squares-revisited" class="slide level2">
+<h2>Consistency of Least Squares Revisited</h2>
+<div>
+<ul>
+<li class="fragment"><p>In <span class="math inline">\(y = X \beta_0 + u\)</span>, when does <span class="math inline">\(\hat{\beta} \inprob \beta_0\)</span>?</p></li>
+<li class="fragment"><p>Treat <span class="math inline">\(X\)</span> as stochastic</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\beta} = \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \right)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i y_i \right)\)</span></p></li>
+<li class="fragment"><p>If WLLN applies to <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n X_i X_i'\)</span> and <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n X_i y_i\)</span> (and <span class="math inline">\(\Er[X_i X_i']^{-1}\)</span> exists)</p></li>
+<li class="fragment"><p>Sufficient for i.i.d, <span class="math inline">\(\Er[X_i u_i] = 0\)</span>, 4th moments of <span class="math inline">\(X_i\)</span> to exist, <span class="math inline">\(\Er[u_i^2]\)</span> to exist</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="convergence-rates" class="title-slide slide level1 center">
+<h1>Convergence Rates</h1>
+
+</section>
+<section id="convergence-rates-1" class="slide level2">
+<h2>Convergence Rates</h2>
 <div class="callout callout-tip no-icon callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
-<p><strong>Definition: (Non-Constructive) Identification</strong></p>
+<p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
+<p>Given a sequence of random variables, <span class="math inline">\(X_1, X_2, ...\)</span> and constants <span class="math inline">\(b_1, b_2, ...\)</span>, then</p>
 <ul>
-<li><p><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></p></li>
-<li><p><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></p>
-<ul>
-<li>i.e.&nbsp;<span class="math inline">\(\Gamma(\theta_0, S) \cap \Gamma(\theta, S) = \emptyset\)</span> <span class="math inline">\(\forall \theta \neq \theta_0\)</span></li>
-</ul></li>
+<li><span class="math inline">\(X_n = O_p(b_n)\)</span> if for all <span class="math inline">\(\epsilon &gt; 0\)</span> there exists <span class="math inline">\(M_\epsilon\)</span> s.t. <span class="math display">\[
+\lim\sup P\left(\frac{\norm{X_n}}{b_n} \geq  M_\epsilon \right) &lt; \epsilon
+\]</span></li>
+<li><span class="math inline">\(X_n = o_p(b_n)\)</span> if <span class="math inline">\(\frac{X_n}{b_n} \to 0\)</span></li>
 </ul>
 </div>
 </div>
 </div>
-<ul>
-<li>Compared to constructive definition with <span class="math inline">\(\theta_0 = \psi(P)\)</span>:
-<ul>
-<li>Less clear how to use identification to estimate</li>
-<li>Easier to show non-identification</li>
-</ul></li>
-</ul>
 </section>
-<section id="example-multiple-regression-1" class="slide level2">
-<h2>Example: Multiple Regression</h2>
-<p><span class="math display">\[
-Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
-\]</span></p>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <div>
 <ul>
-<li class="fragment"><p><span class="math inline">\(X = [X_1\, X_2]'\)</span>, if rank <span class="math inline">\(\Er X X' = 1\)</span>, then <span class="math inline">\(\beta_1, \beta_2\)</span> is observationally equivalent to any <span class="math inline">\(\tilde{\beta}_1, \tilde{\beta}_2\)</span> s.t. <span class="math display">\[
-\tilde{\beta}_1 + \tilde{\beta}_2 = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_2)}
+<li class="fragment"><p>Real valued <span class="math inline">\(X_1, ..., X_n\)</span> i.i.d., with <span class="math inline">\(\Er[X] = \mu\)</span>, <span class="math inline">\(\var(X_i) = \sigma^2\)</span></p></li>
+<li class="fragment"><p>Markov’s inequality <span class="math display">\[
+\begin{aligned}
+P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | &gt; a \right) \leq &amp; \frac{\var(\En X_i - \mu)}{a^2}  \\
+\leq &amp;  \frac{\sigma^2}{n a^2}
+\end{aligned}
 \]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2\)</span> is identified if rank <span class="math inline">\(\Er X X' \geq 1\)</span></p></li>
+<li class="fragment"><p>Let <span class="math inline">\(a = \epsilon n^{-\alpha}\)</span>, then <span class="math display">\[
+P\left( \frac{|\En X_i - \mu |}{n^{-\alpha}} &gt; \epsilon \right) \leq \frac{\sigma^2}{n^{1 - 2\alpha}\epsilon^2}
+\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(|\En X_i - \mu | = o_p(n^{-\alpha})\)</span> for <span class="math inline">\(\alpha \in (0, 1/2)\)</span></p></li>
 </ul>
 </div>
 </section>
-<section id="example-random-coefficients-logit" class="slide level2">
-<h2>Example: Random Coefficients Logit</h2>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
 <ul>
-<li><p><span class="math inline">\(Y_i = 1\{\beta_0 + \beta_i X_i \geq U_i \}\)</span></p>
-<ul>
-<li><span class="math inline">\(U\)</span> independent <span class="math inline">\(X_i,\beta_i\)</span>,</li>
-<li><span class="math inline">\(\beta_i\)</span> indepedent <span class="math inline">\(X_i\)</span>,</li>
-<li><span class="math inline">\(F_u(z) = \frac{e^z}{1+e^z}\)</span></li>
-</ul></li>
-<li><p><span class="math inline">\(\Er[Y|X] = \int \frac{e^{\beta_0 + \beta X_i}} {1+e^{\beta_0 + \beta X_i}} dF_\beta(\beta)\)</span></p></li>
-<li><p>Non-constructive and constructive identification of <span class="math inline">\(F_\beta\)</span> in <span class="citation" data-cites="fox2012">Fox et al. (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span></p></li>
+<li><p>Real valued <span class="math inline">\(X_1, ..., X_n\)</span> i.i.d., with <span class="math inline">\(\Er[X] = \mu\)</span>, <span class="math inline">\(\var(X_i) = \sigma^2\)</span></p></li>
+<li><p>Markov’s inequality <span class="math display">\[
+\begin{aligned}
+P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | &gt; a \right) \leq &amp; \frac{\var(\En X_i - \mu)}{a^2}  \\
+\leq &amp;  \frac{\sigma^2}{n a^2}
+\end{aligned}
+\]</span></p></li>
+<li><p>Let <span class="math inline">\(a = \sigma \epsilon^{-1/2} n^{-1/2}\)</span>, <span class="math display">\[
+P\left( \frac{|\En X_i - \mu |}{n^{-1/2}} &gt; \underbrace{\sigma \epsilon^{-1/2}}_{M_\epsilon} \right) \leq \epsilon
+\]</span> so <span class="math inline">\(|\En X_i - \mu | = O_p(n^{-\alpha})\)</span> for <span class="math inline">\(\alpha \in (0, 1/2]\)</span></p></li>
 </ul>
-<aside class="notes">
-<p>Hard to give a brief example where non-constructive argument is required. Non constructive identification proofs typically leverage some high level mathematical result.</p>
-<p><span class="citation" data-cites="christensen2015">Christensen (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span> is another example of non-constructive identification.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!---
+
+calculate order of least squares with k(n) . Too hard?
+
+--->
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -712,47 +595,8 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-chernozhukov2021" class="csl-entry" role="doc-biblioentry">
-Chernozhukov, Victor, Hiroyuki Kasahara, and Paul Schrimpf. 2021. <span>“Causal Impact of Masks, Policies, Behavior on Early Covid-19 Pandemic in the US.”</span> <em>Journal of Econometrics</em> 220 (1): 23–62.
-</div>
-<div id="ref-christensen2015" class="csl-entry" role="doc-biblioentry">
-Christensen, Timothy M. 2015. <span>“Nonparametric Identification of Positive Eigenfunctions.”</span> <em>Econometric Theory</em> 31 (6): 1310–30.
-</div>
-<div id="ref-cochran1953" class="csl-entry" role="doc-biblioentry">
-Cochran, William G. 1953. <span>“Matching in Analytical Studies.”</span> <em>American Journal of Public Health and the Nations Health</em> 43 (6_Pt_1): 684–91.
-</div>
-<div id="ref-fox2012" class="csl-entry" role="doc-biblioentry">
-Fox, Jeremy T, Kyoo il Kim, Stephen P Ryan, and Patrick Bajari. 2012. <span>“The Random Coefficients Logit Model Is Identified.”</span> <em>Journal of Econometrics</em> 166 (2): 204–12.
-</div>
-<div id="ref-hsiao1983" class="csl-entry" role="doc-biblioentry">
-Hsiao, Cheng. 1983. <span>“Chapter 4 Identification.”</span> In, 1:223–83. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(83)01008-9">https://doi.org/10.1016/S1573-4412(83)01008-9</a>.
-</div>
-<div id="ref-imbens2020" class="csl-entry" role="doc-biblioentry">
-Imbens, Guido W. 2020. <span>“Potential Outcome and Directed Acyclic Graph Approaches to Causality: Relevance for Empirical Practice in Economics.”</span> <em>Journal of Economic Literature</em> 58 (4): 1129–79. <a href="https://doi.org/10.1257/jel.20191597">https://doi.org/10.1257/jel.20191597</a>.
-</div>
-<div id="ref-lewbel2019" class="csl-entry" role="doc-biblioentry">
-Lewbel, Arthur. 2019. <span>“The Identification Zoo: Meanings of Identification in Econometrics.”</span> <em>Journal of Economic Literature</em> 57 (4): 835–903. <a href="https://doi.org/10.1257/jel.20181361">https://doi.org/10.1257/jel.20181361</a>.
-</div>
-<div id="ref-matzkin2007" class="csl-entry" role="doc-biblioentry">
-Matzkin, Rosa L. 2007. <span>“Chapter 73 Nonparametric Identification.”</span> In, edited by James J. Heckman and Edward E. Leamer, 6:5307–68. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
-</div>
-<div id="ref-matzkin2013" class="csl-entry" role="doc-biblioentry">
-———. 2013. <span>“Nonparametric Identification in Structural Economic Models.”</span> <em>Annu. Rev. Econ.</em> 5 (1): 457–86.
-</div>
-<div id="ref-molinari2020" class="csl-entry" role="doc-biblioentry">
-Molinari, Francesca. 2020. <span>“Chapter 5 - Microeconometrics with Partial Identification.”</span> In <em>Handbook of Econometrics, Volume 7A</em>, edited by Steven N. Durlauf, Lars Peter Hansen, James J. Heckman, and Rosa L. Matzkin, 7:355–486. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/bs.hoe.2020.05.002">https://doi.org/10.1016/bs.hoe.2020.05.002</a>.
-</div>
-<div id="ref-pearl2015" class="csl-entry" role="doc-biblioentry">
-Pearl, Judea. 2015. <span>“TRYGVE HAAVELMO AND THE EMERGENCE OF CAUSAL CALCULUS.”</span> <em>Econometric Theory</em> 31 (1): 152–79. <a href="https://doi.org/10.1017/S0266466614000231">https://doi.org/10.1017/S0266466614000231</a>.
-</div>
-<div id="ref-pearl2018" class="csl-entry" role="doc-biblioentry">
-Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. Basic books.
-</div>
 <div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
-</div>
-<div id="ref-wright1934" class="csl-entry" role="doc-biblioentry">
-Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>The Annals of Mathematical Statistics</em> 5 (3): 161–215. <a href="http://www.jstor.org/stable/2957502">http://www.jstor.org/stable/2957502</a>.
 </div>
 </div>
 </section>
@@ -789,7 +633,7 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true,"chalkWidth":6,"chalkEffect":0.5},
+'chalkboard': {"buttons":true,"theme":"whiteboard","boardmarkerWidth":2,"chalkWidth":2,"chalkEffect":0},
 'smaller': false,
  
         // Display controls in the bottom right corner

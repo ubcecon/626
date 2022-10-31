@@ -41,8 +41,8 @@ bibliography: 626.bib
 
 # Part III: Tools of Asymptotic Theory
 
-- Modes of Convergence
-- Slutsky’s Lemma/Continuous Mapping Theorem
+- [Convergence in probability](asymptotics/inprobability.qmd)
+- [Convergence in distribution](asymptotics/indistribution.qmd)
 - Delta Methods
 
 # Part V: Linear Models with Endogeneity

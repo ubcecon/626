@@ -1,0 +1,208 @@
+---
+title: "Convergence in Distribution"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1600
+    height: 900
+    min-scale: 0.1
+    chalkboard:
+      chalk-width: 6
+      chalk-effect: 0.5
+    title-slide-attributes:
+      data-background-image: "skier.jpg"
+      data-background-size: contain
+bibliography: ../626.bib
+
+# jupyter: julia-1.8
+# execute:
+#   cache: false
+---
+
+
+## Reading
+
+- Required: **@song2021 chapter 10**
+
+# Convergence in Distribution
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\newcommand{\plim}{\operatornamewithlimits{plim}}
+$$
+
+## Convergence in Distribution
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+Random vectors $X_1, X_2, ...$ **converge in distribution** to the random
+vector $X$ if for all $f \in \underbrace{\mathcal{C}_b}_{\text{continuous and bounded}}$
+$$
+\Er[ f(X_n) ] \to \Er[f(X)]
+$$
+denoted by $X_n \indist X$
+:::
+
+:::{.fragment}
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.1
+
+If $X_n \indist X$ if and only if $P(X_n \leq t) \to P(X \leq t)$ for
+all $t$ where $P(X \leq t)$ is continuous
+
+:::
+
+:::
+
+## Convergence in Distribution
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.2
+
+If $X_n \indist X$ and $X$ is continuous, then
+$$
+\sup_{t \in \R^d} | P(X_n \leq t) - P(X \leq t) | \to 0
+$$
+
+:::
+
+## Characterizing Convergence in Distribution
+
+::: {.callout-warning icon=false}
+
+### Lemma 1.2
+
+$X_n \indist X$ iff for any open $G \subset \R^d$,
+$$
+\liminf P(X_n \in G) \geq P(X \in G)
+$$
+
+:::
+
+- This and additional characterizations of convergence in distribution are called the Portmanteau Theorem
+
+## Continuous Mapping Theorem
+
+::: {.callout-warning icon=false}
+
+### Continuous Mapping Theorem
+
+Let $X_n \indist X$ and $g$ be continuous on a set $C$ with
+$P(X \in C) = 1$, then
+$$
+g(X_n) \indist g(X)
+$$
+
+:::
+
+## Relation to Convergence in Probability
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.4
+
+1. If $X_n \indist X$, then $X_n = O_p(1)$
+
+2. If $c$ is a constant, then $X_n \inprob c$ iff $X_n \indist c$
+
+3. If $Y_n \inprob c$ and $X_n \indist X$, then $(Y_n, X_n) \indist (c, X)$
+
+4. If $X_n \inprob X$, then $X_n \indist X$
+
+:::
+
+## Slutsky's Lemma
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.5 (Generalized Slutsky's Lemma)
+
+If $Y_n \inprob c$, $X_n \indist X$, and $g$ is continuous, then
+$$
+g(Y_n, X_n) \indist g(c,X)
+$$
+
+:::
+
+- Implies:
+  - $Y_n + X_n \indist c + X$
+  - $Y_n X_n \indist c X$
+  - $X_n/Y_n \indist X/c$
+
+# Central Limit Theorem
+
+## Levy's Continuity Theorem
+
+::: {.callout-warning icon=false}
+
+### Lemma 2.1 (Levy's Continuity Theorem)
+
+$X_n \indist X$ iff $\Er[e^{i t'X_n} ] \to \Er[e^{i t' X} ]$ for all $t \in \R^d$
+
+:::
+
+- see @dobler2022 for a short proof
+- $\Er[e^{i t' X}] \equiv \varphi(t)$ is the **characteristic function** of $X$
+
+## Law of Large Numbers Revisited
+
+::: {.callout-warning icon=false}
+
+### Lemma 2.2 (Weak Law of Large Numbers)
+
+If $X_1, ..., X_n$ are i.i.d. with $\Er[|X_1|] < \infty$, then $\frac{1}{n} \sum_{i=1}^n X_i \inprob \Er[X_1]$
+
+:::
+
+::: {.fragment}
+
+::: {.callout-warning icon=false}
+
+### Theorem 2.2 (non-iid WLLN)
+
+If $\Er[X_i]=0, $\Er[X_i X_j] = 0$ for all $i \neq j$ and $\frac{1}{n} \max_{1 \leq
+  j \leq n} \Er[X_j^2] \to 0$, then $\frac{1}{n} \sum_{i=1}^n X_i \inprob 0$
+
+:::
+
+:::
+
+::: {.note}
+
+Apply to OLS again and show $\hat{\sigma}^2$ is consistent
+
+:::
+
+## Central Limit Theorem
+
+::: {.callout-warning icon=false}
+
+### Theorem 2.3
+
+Suppose $X_1, ..., X_n$ are i.i.d. with $\Er[X_1] = \mu$ and
+$\var(X_1) = \sigma^2$, then
+$$
+\frac{1}{\sqrt{n}} \sum_{i=1}^n \frac{X_i - \mu}{\sigma} \indist N(0,1)
+$$
+
+## Cramer-Wold Device
+
+## Multivariate Central Limit Theorem
+
+# References

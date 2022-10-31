@@ -150,21 +150,28 @@ Show the second equality above.
 :::
 
 ```{julia}
+#| code-fold: true
 using Pkg
 Pkg.activate(".")
-using Plots
+using PlotlyLight, Cobweb
+```
+
+```{julia}
 Ω = range(1., 6., 500)
 f(ω) = max( -(3 - ω)^2 + ω + sin(3*ω), 0.0)
-p = plot(Ω, f.(Ω), label="f(ω)")
+#fig=plot(Ω,  f.(Ω),  name="f(ω)")
+fig = Plot()(x=Ω, y=f.(Ω), name="f(ω)")
 M = maximum(abs.(f.(Ω)))*1.05
 n = 10
 k(ω) = minimum(j for j ∈ 0:n if M/n*j > f(ω))
 ψ(ω) = M/n*k(ω)*(f(ω) > 0.0)
 ϕ(ω)  = M/n*(k(ω)-1)*(f(ω) > 0.0)
-plot!(Ω,ψ, label="ψₙ(ω)")
-plot!(Ω, ϕ,label="ϕₙ(ω)")
+fig(x=Ω, y=ψ.(Ω), name="ψₙ(ω)")
+fig(x=Ω, y=ϕ.(Ω), name="ϕₙ(ω)")
+Cobweb.save(Page(fig), "tmp.html")
+HTML("<iframe src=\"tmp.html\" width=\"1500\"  height=\"700\"></iframe>")
 ```
-<!-- graph showing f, \psi_n, \varphi_n -->
+
 ----
 
 ::: {.callout-note icon=false}

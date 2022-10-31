@@ -1,0 +1,265 @@
+---
+title: "Convergence in Probability"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1600
+    height: 900
+    min-scale: 0.1
+    chalkboard:
+      chalk-width: 6
+      chalk-effect: 0.5
+    title-slide-attributes:
+      data-background-image: "rexford_g.jpg"
+      data-background-size: contain
+bibliography: ../626.bib
+
+# jupyter: julia-1.8
+# execute:
+#   cache: false
+---
+
+
+## Reading
+
+- Required: **@song2021 chapter 9**
+- Independent study: @song2021 chapters 6-7
+
+# Convergence in Probability
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\newcommand{\plim}{\operatornamewithlimits{plim}}
+$$
+
+## Convergence in Probability
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+Random vectors $X_1, X_2, ...$ **converge in probability** to the random
+vector $Y$ if for all $\epsilon>0$
+$$
+\lim_{n \to \infty} P\left( \norm{X_n - Y} > \epsilon \right) = 0
+$$
+denoted by $X_n \inprob Y$ or $\plim_{n \to \infty} X_n = Y$
+:::
+
+:::{.fragment}
+
+- Typical use: $X_n = \hat{\theta}_n$, estimator from $n$
+observations, $Y=\theta_0$, a constant.
+- How to show that $\hat{\theta}_n \inprob \theta_0$?
+
+:::
+
+## $L^p$ convergence
+
+::: {.callout-warning icon=false}
+
+### Markov's Inequality
+
+$P(|X|>\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}$
+$\forall \epsilon > 0, k > 0$
+
+:::
+
+-  $P\left( \norm{X_n - Y} > \epsilon \right) \leq \frac{\Er[ \norm{X_n - y}^k]} {\epsilon_k}$
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+Random vectors $X_1, X_2, ...$ **converge in $L^p$** to the random
+vector $Y$ if
+$$
+\lim_{n \to \infty} \Er\left[ \norm{X_n-Y}^p \right] \to 0
+$$
+
+:::
+
+- $p=2$ called convergence in mean square
+
+## Convergence in  $L^p$ implies convergence in probability
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.1
+
+If $X_n$ converges in $L^p$ to $Y$, then $X_n \inprob Y$.
+
+:::
+
+- An estimator, $\hat{\theta}$ is **consistent** if
+$\hat{\theta} \inprob \theta_0$
+
+::: {.fragment}
+
+- Implication for estimators:
+$$
+\begin{aligned}
+MSE(\hat{\theta}_n) = & \Er[ \norm{\hat{\theta}_n - \theta_0}^2 ] \\
+= & tr[\var(\hat{\theta}_n)] + Bias(\hat{\theta}_n)'Bias(\hat{\theta}_n)
+\end{aligned}
+$$
+- If $MSE(\hat{\theta}_n) \to 0$, then $\hat{\theta}_n \inprob \theta_0$
+- If $\lim_{n \to \infty} \Er[\hat{\theta}_n]  \neq \theta_0$, then
+$\plim \hat{\theta}_n \neq \theta_0$
+
+:::
+
+## Consistency of Least-Squares
+
+::: {.incremental}
+
+- In $y = X \beta_0 + u$, when does $\hat{\beta} = (X'X)^{-1} X' y$
+$\inprob \beta_0$?
+
+- Sufficient that $MSE(\hat{\beta}) = tr[\var(\hat{\beta})] +
+Bias(\hat{\beta})'Bias(\hat{\beta}) \to 0$
+
+- $\var(\hat{\beta}) = \sigma^2 (X'X)^{-1}$ (treating $X$ as non-stochastic)
+
+- $tr(X'X){-1} \leq \frac{k}{\lambda_{\min}(X'X)}$
+
+:::
+
+## Convergence in Probability of Functions
+
+::: {.callout-warning icon=false}
+
+### Theorem 2.2
+
+If $X_n \inprob X$, and $f$ is continuous, then $f(X_n) \inprob f(X)$
+
+:::
+
+::: {.callout-warning icon=false}
+
+### Slutsky's Lemma
+
+If $Y_n \inprob c$ and $W_n \inprob d$, then
+
+- $Y_n + W_n \inprob c+ d$
+- $Y_n W_n \inprob cd$
+- $Y_n / W_n \inprob c/d$ if $d \neq 0$
+
+:::
+
+## Weak Law of Large Numbers
+
+::: {.callout-warning icon=false}
+
+### Weak Law of Large Numbers
+
+If $X_1, ..., X_n$ are i.i.d. and $\Er[X^2]$ exists, then
+$$
+\frac{1}{n} \sum X_i \inprob \Er[X]
+$$
+
+:::
+
+- Proof: use Markov's inequality
+
+- This is the simplest to prove WLLN, but there are many variants with alternate assumptions that also imply $\frac{1}{n} \sum X_i \inprob \Er[X]$
+
+## Consistency of Least Squares Revisited
+
+::: {.incremental}
+
+- In $y = X \beta_0 + u$, when does $\hat{\beta} \inprob \beta_0$?
+
+- Treat $X$ as stochastic
+
+- $\hat{\beta} = \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \right)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i y_i \right)$
+
+- If WLLN applies to $\frac{1}{n} \sum_{i=1}^n X_i X_i'$ and
+$\frac{1}{n} \sum_{i=1}^n X_i y_i$ (and $\Er[X_i X_i']^{-1}$ exists)
+
+- Sufficient for i.i.d, $\Er[X_i u_i] = 0$, 4th moments of $X_i$ to exist, $\Er[u_i^2]$ to exist
+
+:::
+
+# Convergence Rates
+
+## Convergence Rates
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+Given a sequence of random variables, $X_1, X_2, ...$ and constants
+$b_1, b_2, ...$, then
+
+- $X_n = O_p(b_n)$ if for all $\epsilon > 0$ there exists $M_\epsilon$
+s.t.
+$$
+\lim\sup P\left(\frac{\norm{X_n}}{b_n} \geq  M_\epsilon \right) < \epsilon
+$$
+- $X_n = o_p(b_n)$ if $\frac{X_n}{b_n} \to 0$
+
+:::
+
+## Example
+
+
+::: {.incremental}
+- Real valued $X_1, ..., X_n$ i.i.d., with $\Er[X] = \mu$, $\var(X_i) = \sigma^2$
+
+- Markov's inequality
+  $$
+  \begin{aligned}
+  P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | > a \right) \leq & \frac{\var(\En X_i - \mu)}{a^2}  \\
+  \leq &  \frac{\sigma^2}{n a^2}
+  \end{aligned}
+  $$
+
+- Let $a = \epsilon n^{-\alpha}$, then
+  $$
+  P\left( \frac{|\En X_i - \mu |}{n^{-\alpha}} > \epsilon \right) \leq \frac{\sigma^2}{n^{1 - 2\alpha}\epsilon^2}
+  $$
+
+- $|\En X_i - \mu | = o_p(n^{-\alpha})$ for $\alpha \in (0, 1/2)$
+
+:::
+
+## Example
+
+- Real valued $X_1, ..., X_n$ i.i.d., with $\Er[X] = \mu$, $\var(X_i) = \sigma^2$
+
+- Markov's inequality
+  $$
+  \begin{aligned}
+  P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | > a \right) \leq & \frac{\var(\En X_i - \mu)}{a^2}  \\
+  \leq &  \frac{\sigma^2}{n a^2}
+  \end{aligned}
+  $$
+
+- Let $a = \sigma \epsilon^{-1/2} n^{-1/2}$,
+  $$
+  P\left( \frac{|\En X_i - \mu |}{n^{-1/2}} > \underbrace{\sigma \epsilon^{-1/2}}_{M_\epsilon} \right) \leq \epsilon
+  $$
+  so $|\En X_i - \mu | = O_p(n^{-\alpha})$ for $\alpha \in (0, 1/2]$
+
+
+
+<!---
+
+calculate order of least squares with k(n) . Too hard?
+
+--->
+
+
+# References

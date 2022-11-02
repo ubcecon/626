@@ -1,0 +1,67 @@
+---
+title: "Asymptotic Theory of Least Squares"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1600
+    height: 900
+    min-scale: 0.1
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 2
+      chalk-width: 2
+      chalk-effect: 0.0
+    title-slide-attributes:
+      data-background-image: ""
+      data-background-size: contain
+bibliography: ../626.bib
+
+# jupyter: julia-1.8
+# execute:
+#   cache: false
+---
+
+
+## Reading
+
+- Required: **@song2021 chapter 10**
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+$$
+
+# Least Squares
+
+## Consistency
+
+## Asymptotic Distribution
+
+# Non-i.i.d. Errors
+
+## Heteroskedasticity
+
+## Clustered Standard Errors
+
+## Dependence
+
+# Testing Restrictions
+
+## Wald
+
+## Likelihood Ratio
+
+## Lagrange Multiplier
+
+# References

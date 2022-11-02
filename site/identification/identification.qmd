@@ -169,35 +169,36 @@ More generally, think about importance of statistical assumptions in terms of ho
 ## Example: Regression
 
 ```{r, engine = 'tikz'}
-\usetikzlibrary{positioning}
-\begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10,
-                    obs/.style={circle, draw,black, text=black}]
-\node[obs] (X){$X_i$};
-\node[obs] (Y) [right=of X] {$Y_i$};
-\node(E) [below=of Y]{$\epsilon_i$};
-\path[->] (X) edge (Y);
-\path[->] (E) edge[dashed] (Y);
-\end{tikzpicture}
+ \usetikzlibrary{positioning}
+ \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10,
+                     obs/.style={circle, draw,black, text=black}]
+ \node[obs] (X){$X_i$};
+ \node[obs] (Y) [right=of X] {$Y_i$};
+ \node(E) [below=of Y]{$\epsilon_i$};
+ \path[->] (X) edge (Y);
+ \path[->] (E) edge[dashed] (Y);
+ \end{tikzpicture}
 ```
 
 ## Example: Potential Outcomes
 
 ```{r, engine = 'tikz'}
-\usetikzlibrary{positioning}
-\begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10,
-                    obs/.style={circle, draw,black, text=black}]
-\node[obs](D){$D_i$};
-\node[obs] (X)[below=of D]{$X_i$};
-\node[obs] (Y)[right=of D]{$Y_i$};
-\node(E)[below=of Y]{$\epsilon_i$};
-\node(U)[left=of D]{$U_i$};
-\path[->] (X) edge (Y);
-\path[->] (X) edge (D);
-\path[->] (D) edge (Y);
-\path[->](U) edge[dashed] (D);
-\path[->] (E) edge[dashed] (Y);
-\end{tikzpicture}
+ \usetikzlibrary{positioning}
+ \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10,
+                     obs/.style={circle, draw,black, text=black}]
+ \node[obs](D){$D_i$};
+ \node[obs] (X)[below=of D]{$X_i$};
+ \node[obs] (Y)[right=of D]{$Y_i$};
+ \node(E)[below=of Y]{$\epsilon_i$};
+ \node(U)[left=of D]{$U_i$};
+ \path[->] (X) edge (Y);
+ \path[->] (X) edge (D);
+ \path[->] (D) edge (Y);
+ \path[->](U) edge[dashed] (D);
+ \path[->] (E) edge[dashed] (Y);
+ \end{tikzpicture}
 ```
+
 # Generalized and/or Descriptive Intrepretation of Population Estimator
 
 - Analyze familiar estimator under more general assumptions

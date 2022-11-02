@@ -9,8 +9,10 @@ format:
     height: 900
     min-scale: 0.1
     chalkboard:
-      chalk-width: 6
-      chalk-effect: 0.5
+      theme: whiteboard
+      boardmarker-width: 2
+      chalk-width: 2
+      chalk-effect: 0.0
     title-slide-attributes:
       data-background-image: "rexford_g.jpg"
       data-background-size: contain
@@ -40,8 +42,11 @@ $$
 \newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
 \def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
 \def\indist{\,{\buildrel d \over \rightarrow}\,}
-\newcommand{\plim}{\operatornamewithlimits{plim}}
+\DeclareMathOperator*{\plim}{plim}
 $$
+
+<!-- \def\plim{{\mathrm{p}}\lim} -->
+
 
 ## Convergence in Probability
 
@@ -67,17 +72,6 @@ observations, $Y=\theta_0$, a constant.
 
 ## $L^p$ convergence
 
-::: {.callout-warning icon=false}
-
-### Markov's Inequality
-
-$P(|X|>\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}$
-$\forall \epsilon > 0, k > 0$
-
-:::
-
--  $P\left( \norm{X_n - Y} > \epsilon \right) \leq \frac{\Er[ \norm{X_n - y}^k]} {\epsilon_k}$
-
 ::: {.callout-tip icon=false}
 
 ### Definition
@@ -91,6 +85,18 @@ $$
 :::
 
 - $p=2$ called convergence in mean square
+
+::: {.callout-warning icon=false}
+
+### Markov's Inequality
+
+$P(|X|>\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}$
+$\forall \epsilon > 0, k > 0$
+
+:::
+
+-  $P\left( \norm{X_n - Y} > \epsilon \right) \leq \frac{\Er[ \norm{X_n - y}^k]} {\epsilon_k}$
+
 
 ## Convergence in  $L^p$ implies convergence in probability
 
@@ -132,7 +138,7 @@ Bias(\hat{\beta})'Bias(\hat{\beta}) \to 0$
 
 - $\var(\hat{\beta}) = \sigma^2 (X'X)^{-1}$ (treating $X$ as non-stochastic)
 
-- $tr(X'X){-1} \leq \frac{k}{\lambda_{\min}(X'X)}$
+- $tr((X'X)^{-1}) \leq \frac{k}{\lambda_{ min}(X'X)}$
 
 :::
 

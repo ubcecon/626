@@ -11,14 +11,14 @@
     "href": "asymptotics/indistribution.html#reading",
     "title": "Convergence in Distribution",
     "section": "Reading",
-    "text": "Reading\n\nRequired: Song (2021) chapter 10"
+    "text": "Reading\n\nRequired: Song (2021) chapter 10\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
   },
   {
     "objectID": "asymptotics/indistribution.html#convergence-in-distribution-1",
     "href": "asymptotics/indistribution.html#convergence-in-distribution-1",
     "title": "Convergence in Distribution",
     "section": "Convergence in Distribution",
-    "text": "Convergence in Distribution\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in distribution to the random vector \\(X\\) if for all \\(f \\in \\underbrace{\\mathcal{C}_b}_{\\text{continuous and bounded}}\\) \\[\n\\Er[ f(X_n) ] \\to \\Er[f(X)]\n\\] denoted by \\(X_n \\indist X\\)\n\n\n\n\n\n\n\nTheorem 1.1\n\n\nIf \\(X_n \\indist X\\) if and only if \\(P(X_n \\leq t) \\to P(X \\leq t)\\) for all \\(t\\) where \\(P(X \\leq t)\\) is continuous"
+    "text": "Convergence in Distribution\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in distribution to the random vector \\(X\\) if for all \\(f \\in \\underbrace{\\mathcal{C}_b}\\) (continuous and bounded) \\[\n\\Er[ f(X_n) ] \\to \\Er[f(X)]\n\\] denoted by \\(X_n \\indist X\\)\n\n\n\n\n\n\n\nTheorem 1.1\n\n\nIf \\(X_n \\indist X\\) if and only if \\(P(X_n \\leq t) \\to P(X \\leq t)\\) for all \\(t\\) where \\(P(X \\leq t)\\) is continuous"
   },
   {
     "objectID": "asymptotics/indistribution.html#convergence-in-distribution-2",
@@ -67,28 +67,42 @@
     "href": "asymptotics/indistribution.html#law-of-large-numbers-revisited",
     "title": "Convergence in Distribution",
     "section": "Law of Large Numbers Revisited",
-    "text": "Law of Large Numbers Revisited\n\n\n\nLemma 2.2 (Weak Law of Large Numbers)\n\n\nIf \\(X_1, ..., X_n\\) are i.i.d. with \\(\\Er[|X_1|] < \\infty\\), then \\(\\frac{1}{n} \\sum_{i=1}^n X_i \\inprob \\Er[X_1]\\)\n\n\n\n\n\n\n\nTheorem 2.2 (non-iid WLLN)\n\n\nIf $, \\(\\Er[X_i X_j] = 0\\) for all \\(i \\neq j\\) and \\(\\frac{1}{n} \\max_{1 \\leq  j \\leq n} \\Er[X_j^2] \\to 0\\), then \\(\\frac{1}{n} \\sum_{i=1}^n X_i \\inprob 0\\)\n\n\n\n\n\nApply to OLS again and show \\(\\hat{\\sigma}^2\\) is consistent"
+    "text": "Law of Large Numbers Revisited\n\n\n\nLemma 2.2 (Weak Law of Large Numbers)\n\n\nIf \\(X_1, ..., X_n\\) are i.i.d. with \\(\\Er[|X_1|] < \\infty\\), then \\(\\frac{1}{n} \\sum_{i=1}^n X_i \\inprob \\Er[X_1]\\)\n\n\n\n\n\n\n\nTheorem 2.2 (non-iid WLLN)\n\n\nIf \\(\\Er[X_i]=0\\), \\(\\Er[X_i X_j] = 0\\) for all \\(i \\neq j\\) and \\(\\frac{1}{n} \\max_{1 \\leq  j \\leq n} \\Er[X_j^2] \\to 0\\), then \\(\\frac{1}{n} \\sum_{i=1}^n X_i \\inprob 0\\)\n\n\n\n\n\nApply to OLS again and show \\(\\hat{\\sigma}^2\\) is consistent"
   },
   {
     "objectID": "asymptotics/indistribution.html#central-limit-theorem-1",
     "href": "asymptotics/indistribution.html#central-limit-theorem-1",
     "title": "Convergence in Distribution",
     "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\n\n\nTheorem 2.3\n\n\nSuppose \\(X_1, ..., X_n\\) are i.i.d. with \\(\\Er[X_1] = \\mu\\) and \\(\\var(X_1) = \\sigma^2\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n \\frac{X_i - \\mu}{\\sigma} \\indist N(0,1)\n\\]"
+    "text": "Central Limit Theorem\n\n\n\nTheorem 2.3\n\n\nSuppose \\(X_1, ..., X_n \\in \\R\\) are i.i.d. with \\(\\Er[X_1] = \\mu\\) and \\(\\var(X_1) = \\sigma^2\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n \\frac{X_i - \\mu}{\\sigma} \\indist N(0,1)\n\\]\n\n\n\n\n\n5-element Vector{var\"#12#14\"{Matrix{Float64}}}:\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)"
   },
   {
-    "objectID": "asymptotics/indistribution.html#cramer-wold-device",
-    "href": "asymptotics/indistribution.html#cramer-wold-device",
+    "objectID": "asymptotics/indistribution.html#cramér-wold-device",
+    "href": "asymptotics/indistribution.html#cramér-wold-device",
     "title": "Convergence in Distribution",
-    "section": "Cramer-Wold Device",
-    "text": "Cramer-Wold Device"
+    "section": "Cramér-Wold Device",
+    "text": "Cramér-Wold Device\n\n\n\nLemma 2.2 (Weak Law of Large Numbers)\n\n\nFor \\(X_n, X \\in \\R^d\\), \\(X_n \\indist X\\) iff \\(t' X_n \\indist t' X\\) for all \\(t \\in \\R^d\\)"
   },
   {
     "objectID": "asymptotics/indistribution.html#multivariate-central-limit-theorem",
     "href": "asymptotics/indistribution.html#multivariate-central-limit-theorem",
     "title": "Convergence in Distribution",
     "section": "Multivariate Central Limit Theorem",
-    "text": "Multivariate Central Limit Theorem"
+    "text": "Multivariate Central Limit Theorem\n\n\n\nTheorem 2.4\n\n\nSuppose \\(X_1, ..., X_n\\) are i.i.d. with \\(\\Er[X_1] = \\mu \\in \\R^d\\), < $ and \\(\\var(X_1) = \\Sigma > 0\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n (X_i - \\mu) \\indist N(0,\\Sigma)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#i.-non-i.d.-central-limit-theorem",
+    "href": "asymptotics/indistribution.html#i.-non-i.d.-central-limit-theorem",
+    "title": "Convergence in Distribution",
+    "section": "i. non i.d. Central Limit Theorem",
+    "text": "i. non i.d. Central Limit Theorem\n\nTriangular array \\[\n\\begin{array}{ccc}\nX_{1,1}, & ..., & X{1,k(1)} \\\\\nX_{2,1}, & ..., & X{2,k(2)} \\\\\n\\vdots & & \\vdots \\\\\nX_{n,1}, & ..., & X{n,k(n)}\n\\end{array}\n\\] with \\(k(n) \\to \\infty\\) as \\(n \\to \\infty\\)\n\n\n\n\nTheorem 2.5 (Lindeberg’s Theorem)\n\n\nAssume that for each \\(n\\), \\(X_{n,1}, ..., X_{n,k(n)}\\) are independent with \\(\\Er[X_{nj}] = 0\\), and \\[\n\\frac{1}{k(n)} \\sum_{j=1}^{k(n)} \\Er[X_{nj}^2]  = 1\n\\] and for any \\(\\epsilon>0\\), \\[\n\\lim_{n \\to \\infty} \\frac{1}{k(n)} \\sum_{j=1}^{k(n)} \\Er\\left[ X_{nj}^2 1\\{|X_{nj}|>\\epsilon \\sqrt{k(n)}  \\right]  = 0\n\\] Then, \\[\n\\frac{1}{\\sqrt{k(n)}} \\sum_{j=1}^{k(n)} X_{n,j} \\indist N(0,1)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#delta-method",
+    "href": "asymptotics/indistribution.html#delta-method",
+    "title": "Convergence in Distribution",
+    "section": "Delta Method",
+    "text": "Delta Method\n\n\n\nLemma 3.1\n\n\nSuppose \\(h:\\R^d \\to \\R\\) with \\(h(0) = 0\\), and \\(X_n \\inprob 0\\). Then for every \\(p>0\\), 1. If \\(h(y) = o(\\norm{y}^p)\\) as \\(y \\to 0\\), then \\(h(X_n) = o_p(\\norm{X}_n^p)\\) 2. If \\(h(y) = O(\\norm{y}^p)\\) as \\(y \\to 0\\), then \\(h(X_n) = O_p(\\norm{X}_n^p)\\)\n\n\n\n\n\n\nTheorem 3.1 (Delta Method)\n\n\nSuppose that \\(\\hat{\\theta}\\) is a sequence of estimators of \\(\\theta_0 \\in \\R^d\\), and \\[\n\\sqrt{n}(\\hat{\\theta} - \\theta_0) \\indist S\n\\] Also, assume that \\(h: \\R^d \\to \\R^k\\) is differentiable at \\(\\theta_0\\), then \\[\n\\sqrt{n} \\left( h(\\hat{\\theta}) - h(\\theta_0) \\right) \\indist Dh(\\theta_0) S\n\\]"
   },
   {
     "objectID": "asymptotics/inprobability.html#reading",
@@ -166,6 +180,69 @@
     "title": "Convergence in Probability",
     "section": "Example",
     "text": "Example\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\n\\begin{aligned}\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | > a \\right) \\leq & \\frac{\\var(\\En X_i - \\mu)}{a^2}  \\\\\n\\leq &  \\frac{\\sigma^2}{n a^2}\n\\end{aligned}\n\\]\nLet \\(a = \\sigma \\epsilon^{-1/2} n^{-1/2}\\), \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-1/2}} > \\underbrace{\\sigma \\epsilon^{-1/2}}_{M_\\epsilon} \\right) \\leq \\epsilon\n\\] so \\(|\\En X_i - \\mu | = O_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2]\\)"
+  },
+  {
+    "objectID": "asymptotics/ols.html#reading",
+    "href": "asymptotics/ols.html#reading",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 10\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
+  },
+  {
+    "objectID": "asymptotics/ols.html#consistency",
+    "href": "asymptotics/ols.html#consistency",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Consistency",
+    "text": "Consistency"
+  },
+  {
+    "objectID": "asymptotics/ols.html#asymptotic-distribution",
+    "href": "asymptotics/ols.html#asymptotic-distribution",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Asymptotic Distribution",
+    "text": "Asymptotic Distribution"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedasticity",
+    "href": "asymptotics/ols.html#heteroskedasticity",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedasticity",
+    "text": "Heteroskedasticity"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustered-standard-errors",
+    "href": "asymptotics/ols.html#clustered-standard-errors",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustered Standard Errors",
+    "text": "Clustered Standard Errors"
+  },
+  {
+    "objectID": "asymptotics/ols.html#dependence",
+    "href": "asymptotics/ols.html#dependence",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Dependence",
+    "text": "Dependence"
+  },
+  {
+    "objectID": "asymptotics/ols.html#wald",
+    "href": "asymptotics/ols.html#wald",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Wald",
+    "text": "Wald"
+  },
+  {
+    "objectID": "asymptotics/ols.html#likelihood-ratio",
+    "href": "asymptotics/ols.html#likelihood-ratio",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Likelihood Ratio",
+    "text": "Likelihood Ratio"
+  },
+  {
+    "objectID": "asymptotics/ols.html#lagrange-multiplier",
+    "href": "asymptotics/ols.html#lagrange-multiplier",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Lagrange Multiplier",
+    "text": "Lagrange Multiplier"
   },
   {
     "objectID": "estimation/estimation.html#reading",
@@ -991,7 +1068,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Oct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Nov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

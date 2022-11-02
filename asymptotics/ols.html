@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="Paul Schrimpf">
-  <title>ECON 626 - Convergence in Distribution</title>
+  <title>ECON 626 - Asymptotic Theory of Least Squares</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -339,25 +339,17 @@
       margin-right: 0; 
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="skier.jpg" data-background-size="contain" class="center">
-  <h1 class="title">Convergence in Distribution</h1>
+<section id="title-slide" data-background-image="" data-background-size="contain" class="center">
+  <h1 class="title">Asymptotic Theory of Least Squares</h1>
   <p class="author">Paul Schrimpf</p>
   <p class="date">11/1/22</p>
 </section>
 
-<section>
-<section id="convergence-in-distribution" class="title-slide slide level1 center">
-<h1>Convergence in Distribution</h1>
-
-</section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
@@ -377,295 +369,44 @@
 \DeclareMathOperator*{\plim}{plim}
 \]</span></p>
 </section>
-<section id="convergence-in-distribution-1" class="slide level2">
-<h2>Convergence in Distribution</h2>
-<div class="callout callout-tip no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Definition</strong></p>
-</div>
-<div class="callout-content">
-<p>Random vectors <span class="math inline">\(X_1, X_2, ...\)</span> <strong>converge in distribution</strong> to the random vector <span class="math inline">\(X\)</span> if for all <span class="math inline">\(f \in \underbrace{\mathcal{C}_b}\)</span> (continuous and bounded) <span class="math display">\[
-\Er[ f(X_n) ] \to \Er[f(X)]
-\]</span> denoted by <span class="math inline">\(X_n \indist X\)</span></p>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 1.1</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(X_n \indist X\)</span> if and only if <span class="math inline">\(P(X_n \leq t) \to P(X \leq t)\)</span> for all <span class="math inline">\(t\)</span> where <span class="math inline">\(P(X \leq t)\)</span> is continuous</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="convergence-in-distribution-2" class="slide level2">
-<h2>Convergence in Distribution</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 1.2</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(X_n \indist X\)</span> and <span class="math inline">\(X\)</span> is continuous, then <span class="math display">\[
-\sup_{t \in \R^d} | P(X_n \leq t) - P(X \leq t) | \to 0
-\]</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="characterizing-convergence-in-distribution" class="slide level2">
-<h2>Characterizing Convergence in Distribution</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma 1.2</strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(X_n \indist X\)</span> iff for any open <span class="math inline">\(G \subset \R^d\)</span>, <span class="math display">\[
-\liminf P(X_n \in G) \geq P(X \in G)
-\]</span></p>
-</div>
-</div>
-</div>
-<ul>
-<li>This and additional characterizations of convergence in distribution are called the Portmanteau Theorem</li>
-</ul>
-</section>
-<section id="continuous-mapping-theorem" class="slide level2">
-<h2>Continuous Mapping Theorem</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Continuous Mapping Theorem</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(X_n \indist X\)</span> and <span class="math inline">\(g\)</span> be continuous on a set <span class="math inline">\(C\)</span> with <span class="math inline">\(P(X \in C) = 1\)</span>, then <span class="math display">\[
-g(X_n) \indist g(X)
-\]</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="relation-to-convergence-in-probability" class="slide level2">
-<h2>Relation to Convergence in Probability</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 1.4</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li><p>If <span class="math inline">\(X_n \indist X\)</span>, then <span class="math inline">\(X_n = O_p(1)\)</span></p></li>
-<li><p>If <span class="math inline">\(c\)</span> is a constant, then <span class="math inline">\(X_n \inprob c\)</span> iff <span class="math inline">\(X_n \indist c\)</span></p></li>
-<li><p>If <span class="math inline">\(Y_n \inprob c\)</span> and <span class="math inline">\(X_n \indist X\)</span>, then <span class="math inline">\((Y_n, X_n) \indist (c, X)\)</span></p></li>
-<li><p>If <span class="math inline">\(X_n \inprob X\)</span>, then <span class="math inline">\(X_n \indist X\)</span></p></li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<section id="slutskys-lemma" class="slide level2">
-<h2>Slutsky’s Lemma</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 1.5 (Generalized Slutsky’s Lemma)</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(Y_n \inprob c\)</span>, <span class="math inline">\(X_n \indist X\)</span>, and <span class="math inline">\(g\)</span> is continuous, then <span class="math display">\[
-g(Y_n, X_n) \indist g(c,X)
-\]</span></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Implies:
-<ul>
-<li><span class="math inline">\(Y_n + X_n \indist c + X\)</span></li>
-<li><span class="math inline">\(Y_n X_n \indist c X\)</span></li>
-<li><span class="math inline">\(X_n/Y_n \indist X/c\)</span></li>
-</ul></li>
-</ul>
-</section></section>
 <section>
-<section id="central-limit-theorem" class="title-slide slide level1 center">
-<h1>Central Limit Theorem</h1>
+<section id="least-squares" class="title-slide slide level1 center">
+<h1>Least Squares</h1>
 
 </section>
-<section id="levys-continuity-theorem" class="slide level2">
-<h2>Levy’s Continuity Theorem</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma 2.1 (Levy’s Continuity Theorem)</strong></p>
-</div>
-<div class="callout-content">
-<p><span class="math inline">\(X_n \indist X\)</span> iff <span class="math inline">\(\Er[e^{i t'X_n} ] \to \Er[e^{i t' X} ]\)</span> for all <span class="math inline">\(t \in \R^d\)</span></p>
-</div>
-</div>
-</div>
-<ul>
-<li>see <span class="citation" data-cites="dobler2022">Döbler (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> for a short proof</li>
-<li><span class="math inline">\(\Er[e^{i t' X}] \equiv \varphi(t)\)</span> is the <strong>characteristic function</strong> of <span class="math inline">\(X\)</span></li>
-</ul>
+<section id="consistency" class="slide level2">
+<h2>Consistency</h2>
 </section>
-<section id="law-of-large-numbers-revisited" class="slide level2">
-<h2>Law of Large Numbers Revisited</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma 2.2 (Weak Law of Large Numbers)</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(X_1, ..., X_n\)</span> are i.i.d. with <span class="math inline">\(\Er[|X_1|] &lt; \infty\)</span>, then <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n X_i \inprob \Er[X_1]\)</span></p>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 2.2 (non-iid WLLN)</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(\Er[X_i]=0\)</span>, <span class="math inline">\(\Er[X_i X_j] = 0\)</span> for all <span class="math inline">\(i \neq j\)</span> and <span class="math inline">\(\frac{1}{n} \max_{1 \leq  j \leq n} \Er[X_j^2] \to 0\)</span>, then <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n X_i \inprob 0\)</span></p>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes">
-<p>Apply to OLS again and show <span class="math inline">\(\hat{\sigma}^2\)</span> is consistent</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="asymptotic-distribution" class="slide level2">
+<h2>Asymptotic Distribution</h2>
+</section></section>
+<section>
+<section id="non-i.i.d.-errors" class="title-slide slide level1 center">
+<h1>Non-i.i.d. Errors</h1>
+
 </section>
-<section id="central-limit-theorem-1" class="slide level2">
-<h2>Central Limit Theorem</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 2.3</strong></p>
-</div>
-<div class="callout-content">
-<p>Suppose <span class="math inline">\(X_1, ..., X_n \in \R\)</span> are i.i.d. with <span class="math inline">\(\Er[X_1] = \mu\)</span> and <span class="math inline">\(\var(X_1) = \sigma^2\)</span>, then <span class="math display">\[
-\frac{1}{\sqrt{n}} \sum_{i=1}^n \frac{X_i - \mu}{\sigma} \indist N(0,1)
-\]</span></p>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>5-element Vector{var"#12#14"{Matrix{Float64}}}:
- #12 (generic function with 1 method)
- #12 (generic function with 1 method)
- #12 (generic function with 1 method)
- #12 (generic function with 1 method)
- #12 (generic function with 1 method)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="3">
-<iframe src="tmp.html" width="800" height="700"></iframe>
-</div>
-</div>
+<section id="heteroskedasticity" class="slide level2">
+<h2>Heteroskedasticity</h2>
 </section>
-<section id="cramér-wold-device" class="slide level2">
-<h2>Cramér-Wold Device</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma 2.2 (Weak Law of Large Numbers)</strong></p>
-</div>
-<div class="callout-content">
-<p>For <span class="math inline">\(X_n, X \in \R^d\)</span>, <span class="math inline">\(X_n \indist X\)</span> iff <span class="math inline">\(t' X_n \indist t' X\)</span> for all <span class="math inline">\(t \in \R^d\)</span></p>
-</div>
-</div>
-</div>
+<section id="clustered-standard-errors" class="slide level2">
+<h2>Clustered Standard Errors</h2>
 </section>
-<section id="multivariate-central-limit-theorem" class="slide level2">
-<h2>Multivariate Central Limit Theorem</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 2.4</strong></p>
-</div>
-<div class="callout-content">
-<p>Suppose <span class="math inline">\(X_1, ..., X_n\)</span> are i.i.d. with <span class="math inline">\(\Er[X_1] = \mu \in \R^d\)</span>, &lt; $ and <span class="math inline">\(\var(X_1) = \Sigma &gt; 0\)</span>, then <span class="math display">\[
-\frac{1}{\sqrt{n}} \sum_{i=1}^n (X_i - \mu) \indist N(0,\Sigma)
-\]</span></p>
-</div>
-</div>
-</div>
+<section id="dependence" class="slide level2">
+<h2>Dependence</h2>
+</section></section>
+<section>
+<section id="testing-restrictions" class="title-slide slide level1 center">
+<h1>Testing Restrictions</h1>
+
 </section>
-<section id="i.-non-i.d.-central-limit-theorem" class="slide level2">
-<h2>i. non i.d. Central Limit Theorem</h2>
-<ul>
-<li>Triangular array <span class="math display">\[
-\begin{array}{ccc}
-X_{1,1}, &amp; ..., &amp; X{1,k(1)} \\
-X_{2,1}, &amp; ..., &amp; X{2,k(2)} \\
-\vdots &amp; &amp; \vdots \\
-X_{n,1}, &amp; ..., &amp; X{n,k(n)}
-\end{array}
-\]</span> with <span class="math inline">\(k(n) \to \infty\)</span> as <span class="math inline">\(n \to \infty\)</span></li>
-</ul>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 2.5 (Lindeberg’s Theorem)</strong></p>
-</div>
-<div class="callout-content">
-<p>Assume that for each <span class="math inline">\(n\)</span>, <span class="math inline">\(X_{n,1}, ..., X_{n,k(n)}\)</span> are independent with <span class="math inline">\(\Er[X_{nj}] = 0\)</span>, and <span class="math display">\[
-\frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er[X_{nj}^2]  = 1
-\]</span> and for any <span class="math inline">\(\epsilon&gt;0\)</span>, <span class="math display">\[
-\lim_{n \to \infty} \frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er\left[ X_{nj}^2 1\{|X_{nj}|&gt;\epsilon \sqrt{k(n)}  \right]  = 0
-\]</span> Then, <span class="math display">\[
-\frac{1}{\sqrt{k(n)}} \sum_{j=1}^{k(n)} X_{n,j} \indist N(0,1)
-\]</span></p>
-</div>
-</div>
-</div>
+<section id="wald" class="slide level2">
+<h2>Wald</h2>
 </section>
-<section id="delta-method" class="slide level2">
-<h2>Delta Method</h2>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Lemma 3.1</strong></p>
-</div>
-<div class="callout-content">
-<p>Suppose <span class="math inline">\(h:\R^d \to \R\)</span> with <span class="math inline">\(h(0) = 0\)</span>, and <span class="math inline">\(X_n \inprob 0\)</span>. Then for every <span class="math inline">\(p&gt;0\)</span>, 1. If <span class="math inline">\(h(y) = o(\norm{y}^p)\)</span> as <span class="math inline">\(y \to 0\)</span>, then <span class="math inline">\(h(X_n) = o_p(\norm{X}_n^p)\)</span> 2. If <span class="math inline">\(h(y) = O(\norm{y}^p)\)</span> as <span class="math inline">\(y \to 0\)</span>, then <span class="math inline">\(h(X_n) = O_p(\norm{X}_n^p)\)</span></p>
-</div>
-</div>
-</div>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<p><strong>Theorem 3.1 (Delta Method)</strong></p>
-</div>
-<div class="callout-content">
-<p>Suppose that <span class="math inline">\(\hat{\theta}\)</span> is a sequence of estimators of <span class="math inline">\(\theta_0 \in \R^d\)</span>, and <span class="math display">\[
-\sqrt{n}(\hat{\theta} - \theta_0) \indist S
-\]</span> Also, assume that <span class="math inline">\(h: \R^d \to \R^k\)</span> is differentiable at <span class="math inline">\(\theta_0\)</span>, then <span class="math display">\[
-\sqrt{n} \left( h(\hat{\theta}) - h(\theta_0) \right) \indist Dh(\theta_0) S
-\]</span></p>
-</div>
-</div>
-</div>
+<section id="likelihood-ratio" class="slide level2">
+<h2>Likelihood Ratio</h2>
+</section>
+<section id="lagrange-multiplier" class="slide level2">
+<h2>Lagrange Multiplier</h2>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -674,9 +415,6 @@ X_{n,1}, &amp; ..., &amp; X{n,k(n)}
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-dobler2022" class="csl-entry" role="doc-biblioentry">
-Döbler, Christian. 2022. <span>“A Short Proof of Lévy’s Continuity Theorem Without Using Tightness.”</span> <em>Statistics &amp; Probability Letters</em> 185: 109438. https://doi.org/<a href="https://doi.org/10.1016/j.spl.2022.109438">https://doi.org/10.1016/j.spl.2022.109438</a>.
-</div>
 <div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
 </div>

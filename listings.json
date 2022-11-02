@@ -2,6 +2,7 @@
   {
     "listing": "/slides.html",
     "items": [
+      "/asymptotics/ols.html",
       "/asymptotics/indistribution.html",
       "/asymptotics/inprobability.html",
       "/problemsets/midterm_review/midterm_review.html",

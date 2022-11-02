@@ -1,0 +1,40 @@
+---
+title: "ECON 626: Problem Set 4"
+#author: "Paul Schrimpf"
+date: 2022-10-13
+bibliography: ../../626.bib
+---
+
+$$
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+$$
+
+# Problem 1
+
+The exponential distribution has density (with respect to Lesbegue measure)
+$$
+f(X;\lambda) = \frac{1}{\lambda} e^{-X/\lambda} 1\{X > 0\}
+$$
+for $\lambda>0$.  Suppose $X_1, ... , X_n$ are independently exponential$(\lambda)$ distributed .
+
+
+1. Show that the maximum likelihood estimator for $\lambda$ is
+$\hat{\lambda}^{MLE} = \frac{1}{n} \sum_{i=1}^n X_i$
+
+2. Derive the Cramér Rao lower bound for any unbiased estimator for
+$\lambda$. Is $\hat{\lambda}^{MLE}$ a minimum variance unbiased estimator?
+
+3. Find the most powerful test of size $\alpha$ for testing
+$H_0: \lambda = \lambda_0$ versus $H_1:\lambda = \lambda_1$.
+
+# Problem 2
+
+Suppose $X_1, ... , X_n$ are independently uniformly distributed on $(0,\theta)$.
+
+1. Show that $2 \bar{X} = \frac{2}{n} \sum_{i=1}^n X_i$ is an unbiased estimator for $\theta$.
+
+2. Derive the Cramér Rao lower bound for any unbiased estimator for
+$\theta$. Is $2 \bar{X}$ a minimum variance unbiased estimator?
+
+3. Show that $\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i$ is a minimum variance unbiased estimator for $\theta$.

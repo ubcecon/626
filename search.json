@@ -74,7 +74,7 @@
     "href": "asymptotics/indistribution.html#central-limit-theorem-1",
     "title": "Convergence in Distribution",
     "section": "Central Limit Theorem",
-    "text": "Central Limit Theorem\n\n\n\nTheorem 2.3\n\n\nSuppose \\(X_1, ..., X_n \\in \\R\\) are i.i.d. with \\(\\Er[X_1] = \\mu\\) and \\(\\var(X_1) = \\sigma^2\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n \\frac{X_i - \\mu}{\\sigma} \\indist N(0,1)\n\\]\n\n\n\n\n\n5-element Vector{var\"#12#14\"{Matrix{Float64}}}:\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)\n #12 (generic function with 1 method)"
+    "text": "Central Limit Theorem\n\n\n\nTheorem 2.3\n\n\nSuppose \\(X_1, ..., X_n \\in \\R\\) are i.i.d. with \\(\\Er[X_1] = \\mu\\) and \\(\\var(X_1) = \\sigma^2\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n \\frac{X_i - \\mu}{\\sigma} \\indist N(0,1)\n\\]"
   },
   {
     "objectID": "asymptotics/indistribution.html#cramér-wold-device",

@@ -77,6 +77,27 @@
     "text": "Central Limit Theorem\n\n\n\nTheorem 2.3\n\n\nSuppose \\(X_1, ..., X_n \\in \\R\\) are i.i.d. with \\(\\Er[X_1] = \\mu\\) and \\(\\var(X_1) = \\sigma^2\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n \\frac{X_i - \\mu}{\\sigma} \\indist N(0,1)\n\\]"
   },
   {
+    "objectID": "asymptotics/indistribution.html#cdf",
+    "href": "asymptotics/indistribution.html#cdf",
+    "title": "Convergence in Distribution",
+    "section": "CDF",
+    "text": "CDF\n\n\nplotting code\nusing Cobweb\nplt = Plot()\nplt.layout = Config()\nfor i in axes(N)[1]\n  plt(x=x, y=Fn[i].(x), name=\"N=$(N[i])\")\nend\nplt(x=x, y=cdf.(Normal(),x), name=\"Normal CDF\")\nfig = plt()\nCobweb.save(Page(fig), \"cdf.html\")\nHTML(\"<iframe src=\\\"cdf.html\\\" width=\\\"1200\\\"  height=\\\"700\\\"></iframe>\")"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#size-distortion",
+    "href": "asymptotics/indistribution.html#size-distortion",
+    "title": "Convergence in Distribution",
+    "section": "Size Distortion",
+    "text": "Size Distortion\n\n\nplotting code\np = range(0,1,length=200)\nplt = Plot()\nplt.layout = Config()\nplt.layout.yaxis.title.text=\"p - Fn(Φ^{-1}(p))\"\nplt.layout.xaxis.title.text=\"p\"\nfor i in axes(N)[1]\n  plt(x=p,y=p - Fn[i].(quantile.(Normal(),p)), name=\"N=$(N[i])\")\nend\nfig = plt()\nCobweb.save(Page(fig), \"size.html\")\nHTML(\"<iframe src=\\\"size.html\\\" width=\\\"1200\\\"  height=\\\"700\\\"></iframe>\")"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#histogram",
+    "href": "asymptotics/indistribution.html#histogram",
+    "title": "Convergence in Distribution",
+    "section": "Histogram",
+    "text": "Histogram\n\n\nplotting code\nbins = range(-2.5,2.5,length=21)\nx = range(-2.5,2.5, length=1000)\nplt = Plot();\nplt.layout=Config()\nfunction Hn(x, F)\n  if (x <= bins[1] || x>bins[end])\n    return 0.0\n  end\n  j = findfirst( x .<= bins )\n  return (F(bins[j]) - F(bins[j-1]))\nend\nplt(x=x,y=Hn.(x,x->cdf(Normal(),x)), name=\"Normal\")\nfor i in axes(N)[1]\n  plt(x=x,y=Hn.(x, Fn[i]), name=\"N=$(N[i])\")\nend\nfig = plt()\nCobweb.save(Page(fig), \"hist.html\")\nHTML(\"<iframe src=\\\"hist.html\\\" width=\\\"1200\\\"  height=\\\"700\\\"></iframe>\")"
+  },
+  {
     "objectID": "asymptotics/indistribution.html#cramér-wold-device",
     "href": "asymptotics/indistribution.html#cramér-wold-device",
     "title": "Convergence in Distribution",
@@ -1068,7 +1089,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Nov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Nov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

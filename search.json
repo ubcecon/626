@@ -102,7 +102,7 @@
     "href": "asymptotics/indistribution.html#cramér-wold-device",
     "title": "Convergence in Distribution",
     "section": "Cramér-Wold Device",
-    "text": "Cramér-Wold Device\n\n\n\nLemma 2.2 (Weak Law of Large Numbers)\n\n\nFor \\(X_n, X \\in \\R^d\\), \\(X_n \\indist X\\) iff \\(t' X_n \\indist t' X\\) for all \\(t \\in \\R^d\\)"
+    "text": "Cramér-Wold Device\n\n\n\nLemma 2.2\n\n\nFor \\(X_n, X \\in \\R^d\\), \\(X_n \\indist X\\) iff \\(t' X_n \\indist t' X\\) for all \\(t \\in \\R^d\\)"
   },
   {
     "objectID": "asymptotics/indistribution.html#multivariate-central-limit-theorem",
@@ -214,35 +214,63 @@
     "href": "asymptotics/ols.html#consistency",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Consistency",
-    "text": "Consistency"
+    "text": "Consistency\n\\[\n\\begin{align*}\n\\hat{\\beta} = & (X'X)^{-1} X' y \\\\\n= & (X'X)^{-1} X' (X \\beta + \\epsilon) \\\\\n= & \\beta + (X'X)^{-1} X' \\epsilon\n\\end{align*}\n\\]\nConsistent, \\(\\hat{\\beta} \\inprob \\beta\\), if\n\n\n\\((X'X)^{-1} X' \\epsilon \\inprob 0\\) (“high level assumption”), or\n\\(\\frac{1}{n} X'X \\inprob C\\) and \\(\\frac{1}{n} X' \\epsilon \\inprob 0\\), or\nUsing non-iid WLLN from convergence in distribution slides (“low level assumption”):\n\nFor both \\(Z_i = X_i'\\) and \\(Z_i = \\epsilon_i\\),\n\n\\(\\Er\\left[\\left((X_i Z_i) - \\Er[X_i Z_i'] \\right) \\left((X_j Z_j) - \\Er[X_j Z_j]\\right)\\right] = 0\\) and\n\\(\\frac{1}{n} \\max_{1 \\leq i \\leq n} \\Er[ (X_i Z_i - \\Er[X_i Z_i]) (X_i Z_i - \\Er[X_i Z_i])'] \\to 0\\)\n\n\\(\\Er[X_i \\epsilon_i] = 0\\)"
   },
   {
     "objectID": "asymptotics/ols.html#asymptotic-distribution",
     "href": "asymptotics/ols.html#asymptotic-distribution",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Asymptotic Distribution",
-    "text": "Asymptotic Distribution"
+    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\n\n\\(\\frac{1}{n} X'X \\inprob C\\) nonsingular, and \\(\\frac{1}{\\sqrt{n}} X' \\epsilon \\indist N(0,V)\\), or\nUsing i.i.d. CLT and WLLN:\n\n\\((X_i, \\epsilon_i)\\) i.i.d.\n\\(\\Er[X_i X_i' ]\\) is nonsingular, \\(\\Er[X_i \\epsilon_i] = 0\\), and \\(\\var(X_i \\epsilon_i) = \\Omega > 0\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
+  },
+  {
+    "objectID": "asymptotics/ols.html#asymptotic-distribution-1",
+    "href": "asymptotics/ols.html#asymptotic-distribution-1",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Asymptotic Distribution",
+    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\n\nUsing Lindeberg’s CLT and non-iid WLLN:\n\n\\((X_i, \\epsilon_i) \\perp (X_j, \\epsilon_j)\\) if \\(i \\neq j\\), and\n\\(\\frac{1}{n} \\max_{1 \\leq i \\leq n} \\Er[ (X_i X_i' - \\Er[X_i X_i']) (X_i X_i' - \\Er[X_i X_i])'] \\to 0\\), and\n\\(\\frac{1}{n} \\sum_{i=1}^n \\Er[X_i \\epsilon_i^2 X_i'] = \\Omega_n\\) is non singular, and \\(\\Omega_n \\to \\Omega\\), and\n\\(\\lim_{n \\to \\infty} \\frac{1}{n} \\sum_{i=1}^n \\Er\\left[ c'( X_i \\epsilon_i^2 X_i') c 1\\{ | c'( X_i \\epsilon_i)| > \\delta \\sqrt{n} \\right] = 0\\) for all \\(\\delta > 0\\) and \\(c \\in \\R^k\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
+  },
+  {
+    "objectID": "asymptotics/ols.html#estimated-variance",
+    "href": "asymptotics/ols.html#estimated-variance",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Estimated Variance",
+    "text": "Estimated Variance\n\nKnowing \\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) isn’t useful, unless we know or can estimate \\(\\Sigma\\)\n\n\n\n\nLemma\n\n\nIf \\(\\hat{\\Sigma} \\inprob \\Sigma\\), \\(\\Sigma\\) is nonsingular, and \\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\), then \\[\n\\sqrt{n}(\\hat{\\beta} - \\beta)\\hat{\\Sigma}^{-1/2} \\indist N(0, I)\n\\]"
   },
   {
     "objectID": "asymptotics/ols.html#heteroskedasticity",
     "href": "asymptotics/ols.html#heteroskedasticity",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Heteroskedasticity",
-    "text": "Heteroskedasticity"
+    "text": "Heteroskedasticity\n\nWith i.i.d. data, \\[\n\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\overbrace{\\Er[X_i X_i']^{-1} \\var(X_i \\epsilon_i) \\Er[X_i X_i']^{-1}}^{\\Sigma} )\n\\]\n\\(Var(X_i \\epsilon_i) = \\Er[\\epsilon_i^2 X_i X_i'] = \\Er[\\Er[\\epsilon_i^2 |X_i] X_i X_i']\\)\n\n\n\n\nDefinition\n\n\n\\(\\epsilon\\) is homoskedastic if \\(\\Er[\\epsilon_i^2 | X_i] = \\sigma^2\\), otherwise \\(\\epsilon\\) is heteroskedastic."
   },
   {
-    "objectID": "asymptotics/ols.html#clustered-standard-errors",
-    "href": "asymptotics/ols.html#clustered-standard-errors",
+    "objectID": "asymptotics/ols.html#heteroskedasticity-1",
+    "href": "asymptotics/ols.html#heteroskedasticity-1",
     "title": "Asymptotic Theory of Least Squares",
-    "section": "Clustered Standard Errors",
-    "text": "Clustered Standard Errors"
+    "section": "Heteroskedasticity",
+    "text": "Heteroskedasticity\n\nWith homoskedasticity, = ^{-1} ^2$\nWith heteroskedasticity, \\(\\Sigma = \\Er[X_i X_i']^{-1} \\var(X_i \\epsilon_i) \\Er[X_i X_i']^{-1}\\) and can be (with appropriate assumptions) consistently estimated by \\[\n\\hat{\\Sigma}^{robust} = (\\frac{1}{n} X ' X)^{-1} \\left(\\frac{1}{n} \\sum_{i=1}^n X_i X_i' \\epsilon_i^2 \\right) (\\frac{1}{n} X'X)^{-1}\n\\]\nEven with homoskedasticity, there is little downside to using \\(\\hat{\\Sigma}^{robust}\\), so always used in practice"
   },
   {
     "objectID": "asymptotics/ols.html#dependence",
     "href": "asymptotics/ols.html#dependence",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Dependence",
-    "text": "Dependence"
+    "text": "Dependence\n\n\\(\\sqrt{n} (\\hat{\\beta} - \\beta) \\indist N(0, \\Er[X_iX_i']^{-1} V \\Er[X_i X_i']^{-1})\\) if \\(\\frac{1}{n} X'X \\inprob \\Er[X_iX_i']^{-1}\\) and \\(\\frac{1}{n} X'\\epsilon \\indist N(0,V)\\)\nGenerally, \\(V = \\lim_{n \\to \\infty} \\var\\left( \\frac{1}{n} X'\\epsilon \\right)\\) \\[\n\\var\\left( \\frac{1}{n} X'\\epsilon \\right) = \\frac{1}{n^2} \\sum_{i=1}^n \\sum_{j=1}^n \\cov(X_i \\epsilon_i, X_j \\epsilon_j)\n\\]\n\\(n(n-1)/2\\) different \\(\\cov(X_i \\epsilon_i, X_j \\epsilon_j)\\), so need some restriction"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustered-standard-errors",
+    "href": "asymptotics/ols.html#clustered-standard-errors",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustered Standard Errors",
+    "text": "Clustered Standard Errors\n\nPartition data into \\(G\\) groups, \\(\\{g_h\\}_{h=1^G}\\), denote group of \\(i\\) as \\(g(i)\\)\nAssume \\(\\cov(X_i \\epsilon_i, X_j \\epsilon_j) = 0\\) if \\(g(i) \\neq g(j)\\), and \\(\\Er[X_i \\epsilon_i] = 0\\) $$\n\\[\\begin{aligned}\n\\sum_{i=1}^n \\sum_{j=1}^n \\cov(X_i \\epsilon_i, X_j \\epsilon_j) = & \\sum_{h=1}^G \\sum_{i \\in g_h} \\sum_{j \\in g_h} \\cov(X_i \\epsilon_i, X_j, \\epsilon_j) \\\\\n= & \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right]\n\\end{aligned}\\]\nStrengthening some assumptions to apply Lindeberg’s CLT to \\(\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)\\) we get \\[\n\\frac{1}{\\sqrt{G}} \\left(\\sum_{h = 1}^G \\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right) \\right) \\left( \\frac{1}{G} \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right] \\right)^{-1/2} \\indist N(0, I)\n\\]\nThus, \\[\n\\sqrt{G} (\\hat{\\beta} - \\beta) \\indist N\\left(0, \\Er[X_i X_i']^{-1} \\left(\\lim_{G \\to \\infty} \\frac{1}{G} \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right] \\right)  \\Er[X_i X_i']^{-1} \\right)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/ols.html#time-dependence",
+    "href": "asymptotics/ols.html#time-dependence",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Time Dependence",
+    "text": "Time Dependence\n\nsee Mikusheva and Schrimpf (2007) lectures 2 and 3 and recitation 2"
   },
   {
     "objectID": "asymptotics/ols.html#wald",
@@ -1089,7 +1117,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Nov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 2, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Nov 7, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

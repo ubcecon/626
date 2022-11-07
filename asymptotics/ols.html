@@ -347,7 +347,7 @@
 <section id="title-slide" data-background-image="" data-background-size="contain" class="center">
   <h1 class="title">Asymptotic Theory of Least Squares</h1>
   <p class="author">Paul Schrimpf</p>
-  <p class="date">11/1/22</p>
+  <p class="date">11/7/22</p>
 </section>
 
 <section id="reading" class="slide level2">
@@ -372,27 +372,166 @@
 <section>
 <section id="least-squares" class="title-slide slide level1 center">
 <h1>Least Squares</h1>
-
+<p><span class="math display">\[
+\overbrace{y}^{n \times 1} = \overbrace{X}^{n \times k} \underbrace{\beta}_{k \times 1} + \overbrace{\epsilon}^{n \times 1}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\hat{\beta} = (X'X)^{-1} X' y\)</span></li>
+</ul>
 </section>
 <section id="consistency" class="slide level2">
 <h2>Consistency</h2>
+<p><span class="math display">\[
+\begin{align*}
+\hat{\beta} = &amp; (X'X)^{-1} X' y \\
+= &amp; (X'X)^{-1} X' (X \beta + \epsilon) \\
+= &amp; \beta + (X'X)^{-1} X' \epsilon
+\end{align*}
+\]</span></p>
+<p>Consistent, <span class="math inline">\(\hat{\beta} \inprob \beta\)</span>, if</p>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\((X'X)^{-1} X' \epsilon \inprob 0\)</span> (“high level assumption”), or</li>
+<li class="fragment"><span class="math inline">\(\frac{1}{n} X'X \inprob C\)</span> and <span class="math inline">\(\frac{1}{n} X' \epsilon \inprob 0\)</span>, or</li>
+<li class="fragment">Using non-iid WLLN from <a href="indistribution.qmd">convergence in distribution slides</a> (“low level assumption”):
+<ul>
+<li class="fragment">For both <span class="math inline">\(Z_i = X_i'\)</span> and <span class="math inline">\(Z_i = \epsilon_i\)</span>,
+<ul>
+<li class="fragment"><span class="math inline">\(\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j Z_j) - \Er[X_j Z_j]\right)\right] = 0\)</span> and</li>
+<li class="fragment"><span class="math inline">\(\frac{1}{n} \max_{1 \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0\)</span></li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span></li>
+</ul></li>
+</ul>
+</div>
 </section>
 <section id="asymptotic-distribution" class="slide level2">
 <h2>Asymptotic Distribution</h2>
+<p><span class="math display">\[
+\begin{align*}
+\sqrt{n}(\hat{\beta} - \beta) = &amp; \sqrt{n} (X'X)^{-1} (X' \epsilon) \\
+= &amp; (\frac{1}{n} X'X)^{-1} \frac{1}{\sqrt{n}} X' \epsilon
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)\)</span> if:</p>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\(\frac{1}{n} X'X \inprob C\)</span> nonsingular, and <span class="math inline">\(\frac{1}{\sqrt{n}} X' \epsilon \indist N(0,V)\)</span>, or</li>
+<li class="fragment">Using i.i.d. CLT and WLLN:
+<ul>
+<li class="fragment"><span class="math inline">\((X_i, \epsilon_i)\)</span> i.i.d.</li>
+<li class="fragment"><span class="math inline">\(\Er[X_i X_i' ]\)</span> is nonsingular, <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span>, and <span class="math inline">\(\var(X_i \epsilon_i) = \Omega &gt; 0\)</span></li>
+<li class="fragment">Exercise: what is <span class="math inline">\(\Sigma\)</span> under these assumptions?</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="asymptotic-distribution-1" class="slide level2">
+<h2>Asymptotic Distribution</h2>
+<p><span class="math display">\[
+\begin{align*}
+\sqrt{n}(\hat{\beta} - \beta) = &amp; \sqrt{n} (X'X)^{-1} (X' \epsilon) \\
+= &amp; (\frac{1}{n} X'X)^{-1} \frac{1}{\sqrt{n}} X' \epsilon
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)\)</span> if:</p>
+<div>
+<ul>
+<li class="fragment">Using Lindeberg’s CLT and non-iid WLLN:
+<ul>
+<li class="fragment"><span class="math inline">\((X_i, \epsilon_i) \perp (X_j, \epsilon_j)\)</span> if <span class="math inline">\(i \neq j\)</span>, and</li>
+<li class="fragment"><span class="math inline">\(\frac{1}{n} \max_{1 \leq i \leq n} \Er[ (X_i X_i' - \Er[X_i X_i']) (X_i X_i' - \Er[X_i X_i])'] \to 0\)</span>, and</li>
+<li class="fragment"><span class="math inline">\(\frac{1}{n} \sum_{i=1}^n \Er[X_i \epsilon_i^2 X_i'] = \Omega_n\)</span> is non singular, and <span class="math inline">\(\Omega_n \to \Omega\)</span>, and</li>
+<li class="fragment"><span class="math inline">\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er\left[ c'( X_i \epsilon_i^2 X_i') c 1\{ | c'( X_i \epsilon_i)| &gt; \delta \sqrt{n} \right] = 0\)</span> for all <span class="math inline">\(\delta &gt; 0\)</span> and <span class="math inline">\(c \in \R^k\)</span></li>
+<li class="fragment">Exercise: what is <span class="math inline">\(\Sigma\)</span> under these assumptions?</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="estimated-variance" class="slide level2">
+<h2>Estimated Variance</h2>
+<ul>
+<li>Knowing <span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)\)</span> isn’t useful, unless we know or can estimate <span class="math inline">\(\Sigma\)</span></li>
+</ul>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Lemma</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(\hat{\Sigma} \inprob \Sigma\)</span>, <span class="math inline">\(\Sigma\)</span> is nonsingular, and <span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)\)</span>, then <span class="math display">\[
+\sqrt{n}(\hat{\beta} - \beta)\hat{\Sigma}^{-1/2} \indist N(0, I)
+\]</span></p>
+</div>
+</div>
+</div>
 </section></section>
 <section>
-<section id="non-i.i.d.-errors" class="title-slide slide level1 center">
-<h1>Non-i.i.d. Errors</h1>
+<section id="non-spherical-errors" class="title-slide slide level1 center">
+<h1>Non-Spherical Errors</h1>
 
 </section>
 <section id="heteroskedasticity" class="slide level2">
 <h2>Heteroskedasticity</h2>
+<ul>
+<li>With i.i.d. data, <span class="math display">\[
+\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \overbrace{\Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}}^{\Sigma} )
+\]</span></li>
+<li><span class="math inline">\(Var(X_i \epsilon_i) = \Er[\epsilon_i^2 X_i X_i'] = \Er[\Er[\epsilon_i^2 |X_i] X_i X_i']\)</span></li>
+</ul>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(\epsilon\)</span> is <strong>homoskedastic</strong> if <span class="math inline">\(\Er[\epsilon_i^2 | X_i] = \sigma^2\)</span>, otherwise <span class="math inline">\(\epsilon\)</span> is <strong>heteroskedastic</strong>.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="clustered-standard-errors" class="slide level2">
-<h2>Clustered Standard Errors</h2>
+<section id="heteroskedasticity-1" class="slide level2">
+<h2>Heteroskedasticity</h2>
+<ul>
+<li><p>With homoskedasticity, = ^{-1} ^2$</p></li>
+<li><p>With heteroskedasticity, <span class="math inline">\(\Sigma = \Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}\)</span> and can be (with appropriate assumptions) consistently estimated by <span class="math display">\[
+\hat{\Sigma}^{robust} = (\frac{1}{n} X ' X)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \epsilon_i^2 \right) (\frac{1}{n} X'X)^{-1}
+\]</span></p></li>
+<li><p>Even with homoskedasticity, there is little downside to using <span class="math inline">\(\hat{\Sigma}^{robust}\)</span>, so always used in practice</p></li>
+</ul>
 </section>
 <section id="dependence" class="slide level2">
 <h2>Dependence</h2>
+<ul>
+<li><span class="math inline">\(\sqrt{n} (\hat{\beta} - \beta) \indist N(0, \Er[X_iX_i']^{-1} V \Er[X_i X_i']^{-1})\)</span> if <span class="math inline">\(\frac{1}{n} X'X \inprob \Er[X_iX_i']^{-1}\)</span> and <span class="math inline">\(\frac{1}{n} X'\epsilon \indist N(0,V)\)</span></li>
+<li>Generally, <span class="math inline">\(V = \lim_{n \to \infty} \var\left( \frac{1}{n} X'\epsilon \right)\)</span> <span class="math display">\[
+\var\left( \frac{1}{n} X'\epsilon \right) = \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j)
+\]</span></li>
+<li><span class="math inline">\(n(n-1)/2\)</span> different <span class="math inline">\(\cov(X_i \epsilon_i, X_j \epsilon_j)\)</span>, so need some restriction</li>
+</ul>
+</section>
+<section id="clustered-standard-errors" class="slide level2">
+<h2>Clustered Standard Errors</h2>
+<ul>
+<li>Partition data into <span class="math inline">\(G\)</span> groups, <span class="math inline">\(\{g_h\}_{h=1^G}\)</span>, denote group of <span class="math inline">\(i\)</span> as <span class="math inline">\(g(i)\)</span></li>
+<li>Assume <span class="math inline">\(\cov(X_i \epsilon_i, X_j \epsilon_j) = 0\)</span> if <span class="math inline">\(g(i) \neq g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span> $$
+<span class="math display">\[\begin{aligned}
+\sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j) = &amp; \sum_{h=1}^G \sum_{i \in g_h} \sum_{j \in g_h} \cov(X_i \epsilon_i, X_j, \epsilon_j) \\
+= &amp; \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right]
+\end{aligned}\]</span></li>
+<li>Strengthening some assumptions to apply Lindeberg’s CLT to <span class="math inline">\(\left(\sum_{i \in g_h} X_i \epsilon_i \right)\)</span> we get <span class="math display">\[
+\frac{1}{\sqrt{G}} \left(\sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \right) \left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)^{-1/2} \indist N(0, I)
+\]</span></li>
+<li>Thus, <span class="math display">\[
+\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, \Er[X_i X_i']^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)  \Er[X_i X_i']^{-1} \right)
+\]</span></li>
+</ul>
+</section>
+<section id="time-dependence" class="slide level2">
+<h2>Time Dependence</h2>
+<ul>
+<li>see <span class="citation" data-cites="mikusheva2007">Mikusheva and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span> lectures 2 and 3 and recitation 2</li>
+</ul>
 </section></section>
 <section>
 <section id="testing-restrictions" class="title-slide slide level1 center">
@@ -415,6 +554,9 @@
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-mikusheva2007" class="csl-entry" role="doc-biblioentry">
+Mikusheva, Anna, and Paul Schrimpf. 2007. <span>“14.384 Time Series Analysis, Fall 2007 (Revised 2009).”</span> <a href="http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/">http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/</a>.
+</div>
 <div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
 </div>

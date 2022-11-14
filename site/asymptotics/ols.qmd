@@ -5,9 +5,10 @@ date: last-modified
 format:
   revealjs:
     theme: moon
-    width: 1600
-    height: 900
+    width: 1575
+    height: 1050
     min-scale: 0.1
+    max-scale: 3.0
     chalkboard:
       theme: whiteboard
       boardmarker-width: 2
@@ -18,9 +19,7 @@ format:
       data-background-size: contain
 bibliography: ../626.bib
 
-# jupyter: julia-1.8
-# execute:
-#   cache: false
+jupyter: julia-1.8
 ---
 
 
@@ -44,24 +43,582 @@ $$
 
 # Least Squares
 
+$$
+\overbrace{y}^{n \times 1} = \overbrace{X}^{n \times k} \underbrace{\beta}_{k \times 1} + \overbrace{\epsilon}^{n \times 1}
+$$
+
+- $\hat{\beta} = (X'X)^{-1} X' y$
+
 ## Consistency
+
+$$
+\begin{align*}
+\hat{\beta} = & (X'X)^{-1} X' y \\
+ = & (X'X)^{-1} X' (X \beta + \epsilon) \\
+ = & \beta + (X'X)^{-1} X' \epsilon
+ \end{align*}
+ $$
+
+Consistent, $\hat{\beta} \inprob \beta$,  if
+
+::: {.incremental}
+
+- $(X'X)^{-1} X' \epsilon \inprob 0$ ("high level assumption"), or
+- $\frac{1}{n} X'X \inprob C$ and $\frac{1}{n} X' \epsilon \inprob 0$, or
+:::
+
+## Consistency
+
+$$
+\begin{align*}
+\hat{\beta} = & (X'X)^{-1} X' y \\
+ = & (X'X)^{-1} X' (X \beta + \epsilon) \\
+ = & \beta + (X'X)^{-1} X' \epsilon
+ \end{align*}
+ $$
+
+Consistent, $\hat{\beta} \inprob \beta$,  if
+
+- Using non-iid WLLN from [convergence in distribution slides](indistribution.qmd) ("low level assumption"):
+    - For both $Z_i = X_i'$ and $Z_i = \epsilon_i$,
+        - $\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j Z_j) - \Er[X_j Z_j]\right)\right] = 0$ and
+        - $\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0$
+    - $\Er[X_i \epsilon_i] = 0$
+
 
 ## Asymptotic Distribution
 
-# Non-i.i.d. Errors
+$$
+\begin{align*}
+\sqrt{n}(\hat{\beta} - \beta) = & \sqrt{n} (X'X)^{-1} (X' \epsilon) \\
+= & (\frac{1}{n} X'X)^{-1} \frac{1}{\sqrt{n}} X' \epsilon
+\end{align*}
+$$
+
+$\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)$ if:
+
+::: {.incremental}
+- $\frac{1}{n} X'X \inprob C$ nonsingular, and $\frac{1}{\sqrt{n}} X' \epsilon \indist N(0,V)$, or
+- Using i.i.d. CLT and WLLN:
+   - $(X_i, \epsilon_i)$ i.i.d.
+   - $\Er[X_i X_i' ]$ is nonsingular, $\Er[X_i \epsilon_i] = 0$, and $\var(X_i \epsilon_i) = \Omega > 0$
+   - Exercise: what is $\Sigma$ under these assumptions?
+:::
+
+
+## Asymptotic Distribution
+
+$$
+\begin{align*}
+\sqrt{n}(\hat{\beta} - \beta) = & \sqrt{n} (X'X)^{-1} (X' \epsilon) \\
+= & (\frac{1}{n} X'X)^{-1} \frac{1}{\sqrt{n}} X' \epsilon
+\end{align*}
+$$
+
+$\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)$ if:
+
+::: {.incremental}
+- Using Lindeberg's CLT and non-iid WLLN:
+    - $(X_i, \epsilon_i) \perp (X_j, \epsilon_j)$ if $i \neq j$, and
+    - $\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i X_i' - \Er[X_i X_i']) (X_i X_i' - \Er[X_i X_i])'] \to 0$, and
+    - $\frac{1}{n} \sum_{i=1}^n \Er[X_i \epsilon_i^2 X_i'] = \Omega_n$ is non singular, and $\Omega_n \to \Omega$, and
+    - $\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er\left[ c'( X_i
+      \epsilon_i^2 X_i') c 1\{ | c'( X_i \epsilon_i)| > \delta
+      \sqrt{n} \} \right]  = 0$ for all $\delta > 0$ and $c \in \R^k$
+  - Exercise: what is $\Sigma$ under these assumptions?
+:::
+
+## Estimated Variance
+
+- Knowing $\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)$ isn't useful, unless we know or can estimate $\Sigma$
+
+::: {.callout-warning icon=false}
+
+### Lemma
+
+If $\hat{\Sigma} \inprob \Sigma$, $\Sigma$ is nonsingular, and $\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)$, then
+$$
+\sqrt{n}(\hat{\beta} - \beta)\hat{\Sigma}^{-1/2} \indist N(0, I)
+$$
+
+:::
+
+# Non-Spherical Errors
 
 ## Heteroskedasticity
 
-## Clustered Standard Errors
+- With i.i.d. data,
+$$
+\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \overbrace{\Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}}^{\Sigma} )
+$$
+- $Var(X_i \epsilon_i) = \Er[\epsilon_i^2 X_i X_i'] = \Er[\Er[\epsilon_i^2 |X_i] X_i X_i']$
+
+::: {.callout-tip icon=false}
+
+### Definition
+
+$\epsilon$ is **homoskedastic** if $\Er[\epsilon_i^2 | X_i] = \sigma^2$, otherwise $\epsilon$ is **heteroskedastic**.
+
+:::
+
+## Heteroskedasticity
+
+- With homoskedasticity,  \Sigma = \Er[X_i X_i']^{-1} \sigma^2$
+
+- With heteroskedasticity, $\Sigma = \Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}$ and can be (with appropriate assumptions) consistently estimated by
+$$
+\hat{\Sigma}^{robust} = (\frac{1}{n} X ' X)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \epsilon_i^2 \right) (\frac{1}{n} X'X)^{-1}
+$$
+
+- Even with homoskedasticity, there is little downside to using $\hat{\Sigma}^{robust}$, so always used in practice
+
+## Heteroskedastic Robust Errors with Homoskedastic Data
+
+```{julia}
+#| echo: true
+using Statistics, LinearAlgebra
+
+function sim(n,k; β=ones(k), σ = x->1)
+  X = randn(n,k)
+  ϵ = randn(n).*mapslices(σ, X, dims=[2])
+  y = X*β + ϵ
+  return(X,y)
+end
+
+function ols(X,y)
+  XXfactored = cholesky(X'*X)
+  β̂ = XXfactored \ X'*y
+  Vr, Vh = olsvar(X, y - X*β̂, XXfactored)
+  return(β̂, Vr, Vh)
+end
+
+function olsvar(X, ϵ, XXf)
+  n, k = size(X)
+  iXX = inv(XXf)
+  @views @inbounds Vr = n/(n-k)*iXX*sum(X[i,:]*X[i,:]'*ϵ[i]^2 for i ∈ axes(X)[1])*iXX
+  Vh = n/(n-k)*iXX*var(ϵ)
+  return(Vr,Vh)
+end
+```
+## Heteroskedastic Robust Errors with Homoskedastic Data
+
+```{julia}
+#| echo: true
+#| code-fold: true
+using PlotlyLight, Distributions, Cobweb
+function simsize(n,k,S; β=ones(k), σ=x->1)
+  z = zeros(S,2)
+  for s ∈ 1:S
+    X,y = sim(n,k,β=β,σ=σ)
+    β̂, Vr, Vh = ols(X,y)
+    z[s,1] = (β̂[1] - β[1])/sqrt(Vr[1,1])
+    z[s,2] = (β̂[1] - β[1])/sqrt(Vh[1,1])
+  end
+  p = cdf.(Normal(),z)
+  return(p, z)
+end
+function makeplot(p,z,n;   u = range(0,1,length=100))
+  plt = Plot()
+  plt.layout = Config()
+  plt.layout.title="N=$n"
+  plt.layout.yaxis.title.text="x - P(asymptotic p-value < x)"
+  plt.layout.xaxis.title.text="x"
+  plt(x=u, y=(u .- (x->mean(p[:,1].<=x)).(u)), name="Heteroskedasticity Robust")
+  plt(x=u, y=(u .- (x->mean(p[:,2].<=x)).(u)), name="Homoskedasticity")
+  return(plt())
+end
+N = [100, 500, 2500, 10_000]
+k = 2
+for n ∈ N
+  if !isfile("size_$n.html")
+    fig = makeplot(simsize(n,k,10_000)...,n)
+    Cobweb.save(Page(fig), "size_$n.html")
+  end
+end
+```
+
+```{julia}
+HTML("<iframe src=\"size_$(N[1]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+## Heteroskedastic Robust Errors with Homoskedastic Data
+
+```{julia}
+HTML("<iframe src=\"size_$(N[2]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+## Heteroskedastic Robust Errors with Homoskedastic Data
+
+```{julia}
+HTML("<iframe src=\"size_$(N[3]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+## Heteroskedastic Robust Errors with Homoskedastic Data
+
+```{julia}
+HTML("<iframe src=\"size_$(N[4]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+## Plot of Residuals vs Predictions
+
+```{julia}
+#| echo: true
+#| code-fold: true
+n = 250
+k = 3
+Xh,yh = sim(n,k)
+bh, _, _ = ols(Xh,yh)
+eh = yh - Xh*bh
+X,y = sim(n,k, σ=x->(0.1 + norm(x'*ones(k) .+ 3)/3))
+b, _, _ = ols(X,y)
+e = y - X*b
+
+plt = Plot()
+plt.layout = Config()
+plt(x = Xh*bh, y=eh, name="Homoskedastic", mode="markers")
+fig =plt(x = X*b, y = e, name="Heteroskedastic", mode="markers")
+Cobweb.save(Page(fig), "resid.html")
+HTML("<iframe src=\"resid.html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+## Heteroskedastic Robust Errors with Heteroskedastic Data
+
+```{julia}
+#| echo: true
+#| code-fold: true
+N = [100, 500, 2500, 10_000]
+k = 2
+for n ∈ N
+  if !isfile("size_het_$n.html")
+    fig = makeplot(simsize(n,k,10_000, σ=x->(0.1 + norm(x'*ones(k) .+ 3)/3))...,n)
+    Cobweb.save(Page(fig), "size_het_$n.html")
+  end
+end
+```
+
+```{julia}
+HTML("<iframe src=\"size_het_$(N[1]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+## Heteroskedastic Robust Errors with Heteroskedastic Data
+
+```{julia}
+HTML("<iframe src=\"size_het_$(N[2]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+## Heteroskedastic Robust Errors with Heteroskedastic Data
+
+```{julia}
+HTML("<iframe src=\"size_het_$(N[3]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+## Heteroskedastic Robust Errors with Heteroskedastic Data
+
+```{julia}
+HTML("<iframe src=\"size_het_$(N[4]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
 
 ## Dependence
 
+- $\sqrt{n} (\hat{\beta} - \beta) \indist N(0, \Er[X_iX_i']^{-1} V
+\Er[X_i X_i']^{-1})$ if $\frac{1}{n} X'X \inprob \Er[X_iX_i']$
+and $\frac{1}{n} X'\epsilon \indist N(0,V)$
+- Generally, $V = \lim_{n \to \infty} \var\left( \frac{1}{n} X'\epsilon \right)$
+$$
+ \var\left( \frac{1}{n} X'\epsilon \right) = \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j)
+$$
+ - $n(n-1)/2$ different $\cov(X_i \epsilon_i, X_j \epsilon_j)$, so need some restriction
+
+## Clustered Standard Errors
+
+- Partition data into $G$ groups, $\{g_h\}_{h=1}^G$, denote group of $i$ as $g(i)$
+- Assume $\cov(X_i \epsilon_i, X_j \epsilon_j) = 0$ if $g(i) \neq
+g(j)$, and $\Er[X_i \epsilon_i] = 0$
+
+$$
+\begin{aligned}
+\sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j) = & \sum_{h=1}^G \sum_{i \in g_h} \sum_{j \in g_h} \cov(X_i \epsilon_i, X_j, \epsilon_j) \\
+= & \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right]
+\end{aligned}
+$$
+
+## Clustered Standard Errors
+
+- Strengthening some assumptions to apply Lindeberg's CLT to  $\left(\sum_{i \in g_h} X_i \epsilon_i \right)$  we get
+
+$$
+\frac{1}{\sqrt{G}} \left(\sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \right) \left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)^{-1/2} \indist N(0, I)
+$$
+
+- Thus,
+
+$$
+\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, \Er[X_i X_i']^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)  \Er[X_i X_i']^{-1} \right)
+$$
+
+## Clustering
+
+```{julia}
+#| echo: true
+function olscl(X,y, group=group)
+  XXfactored = cholesky(X'*X)
+  β̂ = XXfactored \ X'*y
+  V = olsclvar(X, y - X*β̂, XXfactored, group=group)
+  return(β̂, V)
+end
+
+function olsclvar(X, ϵ, XXf; group=axes(X)[1])
+  n, k = size(X)
+  groups=unique(group)
+  G = length(groups)
+  iXX = inv(XXf)
+  @views @inbounds Vr = G/(G-k)*iXX*
+    sum(X[group.==g,:]'*ϵ[group.==g]*ϵ[group.==g]'*X[group.==g,:] for  g in groups)*iXX
+  return(Vr)
+end
+
+function simcluster(n,k,G; β=ones(k), σ = x->1, ρ=0.7)
+  X = randn(n,k)
+  group = rand(1:G,n)
+  for g ∈ 1:G # ensure all groups included
+    if sum(group.==g)==0
+      group[g]=g
+    end
+  end
+  X[:,1] .+= (group.>(G/2))
+  u = randn(G)
+  ϵ = (ρ*u[group] + sqrt(1-ρ^2)*randn(n)).*mapslices(σ, X, dims=[2])
+  y = X*β + ϵ
+  return(X,y, group)
+end
+
+function simsizecluster(n,k,G,S; β=ones(k), σ=x->1, ρ=0.7)
+  z = zeros(S,2)
+  for s ∈ 1:S
+    X,y,group = simcluster(n,k,G,β=β,σ=σ, ρ=ρ)
+    β̂, Vcr = olscl(X,y, group)
+    _, Vr, _ = ols(X,y)
+    z[s,1] = (β̂[1] - β[1])/sqrt(Vcr[1,1])
+    z[s,2] = (β̂[1] - β[1])/sqrt(Vr[1,1])
+  end
+  p = hcat(cdf.(Normal(),z), cdf.(TDist(G-k),z))
+  return(p, z)
+end
+
+function makeplotcl(p,z,n,g; u = range(0,1,length=100))
+  plt = Plot()
+  plt.layout = Config()
+  plt.layout.title="N=$n, G=$g"
+  plt.layout.yaxis.title.text="x - P(asymptotic p-value < x)"
+  plt.layout.xaxis.title.text="x"
+  plt(x=u, y=(u .- (x->mean(p[:,1].<=x)).(u)), name="Clustered (Normal Distribution)")
+  plt(x=u, y=(u .- (x->mean(p[:,2].<=x)).(u)), name="Heteroskedasticity Robust")
+  plt(x=u, y=(u .- (x->mean(p[:,3].<=x)).(u)), name="Clustered (t-Distribution)")
+  return(plt())
+end
+
+N = [200, 200, 5000, 5000]
+G = [10, 100, 10, 100]
+k = 2
+for (n,g) ∈ zip(N,G)
+  if !isfile("size_cluster_$(n)_$g.html")
+    fig = makeplotcl(simsizecluster(n,k,g,10_000)...,n,g)
+    Cobweb.save(Page(fig), "size_cluster_$(n)_$g.html")
+  end
+end
+```
+
+## Clustering
+
+```{julia}
+HTML("<iframe src=\"size_cluster_$(N[1])_$(G[1]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+## Clustering
+
+```{julia}
+HTML("<iframe src=\"size_cluster_$(N[2])_$(G[2]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+## Clustering
+
+```{julia}
+HTML("<iframe src=\"size_cluster_$(N[3])_$(G[3]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+## Clustering
+
+```{julia}
+HTML("<iframe src=\"size_cluster_$(N[4])_$(G[4]).html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+## Time Dependence
+
+- References:
+  - @mikusheva2007 lectures 2 and 3 and recitation 2
+  - @dedecker2007 for comprehensive treatment
+
+## Time Dependence - LLN
+
+- Recall simplest LLN proof via Markov's inequality and showing
+$\var\left(\frac{1}{n} \sum_{i=1}^n x_i\right) \to 0$
+- With dependence,
+
+$$
+\begin{align*}
+\var\left(\frac{1}{n} \sum_{i=1}^n x_i\right) = & \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(x_i,x_j) \\
+& \text{assume covariance stationarity:} \cov(x_i, x_j) = \gamma_{|i-j|} \\
+= & \frac{1}{n^2} \left(n \gamma_0 + 2(n-1) \gamma_1 + \cdots\right) \\
+= & \frac{1}{n} \left[ \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \right]
+\end{align*}
+$$
+
+if $\sum_{j=-\infty}^{\infty} |\gamma_j| < \infty$, then $\frac{1}{n}
+\left[ \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n}
+  \right)  \right]\to 0$ and LLN holds
+
+## Time Dependence - CLT
+
+- Long run variance:
+$$
+\begin{align*}
+\frac{1}{\sqrt{n}} \var\left( \sum_{i=1}^n x_i\right) = &  \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \\
+\to & \gamma_0 + 2 \sum_{k=1}^\infty \gamma_k \equiv \mathcal{J} = \text{long-run variance}
+\end{align*}
+$$
+- With appropriate assumptions if $\Er[x_i] = 0$ and $\mathcal{J} < \infty$, then
+$$
+\frac{1}{\sqrt{n}} \sum_{i=1}^n x_i \indist N(0,\mathcal{J})
+$$
+
+## Time Dependence - Gordin's CLT
+
+::: {.callout-warning icon=false}
+
+### CLT
+Assume $\Er[y_t] = 0$. Let $I_t$ be the sigma-algebra generated by $\{y_j\}_{j=-\infty}^t$. Further assume:
+
+1. $y_t$ is **strictly stationary**: the distribution of $y_{t_1}, ... , y_{t_k}$ equals the distribution of $y_{t_1 + s} , ... y_{t_k+s}$ for all $t_j$ and $s$
+
+2. $y_t$ is **ergodic** $\lim_{s\to\infty} \cov(g(y_t,..., y_{t+k}),
+h(y_{t+k+s}, ..., y_{t+k+s+l})) = 0$ for all bounded $g$, $h$
+
+3. $\sum_{j=1}^\infty \left(\Er\left[ (\Er[y_t|I_{t-j}] -
+    \Er[y_t|I_{t-j-1}])^2\right] \right)^{1/2} < \infty$
+
+4. $\Er[y_t | I_{t-j}] \to 0$ as $j \to \infty$
+
+Then,
+$$
+\frac{1}{\sqrt{T}} \sum_{t=1}^T y_t \indist N(0,\mathcal{J})
+$$
+
+:::
+
+- Many variations of assumptions possible, see e.g. @dedecker2007 for more
+
+## Time Dependence - OLS
+
+- If LLN applies $X'X$ and CLT to $X \epsilon$, then
+$$
+\sqrt{n} (\hat{\beta} - \beta) \indist N(0, M^{-1} \mathcal{J} M^{-1})
+$$
+with $M = \plim \frac{1}{n} X'X$ and $\mathcal{J} = \var(X_i \epsilon_i) + 2\sum_{k=1}^\infty \cov(X_i \epsilon_i, X_{i+k} \epsilon_{i+k})$
+- Consistently estimate $\mathcal{J}$ by (@newey1987)
+$$
+\hat{\mathcal{J}} = \sum_{-S_n}^{S_n}k_n(j) \underbrace{\hat{\gamma}_j}_{=\frac{1}{n} \sum_{i=1}^{n-j} (X_i \hat{\epsilon}_i) (X_{i+j} \hat{\epsilon}_{i+j})'}
+$$
+with $k_n(j) \to 1$, and $S_n \to \infty$ and $S_n^3/n \to 0$
+
 # Testing Restrictions
+
+$$ y = X\beta + \epsilon $$
+
+- Test $H_0: R \beta  = r$ against $H_1: R \beta \neq r$
 
 ## Wald
 
-## Likelihood Ratio
+- If $\sqrt{n}(\hat{\beta} - \beta_0) \indist N(0, V)$, then
+$$
+\sqrt{n}(R \hat{\beta} - \underbrace{R\beta_0}_{=r} ) \indist N(0, RVR')
+$$
+and
+$$
+W \equiv n(R \hat{\beta} - r )' (RVR')^{-1} (R \hat{\beta} - r ) \indist \chi^2_{rank(R)}
+$$
+
+## Restricted MLE
+
+- Restricted MLE with $\epsilon \sim N(0, \sigma^2 I_n)$
+$$
+\hat{\beta}_R = \mathrm{arg}\max_{b: Rb = r, \sigma} -\frac{n}{2}(\log 2\pi + \log \sigma^2) + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2
+$$
+- FOC
+$$
+\begin{align*}
+-X'y/\sigma^2 + X'X\hat{\beta}_R/\sigma^2 + R'\hat{\lambda} & = 0\\
+R\hat{\beta}_R - r & = 0
+\end{align*}
+$$
 
 ## Lagrange Multiplier
+
+- Under $H_0$, $\lambda = 0$, so form test statistic based on $\hat{\lambda} \approx 0$
+- From FOC:
+$$
+R'\hat{\lambda} = X'(y - X'\hat{\beta}_R)/\hat{\sigma}^2_R = X'\hat{\epsilon}_r/\hat{\sigma}^2_R
+$$
+- To find distribution, note that
+$$
+\begin{pmatrix}
+\hat{\beta}_R \\
+\hat{\lambda}/2
+\end{pmatrix} =
+\begin{pmatrix}
+X'X/\sigma^2 & R' \\
+-R & 0
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+X'y/\sigma^2 \\
+-r
+\end{pmatrix}
+$$
+
+## Lagrange Multiplier
+
+- so (using partitioned inverse),
+$$
+\hat{\lambda} = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r)
+$$
+and
+$$
+\hat{\beta}_R = \hat{\beta} - (X'X)^{-1}(R (X'X)^{-1} R)^{-1} (R \hat{\beta} - r)
+$$
+
+## Lagrange Multiplier
+
+- Note that
+$$
+\begin{align*}
+\hat{\lambda} & = R'(R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r) \\
+& = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R (X'X)^{-1} X'\epsilon)
+\end{align*}
+$$
+
+- so, with homoskedasticity,
+$$
+LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R \hat{\lambda} \indist \chi^2_{rank(R)}
+$$
+
+- Can modify for heteroskedasticity and/or dependence
+
+## Likelihood Ratio
+
+- If $\epsilon_i \sim N(0, \sigma^2)$, twice the log likelihood ratio for $H_0: R\beta = r$,
+$$
+\begin{align*}
+2\max_{b,\sigma} & \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] -
+2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] \\
+= & -n\log \hat{\sigma}^2 + n \log\hat{\sigma}_R^2 \\
+= & -n\log\left(\frac{1}{n} \norm{y-X\hat{\beta}}^2\right) + n \log \left(\frac{1}{n}\norm{y - X \hat{\beta}_R}^2 \right) \\
+= & n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta}) X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\
+= & n \log (1 + W/n) \indist \chi^2_{rank(R)} (\text{with homoskedasticity})
+\end{align*}
+$$
+
 
 # References

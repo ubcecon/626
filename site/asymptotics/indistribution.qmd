@@ -288,7 +288,7 @@ HTML("<iframe src=\"hist.html\" width=\"1200\"  height=\"700\"></iframe>")
 
 ::: {.callout-warning icon=false}
 
-### Lemma 2.2 (Weak Law of Large Numbers)
+### Lemma 2.2
 
 For $X_n, X \in \R^d$, $X_n \indist X$ iff $t' X_n \indist t' X$ for
 all $t \in \R^d$

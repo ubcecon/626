@@ -43,7 +43,8 @@ bibliography: 626.bib
 
 - [Convergence in probability](asymptotics/inprobability.qmd)
 - [Convergence in distribution](asymptotics/indistribution.qmd)
-- Delta Methods
+- [Delta Methods](asymptotics/indistribution.qmd)
+- [Asymptotics of Least Squares](asymptotics/ols.qmd)
 
 # Part V: Linear Models with Endogeneity
 

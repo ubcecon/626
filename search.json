@@ -214,7 +214,14 @@
     "href": "asymptotics/ols.html#consistency",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Consistency",
-    "text": "Consistency\n\\[\n\\begin{align*}\n\\hat{\\beta} = & (X'X)^{-1} X' y \\\\\n= & (X'X)^{-1} X' (X \\beta + \\epsilon) \\\\\n= & \\beta + (X'X)^{-1} X' \\epsilon\n\\end{align*}\n\\]\nConsistent, \\(\\hat{\\beta} \\inprob \\beta\\), if\n\n\n\\((X'X)^{-1} X' \\epsilon \\inprob 0\\) (“high level assumption”), or\n\\(\\frac{1}{n} X'X \\inprob C\\) and \\(\\frac{1}{n} X' \\epsilon \\inprob 0\\), or\nUsing non-iid WLLN from convergence in distribution slides (“low level assumption”):\n\nFor both \\(Z_i = X_i'\\) and \\(Z_i = \\epsilon_i\\),\n\n\\(\\Er\\left[\\left((X_i Z_i) - \\Er[X_i Z_i'] \\right) \\left((X_j Z_j) - \\Er[X_j Z_j]\\right)\\right] = 0\\) and\n\\(\\frac{1}{n} \\max_{1 \\leq i \\leq n} \\Er[ (X_i Z_i - \\Er[X_i Z_i]) (X_i Z_i - \\Er[X_i Z_i])'] \\to 0\\)\n\n\\(\\Er[X_i \\epsilon_i] = 0\\)"
+    "text": "Consistency\n\\[\n\\begin{align*}\n\\hat{\\beta} = & (X'X)^{-1} X' y \\\\\n= & (X'X)^{-1} X' (X \\beta + \\epsilon) \\\\\n= & \\beta + (X'X)^{-1} X' \\epsilon\n\\end{align*}\n\\]\nConsistent, \\(\\hat{\\beta} \\inprob \\beta\\), if\n\n\n\\((X'X)^{-1} X' \\epsilon \\inprob 0\\) (“high level assumption”), or\n\\(\\frac{1}{n} X'X \\inprob C\\) and \\(\\frac{1}{n} X' \\epsilon \\inprob 0\\), or"
+  },
+  {
+    "objectID": "asymptotics/ols.html#consistency-1",
+    "href": "asymptotics/ols.html#consistency-1",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Consistency",
+    "text": "Consistency\n\\[\n\\begin{align*}\n\\hat{\\beta} = & (X'X)^{-1} X' y \\\\\n= & (X'X)^{-1} X' (X \\beta + \\epsilon) \\\\\n= & \\beta + (X'X)^{-1} X' \\epsilon\n\\end{align*}\n\\]\nConsistent, \\(\\hat{\\beta} \\inprob \\beta\\), if\n\nUsing non-iid WLLN from convergence in distribution slides (“low level assumption”):\n\nFor both \\(Z_i = X_i'\\) and \\(Z_i = \\epsilon_i\\),\n\n\\(\\Er\\left[\\left((X_i Z_i) - \\Er[X_i Z_i'] \\right) \\left((X_j Z_j) - \\Er[X_j Z_j]\\right)\\right] = 0\\) and\n\\(\\frac{1}{n} \\max_{1 \\leq i \\leq n} \\Er[ (X_i Z_i - \\Er[X_i Z_i]) (X_i Z_i - \\Er[X_i Z_i])'] \\to 0\\)\n\n\\(\\Er[X_i \\epsilon_i] = 0\\)"
   },
   {
     "objectID": "asymptotics/ols.html#asymptotic-distribution",
@@ -228,7 +235,7 @@
     "href": "asymptotics/ols.html#asymptotic-distribution-1",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Asymptotic Distribution",
-    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\n\nUsing Lindeberg’s CLT and non-iid WLLN:\n\n\\((X_i, \\epsilon_i) \\perp (X_j, \\epsilon_j)\\) if \\(i \\neq j\\), and\n\\(\\frac{1}{n} \\max_{1 \\leq i \\leq n} \\Er[ (X_i X_i' - \\Er[X_i X_i']) (X_i X_i' - \\Er[X_i X_i])'] \\to 0\\), and\n\\(\\frac{1}{n} \\sum_{i=1}^n \\Er[X_i \\epsilon_i^2 X_i'] = \\Omega_n\\) is non singular, and \\(\\Omega_n \\to \\Omega\\), and\n\\(\\lim_{n \\to \\infty} \\frac{1}{n} \\sum_{i=1}^n \\Er\\left[ c'( X_i \\epsilon_i^2 X_i') c 1\\{ | c'( X_i \\epsilon_i)| > \\delta \\sqrt{n} \\right] = 0\\) for all \\(\\delta > 0\\) and \\(c \\in \\R^k\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
+    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\n\nUsing Lindeberg’s CLT and non-iid WLLN:\n\n\\((X_i, \\epsilon_i) \\perp (X_j, \\epsilon_j)\\) if \\(i \\neq j\\), and\n\\(\\frac{1}{n} \\max_{1 \\leq i \\leq n} \\Er[ (X_i X_i' - \\Er[X_i X_i']) (X_i X_i' - \\Er[X_i X_i])'] \\to 0\\), and\n\\(\\frac{1}{n} \\sum_{i=1}^n \\Er[X_i \\epsilon_i^2 X_i'] = \\Omega_n\\) is non singular, and \\(\\Omega_n \\to \\Omega\\), and\n\\(\\lim_{n \\to \\infty} \\frac{1}{n} \\sum_{i=1}^n \\Er\\left[ c'( X_i \\epsilon_i^2 X_i') c 1\\{ | c'( X_i \\epsilon_i)| > \\delta \\sqrt{n} \\} \\right] = 0\\) for all \\(\\delta > 0\\) and \\(c \\in \\R^k\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
   },
   {
     "objectID": "asymptotics/ols.html#estimated-variance",
@@ -252,46 +259,207 @@
     "text": "Heteroskedasticity\n\nWith homoskedasticity, = ^{-1} ^2$\nWith heteroskedasticity, \\(\\Sigma = \\Er[X_i X_i']^{-1} \\var(X_i \\epsilon_i) \\Er[X_i X_i']^{-1}\\) and can be (with appropriate assumptions) consistently estimated by \\[\n\\hat{\\Sigma}^{robust} = (\\frac{1}{n} X ' X)^{-1} \\left(\\frac{1}{n} \\sum_{i=1}^n X_i X_i' \\epsilon_i^2 \\right) (\\frac{1}{n} X'X)^{-1}\n\\]\nEven with homoskedasticity, there is little downside to using \\(\\hat{\\Sigma}^{robust}\\), so always used in practice"
   },
   {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Homoskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Homoskedastic Data\n\nusing Statistics, LinearAlgebra\n\nfunction sim(n,k; β=ones(k), σ = x->1)\n  X = randn(n,k)\n  ϵ = randn(n).*mapslices(σ, X, dims=[2])\n  y = X*β + ϵ\n  return(X,y)\nend\n\nfunction ols(X,y)\n  XXfactored = cholesky(X'*X)\n  β̂ = XXfactored \\ X'*y\n  Vr, Vh = olsvar(X, y - X*β̂, XXfactored)\n  return(β̂, Vr, Vh)\nend\n\nfunction olsvar(X, ϵ, XXf)\n  n, k = size(X)\n  iXX = inv(XXf)\n  @views @inbounds Vr = n/(n-k)*iXX*sum(X[i,:]*X[i,:]'*ϵ[i]^2 for i ∈ axes(X)[1])*iXX\n  Vh = n/(n-k)*iXX*var(ϵ)\n  return(Vr,Vh)\nend\n\nolsvar (generic function with 1 method)"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-1",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-1",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Homoskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Homoskedastic Data\n\n\nCode\nusing PlotlyLight, Distributions, Cobweb\nfunction simsize(n,k,S; β=ones(k), σ=x->1)\n  z = zeros(S,2)\n  for s ∈ 1:S\n    X,y = sim(n,k,β=β,σ=σ)\n    β̂, Vr, Vh = ols(X,y)\n    z[s,1] = (β̂[1] - β[1])/sqrt(Vr[1,1])\n    z[s,2] = (β̂[1] - β[1])/sqrt(Vh[1,1])\n  end\n  p = cdf.(Normal(),z)\n  return(p, z)\nend\nfunction makeplot(p,z,n;   u = range(0,1,length=100))\n  plt = Plot()\n  plt.layout = Config()\n  plt.layout.title=\"N=$n\"\n  plt.layout.yaxis.title.text=\"x - P(asymptotic p-value < x)\"\n  plt.layout.xaxis.title.text=\"x\"\n  plt(x=u, y=(u .- (x->mean(p[:,1].<=x)).(u)), name=\"Heteroskedasticity Robust\")\n  plt(x=u, y=(u .- (x->mean(p[:,2].<=x)).(u)), name=\"Homoskedasticity\")\n  return(plt())\nend\nN = [100, 500, 2500, 10_000]\nk = 2\nfor n ∈ N\n  if !isfile(\"size_$n.html\")\n    fig = makeplot(simsize(n,k,10_000)...,n)\n    Cobweb.save(Page(fig), \"size_$n.html\")\n  end\nend"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-2",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-2",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Homoskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Homoskedastic Data"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-3",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-3",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Homoskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Homoskedastic Data"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-4",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-homoskedastic-data-4",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Homoskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Homoskedastic Data"
+  },
+  {
+    "objectID": "asymptotics/ols.html#plot-of-residuals-vs-predictions",
+    "href": "asymptotics/ols.html#plot-of-residuals-vs-predictions",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Plot of Residuals vs Predictions",
+    "text": "Plot of Residuals vs Predictions\n\n\nCode\nn = 250\nk = 3\nXh,yh = sim(n,k)\nbh, _, _ = ols(Xh,yh)\neh = yh - Xh*bh\nX,y = sim(n,k, σ=x->(0.1 + norm(x'*ones(k) .+ 3)/3))\nb, _, _ = ols(X,y)\ne = y - X*b\n\nplt = Plot()\nplt.layout = Config()\nplt(x = Xh*bh, y=eh, name=\"Homoskedastic\", mode=\"markers\")\nfig =plt(x = X*b, y = e, name=\"Heteroskedastic\", mode=\"markers\")\nCobweb.save(Page(fig), \"resid.html\")\nHTML(\"<iframe src=\\\"resid.html\\\" width=\\\"1000\\\"  height=\\\"650\\\"></iframe>\\n\")"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Heteroskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Heteroskedastic Data\n\n\nCode\nN = [100, 500, 2500, 10_000]\nk = 2\nfor n ∈ N\n  if !isfile(\"size_het_$n.html\")\n    fig = makeplot(simsize(n,k,10_000, σ=x->(0.1 + norm(x'*ones(k) .+ 3)/3))...,n)\n    Cobweb.save(Page(fig), \"size_het_$n.html\")\n  end\nend"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data-1",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data-1",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Heteroskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Heteroskedastic Data"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data-2",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data-2",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Heteroskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Heteroskedastic Data"
+  },
+  {
+    "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data-3",
+    "href": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data-3",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Heteroskedastic Robust Errors with Heteroskedastic Data",
+    "text": "Heteroskedastic Robust Errors with Heteroskedastic Data"
+  },
+  {
     "objectID": "asymptotics/ols.html#dependence",
     "href": "asymptotics/ols.html#dependence",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Dependence",
-    "text": "Dependence\n\n\\(\\sqrt{n} (\\hat{\\beta} - \\beta) \\indist N(0, \\Er[X_iX_i']^{-1} V \\Er[X_i X_i']^{-1})\\) if \\(\\frac{1}{n} X'X \\inprob \\Er[X_iX_i']^{-1}\\) and \\(\\frac{1}{n} X'\\epsilon \\indist N(0,V)\\)\nGenerally, \\(V = \\lim_{n \\to \\infty} \\var\\left( \\frac{1}{n} X'\\epsilon \\right)\\) \\[\n\\var\\left( \\frac{1}{n} X'\\epsilon \\right) = \\frac{1}{n^2} \\sum_{i=1}^n \\sum_{j=1}^n \\cov(X_i \\epsilon_i, X_j \\epsilon_j)\n\\]\n\\(n(n-1)/2\\) different \\(\\cov(X_i \\epsilon_i, X_j \\epsilon_j)\\), so need some restriction"
+    "text": "Dependence\n\n\\(\\sqrt{n} (\\hat{\\beta} - \\beta) \\indist N(0, \\Er[X_iX_i']^{-1} V \\Er[X_i X_i']^{-1})\\) if \\(\\frac{1}{n} X'X \\inprob \\Er[X_iX_i']\\) and \\(\\frac{1}{n} X'\\epsilon \\indist N(0,V)\\)\nGenerally, \\(V = \\lim_{n \\to \\infty} \\var\\left( \\frac{1}{n} X'\\epsilon \\right)\\) \\[\n\\var\\left( \\frac{1}{n} X'\\epsilon \\right) = \\frac{1}{n^2} \\sum_{i=1}^n \\sum_{j=1}^n \\cov(X_i \\epsilon_i, X_j \\epsilon_j)\n\\]\n\\(n(n-1)/2\\) different \\(\\cov(X_i \\epsilon_i, X_j \\epsilon_j)\\), so need some restriction"
   },
   {
     "objectID": "asymptotics/ols.html#clustered-standard-errors",
     "href": "asymptotics/ols.html#clustered-standard-errors",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Clustered Standard Errors",
-    "text": "Clustered Standard Errors\n\nPartition data into \\(G\\) groups, \\(\\{g_h\\}_{h=1^G}\\), denote group of \\(i\\) as \\(g(i)\\)\nAssume \\(\\cov(X_i \\epsilon_i, X_j \\epsilon_j) = 0\\) if \\(g(i) \\neq g(j)\\), and \\(\\Er[X_i \\epsilon_i] = 0\\) $$\n\\[\\begin{aligned}\n\\sum_{i=1}^n \\sum_{j=1}^n \\cov(X_i \\epsilon_i, X_j \\epsilon_j) = & \\sum_{h=1}^G \\sum_{i \\in g_h} \\sum_{j \\in g_h} \\cov(X_i \\epsilon_i, X_j, \\epsilon_j) \\\\\n= & \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right]\n\\end{aligned}\\]\nStrengthening some assumptions to apply Lindeberg’s CLT to \\(\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)\\) we get \\[\n\\frac{1}{\\sqrt{G}} \\left(\\sum_{h = 1}^G \\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right) \\right) \\left( \\frac{1}{G} \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right] \\right)^{-1/2} \\indist N(0, I)\n\\]\nThus, \\[\n\\sqrt{G} (\\hat{\\beta} - \\beta) \\indist N\\left(0, \\Er[X_i X_i']^{-1} \\left(\\lim_{G \\to \\infty} \\frac{1}{G} \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right] \\right)  \\Er[X_i X_i']^{-1} \\right)\n\\]"
+    "text": "Clustered Standard Errors\n\nPartition data into \\(G\\) groups, \\(\\{g_h\\}_{h=1}^G\\), denote group of \\(i\\) as \\(g(i)\\)\nAssume \\(\\cov(X_i \\epsilon_i, X_j \\epsilon_j) = 0\\) if \\(g(i) \\neq g(j)\\), and \\(\\Er[X_i \\epsilon_i] = 0\\)\n\n\\[\n\\begin{aligned}\n\\sum_{i=1}^n \\sum_{j=1}^n \\cov(X_i \\epsilon_i, X_j \\epsilon_j) = & \\sum_{h=1}^G \\sum_{i \\in g_h} \\sum_{j \\in g_h} \\cov(X_i \\epsilon_i, X_j, \\epsilon_j) \\\\\n= & \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right]\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustered-standard-errors-1",
+    "href": "asymptotics/ols.html#clustered-standard-errors-1",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustered Standard Errors",
+    "text": "Clustered Standard Errors\n\nStrengthening some assumptions to apply Lindeberg’s CLT to \\(\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)\\) we get\n\n\\[\n\\frac{1}{\\sqrt{G}} \\left(\\sum_{h = 1}^G \\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right) \\right) \\left( \\frac{1}{G} \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right] \\right)^{-1/2} \\indist N(0, I)\n\\]\n\nThus,\n\n\\[\n\\sqrt{G} (\\hat{\\beta} - \\beta) \\indist N\\left(0, \\Er[X_i X_i']^{-1} \\left(\\lim_{G \\to \\infty} \\frac{1}{G} \\sum_{h=1}^G \\Er\\left[\\left(\\sum_{i \\in g_h} X_i \\epsilon_i \\right)^2 \\right] \\right)  \\Er[X_i X_i']^{-1} \\right)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustering",
+    "href": "asymptotics/ols.html#clustering",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustering",
+    "text": "Clustering\n\nfunction olscl(X,y, group=group)\n  XXfactored = cholesky(X'*X)\n  β̂ = XXfactored \\ X'*y\n  V = olsclvar(X, y - X*β̂, XXfactored, group=group)\n  return(β̂, V)\nend\n\nfunction olsclvar(X, ϵ, XXf; group=axes(X)[1])\n  n, k = size(X)\n  groups=unique(group)\n  G = length(groups)\n  iXX = inv(XXf)\n  @views @inbounds Vr = G/(G-k)*iXX*\n    sum(X[group.==g,:]'*ϵ[group.==g]*ϵ[group.==g]'*X[group.==g,:] for  g in groups)*iXX\n  return(Vr)\nend\n\nfunction simcluster(n,k,G; β=ones(k), σ = x->1, ρ=0.7)\n  X = randn(n,k)\n  group = rand(1:G,n)\n  for g ∈ 1:G # ensure all groups included\n    if sum(group.==g)==0\n      group[g]=g\n    end\n  end\n  X[:,1] .+= (group.>(G/2))\n  u = randn(G)\n  ϵ = (ρ*u[group] + sqrt(1-ρ^2)*randn(n)).*mapslices(σ, X, dims=[2])\n  y = X*β + ϵ\n  return(X,y, group)\nend\n\nfunction simsizecluster(n,k,G,S; β=ones(k), σ=x->1, ρ=0.7)\n  z = zeros(S,2)\n  for s ∈ 1:S\n    X,y,group = simcluster(n,k,G,β=β,σ=σ, ρ=ρ)\n    β̂, Vcr = olscl(X,y, group)\n    _, Vr, _ = ols(X,y)\n    z[s,1] = (β̂[1] - β[1])/sqrt(Vcr[1,1])\n    z[s,2] = (β̂[1] - β[1])/sqrt(Vr[1,1])\n  end\n  p = hcat(cdf.(Normal(),z), cdf.(TDist(G-k),z))\n  return(p, z)\nend\n\nfunction makeplotcl(p,z,n,g; u = range(0,1,length=100))\n  plt = Plot()\n  plt.layout = Config()\n  plt.layout.title=\"N=$n, G=$g\"\n  plt.layout.yaxis.title.text=\"x - P(asymptotic p-value < x)\"\n  plt.layout.xaxis.title.text=\"x\"\n  plt(x=u, y=(u .- (x->mean(p[:,1].<=x)).(u)), name=\"Clustered (Normal Distribution)\")\n  plt(x=u, y=(u .- (x->mean(p[:,2].<=x)).(u)), name=\"Heteroskedasticity Robust\")\n  plt(x=u, y=(u .- (x->mean(p[:,3].<=x)).(u)), name=\"Clustered (t-Distribution)\")\n  return(plt())\nend\n\nN = [200, 200, 5000, 5000]\nG = [10, 100, 10, 100]\nk = 2\nfor (n,g) ∈ zip(N,G)\n  if !isfile(\"size_cluster_$(n)_$g.html\")\n    fig = makeplotcl(simsizecluster(n,k,g,10_000)...,n,g)\n    Cobweb.save(Page(fig), \"size_cluster_$(n)_$g.html\")\n  end\nend"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustering-1",
+    "href": "asymptotics/ols.html#clustering-1",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustering",
+    "text": "Clustering"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustering-2",
+    "href": "asymptotics/ols.html#clustering-2",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustering",
+    "text": "Clustering"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustering-3",
+    "href": "asymptotics/ols.html#clustering-3",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustering",
+    "text": "Clustering"
+  },
+  {
+    "objectID": "asymptotics/ols.html#clustering-4",
+    "href": "asymptotics/ols.html#clustering-4",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Clustering",
+    "text": "Clustering"
   },
   {
     "objectID": "asymptotics/ols.html#time-dependence",
     "href": "asymptotics/ols.html#time-dependence",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Time Dependence",
-    "text": "Time Dependence\n\nsee Mikusheva and Schrimpf (2007) lectures 2 and 3 and recitation 2"
+    "text": "Time Dependence\n\nReferences:\n\nMikusheva and Schrimpf (2007) lectures 2 and 3 and recitation 2\nDedecker et al. (2007) for comprehensive treatment"
+  },
+  {
+    "objectID": "asymptotics/ols.html#time-dependence---lln",
+    "href": "asymptotics/ols.html#time-dependence---lln",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Time Dependence - LLN",
+    "text": "Time Dependence - LLN\n\nRecall simplest LLN proof via Markov’s inequality and showing \\(\\var\\left(\\frac{1}{n} \\sum_{i=1}^n x_i\\right) \\to 0\\)\nWith dependence,\n\n\\[\n\\begin{align*}\n\\var\\left(\\frac{1}{n} \\sum_{i=1}^n x_i\\right) = & \\frac{1}{n^2} \\sum_{i=1}^n \\sum_{j=1}^n \\cov(x_i,x_j) \\\\\n& \\text{assume covariance stationarity:} \\cov(x_i, x_j) = \\gamma_{|i-j|} \\\\\n= & \\frac{1}{n^2} \\left(n \\gamma_0 + 2(n-1) \\gamma_1 + \\cdots\\right) \\\\\n= & \\frac{1}{n} \\left[ \\gamma_0 + 2 \\sum_{k=1}^n \\gamma_k \\left(1 - \\frac{k}{n} \\right)  \\right]\n\\end{align*}\n\\]\nif \\(\\sum_{j=-\\infty}^{\\infty} |\\gamma_j| < \\infty\\), then \\(\\frac{1}{n} \\left[ \\gamma_0 + 2 \\sum_{k=1}^n \\gamma_k \\left(1 - \\frac{k}{n}  \\right) \\right]\\to 0\\) and LLN holds"
+  },
+  {
+    "objectID": "asymptotics/ols.html#time-dependence---clt",
+    "href": "asymptotics/ols.html#time-dependence---clt",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Time Dependence - CLT",
+    "text": "Time Dependence - CLT\n\nLong run variance: \\[\n\\begin{align*}\n\\frac{1}{\\sqrt{n}} \\var\\left( \\sum_{i=1}^n x_i\\right) = &  \\gamma_0 + 2 \\sum_{k=1}^n \\gamma_k \\left(1 - \\frac{k}{n} \\right)  \\\\\n\\to & \\gamma_0 + 2 \\sum_{k=1}^\\infty \\gamma_k \\equiv \\mathcal{J} = \\text{long-run variance}\n\\end{align*}\n\\]\nWith appropriate assumptions if \\(\\Er[x_i] = 0\\) and \\(\\mathcal{J} < \\infty\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n x_i \\indist N(0,\\mathcal{J})\n\\]"
+  },
+  {
+    "objectID": "asymptotics/ols.html#time-dependence---gordins-clt",
+    "href": "asymptotics/ols.html#time-dependence---gordins-clt",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Time Dependence - Gordin’s CLT",
+    "text": "Time Dependence - Gordin’s CLT\n\n\n\nCLT\n\n\nAssume \\(\\Er[y_t] = 0\\). Let \\(I_t\\) be the sigma-algebra generated by \\(\\{y_j\\}_{j=-\\infty}^t\\). Further assume:\n\n\\(y_t\\) is strictly stationary: the distribution of \\(y_{t_1}, ... , y_{t_k}\\) equals the distribution of \\(y_{t_1 + s} , ... y_{t_k+s}\\) for all \\(t_j\\) and \\(s\\)\n\\(y_t\\) is ergodic \\(\\lim_{s\\to\\infty} \\cov(g(y_t,..., y_{t+k}), h(y_{t+k+s}, ..., y_{t+k+s+l})) = 0\\) for all bounded \\(g\\), \\(h\\)\n\\(\\sum_{j=1}^\\infty \\left(\\Er\\left[ (\\Er[y_t|I_{t-j}] -  \\Er[y_t|I_{t-j-1}])^2\\right] \\right)^{1/2} < \\infty\\)\n\\(\\Er[y_t | I_{t-j}] \\to 0\\) as \\(j \\to \\infty\\)\n\nThen, \\[\n\\frac{1}{\\sqrt{T}} \\sum_{t=1}^T y_t \\indist N(0,\\mathcal{J})\n\\]\n\n\n\n\nMany variations of assumptions possible, see e.g. Dedecker et al. (2007) for more"
+  },
+  {
+    "objectID": "asymptotics/ols.html#time-dependence---ols",
+    "href": "asymptotics/ols.html#time-dependence---ols",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Time Dependence - OLS",
+    "text": "Time Dependence - OLS\n\nIf LLN applies \\(X'X\\) and CLT to \\(X \\epsilon\\), then \\[\n\\sqrt{n} (\\hat{\\beta} - \\beta) \\indist N(0, M^{-1} \\mathcal{J} M^{-1})\n\\] with \\(M = \\plim \\frac{1}{n} X'X\\) and \\(\\mathcal{J} = \\var(X_i \\epsilon_i) + 2\\sum_{k=1}^\\infty \\cov(X_i \\epsilon_i, X_{i+k} \\epsilon_{i+k})\\)\nConsistently estimate \\(\\mathcal{J}\\) by (Newey and West (1987)) \\[\n\\hat{\\mathcal{J}} = \\sum_{-S_n}^{S_n}k_n(j) \\underbrace{\\hat{\\gamma}_j}_{=\\frac{1}{n} \\sum_{i=1}^{n-j} (X_i \\hat{\\epsilon}_i) (X_{i+j} \\hat{\\epsilon}_{i+j})'}\n\\] with \\(k_n(j) \\to 1\\), and \\(S_n \\to \\infty\\) and \\(S_n^3/n \\to 0\\)"
   },
   {
     "objectID": "asymptotics/ols.html#wald",
     "href": "asymptotics/ols.html#wald",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Wald",
-    "text": "Wald"
+    "text": "Wald\n\nIf \\(\\sqrt{n}(\\hat{\\beta} - \\beta_0) \\indist N(0, V)\\), then \\[\n\\sqrt{n}(R \\hat{\\beta} - \\underbrace{R\\beta_0}_{=r} ) \\indist N(0, RVR')\n\\] and \\[\nW \\equiv n(R \\hat{\\beta} - r )' (RVR')^{-1} (R \\hat{\\beta} - r ) \\indist \\chi^2_{rank(R)}\n\\]"
   },
   {
-    "objectID": "asymptotics/ols.html#likelihood-ratio",
-    "href": "asymptotics/ols.html#likelihood-ratio",
+    "objectID": "asymptotics/ols.html#restricted-mle",
+    "href": "asymptotics/ols.html#restricted-mle",
     "title": "Asymptotic Theory of Least Squares",
-    "section": "Likelihood Ratio",
-    "text": "Likelihood Ratio"
+    "section": "Restricted MLE",
+    "text": "Restricted MLE\n\nRestricted MLE with \\(\\epsilon \\sim N(0, \\sigma^2 I_n)\\) \\[\n\\hat{\\beta}_R = \\mathrm{arg}\\max_{b: Rb = r, \\sigma} -\\frac{n}{2}(\\log 2\\pi + \\log \\sigma^2) + \\sum_{i=1}^n \\frac{-1}{2\\sigma^2} (y_i - X_i b)^2\n\\]\nFOC \\[\n\\begin{align*}\n-X'y/\\sigma^2 + X'X\\hat{\\beta}_R/\\sigma^2 + R'\\hat{\\lambda} & = 0\\\\\nR\\hat{\\beta}_R - r & = 0\n\\end{align*}\n\\]"
   },
   {
     "objectID": "asymptotics/ols.html#lagrange-multiplier",
     "href": "asymptotics/ols.html#lagrange-multiplier",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Lagrange Multiplier",
-    "text": "Lagrange Multiplier"
+    "text": "Lagrange Multiplier\n\nUnder \\(H_0\\), \\(\\lambda = 0\\), so form test statistic based on \\(\\hat{\\lambda} \\approx 0\\)\nFrom FOC: \\[\nR'\\hat{\\lambda} = X'(y - X'\\hat{\\beta}_R)/\\hat{\\sigma}^2_R = X'\\hat{\\epsilon}_r/\\hat{\\sigma}^2_R\n\\]\nTo find distribution, note that \\[\n\\begin{pmatrix}\n\\hat{\\beta}_R \\\\\n\\hat{\\lambda}/2\n\\end{pmatrix} =\n\\begin{pmatrix}\nX'X/\\sigma^2 & R' \\\\\n-R & 0\n\\end{pmatrix}^{-1}\n\\begin{pmatrix}\nX'y/\\sigma^2 \\\\\n-r\n\\end{pmatrix}\n\\]"
+  },
+  {
+    "objectID": "asymptotics/ols.html#lagrange-multiplier-1",
+    "href": "asymptotics/ols.html#lagrange-multiplier-1",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Lagrange Multiplier",
+    "text": "Lagrange Multiplier\n\nso (using partitioned inverse), \\[\n\\hat{\\lambda} = (R\\hat{\\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \\hat{\\beta} - r)\n\\] and \\[\n\\hat{\\beta}_R = \\hat{\\beta} - (X'X)^{-1}(R (X'X)^{-1} R)^{-1} (R \\hat{\\beta} - r)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/ols.html#lagrange-multiplier-2",
+    "href": "asymptotics/ols.html#lagrange-multiplier-2",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Lagrange Multiplier",
+    "text": "Lagrange Multiplier\n\nNote that \\[\n\\begin{align*}\n\\hat{\\lambda} & = R'(R\\hat{\\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \\hat{\\beta} - r) \\\\\n& = (R\\hat{\\sigma}_R^2 (X'X)^{-1} R')^{-1} (R (X'X)^{-1} X'\\epsilon)\n\\end{align*}\n\\]\nso, with homoskedasticity, \\[\nLM = \\hat{\\lambda}'R \\hat{\\sigma}^2_R (X'X)^{-1} R \\hat{\\lambda} \\indist \\chi^2_{rank(R)}\n\\]\nCan modify for heteroskedasticity and/or dependence"
+  },
+  {
+    "objectID": "asymptotics/ols.html#likelihood-ratio",
+    "href": "asymptotics/ols.html#likelihood-ratio",
+    "title": "Asymptotic Theory of Least Squares",
+    "section": "Likelihood Ratio",
+    "text": "Likelihood Ratio\n\nIf \\(\\epsilon_i \\sim N(0, \\sigma^2)\\), twice the log likelihood ratio for \\(H_0: R\\beta = r\\), \\[\n\\begin{align*}\n2\\max_{b,\\sigma} & \\left[-\\frac{n}{2} \\log \\sigma^2 + \\sum_{i=1}^n \\frac{-1}{2\\sigma^2} (y_i - X_i b)^2 \\right] -\n2\\max_{b,\\sigma: Rb = r} \\left[-\\frac{n}{2} \\log \\sigma^2 + \\sum_{i=1}^n \\frac{-1}{2\\sigma^2} (y_i - X_i b)^2 \\right] \\\\\n= & -n\\log \\hat{\\sigma}^2 + n \\log\\hat{\\sigma}_R^2 \\\\\n= & -n\\log\\left(\\frac{1}{n} \\norm{y-X\\hat{\\beta}}^2\\right) + n \\log \\left(\\frac{1}{n}\\norm{y - X \\hat{\\beta}_R}^2 \\right) \\\\\n= & n \\log \\left(\\frac{\\frac{1}{n}\\norm{y-X\\hat{\\beta}}^2 + \\frac{1}{n}(\\hat{\\beta}_R-\\hat{\\beta}) X'X (\\hat{\\beta}_R-\\hat{\\beta})}{\\frac{1}{n}\\norm{y-X\\hat{\\beta}}^2}\\right) \\\\\n= & n \\log (1 + W/n) \\indist \\chi^2_{rank(R)} (\\text{with homoskedasticity})\n\\end{align*}\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#reading",
@@ -557,7 +725,7 @@
     "href": "index.html",
     "title": "ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nConvergence in probability\nConvergence in distribution\nDelta Methods\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nConvergence in probability\nConvergence in distribution\nDelta Methods\nAsymptotics of Least Squares\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
   },
   {
     "objectID": "measure/measure.html#references",
@@ -1117,7 +1285,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Nov 7, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Nov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

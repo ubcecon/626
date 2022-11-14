@@ -10,6 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="Paul Schrimpf">
+  <meta name="dcterms.date" content="2022-11-14">
   <title>ECON 626 - Asymptotic Theory of Least Squares</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,6 +29,70 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
@@ -339,6 +404,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -347,7 +415,7 @@
 <section id="title-slide" data-background-image="" data-background-size="contain" class="center">
   <h1 class="title">Asymptotic Theory of Least Squares</h1>
   <p class="author">Paul Schrimpf</p>
-  <p class="date">11/7/22</p>
+  <p class="date">11/14/22</p>
 </section>
 
 <section id="reading" class="slide level2">
@@ -393,17 +461,30 @@
 <ul>
 <li class="fragment"><span class="math inline">\((X'X)^{-1} X' \epsilon \inprob 0\)</span> (“high level assumption”), or</li>
 <li class="fragment"><span class="math inline">\(\frac{1}{n} X'X \inprob C\)</span> and <span class="math inline">\(\frac{1}{n} X' \epsilon \inprob 0\)</span>, or</li>
-<li class="fragment">Using non-iid WLLN from <a href="indistribution.qmd">convergence in distribution slides</a> (“low level assumption”):
-<ul>
-<li class="fragment">For both <span class="math inline">\(Z_i = X_i'\)</span> and <span class="math inline">\(Z_i = \epsilon_i\)</span>,
-<ul>
-<li class="fragment"><span class="math inline">\(\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j Z_j) - \Er[X_j Z_j]\right)\right] = 0\)</span> and</li>
-<li class="fragment"><span class="math inline">\(\frac{1}{n} \max_{1 \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0\)</span></li>
-</ul></li>
-<li class="fragment"><span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span></li>
-</ul></li>
 </ul>
 </div>
+</section>
+<section id="consistency-1" class="slide level2">
+<h2>Consistency</h2>
+<p><span class="math display">\[
+\begin{align*}
+\hat{\beta} = &amp; (X'X)^{-1} X' y \\
+= &amp; (X'X)^{-1} X' (X \beta + \epsilon) \\
+= &amp; \beta + (X'X)^{-1} X' \epsilon
+\end{align*}
+\]</span></p>
+<p>Consistent, <span class="math inline">\(\hat{\beta} \inprob \beta\)</span>, if</p>
+<ul>
+<li>Using non-iid WLLN from <a href="indistribution.qmd">convergence in distribution slides</a> (“low level assumption”):
+<ul>
+<li>For both <span class="math inline">\(Z_i = X_i'\)</span> and <span class="math inline">\(Z_i = \epsilon_i\)</span>,
+<ul>
+<li><span class="math inline">\(\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j Z_j) - \Er[X_j Z_j]\right)\right] = 0\)</span> and</li>
+<li><span class="math inline">\(\frac{1}{n} \max_{1 \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span></li>
+</ul></li>
+</ul>
 </section>
 <section id="asymptotic-distribution" class="slide level2">
 <h2>Asymptotic Distribution</h2>
@@ -442,7 +523,7 @@
 <li class="fragment"><span class="math inline">\((X_i, \epsilon_i) \perp (X_j, \epsilon_j)\)</span> if <span class="math inline">\(i \neq j\)</span>, and</li>
 <li class="fragment"><span class="math inline">\(\frac{1}{n} \max_{1 \leq i \leq n} \Er[ (X_i X_i' - \Er[X_i X_i']) (X_i X_i' - \Er[X_i X_i])'] \to 0\)</span>, and</li>
 <li class="fragment"><span class="math inline">\(\frac{1}{n} \sum_{i=1}^n \Er[X_i \epsilon_i^2 X_i'] = \Omega_n\)</span> is non singular, and <span class="math inline">\(\Omega_n \to \Omega\)</span>, and</li>
-<li class="fragment"><span class="math inline">\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er\left[ c'( X_i \epsilon_i^2 X_i') c 1\{ | c'( X_i \epsilon_i)| &gt; \delta \sqrt{n} \right] = 0\)</span> for all <span class="math inline">\(\delta &gt; 0\)</span> and <span class="math inline">\(c \in \R^k\)</span></li>
+<li class="fragment"><span class="math inline">\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er\left[ c'( X_i \epsilon_i^2 X_i') c 1\{ | c'( X_i \epsilon_i)| &gt; \delta \sqrt{n} \} \right] = 0\)</span> for all <span class="math inline">\(\delta &gt; 0\)</span> and <span class="math inline">\(c \in \R^k\)</span></li>
 <li class="fragment">Exercise: what is <span class="math inline">\(\Sigma\)</span> under these assumptions?</li>
 </ul></li>
 </ul>
@@ -500,10 +581,179 @@
 <li><p>Even with homoskedasticity, there is little downside to using <span class="math inline">\(\hat{\Sigma}^{robust}\)</span>, so always used in practice</p></li>
 </ul>
 </section>
+<section id="heteroskedastic-robust-errors-with-homoskedastic-data" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Homoskedastic Data</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">Statistics</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">function</span> <span class="fu">sim</span>(n,k; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  ϵ <span class="op">=</span> <span class="fu">randn</span>(n)<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="cf">return</span>(X,y)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">end</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">function</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  Vr, Vh <span class="op">=</span> <span class="fu">olsvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored)</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  <span class="cf">return</span>(β̂, Vr, Vh)</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="kw">end</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="kw">function</span> <span class="fu">olsvar</span>(X, ϵ, XXf)</span>
+<span id="cb1-18"><a href="#cb1-18"></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb1-19"><a href="#cb1-19"></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
+<span id="cb1-20"><a href="#cb1-20"></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> n<span class="op">/</span>(n<span class="op">-</span>k)<span class="fu">*iXX*sum</span>(X[i,<span class="op">:</span>]<span class="op">*</span>X[i,<span class="op">:</span>]<span class="ch">'*ϵ[i]^2 for i ∈ axes(X)[1])*iXX</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>  Vh <span class="op">=</span> n<span class="op">/</span>(n<span class="op">-</span>k)<span class="fu">*iXX*var</span>(ϵ)</span>
+<span id="cb1-22"><a href="#cb1-22"></a>  <span class="cf">return</span>(Vr,Vh)</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>olsvar (generic function with 1 method)</code></pre>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-homoskedastic-data-1" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Homoskedastic Data</h2>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">using</span> <span class="bu">PlotlyLight</span>, <span class="bu">Distributions</span>, <span class="bu">Cobweb</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">function</span> <span class="fu">simsize</span>(n,k,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
+<span id="cb3-5"><a href="#cb3-5"></a>    X,y <span class="op">=</span> <span class="fu">sim</span>(n,k,β<span class="op">=</span>β,σ<span class="op">=</span>σ)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    β̂, Vr, Vh <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vh[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="cf">end</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>  p <span class="op">=</span> <span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="cf">return</span>(p, z)</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="kw">end</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="kw">function</span> <span class="fu">makeplot</span>(p,z,n;   u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
+<span id="cb3-14"><a href="#cb3-14"></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb3-15"><a href="#cb3-15"></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
+<span id="cb3-16"><a href="#cb3-16"></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">"</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Homoskedasticity"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21"></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="kw">end</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
+<span id="cb3-24"><a href="#cb3-24"></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
+<span id="cb3-26"><a href="#cb3-26"></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27"></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>)<span class="op">...</span>,n)</span>
+<span id="cb3-28"><a href="#cb3-28"></a>    Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"size_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29"></a>  <span class="cf">end</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<iframe src="size_100.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-homoskedastic-data-2" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Homoskedastic Data</h2>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<iframe src="size_500.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-homoskedastic-data-3" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Homoskedastic Data</h2>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<iframe src="size_2500.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-homoskedastic-data-4" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Homoskedastic Data</h2>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<iframe src="size_10000.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="plot-of-residuals-vs-predictions" class="slide level2">
+<h2>Plot of Residuals vs Predictions</h2>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a>n <span class="op">=</span> <span class="fl">250</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>k <span class="op">=</span> <span class="fl">3</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>Xh,yh <span class="op">=</span> <span class="fu">sim</span>(n,k)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>bh, _, _ <span class="op">=</span> <span class="fu">ols</span>(Xh,yh)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>eh <span class="op">=</span> yh <span class="op">-</span> Xh<span class="op">*</span>bh</span>
+<span id="cb4-6"><a href="#cb4-6"></a>X,y <span class="op">=</span> <span class="fu">sim</span>(n,k, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))</span>
+<span id="cb4-7"><a href="#cb4-7"></a>b, _, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="cn">e</span> <span class="op">=</span> y <span class="op">-</span> X<span class="op">*</span>b</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a>plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb4-11"><a href="#cb4-11"></a>plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="fu">plt</span>(x <span class="op">=</span> Xh<span class="op">*</span>bh, y<span class="op">=</span>eh, name<span class="op">=</span><span class="st">"Homoskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>fig <span class="op">=</span><span class="fu">plt</span>(x <span class="op">=</span> X<span class="op">*</span>b, y <span class="op">=</span> <span class="cn">e</span>, name<span class="op">=</span><span class="st">"Heteroskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"resid.html"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">resid.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1000</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">650</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<iframe src="resid.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-heteroskedastic-data" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Heteroskedastic Data</h2>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1"></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))<span class="op">...</span>,n)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="cf">end</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<iframe src="size_het_100.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-heteroskedastic-data-1" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Heteroskedastic Data</h2>
+<div class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<iframe src="size_het_500.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-heteroskedastic-data-2" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Heteroskedastic Data</h2>
+<div class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="12">
+<iframe src="size_het_2500.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="heteroskedastic-robust-errors-with-heteroskedastic-data-3" class="slide level2">
+<h2>Heteroskedastic Robust Errors with Heteroskedastic Data</h2>
+<div class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="13">
+<iframe src="size_het_10000.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
 <section id="dependence" class="slide level2">
 <h2>Dependence</h2>
 <ul>
-<li><span class="math inline">\(\sqrt{n} (\hat{\beta} - \beta) \indist N(0, \Er[X_iX_i']^{-1} V \Er[X_i X_i']^{-1})\)</span> if <span class="math inline">\(\frac{1}{n} X'X \inprob \Er[X_iX_i']^{-1}\)</span> and <span class="math inline">\(\frac{1}{n} X'\epsilon \indist N(0,V)\)</span></li>
+<li><span class="math inline">\(\sqrt{n} (\hat{\beta} - \beta) \indist N(0, \Er[X_iX_i']^{-1} V \Er[X_i X_i']^{-1})\)</span> if <span class="math inline">\(\frac{1}{n} X'X \inprob \Er[X_iX_i']\)</span> and <span class="math inline">\(\frac{1}{n} X'\epsilon \indist N(0,V)\)</span></li>
 <li>Generally, <span class="math inline">\(V = \lim_{n \to \infty} \var\left( \frac{1}{n} X'\epsilon \right)\)</span> <span class="math display">\[
 \var\left( \frac{1}{n} X'\epsilon \right) = \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j)
 \]</span></li>
@@ -513,39 +763,304 @@
 <section id="clustered-standard-errors" class="slide level2">
 <h2>Clustered Standard Errors</h2>
 <ul>
-<li>Partition data into <span class="math inline">\(G\)</span> groups, <span class="math inline">\(\{g_h\}_{h=1^G}\)</span>, denote group of <span class="math inline">\(i\)</span> as <span class="math inline">\(g(i)\)</span></li>
-<li>Assume <span class="math inline">\(\cov(X_i \epsilon_i, X_j \epsilon_j) = 0\)</span> if <span class="math inline">\(g(i) \neq g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span> $$
-<span class="math display">\[\begin{aligned}
+<li>Partition data into <span class="math inline">\(G\)</span> groups, <span class="math inline">\(\{g_h\}_{h=1}^G\)</span>, denote group of <span class="math inline">\(i\)</span> as <span class="math inline">\(g(i)\)</span></li>
+<li>Assume <span class="math inline">\(\cov(X_i \epsilon_i, X_j \epsilon_j) = 0\)</span> if <span class="math inline">\(g(i) \neq g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
 \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j) = &amp; \sum_{h=1}^G \sum_{i \in g_h} \sum_{j \in g_h} \cov(X_i \epsilon_i, X_j, \epsilon_j) \\
 = &amp; \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right]
-\end{aligned}\]</span></li>
-<li>Strengthening some assumptions to apply Lindeberg’s CLT to <span class="math inline">\(\left(\sum_{i \in g_h} X_i \epsilon_i \right)\)</span> we get <span class="math display">\[
-\frac{1}{\sqrt{G}} \left(\sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \right) \left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)^{-1/2} \indist N(0, I)
-\]</span></li>
-<li>Thus, <span class="math display">\[
-\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, \Er[X_i X_i']^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)  \Er[X_i X_i']^{-1} \right)
-\]</span></li>
+\end{aligned}
+\]</span></p>
+</section>
+<section id="clustered-standard-errors-1" class="slide level2">
+<h2>Clustered Standard Errors</h2>
+<ul>
+<li>Strengthening some assumptions to apply Lindeberg’s CLT to <span class="math inline">\(\left(\sum_{i \in g_h} X_i \epsilon_i \right)\)</span> we get</li>
 </ul>
+<p><span class="math display">\[
+\frac{1}{\sqrt{G}} \left(\sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \right) \left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)^{-1/2} \indist N(0, I)
+\]</span></p>
+<ul>
+<li>Thus,</li>
+</ul>
+<p><span class="math display">\[
+\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, \Er[X_i X_i']^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)  \Er[X_i X_i']^{-1} \right)
+\]</span></p>
+</section>
+<section id="clustering" class="slide level2">
+<h2>Clustering</h2>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">function</span> <span class="fu">olscl</span>(X,y, group<span class="op">=</span>group)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  V <span class="op">=</span> <span class="fu">olsclvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored, group<span class="op">=</span>group)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="cf">return</span>(β̂, V)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">end</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="kw">function</span> <span class="fu">olsclvar</span>(X, ϵ, XXf; group<span class="op">=</span><span class="fu">axes</span>(X)[<span class="fl">1</span>])</span>
+<span id="cb6-9"><a href="#cb6-9"></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb6-10"><a href="#cb6-10"></a>  groups<span class="op">=</span><span class="fu">unique</span>(group)</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  G <span class="op">=</span> <span class="fu">length</span>(groups)</span>
+<span id="cb6-12"><a href="#cb6-12"></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
+<span id="cb6-13"><a href="#cb6-13"></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> G<span class="op">/</span>(G<span class="op">-</span>k)<span class="op">*</span>iXX<span class="op">*</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>    <span class="fu">sum</span>(X[group<span class="op">.==</span>g,<span class="op">:</span>]<span class="ch">'*ϵ[group.==g]*ϵ[group.==g]'</span><span class="op">*</span>X[group<span class="op">.==</span>g,<span class="op">:</span>] <span class="cf">for</span>  g <span class="kw">in</span> groups)<span class="op">*</span>iXX</span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="cf">return</span>(Vr)</span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="cf">end</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="kw">function</span> <span class="fu">simcluster</span>(n,k,G; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-19"><a href="#cb6-19"></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
+<span id="cb6-20"><a href="#cb6-20"></a>  group <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>G,n)</span>
+<span id="cb6-21"><a href="#cb6-21"></a>  <span class="cf">for</span> g <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>G <span class="co"># ensure all groups included</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a>    <span class="cf">if</span> <span class="fu">sum</span>(group<span class="op">.==</span>g)<span class="op">==</span><span class="fl">0</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>      group[g]<span class="op">=</span>g</span>
+<span id="cb6-24"><a href="#cb6-24"></a>    <span class="cf">end</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>  <span class="cf">end</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a>  X[<span class="op">:</span>,<span class="fl">1</span>] <span class="op">.+=</span> (group<span class="op">.&gt;</span>(G<span class="op">/</span><span class="fl">2</span>))</span>
+<span id="cb6-27"><a href="#cb6-27"></a>  u <span class="op">=</span> <span class="fu">randn</span>(G)</span>
+<span id="cb6-28"><a href="#cb6-28"></a>  ϵ <span class="op">=</span> (ρ<span class="op">*</span>u[group] <span class="op">+</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>ρ<span class="op">^</span><span class="fl">2</span>)<span class="fu">*randn</span>(n))<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
+<span id="cb6-29"><a href="#cb6-29"></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
+<span id="cb6-30"><a href="#cb6-30"></a>  <span class="cf">return</span>(X,y, group)</span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="kw">end</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a></span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="kw">function</span> <span class="fu">simsizecluster</span>(n,k,G,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-34"><a href="#cb6-34"></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
+<span id="cb6-35"><a href="#cb6-35"></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
+<span id="cb6-36"><a href="#cb6-36"></a>    X,y,group <span class="op">=</span> <span class="fu">simcluster</span>(n,k,G,β<span class="op">=</span>β,σ<span class="op">=</span>σ, ρ<span class="op">=</span>ρ)</span>
+<span id="cb6-37"><a href="#cb6-37"></a>    β̂, Vcr <span class="op">=</span> <span class="fu">olscl</span>(X,y, group)</span>
+<span id="cb6-38"><a href="#cb6-38"></a>    _, Vr, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb6-39"><a href="#cb6-39"></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vcr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb6-40"><a href="#cb6-40"></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb6-41"><a href="#cb6-41"></a>  <span class="cf">end</span></span>
+<span id="cb6-42"><a href="#cb6-42"></a>  p <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z), <span class="fu">cdf</span>.(<span class="fu">TDist</span>(G<span class="op">-</span>k),z))</span>
+<span id="cb6-43"><a href="#cb6-43"></a>  <span class="cf">return</span>(p, z)</span>
+<span id="cb6-44"><a href="#cb6-44"></a><span class="kw">end</span></span>
+<span id="cb6-45"><a href="#cb6-45"></a></span>
+<span id="cb6-46"><a href="#cb6-46"></a><span class="kw">function</span> <span class="fu">makeplotcl</span>(p,z,n,g; u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
+<span id="cb6-47"><a href="#cb6-47"></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb6-48"><a href="#cb6-48"></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
+<span id="cb6-49"><a href="#cb6-49"></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">, G=</span><span class="sc">$</span>g<span class="st">"</span></span>
+<span id="cb6-50"><a href="#cb6-50"></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
+<span id="cb6-51"><a href="#cb6-51"></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
+<span id="cb6-52"><a href="#cb6-52"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (Normal Distribution)"</span>)</span>
+<span id="cb6-53"><a href="#cb6-53"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
+<span id="cb6-54"><a href="#cb6-54"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">3</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (t-Distribution)"</span>)</span>
+<span id="cb6-55"><a href="#cb6-55"></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
+<span id="cb6-56"><a href="#cb6-56"></a><span class="kw">end</span></span>
+<span id="cb6-57"><a href="#cb6-57"></a></span>
+<span id="cb6-58"><a href="#cb6-58"></a>N <span class="op">=</span> [<span class="fl">200</span>, <span class="fl">200</span>, <span class="fl">5000</span>, <span class="fl">5000</span>]</span>
+<span id="cb6-59"><a href="#cb6-59"></a>G <span class="op">=</span> [<span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">10</span>, <span class="fl">100</span>]</span>
+<span id="cb6-60"><a href="#cb6-60"></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb6-61"><a href="#cb6-61"></a><span class="cf">for</span> (n,g) <span class="op">∈</span> <span class="fu">zip</span>(N,G)</span>
+<span id="cb6-62"><a href="#cb6-62"></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
+<span id="cb6-63"><a href="#cb6-63"></a>    fig <span class="op">=</span> <span class="fu">makeplotcl</span>(<span class="fu">simsizecluster</span>(n,k,g,<span class="fl">10_000</span>)<span class="op">...</span>,n,g)</span>
+<span id="cb6-64"><a href="#cb6-64"></a>    Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
+<span id="cb6-65"><a href="#cb6-65"></a>  <span class="cf">end</span></span>
+<span id="cb6-66"><a href="#cb6-66"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="clustering-1" class="slide level2">
+<h2>Clustering</h2>
+<div class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="15">
+<iframe src="size_cluster_200_10.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="clustering-2" class="slide level2">
+<h2>Clustering</h2>
+<div class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="16">
+<iframe src="size_cluster_200_100.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="clustering-3" class="slide level2">
+<h2>Clustering</h2>
+<div class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="17">
+<iframe src="size_cluster_5000_10.html" width="1000" height="650"></iframe>
+</div>
+</div>
+</section>
+<section id="clustering-4" class="slide level2">
+<h2>Clustering</h2>
+<div class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="18">
+<iframe src="size_cluster_5000_100.html" width="1000" height="650"></iframe>
+</div>
+</div>
 </section>
 <section id="time-dependence" class="slide level2">
 <h2>Time Dependence</h2>
 <ul>
-<li>see <span class="citation" data-cites="mikusheva2007">Mikusheva and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span> lectures 2 and 3 and recitation 2</li>
+<li>References:
+<ul>
+<li><span class="citation" data-cites="mikusheva2007">Mikusheva and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span> lectures 2 and 3 and recitation 2</li>
+<li><span class="citation" data-cites="dedecker2007">Dedecker et al. (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span> for comprehensive treatment</li>
+</ul></li>
+</ul>
+</section>
+<section id="time-dependence---lln" class="slide level2">
+<h2>Time Dependence - LLN</h2>
+<ul>
+<li>Recall simplest LLN proof via Markov’s inequality and showing <span class="math inline">\(\var\left(\frac{1}{n} \sum_{i=1}^n x_i\right) \to 0\)</span></li>
+<li>With dependence,</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+\var\left(\frac{1}{n} \sum_{i=1}^n x_i\right) = &amp; \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(x_i,x_j) \\
+&amp; \text{assume covariance stationarity:} \cov(x_i, x_j) = \gamma_{|i-j|} \\
+= &amp; \frac{1}{n^2} \left(n \gamma_0 + 2(n-1) \gamma_1 + \cdots\right) \\
+= &amp; \frac{1}{n} \left[ \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \right]
+\end{align*}
+\]</span></p>
+<p>if <span class="math inline">\(\sum_{j=-\infty}^{\infty} |\gamma_j| &lt; \infty\)</span>, then <span class="math inline">\(\frac{1}{n} \left[ \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n}  \right) \right]\to 0\)</span> and LLN holds</p>
+</section>
+<section id="time-dependence---clt" class="slide level2">
+<h2>Time Dependence - CLT</h2>
+<ul>
+<li>Long run variance: <span class="math display">\[
+\begin{align*}
+\frac{1}{\sqrt{n}} \var\left( \sum_{i=1}^n x_i\right) = &amp;  \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \\
+\to &amp; \gamma_0 + 2 \sum_{k=1}^\infty \gamma_k \equiv \mathcal{J} = \text{long-run variance}
+\end{align*}
+\]</span></li>
+<li>With appropriate assumptions if <span class="math inline">\(\Er[x_i] = 0\)</span> and <span class="math inline">\(\mathcal{J} &lt; \infty\)</span>, then <span class="math display">\[
+\frac{1}{\sqrt{n}} \sum_{i=1}^n x_i \indist N(0,\mathcal{J})
+\]</span></li>
+</ul>
+</section>
+<section id="time-dependence---gordins-clt" class="slide level2">
+<h2>Time Dependence - Gordin’s CLT</h2>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>CLT</strong></p>
+</div>
+<div class="callout-content">
+<p>Assume <span class="math inline">\(\Er[y_t] = 0\)</span>. Let <span class="math inline">\(I_t\)</span> be the sigma-algebra generated by <span class="math inline">\(\{y_j\}_{j=-\infty}^t\)</span>. Further assume:</p>
+<ol type="1">
+<li><p><span class="math inline">\(y_t\)</span> is <strong>strictly stationary</strong>: the distribution of <span class="math inline">\(y_{t_1}, ... , y_{t_k}\)</span> equals the distribution of <span class="math inline">\(y_{t_1 + s} , ... y_{t_k+s}\)</span> for all <span class="math inline">\(t_j\)</span> and <span class="math inline">\(s\)</span></p></li>
+<li><p><span class="math inline">\(y_t\)</span> is <strong>ergodic</strong> <span class="math inline">\(\lim_{s\to\infty} \cov(g(y_t,..., y_{t+k}), h(y_{t+k+s}, ..., y_{t+k+s+l})) = 0\)</span> for all bounded <span class="math inline">\(g\)</span>, <span class="math inline">\(h\)</span></p></li>
+<li><p><span class="math inline">\(\sum_{j=1}^\infty \left(\Er\left[ (\Er[y_t|I_{t-j}] -  \Er[y_t|I_{t-j-1}])^2\right] \right)^{1/2} &lt; \infty\)</span></p></li>
+<li><p><span class="math inline">\(\Er[y_t | I_{t-j}] \to 0\)</span> as <span class="math inline">\(j \to \infty\)</span></p></li>
+</ol>
+<p>Then, <span class="math display">\[
+\frac{1}{\sqrt{T}} \sum_{t=1}^T y_t \indist N(0,\mathcal{J})
+\]</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Many variations of assumptions possible, see e.g. <span class="citation" data-cites="dedecker2007">Dedecker et al. (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span> for more</li>
+</ul>
+</section>
+<section id="time-dependence---ols" class="slide level2">
+<h2>Time Dependence - OLS</h2>
+<ul>
+<li>If LLN applies <span class="math inline">\(X'X\)</span> and CLT to <span class="math inline">\(X \epsilon\)</span>, then <span class="math display">\[
+\sqrt{n} (\hat{\beta} - \beta) \indist N(0, M^{-1} \mathcal{J} M^{-1})
+\]</span> with <span class="math inline">\(M = \plim \frac{1}{n} X'X\)</span> and <span class="math inline">\(\mathcal{J} = \var(X_i \epsilon_i) + 2\sum_{k=1}^\infty \cov(X_i \epsilon_i, X_{i+k} \epsilon_{i+k})\)</span></li>
+<li>Consistently estimate <span class="math inline">\(\mathcal{J}\)</span> by (<span class="citation" data-cites="newey1987">Newey and West (<a href="#/references" role="doc-biblioref" onclick="">1987</a>)</span>) <span class="math display">\[
+\hat{\mathcal{J}} = \sum_{-S_n}^{S_n}k_n(j) \underbrace{\hat{\gamma}_j}_{=\frac{1}{n} \sum_{i=1}^{n-j} (X_i \hat{\epsilon}_i) (X_{i+j} \hat{\epsilon}_{i+j})'}
+\]</span> with <span class="math inline">\(k_n(j) \to 1\)</span>, and <span class="math inline">\(S_n \to \infty\)</span> and <span class="math inline">\(S_n^3/n \to 0\)</span></li>
 </ul>
 </section></section>
 <section>
 <section id="testing-restrictions" class="title-slide slide level1 center">
 <h1>Testing Restrictions</h1>
-
+<p><span class="math display">\[ y = X\beta + \epsilon \]</span></p>
+<ul>
+<li>Test <span class="math inline">\(H_0: R \beta = r\)</span> against <span class="math inline">\(H_1: R \beta \neq r\)</span></li>
+</ul>
 </section>
 <section id="wald" class="slide level2">
 <h2>Wald</h2>
+<ul>
+<li>If <span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta_0) \indist N(0, V)\)</span>, then <span class="math display">\[
+\sqrt{n}(R \hat{\beta} - \underbrace{R\beta_0}_{=r} ) \indist N(0, RVR')
+\]</span> and <span class="math display">\[
+W \equiv n(R \hat{\beta} - r )' (RVR')^{-1} (R \hat{\beta} - r ) \indist \chi^2_{rank(R)}
+\]</span></li>
+</ul>
 </section>
-<section id="likelihood-ratio" class="slide level2">
-<h2>Likelihood Ratio</h2>
+<section id="restricted-mle" class="slide level2">
+<h2>Restricted MLE</h2>
+<ul>
+<li>Restricted MLE with <span class="math inline">\(\epsilon \sim N(0, \sigma^2 I_n)\)</span> <span class="math display">\[
+\hat{\beta}_R = \mathrm{arg}\max_{b: Rb = r, \sigma} -\frac{n}{2}(\log 2\pi + \log \sigma^2) + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2
+\]</span></li>
+<li>FOC <span class="math display">\[
+\begin{align*}
+-X'y/\sigma^2 + X'X\hat{\beta}_R/\sigma^2 + R'\hat{\lambda} &amp; = 0\\
+R\hat{\beta}_R - r &amp; = 0
+\end{align*}
+\]</span></li>
+</ul>
 </section>
 <section id="lagrange-multiplier" class="slide level2">
 <h2>Lagrange Multiplier</h2>
+<ul>
+<li>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\lambda = 0\)</span>, so form test statistic based on <span class="math inline">\(\hat{\lambda} \approx 0\)</span></li>
+<li>From FOC: <span class="math display">\[
+R'\hat{\lambda} = X'(y - X'\hat{\beta}_R)/\hat{\sigma}^2_R = X'\hat{\epsilon}_r/\hat{\sigma}^2_R
+\]</span></li>
+<li>To find distribution, note that <span class="math display">\[
+\begin{pmatrix}
+\hat{\beta}_R \\
+\hat{\lambda}/2
+\end{pmatrix} =
+\begin{pmatrix}
+X'X/\sigma^2 &amp; R' \\
+-R &amp; 0
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+X'y/\sigma^2 \\
+-r
+\end{pmatrix}
+\]</span></li>
+</ul>
+</section>
+<section id="lagrange-multiplier-1" class="slide level2">
+<h2>Lagrange Multiplier</h2>
+<ul>
+<li>so (using partitioned inverse), <span class="math display">\[
+\hat{\lambda} = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r)
+\]</span> and <span class="math display">\[
+\hat{\beta}_R = \hat{\beta} - (X'X)^{-1}(R (X'X)^{-1} R)^{-1} (R \hat{\beta} - r)
+\]</span></li>
+</ul>
+</section>
+<section id="lagrange-multiplier-2" class="slide level2">
+<h2>Lagrange Multiplier</h2>
+<ul>
+<li><p>Note that <span class="math display">\[
+\begin{align*}
+\hat{\lambda} &amp; = R'(R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r) \\
+&amp; = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R (X'X)^{-1} X'\epsilon)
+\end{align*}
+\]</span></p></li>
+<li><p>so, with homoskedasticity, <span class="math display">\[
+LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R \hat{\lambda} \indist \chi^2_{rank(R)}
+\]</span></p></li>
+<li><p>Can modify for heteroskedasticity and/or dependence</p></li>
+</ul>
+</section>
+<section id="likelihood-ratio" class="slide level2">
+<h2>Likelihood Ratio</h2>
+<ul>
+<li>If <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span>, twice the log likelihood ratio for <span class="math inline">\(H_0: R\beta = r\)</span>, <span class="math display">\[
+\begin{align*}
+2\max_{b,\sigma} &amp; \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] -
+2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] \\
+= &amp; -n\log \hat{\sigma}^2 + n \log\hat{\sigma}_R^2 \\
+= &amp; -n\log\left(\frac{1}{n} \norm{y-X\hat{\beta}}^2\right) + n \log \left(\frac{1}{n}\norm{y - X \hat{\beta}_R}^2 \right) \\
+= &amp; n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta}) X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\
+= &amp; n \log (1 + W/n) \indist \chi^2_{rank(R)} (\text{with homoskedasticity})
+\end{align*}
+\]</span></li>
+</ul>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -554,8 +1069,14 @@
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-dedecker2007" class="csl-entry" role="doc-biblioentry">
+Dedecker, Jérôme, Paul Doukhan, Gabriel Lang, León R José Rafael, Sana Louhichi, and Clémentine Prieur. 2007. <span>“Weak Dependence.”</span> In <em>Weak Dependence: With Examples and Applications</em>, 9–20. Springer. <a href="https://link.springer.com/book/10.1007/978-0-387-69952-3">https://link.springer.com/book/10.1007/978-0-387-69952-3</a>.
+</div>
 <div id="ref-mikusheva2007" class="csl-entry" role="doc-biblioentry">
 Mikusheva, Anna, and Paul Schrimpf. 2007. <span>“14.384 Time Series Analysis, Fall 2007 (Revised 2009).”</span> <a href="http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/">http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/</a>.
+</div>
+<div id="ref-newey1987" class="csl-entry" role="doc-biblioentry">
+Newey, Whitney K, and Kenneth D West. 1987. <span>“A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix.”</span> <em>Econometrica</em> 55 (3): 703–8.
 </div>
 <div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
@@ -741,15 +1262,17 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1600,
+        width: 1575,
 
-        height: 900,
+        height: 1050,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
         // Bounds for smallest/largest possible scale to apply to content
         minScale: 0.1,
+
+        maxScale: 3,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',

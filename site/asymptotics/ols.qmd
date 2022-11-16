@@ -15,7 +15,7 @@ format:
       chalk-width: 2
       chalk-effect: 0.0
     title-slide-attributes:
-      data-background-image: ""
+      data-background-image: "birken.jpg"
       data-background-size: contain
 bibliography: ../626.bib
 

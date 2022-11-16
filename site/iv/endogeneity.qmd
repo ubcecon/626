@@ -1,0 +1,101 @@
+---
+title: ""
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1575
+    height: 1050
+    min-scale: 0.1
+    max-scale: 3.0
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 2
+      chalk-width: 2
+      chalk-effect: 0.0
+    title-slide-attributes:
+      data-background-image: "athelstan.jpg"
+      data-background-size: contain
+bibliography: ../626.bib
+
+jupyter: julia-1.8
+---
+
+
+## Reading
+
+- Required: **@song2021 chapter 11**
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+$$
+
+# Endogeneity
+
+## Omitted Variables
+
+- Desired model
+$$
+Y_i = X_i'\beta_0 + W_i'\gamma_0 + u_i
+$$
+Assume $\Er[u] = \Er[Xu] = \Er[Wu] = 0$
+- Estimated model
+$$
+Y_i = X_i'\beta + u_i
+$$
+- What is $\plim \hat{\beta}$?
+
+## Omitted Variables
+
+- $\plim \hat{\beta} \inprob \beta_0 + \Er[X_i X_i']^{-1} \Er[X_i W_i'] \gamma_0$
+
+## Omitted Variables
+
+- If $\gamma_0 = 0$, what is variance of $\hat{\beta}$ when $W$ is and is not included in the model?
+
+## Errors in Variables
+
+- See problem set 6
+
+## Simultaneity Bias
+
+- Equilibrium conditions often lead to variables that are simultaneously determined
+- Demand and supply:
+$$
+\begin{align*}
+Q_i^D & = P_i \beta_D + X_D'\gamma_D + u_{D,i} \\
+Q_i^S & = P_i \beta_S + X_S'\gamma_S + u_{S,i} \\
+Q_i^S & = Q_i^D
+\end{align*}
+$$
+
+## Simultaneity Bias
+
+- Structural equations: (demand and inverse supply):
+$$
+\begin{align*}
+Q_i & = P_i \beta_D + X_D'\gamma_D + u_{D,i} \\
+P_i = & Q_i \frac{1}{\beta_S}  - X_S'\gamma_D\frac{1}{\beta_S} - u_{S,i}\frac{1}{\beta_S} \\
+\end{align*}
+$$
+- Reduced form:
+$$
+\begin{align*}
+Q_i = & \frac{\beta_D}{\beta_D - \beta_S} \left( -X_{D,i}' \gamma_D + X_{S,i}'\gamma_S - u_{D,i} + u_{S,i} \right) + X_{D,i}'\gamma_D + u_{D,i} \\
+P_i = & \frac{1}{\beta_D - \beta_S}\left(-X_{D,i}' \gamma_D + X_{S,i}'\gamma_S - u_{D,i} + u_{S,i} \right)
+\end{align*}
+$$
+
+
+# References

@@ -48,5 +48,5 @@ bibliography: 626.bib
 
 # Part V: Linear Models with Endogeneity
 
-- Identification and Endogeneity
-- Identification through IV and Inference
+- [Endogeneity](iv/endogeneity.qmd)
+- [Identification through IV and Inference](iv/iv.qmd)

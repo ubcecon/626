@@ -17,7 +17,8 @@
       "/identification/identification.html",
       "/projection/projection.html",
       "/measure/measure.html",
-      "/probability/probability.html"
+      "/probability/probability.html",
+      "/iv/endogeneity.html"
     ]
   }
 ]

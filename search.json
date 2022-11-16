@@ -725,7 +725,56 @@
     "href": "index.html",
     "title": "ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nConvergence in probability\nConvergence in distribution\nDelta Methods\nAsymptotics of Least Squares\n\n\n\nPart V: Linear Models with Endogeneity\n\nIdentification and Endogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+    "text": "Part II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nConvergence in probability\nConvergence in distribution\nDelta Methods\nAsymptotics of Least Squares\n\n\n\nPart V: Linear Models with Endogeneity\n\nEndogeneity\nIdentification through IV and Inference\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+  },
+  {
+    "objectID": "iv/endogeneity.html#reading",
+    "href": "iv/endogeneity.html#reading",
+    "title": "ECON 626",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 11\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
+  },
+  {
+    "objectID": "iv/endogeneity.html#omitted-variables",
+    "href": "iv/endogeneity.html#omitted-variables",
+    "title": "ECON 626",
+    "section": "Omitted Variables",
+    "text": "Omitted Variables\n\nDesired model \\[\nY_i = X_i'\\beta_0 + W_i'\\gamma_0 + u_i\n\\] Assume \\(\\Er[u] = \\Er[Xu] = \\Er[Wu] = 0\\)\nEstimated model \\[\nY_i = X_i'\\beta + u_i\n\\]\nWhat is \\(\\plim \\hat{\\beta}\\)?"
+  },
+  {
+    "objectID": "iv/endogeneity.html#omitted-variables-1",
+    "href": "iv/endogeneity.html#omitted-variables-1",
+    "title": "ECON 626",
+    "section": "Omitted Variables",
+    "text": "Omitted Variables\n\n\\(\\plim \\hat{\\beta} \\inprob \\beta_0 + \\Er[X_i X_i']^{-1} \\Er[X_i W_i'] \\gamma_0\\)"
+  },
+  {
+    "objectID": "iv/endogeneity.html#omitted-variables-2",
+    "href": "iv/endogeneity.html#omitted-variables-2",
+    "title": "ECON 626",
+    "section": "Omitted Variables",
+    "text": "Omitted Variables\n\nIf \\(\\gamma_0 = 0\\), what is variance of \\(\\hat{\\beta}\\) when \\(W\\) is and is not included in the model?"
+  },
+  {
+    "objectID": "iv/endogeneity.html#errors-in-variables",
+    "href": "iv/endogeneity.html#errors-in-variables",
+    "title": "ECON 626",
+    "section": "Errors in Variables",
+    "text": "Errors in Variables\n\nSee problem set 6"
+  },
+  {
+    "objectID": "iv/endogeneity.html#simultaneity-bias",
+    "href": "iv/endogeneity.html#simultaneity-bias",
+    "title": "ECON 626",
+    "section": "Simultaneity Bias",
+    "text": "Simultaneity Bias\n\nEquilibrium conditions often lead to variables that are simultaneously determined\nDemand and supply: \\[\n\\begin{align*}\nQ_i^D & = P_i \\beta_D + X_D'\\gamma_D + u_{D,i} \\\\\nQ_i^S & = P_i \\beta_S + X_S'\\gamma_S + u_{S,i} \\\\\nQ_i^S & = Q_i^D\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "iv/endogeneity.html#simultaneity-bias-1",
+    "href": "iv/endogeneity.html#simultaneity-bias-1",
+    "title": "ECON 626",
+    "section": "Simultaneity Bias",
+    "text": "Simultaneity Bias\n\nStructural equations: (demand and inverse supply): \\[\n\\begin{align*}\nQ_i & = P_i \\beta_D + X_D'\\gamma_D + u_{D,i} \\\\\nP_i & = Q_i \\frac{1}{\\beta_S}  - X_S'\\gamma_D\\frac{1}{\\beta_S} - u_{S,i}\\frac{1}{\\beta_S} \\\\\n\\end{align*}\n\\]\nReduced form: \\[\n\\begin{align*}\nQ_i = & \\frac{\\beta_D}{\\beta_D - \\beta_S} \\left( -X_{D,i}' \\gamma_D + X_{S,i}'\\gamma_S - u_{D,i} + u_{S,i} \\right) + X_{D,i}'\\gamma_D + u_{D,i} \\\\\nP_i = & \\frac{1}{\\beta_D - \\beta_S}\\left(-X_{D,i}' \\gamma_D + X_{S,i}'\\gamma_S - u_{D,i} + u_{S,i} \\right)\n\\end{align*}\n\\]"
   },
   {
     "objectID": "measure/measure.html#references",
@@ -1320,7 +1369,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Nov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Nov 15, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

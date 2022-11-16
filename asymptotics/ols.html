@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2022-11-15">
+  <meta name="dcterms.date" content="2022-11-16">
   <title>ECON 626 - Asymptotic Theory of Least Squares</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -415,7 +415,7 @@
 <section id="title-slide" data-background-image="birken.jpg" data-background-size="contain" class="center">
   <h1 class="title">Asymptotic Theory of Least Squares</h1>
   <p class="author">Paul Schrimpf</p>
-  <p class="date">11/15/22</p>
+  <p class="date">11/16/22</p>
 </section>
 
 <section id="reading" class="slide level2">
@@ -1037,12 +1037,12 @@ X'y/\sigma^2 \\
 <ul>
 <li><p>Note that <span class="math display">\[
 \begin{align*}
-\hat{\lambda} &amp; = R'(R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r) \\
+\hat{\lambda} &amp; = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r) \\
 &amp; = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R (X'X)^{-1} X'\epsilon)
 \end{align*}
 \]</span></p></li>
 <li><p>so, with homoskedasticity, <span class="math display">\[
-LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R \hat{\lambda} \indist \chi^2_{rank(R)}
+LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R' \hat{\lambda} \indist \chi^2_{rank(R)}
 \]</span></p></li>
 <li><p>Can modify for heteroskedasticity and/or dependence</p></li>
 </ul>
@@ -1052,8 +1052,8 @@ LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R \hat{\lambda} \indist \chi^2_
 <ul>
 <li>If <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span>, twice the log likelihood ratio for <span class="math inline">\(H_0: R\beta = r\)</span>, <span class="math display">\[
 \begin{align*}
-2\max_{b,\sigma} &amp; \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] -
-2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] \\
+2\max_{b,\sigma} &amp; \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] - \\
+&amp; - 2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] = \\
 = &amp; -n\log \hat{\sigma}^2 + n \log\hat{\sigma}_R^2 \\
 = &amp; -n\log\left(\frac{1}{n} \norm{y-X\hat{\beta}}^2\right) + n \log \left(\frac{1}{n}\norm{y - X \hat{\beta}_R}^2 \right) \\
 = &amp; n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta}) X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\

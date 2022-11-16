@@ -452,14 +452,14 @@
     "href": "asymptotics/ols.html#lagrange-multiplier-2",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Lagrange Multiplier",
-    "text": "Lagrange Multiplier\n\nNote that \\[\n\\begin{align*}\n\\hat{\\lambda} & = R'(R\\hat{\\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \\hat{\\beta} - r) \\\\\n& = (R\\hat{\\sigma}_R^2 (X'X)^{-1} R')^{-1} (R (X'X)^{-1} X'\\epsilon)\n\\end{align*}\n\\]\nso, with homoskedasticity, \\[\nLM = \\hat{\\lambda}'R \\hat{\\sigma}^2_R (X'X)^{-1} R \\hat{\\lambda} \\indist \\chi^2_{rank(R)}\n\\]\nCan modify for heteroskedasticity and/or dependence"
+    "text": "Lagrange Multiplier\n\nNote that \\[\n\\begin{align*}\n\\hat{\\lambda} & = (R\\hat{\\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \\hat{\\beta} - r) \\\\\n& = (R\\hat{\\sigma}_R^2 (X'X)^{-1} R')^{-1} (R (X'X)^{-1} X'\\epsilon)\n\\end{align*}\n\\]\nso, with homoskedasticity, \\[\nLM = \\hat{\\lambda}'R \\hat{\\sigma}^2_R (X'X)^{-1} R' \\hat{\\lambda} \\indist \\chi^2_{rank(R)}\n\\]\nCan modify for heteroskedasticity and/or dependence"
   },
   {
     "objectID": "asymptotics/ols.html#likelihood-ratio",
     "href": "asymptotics/ols.html#likelihood-ratio",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Likelihood Ratio",
-    "text": "Likelihood Ratio\n\nIf \\(\\epsilon_i \\sim N(0, \\sigma^2)\\), twice the log likelihood ratio for \\(H_0: R\\beta = r\\), \\[\n\\begin{align*}\n2\\max_{b,\\sigma} & \\left[-\\frac{n}{2} \\log \\sigma^2 + \\sum_{i=1}^n \\frac{-1}{2\\sigma^2} (y_i - X_i b)^2 \\right] -\n2\\max_{b,\\sigma: Rb = r} \\left[-\\frac{n}{2} \\log \\sigma^2 + \\sum_{i=1}^n \\frac{-1}{2\\sigma^2} (y_i - X_i b)^2 \\right] \\\\\n= & -n\\log \\hat{\\sigma}^2 + n \\log\\hat{\\sigma}_R^2 \\\\\n= & -n\\log\\left(\\frac{1}{n} \\norm{y-X\\hat{\\beta}}^2\\right) + n \\log \\left(\\frac{1}{n}\\norm{y - X \\hat{\\beta}_R}^2 \\right) \\\\\n= & n \\log \\left(\\frac{\\frac{1}{n}\\norm{y-X\\hat{\\beta}}^2 + \\frac{1}{n}(\\hat{\\beta}_R-\\hat{\\beta}) X'X (\\hat{\\beta}_R-\\hat{\\beta})}{\\frac{1}{n}\\norm{y-X\\hat{\\beta}}^2}\\right) \\\\\n= & n \\log (1 + W/n) \\indist \\chi^2_{rank(R)} (\\text{with homoskedasticity})\n\\end{align*}\n\\]"
+    "text": "Likelihood Ratio\n\nIf \\(\\epsilon_i \\sim N(0, \\sigma^2)\\), twice the log likelihood ratio for \\(H_0: R\\beta = r\\), \\[\n\\begin{align*}\n2\\max_{b,\\sigma} & \\left[-\\frac{n}{2} \\log \\sigma^2 + \\sum_{i=1}^n \\frac{-1}{2\\sigma^2} (y_i - X_i b)^2 \\right] - \\\\\n& - 2\\max_{b,\\sigma: Rb = r} \\left[-\\frac{n}{2} \\log \\sigma^2 + \\sum_{i=1}^n \\frac{-1}{2\\sigma^2} (y_i - X_i b)^2 \\right] = \\\\\n= & -n\\log \\hat{\\sigma}^2 + n \\log\\hat{\\sigma}_R^2 \\\\\n= & -n\\log\\left(\\frac{1}{n} \\norm{y-X\\hat{\\beta}}^2\\right) + n \\log \\left(\\frac{1}{n}\\norm{y - X \\hat{\\beta}_R}^2 \\right) \\\\\n= & n \\log \\left(\\frac{\\frac{1}{n}\\norm{y-X\\hat{\\beta}}^2 + \\frac{1}{n}(\\hat{\\beta}_R-\\hat{\\beta}) X'X (\\hat{\\beta}_R-\\hat{\\beta})}{\\frac{1}{n}\\norm{y-X\\hat{\\beta}}^2}\\right) \\\\\n= & n \\log (1 + W/n) \\indist \\chi^2_{rank(R)} (\\text{with homoskedasticity})\n\\end{align*}\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#reading",
@@ -730,49 +730,49 @@
   {
     "objectID": "iv/endogeneity.html#reading",
     "href": "iv/endogeneity.html#reading",
-    "title": "ECON 626",
+    "title": "Endogeneity",
     "section": "Reading",
     "text": "Reading\n\nRequired: Song (2021) chapter 11\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
   },
   {
     "objectID": "iv/endogeneity.html#omitted-variables",
     "href": "iv/endogeneity.html#omitted-variables",
-    "title": "ECON 626",
+    "title": "Endogeneity",
     "section": "Omitted Variables",
     "text": "Omitted Variables\n\nDesired model \\[\nY_i = X_i'\\beta_0 + W_i'\\gamma_0 + u_i\n\\] Assume \\(\\Er[u] = \\Er[Xu] = \\Er[Wu] = 0\\)\nEstimated model \\[\nY_i = X_i'\\beta + u_i\n\\]\nWhat is \\(\\plim \\hat{\\beta}\\)?"
   },
   {
     "objectID": "iv/endogeneity.html#omitted-variables-1",
     "href": "iv/endogeneity.html#omitted-variables-1",
-    "title": "ECON 626",
+    "title": "Endogeneity",
     "section": "Omitted Variables",
     "text": "Omitted Variables\n\n\\(\\plim \\hat{\\beta} \\inprob \\beta_0 + \\Er[X_i X_i']^{-1} \\Er[X_i W_i'] \\gamma_0\\)"
   },
   {
     "objectID": "iv/endogeneity.html#omitted-variables-2",
     "href": "iv/endogeneity.html#omitted-variables-2",
-    "title": "ECON 626",
+    "title": "Endogeneity",
     "section": "Omitted Variables",
     "text": "Omitted Variables\n\nIf \\(\\gamma_0 = 0\\), what is variance of \\(\\hat{\\beta}\\) when \\(W\\) is and is not included in the model?"
   },
   {
     "objectID": "iv/endogeneity.html#errors-in-variables",
     "href": "iv/endogeneity.html#errors-in-variables",
-    "title": "ECON 626",
+    "title": "Endogeneity",
     "section": "Errors in Variables",
     "text": "Errors in Variables\n\nSee problem set 6"
   },
   {
     "objectID": "iv/endogeneity.html#simultaneity-bias",
     "href": "iv/endogeneity.html#simultaneity-bias",
-    "title": "ECON 626",
+    "title": "Endogeneity",
     "section": "Simultaneity Bias",
     "text": "Simultaneity Bias\n\nEquilibrium conditions often lead to variables that are simultaneously determined\nDemand and supply: \\[\n\\begin{align*}\nQ_i^D & = P_i \\beta_D + X_D'\\gamma_D + u_{D,i} \\\\\nQ_i^S & = P_i \\beta_S + X_S'\\gamma_S + u_{S,i} \\\\\nQ_i^S & = Q_i^D\n\\end{align*}\n\\]"
   },
   {
     "objectID": "iv/endogeneity.html#simultaneity-bias-1",
     "href": "iv/endogeneity.html#simultaneity-bias-1",
-    "title": "ECON 626",
+    "title": "Endogeneity",
     "section": "Simultaneity Bias",
     "text": "Simultaneity Bias\n\nStructural equations: (demand and inverse supply): \\[\n\\begin{align*}\nQ_i & = P_i \\beta_D + X_D'\\gamma_D + u_{D,i} \\\\\nP_i & = Q_i \\frac{1}{\\beta_S}  - X_S'\\gamma_D\\frac{1}{\\beta_S} - u_{S,i}\\frac{1}{\\beta_S} \\\\\n\\end{align*}\n\\]\nReduced form: \\[\n\\begin{align*}\nQ_i = & \\frac{\\beta_D}{\\beta_D - \\beta_S} \\left( -X_{D,i}' \\gamma_D + X_{S,i}'\\gamma_S - u_{D,i} + u_{S,i} \\right) + X_{D,i}'\\gamma_D + u_{D,i} \\\\\nP_i = & \\frac{1}{\\beta_D - \\beta_S}\\left(-X_{D,i}' \\gamma_D + X_{S,i}'\\gamma_S - u_{D,i} + u_{S,i} \\right)\n\\end{align*}\n\\]"
   },
@@ -1369,7 +1369,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Nov 15, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Nov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Endogeneity"
 author: "Paul Schrimpf"
 date: last-modified
 format:
@@ -18,8 +18,6 @@ format:
       data-background-image: "athelstan.jpg"
       data-background-size: contain
 bibliography: ../626.bib
-
-jupyter: julia-1.8
 ---
 
 
@@ -86,7 +84,7 @@ $$
 $$
 \begin{align*}
 Q_i & = P_i \beta_D + X_D'\gamma_D + u_{D,i} \\
-P_i = & Q_i \frac{1}{\beta_S}  - X_S'\gamma_D\frac{1}{\beta_S} - u_{S,i}\frac{1}{\beta_S} \\
+P_i & = Q_i \frac{1}{\beta_S}  - X_S'\gamma_D\frac{1}{\beta_S} - u_{S,i}\frac{1}{\beta_S} \\
 \end{align*}
 $$
 - Reduced form:

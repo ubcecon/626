@@ -594,14 +594,14 @@ $$
 - Note that
 $$
 \begin{align*}
-\hat{\lambda} & = R'(R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r) \\
+\hat{\lambda} & = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r) \\
 & = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R (X'X)^{-1} X'\epsilon)
 \end{align*}
 $$
 
 - so, with homoskedasticity,
 $$
-LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R \hat{\lambda} \indist \chi^2_{rank(R)}
+LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R' \hat{\lambda} \indist \chi^2_{rank(R)}
 $$
 
 - Can modify for heteroskedasticity and/or dependence
@@ -611,8 +611,8 @@ $$
 - If $\epsilon_i \sim N(0, \sigma^2)$, twice the log likelihood ratio for $H_0: R\beta = r$,
 $$
 \begin{align*}
-2\max_{b,\sigma} & \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] -
-2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] \\
+2\max_{b,\sigma} & \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] - \\
+& - 2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] = \\
 = & -n\log \hat{\sigma}^2 + n \log\hat{\sigma}_R^2 \\
 = & -n\log\left(\frac{1}{n} \norm{y-X\hat{\beta}}^2\right) + n \log \left(\frac{1}{n}\norm{y - X \hat{\beta}_R}^2 \right) \\
 = & n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta}) X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\

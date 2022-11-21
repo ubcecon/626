@@ -777,6 +777,146 @@
     "text": "Simultaneity Bias\n\nStructural equations: (demand and inverse supply): \\[\n\\begin{align*}\nQ_i & = P_i \\beta_D + X_D'\\gamma_D + u_{D,i} \\\\\nP_i & = Q_i \\frac{1}{\\beta_S}  - X_S'\\gamma_D\\frac{1}{\\beta_S} - u_{S,i}\\frac{1}{\\beta_S} \\\\\n\\end{align*}\n\\]\nReduced form: \\[\n\\begin{align*}\nQ_i = & \\frac{\\beta_D}{\\beta_D - \\beta_S} \\left( -X_{D,i}' \\gamma_D + X_{S,i}'\\gamma_S - u_{D,i} + u_{S,i} \\right) + X_{D,i}'\\gamma_D + u_{D,i} \\\\\nP_i = & \\frac{1}{\\beta_D - \\beta_S}\\left(-X_{D,i}' \\gamma_D + X_{S,i}'\\gamma_S - u_{D,i} + u_{S,i} \\right)\n\\end{align*}\n\\]"
   },
   {
+    "objectID": "iv/iv.html#reading",
+    "href": "iv/iv.html#reading",
+    "title": "Instrumental Variables Estimation",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 12\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{E}_n}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
+  },
+  {
+    "objectID": "iv/iv.html#model",
+    "href": "iv/iv.html#model",
+    "title": "Instrumental Variables Estimation",
+    "section": "Model",
+    "text": "Model\n\\[\nY_i = \\underbrace{X_i}_{\\in \\R^k}' \\beta_0 + u_i\n\\]\n\n\\(\\Er[u_i] = 0\\), but \\(\\Er[X_i u_i] \\neq 0\\)\nInstrument \\(Z_i \\in \\R^d\\) s.t.\n\nRelevant \\(rank(\\Er[Z_i X_i']) = k\\)\nExogenous \\(\\Er[Z_i u_i] = 0\\)"
+  },
+  {
+    "objectID": "iv/iv.html#identification",
+    "href": "iv/iv.html#identification",
+    "title": "Instrumental Variables Estimation",
+    "section": "Identification",
+    "text": "Identification\n\nExogeneity implies \\[\n\\Er[Z_i Y_i] = \\Er[Z_i X_i']\\beta_0\n\\]\n\n\n\nIf \\(d=k\\) (exactly identified), then relevance implies \\(\\Er[Z_i X_i']\\) invertible, so \\[\n\\beta_0 = \\Er[Z_i X_i']^{-1} \\Er[Z_i Y_i]\n\\]\n\n\n\n\nFor \\(d>k\\), relevance implies \\(\\Er[Z_iX_i']'\\Er[Z_iX_i']\\) invertible, so \\[\n\\beta_0 = (\\Er[Z_i X_i]' \\Er[Z_i X_i'])^{-1} \\Er[Z_i X_i']' \\Er[Z_i Y_i]\n\\]"
+  },
+  {
+    "objectID": "iv/iv.html#method-of-moments-estimation",
+    "href": "iv/iv.html#method-of-moments-estimation",
+    "title": "Instrumental Variables Estimation",
+    "section": "Method of Moments Estimation",
+    "text": "Method of Moments Estimation\n\nWe assume \\(\\Er[Z_i u_i] = 0\\), so \\[\n\\Er[Z_i(Y_i - X_i'\\beta_0)] = 0\n\\]\nEstimate by replacing \\(\\Er\\) with \\(\\frac{1}{n}\\sum_{i=1}n\\)\n\\(d\\) equations, \\(k \\geq d\\) unknowns, so find \\[\n\\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\hat{\\beta}^{IV}) \\approx 0\n\\] by solving \\[\n\\begin{align*}\n\\hat{\\beta}^{IV} & = \\mathrm{arg}\\min_\\beta \\norm{ \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta }_{W^{1/2}}^2 \\\\\n& = \\mathrm{arg}\\min_\\beta \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta\\right)' W \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta\\right)\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "iv/iv.html#method-of-moments-estimation-1",
+    "href": "iv/iv.html#method-of-moments-estimation-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Method of Moments Estimation",
+    "text": "Method of Moments Estimation\n\\[\n\\hat{\\beta}^{IV}\n= \\mathrm{arg}\\min_\\beta \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta\\right)' W \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta\\right)\n\\]\n\n\n\\(\\hat{\\beta}^{IV}_W = (X'Z W Z'W)^{-1}(X'Z W Z'y)\\)"
+  },
+  {
+    "objectID": "iv/iv.html#consistency",
+    "href": "iv/iv.html#consistency",
+    "title": "Instrumental Variables Estimation",
+    "section": "Consistency",
+    "text": "Consistency\n\\[\n\\begin{align*}\n\\hat{\\beta}^{IV}_W - \\beta_0 = & (X'Z W Z'W)^{-1}(X'Z W Z'u) \\\\\n= & \\left[ \\left(\\frac{1}{n}\\sum_{i=1}^n X_i Z_i'\\right) W \\left(\\frac{1}{n}\\sum_{i=1}^n Z_i X_i'\\right) \\right]^{-1}\n    \\left(\\frac{1}{n}\\sum_{i=1}^n X_i Z_i'\\right) W \\left(\\frac{1}{n}\\sum_{i=1}^n Z_i u_i\\right)\n\\end{align*}\n\\]\n\nConsistent if LLN applies to \\(\\frac{1}{n}\\sum_{i=1}^n Z_i X_i'\\) and \\(\\frac{1}{n}\\sum_{i=1}^n Z_i u_i\\)\n\nE.g. if i.i.d. with \\(\\Er[\\norm{X_i}^4]\\) and \\(\\Er[\\norm{Z_i}^4]\\) finite and \\(\\Er[u_i^2|Z_i=z] = \\sigma^2\\) 1\n\n\nthese are stronger than needed, for LLN, but needed for CLT"
+  },
+  {
+    "objectID": "iv/iv.html#asymptotic-normality",
+    "href": "iv/iv.html#asymptotic-normality",
+    "title": "Instrumental Variables Estimation",
+    "section": "Asymptotic Normality",
+    "text": "Asymptotic Normality\n\\[\n\\begin{align*}\n\\hat{\\beta}^{IV}_W - \\beta_0 = & (X'Z W Z'W)^{-1}(X'Z W Z'u) \\\\\n= & \\left[ \\left(\\frac{1}{n}\\sum_{i=1}^n X_i Z_i'\\right) W \\left(\\frac{1}{n}\\sum_{i=1}^n Z_i X_i'\\right) \\right]^{-1}\n    \\left(\\frac{1}{n}\\sum_{i=1}^n X_i Z_i'\\right) W \\left(\\frac{1}{n}\\sum_{i=1}^n Z_i u_i\\right)\n\\end{align*}\n\\]\n\n\\(\\sqrt{n}(\\hat{\\beta}^{IV} - \\beta_0) \\indist N(0, V)\\) if LLN applies to \\(\\frac{1}{n}\\sum_{i=1}^n Z_i X_i'\\) and CLT to \\(\\frac{1}{\\sqrt{n}}\\sum_{i=1}^n Z_i u_i\\)\n\nE.g. if i.i.d. with \\(\\Er[\\norm{X_i}^4]\\) and \\(\\Er[\\norm{Z_i}^4]\\) finite and \\(\\Er[u_i^2|Z_i=z] = \\sigma^2\\)\nthen \\(\\frac{1}{\\sqrt{n}} \\sum Z_i u_i \\indist N(0, \\sigma^2 \\Er[Z_iZ_i'])\\)\n\\(V = \\sigma^2 (\\Er[Z_iX_i]' W \\Er[Z_iX_i'])^{-1} (\\Er[Z_iX_i']' W \\Er[Z_i Z_i'] W \\Er[Z_i X_i']) (\\Er[Z_iX_i]' W \\Er[Z_iX_i'])^{-1}\\)"
+  },
+  {
+    "objectID": "iv/iv.html#optimal-w",
+    "href": "iv/iv.html#optimal-w",
+    "title": "Instrumental Variables Estimation",
+    "section": "Optimal \\(W\\)",
+    "text": "Optimal \\(W\\)\n\n\n\nTheorem 2.1\n\n\n\\(W^* = \\Er[Z_iZ_i']^{-1}\\) minimizes the asymptotic variance of \\(\\hat{\\beta}^{IV}_W\\)\n\n\n\n\nEstimate \\(\\hat{W}^* = \\left(\\frac{1}{n} Z'Z\\right)^{-1}\\) \\[\n\\hat{\\beta}^{IV}  = (X'Z (Z'Z)^{-1} Z' X)^{-1} (X'Z(Z'Z)^{-1}Z'y)\n\\]"
+  },
+  {
+    "objectID": "iv/iv.html#two-stage-least-squares",
+    "href": "iv/iv.html#two-stage-least-squares",
+    "title": "Instrumental Variables Estimation",
+    "section": "Two Stage Least Squares",
+    "text": "Two Stage Least Squares\n\\[\n\\begin{align*}\n\\hat{\\beta}^{IV} & = (X'Z (Z'Z)^{-1} Z' X)^{-1} (X'Z(Z'Z)^{-1}Z'y) \\\\\n& = (X'P_Z X)^{-1} (X' P_Z y) \\\\\n& = ((P_Z X)'(P_Z X))^{-1} ((P_Z X)'y)\n\\end{align*}\n\\]\n\nRegress \\(X\\) on \\(Z\\), let \\(\\hat{X} = P_Z X\\)\nRegress \\(y\\) on \\(\\hat{X}\\)"
+  },
+  {
+    "objectID": "iv/iv.html#testing-overidentifying-restrictions",
+    "href": "iv/iv.html#testing-overidentifying-restrictions",
+    "title": "Instrumental Variables Estimation",
+    "section": "Testing Overidentifying Restrictions",
+    "text": "Testing Overidentifying Restrictions\n\n\\(H_0: \\Er[Z_i(Y_i - X_i'\\beta_0)] = 0\\)\n\\(k=d\\), have \\(\\En[Z_i(Y_i - X_i'\\hat{\\beta}^{IV})] = 0\\) exactly, and \\(H_0\\) is untestable\n\\(k>d\\), can test\nTest statistic \\[\nJ = n \\left(\\frac{1}{n} Z'(y-X\\hat{\\beta}^{IV}) \\right)' \\hat{C} \\left(\\frac{1}{n} Z'(y-X\\hat{\\beta}^{IV}) \\right)\n\\]"
+  },
+  {
+    "objectID": "iv/iv.html#testing-overidentifying-restrictions-1",
+    "href": "iv/iv.html#testing-overidentifying-restrictions-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Testing Overidentifying Restrictions",
+    "text": "Testing Overidentifying Restrictions\n\n\n\nTheorem 2.3\n\n\nLet \\(\\hat{C} = \\left(\\frac{1}{n} \\sum_{i=1}^n Z_iZ_i' \\hat{u}_i^2\\right)^{-1}\\). Assume:\n\n\\(\\Er[ \\norm{X_i}^4] + \\Er[\\norm{Z_i}^4] < \\infty\\)\n\\(\\Er[u|Z] = \\sigma^2\\)\n\\(\\Er[Z_i Z_i']\\) is positive definite\n\nThen, \\[\nJ \\indist \\chi^2_{d-k}\n\\]"
+  },
+  {
+    "objectID": "iv/iv.html#over-identifying-test",
+    "href": "iv/iv.html#over-identifying-test",
+    "title": "Instrumental Variables Estimation",
+    "section": "Over-identifying Test",
+    "text": "Over-identifying Test\n\nOnly has power when instruments have different covariances with \\(u\\)\n\n\n\nCode\nusing PlotlyLight, Distributions, LinearAlgebra, Cobweb\nfunction sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))\n  zu = randn(n,d)\n  Z = randn(n,d) + mapslices(x->x.*EZu, zu, dims=2)\n  xu = randn(n)\n  X = Z*gamma + xu*Exu\n  u = vec(sum(zu,dims=2) + xu + randn(n))\n  y = X*beta + u\n  return(y,X,Z)\nend\n\nbiv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \\ (X'*Z*inv(Z'*Z)*Z'*y)\n\nfunction J(y,X,Z)\n  n = length(y)\n  bhat = biv(y,X,Z)\n  uhat = y - X*bhat\n  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))\n  Zu = Z'*uhat/n\n  J = n*Zu'*C*Zu\nend\n\nS = 1_000\nn = 100\nj0s = [J(sim(n)...) for _ in 1:S]\nj1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]\nj2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]\n\nplt = Plot()\nplt(x=j0s, type=\"histogram\", name=\"E[Zu] = 0\")\nplt(x=j1s, type=\"histogram\", name=\"E[Zu] = [0,0,3]\")\nfig=plt(x=j2s, type=\"histogram\", name=\"E[Zu] = [1,1,1]\")\nCobweb.save(Page(fig), \"J.html\")\nHTML(\"<iframe src=\\\"J.html\\\" width=\\\"1000\\\"  height=\\\"650\\\"></iframe>\\n\")"
+  },
+  {
+    "objectID": "iv/iv.html#simulated-distribution-of-hatbetaiv",
+    "href": "iv/iv.html#simulated-distribution-of-hatbetaiv",
+    "title": "Instrumental Variables Estimation",
+    "section": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)",
+    "text": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)\n\nFirst stage \\(X = Z\\gamma + e\\), simulation with \\(\\Er[Z_i Z_i] = I\\) and \\(e \\sigma N(0,0.25)\\), so first stage \\(t \\approx \\sqrt{n}\\gamma/0.5\\)\nDistribution of \\(\\hat{\\beta}^IV\\) with \\(\\gamma = 1\\), \\(\\gamma=0.2\\), and \\(\\gamma=0.1\\)\n\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n  b = biv(y,X,Z)\n  u = y - X*b\n  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n  (b - b0)./sqrt.(diag(V))\nend\nn = 100\nS = 10_000\nplt = Plot()\nfor g in [1, 0.2, 0.1]\n  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]\n  # crop outliers so figure looks okay\n  b .= max.(b, -4)\n  b .= min.(b, 4)\n  plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nCobweb.save(Page(fig), \"weak.html\")\nHTML(\"<iframe src=\\\"weak.html\\\" width=\\\"1000\\\"  height=\\\"650\\\"></iframe>\\n\")"
+  },
+  {
+    "objectID": "iv/iv.html#weak-instruments-1",
+    "href": "iv/iv.html#weak-instruments-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Weak Instruments",
+    "text": "Weak Instruments\n\nLessons from simulation:\n\nWhen \\(\\Er[Z_i X_i']\\) is small, usual asymptotic distribution is a poor approximation for the finite sample distribution of \\(\\hat{\\beta}^{IV}\\)\nThe approximation can be poor even when \\(H_0: \\gamma = 0\\) in \\(X = Z\\gamma + e\\) would be rejected\n\nCan we find a better approximation to the finite sample distribution when \\(\\Er[Z_i X_i']\\) is small?"
+  },
+  {
+    "objectID": "iv/iv.html#irrelevant-instrument-asymptotics",
+    "href": "iv/iv.html#irrelevant-instrument-asymptotics",
+    "title": "Instrumental Variables Estimation",
+    "section": "Irrelevant Instrument Asymptotics",
+    "text": "Irrelevant Instrument Asymptotics\n\nSuppose \\(\\Er[Z_i X_i'] = 0\\)\nCLT \\[\n\\frac{1}{\\sqrt{n}} \\begin{pmatrix}\nvec(Z'X) \\\\\nZ'u\n\\end{pmatrix} \\indist \\begin{pmatrix} \\zeta_1 \\\\ \\zeta_2 \\end{pmatrix} \\sim N(0, \\Sigma)\n\\]\nThen \\[\n\\begin{align*}\n\\hat{\\beta}^{IV} - \\beta_0 = & \\left((Z'X)'(Z'Z)^{-1}(Z'X)\\right)^{-1} (Z'X)'(Z'Z)^{-1}(Z'u) \\\\\n\\indist & \\left(H' \\Er[Z_i Z_i]^{-1} H\\right)^{-1} \\left(H \\Er[Z_i Z_i']^{-1} \\zeta_2\\right)\n\\end{align*}\n\\] where \\(vec(H) = \\zeta_1\\)"
+  },
+  {
+    "objectID": "iv/iv.html#weak-instrument-asymptotics",
+    "href": "iv/iv.html#weak-instrument-asymptotics",
+    "title": "Instrumental Variables Estimation",
+    "section": "Weak Instrument Asymptotics",
+    "text": "Weak Instrument Asymptotics\n\nLet \\(\\Er[Z_i X_i'] = \\frac{1}{\\sqrt{n}} \\Gamma\\)\nThen \\(\\frac{1}{\\sqrt{n}} Z' X = \\Gamma + H\\)\nand \\[\n\\hat{\\beta}^{IV} - \\beta_0 \\indist\n\\left((\\Gamma + H)' \\Er[Z_i Z_i]^{-1} H\\right)^{-1} \\left((\\Gamma + H) \\Er[Z_i Z_i']^{-1} \\zeta_2\\right)\n\\]\n\\(\\Gamma\\) cannot be estimated, but we can try to develop estimators and inference methods for \\(\\beta\\) that work for any \\(\\Gamma\\)"
+  },
+  {
+    "objectID": "iv/iv.html#testing-for-relevance",
+    "href": "iv/iv.html#testing-for-relevance",
+    "title": "Instrumental Variables Estimation",
+    "section": "Testing for Relevance",
+    "text": "Testing for Relevance\n\nModel , assume \\(\\Er[W_i u_i] = 0\\) and \\(\\Er[Z_i u_i] = 0\\) \\[\nY_i = X_i'\\beta + W_i'\\beta_W + u_i\n\\]\nFirst stage \\[\nX_i = Z_i' \\pi_z + W_i' \\pi_W + \\nu_i\n\\]\nCan test \\(H_0 : \\pi_z = 0\\) vs \\(H_1 : \\pi_z \\neq 0\\) using F-test\n\nWith one instrument, \\(F = t^2\\)\nRejecting \\(H_0\\) at usual significance level is not enough for \\(\\hat{\\beta}^{IV}\\) to be well aproximated by its asymptotic normal distribution"
+  },
+  {
+    "objectID": "iv/iv.html#testing-for-relevance-1",
+    "href": "iv/iv.html#testing-for-relevance-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Testing for Relevance",
+    "text": "Testing for Relevance\n\nStock and Yogo (2002) (table from Stock, Wright, and Yogo (2002)): first stage F > threshold \\(\\approx 10\\) implies \\(Bias(\\hat{\\beta}^{IV}) < 10\\% Bias(\\hat{\\beta}^{OLS})\\) and size of 5% test < 15%\n\n\n\n\nswy-tab1.png\n\n\n\nLee et al. (2022) : F\\(>>10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F>10\\) threshold, not that Stock and Yogo (2002) is wrong."
+  },
+  {
+    "objectID": "iv/iv.html#identification-robust-inference",
+    "href": "iv/iv.html#identification-robust-inference",
+    "title": "Instrumental Variables Estimation",
+    "section": "Identification Robust Inference",
+    "text": "Identification Robust Inference\n\nOpinion: always do this, testing for relevance not needed\nTest \\(H_0: \\beta = \\beta_0\\) vs \\(\\beta \\neq \\beta_0\\) with Anderson-Rubin test \\[\nAR(\\beta) = n\\left(\\frac{1}{n} Z'(y-X\\beta) \\right)' \\Sigma(\\beta)^{-1} \\left(\\frac{1}{n} Z'(y - X\\beta)\\right)\n\\] where \\(\\Sigma(\\beta) = \\frac{1}{n} \\sum_{i=1}^n Z_iZ_i' (y_i - X_i'\\beta)^2\\)\n\\(\\AR(\\beta) \\indist \\chi^2_d\\) (under either weak instrument or usual asymptotics)\nSee my other notes for simulations and references"
+  },
+  {
+    "objectID": "iv/iv.html#identification-robust-inference-1",
+    "href": "iv/iv.html#identification-robust-inference-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Identification Robust Inference",
+    "text": "Identification Robust Inference\n\nTwo downsides of AR test:\n\nAR statistic is similar to over-identifying test (\\(AR(\\hat{\\beta}^{IV}) = J\\))\n\n\nSmall (even empty) confidence region if model is misspecified\n\n\nOnly gives confidence region for all of \\(\\beta\\), not confidence intervals for single co-ordinates\n\nKleibergen’s LM and Moreira CLR tests address 1, see my other notes for simulations and references\ntF test from Lee et al. (2022) addresses 2"
+  },
+  {
     "objectID": "measure/measure.html#references",
     "href": "measure/measure.html#references",
     "title": "Measure",
@@ -1369,7 +1509,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Nov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Nov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

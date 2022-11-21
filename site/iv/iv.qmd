@@ -1,0 +1,359 @@
+---
+title: "Instrumental Variables Estimation"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1575
+    height: 1050
+    min-scale: 0.1
+    max-scale: 3.0
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 2
+      chalk-width: 2
+      chalk-effect: 0.0
+    title-slide-attributes:
+      data-background-image: "million.jpg"
+      data-background-size: contain
+bibliography: ../626.bib
+---
+
+
+## Reading
+
+- Required: **@song2021 chapter 12**
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+$$
+
+# Instrumental Variables
+
+## Model
+
+$$ 
+Y_i = \underbrace{X_i}_{\in \R^k}' \beta_0 + u_i
+$$
+- $\Er[u_i] = 0$, but $\Er[X_i u_i] \neq 0$
+- Instrument $Z_i \in \R^d$ s.t.
+  1. Relevant $rank(\Er[Z_i X_i']) = k$
+  2. Exogenous $\Er[Z_i u_i] = 0$
+
+## Identification
+
+- Exogeneity implies
+$$
+\Er[Z_i Y_i] = \Er[Z_i X_i']\beta_0
+$$
+
+::: {.fragment}
+- If $d=k$ (exactly identified), then relevance implies $\Er[Z_i X_i']$ invertible, so
+$$
+\beta_0 = \Er[Z_i X_i']^{-1} \Er[Z_i Y_i]
+$$
+:::
+
+:::{{.fragment}}
+- For $d>k$, relevance implies $\Er[Z_iX_i']'\Er[Z_iX_i']$ invertible, so
+$$
+\beta_0 = (\Er[Z_i X_i]' \Er[Z_i X_i'])^{-1} \Er[Z_i X_i']' \Er[Z_i Y_i]
+$$
+:::
+
+# Estimation
+
+## Method of Moments Estimation
+
+- We assume $\Er[Z_i u_i] = 0$, so
+$$
+\Er[Z_i(Y_i - X_i'\beta_0)] = 0
+$$
+- Estimate by replacing $\Er$ with $\frac{1}{n}\sum_{i=1}n$ 
+- $d$ equations, $k \geq d$ unknowns, so find
+$$
+\frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\hat{\beta}^{IV} \approx 0
+$$
+by solving
+$$
+\begin{align*}
+\hat{\beta}{IV} & = \argmin_\beta \norm{ \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta }_{W^{1/2}}^2 \\ 
+& = \mathrm{arg}\min_\beta \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)' W \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)
+\end{align*}
+$$
+
+## Method of Moments Estimation
+
+$$
+\hat{\beta}^{IV} 
+= \mathrm{arg}\min_\beta \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)' W \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)
+$$
+
+:::{.fragment}
+- $\hat{\beta}^{IV}_W = (X'Z W Z'W)^{-1}(X'Z W Z'y)$
+:::
+
+# Asymptotic Properties
+
+## Consistency
+
+$$
+\begin{align*}
+\hat{\beta}^{IV}_W - \beta_0 = & (X'Z W Z'W)^{-1}(X'Z W Z'u) \\ 
+= & \left[ \left(\frac{1}{n}\sum_{i=1}^n X_i Z_i'\right) W \left(\frac{1}{n}\sum_{i=1}^n Z_i X_i'\right) \right]^{-1}
+    \left(\frac{1}{n}\sum_{i=1}^n X_i Z_i'\right) W \left(\frac{1}{n}\sum_{i=1}^n Z_i u_i\right) 
+\end{align*}
+$$
+
+- Consistent if LLN applies to $\frac{1}{n}\sum_{i=1}^n Z_i X_i'$ and $\frac{1}{n}\sum_{i=1}^n Z_i u_i$
+   - E.g. if i.i.d. with $\Er[\norm{X_i}^4]$ and $\Er[\norm{Z_i}^4]$ finite and $\Er[u_i^2|Z_i=z] = \sigma^2$ ^[these are stronger than needed, for LLN, but needed for CLT]
+
+## Asymptotic Normality
+
+$$
+\begin{align*}
+\hat{\beta}^{IV}_W - \beta_0 = & (X'Z W Z'W)^{-1}(X'Z W Z'u) \\ 
+= & \left[ \left(\frac{1}{n}\sum_{i=1}^n X_i Z_i'\right) W \left(\frac{1}{n}\sum_{i=1}^n Z_i X_i'\right) \right]^{-1}
+    \left(\frac{1}{n}\sum_{i=1}^n X_i Z_i'\right) W \left(\frac{1}{n}\sum_{i=1}^n Z_i u_i\right) 
+\end{align*}
+$$
+
+- $\sqrt{n}(\hat{\beta}^{IV} - \beta_0) \indist N(0, V)$ if LLN applies to $\frac{1}{n}\sum_{i=1}^n Z_i X_i'$ and CLT to $\frac{1}{\sqrt{n}}\sum_{i=1}^n Z_i u_i$
+  - E.g. if i.i.d. with $\Er[\norm{X_i}^4]$ and $\Er[\norm{Z_i}^4]$ finite and $\Er[u_i^2|Z_i=z] = \sigma^2$ 
+  - then $\frac{1}{\sqrt{n}} \sum Z_i u_i \indist N(0, \sigma^2 \Er[Z_iZ_i'])$
+  - $V = \sigma^2 (\Er[Z_iX_i]' W \Er[Z_iX_i'])^{-1} (\Er[Z_iX_i']' W \Er[Z_i Z_i'] W \Er[Z_i X_i']) (\Er[Z_iX_i]' W \Er[Z_iX_i'])^{-1}$
+
+## Optimal $W$
+
+::: {.callout-warning icon=false}
+
+### Theorem 2.1 
+
+$W^* = \Er[Z_iZ_i']^{-1}$ minimizes the asymptotic variance of $\hat{\beta}^{IV}_W$
+
+:::
+
+- Estimate $\hat{W}^* = \left(\frac{1}{n} Z'Z)^{-1}$
+$$ 
+\hat{\beta}^{IV}  = (X'Z (Z'Z)^{-1} Z' X)^{-1} (X'Z(Z'Z)^{-1}Z'y) 
+$$
+
+## Two Stage Least Squares
+
+$$
+\begin{align*}
+\hat{\beta}^{IV} & = (X'Z (Z'Z)^{-1} Z' X)^{-1} (X'Z(Z'Z)^{-1}Z'y) \\
+& = (X'P_Z X)^{-1} (X' P_Z y) \\
+& = ((P_Z X)'(P_Z X))^{-1} ((P_Z X)'y)
+\end{align*}
+$$
+
+1. Regress $X$ on $Z$, let $\hat{X} = P_Z X$
+2. Regress $y$ on $\hat{X}$
+
+## Testing Overidentifying Restrictions
+
+- $H_0: \Er[Z_i(Y_i - X_i'\beta_0)] = 0$
+- $k=d$, have \En[Z_i(Y_i - X_i'\hat{\beta}^{IV})] = 0$ exactly, and $H_0$ is untestable
+- $k>d$, can test 
+- Test statistic
+$$
+J = n \left(\frac{1}{n} Z'(y-X\hat{\beta}^{IV}) \right)' \hat{C} \left(\frac{1}{n} Z'(y-X\hat{\beta}^{IV}) \right)
+$$
+
+## Testing Overidentifying Restrictions
+
+::: {.callout-warning icon=false}
+
+### Theorem 2.3
+
+Let $\hat{C} = \left(\frac{1}{n} \sum_{i=1}^n Z_iZ_i' \hat{u}_i^2\right)^{-1}$. Assume:
+1. $\Er[ \norm{X_i}^4]  + \Er[\norm{Z_i}^4] < \infty$
+2. $\Er[u|Z] = \sigma^2$
+3. $\Er[Z_i Z_i']$ is positive definite
+Then,
+$$ 
+J \indist \chi^2_{d-k}
+$$
+
+:::
+
+## Over-identifying Test 
+
+- Only has power when instruments have different covariances with $u$
+
+```{julia}
+#| echo: true
+#| code-fold: true
+
+using PlotlyLight, Distributions, LinearAlgebra, Cobweb
+function sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))
+  zu = randn(n,d)
+  Z = randn(n,d) + mapslices(x->x.*EZu, zu, dims=2)
+  xu = randn(n)
+  X = Z*gamma + xu*Exu
+  u = vec(sum(zu,dims=2) + xu + randn(n))
+  y = X*beta + u
+  return(y,X,Z)
+end
+
+biv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \ (X'*Z*inv(Z'*Z)*Z'*y)
+
+function J(y,X,Z) 
+  n = length(y)
+  bhat = biv(y,X,Z)
+  uhat = y - X*bhat
+  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))
+  Zu = Z'*uhat/n
+  J = n*Zu'*C*Zu
+end
+
+S = 1_000
+j0s = [J(sim(n)...) for _ in 1:S]
+j1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]
+j2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]
+
+plt = Plot()
+plt(x=j0s, type="histogram", name="E[Zu] = 0")
+plt(x=j1s, type="histogram", name="E[Zu] = [0,0,3]")
+fig=plt(x=j2s, type="histogram", name="E[Zu] = [1,1,1]")
+Cobweb.save(Page(fig), "J.html")
+HTML("<iframe src=\"J.html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+# Weak Instruments
+
+## Simulated Distribution of $\hat{\beta}^{IV}$
+
+- First stage $X = Z\gamma + e$, simulation with 
+ $\Er[Z_i Z_i] = I$ and $e \sigma N(0,0.25)$, so first stage $t \approx \sqrt{n}\gamma/0.5$
+
+- Distribution of $\hat{\beta}^IV$ with $\gamma = 1$, $\gamma=0.2$, and $\gamma=0.1$
+
+```{julia}
+#| echo: true
+#| code-fold: true
+function tiv(y,X,Z; b0 = ones(size(X,2))) 
+  b = biv(y,X,Z)
+  u = y - X*b
+  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)
+  (b - b0)./sqrt.(diag(V))
+end
+n = 100
+S = 10_000
+plt = Plot()
+for g in [1, 0.2, 0.1]
+  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]
+  # crop outliers so figure looks okay
+  b .= max.(b, -4)
+  b .= min.(b, 4)
+  plt(x=b, type="histogram",name="γ=$g")
+end
+fig=plt(x=randn(S), type="histogram", name="Normal")
+
+Cobweb.save(Page(fig), "weak.html")
+HTML("<iframe src=\"weak.html\" width=\"1000\"  height=\"650\"></iframe>\n")
+```
+
+## Weak Instruments
+
+- Lessons from simulation:
+  - When $\Er[Z_i X_i']$ is small, usual asymptotic distribution is a poor approximation for the finite sample distribution of 
+  $\hat{\beta}^{IV}$
+  - The approximation can be poor even when $H_0: \gamma = 0$ in $X = Z\gamma + e$ would be rejected 
+
+- Can we find a better approximation to the finite sample distribution when $\Er[Z_i X_i']$ is small?
+
+## Irrelevant Instrument Asymptotics
+
+- Suppose $\Er[Z_i X_i'] = 0$
+- CLT
+$$
+\frac{1}{\sqrt{n}} \begin{pmatrix}
+vec(Z'X) \\ 
+Z'u
+\end{pmatrix} \indist \begin{pmatrix} \zeta_1 \\ \zeta_2 \end{pmatrix} \sim N(0, \Sigma)
+$$
+- Then
+$$
+\begin{align*}
+\hat{\beta}^{IV} - \beta_0 = & \left((Z'X)'(Z'Z)^{-1}(Z'X)\right)^{-1} (Z'X)'(Z'Z)^{-1}(Z'u) \\
+\indist & \left(H' \Er[Z_i Z_i]^{-1} H\right)^{-1} \left(H \Er[Z_i Z_i']^{-1} \zeta_2\right)
+\end{align*}
+$$
+where $vec(H) = \zeta_1$
+
+## Weak Instrument Asymptotics
+
+- Let $\Er[Z_i X_i'] = \frac{1}{\sqrt{n}} \Gamma$
+- Then $\frac{1}{\sqrt{n}} Z' X = \Gamma + H$
+- and
+$$
+\hat{\beta}^{IV} - \beta_0 \indist 
+ \left((\Gamma + H)' \Er[Z_i Z_i]^{-1} H\right)^{-1} \left((\Gamma + H) \Er[Z_i Z_i']^{-1} \zeta_2\right)
+$$
+- $\Gamma$ cannot be estimated, but we can try to develop estimators and inference methods for $\beta$ that work for any $\Gamma$
+
+## Testing for Relevance
+
+- Model , assume $\Er[W_i u_i] = 0$ and $\Er[Z_i u_i] = 0$
+$$ 
+Y_i = X_i'\beta + W_i'\beta_W + u_i
+$$
+- First stage
+$$
+X_i = Z_i' \pi_z + W_i' \pi_W + \nu_i
+$$
+- Can test $H_0 : \pi_z = 0$ vs $H_1 : \pi_z \neq 0$ using F-test 
+  - With one instrument, $F = t^2$
+  - Rejecting $H_0$ at usual significance level is not enough for $\hat{\beta}^{IV}$ to be well aproximated by its asymptotic normal distribution
+
+## Testing for Relevance
+
+- @stockyogo2002 (table from @swy2002): first stage F > threshold $\approx 10$ implies 
+$$
+Bias(\hat{\beta}^{IV}) < 10\% Bias(\hat{\beta}^{OLS})
+$$
+and size of 5\% test < 15\%
+
+![swy-tab1.png](swy-tab1.png)
+
+- @lee2022  : F$>>10$ is needed in practice^[The argument here is that practitioners misuse the $F>10$ threshold, not that @stockyogo2002 is wrong.]
+
+## Identification Robust Inference 
+
+- Opinion: always do this, testing for relevance not needed
+
+- Test $H_0: \beta = \beta_0$ vs $\beta \neq \beta_0$ with Anderson-Rubin test
+$$
+AR(\beta) = n\left(\frac{1}{n} Z'(y-X\beta) \right)' \Sigma(\beta)^{-1} \left(\frac{1}{n} Z'(y - X\beta)\right)
+$$
+where $\Sigma(\beta) = \frac{1}{n} \sum_{i=1}^n Z_iZ_i' (y_i - X_i'\beta)^2$
+- $\AR(\beta) \indist \chi^2_d$ (under either weak instrument or usual asymptotics)
+
+- See [my other notes](https://schrimpf.github.io/GMMInference.jl/identificationRobustInference/) for simulations and references
+
+## Identification Robust Inference
+
+- Two downsides of AR test:
+  1. AR statistic is similar to over-identifying test ($AR(\hat{\beta}^{IV}) = J$) 
+    - Small (even empty) confidence region if model is misspecified
+  2. Only gives confidence region for all of $\beta$, not confidence intervals for single co-ordinates
+
+- Kleibergen's LM and Moreira CLR tests address 1, see [my other notes](https://schrimpf.github.io/GMMInference.jl/identificationRobustInference/#other-identification-robust-tests) for simulations and references
+
+- tF test from @lee2022 addresses 2
+
+# References
+

@@ -201,7 +201,10 @@ test_i = \beta_0 + \beta_1 lead_i + \text{ other controls} + \epsilon_i
 </section>
 <section id="section-2" class="level2">
 <h2 class="anchored" data-anchor-id="section-2">3</h2>
-<p>Suppose <span class="math inline">\(z_i\)</span> is a second measurement of <span class="math inline">\(x^*\)</span>, [ z_i = x^*_i + e_i ] with <span class="math inline">\(\Er[e] = 0\)</span>, <span class="math inline">\(\Er[x^* e] = 0\)</span>, <span class="math inline">\(\Er[\epsilon e] = 0\)</span> and <span class="math inline">\(\Er[e u] = 0\)</span>. Show that [ _1^{IV} = { (z_i - {z}) x_i} ] is a consistent estimate of <span class="math inline">\(\beta_1\)</span>.</p>
+<p>Suppose <span class="math inline">\(z_i\)</span> is a second measurement of <span class="math inline">\(x^*\)</span>, [ z_i = x^*_i + e_i ] with <span class="math inline">\(\Er[e] = 0\)</span>, <span class="math inline">\(\Er[x^* e] = 0\)</span>, <span class="math inline">\(\Er[\epsilon e] = 0\)</span> and <span class="math inline">\(\Er[e u] = 0\)</span>. Show that <span class="math display">\[
+\hat{\beta}_1^{IV} = \frac{\sum_{i=1}^n (z_i - \bar{z}) y_i} {\sum_{i=1}^n
+   (z_i - \bar{z}) x_i}
+\]</span> is a consistent estimate of <span class="math inline">\(\beta_1\)</span>.</p>
 </section>
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">4</h2>
@@ -222,7 +225,7 @@ y = \underbrace{X}_{n \times k} \beta + \epsilon,
 X= \begin{pmatrix}
      \underbrace{X_1}_{n \times k_1} &amp;
      \underbrace{ X_2}_{n \times (k - k_1)}
-     \end{pmatrix}
+    \end{pmatrix}
 \]</span></p>
 <p>and <span class="math inline">\(\beta = \begin{pmatrix} \beta_1\\ \beta_2 \end{pmatrix}\)</span>.</p>
 <p>Let <span class="math inline">\(\hat{\beta} = \begin{pmatrix} \hat{\beta}_1\\ \hat{\beta}_2 \end{pmatrix}\)</span> be the OLS estimator.</p>

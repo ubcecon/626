@@ -1243,7 +1243,7 @@
     "href": "problemsets/06/ps06.html#section-2",
     "title": "ECON 626: Problem Set 6",
     "section": "3",
-    "text": "3\nSuppose \\(z_i\\) is a second measurement of \\(x^*\\), [ z_i = x^*_i + e_i ] with \\(\\Er[e] = 0\\), \\(\\Er[x^* e] = 0\\), \\(\\Er[\\epsilon e] = 0\\) and \\(\\Er[e u] = 0\\). Show that [ _1^{IV} = { (z_i - {z}) x_i} ] is a consistent estimate of \\(\\beta_1\\)."
+    "text": "3\nSuppose \\(z_i\\) is a second measurement of \\(x^*\\), [ z_i = x^*_i + e_i ] with \\(\\Er[e] = 0\\), \\(\\Er[x^* e] = 0\\), \\(\\Er[\\epsilon e] = 0\\) and \\(\\Er[e u] = 0\\). Show that \\[\n\\hat{\\beta}_1^{IV} = \\frac{\\sum_{i=1}^n (z_i - \\bar{z}) y_i} {\\sum_{i=1}^n\n   (z_i - \\bar{z}) x_i}\n\\] is a consistent estimate of \\(\\beta_1\\)."
   },
   {
     "objectID": "problemsets/06/ps06.html#section-3",

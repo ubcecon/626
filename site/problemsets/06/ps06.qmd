@@ -62,8 +62,10 @@ Suppose $z_i$ is a second measurement of $x^*$,
 \[ z_i = x^*_i + e_i \]
 with $\Er[e] = 0$, $\Er[x^* e] = 0$, $\Er[\epsilon e] = 0$ and
 $\Er[e u] = 0$. Show that
-\[ \hat{\beta}_1^{IV} = \frac{\sumin (z_i - \bar{z}) y_i} {\sumin
-      (z_i - \bar{z}) x_i} \]
+$$
+\hat{\beta}_1^{IV} = \frac{\sum_{i=1}^n (z_i - \bar{z}) y_i} {\sum_{i=1}^n
+   (z_i - \bar{z}) x_i}
+$$
 is a consistent estimate of $\beta_1$.
 
 ## 4
@@ -89,7 +91,7 @@ $$
 X= \begin{pmatrix}
      \underbrace{X_1}_{n \times k_1} &
      \underbrace{ X_2}_{n \times (k - k_1)}
-     \end{pmatrix}
+    \end{pmatrix}
 $$
 
 and $\beta = \begin{pmatrix} \beta_1\\ \beta_2 \end{pmatrix}$.

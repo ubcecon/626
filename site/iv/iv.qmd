@@ -336,6 +336,8 @@ and size of 5\% test < 15\%
 
 ![swy-tab1.png](swy-tab1.png)
 
+## Testing for Relevance
+
 - @lee2022  : F$>>10$ is needed in practice^[The argument here is that practitioners misuse the $F>10$ threshold, not that @stockyogo2002 is wrong.]
 
 ## Identification Robust Inference

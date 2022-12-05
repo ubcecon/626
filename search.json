@@ -609,6 +609,97 @@
     "text": "Example\n\n\\(X_i \\sim N(\\mu, 1)\\)\n\\(H_0: \\mu = 0\\) against \\(H_1: \\mu = 1\\)\nFind a most powerful test\n\n\n\nWhat is the most powerful test if \\(H_1: \\mu = a\\) for \\(a>0\\) instead?\n\n\n\n\nWhat is the uniformly most powerful test if \\(H_1: \\mu > 0\\) ?\n\n\n\n\nWhat is the uniformly most powerful test if \\(H_1: \\mu \\neq 0\\) ?"
   },
   {
+    "objectID": "gmm/gmm.html#reading",
+    "href": "gmm/gmm.html#reading",
+    "title": "Generalized Method of Moments",
+    "section": "Reading",
+    "text": "Reading\n\nRequired: Song (2021) chapter 13\nSuggested:\n\nOriginated in Hansen (1982), building on method of moments which has a longer history\nImportant early application Hansen and Singleton (1982)\nReview from Hansen (2010) ungated version\n\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{E}_n}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\def\\arg{{\\mathrm{arg}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#moment-conditions",
+    "href": "gmm/gmm.html#moment-conditions",
+    "title": "Generalized Method of Moments",
+    "section": "Moment Conditions",
+    "text": "Moment Conditions\n\\[\n\\Er\\left[g(Z_i,\\theta_0) \\right] = 0\n\\]\n\nParameter \\(\\theta_0 \\in \\R^d\\)\nData \\(\\tilde{Z}_i \\in \\R^m\\)\nMoment function \\(g: \\R^m \\times \\R^d \\to \\R^k\\)\nIdentification: \\(\\Er\\left[g(Z_i,\\theta) \\right] = 0\\) iff \\(\\theta=\\theta_0\\)"
+  },
+  {
+    "objectID": "gmm/gmm.html#example-iv",
+    "href": "gmm/gmm.html#example-iv",
+    "title": "Generalized Method of Moments",
+    "section": "Example: IV",
+    "text": "Example: IV\n\\[\nY_i = X_i' \\beta_0 + u_i\n\\] \\[\n\\Er\\left[Z_i(Y_i - X_i'\\beta_0) \\right] = 0\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#example-iv-for-nonlinear-regression",
+    "href": "gmm/gmm.html#example-iv-for-nonlinear-regression",
+    "title": "Generalized Method of Moments",
+    "section": "Example: IV for Nonlinear Regression",
+    "text": "Example: IV for Nonlinear Regression\n\\[\n\\Er\\left[Z_i(Y_i - h(X_i,\\beta_0)) \\right] = 0\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#example-binary-choice",
+    "href": "gmm/gmm.html#example-binary-choice",
+    "title": "Generalized Method of Moments",
+    "section": "Example: Binary Choice",
+    "text": "Example: Binary Choice\n\n\\(D_i = 1\\{X_i'\\beta_0 > u_i\\}\\)\n\\(u_i \\sim N(0,1)\\) \\[\n\\Er\\left[ \\left(D_i - \\Phi(X_i'\\beta_0) \\right) h(X_i) \\right] = 0\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#example-consumption-and-assets",
+    "href": "gmm/gmm.html#example-consumption-and-assets",
+    "title": "Generalized Method of Moments",
+    "section": "Example: Consumption and Assets",
+    "text": "Example: Consumption and Assets\n\nHansen and Singleton (1982)\nModel \\[\n\\begin{align*}\n\\max_{c_t, q_t} & \\Er\\left[ \\sum_{t=0}^\\infty \\beta^t u(c_t) | \\mathcal{I}_0 \\right] \\\\\n\\text{s.t. } & \\;\\; p_t q_t + c_t \\leq (p_t + d_t)q_{t-1} + y_t\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#example-consumption-and-assets-1",
+    "href": "gmm/gmm.html#example-consumption-and-assets-1",
+    "title": "Generalized Method of Moments",
+    "section": "Example: Consumption and Assets",
+    "text": "Example: Consumption and Assets\n\nCleverly rearrange first order conditions: \\[\n\\Er\\left[\\beta \\frac{u'(c_{t+1})}{u'(c_t)} \\underbrace{\\frac{p_{t+1} + d_{t+1}}{p_t}}_{R_t} | \\mathcal{I}_s \\right] = 1 \\text{ for } s \\leq t\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#example-consumption-and-assets-2",
+    "href": "gmm/gmm.html#example-consumption-and-assets-2",
+    "title": "Generalized Method of Moments",
+    "section": "Example: Consumption and Assets",
+    "text": "Example: Consumption and Assets\n\nAssume \\(u(c) = \\frac{c^{1-\\gamma}}{1-\\gamma}\\) \\[\n\\Er\\left[\\beta \\frac{c_{t+1}^{-\\gamma}}{c_t^{-\\gamma}} R_t | \\mathcal{I}_s \\right] = 1 \\text{ for } s \\leq t\n\\]\nModel implies \\[\n\\Er\\left[\\left(\\beta \\frac{c_{t+1}^{-\\gamma}}{c_t^{-\\gamma}} R_t -1 \\right)Z_t \\right] = 0\n\\] for any \\(Z_t \\in \\mathcal{I}_t\\)"
+  },
+  {
+    "objectID": "gmm/gmm.html#identification",
+    "href": "gmm/gmm.html#identification",
+    "title": "Generalized Method of Moments",
+    "section": "Identification",
+    "text": "Identification\n\n\n\nAssumption: ID\n\n\n\\(\\exists \\theta_0 \\in \\Theta\\) s.t. \\(\\forall \\epsilon>0\\), \\[\n\\inf_{\\theta: \\norm{\\theta-\\theta_0} > \\epsilon} \\norm{\\Er[g(Z_i,\\theta)]} > \\norm{\\Er[g(Z_i,\\theta_0)]}\n\\]\n\n\n\n\nSlightly easier assumption to verify is (loosely) \\(g(z,\\theta)\\) continuous and \\(\\theta_0\\) is unique minimizer of \\(\\norm{\\Er[g(Z_i,\\theta)]}\\), see lemma 1 in Song (2021)"
+  },
+  {
+    "objectID": "gmm/gmm.html#estimation",
+    "href": "gmm/gmm.html#estimation",
+    "title": "Generalized Method of Moments",
+    "section": "Estimation",
+    "text": "Estimation\n\nPopulation objective function \\[\nQ^{GMM}(\\theta) = \\frac{1}{2} \\norm{\\Er[g(Z_i,\\theta)]}^2_s = \\frac{1}{2} \\Er[g(Z_i,\\theta)]'S'S\\Er[g(Z_i,\\theta)]\n\\]\nSample objective function \\[\n\\hat{Q}^{GMM}(\\theta) = \\frac{1}{2} \\En[g(Z_i,\\theta)]'S_n'S_n\\En[g(Z_i,\\theta)]\n\\]\nEstimator \\[\n\\hat{\\theta} = \\arg\\min_{\\theta \\in \\Theta}\\hat{Q}^{GMM}(\\theta)\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#consistency",
+    "href": "gmm/gmm.html#consistency",
+    "title": "Generalized Method of Moments",
+    "section": "Consistency",
+    "text": "Consistency\n\n\n\nGMM Consistency\n\n\nSuppose:\n\n\\(\\exists \\theta_0 \\in \\Theta\\) s.t. \\(\\forall \\epsilon>0\\), \\(\\inf_{\\theta: \\norm{\\theta-\\theta_0} > \\epsilon} \\norm{\\Er[g(Z_i,\\theta)]} > \\norm{\\Er[g(Z_i,\\theta_0)]}\\)\n\\(\\sup_{\\theta \\in \\Theta} \\norm{\\En[g(Z_i,\\theta)] - \\Er[g(Z_i,\\theta)]} \\inprob 0\\)\n\\(S_n \\inprob S\\)\n\nThen \\(\\hat{\\theta} \\inprob \\theta_0\\)"
+  },
+  {
+    "objectID": "gmm/gmm.html#asymptotic-normality",
+    "href": "gmm/gmm.html#asymptotic-normality",
+    "title": "Generalized Method of Moments",
+    "section": "Asymptotic Normality",
+    "text": "Asymptotic Normality\n\n\n\nGMM Asymptotic Normality\n\n\nSuppose:\n\n\\(\\theta_0 \\in int(\\Theta)\\), & \\(g(z,\\theta)\\) is twice continuously differentiable\n\\(\\sqrt{n} \\frac{\\partial}{\\partial \\theta} \\hat{Q}^{GMM}(\\theta_0) \\indist N(0,\\Omega)\\)\n\\(\\sup_{\\theta \\in int(\\Theta)} \\norm{\\frac{\\partial^2}{\\partial  \\theta \\partial \\theta'} \\hat{Q}^{GMM}(\\theta) - B(\\theta)} \\inprob 0\\) with \\(B(\\cdot)\\) continuous at \\(\\theta_0\\) and \\(B(\\theta_0) > 0\\)\n\nThen, \\[\n\\sqrt{n}(\\hat{\\theta} - \\theta_0) \\indist N(0, B_0^{-1} \\Omega_0 B_0^{-1})\n\\]"
+  },
+  {
+    "objectID": "gmm/gmm.html#optimal-weighting-matrix",
+    "href": "gmm/gmm.html#optimal-weighting-matrix",
+    "title": "Generalized Method of Moments",
+    "section": "Optimal Weighting Matrix",
+    "text": "Optimal Weighting Matrix\n\n\n\nLemma 3\n\n\nLet \\[\n\\begin{align*}\nM & = (\\Gamma'C\\Gamma)^{-1} \\Gamma' C \\Sigma C \\Gamma (\\Gamma'C\\Gamma)^{-1} \\\\\nM^* & = (\\Gamma' \\Sigma^{-1} \\Gamma)^{-1}\n\\end{align*}\n\\] then \\(M \\geq M^*\\)"
+  },
+  {
     "objectID": "identification/identification.html#reading",
     "href": "identification/identification.html#reading",
     "title": "Identification",
@@ -900,7 +991,14 @@
     "href": "iv/iv.html#testing-for-relevance-1",
     "title": "Instrumental Variables Estimation",
     "section": "Testing for Relevance",
-    "text": "Testing for Relevance\n\nStock and Yogo (2002) (table from Stock, Wright, and Yogo (2002)): first stage F > threshold \\(\\approx 10\\) implies \\(Bias(\\hat{\\beta}^{IV}) < 10\\% Bias(\\hat{\\beta}^{OLS})\\) and size of 5% test < 15%\n\n\n\n\nswy-tab1.png\n\n\n\nLee et al. (2022) : F\\(>>10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F>10\\) threshold, not that Stock and Yogo (2002) is wrong."
+    "text": "Testing for Relevance\n\nStock and Yogo (2002) (table from Stock, Wright, and Yogo (2002)): first stage F > threshold \\(\\approx 10\\) implies \\(Bias(\\hat{\\beta}^{IV}) < 10\\% Bias(\\hat{\\beta}^{OLS})\\) and size of 5% test < 15%\n\n\nswy-tab1.png"
+  },
+  {
+    "objectID": "iv/iv.html#testing-for-relevance-2",
+    "href": "iv/iv.html#testing-for-relevance-2",
+    "title": "Instrumental Variables Estimation",
+    "section": "Testing for Relevance",
+    "text": "Testing for Relevance\n\nLee et al. (2022) : F\\(>>10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F>10\\) threshold, not that Stock and Yogo (2002) is wrong."
   },
   {
     "objectID": "iv/iv.html#identification-robust-inference",
@@ -1516,7 +1614,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 15, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus626.html",

@@ -15,12 +15,10 @@ format:
       chalk-width: 2
       chalk-effect: 0.0
     title-slide-attributes:
-      data-background-image: ""
+      data-background-image: "sphinxbay.jpg"
       data-background-size: contain
 bibliography: ../626.bib
 ---
-
-## GMM {background-video="IMG_5249.MOV" background-video-loop="true" background-video-muted="true" background-size="contain"}
 
 
 ## Reading
@@ -55,9 +53,13 @@ $$
 $$
 \Er\left[g(Z_i,\theta_0) \right] = 0
 $$
+
 - Parameter $\theta_0 \in \R^d$
+
 - Data $\tilde{Z}_i \in \R^m$
+
 - Moment function $g: \R^m \times \R^d \to \R^k$
+
 - Identification: $\Er\left[g(Z_i,\theta) \right] = 0$ iff $\theta=\theta_0$
 
 ## Example: IV
@@ -74,9 +76,7 @@ $$
 $$
 
 ## Example: Binary Choice
-$$
-D_i = 1\{X_i'\beta_0 > u_i\}
-$$
+- $D_i = 1\{X_i'\beta_0 > u_i\}$
 - $u_i \sim N(0,1)$
 $$
 \Er\left[ \left(D_i - \Phi(X_i'\beta_0) \right) h(X_i) \right] = 0
@@ -89,8 +89,12 @@ $$
 $$
 \begin{align*}
 \max_{c_t, q_t} & \Er\left[ \sum_{t=0}^\infty \beta^t u(c_t) | \mathcal{I}_0 \right] \\
-\text{s.t.} & p_t q_t + c_t \leq (p_t + d_t)q_{t-1} + y_t
+\text{s.t. } & \;\; p_t q_t + c_t \leq (p_t + d_t)q_{t-1} + y_t
+\end{align*}
 $$
+
+## Example: Consumption and Assets
+
 - Cleverly rearrange first order conditions:
 $$
 \Er\left[\beta \frac{u'(c_{t+1})}{u'(c_t)} \underbrace{\frac{p_{t+1} + d_{t+1}}{p_t}}_{R_t} | \mathcal{I}_s \right] = 1 \text{ for } s \leq t
@@ -108,7 +112,7 @@ $$
 $$
 for any $Z_t \in \mathcal{I}_t$
 
-# Identification and Consistency
+# Econometric Theory
 
 ## Identification
 
@@ -116,7 +120,7 @@ for any $Z_t \in \mathcal{I}_t$
 
 ### Assumption: ID
 
-$\exits \theta_0 \in \Theta$ s.t. $\forall \epsilon>0$,
+$\exists \theta_0 \in \Theta$ s.t. $\forall \epsilon>0$,
 $$
 \inf_{\theta: \norm{\theta-\theta_0} > \epsilon} \norm{\Er[g(Z_i,\theta)]} > \norm{\Er[g(Z_i,\theta_0)]}
 $$
@@ -140,6 +144,67 @@ $$
 $$
 \hat{\theta} = \arg\min_{\theta \in \Theta}\hat{Q}^{GMM}(\theta)
 $$
+
+## Consistency
+
+::: {.callout-tip icon=false}
+
+### GMM Consistency
+
+Suppose:
+
+1. $\exists \theta_0 \in \Theta$ s.t. $\forall \epsilon>0$, $\inf_{\theta: \norm{\theta-\theta_0} > \epsilon} \norm{\Er[g(Z_i,\theta)]} > \norm{\Er[g(Z_i,\theta_0)]}$
+
+2. $\sup_{\theta \in \Theta} \norm{\En[g(Z_i,\theta)] - \Er[g(Z_i,\theta)]} \inprob 0$
+
+3. $S_n \inprob S$
+
+Then $\hat{\theta} \inprob \theta_0$
+
+
+:::
+
+## Asymptotic Normality
+
+
+::: {.callout-tip icon=false}
+
+### GMM Asymptotic Normality
+
+Suppose:
+
+1. $\theta_0 \in int(\Theta)$, \& $g(z,\theta)$ is twice continuously differentiable
+
+2. $\sqrt{n} \frac{\partial}{\partial \theta} \hat{Q}^{GMM}(\theta_0)
+\indist N(0,\Omega)$
+
+3. $\sup_{\theta \in int(\Theta)} \norm{\frac{\partial^2}{\partial
+    \theta \partial \theta'} \hat{Q}^{GMM}(\theta) - B(\theta)}
+\inprob 0$ with $B(\cdot)$ continuous at $\theta_0$ and $B(\theta_0) > 0$
+
+Then,
+$$
+\sqrt{n}(\hat{\theta} - \theta_0) \indist N(0, B_0^{-1} \Omega_0 B_0^{-1})
+$$
+
+:::
+
+## Optimal Weighting Matrix
+
+::: {.callout-tip icon=false}
+
+### Lemma 3
+
+Let
+$$
+\begin{align*}
+M & = (\Gamma'C\Gamma)^{-1} \Gamma' C \Sigma C \Gamma (\Gamma'C\Gamma)^{-1} \\
+M^* & = (\Gamma' \Sigma^{-1} \Gamma)^{-1}
+\end{align*}
+$$
+then $M \geq M^*$
+
+:::
 
 
 # References

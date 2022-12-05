@@ -50,3 +50,4 @@ bibliography: 626.bib
 
 - [Endogeneity](iv/endogeneity.qmd)
 - [Identification through IV and Inference](iv/iv.qmd)
+- [Preview of GMM](gmm/gmm.qmd)

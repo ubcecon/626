@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paul Schrimpf">
+<meta name="dcterms.date" content="2022-12-16">
+
+<title>ECON 626 - ECON 626: Final - Solutions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ECON 626</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus626.html">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides.html">
+ <span class="menu-text">Slides</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#air-pollution-and-mortality" id="toc-air-pollution-and-mortality" class="nav-link active" data-scroll-target="#air-pollution-and-mortality">Air Pollution and Mortality</a>
+  <ul class="collapse">
+  <li><a href="#ols-5-points" id="toc-ols-5-points" class="nav-link" data-scroll-target="#ols-5-points">OLS (5 points)</a></li>
+  <li><a href="#endogeneity-5-points" id="toc-endogeneity-5-points" class="nav-link" data-scroll-target="#endogeneity-5-points">Endogeneity (5 points)</a></li>
+  <li><a href="#instrument-5-points" id="toc-instrument-5-points" class="nav-link" data-scroll-target="#instrument-5-points">Instrument (5 points)</a></li>
+  <li><a href="#first-stage-5-points" id="toc-first-stage-5-points" class="nav-link" data-scroll-target="#first-stage-5-points">First-Stage (5 points)</a></li>
+  <li><a href="#sls-5-points" id="toc-sls-5-points" class="nav-link" data-scroll-target="#sls-5-points">2SLS (5 points)</a></li>
+  <li><a href="#dependence-5-points" id="toc-dependence-5-points" class="nav-link" data-scroll-target="#dependence-5-points">Dependence (5 points)</a></li>
+  </ul></li>
+  <li><a href="#regression-with-estimated-variables" id="toc-regression-with-estimated-variables" class="nav-link" data-scroll-target="#regression-with-estimated-variables">Regression with Estimated Variables</a>
+  <ul class="collapse">
+  <li><a href="#estimated-alpha-10-points" id="toc-estimated-alpha-10-points" class="nav-link" data-scroll-target="#estimated-alpha-10-points">Estimated <span class="math inline">\(\alpha\)</span> (10 points)</a></li>
+  <li><a href="#estimated-theta-5-points" id="toc-estimated-theta-5-points" class="nav-link" data-scroll-target="#estimated-theta-5-points">Estimated <span class="math inline">\(\theta\)</span> (5 points)</a></li>
+  </ul></li>
+  <li><a href="#series-regression-with-endogeneity" id="toc-series-regression-with-endogeneity" class="nav-link" data-scroll-target="#series-regression-with-endogeneity">Series Regression with Endogeneity</a>
+  <ul class="collapse">
+  <li><a href="#instrument-9-points" id="toc-instrument-9-points" class="nav-link" data-scroll-target="#instrument-9-points">Instrument (9 points)</a></li>
+  <li><a href="#consistency-9-points" id="toc-consistency-9-points" class="nav-link" data-scroll-target="#consistency-9-points">Consistency (9 points)</a></li>
+  <li><a href="#asymptotic-distribution-9-points" id="toc-asymptotic-distribution-9-points" class="nav-link" data-scroll-target="#asymptotic-distribution-9-points">Asymptotic Distribution (9 points)</a></li>
+  <li><a href="#convergence-rate-3-points" id="toc-convergence-rate-3-points" class="nav-link" data-scroll-target="#convergence-rate-3-points">Convergence Rate (3 points)</a></li>
+  </ul></li>
+  <li><a href="#discrete-measurement-error" id="toc-discrete-measurement-error" class="nav-link" data-scroll-target="#discrete-measurement-error">Discrete Measurement Error</a>
+  <ul class="collapse">
+  <li><a href="#ols-is-inconsistent-8-points" id="toc-ols-is-inconsistent-8-points" class="nav-link" data-scroll-target="#ols-is-inconsistent-8-points">OLS is Inconsistent (8 points)</a></li>
+  <li><a href="#instrument-8-points" id="toc-instrument-8-points" class="nav-link" data-scroll-target="#instrument-8-points">Instrument? (8 points)</a></li>
+  <li><a href="#or-something-else-9-points" id="toc-or-something-else-9-points" class="nav-link" data-scroll-target="#or-something-else-9-points">Or Something Else? (9 points)</a></li>
+  </ul></li>
+  <li><a href="#definitions-and-results" id="toc-definitions-and-results" class="nav-link" data-scroll-target="#definitions-and-results">Definitions and Results</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ECON 626: Final - Solutions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paul Schrimpf </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 16, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><span class="math display">\[
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\cov{{\mathrm{Cov}}}
+\def\En{{\mathbb{E}_n}}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+\]</span></p>
+<p>You have 150 minutes to complete the exam. The last two pages have some possibly useful formulas.</p>
+<p>There are 100 total points. There are three questions labeled <strong>more difficult</strong> that might take longer than others, and you should not spend too much time on these questions until you have answered all the others.</p>
+<section id="air-pollution-and-mortality" class="level1">
+<h1>Air Pollution and Mortality</h1>
+<p>In “As the Wind Blows: The Effects of Long-Term Exposure to Air Pollution on Mortality”, <span class="citation" data-cites="anderson2019">Anderson (<a href="#ref-anderson2019" role="doc-biblioref">2019</a>)</span> estimates the effect of air pollution on mortality and other health outcomes. Anderso uses data on census-block mortality, location, and highway locations to estimate</p>
+<p><span id="eq-pm"><span class="math display">\[
+y_i = \beta w_i + x_i \delta + \epsilon_i
+\tag{1}\]</span></span></p>
+<p>“where <span class="math inline">\(y_i\)</span> represents the three-year mortality rate in census block <span class="math inline">\(i\)</span> among individuals 75 or older, <span class="math inline">\(w_i\)</span> represents the fraction of time that census block <span class="math inline">\(i\)</span> is downwind of a highway, and <span class="math inline">\(x_i\)</span> represents other covariates. … Covariates in the vector <span class="math inline">\(x_i\)</span> include distance to the highway, weather station fixed effects, race, and age distribution.” <span class="citation" data-cites="anderson2019">(<a href="#ref-anderson2019" role="doc-biblioref">Anderson 2019</a>)</span></p>
+<p><img src="anderson-tab2.png" class="img-fluid"></p>
+<section id="ols-5-points" class="level2">
+<h2 class="anchored" data-anchor-id="ols-5-points">OLS (5 points)</h2>
+<p><strong>More difficult</strong></p>
+<p>Table 2 shows OLS estimates of <a href="#eq-pm">Equation&nbsp;1</a>. The row labeled ``Effect of 1 SD change in frequency downwind’’ reports <span class="math inline">\(\hat{\beta} \times \sqrt{ \frac{1}{n} \sum_i (w_i -  \bar{w})^2}\)</span>. Sadly, there are no standard errors reported for these estimates. Find the asymptotic distribution of <span class="math inline">\(\hat{\beta} \times \sqrt{ \frac{1}{n} \sum_i (w_i -  \bar{w})^2}\)</span>. To simplify this part, you may pretend that <span class="math inline">\(x_i\)</span> is not in the model, assume that observations are independent, and assume that <span class="math inline">\(\Er[\epsilon_i | w_i] = 0\)</span>.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>With the simplifications, <span class="math inline">\(\hat{\beta} = (W'W)^{-1} (W'y)\)</span>, and <span class="math inline">\(\hat{\beta} - \beta = (W'W)^{-1} W'\epsilon\)</span>.</p>
+<p>Let <span class="math inline">\(\hat{\sigma}^2 = \frac{1}{n} \sum (w_i - \bar{w})^2\)</span>. Assume that the data is iid, <span class="math inline">\(\Er[w_i^2 \epsilon_i^2] &lt; \infty\)</span> and <span class="math inline">\(\Er[w_i^4]&lt;\infty\)</span>. Then, the CLT applies to <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\sigma}^2\)</span>, so</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sqrt{n} \begin{pmatrix} \hat{\beta} - \beta \\ \hat{\sigma}^2 - \var(w) \end{pmatrix} \indist &amp; N\left(0,
+\begin{pmatrix} \Er[w^2]^{-2}\var(w\epsilon) &amp; \cov((w_i - \Er[w])^2, \Er[w^2]^{-1}w_i\epsilon_i) \\
+&amp; \var((w_i - \Er[w])^2) \end{pmatrix} \right) \\
+\indist &amp; N\left(0, \begin{pmatrix} \Er[w^2]^{-2}\var(w\epsilon) &amp; 0 \\
+0 &amp; \var((w_i - \Er[w])^2) \end{pmatrix} \right)
+\end{aligned}
+\]</span></p>
+<p>where the second line follows from the assumption that <span class="math inline">\(\Er[\epsilon|w]=0\)</span>.</p>
+<p>Now, we can use the delta method on <span class="math inline">\(f(\beta,\sigma^2) = \beta \sqrt{\sigma^2}\)</span>, so <span class="math display">\[
+\sqrt{n} (\hat{\beta} \sqrt{\hat{\sigma}^2} - \beta\sigma) \indist N\left(0, \sqrt{\sigma^2}\Er[w^2]^{-2} \var(w\epsilon)+ \frac{\beta}{4 \sigma^2} \var((w_i - \Er[w])^4)\right)
+\]</span></p>
+</div>
+</section>
+<section id="endogeneity-5-points" class="level2">
+<h2 class="anchored" data-anchor-id="endogeneity-5-points">Endogeneity (5 points)</h2>
+<p>Give one reason why <span class="math inline">\(\Er[w_i \epsilon_i]\)</span> might not be zero, and speculate on whether <span class="math inline">\(\Er[w_i \epsilon_i]\)</span> is likely to be positive or negative.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Locations near highways are likely cheaper and have lower income residents. Income could also affect mortality directly. Thus, <span class="math inline">\(w\)</span> could be negatively correlated with income, and income negatively related to mortality. This suggest <span class="math inline">\(\Er[w_i \epsilon_i] &gt; 0\)</span>.</p>
+</div>
+</section>
+<section id="instrument-5-points" class="level2">
+<h2 class="anchored" data-anchor-id="instrument-5-points">Instrument (5 points)</h2>
+<p>As an instrument for <span class="math inline">\(w_i\)</span>, <span class="citation" data-cites="anderson2019">Anderson (<a href="#ref-anderson2019" role="doc-biblioref">2019</a>)</span> uses ``orientation to the nearest major highway, [encoded] as a set of seven dummy variables. Each dummy variable represents a 45-degree range (e.g., 22.5 degrees to 67.5 degrees, 67.5 degrees to 112.5 degrees, etc.).’’ Let <span class="math inline">\(z_i\)</span> denote these instruments. Does this instrument address the reason for endogeneity you gave in the previous part? Do you believe that <span class="math inline">\(\Er[z_i\epsilon_i] = 0\)</span>?</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>No this instrument does not address the possible endogeneity of location. It seems unlikely that <span class="math inline">\(\Er[z_i \epsilon_i] = 0\)</span>.</p>
+<p>To be fair to <span class="citation" data-cites="anderson2019">Anderson (<a href="#ref-anderson2019" role="doc-biblioref">2019</a>)</span>, he addresses this sort of concern by controlling for location fixed effects, and census block characteristics, including income.</p>
+</div>
+</section>
+<section id="first-stage-5-points" class="level2">
+<h2 class="anchored" data-anchor-id="first-stage-5-points">First-Stage (5 points)</h2>
+<p>Table 3 shows estimates of <span id="eq-fs"><span class="math display">\[
+w_i = z_i \alpha + x_i \gamma + \nu_i
+\tag{2}\]</span></span> What important assumption about the instruments can we check with this regression? Should we be concerned about this assumption? What should we do about it?</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>We can check for instrument relevance in the first stage. Although, the first stage F-statistic of 30 exceeds the Stock and Yogo (2002) rule of thumb of 10, 30 is now considered too low for standard inference methods to be appropriate. We should use an identification robust inference method. Since the model is overidentified, the KLM or CLR test would be the best choices.</p>
+<p>Any answer that mentions weak identification and using identification robust inference is fine here. For example, mentioning just the AR test would okay.</p>
+</div>
+</section>
+<section id="sls-5-points" class="level2">
+<h2 class="anchored" data-anchor-id="sls-5-points">2SLS (5 points)</h2>
+<p>Table 4 shows 2SLS estimates of <a href="#eq-pm">Equation&nbsp;1</a>. One reason Anderson gives for using an instrument is that not all census blocks have weather stations, so there is measurement error in <span class="math inline">\(w_i\)</span>. Is the change in estimates between Table 2 and Table 4 what would be expected from measurement error? (Your answer can freely refer to results shown in lecture or problem sets without proof).</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Yes, this is what we would expect. Measurement error biases OLS towards 0. We generally see that the estimates in Table 2 have smaller magnitude than table 4.</p>
+</div>
+</section>
+<section id="dependence-5-points" class="level2">
+<h2 class="anchored" data-anchor-id="dependence-5-points">Dependence (5 points)</h2>
+<p>The observations are from many adjacent census blocks (roughly the same as a city block) in Los Angeles. Briefly, how does this affect the consistency and asymptotic distribution of <span class="math inline">\(\hat{\beta}\)</span>? What, if anything, in the tables above needs to be calculated differently than with independent observations?</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The observations are likely dependent. As long as the dependence is not too extreme, a LLN will still apply and consistency is unaffected. However, the asymptotic variance will be different than in the independent case. The standard errors should be (and are) adjusted for spatial dependence.</p>
+</div>
+<p><img src="anderson-tab3.png" class="img-fluid"></p>
+<p><img src="anderson-tab4.png" class="img-fluid"></p>
+<hr>
+</section>
+</section>
+<section id="regression-with-estimated-variables" class="level1">
+<h1>Regression with Estimated Variables</h1>
+<p>Consider the model, <span class="math display">\[
+h(Y_i,\alpha) = g(X_i,\theta)'\beta + \epsilon_i
+\]</span> where <span class="math inline">\(h\)</span> and <span class="math inline">\(g\)</span> are known differentiable functions, and the data is i.i.d.</p>
+<section id="estimated-alpha-10-points" class="level2">
+<h2 class="anchored" data-anchor-id="estimated-alpha-10-points">Estimated <span class="math inline">\(\alpha\)</span> (10 points)</h2>
+<p>Assume that <span class="math inline">\(\theta\)</span> is known, <span class="math inline">\(\Er[\epsilon_i g(X_i,\theta)] = 0\)</span>, and <span class="math inline">\(\Er[\epsilon_i]=0\)</span>. Let <span class="math inline">\(\tilde{X}_i = g(X_i,\theta)\)</span>. Assume <span class="math inline">\(\Er[\tilde{X}_i\tilde{X}_i']\)</span> is nonsingular, and <span class="math inline">\(\var(\epsilon_i | \tilde{X}_i) = \sigma^2\)</span>.</p>
+<p>Suppose you have an estimate <span class="math inline">\(\hat{\alpha}\)</span>, such that <span class="math inline">\(\sqrt{n}(\hat{\alpha}-\alpha) \indist N(0,\Omega)\)</span> and, for simplicity, is independent of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Find the asymptotic distribution of <span class="math display">\[
+\hat{\beta}^{OLS} = (\tilde{X}'\tilde{X})^{-1} \tilde{X}' h(Y,\hat{\alpha})
+\]</span> where, <span class="math inline">\(h(Y,\hat{\alpha}) = \left(h(Y_1,\hat{\alpha}), ...,  h(Y_n,\hat{\alpha}) \right)'\)</span></p>
+<p><em>Hint: consider subtracting and adding <span class="math inline">\((\tilde{X}'\tilde{X})^{-1}\tilde{X}' h(Y,\alpha)\)</span> to <span class="math inline">\(\hat{\beta} - \beta\)</span>.</em></p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Proceeding as suggested by the hint: <span class="math display">\[
+\begin{align*}
+\hat{\beta} - \beta = &amp; (\tilde{X}'\tilde{X})^{-1} \tilde{X}' \left(h(Y, \hat{\alpha}) - h(Y,\alpha) \right) + (\tilde{X}'\tilde{X})^{-1}\tilde{X}' h(Y,\alpha) - \beta \\
+= &amp; (\tilde{X}'\tilde{X})^{-1} \tilde{X}' \left(h(Y, \hat{\alpha}) - h(Y,\alpha) \right) + (\tilde{X}'\tilde{X})^{-1}\tilde{X}' \epsilon \\
+= &amp; (\tilde{X}'\tilde{X})^{-1} \tilde{X}' \left(D_\alpha h(Y, \alpha)(\hat{\alpha} - \alpha) + \epsilon + o_p(\hat{\alpha}-\alpha) \right)
+\end{align*}
+\]</span> where the last line used a first order expansion, and <span class="math inline">\(D_\alpha(Y,\alpha)\)</span> denotes the <span class="math inline">\(n \times dim(\alpha)\)</span> matrix of derivatives of <span class="math inline">\(h\)</span> with respect to <span class="math inline">\(\alpha\)</span> at each <span class="math inline">\(Y_i\)</span>.</p>
+<p>Multiplying by <span class="math inline">\(\sqrt{n}\)</span>, using the convergence of <span class="math inline">\(\hat{\alpha}\)</span>, its independence from <span class="math inline">\(\epsilon\)</span>, and applying a CLT to <span class="math inline">\(\tilde{X}'\epsilon\)</span>, we have <span class="math display">\[
+\sqrt{n}(\hat{\beta} - \beta) \indist N\left(0, \Er[\tilde{X}_i\tilde{X}_i]^{-1} \Er[\tilde{X}_i D_\alpha h(Y,\alpha)] \Omega \Er[\tilde{X}_i D_\alpha h(Y,\alpha)]'\Er[\tilde{X}_i\tilde{X}_i]^{-1} + \Er[\tilde{X}_i\tilde{X}_i]^{-1} \sigma^2 \right)
+\]</span></p>
+<p>You need not have made this extra observation, but interestingly, simply ignoring the estimated <span class="math inline">\(\alpha\)</span> and using the usual heteroskedasticity robust standard error would lead to the same distribution. Doing this, the error terms becomes <span class="math inline">\(\epsilon + h(Y_i,\hat{\alpha}) - h(Y_i, \alpha)\)</span>, and then everything just happens to work out.</p>
+</div>
+</section>
+<section id="estimated-theta-5-points" class="level2">
+<h2 class="anchored" data-anchor-id="estimated-theta-5-points">Estimated <span class="math inline">\(\theta\)</span> (5 points)</h2>
+<p><strong>More difficult</strong></p>
+<p>Now, assume <span class="math inline">\(\alpha\)</span> is known, and suppose you have an estimate <span class="math inline">\(\hat{\theta}\)</span>, such that <span class="math inline">\(\sqrt{n}(\hat{\theta}-\theta) \indist N(0,\Omega)\)</span> and, for simplicity, is independent of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. Find the asymptotic distribution of <span class="math display">\[
+\hat{\beta}^{OLS} = (g(X,\hat{\theta})'g(X,\hat{\theta}))^{-1} g(X,\hat{\theta})' h(Y,\alpha)
+\]</span></p>
+<p><em>Hint: adding and subtracting is useful here too. Note that:</em> <span class="math display">\[
+\begin{aligned}
+g(X,\hat{\theta})'g(X,\hat{\theta}))^{-1} g(X,\hat{\theta})' h(Y,\alpha) = &amp;
+\left[(g(X,\hat{\theta})'g(X,\hat{\theta}))^{-1} -
+(g(X,\theta)'g(X,\theta))^{-1} \right]g(X,\hat{\theta})' h(Y,\alpha) + \\
+&amp; + (g(X,\theta)'g(X,\theta))^{-1} \left[g(X,\hat{\theta}) - g(X,\theta)\right]'h(Y,\alpha) +
+(g(X,\theta)'g(X,\theta))^{-1} g(X,\theta) h(Y,\alpha)
+\end{aligned}
+\]</span></p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The idea here is very similar to part a, but the notation gets heavy.</p>
+<p><span class="math inline">\(g(X,\theta)\)</span> is already a matrix, and we haven’t defined a way to denote the derivative of a matrix. Here, I’ll just write everything in terms of partial derivatives with respect to components of <span class="math inline">\(\theta\)</span>, which avoids the problem.</p>
+<p>Using the hint, we have <span class="math display">\[
+\begin{aligned}
+\hat{\beta} - \beta = &amp;
+\left[(g(X,\hat{\theta})'g(X,\hat{\theta}))^{-1} -
+(g(X,\theta)'g(X,\theta))^{-1} \right]g(X,\hat{\theta})' h(Y,\alpha) + \\
+&amp; + (g(X,\theta)'g(X,\theta))^{-1} \left[g(X,\hat{\theta}) - g(X,\theta)\right]'h(Y,\alpha) + \\
+&amp; + (g(X,\theta)'g(X,\theta))^{-1} g(X,\theta) \epsilon \\
+= &amp; \left[\sum_{j=1}^J (\hat{\theta}_j - \theta_j) \underbrace{(-2) (g(X,\theta)'g(X,\theta))^{-1} \frac{\partial g(X,\theta)}{\partial \theta_j}' g(X,\theta) (g(X,\theta)'g(X,\theta))^{-1}}_{\equiv D_{j}^{gg-}} + o_p(\hat{\theta} - \theta)\right]g(X,\hat{\theta})' h(Y,\alpha) + \\
+&amp; + (g(X,\theta)'g(X,\theta))^{-1} \left[\sum_{j=1}^J \frac{\partial g(X,\theta)}{\partial \theta_j}(\hat{\theta}_j - \theta_j) + o_p(\hat{\theta} - \theta)\right]'h(Y,\alpha) + \\
+&amp; + (g(X,\theta)'g(X,\theta))^{-1} g(X,\theta) \epsilon \\
+\end{aligned}
+\]</span> <span class="math display">\[
+\begin{aligned}
+\indist &amp; N\left(0, \sum_{j=1}^J \sum_{\ell=1}^J \omega_{j,l} \left( \begin{array}{l} \Er[D^{gg-}_j] \Er[g(X,\theta)'h(Y,\alpha)] \Er[g(X,\theta)'h(Y,\alpha)]'\Er[D^{gg-}_\ell]' + \\
++ \Er[g(X,\theta)'g(X,\theta)]^{-1} \Er[\frac{\partial g(X,\theta)}{\partial \theta_j}'h(Y,\alpha)] \Er[\frac{\partial g(X,\theta)}{\partial \theta_\ell}'h(Y,\alpha)] \Er[g(X,\theta)'g(X,\theta)]^{-1}  \end{array} \right) + \Er[g(X,\theta)'g(X,\theta)]^{-1} \sigma^2 \right)
+\end{aligned}
+\]</span> where <span class="math inline">\(\omega_{j,\ell}\)</span> are the entries of <span class="math inline">\(\Omega\)</span>.</p>
+</div>
+<hr>
+</section>
+</section>
+<section id="series-regression-with-endogeneity" class="level1">
+<h1>Series Regression with Endogeneity</h1>
+<p>Suppose <span class="math display">\[
+y_i = \beta_0 + \beta_1 \cos(x_i) + \beta_2 \cos(2 x_i) + \cdots + \beta_k \cos(k x_i) + u_i
+\]</span> where <span class="math inline">\(x_i \in \R\)</span></p>
+<section id="instrument-9-points" class="level2">
+<h2 class="anchored" data-anchor-id="instrument-9-points">Instrument (9 points)</h2>
+<p>You suspect <span class="math inline">\(x_i\)</span> is related to <span class="math inline">\(u_i\)</span>, but you have another variable, <span class="math inline">\(z_i \in \R\)</span>, such that <span class="math inline">\(\Er[u_i | z_i] = 0\)</span>. Use this assumption to construct an estimator for <span class="math inline">\(\beta = (\beta_0, \cdots, \beta_k)'\)</span>.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Mean independence, <span class="math inline">\(\Er[u_i | z_i] = 0\)</span> , implies <span class="math inline">\(\Er[u_i f(z_i)] = 0\)</span> for any function <span class="math inline">\(f\)</span>. Since the model has <span class="math inline">\(k+1\)</span> parameters, we should choose at least <span class="math inline">\(k+1\)</span> functions to use. For concreteness, let <span class="math display">\[
+Z_i = \left(1, \cos(z_i), \cos(2z_i), \cdots \cos(k z_i) \right)'
+\]</span> and use the usual IV estimator, <span class="math display">\[
+\hat{\beta} = (Z'X)^{-1}(Z'y)
+\]</span> where <span class="math inline">\(X\)</span> is defined similarly as <span class="math inline">\(Z\)</span>.</p>
+<p>For this to identify <span class="math inline">\(\beta\)</span>, we must also assume relevance, <span class="math inline">\(\rank(\Er[Z_i X_i']) = k+1\)</span>.</p>
+</div>
+</section>
+<section id="consistency-9-points" class="level2">
+<h2 class="anchored" data-anchor-id="consistency-9-points">Consistency (9 points)</h2>
+<p>Show that your estimator from part a is consistent.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> State any additional assumptions.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>Substituting the model in for <span class="math inline">\(y\)</span>, we have <span class="math display">\[
+\begin{align*}
+\hat{\beta} = &amp; \beta + (Z'X)^{-1}(Z'u) \\
+\hat{\beta} = &amp; \beta + (\frac{1}{n}Z'X)^{-1}(\frac{1}{n} Z'u) \\
+\plim \hat{\beta} = &amp; \beta
+\end{align*}
+\]</span> where, for the last line, we need an LLN to apply to <span class="math inline">\(Z'X\)</span> and <span class="math inline">\(Z'u\)</span>. For this, it is sufficient that data be i.i.d. and <span class="math inline">\(\Er[\norm{Z_i X_i'}]\)</span> and <span class="math inline">\(\Er[\norm{Z_i u_i}]\)</span> are finite. We also need the relevance condition as in part a.</p>
+</div>
+</section>
+<section id="asymptotic-distribution-9-points" class="level2">
+<h2 class="anchored" data-anchor-id="asymptotic-distribution-9-points">Asymptotic Distribution (9 points)</h2>
+<p>Find the asymptotic distribution of your estimator from part a.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> State any additional assumptions.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>As in the previous part, <span class="math display">\[
+\begin{align*}
+\sqrt{n}(\hat{\beta} - \beta) =  &amp; (\frac{1}{n}Z'X)^{-1}(\frac{1}{\sqrt{n}} Z'u) \\
+\indist &amp; N\left(0, \Er[Z_i X_i']^{-1} \Er[Z_iZ_i'u_i^2] \Er[X_i Z_i']^{-1} \right)
+\end{align*}
+\]</span> where we again need an LLN for <span class="math inline">\(Z'X\)</span> and the CLT to apply to <span class="math inline">\(Z'u\)</span>. A sufficient assumption, along with what was assumed for previous parts, is that <span class="math inline">\(\Er[\norm{Z_i u_i}^2]\)</span> is finite.</p>
+</div>
+</section>
+<section id="convergence-rate-3-points" class="level2">
+<h2 class="anchored" data-anchor-id="convergence-rate-3-points">Convergence Rate (3 points)</h2>
+<p><strong>More difficult</strong></p>
+<p>Suppose now that <span class="math inline">\(k\)</span> increases with <span class="math inline">\(n\)</span>. To simplify, assume that <span class="math inline">\(\Er[u_i | x_i] = 0\)</span>, and <span class="math inline">\(x_i \sim U(-\pi,\pi)\)</span>, so that <span class="math display">\[
+\Er[\cos(j x_i)\cos( \ell x_i)] = \begin{cases} 0 &amp; \text{ if } j \neq \ell \\
+1 &amp; \text{ if } j = \ell
+\end{cases}
+\]</span>. Let <span class="math display">\[
+X = \begin{pmatrix} 1 &amp; \cos(x_i) &amp; \cdots &amp; \cos(k x_i) \\
+\vdots &amp; &amp; &amp; \vdots \\
+1 &amp; \cos(x_n) &amp; \cdots &amp; \cos(k x_n)
+\end{pmatrix}
+\]</span> Find <span class="math inline">\(c(n,k)\)</span> such that <span class="math inline">\(\norm{\hat{\beta}^{OLS} - \beta} = O_p(c(n,k))\)</span>.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>A technically correct, but not useful answer, would be to give some increasing <span class="math inline">\(c(n,k)\)</span>, like <span class="math inline">\(c(n,k) = n!k!\)</span>. Then <span class="math inline">\(\norm{\hat{\beta} - \beta}/c(n,k) \inprob 0\)</span>, so <span class="math inline">\(\norm{\hat{\beta} -\beta} = o_p(c(n,k))\)</span> which also implies <span class="math inline">\(O_p(c(n,k))\)</span>. I guess such an answer is fine.</p>
+<p>My intention was to ask for the smallest <span class="math inline">\(c(n,k)\)</span> such that <span class="math inline">\(\norm{\hat{\beta} -\beta} = O_p(c(n,k))\)</span>. Let’s do that.</p>
+<p>Note that <span class="math display">\[
+\begin{aligned}
+\norm{\hat{\beta} - \beta} = &amp; \norm{(\frac{1}{n} X'X)^{-1}\frac{1}{n}X'u} \\
+P\left( \norm{\hat{\beta} - \beta} &gt; a \right) = &amp; P\left( \norm{(\frac{1}{n} X'X)^{-1}\frac{1}{n}X'u} &gt; a \right) \\
+\leq &amp; \frac{1}{a^j} \Er\left[\norm{(\frac{1}{n} X'X)^{-1}\frac{1}{n}X'u}^j \right]
+\end{aligned}
+\]</span> where the last line follows from Markov’s inequality.</p>
+<p>Using the fact that for a square matrix and any vector, <span class="math inline">\(\norm{A x} \leq \lambda^\max(A) \norm{x}\)</span> where <span class="math inline">\(\lambda^\max(A)\)</span> is the maximal eigenvalue of <span class="math inline">\(A\)</span>, we have</p>
+<p><span class="math display">\[
+\begin{aligned}
+P\left( \norm{\hat{\beta} - \beta} &gt; a \right) \leq &amp; \frac{1}{a^j} \Er\left[\lambda^\max(\frac{1}{n} X'X)^{-j} \norm{\frac{1}{n}X'u}^j \right] \\
+\leq &amp; \frac{1}{a^j} \left(\Er\left[\lambda^\max(\frac{1}{n} X'X)^{-2j} \right] \Er\left[\norm{\frac{1}{n} X'u}^{2j}\right] \right)^{1/2} \\
+\leq &amp; \frac{1}{a^j} \left(\lambda^\max\left(\Er\left[\frac{1}{n} X'X \right]\right)^{-2j} \Er[\norm{\frac{1}{n} X'u}^{2j}] \right)^{1/2} \\
+\leq &amp; \frac{1}{a^j} \left(\Er[(\frac{1}{n^2} u'X X'u)^{j}] \right)^{1/2} \\
+\leq &amp; \frac{1}{a} \sqrt{\frac{k \sigma^2}{n}}
+\end{aligned}
+\]</span></p>
+<p>where we used the Cauchy-Schwarz inequality, then Jensen’s inequality (<span class="math inline">\(\lambda^\max(A)^{-1}\)</span> is concave), and then the fact that <span class="math inline">\(\Er[X'X/n] = I_{k+1}\)</span>. Finally, we set <span class="math inline">\(j=1\)</span>.</p>
+<p>Thus, we get that <span class="math inline">\(\norm{\hat{\beta} - \beta} = O_p(\sqrt{k/n})\)</span></p>
+</div>
+</section>
+</section>
+<section id="discrete-measurement-error" class="level1">
+<h1>Discrete Measurement Error</h1>
+<p>Consider the linear model <span class="math display">\[
+Y_i = \beta X_i^* + \epsilon_i
+\]</span> with <span class="math inline">\(\var(X_i^*)&gt;0\)</span>, <span class="math inline">\(\Er[\epsilon_i X_i^*] = 0\)</span>, and <span class="math inline">\(\Er[\epsilon_i]=0\)</span>. Furthermore suppose <span class="math inline">\(X_i^* \in \{0,1\}\)</span>, but <span class="math inline">\(X_i^*\)</span> is unobserved. Instead, you observe <span class="math inline">\(X_i \in \{0,1\}\)</span> and know that <span class="math display">\[
+P(X_i = 1 | X_i^* = 1) = P(X_i=0 | X_i^*=0) = p
+\]</span> where <span class="math inline">\(p &gt; 1/2\)</span> is unknown.</p>
+<section id="ols-is-inconsistent-8-points" class="level2">
+<h2 class="anchored" data-anchor-id="ols-is-inconsistent-8-points">OLS is Inconsistent (8 points)</h2>
+<p>Let <span class="math inline">\(\hat{\beta}^{OLS} = \frac{\sum X_i Y_i}{\sum X_i^2}\)</span> be the least squares estimator. Let <span class="math inline">\(\pi = P(X_i^*=1)\)</span>. Compute <span class="math inline">\(\plim \hat{\beta}^{OLS}\)</span> in terms of <span class="math inline">\(p\)</span>, <span class="math inline">\(\pi\)</span>, and <span class="math inline">\(\beta\)</span>.</p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
+\begin{aligned}
+\plim \hat{\beta}^{OLS} = &amp; \plim \frac{\sum X_i Y_i}{\sum X_i^2} \\
+= &amp; \plim \frac{\sum X_i (X_i^* \beta + \epsilon_i)}{\sum X_i^2} \\
+= &amp; \frac{\Er[X_i X_i^*]}{\Er[X_i^2]} \beta \\
+= &amp; \frac{\Er[X_i | X_i^*=1]P(X_i^*=1)}{P(X_i=1)} \beta \\
+= &amp; \frac{p \pi}{P(X_i=1|X_i^*=1)P(X_i^*=1) +  P(X_i=1|X_i^*=0)P(X_i^*=0)} \beta \\
+= &amp; \frac{p \pi}{p \pi + (1-p)(1-\pi)} \beta
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="instrument-8-points" class="level2">
+<h2 class="anchored" data-anchor-id="instrument-8-points">Instrument? (8 points)</h2>
+<p>Suppose you also observe <span class="math inline">\(Z_i \in \{0,1\}\)</span> with <span class="math display">\[
+P(Z_i = 1 | X_i^* = 1) = P(Z_i=0 | X_i^*=0) = q
+\]</span> where <span class="math inline">\(q&gt;1/2\)</span>, and <span class="math inline">\(Z_i\)</span> and <span class="math inline">\(X_i\)</span> are independent conditional on <span class="math inline">\(X_i^*\)</span>. Let <span class="math inline">\(\hat{\beta}^{IV} = \frac{\sum Z_i Y_i}{\sum Z_i X_i}\)</span> be the instrumental variable estimator. Compute <span class="math inline">\(\plim \hat{\beta}^{IV}\)</span></p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
+\begin{aligned}
+\plim \hat{\beta}^{OLS} = &amp; \plim \frac{\sum Z_i Y_i}{\sum Z_i X_i} \\
+= &amp; \plim \frac{\sum Z_i (X_i^* \beta + \epsilon_i)}{\sum Z_i X_i} \\
+= &amp; \frac{\Er[Z_i X_i^*]}{\Er[Z_i X_i]} \beta \\
+= &amp; \frac{q \pi}{pq \pi + (1-p)(1-q)(1-\pi)} \beta
+\end{aligned}
+\]</span></p>
+<p>So with this form of classification error, neither OLS nor IV is consistent.</p>
+</div>
+</section>
+<section id="or-something-else-9-points" class="level2">
+<h2 class="anchored" data-anchor-id="or-something-else-9-points">Or Something Else? (9 points)</h2>
+<p>Describe how <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, and <span class="math inline">\(Z\)</span> could be used to estimate <span class="math inline">\(\beta\)</span>.</p>
+<p><em>Hint: think of <span class="math inline">\(\beta\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>, and <span class="math inline">\(\pi = P(X^*_i = 1)\)</span> as four parameters to estimate, and come up with four moment conditions that involve these parameters.</em></p>
+<div class="solution proof">
+<p><span class="proof-title"><em>Solution</em>. </span>The idea here is to use GMM. There are many possible combinations of moments to use. From the previous two parts, we know that <span class="math inline">\(\Er[X_i Y_i] = p\pi\beta\)</span> and <span class="math inline">\(\Er[Z_i Y_i] = q \pi \beta\)</span>. We also know that <span class="math inline">\(\Er[X_i] = p \pi + (1-p)(1-\pi)\)</span> and <span class="math inline">\(\Er[Z_i] = q \pi + (1-q)(1-\pi)\)</span>. Hence, we can estimate <span class="math inline">\(\beta\)</span> by solving <span class="math display">\[
+\begin{aligned}
+\En[X_i Y_i] &amp; = \hat{p}\hat{\pi} \hat{\beta} \\
+\En[Z_i Y_i] &amp; = \hat{q}\hat{\pi} \hat{\beta} \\
+\En[X_i] &amp; = \hat{p} \hat{\pi} + (1-\hat{p})(1-\hat{\pi}) \\
+\En[Z_i] &amp; = \hat{q} \hat{\pi} + (1-\hat{q})(1-\hat{\pi})
+\end{aligned}
+\]</span> It’s not clear whether this system of equations has a unique solution. In general, it might not. The restrictions that <span class="math inline">\(p,q \in [1/2,1]\)</span> and <span class="math inline">\(\pi \in (0,1)\)</span> might help pin down the correct solution.</p>
+<p>Your answer need not have gone any further, but to ensure identification, note that <span class="math inline">\(\Er[X_i Z_i Y_i] = p q \pi \beta\)</span>, so we can identify <span class="math inline">\(p\)</span> (and <span class="math inline">\(q\)</span>) by <span class="math inline">\(\Er[XZY] / \Er[ZY]\)</span>. Given <span class="math inline">\(p\)</span>, <span class="math inline">\(\pi\)</span> can be identified from <span class="math inline">\(\Er[X_i]\)</span>. Given <span class="math inline">\(p\)</span> and <span class="math inline">\(\pi\)</span>, we can recover <span class="math inline">\(\beta\)</span> from <span class="math inline">\(\Er[XY]\)</span>. This constructive identification argument can be turned into an estimator by replacing expecations with sample averages.</p>
+</div>
+<hr>
+</section>
+</section>
+<section id="definitions-and-results" class="level1">
+<h1>Definitions and Results</h1>
+<ul>
+<li><p>Measure and Probability:</p>
+<ul>
+<li><p>Monotone convergence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p></li>
+<li><p>Dominated converegence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p></li>
+<li><p>Markov’s inequality: <span class="math inline">\(P(|X|&gt;\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p></li>
+<li><p>Jensen’s inequality: if <span class="math inline">\(g\)</span> is convex, then <span class="math inline">\(g(\Er[X]) \leq \Er[g(X)]\)</span></p></li>
+<li><p>Cauchy-Schwarz inequality: <span class="math inline">\(\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]\)</span></p></li>
+<li><p>Conditional expection of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathscr{G}\)</span> satisfies <span class="math inline">\(\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in \mathscr{G}\)</span></p></li>
+</ul></li>
+<li><p>Identification <span class="math inline">\(X\)</span> observed, distribution <span class="math inline">\(P_X\)</span>, probability model <span class="math inline">\(\mathcal{P}\)</span></p>
+<ul>
+<li><span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t. <span class="math inline">\(\theta_0 = \psi(P_X)\)</span></li>
+<li><span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</li>
+<li>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></li>
+<li><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s \neq s_0\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></li>
+<li><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></li>
+</ul></li>
+<li><p>Cramér-Rao Bound: in the parametric model <span class="math inline">\(P_X \in \{P_\theta: \theta \in \R^d\}\)</span> with likelihood <span class="math inline">\(\ell(\theta;x)\)</span>, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator <span class="math inline">\(\tau(X)\)</span>, <span class="math display">\[
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+\]</span> where <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x) = \Er[H(x,\theta)]\)</span> and <span class="math inline">\(s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}\)</span></p></li>
+<li><p>Hypothesis testing:</p>
+<ul>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_0)\)</span>=<em>Type I error rate</em> <span class="math inline">\(=P_x(C)\)</span></li>
+<li><span class="math inline">\(P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)\)</span>=<em>Type II error rate</em></li>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_1)\)</span> = <em>power</em></li>
+<li><span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} P_x(C)\)</span> = <em>size of test</em></li>
+<li>Neyman-Pearson Lemma: Let <span class="math inline">\(\Theta = \{0, 1\}\)</span>, <span class="math inline">\(f_0\)</span> and <span class="math inline">\(f_1\)</span> be densities of <span class="math inline">\(P_0\)</span> and <span class="math inline">\(P_1\)</span>, <span class="math inline">\(\tau(x) =f_1(x)/f_0(x)\)</span> and <span class="math inline">\(C^* =\{x \in X: \tau(x) &gt; c\}\)</span>. Then among all tests <span class="math inline">\(C\)</span> s.t. <span class="math inline">\(P_0(C) = P_0(C^*)\)</span>, <span class="math inline">\(C^*\)</span> is most powerful.</li>
+</ul></li>
+<li><p>Projection: <span class="math inline">\(P_L y \in L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
+\norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+\]</span></p>
+<ol type="1">
+<li><span class="math inline">\(P_L y\)</span> exists, is unique, and is a linear function of <span class="math inline">\(y\)</span></li>
+<li>For any <span class="math inline">\(y_1^* \in L\)</span>, <span class="math inline">\(y_1^* = P_L y\)</span> iff <span class="math inline">\(y- y_1^* \perp L\)</span></li>
+<li><span class="math inline">\(G = P_L\)</span> iff <span class="math inline">\(Gy = y \forall y \in L\)</span> and <span class="math inline">\(Gy = 0 \forall y \in L^\perp\)</span></li>
+<li>Linear <span class="math inline">\(G: V \to V\)</span> is a projection map onto its range, <span class="math inline">\(\mathcal{R}(G)\)</span>, iff <span class="math inline">\(G\)</span> is idempotent and symmetric.</li>
+</ol></li>
+<li><p>Gauss-Markov: <span class="math inline">\(Y = \theta + u\)</span> with <span class="math inline">\(\theta \in L \subset \R^n\)</span>, a known subspace. If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a'\theta = a'\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p></li>
+<li><p>Convergence in probability:</p>
+<ul>
+<li><span class="math inline">\(X_1, X_2, ...\)</span> <strong>converge in probability</strong> to <span class="math inline">\(Y\)</span> if <span class="math inline">\(\forall \epsilon &gt; 0\)</span>, <span class="math inline">\(\lim_{n \to \infty} P(\norm{X_n -Y} &gt; \epsilon) = 0\)</span></li>
+<li>If <span class="math inline">\(\lim_{n \to \infty} \Er[ \norm{X_n - Y}^p ] \to 0\)</span>, then <span class="math inline">\(X_n \inprob Y\)</span></li>
+<li>If <span class="math inline">\(X_n \inprob X\)</span>, and <span class="math inline">\(f\)</span> continuous, then <span class="math inline">\(f(X_n) \inprob f(X)\)</span></li>
+<li>Weak LLN: if <span class="math inline">\(X_1, ..., X_n\)</span> are i.i.d. and <span class="math inline">\(\Er[X^2]\)</span> exists, then <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n X_i \inprob \Er[X]\)</span></li>
+<li><span class="math inline">\(X_n = O_p(b_n)\)</span> if <span class="math inline">\(\forall \epsilon&gt;0\)</span> <span class="math inline">\(\exists M_\epsilon\)</span> s.t. <span class="math inline">\(\lim\sup P(\frac{\norm{X_n}}{b_n} \geq M_\epsilon) &lt; \epsilon\)</span></li>
+<li><span class="math inline">\(X_n = o_p(b_n)\)</span> if <span class="math inline">\(\frac{X_n}{b_n} \inprob 0\)</span></li>
+</ul></li>
+<li><p>Convergence in distribution:</p>
+<ul>
+<li><span class="math inline">\(X_1, X_2, ...\)</span> converge in distribution to <span class="math inline">\(X\)</span> if <span class="math inline">\(\forall f \in \mathcal{C}_b\)</span>, <span class="math inline">\(\Er[f(X_n)] \to \Er[f(X)]\)</span></li>
+<li>If <span class="math inline">\(X_n \indist X\)</span> and <span class="math inline">\(g\)</span> is continuous, then <span class="math inline">\(g(X_n) \indist g(X)\)</span></li>
+<li>Slutsky’s lemma: if <span class="math inline">\(Y_n \inprob c\)</span> and <span class="math inline">\(X_n \indist X\)</span> and <span class="math inline">\(g\)</span> is continuious, then <span class="math inline">\(g(Y_n, X_n) \indist g(c,X)\)</span></li>
+<li>Levy’s Continuity Theorem: <span class="math inline">\(X_n \indist X\)</span> iff <span class="math inline">\(\Er[e^{it'X_n}] \to \Er[e^{it'X}] \forall t\)</span></li>
+<li>CLT: if <span class="math inline">\(X_1, ..., X_n\)</span> are i.i.d. with <span class="math inline">\(\Er[X_1] = \mu\)</span> and <span class="math inline">\(\var(X_1) = \sigma^2\)</span>, then <span class="math inline">\(\frac{1}{\sqrt{n}} \sum_{i=1}^n \frac{X_i - \mu}{\sigma} \indist N(0,1)\)</span></li>
+<li>Delta Method: suppose <span class="math inline">\(\sqrt{n}(\hat{\theta} - \theta_0) \indist S\)</span> and <span class="math inline">\(h\)</span> is differentiable, then <span class="math inline">\(\sqrt{n}(h(\hat{\theta}) - h(\theta_0)) \indist \nabla_h(\theta_0) S\)</span></li>
+</ul></li>
+<li><p>Asymptotic distribution of OLS:</p>
+<ul>
+<li>Model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span></li>
+<li><span class="math inline">\(\hat{\beta}^OLS = (X'X)^{-1} X'y\)</span></li>
+<li>If observations are i.i.d., <span class="math inline">\(\Er[X_i \epsilon] = 0\)</span>, <span class="math inline">\(\Er[X_i X_i'] &lt; \infty\)</span>, and <span class="math inline">\(\Er[X_i X_i' \epsilon_i^2] &lt; \infty\)</span>, then <span class="math display">\[
+\sqrt{n}(\hat{\beta}^{OLS} - \beta) \left((\frac{1}{n} X'X)^{-1} \left( \frac{1}{n} \sum X_i X_i' \hat{\epsilon}_i^2 \right) (\frac{1}{n} X'X)^{-1} \right)^{-1/2} \indist N(0,I)
+\]</span></li>
+</ul></li>
+<li><p>IV</p>
+<ul>
+<li><span class="math inline">\(\hat{\beta}^{2SLS} = (X'P_Z X)^{-1} (X' P_Z y)\)</span></li>
+<li>If observations are i.i.d. <span class="math inline">\(rank(\Er[X_i Z_i']) = k\)</span>, <span class="math inline">\(\Er[Z_i \epsilon_i] = 0\)</span>, <span class="math inline">\(\Er\norm{X_i}^4 &lt; \infty\)</span>, <span class="math inline">\(\Er\norm{Z_i}^4 &lt; \infty\)</span>, <span class="math inline">\(\Er[\epsilon_i^2 | Z_i] = \sigma^2\)</span>, and <span class="math inline">\(\Er[Z_i Z_i']\)</span> is invertible, then <span class="math display">\[
+\sqrt{n}(\hat{\beta}^{2SLS} - \beta) \indist N\left(0, \sigma^2 \left\lbrace \Er[X_i Z_i'] \Er[Z_i Z_i']^{-1} \Er[Z_i X_i'] \right\rbrace^{-1} \right)
+\]</span></li>
+<li>J-test: under <span class="math inline">\(H_0: \Er[Z_i(Y-X_i'\beta_0)] = 0\)</span>, <span class="math display">\[
+J = n\left(\frac{1}{n}Z'(y - X\hat{\beta}^{2SLS}) \right)'
+\hat{C}\left(\frac{1}{n}Z'(y - X\hat{\beta}^{2SLS}) \right) \indist
+\chi^2_{d-k}
+\]</span></li>
+<li>AR-test: under <span class="math inline">\(H_0: \beta = \beta_0\)</span>, <span class="math display">\[
+AR(\beta) = n\left(\frac{1}{n}Z'(y - X\beta) \right)'
+\hat{\Sigma}(\beta)^{-1}\left(\frac{1}{n}Z'(y - X\beta) \right) \indist \chi^2_d
+\]</span></li>
+</ul></li>
+</ul>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-anderson2019" class="csl-entry" role="doc-biblioentry">
+Anderson, Michael L. 2019. <span>“As the Wind Blows: The Effects of Long-Term Exposure to Air Pollution on Mortality.”</span> <em>Journal of the European Economic Association</em> 18 (4): 1886–1927. <a href="https://doi.org/10.1093/jeea/jvz051">https://doi.org/10.1093/jeea/jvz051</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>If you could not solve part a, suppose your estimator was <span class="math inline">\(\hat{\beta} = (W'X)^{-1} (W'y)\)</span> for some <span class="math inline">\(n \times k+1\)</span> matrix of variables of <span class="math inline">\(W\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If you could not solve part a, suppose your estimator was <span class="math inline">\(\hat{\beta} = (W'X)^{-1} (W'y)\)</span> for some <span class="math inline">\(n \times (k+1)\)</span> matrix of variables, <span class="math inline">\(W\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

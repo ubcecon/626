@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-09-15">
+<meta name="dcterms.date" content="2023-09-14">
 
 <title>ECON 626 - ECON 626: Problem Set 1</title>
 <style>
@@ -18,14 +18,15 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -39,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,10 +75,12 @@ div.csl-indent {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -95,29 +97,31 @@ div.csl-indent {
     <span class="navbar-title">ECON 626</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../syllabus626.html">
+    <a class="nav-link" href="../../syllabus626.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides.html">
+    <a class="nav-link" href="../../slides.html" rel="" target="">
  <span class="menu-text">Slides</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -131,11 +135,9 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
-  <ul class="collapse">
-  <li><a href="#suggested-steps" id="toc-suggested-steps" class="nav-link" data-scroll-target="#suggested-steps">Suggested steps:</a></li>
-  </ul></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul>
 </nav>
     </div>
@@ -155,7 +157,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 15, 2022</p>
+      <p class="date">September 14, 2023</p>
     </div>
   </div>
   
@@ -167,44 +169,57 @@ div.csl-indent {
 
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p>The proofs convergence theorems in chapter 1 of the notes assumed <span class="math inline">\(\{f_n\}\)</span> are measurable. There are situations where measurability is difficult to verify and can fail to hold with respect to what seems a natural Borel <span class="math inline">\(\sigma\)</span>-algebra to use (see <span class="citation" data-cites="vw1996">Vaart and Wellner (<a href="#ref-vw1996" role="doc-biblioref">1996</a>)</span> page 3 for an example). One way to proceed in these situations, is to instead use outer measure and outer integrals, which we introduce in this exercise.</p>
-<p>Let <span class="math inline">\((\Omega,\mathscr{F},\mu)\)</span> be a measure space, <span class="math inline">\(f : \Omega \to \mathbf{R}\)</span>. Define the <strong>outer integral</strong> of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(\mu\)</span> as <span class="math display">\[
-\int^* f d\mu = \inf_{g:\Omega \to \bar{\mathbf{R}}, g \geq f, g \text{ measurable}} \int g d\mu
-\]</span></p>
-<p>Let <span class="math inline">\(f_n: \Omega \to \mathbf{R}\)</span>. Assume <span class="math inline">\(L \leq f_1(\omega) \leq f_2(\omega) \leq f_3(\omega) ...\)</span> for all <span class="math inline">\(\omega\)</span>, and <span class="math inline">\(\lim_{n \to \infty} f_n (\omega) = f(\omega)\)</span>. Show the monotone convergence theorem for outer integrals, i.e. <span class="math display">\[
-\lim_{n \to \infty} \int^* f_n d\mu = \int^* f d\mu
-\]</span></p>
-<section id="suggested-steps" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-steps">Suggested steps:</h2>
+<p>Let <span class="math inline">\(\Omega = \{a,b,c,d\}\)</span>.</p>
 <ol type="1">
-<li><p>Show that there exists a minimal measurable majorant of <span class="math inline">\(f\)</span>, i.e.&nbsp;a measurable <span class="math inline">\(f^* \geq f\)</span> such that if <span class="math inline">\(g \geq f\)</span> and <span class="math inline">\(g\)</span> is measurable, then <span class="math inline">\(f^* \leq g\)</span> a.e. To do this, choose a sequence <span class="math inline">\(h_n\)</span> such that <span class="math inline">\(\int h_n d\mu \downarrow \int^* f d\mu\)</span>, and let <span class="math inline">\(f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n}  h_k(\omega)\)</span>. State why such <span class="math inline">\(h_n\)</span> exist and why this limit exists (recall the monotone convergence theorem for sequences of real numbers).</p></li>
-<li><p>Use <span class="math inline">\(f_n^*\)</span>, <span class="math inline">\(f^*\)</span>, and the monotone convergence theorem for integrals of measurable functions to obtain the result.</p></li>
+<li>Is <span class="math inline">\(\{\{a\}, \{c\}, \{a,b\}, \emptyset\}\)</span> a <span class="math inline">\(\sigma\)</span>-field?</li>
+<li>What is the smallest <span class="math inline">\(\sigma\)</span>-field containing <span class="math inline">\(\{\{a,b\},\{a,c\}\}\)</span>?</li>
 </ol>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(g_1, g_2, ....\)</span> are an increasing sequence of measurable functions from <span class="math inline">\(\Omega \to \mathbb{R}\)</span>, and <span class="math inline">\(g_n \to g\)</span>, then notice that since <span class="math inline">\(g_n\)</span> are increasing, <span class="math inline">\(\lim_{n\to \infty} g_n = \sup_n g_n\)</span>. <span class="math display">\[
-\begin{align*}
-g^{-1}((-\infty,x]) = &amp; \{\omega: \lim g_n(\omega) \leq x \} \\
-= &amp; \{ \omega: \sup g_n(\omega) \leq x \} \\
-= &amp; \{ \omega: g_n(\omega) \leq x \forall n\} \\
-= &amp; \cap_n g_n^{-1}((-\infty, x])
-\end{align*}
-\]</span> Each <span class="math inline">\(g_n\)</span> is measurable, so <span class="math inline">\(g_n^{-1}((-\infty, x]) \in \mathscr{F}\)</span>. The right hand side is a countable intersection, so it must also be in <span class="math inline">\(\mathscr{F}\)</span>. Thus, <span class="math inline">\(g^{-1}((-\infty, x]) \in \mathscr{F}\)</span>. The collection of all such sets generates <span class="math inline">\(\mathscr{B}(\mathbb{R})\)</span>, so <span class="math inline">\(g^{-1}(B) \in \mathscr{F}\)</span> for any <span class="math inline">\(B \in \mathscr{B}(\mathbb{R})\)</span>, that is, <span class="math inline">\(g\)</span> is measurable.</p>
-<ul>
-<li>An analogous arguments would apply to a decreasing sequence.</li>
-<li>For any convergent sequence, <span class="math inline">\(\lim g_n = \lim_n \inf_{k \geq n} g_k = \lim_n \sup_{k \geq n} g_k\)</span>, and the <span class="math inline">\(\inf\)</span> and <span class="math inline">\(\sup\)</span> are increasing and decreasing, so you can generalize this argument to any sequence.</li>
-</ul>
-</div>
-</div>
-</section>
+<!-- The proofs convergence theorems in chapter 1 of the notes assumed $\{f_n\}$ are measurable. There are situations where measurability is difficult to verify and can fail to hold with respect to what seems a natural Borel $\sigma$-algebra to use (see @vw1996 page 3 for an example).  One way to proceed in these situations, is to instead use outer measure and outer integrals, which we introduce in this exercise. -->
+<!-- Let  $(\Omega,\mathscr{F},\mu)$ be a measure space, -->
+<!-- $f : \Omega \to \mathbf{R}$. Define the **outer integral** of $f$ with respect to $\mu$ as -->
+<!-- $$ -->
+<!-- \int^* f d\mu = \inf_{g:\Omega \to \bar{\mathbf{R}}, g \geq f, g \text{ measurable}} \int g d\mu -->
+<!-- $$ -->
+<!-- Let $f_n: \Omega \to \mathbf{R}$. Assume $L \leq f_1(\omega) \leq f_2(\omega) -->
+<!-- \leq f_3(\omega) ...$ for all $\omega$, and $\lim_{n \to \infty} f_n (\omega) = f(\omega)$. -->
+<!-- Show the monotone convergence theorem for outer integrals, i.e. -->
+<!-- $$ -->
+<!-- \lim_{n \to \infty} \int^* f_n d\mu = \int^* f d\mu -->
+<!-- $$ -->
+<!-- ## Suggested steps: -->
+<!-- 1. Show that there exists a minimal measurable majorant of $f$, -->
+<!--   i.e. a measurable $f^* \geq f$ such that if $g \geq f$ and $g$ is measurable, -->
+<!--   then $f^* \leq g$ a.e. To do this, choose a sequence $h_n$ -->
+<!--   such that $\int h_n d\mu \downarrow \int^* f d\mu$, and let -->
+<!--   $f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n} -->
+<!--   h_k(\omega)$. State why such $h_n$ exist and why this limit exists -->
+<!--   (recall the monotone convergence theorem for sequences of real numbers). -->
+<!-- 2. Use $f_n^*$, $f^*$, and the monotone convergence theorem for -->
+<!--    integrals of measurable functions to obtain the result. -->
+<!-- ::: {.callout-tip } -->
+<!-- If $g_1, g_2, ....$ are an increasing sequence of measurable -->
+<!-- functions from -->
+<!-- $\Omega \to \mathbb{R}$, and $g_n \to g$, then notice that since $g_n$ are increasing, -->
+<!-- $\lim_{n\to \infty} g_n = \sup_n g_n$. -->
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- g^{-1}((-\infty,x]) = & \{\omega: \lim g_n(\omega) \leq x \} \\ -->
+<!-- = & \{ \omega: \sup g_n(\omega) \leq x \} \\ -->
+<!-- = & \{ \omega: g_n(\omega) \leq x \forall n\} \\ -->
+<!-- = & \cap_n g_n^{-1}((-\infty, x]) -->
+<!-- \end{align*} -->
+<!-- $$ -->
+<!-- Each $g_n$ is measurable, so $g_n^{-1}((-\infty, x]) \in -->
+
+<!-- \mathscr{F}$.  The right hand side is a countable intersection, so it -->
+<!-- must also be in $\mathscr{F}$. Thus, $g^{-1}((-\infty, x]) \in -->
+<!-- \mathscr{F}$. The collection of all such sets generates -->
+<!-- $\mathscr{B}(\mathbb{R})$, so $g^{-1}(B) \in \mathscr{F}$ for any -->
+<!-- $B \in \mathscr{B}(\mathbb{R})$, that is, $g$ is measurable. -->
+<!--   - An analogous arguments would apply to a decreasing sequence. -->
+<!--   - For any convergent sequence, -->
+<!--   $\lim g_n = \lim_n \inf_{k \geq n}   g_k = \lim_n \sup_{k \geq n} g_k$, and the $\inf$ and $\sup$ are increasing and decreasing, so you can generalize this argument to any sequence. -->
+<!-- ::: -->
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
@@ -214,17 +229,20 @@ g^{-1}((-\infty,x]) = &amp; \{\omega: \lim g_n(\omega) \leq x \} \\
 <li><p>Let <span class="math inline">\(X\)</span> be a random variable on <span class="math inline">\((\Omega ,\mathscr{F})\)</span> and let <span class="math inline">\(\mathscr{G}\)</span> be the collection of the sets of the form <span class="math inline">\(\{\omega \in \Omega :X(\omega )\in B\}\)</span> with <span class="math inline">\(B\in \mathscr{B}(\mathbf{R})\)</span>. Then show that <span class="math inline">\(\mathscr{G}\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p></li>
 <li><p>Show that <span class="math inline">\(\{X^{-1}(A):A\in \sigma (\mathscr{C})\}=\sigma(\{X^{-1}(A):A\in \mathscr{C}\})\)</span> for any subset <span class="math inline">\(\mathscr{C}\)</span> of <span class="math inline">\(\mathscr{B}(\mathbf{R})\)</span>.</p></li>
 </ol>
+</section>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
+<p>Show that if for some <span class="math inline">\(u ≥ 2\)</span>, $E[|X|^u ] &lt;0 $ and <span class="math inline">\(E[|Y|^u ] &lt; \infty\)</span>, then for some <span class="math inline">\(s ∈ (0, 1)\)</span>, <span class="math display">\[
+\lim_{a \to \infty} a^{1−s} P \left(|XY | &gt; a\right) = 0
+\]</span></p>
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-song2021" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-song2021" class="csl-entry" role="listitem">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
-</div>
-<div id="ref-vw1996" class="csl-entry" role="doc-biblioentry">
-Vaart, Aad W, and Jon A Wellner. 1996. <em>Weak Convergence and Empirical Processes</em>. Springer.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -254,9 +272,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -321,6 +353,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

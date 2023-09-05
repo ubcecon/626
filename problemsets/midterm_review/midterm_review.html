@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -56,10 +56,12 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -76,29 +78,31 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">ECON 626</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../syllabus626.html">
+    <a class="nav-link" href="../../syllabus626.html" rel="" target="">
  <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../slides.html">
+    <a class="nav-link" href="../../slides.html" rel="" target="">
  <span class="menu-text">Slides</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -232,12 +236,12 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><span class="math inline">\(f: \Omega \to \mathbf{R}\)</span> is (<span class="math inline">\(\mathscr{F}\)</span>-)<strong>measurable</strong> if <span class="math inline">\(\forall\)</span> <span class="math inline">\(B \in \mathscr{B}(\mathbf{R})\)</span>, <span class="math inline">\(f^{-1}(B) \in \mathscr{F}\)</span></li>
 </ul>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -265,12 +269,12 @@ Tip
 <p>Let <span class="math inline">\((\Omega,\mathscr{F},\mu)\)</span> be a measure space, and let <span class="math inline">\(\nu\)</span> and <span class="math inline">\(\mu\)</span> be <span class="math inline">\(\sigma\)</span>-finite measures defined on <span class="math inline">\(\mathscr{F}\)</span> and <span class="math inline">\(\nu \ll \mu\)</span>. Then there is a nonnegative measurable function <span class="math inline">\(f\)</span> such that for each set <span class="math inline">\(A\in \mathscr{F}\)</span>, <span class="math display">\[
 \nu (A)=\int_{A}fd\mu
 \]</span> For any such <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, <span class="math inline">\(\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})=0\)</span></p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -310,12 +314,12 @@ Tip
 <ul>
 <li>Given a measure space <span class="math inline">\((\Omega ,\mathscr{F})\)</span>, a <strong>probability</strong> (or <strong>probability measure</strong>)<span class="math inline">\(\ P\)</span> is a measure s.t. <span class="math inline">\(P(\Omega )=1\)</span></li>
 </ul>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -341,12 +345,12 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 <section id="pdf" class="level3">
 <h3 class="anchored" data-anchor-id="pdf">PDF</h3>
 <p>Let <span class="math inline">\(X\)</span> be a random variable with distribution <span class="math inline">\(P_{X}\)</span>. When <span class="math inline">\(P_{X}\ll \lambda\)</span>, we call <span class="math inline">\(X\)</span> a <strong>continuous random variable</strong>, and call the Radon-Nikodym derivative <span class="math inline">\(f\equiv dP_{X}/d\lambda\)</span> the (probability) <strong>density function</strong> of <span class="math inline">\(P_{X}\)</span>.</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -369,12 +373,12 @@ Tip
 <section id="cauchy-schwarz-inequality" class="level3">
 <h3 class="anchored" data-anchor-id="cauchy-schwarz-inequality">Cauchy-Schwarz Inequality</h3>
 <p><span class="math inline">\(\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]\)</span></p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -420,12 +424,12 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 <li>Random variables <span class="math inline">\(X_1, ..., X_m\)</span> are <strong>independent</strong> if <span class="math inline">\(\sigma(X_1), ..., \sigma(X_m)\)</span> are independent</li>
 </ul>
 <p>Suppose that <span class="math inline">\(X=(X_1, X_2)\)</span> and <span class="math inline">\(Y=(Y_1, Y_2)\)</span> are independent, then <span class="math inline">\(f(X)\)</span> and <span class="math inline">\(g(Y)\)</span> are independent</p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -450,12 +454,12 @@ Tip
 <li>If <span class="math inline">\(\sigma(X) \subset \sigma(Z)\)</span>, then <span class="math inline">\(\Er[\Er[Y|Z]|X] = \Er[Y|X]\)</span></li>
 <li>If <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are independent, then <span class="math inline">\(\Er[Y | X ] = \Er[Y]\)</span></li>
 </ul>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -491,12 +495,12 @@ Tip
 <li>i.e.&nbsp;<span class="math inline">\(\Gamma(\theta_0, S) \cap \Gamma(\theta, S) = \emptyset\)</span> <span class="math inline">\(\forall \theta \neq \theta_0\)</span></li>
 </ul></li>
 </ul>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -510,12 +514,12 @@ Tip
 <h1>Estimation</h1>
 <section id="sample-analogue-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="sample-analogue-estimation">Sample Analogue Estimation</h2>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -565,12 +569,12 @@ I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \
 <p>Let <span class="math inline">\(T = \tau(X)\)</span> be an unbiased estimator, and suppose the condition of the previous slide and of the score equality hold. Then, <span class="math display">\[
 \var_\theta(\tau(X)) \equiv \int \left(\tau(x) - \int \tau(x) dP_\theta\right)\left(\tau(x) - \int \tau(x) dP_\theta\right)' dP\theta \geq I(\theta)^{-1}
 \]</span></p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -612,12 +616,12 @@ Tip
 <p><span class="math display">\[
 Y = \theta + u
 \]</span> with <span class="math inline">\(\theta \in L \subset \R^n\)</span>, <span class="math inline">\(L\)</span> a known subspace. If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a'\theta = a'\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p>
-<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
@@ -658,9 +662,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -725,6 +743,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

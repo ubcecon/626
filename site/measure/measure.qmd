@@ -10,9 +10,9 @@ format:
     min-scale: 0.1
 bibliography: ../626.bib
 
-jupyter: julia-1.8
-execute:
-  cache: false
+# jupyter: julia-1.9
+# execute:
+#   cache: false
 ---
 
 ## References
@@ -150,13 +150,7 @@ Show the second equality above.
 :::
 
 ```{julia}
-#| code-fold: true
-using Pkg
-Pkg.activate(".")
 using PlotlyLight, Cobweb
-```
-
-```{julia}
 Ω = range(1., 6., 500)
 f(ω) = max( -(3 - ω)^2 + ω + sin(3*ω), 0.0)
 #fig=plot(Ω,  f.(Ω),  name="f(ω)")

@@ -16,7 +16,7 @@ format:
       data-background-size: contain
 bibliography: ../626.bib
 
-# jupyter: julia-1.8
+# jupyter: julia-1.9
 # execute:
 #   cache: false
 ---

@@ -10,7 +10,7 @@ format:
     min-scale: 0.1
 bibliography: ../626.bib
 
-# jupyter: julia-1.8
+# jupyter: julia-1.9
 # execute:
 #   cache: false
 ---

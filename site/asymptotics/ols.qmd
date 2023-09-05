@@ -18,8 +18,6 @@ format:
       data-background-image: "birken.jpg"
       data-background-size: contain
 bibliography: ../626.bib
-
-jupyter: julia-1.8
 ---
 
 

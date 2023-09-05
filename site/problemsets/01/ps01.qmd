@@ -1,66 +1,72 @@
 ---
 title: "ECON 626: Problem Set 1"
 #author: "Paul Schrimpf"
-date: 2022-09-15
+date: 2023-09-14
 bibliography: ../../626.bib
 ---
 
 # Problem 1
 
-The proofs convergence theorems in chapter 1 of the notes assumed $\{f_n\}$ are measurable. There are situations where measurability is difficult to verify and can fail to hold with respect to what seems a natural Borel $\sigma$-algebra to use (see @vw1996 page 3 for an example).  One way to proceed in these situations, is to instead use outer measure and outer integrals, which we introduce in this exercise.
+Let $\Omega = \{a,b,c,d\}$.
 
-Let  $(\Omega,\mathscr{F},\mu)$ be a measure space,
-$f : \Omega \to \mathbf{R}$. Define the **outer integral** of $f$ with respect to $\mu$ as
-$$
-\int^* f d\mu = \inf_{g:\Omega \to \bar{\mathbf{R}}, g \geq f, g \text{ measurable}} \int g d\mu
-$$
+1. Is $\{\{a\}, \{c\}, \{a,b\}, \emptyset\}$ a $\sigma$-field?
+2. What is the smallest $\sigma$-field containing $\{\{a,b\},\{a,c\}\}$?
 
-Let $f_n: \Omega \to \mathbf{R}$. Assume $L \leq f_1(\omega) \leq f_2(\omega)
-\leq f_3(\omega) ...$ for all $\omega$, and $\lim_{n \to \infty} f_n (\omega) = f(\omega)$.
-Show the monotone convergence theorem for outer integrals, i.e.
-$$
-\lim_{n \to \infty} \int^* f_n d\mu = \int^* f d\mu
-$$
 
-## Suggested steps:
+<!-- The proofs convergence theorems in chapter 1 of the notes assumed $\{f_n\}$ are measurable. There are situations where measurability is difficult to verify and can fail to hold with respect to what seems a natural Borel $\sigma$-algebra to use (see @vw1996 page 3 for an example).  One way to proceed in these situations, is to instead use outer measure and outer integrals, which we introduce in this exercise. -->
 
-1. Show that there exists a minimal measurable majorant of $f$,
-  i.e. a measurable $f^* \geq f$ such that if $g \geq f$ and $g$ is measurable,
-  then $f^* \leq g$ a.e. To do this, choose a sequence $h_n$
-  such that $\int h_n d\mu \downarrow \int^* f d\mu$, and let
-  $f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n}
-  h_k(\omega)$. State why such $h_n$ exist and why this limit exists
-  (recall the monotone convergence theorem for sequences of real numbers).
+<!-- Let  $(\Omega,\mathscr{F},\mu)$ be a measure space, -->
+<!-- $f : \Omega \to \mathbf{R}$. Define the **outer integral** of $f$ with respect to $\mu$ as -->
+<!-- $$ -->
+<!-- \int^* f d\mu = \inf_{g:\Omega \to \bar{\mathbf{R}}, g \geq f, g \text{ measurable}} \int g d\mu -->
+<!-- $$ -->
 
-2. Use $f_n^*$, $f^*$, and the monotone convergence theorem for
-   integrals of measurable functions to obtain the result.
+<!-- Let $f_n: \Omega \to \mathbf{R}$. Assume $L \leq f_1(\omega) \leq f_2(\omega) -->
+<!-- \leq f_3(\omega) ...$ for all $\omega$, and $\lim_{n \to \infty} f_n (\omega) = f(\omega)$. -->
+<!-- Show the monotone convergence theorem for outer integrals, i.e. -->
+<!-- $$ -->
+<!-- \lim_{n \to \infty} \int^* f_n d\mu = \int^* f d\mu -->
+<!-- $$ -->
 
-::: {.callout-tip }
+<!-- ## Suggested steps: -->
 
-If $g_1, g_2, ....$ are an increasing sequence of measurable
-functions from
-$\Omega \to \mathbb{R}$, and $g_n \to g$, then notice that since $g_n$ are increasing,
-$\lim_{n\to \infty} g_n = \sup_n g_n$.
-$$
-\begin{align*}
-g^{-1}((-\infty,x]) = & \{\omega: \lim g_n(\omega) \leq x \} \\
-= & \{ \omega: \sup g_n(\omega) \leq x \} \\
-= & \{ \omega: g_n(\omega) \leq x \forall n\} \\
-= & \cap_n g_n^{-1}((-\infty, x])
-\end{align*}
-$$
-Each $g_n$ is measurable, so $g_n^{-1}((-\infty, x]) \in
-\mathscr{F}$.  The right hand side is a countable intersection, so it
-must also be in $\mathscr{F}$. Thus, $g^{-1}((-\infty, x]) \in
-\mathscr{F}$. The collection of all such sets generates
-$\mathscr{B}(\mathbb{R})$, so $g^{-1}(B) \in \mathscr{F}$ for any
-$B \in \mathscr{B}(\mathbb{R})$, that is, $g$ is measurable.
+<!-- 1. Show that there exists a minimal measurable majorant of $f$, -->
+<!--   i.e. a measurable $f^* \geq f$ such that if $g \geq f$ and $g$ is measurable, -->
+<!--   then $f^* \leq g$ a.e. To do this, choose a sequence $h_n$ -->
+<!--   such that $\int h_n d\mu \downarrow \int^* f d\mu$, and let -->
+<!--   $f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n} -->
+<!--   h_k(\omega)$. State why such $h_n$ exist and why this limit exists -->
+<!--   (recall the monotone convergence theorem for sequences of real numbers). -->
 
-  - An analogous arguments would apply to a decreasing sequence.
-  - For any convergent sequence,
-  $\lim g_n = \lim_n \inf_{k \geq n}   g_k = \lim_n \sup_{k \geq n} g_k$, and the $\inf$ and $\sup$ are increasing and decreasing, so you can generalize this argument to any sequence.
+<!-- 2. Use $f_n^*$, $f^*$, and the monotone convergence theorem for -->
+<!--    integrals of measurable functions to obtain the result. -->
 
-:::
+<!-- ::: {.callout-tip } -->
+
+<!-- If $g_1, g_2, ....$ are an increasing sequence of measurable -->
+<!-- functions from -->
+<!-- $\Omega \to \mathbb{R}$, and $g_n \to g$, then notice that since $g_n$ are increasing, -->
+<!-- $\lim_{n\to \infty} g_n = \sup_n g_n$. -->
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- g^{-1}((-\infty,x]) = & \{\omega: \lim g_n(\omega) \leq x \} \\ -->
+<!-- = & \{ \omega: \sup g_n(\omega) \leq x \} \\ -->
+<!-- = & \{ \omega: g_n(\omega) \leq x \forall n\} \\ -->
+<!-- = & \cap_n g_n^{-1}((-\infty, x]) -->
+<!-- \end{align*} -->
+<!-- $$ -->
+<!-- Each $g_n$ is measurable, so $g_n^{-1}((-\infty, x]) \in -->
+<!-- \mathscr{F}$.  The right hand side is a countable intersection, so it -->
+<!-- must also be in $\mathscr{F}$. Thus, $g^{-1}((-\infty, x]) \in -->
+<!-- \mathscr{F}$. The collection of all such sets generates -->
+<!-- $\mathscr{B}(\mathbb{R})$, so $g^{-1}(B) \in \mathscr{F}$ for any -->
+<!-- $B \in \mathscr{B}(\mathbb{R})$, that is, $g$ is measurable. -->
+
+<!--   - An analogous arguments would apply to a decreasing sequence. -->
+<!--   - For any convergent sequence, -->
+<!--   $\lim g_n = \lim_n \inf_{k \geq n}   g_k = \lim_n \sup_{k \geq n} g_k$, and the $\inf$ and $\sup$ are increasing and decreasing, so you can generalize this argument to any sequence. -->
+
+<!-- ::: -->
 
 # Problem 2
 
@@ -78,3 +84,10 @@ $B\in \mathscr{B}(\mathbf{R})$. Then show that $\mathscr{G}$ is a $\sigma$-field
 2. Show that $\{X^{-1}(A):A\in \sigma (\mathscr{C})\}=\sigma(\{X^{-1}(A):A\in \mathscr{C}\})$
 for any subset $\mathscr{C}$ of
 $\mathscr{B}(\mathbf{R})$.
+
+# Problem 3
+
+Show that if for some $u ≥ 2$, $E[|X|^u ] <0 \infty $ and $E[|Y|^u ] < \infty$, then for some $s ∈ (0, 1)$,
+$$
+\lim_{a \to \infty} a^{1−s} P \left(|XY | > a\right) = 0
+$$

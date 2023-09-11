@@ -51,10 +51,10 @@ will be dropped from final grading.
 
 ### Midterm Exam (30%)
 
-Given in class on Wednesday, October 26. Closed books and notes.
+Given in class on Wednesday, October 25. Closed books and notes.
 There will be no make-up exam for midterm. When a student is excused
 from midterm exam, his or her grade will be based on reweighting of
-the problem sets (40%) and the final exam (60%).
+the problem sets (30%) and the final exam (70%).
 
 ### Final Exam (40%)
 

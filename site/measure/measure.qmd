@@ -8,9 +8,9 @@ format:
     width: 1820
     height: 1000
     min-scale: 0.1
-  title-slide-attributes:
-    data-background-image: "mcarthur.jpg"
-    data-background-size: contain
+title-slide-attributes:
+  data-background-image: "mcarthur.jpg"
+  data-background-size: contain
 bibliography: ../626.bib
 
 # jupyter: julia-1.9

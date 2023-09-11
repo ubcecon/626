@@ -232,9 +232,25 @@ div.csl-indent {
 </section>
 <section id="problem-3" class="level1">
 <h1>Problem 3</h1>
-<p>Show that if for some <span class="math inline">\(u ≥ 2\)</span>, $E[|X|^u ] &lt;0 $ and <span class="math inline">\(E[|Y|^u ] &lt; \infty\)</span>, then for some <span class="math inline">\(s ∈ (0, 1)\)</span>, <span class="math display">\[
-\lim_{a \to \infty} a^{1−s} P \left(|XY | &gt; a\right) = 0
+<p>Show that if for some <span class="math inline">\(u ≥ 2\)</span>, <span class="math inline">\(E[|X|^u ] &lt; \infty\)</span> and <span class="math inline">\(E[|Y|^u ] &lt; \infty\)</span>, then for some <span class="math inline">\(s \in (0, 1)\)</span>, <span class="math display">\[
+\lim_{a \to \infty} a^{1−s} P \left(|XY| &gt; a\right) = 0
 \]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use Markov’s inequality and the Cauchy-Schwarz inequality.</p>
+<p>I won’t change the question now (it comes from a problem set for this course from a few years ago, before I was teaching it), but a perhaps better statement of the problem would be to show that <span class="math display">\[
+\lim_{a \to \infty} a^{q} P \left(|XY| &gt; a\right) = 0
+\]</span> for <span class="math inline">\(q&lt;u/2\)</span>. Also, the requirement that <span class="math inline">\(u \geq 2\)</span> could be replaced with just <span class="math inline">\(u&gt;0\)</span>. Of course, this result implies the result the question askes for.</p>
+</div>
+</div>
 
 
 

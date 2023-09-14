@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 2"
 #author: "Paul Schrimpf"
-date: 2022-09-22
+date: 2023-09-21
 bibliography: ../../626.bib
 ---
 
@@ -12,11 +12,6 @@ $$
 
 # Problem 1
 
-Let $\Omega = \{1, 2, 3, 4\}$, $\mathscr{F} = 2^\Omega$, and $X =
-1\{\omega > 2 \}$. What is $\sigma(X)$?
-
-# Problem 2
-
 Let $f: \R^2 \to \R$. Assume $f(\cdot, y): \R \to \R$ is measurable
 for all $y : |y - y_0| < \epsilon$ for some $\epsilon>0$. Also assume
 that $f(x, \dot): \R \to \R$ is differentiable at $y_0$ for all $x \in
@@ -25,6 +20,20 @@ A \subset \R$ and $\left\vert \frac{\partial f}{\partial y}(x, y_0)
 $$
 \frac{d}{dy} \int_A f(\cdot, y) d\mu \vert_{y=y_0} = \int_A \frac{\partial f}{\partial y} f(\cdot, y_0) d\mu.
 $$
+
+# Problem 2
+
+1. Show that if $E[Y |X] = 0$, then $Y$ and $g(X)$ are uncorrelated for any (Borel) measurable
+function $g$. Do you have the same conclusion if we weaken the condition $E[Y |X] = 0$ to
+$E[Y |X] = a$ for some fixed constant $a \in \R$?
+
+2. Suppose that $E[Y^2 |X] < a^2$ for some constant $a > 0$. Then, show that for any $b > 0$,
+$$
+P\left(|Y − EY | > b\right) \leq \frac{a^2}{b^2}.
+$$
+
+3. Show that if $E[Y | \exp(X)] = E[Y]$, then the correlation between
+$E[Y | cos(X)]$ and $cos(X)$ is zero.
 
 # Problem 3
 

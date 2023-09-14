@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-09-22">
+<meta name="dcterms.date" content="2023-09-21">
 
 <title>ECON 626 - ECON 626: Problem Set 2</title>
 <style>
@@ -138,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 22, 2022</p>
+      <p class="date">September 21, 2023</p>
     </div>
   </div>
   
@@ -154,13 +154,19 @@ ul.task-list li input[type="checkbox"] {
 \]</span></p>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p>Let <span class="math inline">\(\Omega = \{1, 2, 3, 4\}\)</span>, <span class="math inline">\(\mathscr{F} = 2^\Omega\)</span>, and <span class="math inline">\(X = 1\{\omega &gt; 2 \}\)</span>. What is <span class="math inline">\(\sigma(X)\)</span>?</p>
-</section>
-<section id="problem-2" class="level1">
-<h1>Problem 2</h1>
 <p>Let <span class="math inline">\(f: \R^2 \to \R\)</span>. Assume <span class="math inline">\(f(\cdot, y): \R \to \R\)</span> is measurable for all <span class="math inline">\(y : |y - y_0| &lt; \epsilon\)</span> for some <span class="math inline">\(\epsilon&gt;0\)</span>. Also assume that <span class="math inline">\(f(x, \dot): \R \to \R\)</span> is differentiable at <span class="math inline">\(y_0\)</span> for all <span class="math inline">\(x \in A \subset \R\)</span> and <span class="math inline">\(\left\vert \frac{\partial f}{\partial y}(x, y_0) \right \vert \leq M(x)\)</span> for all <span class="math inline">\(x \in A\)</span> and <span class="math inline">\(M(x)\)</span> is integrable. Show that <span class="math display">\[
 \frac{d}{dy} \int_A f(\cdot, y) d\mu \vert_{y=y_0} = \int_A \frac{\partial f}{\partial y} f(\cdot, y_0) d\mu.
 \]</span></p>
+</section>
+<section id="problem-2" class="level1">
+<h1>Problem 2</h1>
+<ol type="1">
+<li><p>Show that if <span class="math inline">\(E[Y |X] = 0\)</span>, then <span class="math inline">\(Y\)</span> and <span class="math inline">\(g(X)\)</span> are uncorrelated for any (Borel) measurable function <span class="math inline">\(g\)</span>. Do you have the same conclusion if we weaken the condition <span class="math inline">\(E[Y |X] = 0\)</span> to <span class="math inline">\(E[Y |X] = a\)</span> for some fixed constant <span class="math inline">\(a \in \R\)</span>?</p></li>
+<li><p>Suppose that <span class="math inline">\(E[Y^2 |X] &lt; a^2\)</span> for some constant <span class="math inline">\(a &gt; 0\)</span>. Then, show that for any <span class="math inline">\(b &gt; 0\)</span>, <span class="math display">\[
+P\left(|Y − EY | &gt; b\right) \leq \frac{a^2}{b^2}.
+\]</span></p></li>
+<li><p>Show that if <span class="math inline">\(E[Y | \exp(X)] = E[Y]\)</span>, then the correlation between <span class="math inline">\(E[Y | cos(X)]\)</span> and <span class="math inline">\(cos(X)\)</span> is zero.</p></li>
+</ol>
 </section>
 <section id="problem-3" class="level1">
 <h1>Problem 3</h1>

@@ -276,7 +276,7 @@ $\theta \in \Theta_1$ than $C_2$ if $P_\theta(C_1) \geq P_\theta(C_2)$
 ### Lemma (Neyman-Pearson)
 
 Let $\Theta = \{0, 1\}$,  $f_0$ and $f_1$ be densities of $P_0$ and $P_1$,
-$\tau(x) =f_1(x)/f_0(x) $ and $C^* =\{x \in X: \tau(x) > c\}$. Then among all
+$\tau(x) =f_1(x)/f_0(x)$ and $C^* =\{x \in X: \tau(x) > c\}$. Then among all
 tests $C$ s.t. $P_0(C) = P_0(C^*)$, $C^*$ is most powerful.
 
 :::

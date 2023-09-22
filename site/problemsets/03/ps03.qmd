@@ -12,27 +12,17 @@ $$
 
 # Problem 1
 
-(This was problem 3 last week)
-
-Let $X: \Omega \to \R$, $W:  \Omega \to \R$, $Z: \Omega \to \R$, and $D: \Omega \to \{0, 1\}$ be random variables.
-Let $Y = D X + (1-D) W$.  Suppose that $Y$, $D$, and $Z$ are observed, but $X$ and $W$ are not.
-
-1. Suppose $D$ is independent of $X$, $W$.  Then show that $\Er[X - W]$ is identified.
-
-2. Suppose $Z$ is independent of $X$ and $W$, and
-$\exists E_1, E_0 \in \sigma(Z)$ such that $P(D=1 | E_1) = 1$ and  $P(D=0|E_0) = 1$.
-Then show that $\Er[X-W]$ is identified.^[An assumption like this is used in nonparametric selection estimators.
-One way to have such $E_1$ and $E_0$ is if $D = 1\{Z \gamma \geq U\}$
-and $Z$ has unbounded supported. Then $E_0$ and $E_1$ are sets where
-$Z \to \pm \infty$. Accordingly, this is sometimes called an *identification at infinity* assumption.
-See @heckman2004 for more information, and a comparison between this case, and the (conditional) independence assumption of part 1.
-(This footnote and that paper are extra information, not hints to help answer the question).]
-
+In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\mathrm{Var}(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent.
 
 # Problem 2
 
-In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\mathrm{Var}(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent.
+Suppose $Y_i = m(X_i' \beta + u_i)$ for $i=1, ... , n$ with $X_i \in \R^k$
+and  $m:\R \to \R$ is a known function. Throughout, assume that observations are independent across $i$, $\Er[u] =0$,
+and $u$ is independent of $X$, and $\Er[XX']$ is nonsingular. $Y$ and $X$ are observed, but $u$ is not.
 
+1. If $m$ is strictly increasing show that $\beta$ is identified by explicitly writing $\beta$ as a function of the distribution of $X$ and $Y$.
+
+2. Suppose $m(z) = 1\{z \geq 0\}$. For simplicitly, let $k=1$ and $X_i \in \{-1, 1\}$. Show that $\beta$ is not identified by finding an observationally equivalent $\tilde{\beta}$.
 
 # Problem 3
 

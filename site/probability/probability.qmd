@@ -97,7 +97,7 @@ A **distribution** $P_{X}$ induced by $X$ is a probability measure on $(\mathbf{
 that : $\forall B\in \mathscr{B}(\mathbf{R})$,
 $$
 P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
-$$
+ $$
 
 :::
 
@@ -346,7 +346,7 @@ of $Y$ given $\mathscr{G}$ is $\Er[Y|\mathscr{G}](\cdot): \Omega \to \R$ s.t.
 
 - Ex: $\{E_k\}_{k=1}^m$ partition of $\Omega$, let
 $\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
-   - $\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}$
+   - $\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}$, then use 2 to solve for $c_k$
 - Existence from Radon-Nikodym theorem
 - $\Er[Y|X] \equiv \Er[Y|\sigma(X)]$
 
@@ -367,6 +367,8 @@ $\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
 ## $\Er[Y|\mathscr{G}]$ as Orthogonal Projection
 
 ::: {.callout-warning icon=false}
+
+### Theorem
 
 Let $(\Omega, \mathscr{F}, P)$ be a probability space, $\mathscr{G}$ a sub $\sigma$-field,
 then for any

@@ -173,16 +173,15 @@ div.csl-indent {
 \]</span></p>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p>(This was problem 3 last week)</p>
-<p>Let <span class="math inline">\(X: \Omega \to \R\)</span>, <span class="math inline">\(W: \Omega \to \R\)</span>, <span class="math inline">\(Z: \Omega \to \R\)</span>, and <span class="math inline">\(D: \Omega \to \{0, 1\}\)</span> be random variables. Let <span class="math inline">\(Y = D X + (1-D) W\)</span>. Suppose that <span class="math inline">\(Y\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(Z\)</span> are observed, but <span class="math inline">\(X\)</span> and <span class="math inline">\(W\)</span> are not.</p>
-<ol type="1">
-<li><p>Suppose <span class="math inline">\(D\)</span> is independent of <span class="math inline">\(X\)</span>, <span class="math inline">\(W\)</span>. Then show that <span class="math inline">\(\Er[X - W]\)</span> is identified.</p></li>
-<li><p>Suppose <span class="math inline">\(Z\)</span> is independent of <span class="math inline">\(X\)</span> and <span class="math inline">\(W\)</span>, and <span class="math inline">\(\exists E_1, E_0 \in \sigma(Z)\)</span> such that <span class="math inline">\(P(D=1 | E_1) = 1\)</span> and <span class="math inline">\(P(D=0|E_0) = 1\)</span>. Then show that <span class="math inline">\(\Er[X-W]\)</span> is identified.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
-</ol>
+<p>In the linear model, <span class="math inline">\(Y = \alpha + \beta X + \epsilon\)</span>, assume <span class="math inline">\(\mathrm{Var}(X)&gt;0\)</span> and <span class="math inline">\(\Er[\epsilon] = 0\)</span>. Show that without any more assumptions, <span class="math inline">\(\beta\)</span> is not identified by finding values of <span class="math inline">\(\beta\)</span> that are observationally equivalent.</p>
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p>In the linear model, <span class="math inline">\(Y = \alpha + \beta X + \epsilon\)</span>, assume <span class="math inline">\(\mathrm{Var}(X)&gt;0\)</span> and <span class="math inline">\(\Er[\epsilon] = 0\)</span>. Show that without any more assumptions, <span class="math inline">\(\beta\)</span> is not identified by finding values of <span class="math inline">\(\beta\)</span> that are observationally equivalent.</p>
+<p>Suppose <span class="math inline">\(Y_i = m(X_i' \beta + u_i)\)</span> for <span class="math inline">\(i=1, ... , n\)</span> with <span class="math inline">\(X_i \in \R^k\)</span> and <span class="math inline">\(m:\R \to \R\)</span> is a known function. Throughout, assume that observations are independent across <span class="math inline">\(i\)</span>, <span class="math inline">\(\Er[u] =0\)</span>, and <span class="math inline">\(u\)</span> is independent of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\Er[XX']\)</span> is nonsingular. <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are observed, but <span class="math inline">\(u\)</span> is not.</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(m\)</span> is strictly increasing show that <span class="math inline">\(\beta\)</span> is identified by explicitly writing <span class="math inline">\(\beta\)</span> as a function of the distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(m(z) = 1\{z \geq 0\}\)</span>. For simplicitly, let <span class="math inline">\(k=1\)</span> and <span class="math inline">\(X_i \in \{-1, 1\}\)</span>. Show that <span class="math inline">\(\beta\)</span> is not identified by finding an observationally equivalent <span class="math inline">\(\tilde{\beta}\)</span>.</p></li>
+</ol>
 </section>
 <section id="problem-3" class="level1">
 <h1>Problem 3</h1>
@@ -193,20 +192,11 @@ div.csl-indent {
 
 </section>
 
-
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-heckman2004" class="csl-entry" role="listitem">
-Heckman, James, and Salvador Navarro-Lozano. 2004. <span>“<span class="nocase">Using Matching, Instrumental Variables, and Control Functions to Estimate Economic Choice Models</span>.”</span> <em>The Review of Economics and Statistics</em> 86 (1): 30–57. <a href="https://doi.org/10.1162/003465304323023660">https://doi.org/10.1162/003465304323023660</a>.
-</div>
 <div id="ref-song2021" class="csl-entry" role="listitem">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>An assumption like this is used in nonparametric selection estimators. One way to have such <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_0\)</span> is if <span class="math inline">\(D = 1\{Z \gamma \geq U\}\)</span> and <span class="math inline">\(Z\)</span> has unbounded supported. Then <span class="math inline">\(E_0\)</span> and <span class="math inline">\(E_1\)</span> are sets where <span class="math inline">\(Z \to \pm \infty\)</span>. Accordingly, this is sometimes called an <em>identification at infinity</em> assumption. See <span class="citation" data-cites="heckman2004">Heckman and Navarro-Lozano (<a href="#ref-heckman2004" role="doc-biblioref">2004</a>)</span> for more information, and a comparison between this case, and the (conditional) independence assumption of part 1. (This footnote and that paper are extra information, not hints to help answer the question).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

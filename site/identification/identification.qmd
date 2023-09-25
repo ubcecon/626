@@ -14,6 +14,8 @@ format:
     title-slide-attributes:
       data-background-image: "tricouni.jpg"
       data-background-size: contain
+    mermaid:
+      theme: dark
 bibliography: ../626.bib
 
 # jupyter: julia-1.9
@@ -168,35 +170,115 @@ More generally, think about importance of statistical assumptions in terms of ho
 
 ## Example: Regression
 
-```{r, engine = 'tikz'}
- \usetikzlibrary{positioning}
- \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10,
-                     obs/.style={circle, draw,black, text=black}]
- \node[obs] (X){$X_i$};
- \node[obs] (Y) [right=of X] {$Y_i$};
- \node(E) [below=of Y]{$\epsilon_i$};
- \path[->] (X) edge (Y);
- \path[->] (E) edge[dashed] (Y);
- \end{tikzpicture}
+<!-- ```{r, engine = 'tikz'} -->
+<!--  \usetikzlibrary{positioning} -->
+<!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
+<!--                      obs/.style={circle, draw,black, text=black}] -->
+<!--  \node[obs] (X){$X_i$}; -->
+<!--  \node[obs] (Y) [right=of X] {$Y_i$}; -->
+<!--  \node(E) [below=of Y]{$\epsilon_i$}; -->
+<!--  \path[->] (X) edge (Y); -->
+<!--  \path[->] (E) edge[dashed] (Y); -->
+<!--  \end{tikzpicture} -->
+<!-- ``` -->
+
+```{mermaid}
+%%| fig-width: 6.5
+%%| fig-height: 2
+flowchart LR
+    X --> Y
+    ϵ -.-> Y
+```
+- Arrow means $X$ causes $Y$
+- Dashed arrow means $\epsilon$ causes $Y$ and is unobserved
+- Lack of connection between $X$ and $\epsilon$ means they are independent
+
+## Example: Regression
+
+If you believe:
+```{mermaid}
+%%| fig-width: 6.5
+flowchart LR
+    subgraph " Y"
+        Y[Wage]
+    end
+    subgraph X
+       E[Education] --> Y
+       T[SAT] --> E
+       F[Family SES] --> E
+       F --> Y
+    end
+    subgraph ϵ
+        I[Intelligence] -.-> Y
+        L[Luck] -.-> Y
+        I -.-> T
+    end
+```
+then regression $Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon$ identifies causal effect of education on wages
+
+## Example: Regression
+
+But reality is likely more complex ...
+
+```{mermaid}
+%%| fig-width: 6.5
+flowchart LR
+   subgraph " Y"
+        Y[Wage]
+   end
+   subgraph X
+       E[Education] --> Y
+       T[SAT] --> E
+       F[Family SES] --> E
+       F --> Y
+   end
+   subgraph eps
+        I[Intelligence] -.-> Y
+        L[Luck] -.-> Y
+        G[Grit] -.-> Y
+        G -.-> E
+        L -.-> E
+        I -.-> T
+        I -.-> E
+        I -.-> G
+        G -.-> I
+   end
 ```
 
 ## Example: Potential Outcomes
 
-```{r, engine = 'tikz'}
- \usetikzlibrary{positioning}
- \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10,
-                     obs/.style={circle, draw,black, text=black}]
- \node[obs](D){$D_i$};
- \node[obs] (X)[below=of D]{$X_i$};
- \node[obs] (Y)[right=of D]{$Y_i$};
- \node(E)[below=of Y]{$\epsilon_i$};
- \node(U)[left=of D]{$U_i$};
- \path[->] (X) edge (Y);
- \path[->] (X) edge (D);
- \path[->] (D) edge (Y);
- \path[->](U) edge[dashed] (D);
- \path[->] (E) edge[dashed] (Y);
- \end{tikzpicture}
+```{mermaid}
+%%| fig-width: 6.5
+flowchart LR
+    u -.-> D
+    X --> Y
+    X --> D
+    ϵ -.-> Y
+```
+
+## Example: Potential Outcomes
+
+```{mermaid}
+%%| fig-width: 6.5
+flowchart LR
+    subgraph Treatment
+        D[Naloxone distribution site opens]
+    end
+    subgraph Outcome
+        Y[ER visits for overdose]
+    end
+    u -.-> D
+    ϵ -.-> Y
+    subgraph X
+        Income --> Y
+        Unemployment --> Y
+        Income --> D
+        Unemployment --> D
+        OD[OD rate prior to opening] --> Y
+        OD --> D
+        Crime --> Y
+        Crime --> D
+    end
 ```
 
 # Generalized and/or Descriptive Intrepretation of Population Estimator

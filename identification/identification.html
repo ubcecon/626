@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-09-05">
+  <meta name="dcterms.date" content="2023-09-24">
   <title>ECON 626 - Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -341,6 +341,10 @@
       margin-right: 0; 
     }
   </style>
+  <meta name="mermaid-theme" content="dark">
+  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -357,7 +361,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-09-05</p>
+  <p class="date">2023-09-24</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -533,12 +537,146 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </section>
 <section id="example-regression" class="slide level2">
 <h2>Example: Regression</h2>
-
-<img data-src="identification_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<!-- ```{r, engine = 'tikz'} -->
+<!--  \usetikzlibrary{positioning} -->
+<!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
+<!--                      obs/.style={circle, draw,black, text=black}] -->
+<!--  \node[obs] (X){$X_i$}; -->
+<!--  \node[obs] (Y) [right=of X] {$Y_i$}; -->
+<!--  \node(E) [below=of Y]{$\epsilon_i$}; -->
+<!--  \path[->] (X) edge (Y); -->
+<!--  \path[->] (E) edge[dashed] (Y); -->
+<!--  \end{tikzpicture} -->
+<!-- ``` -->
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-fig-height="2">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    X --&gt; Y
+    ϵ -.-&gt; Y
+</pre>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Arrow means <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span></li>
+<li>Dashed arrow means <span class="math inline">\(\epsilon\)</span> causes <span class="math inline">\(Y\)</span> and is unobserved</li>
+<li>Lack of connection between <span class="math inline">\(X\)</span> and <span class="math inline">\(\epsilon\)</span> means they are independent</li>
+</ul>
+</section>
+<section id="example-regression-1" class="slide level2">
+<h2>Example: Regression</h2>
+<p>If you believe:</p>
+<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph " Y"
+        Y[Wage]
+    end
+    subgraph X
+       E[Education] --&gt; Y
+       T[SAT] --&gt; E
+       F[Family SES] --&gt; E
+       F --&gt; Y
+    end
+    subgraph ϵ
+        I[Intelligence] -.-&gt; Y
+        L[Luck] -.-&gt; Y
+        I -.-&gt; T
+    end
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>then regression <span class="math inline">\(Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon\)</span> identifies causal effect of education on wages</p>
+</section>
+<section id="example-regression-2" class="slide level2">
+<h2>Example: Regression</h2>
+<p>But reality is likely more complex …</p>
+<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+   subgraph " Y"
+        Y[Wage]
+   end
+   subgraph X
+       E[Education] --&gt; Y
+       T[SAT] --&gt; E
+       F[Family SES] --&gt; E
+       F --&gt; Y
+   end
+   subgraph eps
+        I[Intelligence] -.-&gt; Y
+        L[Luck] -.-&gt; Y
+        G[Grit] -.-&gt; Y
+        G -.-&gt; E
+        L -.-&gt; E
+        I -.-&gt; T
+        I -.-&gt; E
+        I -.-&gt; G
+        G -.-&gt; I
+   end
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="example-potential-outcomes-1" class="slide level2">
 <h2>Example: Potential Outcomes</h2>
-
-<img data-src="identification_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
+<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    u -.-&gt; D
+    X --&gt; Y
+    X --&gt; D
+    ϵ -.-&gt; Y
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-potential-outcomes-2" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
+<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph Treatment
+        D[Naloxone distribution site opens]
+    end
+    subgraph Outcome
+        Y[ER visits for overdose]
+    end
+    u -.-&gt; D
+    ϵ -.-&gt; Y
+    subgraph X
+        Income --&gt; Y
+        Unemployment --&gt; Y
+        Income --&gt; D
+        Unemployment --&gt; D
+        OD[OD rate prior to opening] --&gt; Y
+        OD --&gt; D
+        Crime --&gt; Y
+        Crime --&gt; D
+    end
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="generalized-andor-descriptive-intrepretation-of-population-estimator" class="title-slide slide level1 center">
 <h1>Generalized and/or Descriptive Intrepretation of Population Estimator</h1>
@@ -550,7 +688,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </ul></li>
 </ul>
 </section>
-<section id="example-regression-1" class="slide level2">
+<section id="example-regression-3" class="slide level2">
 <h2>Example: Regression</h2>
 <ul>
 <li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er X X'\)</span> invertible,</li>
@@ -563,7 +701,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 \]</span></li>
 </ul>
 </section>
-<section id="example-regression-2" class="slide level2">
+<section id="example-regression-4" class="slide level2">
 <h2>Example: Regression</h2>
 <ul>
 <li>If relevant moments exist (no linear model required) population regression solves <span class="math display">\[
@@ -571,7 +709,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 \]</span></li>
 </ul>
 </section>
-<section id="example-potential-outcomes-2" class="slide level2">
+<section id="example-potential-outcomes-3" class="slide level2">
 <h2>Example: Potential Outcomes</h2>
 <ul>
 <li>Matching initially studied with a linear regression model, e.g. <span class="citation" data-cites="cochran1953">Cochran (<a href="#/references" role="doc-biblioref" onclick="">1953</a>)</span> <span class="math display">\[
@@ -955,44 +1093,6 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

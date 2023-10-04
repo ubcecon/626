@@ -36,6 +36,59 @@ $$
 \def\rank{{\mathrm{rank}}}
 $$
 
+# Introduction
+
+
+- Consider:
+$$
+y = X\beta + u
+$$
+  - $y \in \R^n$
+  - $X \in \R^{n \times k}$, nonstochastic
+  - $\Er[u] = 0$, $\Er[uu'] = \sigma^2 I_n$
+<!-- ```{dot} -->
+<!-- digraph G { -->
+<!--   rankdir=BT; -->
+<!--   node[shape=record, height=.1, color="white"]; -->
+<!--   nodeEq[label="<y>y| = |<x>X |<b> β| + |<u> u"]; -->
+<!--   nodeY[label="n × 1"]; -->
+<!--   nodeX[label="n × k, nonstochastic, rank k"]; -->
+<!--   nodeB[label="k × 1"]; -->
+<!--   nodeE[label="n × 1, E[u]=0, E[uu']=σ²Iₙ"]; -->
+<!--   "nodeX"  -> "nodeEq":x; -->
+<!--   "nodeY"  -> "nodeEq":y; -->
+<!--   "nodeE"  -> "nodeEq":u; -->
+<!--   "nodeB"  -> "nodeEq":b; -->
+<!--   } -->
+<!-- ``` -->
+
+- $\hat{\beta} = (X'X)^{-1}X'y$ is linear in $y$ and unbiased
+
+::: {.fragment}
+
+- If $\tilde{\beta}$ is another estimator linear in $y$ and unbiased, how does its variance compare to $\hat{\beta}$?
+
+:::
+
+## Gauss-Markov Theorem
+
+
+:::{.callout-warning icon=false}
+
+### Theorem: Gauss-Markov
+
+If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the best linear unbiased estimator (BLUE) of
+$a'\beta = a'\hat{\beta}$ where $\hat{\beta} = (X'X)^{-1} X'y$
+
+:::
+
+::: {.fragment}
+
+- This chapter: use linear algebra to further understand and generalize this result
+
+:::
+
+
 # Projection Geometry and Quadratic Forms
 
 ## Orthogonal Subspaces

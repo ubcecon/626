@@ -56,6 +56,13 @@
     "text": "Reading\n\nRequired: Song (2021) chapter 5 (which is the basis for these slides)\nSupplemental: Schrimpf (2018), Schrimpf (2013b), Schrimpf (2013a), Schrimpf (2013d), Schrimpf (2013c)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\]"
   },
   {
+    "objectID": "projection/projection.html#gauss-markov-theorem",
+    "href": "projection/projection.html#gauss-markov-theorem",
+    "title": "Least Squares as a Projection",
+    "section": "Gauss-Markov Theorem",
+    "text": "Gauss-Markov Theorem\n\n\n\nTheorem: Gauss-Markov\n\n\nIf \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of \\(a'\\beta = a'\\hat{\\beta}\\) where \\(\\hat{\\beta} = (X'X)^{-1} X'y\\)\n\n\n\n\n\nThis chapter: use linear algebra to further understand and generalize this result"
+  },
+  {
     "objectID": "projection/projection.html#orthogonal-subspaces",
     "href": "projection/projection.html#orthogonal-subspaces",
     "title": "Least Squares as a Projection",
@@ -140,8 +147,8 @@
     "text": "Least-Squares\n\n\\(\\hat{\\theta} = P_L y\\), i.e. \\(\\norm{y - \\hat{\\theta} y } = \\inf_{w \\in L} \\norm{y - w}\\)"
   },
   {
-    "objectID": "projection/projection.html#gauss-markov-theorem-1",
-    "href": "projection/projection.html#gauss-markov-theorem-1",
+    "objectID": "projection/projection.html#gauss-markov-theorem-2",
+    "href": "projection/projection.html#gauss-markov-theorem-2",
     "title": "Least Squares as a Projection",
     "section": "Gauss-Markov Theorem",
     "text": "Gauss-Markov Theorem\n\n\n\nTheorem: Gauss-Markov\n\n\nIf \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the best linear unbiased estimator (BLUE) of \\(a'\\theta = a'\\hat{\\theta}\\) where \\(\\hat{\\theta} = P_L y\\)\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\[\ny = X'\\beta + u\n\\] and \\(\\Er[u] = 0\\) and \\(\\Er[uu'] = \\sigma^2 I_n\\), then the BLUE of \\(c'\\beta\\) is \\(c'\\hat{\\beta}\\) with \\(\\hat{\\beta} = (X'X)^{-1} X' y\\)"
@@ -1824,6 +1831,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 4"
 #author: "Paul Schrimpf"
-date: 2022-10-13
+date: 2023-10-13
 bibliography: ../../626.bib
 ---
 
@@ -34,7 +34,10 @@ Suppose $X_1, ... , X_n$ are independently uniformly distributed on $(0,\theta)$
 
 1. Show that $2 \bar{X} = \frac{2}{n} \sum_{i=1}^n X_i$ is an unbiased estimator for $\theta$.
 
-2. Derive the Cramér Rao lower bound for any unbiased estimator for
-$\theta$. Is $2 \bar{X}$ a minimum variance unbiased estimator?
+2. Show that $\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i$
+is an unbiased estimator for $\theta$ with $\var(\hat{\theta}) < 2 \bar{X}$.
 
-3. Show that $\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i$ is a minimum variance unbiased estimator for $\theta$.
+3. Is there a Cramér Rao lower bound for the variance of $\theta$? Why or why not?
+
+4. **This is challenging.** Show that $\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i$
+is a minimum variance unbiased estimator for $\theta$.

@@ -725,14 +725,28 @@
     "href": "asymptotics/inprobability.html#lp-convergence",
     "title": "Convergence in Probability",
     "section": "\\(L^p\\) convergence",
-    "text": "\\(L^p\\) convergence\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in \\(L^p\\) to the random vector \\(Y\\) if \\[\n\\lim_{n \\to \\infty} \\Er\\left[ \\norm{X_n-Y}^p \\right] \\to 0\n\\]\n\n\n\n\n\\(p=2\\) called convergence in mean square\n\n\n\n\nMarkov’s Inequality\n\n\n\\(P(|X|&gt;\\epsilon) \\leq \\frac{\\Er[|X|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon &gt; 0, k &gt; 0\\)\n\n\n\n\n\\(P\\left( \\norm{X_n - Y} &gt; \\epsilon \\right) \\leq \\frac{\\Er[ \\norm{X_n - y}^k]} {\\epsilon_k}\\)"
+    "text": "\\(L^p\\) convergence\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in \\(L^p\\) to the random vector \\(Y\\) if \\[\n\\lim_{n \\to \\infty} \\Er\\left[ \\norm{X_n-Y}^p \\right] \\to 0\n\\]\n\n\n\n\n\\(p=2\\) called convergence in mean square"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#markovs-inequality",
+    "href": "asymptotics/inprobability.html#markovs-inequality",
+    "title": "Convergence in Probability",
+    "section": "Markov’s Inequality",
+    "text": "Markov’s Inequality\n\n\n\nMarkov’s Inequality\n\n\n\\(P(|X|&gt;\\epsilon) \\leq \\frac{\\Er[|X|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon &gt; 0, k &gt; 0\\)\n\n\n\n\n\\(P\\left( \\norm{X_n - Y} &gt; \\epsilon \\right) \\leq \\frac{\\Er[ \\norm{X_n - Y}^k]} {\\epsilon_k}\\)"
   },
   {
     "objectID": "asymptotics/inprobability.html#convergence-in-lp-implies-convergence-in-probability",
     "href": "asymptotics/inprobability.html#convergence-in-lp-implies-convergence-in-probability",
     "title": "Convergence in Probability",
     "section": "Convergence in \\(L^p\\) implies convergence in probability",
-    "text": "Convergence in \\(L^p\\) implies convergence in probability\n\n\n\nTheorem 1.1\n\n\nIf \\(X_n\\) converges in \\(L^p\\) to \\(Y\\), then \\(X_n \\inprob Y\\).\n\n\n\n\nAn estimator, \\(\\hat{\\theta}\\) is consistent if \\(\\hat{\\theta} \\inprob \\theta_0\\)\n\n\n\nImplication for estimators: \\[\n\\begin{aligned}\nMSE(\\hat{\\theta}_n) = & \\Er[ \\norm{\\hat{\\theta}_n - \\theta_0}^2 ] \\\\\n= & tr[\\var(\\hat{\\theta}_n)] + Bias(\\hat{\\theta}_n)'Bias(\\hat{\\theta}_n)\n\\end{aligned}\n\\]\nIf \\(MSE(\\hat{\\theta}_n) \\to 0\\), then \\(\\hat{\\theta}_n \\inprob \\theta_0\\)\nIf \\(\\lim_{n \\to \\infty} \\Er[\\hat{\\theta}_n] \\neq \\theta_0\\), then \\(\\plim \\hat{\\theta}_n \\neq \\theta_0\\)"
+    "text": "Convergence in \\(L^p\\) implies convergence in probability\n\n\n\nTheorem 1.1\n\n\nIf \\(X_n\\) converges in \\(L^p\\) to \\(Y\\), then \\(X_n \\inprob Y\\)."
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#application-to-estimators",
+    "href": "asymptotics/inprobability.html#application-to-estimators",
+    "title": "Convergence in Probability",
+    "section": "Application to Estimators",
+    "text": "Application to Estimators\n\nAn estimator, \\(\\hat{\\theta}\\) is consistent if \\(\\hat{\\theta} \\inprob \\theta_0\\)\nImplication for estimators: \\[\n\\begin{aligned}\nMSE(\\hat{\\theta}_n) = & \\Er[ \\norm{\\hat{\\theta}_n - \\theta_0}^2 ] \\\\\n= & tr[\\var(\\hat{\\theta}_n)] + Bias(\\hat{\\theta}_n)'Bias(\\hat{\\theta}_n)\n\\end{aligned}\n\\]\nIf \\(MSE(\\hat{\\theta}_n) \\to 0\\), then \\(\\hat{\\theta}_n \\inprob \\theta_0\\)\nIf \\(\\lim_{n \\to \\infty} \\Er[\\hat{\\theta}_n] \\neq \\theta_0\\), then \\(\\plim \\hat{\\theta}_n \\neq \\theta_0\\)"
   },
   {
     "objectID": "asymptotics/inprobability.html#consistency-of-least-squares",
@@ -767,21 +781,42 @@
     "href": "asymptotics/inprobability.html#convergence-rates-1",
     "title": "Convergence in Probability",
     "section": "Convergence Rates",
-    "text": "Convergence Rates\n\n\n\nDefinition\n\n\nGiven a sequence of random variables, \\(X_1, X_2, ...\\) and constants \\(b_1, b_2, ...\\), then\n\n\\(X_n = O_p(b_n)\\) if for all \\(\\epsilon &gt; 0\\) there exists \\(M_\\epsilon\\) s.t. \\[\n\\lim\\sup P\\left(\\frac{\\norm{X_n}}{b_n} \\geq  M_\\epsilon \\right) &lt; \\epsilon\n\\]\n\\(X_n = o_p(b_n)\\) if \\(\\frac{X_n}{b_n} \\to 0\\)"
+    "text": "Convergence Rates\n\n\n\nDefinition\n\n\nGiven a sequence of random variables, \\(X_1, X_2, ...\\) and constants \\(b_1, b_2, ...\\), then\n\n\\(X_n = O_p(b_n)\\) if for all \\(\\epsilon &gt; 0\\) there exists \\(M_\\epsilon\\) s.t. \\[\n\\lim\\sup P\\left(\\frac{\\norm{X_n}}{b_n} \\geq  M_\\epsilon \\right) &lt; \\epsilon\n\\]\n\\(X_n = o_p(b_n)\\) if \\(\\frac{X_n}{b_n} \\inprob 0\\)"
   },
   {
-    "objectID": "asymptotics/inprobability.html#example",
-    "href": "asymptotics/inprobability.html#example",
+    "objectID": "asymptotics/inprobability.html#example-little-o_p",
+    "href": "asymptotics/inprobability.html#example-little-o_p",
     "title": "Convergence in Probability",
-    "section": "Example",
-    "text": "Example\n\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\n\\begin{aligned}\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | &gt; a \\right) \\leq & \\frac{\\var(\\En X_i - \\mu)}{a^2}  \\\\\n\\leq &  \\frac{\\sigma^2}{n a^2}\n\\end{aligned}\n\\]\nLet \\(a = \\epsilon n^{-\\alpha}\\), then \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-\\alpha}} &gt; \\epsilon \\right) \\leq \\frac{\\sigma^2}{n^{1 - 2\\alpha}\\epsilon^2}\n\\]\n\\(|\\En X_i - \\mu | = o_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2)\\)"
+    "section": "Example: Little \\(o_p\\)",
+    "text": "Example: Little \\(o_p\\)\n\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | &gt; a \\right) \\leq \\frac{\\var(\\En X_i - \\mu)}{a^2} \\leq  \\frac{\\sigma^2}{n a^2}\n\\]\nLet \\(a = \\epsilon n^{-\\alpha}\\), then \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-\\alpha}} &gt; \\epsilon \\right) \\leq \\frac{\\sigma^2}{n^{1 - 2\\alpha}\\epsilon^2}\n\\]\n\\(|\\En X_i - \\mu | = o_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2)\\)"
   },
   {
-    "objectID": "asymptotics/inprobability.html#example-1",
-    "href": "asymptotics/inprobability.html#example-1",
+    "objectID": "asymptotics/inprobability.html#example-big-o_p",
+    "href": "asymptotics/inprobability.html#example-big-o_p",
     "title": "Convergence in Probability",
-    "section": "Example",
-    "text": "Example\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\n\\begin{aligned}\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | &gt; a \\right) \\leq & \\frac{\\var(\\En X_i - \\mu)}{a^2}  \\\\\n\\leq &  \\frac{\\sigma^2}{n a^2}\n\\end{aligned}\n\\]\nLet \\(a = \\sigma \\epsilon^{-1/2} n^{-1/2}\\), \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-1/2}} &gt; \\underbrace{\\sigma \\epsilon^{-1/2}}_{M_\\epsilon} \\right) \\leq \\epsilon\n\\] so \\(|\\En X_i - \\mu | = O_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2]\\)"
+    "section": "Example: Big \\(O_p\\)",
+    "text": "Example: Big \\(O_p\\)\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | &gt; a \\right) \\leq  \\frac{\\var(\\En X_i - \\mu)}{a^2}  \\leq   \\frac{\\sigma^2}{n a^2}\n\\]\nLet \\(a = \\sigma \\epsilon^{-1/2} n^{-1/2}\\), \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-1/2}} &gt; \\underbrace{\\sigma \\epsilon^{-1/2}}_{M_\\epsilon} \\right) \\leq \\epsilon\n\\] so \\(|\\En X_i - \\mu | = O_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2]\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#non-asymptotic-bounds-1",
+    "href": "asymptotics/inprobability.html#non-asymptotic-bounds-1",
+    "title": "Convergence in Probability",
+    "section": "Non-Asymptotic Bounds",
+    "text": "Non-Asymptotic Bounds\n\nLet \\(\\Er[X] = \\mu\\)\nMarkov’s inequality: \\(P(|X - \\mu |&gt;\\epsilon) \\leq \\frac{\\Er[|X - \\mu|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon &gt; 0, k &gt; 0\\)\nIdea: minimize left side over \\(k\\) to get a tighter bound"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#non-asymptotic-bounds-2",
+    "href": "asymptotics/inprobability.html#non-asymptotic-bounds-2",
+    "title": "Convergence in Probability",
+    "section": "Non-Asymptotic Bounds",
+    "text": "Non-Asymptotic Bounds\n\nMarkov’s inequality for \\(e^{\\lambda(X-\\mu)}\\) \\[\nP(X-\\mu&gt;\\epsilon) = P\\left( e^{\\lambda (X - \\mu)} &gt; e^{\\lambda \\epsilon} \\right) \\leq e^{-\\lambda \\epsilon} \\Er\\left[e^{\\lambda (X-\\mu)}\\right]\n\\]\n\\(M_X(\\lambda)=\\Er\\left[e^{\\lambda (X-\\mu)}\\right]\\) is the (centered) moment generating function\n\nIf \\(X \\sim N(\\mu, \\sigma^2)\\), then \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] = e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\)\nIf \\(|X| \\leq b\\), then \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] \\leq e^{\\lambda^2 b^2}\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#non-asymptotic-bounds-3",
+    "href": "asymptotics/inprobability.html#non-asymptotic-bounds-3",
+    "title": "Convergence in Probability",
+    "section": "Non-Asymptotic Bounds",
+    "text": "Non-Asymptotic Bounds\n\n\nSuppose \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] \\leq e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\), then \\[\nP(X-\\mu&gt;\\epsilon) \\leq \\inf_{\\lambda \\geq 0} e^{-\\lambda \\epsilon + \\lambda^2 \\sigma^2/2} = e^{-\\frac{\\epsilon^2}{2 \\sigma^2}}\n\\]\nSuppose \\(\\Er\\left[e^{\\lambda (X_i-\\mu)}\\right] \\leq e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\) and \\(X_i\\) are independent, then \\[\nP\\left(\\frac{1}{n} \\sum_{i=1}^n X_i-\\mu &gt;\\epsilon\\right) \\leq e^{-\\frac{\\epsilon^2 n}{2 \\sigma^2}}\n\\]"
   },
   {
     "objectID": "about.html",
@@ -1831,6 +1866,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nDec 5, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   }
 ]

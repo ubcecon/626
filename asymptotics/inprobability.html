@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2022-11-01">
+  <meta name="dcterms.date" content="2023-10-12">
   <title>ECON 626 - Convergence in Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -51,6 +51,7 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -357,7 +358,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2022-11-01</p>
+  <p class="date">2023-10-12</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -422,6 +423,9 @@ Paul Schrimpf
 <ul>
 <li><span class="math inline">\(p=2\)</span> called convergence in mean square</li>
 </ul>
+</section>
+<section id="markovs-inequality" class="slide level2">
+<h2>Markov’s Inequality</h2>
 <div class="callout callout-warning no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -433,7 +437,7 @@ Paul Schrimpf
 </div>
 </div>
 <ul>
-<li><span class="math inline">\(P\left( \norm{X_n - Y} &gt; \epsilon \right) \leq \frac{\Er[ \norm{X_n - y}^k]} {\epsilon_k}\)</span></li>
+<li><span class="math inline">\(P\left( \norm{X_n - Y} &gt; \epsilon \right) \leq \frac{\Er[ \norm{X_n - Y}^k]} {\epsilon_k}\)</span></li>
 </ul>
 </section>
 <section id="convergence-in-lp-implies-convergence-in-probability" class="slide level2">
@@ -448,21 +452,20 @@ Paul Schrimpf
 </div>
 </div>
 </div>
+</section>
+<section id="application-to-estimators" class="slide level2">
+<h2>Application to Estimators</h2>
 <ul>
-<li>An estimator, <span class="math inline">\(\hat{\theta}\)</span> is <strong>consistent</strong> if <span class="math inline">\(\hat{\theta} \inprob \theta_0\)</span></li>
-</ul>
-<div class="fragment">
-<ul>
-<li>Implication for estimators: <span class="math display">\[
+<li><p>An estimator, <span class="math inline">\(\hat{\theta}\)</span> is <strong>consistent</strong> if <span class="math inline">\(\hat{\theta} \inprob \theta_0\)</span></p></li>
+<li><p>Implication for estimators: <span class="math display">\[
 \begin{aligned}
 MSE(\hat{\theta}_n) = &amp; \Er[ \norm{\hat{\theta}_n - \theta_0}^2 ] \\
 = &amp; tr[\var(\hat{\theta}_n)] + Bias(\hat{\theta}_n)'Bias(\hat{\theta}_n)
 \end{aligned}
-\]</span></li>
-<li>If <span class="math inline">\(MSE(\hat{\theta}_n) \to 0\)</span>, then <span class="math inline">\(\hat{\theta}_n \inprob \theta_0\)</span></li>
-<li>If <span class="math inline">\(\lim_{n \to \infty} \Er[\hat{\theta}_n] \neq \theta_0\)</span>, then <span class="math inline">\(\plim \hat{\theta}_n \neq \theta_0\)</span></li>
+\]</span></p></li>
+<li><p>If <span class="math inline">\(MSE(\hat{\theta}_n) \to 0\)</span>, then <span class="math inline">\(\hat{\theta}_n \inprob \theta_0\)</span></p></li>
+<li><p>If <span class="math inline">\(\lim_{n \to \infty} \Er[\hat{\theta}_n] \neq \theta_0\)</span>, then <span class="math inline">\(\plim \hat{\theta}_n \neq \theta_0\)</span></p></li>
 </ul>
-</div>
 </section>
 <section id="consistency-of-least-squares" class="slide level2">
 <h2>Consistency of Least-Squares</h2>
@@ -552,22 +555,19 @@ MSE(\hat{\theta}_n) = &amp; \Er[ \norm{\hat{\theta}_n - \theta_0}^2 ] \\
 <li><span class="math inline">\(X_n = O_p(b_n)\)</span> if for all <span class="math inline">\(\epsilon &gt; 0\)</span> there exists <span class="math inline">\(M_\epsilon\)</span> s.t. <span class="math display">\[
 \lim\sup P\left(\frac{\norm{X_n}}{b_n} \geq  M_\epsilon \right) &lt; \epsilon
 \]</span></li>
-<li><span class="math inline">\(X_n = o_p(b_n)\)</span> if <span class="math inline">\(\frac{X_n}{b_n} \to 0\)</span></li>
+<li><span class="math inline">\(X_n = o_p(b_n)\)</span> if <span class="math inline">\(\frac{X_n}{b_n} \inprob 0\)</span></li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
+<section id="example-little-o_p" class="slide level2">
+<h2>Example: Little <span class="math inline">\(o_p\)</span></h2>
 <div>
 <ul>
 <li class="fragment"><p>Real valued <span class="math inline">\(X_1, ..., X_n\)</span> i.i.d., with <span class="math inline">\(\Er[X] = \mu\)</span>, <span class="math inline">\(\var(X_i) = \sigma^2\)</span></p></li>
 <li class="fragment"><p>Markov’s inequality <span class="math display">\[
-\begin{aligned}
-P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | &gt; a \right) \leq &amp; \frac{\var(\En X_i - \mu)}{a^2}  \\
-\leq &amp;  \frac{\sigma^2}{n a^2}
-\end{aligned}
+P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | &gt; a \right) \leq \frac{\var(\En X_i - \mu)}{a^2} \leq  \frac{\sigma^2}{n a^2}
 \]</span></p></li>
 <li class="fragment"><p>Let <span class="math inline">\(a = \epsilon n^{-\alpha}\)</span>, then <span class="math display">\[
 P\left( \frac{|\En X_i - \mu |}{n^{-\alpha}} &gt; \epsilon \right) \leq \frac{\sigma^2}{n^{1 - 2\alpha}\epsilon^2}
@@ -576,20 +576,56 @@ P\left( \frac{|\En X_i - \mu |}{n^{-\alpha}} &gt; \epsilon \right) \leq \frac{\s
 </ul>
 </div>
 </section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
+<section id="example-big-o_p" class="slide level2">
+<h2>Example: Big <span class="math inline">\(O_p\)</span></h2>
 <ul>
 <li><p>Real valued <span class="math inline">\(X_1, ..., X_n\)</span> i.i.d., with <span class="math inline">\(\Er[X] = \mu\)</span>, <span class="math inline">\(\var(X_i) = \sigma^2\)</span></p></li>
 <li><p>Markov’s inequality <span class="math display">\[
-\begin{aligned}
-P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | &gt; a \right) \leq &amp; \frac{\var(\En X_i - \mu)}{a^2}  \\
-\leq &amp;  \frac{\sigma^2}{n a^2}
-\end{aligned}
+P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | &gt; a \right) \leq  \frac{\var(\En X_i - \mu)}{a^2}  \leq   \frac{\sigma^2}{n a^2}
 \]</span></p></li>
 <li><p>Let <span class="math inline">\(a = \sigma \epsilon^{-1/2} n^{-1/2}\)</span>, <span class="math display">\[
 P\left( \frac{|\En X_i - \mu |}{n^{-1/2}} &gt; \underbrace{\sigma \epsilon^{-1/2}}_{M_\epsilon} \right) \leq \epsilon
 \]</span> so <span class="math inline">\(|\En X_i - \mu | = O_p(n^{-\alpha})\)</span> for <span class="math inline">\(\alpha \in (0, 1/2]\)</span></p></li>
 </ul>
+</section></section>
+<section>
+<section id="non-asymptotic-bounds" class="title-slide slide level1 center">
+<h1>Non-Asymptotic Bounds</h1>
+
+</section>
+<section id="non-asymptotic-bounds-1" class="slide level2">
+<h2>Non-Asymptotic Bounds</h2>
+<ul>
+<li>Let <span class="math inline">\(\Er[X] = \mu\)</span></li>
+<li>Markov’s inequality: <span class="math inline">\(P(|X - \mu |&gt;\epsilon) \leq \frac{\Er[|X - \mu|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></li>
+<li>Idea: minimize left side over <span class="math inline">\(k\)</span> to get a tighter bound</li>
+</ul>
+</section>
+<section id="non-asymptotic-bounds-2" class="slide level2">
+<h2>Non-Asymptotic Bounds</h2>
+<ul>
+<li>Markov’s inequality for <span class="math inline">\(e^{\lambda(X-\mu)}\)</span> <span class="math display">\[
+P(X-\mu&gt;\epsilon) = P\left( e^{\lambda (X - \mu)} &gt; e^{\lambda \epsilon} \right) \leq e^{-\lambda \epsilon} \Er\left[e^{\lambda (X-\mu)}\right]
+\]</span></li>
+<li><span class="math inline">\(M_X(\lambda)=\Er\left[e^{\lambda (X-\mu)}\right]\)</span> is the (centered) moment generating function
+<ul>
+<li>If <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, then <span class="math inline">\(\Er\left[e^{\lambda (X-\mu)}\right] = e^{\frac{\lambda^2 \sigma^2}{2}}\)</span></li>
+<li>If <span class="math inline">\(|X| \leq b\)</span>, then <span class="math inline">\(\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\lambda^2 b^2}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="non-asymptotic-bounds-3" class="slide level2">
+<h2>Non-Asymptotic Bounds</h2>
+<div>
+<ul>
+<li class="fragment"><p>Suppose <span class="math inline">\(\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}\)</span>, then <span class="math display">\[
+P(X-\mu&gt;\epsilon) \leq \inf_{\lambda \geq 0} e^{-\lambda \epsilon + \lambda^2 \sigma^2/2} = e^{-\frac{\epsilon^2}{2 \sigma^2}}
+\]</span></p></li>
+<li class="fragment"><p>Suppose <span class="math inline">\(\Er\left[e^{\lambda (X_i-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}\)</span> and <span class="math inline">\(X_i\)</span> are independent, then <span class="math display">\[
+P\left(\frac{1}{n} \sum_{i=1}^n X_i-\mu &gt;\epsilon\right) \leq e^{-\frac{\epsilon^2 n}{2 \sigma^2}}
+\]</span></p></li>
+</ul>
+</div>
 <!---
 
 calculate order of least squares with k(n) . Too hard?

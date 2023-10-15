@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-13">
+<meta name="dcterms.date" content="2022-11-09">
 
-<title>ECON 626 - ECON 626: Problem Set 4</title>
+<title>ECON 626 - ECON 626: Problem Set 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -118,6 +137,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul>
 </nav>
     </div>
@@ -126,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ECON 626: Problem Set 4</h1>
+<h1 class="title">ECON 626: Problem Set 5</h1>
 </div>
 
 
@@ -137,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2023</p>
+      <p class="date">November 9, 2022</p>
     </div>
   </div>
   
@@ -150,32 +170,48 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[
 \def\R{{\mathbb{R}}}
 \def\Er{{\mathrm{E}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
 \]</span></p>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p>The exponential distribution has density (with respect to Lesbegue measure) <span class="math display">\[
-f(X;\lambda) = \frac{1}{\lambda} e^{-X/\lambda} 1\{X &gt; 0\}
-\]</span> for <span class="math inline">\(\lambda&gt;0\)</span>. Suppose <span class="math inline">\(X_1, ... , X_n\)</span> are independently exponential<span class="math inline">\((\lambda)\)</span> distributed .</p>
-<ol type="1">
-<li><p>Show that the maximum likelihood estimator for <span class="math inline">\(\lambda\)</span> is <span class="math inline">\(\hat{\lambda}^{MLE} = \frac{1}{n} \sum_{i=1}^n X_i\)</span></p></li>
-<li><p>Derive the Cramér Rao lower bound for any unbiased estimator for <span class="math inline">\(\lambda\)</span>. Is <span class="math inline">\(\hat{\lambda}^{MLE}\)</span> a minimum variance unbiased estimator?</p></li>
-<li><p>Find the most powerful test of size <span class="math inline">\(\alpha\)</span> for testing <span class="math inline">\(H_0: \lambda = \lambda_0\)</span> versus <span class="math inline">\(H_1:\lambda = \lambda_1\)</span>.</p></li>
-</ol>
+<p>Suppose <span class="math inline">\(X_n = O_p(a_n)\)</span> and <span class="math inline">\(Y_n - c = O_p(a_n)\)</span> for <span class="math inline">\(c \neq 0\)</span> and <span class="math inline">\(a_n \to 0\)</span>. Show that <span class="math inline">\(\frac{X_n}{Y_n} = O_p(a_n)\)</span>.</p>
+<p><em>Hint: <span class="math inline">\(\frac{X_n}{Y_n} = \frac{X_n}{c} + \frac{X_n}{Y_n} (c - Y_n) \frac{1}{c}\)</span>, use Lemma 3.3 and Exericse 3.1 from <span class="citation" data-cites="song2021">Song (<a href="#ref-song2021" role="doc-biblioref">2021</a>)</span>.</em></p>
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p>Suppose <span class="math inline">\(X_1, ... , X_n\)</span> are independently uniformly distributed on <span class="math inline">\((0,\theta)\)</span>.</p>
+<p>Consider a linear model where the dimension of <span class="math inline">\(X\)</span> might increase with <span class="math inline">\(n\)</span> <span class="math display">\[
+Y_i = X_{i(n)} \beta_{(n)} + u_i
+\]</span> for <span class="math inline">\(i = 1, ..., n\)</span>. Assume that observations are i.i.d. with <span class="math inline">\(\Er[u u'] = \sigma^2 I_n\)</span>, and <span class="math inline">\(\Er[X_{i(n)} u] = 0\)</span>.</p>
+<p>To simplify the analysis, further assume that <span class="math inline">\(X_{i(n)}\)</span> are one of the standard basis vectors, i.e. <span class="math inline">\(X_{i(n)} \in \{ e_j \}_{j=1}^{k(n)} \subset \R^{k(n)}\)</span> where <span class="math inline">\(e_1 = (1, 0, ..., 0)\)</span>, <span class="math inline">\(e_2 = (0, 1, 0, ..., 0)\)</span>, etc, and that <span class="math display">\[
+P(X_{i(n)} = e_j ) = \frac{1}{k(n)}
+\]</span> for each <span class="math inline">\(j \in \{1, ..., k(n)\}\)</span></p>
 <ol type="1">
-<li><p>Show that <span class="math inline">\(2 \bar{X} = \frac{2}{n} \sum_{i=1}^n X_i\)</span> is an unbiased estimator for <span class="math inline">\(\theta\)</span>.</p></li>
-<li><p>Show that <span class="math inline">\(\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i\)</span> is an unbiased estimator for <span class="math inline">\(\theta\)</span> with <span class="math inline">\(Var(\hat{\theta}) &lt; Var(2 \bar{X})\)</span>.</p></li>
-<li><p>Is there a Cramér Rao lower bound for the variance of <span class="math inline">\(\theta\)</span>? Why or why not?</p></li>
-<li><p><strong>This is challenging.</strong> Show that <span class="math inline">\(\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i\)</span> is a minimum variance unbiased estimator for <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\hat{\beta} = (X'X)^{-1} (X'y)\)</span> be the OLS estimator. Show that <span class="math inline">\(\hat{\beta}_j = \frac{1}{\sum_i 1\{X_{i(n)} = e_j\}} \sum_{i=1}^n 1\{X_{i(n)} = e_j\} Y_i\)</span>, and <span class="math inline">\(\hat{\beta}_j - \beta_{j, (n)} = \frac{\frac{1}{n} \sum_i (Y_i - \beta_j) 1\{X_{i(n)} = e_j\}}{\frac{1}{n} \sum_i 1\{X_{i(n)} = e_j\}}\)</span></p></li>
+<li><p>Show that <span class="math inline">\(\norm{ \hat{\beta} - \beta_{(n)} } = O_p\left( \sqrt{k(n)/n} \right)\)</span>.</p></li>
 </ol>
+<p><em>Hint: use the previous part and problem 1.</em></p>
+</section>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
+<p>A hypothesis test has asymptotic size <span class="math inline">\(\alpha\)</span> if <span class="math display">\[
+\lim_{n \to \infty} \sup_{P_x \in \mathcal{P}_0} P_x(C_n) = \alpha
+\]</span> where <span class="math inline">\(C_n\)</span> is the critical region. Suppose that under <span class="math inline">\(H_0\)</span> (i.e.&nbsp;for all <span class="math inline">\(P_x \in \mathcal{P}_0\)</span>), a test statistic, <span class="math inline">\(T_n(X)\)</span> converges in distribution to <span class="math inline">\(Z\)</span>, uniformly in <span class="math inline">\(\mathcal{P}_0\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Show that if <span class="math inline">\(P(Z &gt; t) = \alpha\)</span>, then letting <span class="math inline">\(C_n = \{X: T_n(X) &gt; t\}\)</span> leads to a test of asymptotic size <span class="math inline">\(\alpha\)</span>.</p>
+
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-song2021" class="csl-entry" role="listitem">
+Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>By uniformly, we mean that <span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} |\Er[f(T(X_n))] - \Er[f(Z)] | \to 0\)</span> for all <span class="math inline">\(f \in \mathcal{C}_b\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

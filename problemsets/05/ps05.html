@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-11-09">
+<meta name="dcterms.date" content="2022-10-20">
 
 <title>ECON 626 - ECON 626: Problem Set 5</title>
 <style>
@@ -137,7 +137,6 @@ div.csl-indent {
   <ul>
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul>
 </nav>
     </div>
@@ -157,7 +156,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 9, 2022</p>
+      <p class="date">October 20, 2022</p>
     </div>
   </div>
   
@@ -179,39 +178,26 @@ div.csl-indent {
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p>Consider a linear model where the dimension of <span class="math inline">\(X\)</span> might increase with <span class="math inline">\(n\)</span> <span class="math display">\[
-Y_i = X_{i(n)} \beta_{(n)} + u_i
-\]</span> for <span class="math inline">\(i = 1, ..., n\)</span>. Assume that observations are i.i.d. with <span class="math inline">\(\Er[u u'] = \sigma^2 I_n\)</span>, and <span class="math inline">\(\Er[X_{i(n)} u] = 0\)</span>.</p>
-<p>To simplify the analysis, further assume that <span class="math inline">\(X_{i(n)}\)</span> are one of the standard basis vectors, i.e. <span class="math inline">\(X_{i(n)} \in \{ e_j \}_{j=1}^{k(n)} \subset \R^{k(n)}\)</span> where <span class="math inline">\(e_1 = (1, 0, ..., 0)\)</span>, <span class="math inline">\(e_2 = (0, 1, 0, ..., 0)\)</span>, etc, and that <span class="math display">\[
-P(X_{i(n)} = e_j ) = \frac{1}{k(n)}
-\]</span> for each <span class="math inline">\(j \in \{1, ..., k(n)\}\)</span></p>
+<p>Suppose that each individual person <span class="math inline">\(i\)</span> has potential outcomes <span class="math inline">\(Y_i(1)\)</span> and <span class="math inline">\(Y_i(0)\)</span> depending on the treated state or the untreated state. The average treatment effect is defined to be <span class="math display">\[
+    \tau = \Er[Y_i(1) - Y_i(0)].
+\]</span> We assume that the econometrician observes <span class="math inline">\((Y_i,D_i)\)</span>, where <span class="math inline">\(Y_i = D_i Y_i(1) + (1 - D_i)Y_i(0)\)</span>, <span class="math inline">\(D_i\)</span> is a binary variable representing the treatment status, and that <span class="math inline">\((Y_(1),Y_i(0))\)</span> is independent of <span class="math inline">\(D_i\)</span>. Finally, assume that <span class="math inline">\(0 &lt; \Er[D_i] &lt;1\)</span>, <span class="math inline">\(Y_i \in [0,1]\)</span> for all <span class="math inline">\(i =1,...,n\)</span>, and that <span class="math inline">\((Y_i(1),Y_i(0),D_i)\)</span> are i.i.d. across <span class="math inline">\(i\)</span>’s.</p>
 <ol type="1">
-<li><p>Let <span class="math inline">\(\hat{\beta} = (X'X)^{-1} (X'y)\)</span> be the OLS estimator. Show that <span class="math inline">\(\hat{\beta}_j = \frac{1}{\sum_i 1\{X_{i(n)} = e_j\}} \sum_{i=1}^n 1\{X_{i(n)} = e_j\} Y_i\)</span>, and <span class="math inline">\(\hat{\beta}_j - \beta_{j, (n)} = \frac{\frac{1}{n} \sum_i (Y_i - \beta_j) 1\{X_{i(n)} = e_j\}}{\frac{1}{n} \sum_i 1\{X_{i(n)} = e_j\}}\)</span></p></li>
-<li><p>Show that <span class="math inline">\(\norm{ \hat{\beta} - \beta_{(n)} } = O_p\left( \sqrt{k(n)/n} \right)\)</span>.</p></li>
+<li><p>Show that <span class="math display">\[
+\hat{\tau} = \frac{\sum_{i=1}^n Y_i D_i}{\sum_{i=1}^n D_i} - \frac{\sum_{i=1}^n Y_i (1-D_i)}{\sum_{i=1}^n (1-D_i)}
+\]</span> is a consistent estimator for <span class="math inline">\(\tau\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(\hat{\tau} - \tau = O_p(n^{-1/2})\)</span></p></li>
+<li><p>Show that <span class="math inline">\(\sqrt{n}(\hat{\tau}-\tau) \to^d N(0,\sigma_\tau^2)\)</span> and calculate <span class="math inline">\(\sigma_\tau^2\)</span>.</p></li>
 </ol>
-<p><em>Hint: use the previous part and problem 1.</em></p>
-</section>
-<section id="problem-3" class="level1">
-<h1>Problem 3</h1>
-<p>A hypothesis test has asymptotic size <span class="math inline">\(\alpha\)</span> if <span class="math display">\[
-\lim_{n \to \infty} \sup_{P_x \in \mathcal{P}_0} P_x(C_n) = \alpha
-\]</span> where <span class="math inline">\(C_n\)</span> is the critical region. Suppose that under <span class="math inline">\(H_0\)</span> (i.e.&nbsp;for all <span class="math inline">\(P_x \in \mathcal{P}_0\)</span>), a test statistic, <span class="math inline">\(T_n(X)\)</span> converges in distribution to <span class="math inline">\(Z\)</span>, uniformly in <span class="math inline">\(\mathcal{P}_0\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Show that if <span class="math inline">\(P(Z &gt; t) = \alpha\)</span>, then letting <span class="math inline">\(C_n = \{X: T_n(X) &gt; t\}\)</span> leads to a test of asymptotic size <span class="math inline">\(\alpha\)</span>.</p>
 
 
 
 </section>
-
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-song2021" class="csl-entry" role="listitem">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>By uniformly, we mean that <span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} |\Er[f(T(X_n))] - \Er[f(Z)] | \to 0\)</span> for all <span class="math inline">\(f \in \mathcal{C}_b\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

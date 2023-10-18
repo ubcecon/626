@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 5"
 #author: "Paul Schrimpf"
-date: 2022-11-09
+date: 2023-10-20
 bibliography: ../../626.bib
 ---
 
@@ -10,6 +10,7 @@ $$
 \def\Er{{\mathrm{E}}}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 $$
+
 
 # Problem 1
 
@@ -20,36 +21,18 @@ and $a_n \to 0$. Show that $\frac{X_n}{Y_n} = O_p(a_n)$.
 
 # Problem 2
 
-Consider a  linear model where the dimension of $X$ might increase with $n$
+Suppose that each individual person $i$ has potential outcomes $Y_i(1)$ and $Y_i(0)$ depending on the treated state or the untreated state. The average treatment effect is defined to be
 $$
-Y_i = X_{i(n)} \beta_{(n)} + u_i
+	\tau = \Er[Y_i(1) - Y_i(0)].
 $$
-for $i = 1, ..., n$. Assume that observations are i.i.d. with $\Er[u u'] = \sigma^2 I_n$, and
-$\Er[X_{i(n)} u] = 0$.
+We assume that the econometrician observes $(Y_i,D_i)$, where $Y_i = D_i Y_i(1) + (1 - D_i)Y_i(0)$, $D_i$ is a binary variable representing the treatment status, and that $(Y_(1),Y_i(0))$ is independent of $D_i$. Finally, assume that $0 < \Er[D_i] <1$, $Y_i \in [0,1]$ for all $i =1,...,n$, and that $(Y_i(1),Y_i(0),D_i)$ are i.i.d. across $i$'s.
 
-To simplify the analysis, further assume that $X_{i(n)}$ are one of the standard basis vectors, i.e.
-$X_{i(n)} \in \{ e_j \}_{j=1}^{k(n)} \subset \R^{k(n)}$ where $e_1 = (1, 0, ..., 0)$,
-$e_2 = (0, 1, 0, ..., 0)$, etc, and that
+1. Show that
 $$
-P(X_{i(n)} = e_j ) = \frac{1}{k(n)}
+\hat{\tau} = \frac{\sum_{i=1}^n Y_i D_i}{\sum_{i=1}^n D_i} - \frac{\sum_{i=1}^n Y_i (1-D_i)}{\sum_{i=1}^n (1-D_i)}
 $$
-for each $j \in \{1, ..., k(n)\}$
+is a consistent estimator for $\tau$.
 
-1. Let $\hat{\beta} = (X'X)^{-1} (X'y)$ be the OLS estimator. Show
-that $\hat{\beta}_j = \frac{1}{\sum_i 1\{X_{i(n)} = e_j\}} \sum_{i=1}^n
-1\{X_{i(n)} = e_j\} Y_i$, and $\hat{\beta}_j - \beta_{j, (n)} = \frac{\frac{1}{n} \sum_i (Y_i - \beta_j) 1\{X_{i(n)} = e_j\}}{\frac{1}{n} \sum_i 1\{X_{i(n)} = e_j\}}$
+2. Show that $\hat{\tau} - \tau = O_p(n^{-1/2})$
 
-2. Show that $\norm{ \hat{\beta} - \beta_{(n)} } = O_p\left( \sqrt{k(n)/n} \right)$.
-
-*Hint: use the previous part and problem 1.*
-
-# Problem 3
-
-A hypothesis test has asymptotic size $\alpha$ if
-$$
-\lim_{n \to \infty} \sup_{P_x \in \mathcal{P}_0} P_x(C_n) = \alpha
-$$
-where $C_n$ is the critical region. Suppose that under $H_0$ (i.e. for
-all $P_x \in \mathcal{P}_0$), a test statistic, $T_n(X)$
-converges in distribution to $Z$, uniformly in $\mathcal{P}_0$.^[By uniformly, we mean that $\sup_{P_x \in \mathcal{P}_0} |\Er[f(T(X_n))] - \Er[f(Z)] | \to 0$ for all $f \in \mathcal{C}_b$.]
-Show that if  $P(Z > t) = \alpha$, then letting $C_n = \{X: T_n(X) > t\}$ leads to a test of asymptotic size $\alpha$.
+3. Show that $\sqrt{n}(\hat{\tau}-\tau) \to^d N(0,\sigma_\tau^2)$ and calculate $\sigma_\tau^2$.

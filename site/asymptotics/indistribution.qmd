@@ -8,6 +8,7 @@ format:
     width: 1600
     height: 900
     min-scale: 0.1
+    css: ../styles.css
     chalkboard:
       theme: whiteboard
       boardmarker-width: 2
@@ -53,58 +54,11 @@ $$
 denoted by $X_n \indist X$
 :::
 
-:::{.fragment}
+::: {.notes}
 
-::: {.callout-warning icon=false}
+- relate to convergence of the linear operator from $\mathcal{C}_b \to \mathbbm{R}$
 
-### Theorem 1.1
-
-If $X_n \indist X$ if and only if $P(X_n \leq t) \to P(X \leq t)$ for
-all $t$ where $P(X \leq t)$ is continuous
-
-:::
-
-:::
-
-## Convergence in Distribution
-
-::: {.callout-warning icon=false}
-
-### Theorem 1.2
-
-If $X_n \indist X$ and $X$ is continuous, then
-$$
-\sup_{t \in \R^d} | P(X_n \leq t) - P(X \leq t) | \to 0
-$$
-
-:::
-
-## Characterizing Convergence in Distribution
-
-::: {.callout-warning icon=false}
-
-### Lemma 1.2
-
-$X_n \indist X$ iff for any open $G \subset \R^d$,
-$$
-\liminf P(X_n \in G) \geq P(X \in G)
-$$
-
-:::
-
-- This and additional characterizations of convergence in distribution are called the Portmanteau Theorem
-
-## Continuous Mapping Theorem
-
-::: {.callout-warning icon=false}
-
-### Continuous Mapping Theorem
-
-Let $X_n \indist X$ and $g$ be continuous on a set $C$ with
-$P(X \in C) = 1$, then
-$$
-g(X_n) \indist g(X)
-$$
+- Note important implication for test statistics
 
 :::
 
@@ -302,7 +256,7 @@ all $t \in \R^d$
 
 ### Theorem 2.4
 
-Suppose $X_1, ..., X_n$ are i.i.d. with $\Er[X_1] = \mu \in \R^d$, \Er[\norm{X_i}^2] < \infty$ and
+Suppose $X_1, ..., X_n$ are i.i.d. with $\Er[X_1] = \mu \in \R^d$, $\Er[\norm{X_i}^2] < \infty$ and
 $\var(X_1) = \Sigma > 0$, then
 $$
 \frac{1}{\sqrt{n}} \sum_{i=1}^n (X_i - \mu) \indist N(0,\Sigma)
@@ -322,6 +276,8 @@ X_{n,1}, & ..., & X{n,k(n)}
 \end{array}
 $$
 with $k(n) \to \infty$ as $n \to \infty$
+
+##  i. non i.d. Central Limit Theorem
 
 ::: {.callout-warning icon=false}
 
@@ -368,5 +324,67 @@ $$
 $$
 
 :::
+
+# Characterizing Convergence in Distribution
+
+## Characterizing Convergence in Distribution
+
+::: {.callout-warning icon=false}
+
+### Lemma 1.2
+
+$X_n \indist X$ iff for any open $G \subset \R^d$,
+$$
+\liminf P(X_n \in G) \geq P(X \in G)
+$$
+
+:::
+
+- This and additional characterizations of convergence in distribution are called the Portmanteau Theorem
+
+
+## Characterizing Convergence in Distribution
+
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.1
+
+If $X_n \indist X$ if and only if $P(X_n \leq t) \to P(X \leq t)$ for
+all $t$ where $P(X \leq t)$ is continuous
+
+:::
+
+
+:::{.fragment}
+
+::: {.callout-warning icon=false}
+
+### Theorem 1.2
+
+If $X_n \indist X$ and $X$ is continuous, then
+$$
+\sup_{t \in \R^d} | P(X_n \leq t) - P(X \leq t) | \to 0
+$$
+
+:::
+
+:::
+
+
+## Continuous Mapping Theorem
+
+::: {.callout-warning icon=false}
+
+### Continuous Mapping Theorem
+
+Let $X_n \indist X$ and $g$ be continuous on a set $C$ with
+$P(X \in C) = 1$, then
+$$
+g(X_n) \indist g(X)
+$$
+
+:::
+
 
 # References

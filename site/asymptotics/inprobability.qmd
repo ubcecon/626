@@ -8,6 +8,7 @@ format:
     width: 1600
     height: 900
     min-scale: 0.1
+    css: ../styles.css
     chalkboard:
       theme: whiteboard
       boardmarker-width: 2
@@ -86,6 +87,8 @@ $$
 
 - $p=2$ called convergence in mean square
 
+## Markov's Inequality
+
 ::: {.callout-warning icon=false}
 
 ### Markov's Inequality
@@ -95,7 +98,7 @@ $\forall \epsilon > 0, k > 0$
 
 :::
 
--  $P\left( \norm{X_n - Y} > \epsilon \right) \leq \frac{\Er[ \norm{X_n - y}^k]} {\epsilon_k}$
+-  $P\left( \norm{X_n - Y} > \epsilon \right) \leq \frac{\Er[ \norm{X_n - Y}^k]} {\epsilon_k}$
 
 
 ## Convergence in  $L^p$ implies convergence in probability
@@ -108,10 +111,11 @@ If $X_n$ converges in $L^p$ to $Y$, then $X_n \inprob Y$.
 
 :::
 
+
+## Application to Estimators
+
 - An estimator, $\hat{\theta}$ is **consistent** if
 $\hat{\theta} \inprob \theta_0$
-
-::: {.fragment}
 
 - Implication for estimators:
 $$
@@ -124,7 +128,6 @@ $$
 - If $\lim_{n \to \infty} \Er[\hat{\theta}_n]  \neq \theta_0$, then
 $\plim \hat{\theta}_n \neq \theta_0$
 
-:::
 
 ## Consistency of Least-Squares
 
@@ -214,11 +217,11 @@ s.t.
 $$
 \lim\sup P\left(\frac{\norm{X_n}}{b_n} \geq  M_\epsilon \right) < \epsilon
 $$
-- $X_n = o_p(b_n)$ if $\frac{X_n}{b_n} \to 0$
+- $X_n = o_p(b_n)$ if $\frac{X_n}{b_n} \inprob 0$
 
 :::
 
-## Example
+## Example: Little $o_p$
 
 
 ::: {.incremental}
@@ -226,10 +229,7 @@ $$
 
 - Markov's inequality
   $$
-  \begin{aligned}
-  P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | > a \right) \leq & \frac{\var(\En X_i - \mu)}{a^2}  \\
-  \leq &  \frac{\sigma^2}{n a^2}
-  \end{aligned}
+  P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | > a \right) \leq \frac{\var(\En X_i - \mu)}{a^2} \leq  \frac{\sigma^2}{n a^2}
   $$
 
 - Let $a = \epsilon n^{-\alpha}$, then
@@ -241,16 +241,13 @@ $$
 
 :::
 
-## Example
+## Example: Big $O_p$
 
 - Real valued $X_1, ..., X_n$ i.i.d., with $\Er[X] = \mu$, $\var(X_i) = \sigma^2$
 
 - Markov's inequality
   $$
-  \begin{aligned}
-  P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | > a \right) \leq & \frac{\var(\En X_i - \mu)}{a^2}  \\
-  \leq &  \frac{\sigma^2}{n a^2}
-  \end{aligned}
+  P\left( |\overbrace{\En X_i}^{\equiv \frac{1}{n} \sum_{i=1}^n X_i} - \mu | > a \right) \leq  \frac{\var(\En X_i - \mu)}{a^2}  \leq   \frac{\sigma^2}{n a^2}
   $$
 
 - Let $a = \sigma \epsilon^{-1/2} n^{-1/2}$,
@@ -258,6 +255,42 @@ $$
   P\left( \frac{|\En X_i - \mu |}{n^{-1/2}} > \underbrace{\sigma \epsilon^{-1/2}}_{M_\epsilon} \right) \leq \epsilon
   $$
   so $|\En X_i - \mu | = O_p(n^{-\alpha})$ for $\alpha \in (0, 1/2]$
+
+# Non-Asymptotic Bounds
+
+## Non-Asymptotic Bounds
+
+- Let $\Er[X] = \mu$
+- Markov's inequality: $P(|X - \mu |>\epsilon) \leq \frac{\Er[|X - \mu|^k]}{\epsilon^k}$
+$\forall \epsilon > 0, k > 0$
+- Idea: minimize left side over $k$ to get a tighter bound
+
+## Non-Asymptotic Bounds
+
+- Markov's inequality for $e^{\lambda(X-\mu)}$
+$$
+P(X-\mu>\epsilon) = P\left( e^{\lambda (X - \mu)} > e^{\lambda \epsilon} \right) \leq e^{-\lambda \epsilon} \Er\left[e^{\lambda (X-\mu)}\right]
+$$
+- $M_X(\lambda)=\Er\left[e^{\lambda (X-\mu)}\right]$ is the (centered) moment generating function
+   - If $X \sim N(\mu, \sigma^2)$, then
+   $\Er\left[e^{\lambda (X-\mu)}\right] = e^{\frac{\lambda^2 \sigma^2}{2}}$
+   - If $|X| \leq b$, then $\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\lambda^2 b^2}$
+
+## Non-Asymptotic Bounds
+
+::: {.incremental}
+
+- Suppose $\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}$, then
+$$
+P(X-\mu>\epsilon) \leq \inf_{\lambda \geq 0} e^{-\lambda \epsilon + \lambda^2 \sigma^2/2} = e^{-\frac{\epsilon^2}{2 \sigma^2}}
+$$
+
+- Suppose $\Er\left[e^{\lambda (X_i-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}$ and $X_i$ are independent, then
+$$
+P\left(\frac{1}{n} \sum_{i=1}^n X_i-\mu >\epsilon\right) \leq e^{-\frac{\epsilon^2 n}{2 \sigma^2}}
+$$
+
+:::
 
 
 

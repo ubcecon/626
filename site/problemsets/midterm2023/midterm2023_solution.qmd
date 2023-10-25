@@ -1,0 +1,484 @@
+---
+title: "ECON 626: Midterm"
+#author: "Paul Schrimpf"
+date: "2023-10-25"
+#bibliography: ~/626/site/626.bib
+
+# format:
+#   pdf:
+#     number-sections: true
+#     number-depth: 3
+#     include-in-header:
+#       - macros.tex
+#     geometry:
+#       - margin=0.8in
+#     fontfamily: libertinus
+#     fontsize: 11pt
+#  html:
+#   embed-resources: true
+#  standalone: true
+format:
+  html:
+    embed-resources: true
+    theme: journal
+    standalone: true
+    css: styles.css
+---
+
+# Problem 1
+
+$$
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\cov{{\mathrm{Cov}}}
+\def\En{{\mathbb{En}}}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+$$
+
+Suppose $u_{i,k} \in \{0,1\}$ for $k=1,...,K$, and $Y_i = \sum_{k=1}^K u_{i,k}$.
+Observations for different $i$ are independent and identically distributed. $Y_1,
+..., Y_n$ are observed, but $u_{i,k}$ are not. For the same $i$ and $j
+\neq k$, $u_{ij}$ and $u_{ik}$ are independent (but may not be identically distributed).
+
+## $\sigma$ fields
+
+For $K=2$, what is $\sigma(Y)$?
+
+::: {.solution}
+
+The range of $Y$ is $\{0,1,2\}$. $\sigma(Y)$ will consist of the preimages of each of these values and all their intersections and unions. That is,
+$$
+\sigma(Y) = \begin{Bmatrix} \emptyset, \, \{(0,0)\}, \, \{(1,1)\}, \, \{(0,1), (1,0)\}, \\
+\{(0,0), (0,1), (1,0) \}, \, \{(0,1),(1,0),(1,1)\} \\
+\{(0,0), (1,1) \}, \, \{(0,0), (0,1), (1,0 ), (1,1)\} \end{Bmatrix}
+$$
+
+:::
+
+## Identification
+
+1. Let $\theta_k = P(u_{i,k}=1)$ show that $\theta = (\theta_1, ..., \theta_K)$ is not identified by finding an observationally equivalent $\tilde{\theta}$.
+
+::: {.solution}
+
+Since addition is commutative, $\theta$ is observationally equivalent
+to any permutation of its values. For example, with $K=2$,
+$\theta=(\theta_1,\theta_2)$ is observationally equivalent to
+$\tilde{\theta}=(\theta_2, \theta_1)$ because
+$$
+\begin{align*}
+P_\theta(Y=0) = & (1-\theta_1)(1-\theta_2) = P_{\tilde{\theta}}(Y=0) \\
+P_\theta(Y=1) = & theta_1(1-\theta_2) + \theta_2(1-\theta_1) = P_{\tilde{\theta}}(Y=1) \\
+P_\theta(Y=2) = & \theta_1\theta_2 = P_{\tilde{\theta}}(Y=2).
+\end{align*}
+$$
+
+:::
+
+2. Show that if $\theta_1 = \theta_2 = \cdots = \theta_K = \vartheta$,
+then $\vartheta$ is identified.
+
+::: {.solution}
+
+In this case, the expectation of $Y$ is $\Er[Y] =  K \vartheta$, so $\vartheta$ is identified by
+$\Er[Y]/K$.
+
+:::
+
+## Estimation
+
+1. Assuming $\theta_1 = \theta_2 = \cdots = \theta_K = \vartheta$,
+find the maximum likelihood estimator^[If you cannot find the maximum
+likelihood estimator, show whether $\bar{Y}/K = \frac{1}{nK}
+\sum_{i=1}^n Y_i$ is unbiased and consistent for partial credit.] for
+$\vartheta$, and show whether it is unbiased.
+
+::: {.solution}
+
+The density of $Y$ with respect to a uniform discrete measure on $\{0,
+..., K\}$ is
+$$
+f(Y_i;\theta) = \binom{K}{Y_i} \theta^{Y_i} (1-\theta)^{K-Y_i}
+$$
+The loglikelihood is then
+$$
+\log \ell(\theta;Y) = \sum_{i=1}^n \left(\log \binom{K}{Y_i} + Y_i \log \theta + (K-Y_i) \log(1-\theta)\right)
+$$
+Solving the first order condition for $\hat{\theta}$ gives:
+$$
+\begin{align*}
+0 = & \sum \frac{Y_i}{\hat{\theta}} - \frac{K-Y_i}{1-\hat{\theta}} \\
+\hat{\theta} = \frac{1}{nK} \sum_{i=1}^n Y_i
+\end{align*}
+$$
+
+This estimator is unbiased.
+$$
+\Er[\hat{\theta}] = \frac{1}{nK} \sum_{i=1}^n \Er[Y_i] = \vartheta.
+$$
+
+:::
+
+2. Show whether or not the maximum likelihood estimator is consistent.
+
+::: {.solution}
+
+Note that $\Er[|Y_i|] = \Er[Y_i] = K\vartheta$ is finite, and $Y_i$ is iid. Therefore, by the law of large numbers,
+$$
+\frac{1}{n} \sum_{i=1}^n Y_i \inprob \Er[Y_i] = K \vartheta
+$$
+so
+$$
+\frac{1}{nK} \sum_{i=1}^n Y_i \inprob \vartheta.
+$$
+
+:::
+
+## Testing
+
+For this part, still assume $\theta_1 = \theta_2 = \cdots = \theta_K = \vartheta$.
+
+1. For find the most powerful test for testing $H_0: \vartheta =
+\vartheta_0$ against $H_1: \vartheta = \vartheta_a$ where $\vartheta_a > \vartheta_0$.
+
+::: {.solution}
+
+By the Neyman-Pearson Lemma, the likelihood ratio is most powerful. Let's describe the critical region for this test.
+The likelihood ratio is
+$$
+\begin{align*}
+lr(\vartheta_a,\vartheta_0;Y)  = & \frac{\prod_i \vartheta_a^{Y_i}(1-\vartheta_a)^{K-Y_i}}{ \prod_i \vartheta_0^{Y_i}(1-\vartheta_0)^{K-Y_i}} \\
+ = & \frac{\vartheta_a^{\sum Y_i}(1-\vartheta_a)^{nK - \sum Y_i}} {\vartheta_0^{\sum Y_i}(1-\vartheta_0)^{nK - \sum Y_i}} \\
+ = & \left(\frac{\vartheta_a}{\vartheta_0} \right)^{\sum Y_i} \left( \frac{1-\vartheta_a}{1-\vartheta_0} \right)^{nK - \sum Y_i}
+\end{align*}
+$$
+When $\vartheta_a > \vartheta_0$, so that $\frac{\vartheta_a}{\vartheta_0}>0$ and $\frac{1-\vartheta_a}{1-\vartheta_0} < 1$, the likelihood ratio is an
+increasing function of $\sum Y_i$ and does not depend on the data in any other way. The critical region for a test of size $\alpha$ will be
+$$
+C = \{Y_i : \sum Y_i > c^*(\alpha,\theta_0) \}
+$$
+where $P_{\theta_0}(\sum Y_i > c^*(\theta_0)) = \alpha$.
+
+:::
+
+2. Is this test also most powerful against the alternative $H_1: \vartheta >\ vartheta_0$?
+(Hint: does the critical region depend on $\vartheta_a$?
+
+::: {.solution}
+
+In the previous part, we saw that the critical region is the same for
+any $\vartheta_a > \vartheta_0$. Hence, the test is uniformly most powerful
+again $H_1: \vartheta > \vartheta_0$.
+
+:::
+
+\newpage
+
+# Problem 2
+
+Suppose you have a linear model with grouped data
+$$
+y_{ij} = x_{ij}' \beta + u_{ij}
+$$
+where there are $j=1,...,J$ groups with $i=1,...,n_j$ individuals
+each, and $x_{ij} \in \R^k$. For example, $j$ could be firms, and $i$ could index workers in the firms.
+Throughout, assume that observations are independent across $j$, $\Er[u_{ij}] =0$, and $\Er[x_{ij} u_{ij}]=0$. $y$ and $x$ are observed, but $u$ is not.
+Assume that $\Er[x_{ij} x_{ij}']$ has rank $K$.
+
+## Identification
+
+1. Show that $\beta$ is identified by explicitly writing $\beta$ as a function of the distribution of $x_{ij}$ and $y_{ij}$.
+
+::: {.solution}
+
+We can identify $\beta$ by regression, $\beta = \Er[x_{ij} x_{ij}']^{-1} \Er[x_ij y_ij]$.
+
+:::
+
+2. Suppose that instead of observing $(y_{ij}, x_{ij})$ for each $i$
+and $j$, you only observe group averages,
+$\bar{y}_j = \frac{1}{n_j} \sum_{i=1}^{n_j} y_{ij}$ and
+$\bar{x}_j = \frac{1}{n_j} \sum_{i=1}^{n_j} x_{ij}$. Can $\beta$ still be identified?
+
+::: {.solution}
+
+Yes, $\beta$ can still be identified by
+$$
+\beta = \Er[\bar{x}_{j} \bar{x}_{j}']^{-1} \Er[\bar{x}_j \bar{y}_j]
+$$
+as long as $\Er[\bar{x}_{j} \bar{x}_{j}']$ is nonsingular.
+
+:::
+
+## Estimation
+
+Continue to assume that you only observe group averages.
+Construct a sample analogue estimator for $\beta$ based on your
+answer to 2.b.2.^[If you could not answer that part, suppose you had
+shown that $\beta = \Er[\bar{x}_j \bar{x}_j']^{-1} \Er[\bar{x}_j \bar{y}_j]$.]
+
+
+1. Show whether your estimator is unbiased.
+
+::: {.solution}
+
+The estimator is
+$$
+\hat{\beta} = \left(\sum_j \bar{x}_j \bar{x}_j' \right)^{-1} \sum_j \bar{x}_j \bar{y}_j
+$$
+Substituting the model in for $\bar{y}_j$, we have
+$$
+\hat{\beta} = \left(\sum_j \bar{x}_j \bar{x}_j' \right)^{-1} \sum_j \bar{x}_j (\bar{x}_j' \beta + \bar{u}_j)
+$$
+so
+$$
+\Er[\hat{\beta}] = \beta + \Er\left[\left(\sum_j \bar{x}_j \bar{x}_j' \right)^{-1} \sum_j \bar{x}_j (\bar{x}_j'\bar{u}_j) \right].
+$$
+We are assuming that $\Er[x_{ij}u_{ij}] = 0$, so $\Er[\bar{x}_j\bar{u_j}] = 0$ as well.
+However, this does not imply that
+$$
+\Er\left[\left(\sum_j \bar{x}_j \bar{x}_j' \right)^{-1} \sum_j \bar{x}_j (\bar{x}_j'\bar{u}_j)\right] = 0,
+$$
+so $\hat{\beta}$ is biased.
+
+For $\hat{\beta}$ to be unbiased, we would need the stronger
+assumption that $\Er[\bar{u}_j | \bar{x}_j] = 0$.
+
+:::
+
+2. Assume that $\Er[\Vert \bar{x}_j \bar{x}_j' \Vert_2^2] \leq M$ and
+$\Er[\Vert \bar{x}_j u_j\Vert_2^2] \leq M$ for all $j$. Show whether or not your estimator is consistent as $J \to \infty$.
+
+::: {.solution}
+
+In this question and in the distribution question, there is some
+complication because $\Er[\bar{x}_j \bar{x}_j']$ potentially varies with $j$.
+A really great answer recognizes this and addresses it in some way. An answer that correctly uses the law of large number and Slutsky's lemma is also okay.
+
+These assumptions imply that the law of large numbers applies to
+$\frac{1}{J} \sum \bar{x}_j \bar{x}_j'$ and $\frac{1}{J} \sum
+\bar{x}_j \bar{u}_j$. We can show this using Markov's inequality,
+but doing so is not necessary for full credit. Using Markov's inequality we have
+$$
+\begin{align*}
+P\left( \Vert \frac{1}{J} \sum (\bar{x}_j \bar{x}_j' - \Er[\bar{x}_j \bar{x}_j']) \Vert > \epsilon \right) & \leq \frac{\Er[ \Vert \frac{1}{J} \sum (\bar{x}_j \bar{x}_j' - \Er[\bar{x}_j \bar{x}_j]) \Vert^2]}{\epsilon^2} \\
+& \leq \frac{ \frac{1}{J} \sum \Er[\Vert \bar{x}_j \bar{x}_j'\Vert^2]} {\epsilon^2} \\
+& \leq \frac{M}{J \epsilon^2}
+\end{align*}
+$$
+so $\frac{1}{J} \sum \bar{x}_j \bar{x}_j' \inprob \frac{1}{J} \sum
+\Er[\bar{x}_j \bar{x}_j']$. An identical argument shows that
+$\frac{1}{J} \sum \bar{x}_j \bar{u}_j \inprob 0$.
+
+Therefore,
+$$
+\begin{align*}
+\hat{\beta} = &\beta + \left(\frac{1}{J} \sum_j \bar{x}_j \bar{x}_j' \right)^{-1} \frac{1}{J} \sum_j \bar{x}_j \bar{u}_j \\
+\inprob & \beta
+\end{align*}
+$$
+provided that $\frac{1}{J} \sum \Er[\bar{x}_j \bar{x}_j']$ is
+invertible for all $J$ large enough. It would be sufficient to assume
+$\lim_{J \to \infty} \frac{1}{J} \sum \Er[\bar{x}_j \bar{x}_j'] = C$ exists and $C$ is invertible, but weaker conditions are possible as well.
+
+:::
+
+## Efficiency
+
+Assume that $\Er[u_{ij}u_{\ell k}] = \begin{cases}
+                          \sigma^2 & \text{ if } i=\ell \text{ and } j=k \\
+                          0 & \text{ otherwise}
+                        \end{cases}$.
+
+1. Suppose you observe $y_{ij}$ and $x_{ij}$ for each $i$ and $j$. What is the minimal variance unbiased estimator for $c'\beta$ that is a linear function of $y$?
+
+::: {.solution}
+
+In this case, all the assumptions of the Gauss Markov thereom are met, so ordinary least squares in the best linear unbiased estimator.
+
+:::
+
+2. Suppose you only observe group averages $\bar{y}_j$ and $\bar{x}_j$. What is the minimal variance unbiased estimator for $c'\beta$ that is a linear function of $\bar{y}$?
+
+::: {.solution}
+
+Now, the Gauss Markov theorem does not directly apply because
+$var(\bar{u}_j) = \frac{\sigma^n}{n_j}$ is not the same for all $j$. However, we can transform the model to make the variance constant,
+$$
+\sqrt{n_j} \bar{y}_j = \sqrt{n_j} \bar{x}_j \beta + \underbrace{\sqrt{n_j} \bar{u}_j}_{\tilde{u}_j}
+$$
+Now $\Er[\tilde{u}\tilde{u}'] = \sigma^2 I_J$, so the Gauss Markov theorem applies and the best linear unbiased estimator is
+$$
+\hat{\beta}^{WLS} = \left(\sum_j n_j \bar{x}_j \bar{x}_j' \right)^{-1} \sum_j n_j \bar{x}_j \bar{y}_j
+$$
+
+:::
+
+## Distribution
+
+Continue to assume that you only observe group averages. Let
+$\hat{\beta}^{WLS} = \left( \sum_{j=1}^J n_j \bar{x}_j \bar{x}_j' \right)^{-1} \left( \sum_{j=1}^J n_j \bar{x}_j \bar{y}_j \right)$.
+Show that
+$$
+\sqrt{J}(\hat{\beta}^{WLS} - \beta) = \sqrt{J}\left( \sum_{j=1}^J n_j \bar{x}_j \bar{x}_j' \right)^{-1} \left( \sum_{j=1}^J n_j \bar{x}_j \bar{u}_j \right)
+$$
+converges in distributions and compute the limiting distribution. State any additional assumptions that you need to show convergence.
+
+::: {.solution}
+
+As above, assuming $\Er[\Vert n_j \bar{x}_j \bar{x}_j' \Vert_2^2]$ is finite is sufficient for a law of large numbers to apply to
+$\frac{1}{J} \sum_j n_j \bar{x}_j \bar{x}_j'$.
+
+We already have assumptions that imply  $\Er[n_j \bar{x}_j \bar{u}_j] = 0$.
+If we also assume that this has a variance, then a central limit theorem would apply.
+It would be an acceptable (and the expected) answer to just assume
+$\Er[n^2_j \bar{x}_j \bar{x}_j' \bar{u}_j^2] = \Omega$ for all $j$ and
+proceed.
+
+Alternatively, we could assume $\Er[u_{ij}^2 | x_{ij}] = \sigma^2$ for all $i$ and $j$ and $u_{ij}$ are independent across $i$ and $j$. Then,
+$$
+\begin{align*}
+\Er[n_j \bar{x}_j \bar{x}_j' \bar{u}_j^2] = & \Er[ n_j \bar{x}_j \bar{x}_j' \Er[n_j \bar{u}_j^2 | \bar{x}_j]] \\
+= & \Er[n_j \bar{x}_j \bar{x}_j'] \sigma^2
+\end{align*}
+$$
+If we also assume $\Er[x_{ij} x_{ij}']=C$ is the same for all $i$ and
+$j$ and observations are independent, then $\Er[n_j \bar{x}_j
+\bar{x}_j'] = C$ for all $j$.
+
+In that case, by the central limit theorem,
+$$
+\frac{1}{\sqrt{J}} \sum_{j=1}^J \bar{x}_j \bar{u}_j \indist N(0,\Er[x_{ij}x_{ij}'] \sigma^2 )
+$$
+and therefore,
+$$
+\sqrt{J}(\hat{\beta} - \beta) \indist N\left(0, \Er[x_{ij} x_{ij}']^{-1} \sigma^2 \right).
+$$
+
+:::
+
+
+\newpage
+
+# Definitions and Results
+
+- Measure and Probability:
+
+    - A collection of subsets, $\mathscr{F}$, of $\Omega$ is a $\sigma$*-field* , if
+       1. $\Omega \in \mathscr{F}$
+       2. If $A \in \mathscr{F}$, then $A^c \in \mathscr{F}$
+       3. If $A_1, A_2, ... \in \mathscr{F}$, then $\cup_{j=1}^\infty A_j \in \mathscr{F}$
+
+    - A measure, $\mu: \mathcal{F} \to [0, \infty]$ s.t.
+       1. $\mu(\emptyset) = 0$
+       2. If $A_1, A_2, ... \in \mathscr{F}$ are pairwise disjoint, then $\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)$
+
+    - Lesbegue integral is
+       1. Positive: if $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+       2. Linear:  $\int (af + bg) d\mu = a\int f d\mu + b \int g d \mu$
+
+    - Radon-Nikodym derivative: if $\nu \ll \mu$, then $\exists$ nonnegative measureable function, $\frac{d\nu}{d\mu}$, s.t.
+       $$
+       \nu(A) = \int_A \frac{d\nu}{d\mu} d\mu
+       $$
+
+    - Monotone convergence: If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\omega \in \Omega$,
+$f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu$ as $n\rightarrow \infty$
+
+    - Dominated converegence: If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu$
+
+   - Markov's inequality: $P(|X|>\epsilon) \leq  \frac{\Er[|X|^k]}{\epsilon^k}$ $\forall \epsilon > 0, k > 0$
+
+   - Jensen's inequality: if $g$ is convex, then $g(\Er[X]) \leq \Er[g(X)]$
+
+   - Cauchy-Schwarz inequality: $\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]$
+
+   - $\sigma(X)$ is $\sigma$**-field generated by** $X$, it is
+       - smallest $\sigma$-field w.r.t. which $X$ is measurable
+       - $\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}$
+
+    - $\sigma(W) \subset \sigma(X)$ iff $\exists$ $g$ s.t. $W = g(X)$
+
+    - Events $A_1, ..., A_m$ are **independent** if for any sub-collection $A_{i_1}, ..., A_{i_s}$
+    $$
+    P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
+    $$
+    $\sigma$-fields are independent if this is true for any events from them. Random variables are independent if their $\sigma$-fields are.
+
+    - Conditional expection of $Y$ given $\sigma$-field $\mathscr{G}$ satisfies
+    $\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP$ $\forall A \in  \mathscr{G}$
+
+- Identification $X$ observed, distribution $P_X$, probability model $\mathcal{P}$
+   -  $\theta_0 \in \R^k$ is **identified** in $\mathcal{P}$ if there exists a known
+      $\psi: \mathcal{P} \to \R^k$ s.t. $\theta_0 = \psi(P_X)$
+  - $\mathcal{P} = \{ P(\cdot; s) : s \in S \}$,  two structures $s$ and $\tilde{s}$ in $S$ are **observationally equivalent**  if they imply the same distribution for the observed data, i.e.
+  $$ P(B;s) = P(B; \tilde{s}) $$
+  for all $B \in \sigma(X)$.
+  - Let $\lambda: S \to \R^k$, $\theta$ is **observationally equivalent** to $\tilde{\theta}$ if $\exists s, \tilde{s} \in S$  that are observationally equivalent and $\theta = \lambda(s)$ and $\tilde{\theta} = \lambda(\tilde{s})$
+  - $s_0 \in S$ is **identified** if there is no $s \neq s_0$ that is observationally equivalent to $s_0$
+  - $\theta_0$ is **identified** (in $S$) if there is no observationally equivalent $\theta \neq \theta_0$
+
+\newpage
+
+- Cramér-Rao Bound: in the parametric model $P_X \in \{P_\theta:
+\theta \in \R^d\}$ wiht likelihood $\ell(\theta;x)$, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator $\tau(X)$,
+$$
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+$$
+where $I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x) = \Er[H(x,\theta)]$ and
+$s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}$
+
+- Hypothesis testing:
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_0)$=*Type I error rate* $=P_x(C)$
+  - $P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)$=*Type II error rate*
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_1)$ = *power*
+  - $\sup_{P_x \in \mathcal{P}_0} P_x(C)$ = *size of test*
+  - Neyman-Pearson Lemma: Let $\Theta = \{0, 1\}$,  $f_0$ and $f_1$ be densities of $P_0$ and $P_1$,
+    $\tau(x) =f_1(x)/f_0(x)$ and $C^* =\{x \in X: \tau(x) > c\}$. Then among all
+    tests $C$ s.t. $P_0(C) = P_0(C^*)$, $C^*$ is most powerful.
+
+- Projection: $P_L y \in  L$ is the **projection** of $y$ on $L$ if
+  $$
+  \norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+  $$
+  1. $P_L y$ exists, is unique, and is a linear function of $y$
+  2. For any $y_1^* \in L$, $y_1^* = P_L y$ iff $y- y_1^* \perp L$
+  3. $G = P_L$ iff $Gy = y \forall y \in L$ and $Gy = 0 \forall y \in
+  L^\perp$
+  4.  Linear $G: V \to V$ is a projection map onto its range, $\mathcal{R}(G)$, iff $G$ is idempotent and symmetric.
+
+- Gauss-Markov: $Y = \theta + u$ with $\theta \in L \subset \R^n$, a known subspace. If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the best linear unbiased estimator (BLUE) of $a'\theta = a'\hat{\theta}$ where $\hat{\theta} = P_L y$
+
+- Convergence in probability:
+  - $X_1, X_2, ...$ **converge in probability** to $Y$ if $\forall
+  \epsilon > 0$, $\lim_{n \to \infty} P(\norm{X_n -Y} > \epsilon) = 0$
+  - If $\lim_{n \to \infty} \Er[ \norm{X_n - Y}^p ] \to 0$, then $X_n
+  \inprob Y$
+  - If $X_n \inprob X$, and $f$ continuous, then $f(X_n) \inprob f(X)$
+  - Weak LLN: if $X_1, ..., X_n$ are i.i.d. and $\Er[X^2]$ exists,
+  then $\frac{1}{n} \sum_{i=1}^n X_i \inprob \Er[X]$
+  - $X_n = O_p(b_n)$ if $\forall \epsilon>0$ $\exists M_\epsilon$
+  s.t. $\lim\sup P(\frac{\norm{X_n}}{b_n} \geq M_\epsilon) < \epsilon$
+  - $X_n = o_p(b_n)$ if $\frac{X_n}{b_n} \inprob 0$
+
+- Convergence in distribution:
+  - $X_1, X_2, ...$ converge in distribution to $X$ if $\forall f \in
+  \mathcal{C}_b$, $\Er[f(X_n)] \to \Er[f(X)]$
+  - If $X_n \indist X$ and $g$ is continuous, then $g(X_n) \indist
+  g(X)$
+  - Slutsky's lemma: if $Y_n \inprob c$ and $X_n \indist X$ and $g$ is
+  continuious, then $g(Y_n, X_n) \indist g(c,X)$
+  - Levy's Continuity Theorem: $X_n \indist X$ iff $\Er[e^{it'X_n}]
+  \to \Er[e^{it'X}] \forall t$
+  - CLT: if $X_1, ..., X_n$ are i.i.d. with $\Er[X_1] = \mu$ and
+  $\var(X_1) = \sigma^2$, then $\frac{1}{\sqrt{n}} \sum_{i=1}^n
+  \frac{X_i - \mu}{\sigma} \indist N(0,1)$
+  - Delta Method: suppose $\sqrt{n}(\hat{\theta} - \theta_0) \indist S$ and $h$ is differentiable, then
+  $\sqrt{n}(h(\hat{\theta}) - h(\theta_0)) \indist \nabla_h(\theta_0)
+  S$

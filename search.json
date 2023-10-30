@@ -1127,25 +1127,46 @@
     "text": "Multivariate Central Limit Theorem\n\n\n\nTheorem 2.4\n\n\nSuppose \\(X_1, ..., X_n\\) are i.i.d. with \\(\\Er[X_1] = \\mu \\in \\R^d\\), \\(\\Er[\\norm{X_i}^2] &lt; \\infty\\) and \\(\\var(X_1) = \\Sigma &gt; 0\\), then \\[\n\\frac{1}{\\sqrt{n}} \\sum_{i=1}^n (X_i - \\mu) \\indist N(0,\\Sigma)\n\\]"
   },
   {
+    "objectID": "asymptotics/indistribution.html#delta-method",
+    "href": "asymptotics/indistribution.html#delta-method",
+    "title": "Convergence in Distribution",
+    "section": "Delta Method",
+    "text": "Delta Method\n\n\n\nTheorem 3.1 (Delta Method)\n\n\nSuppose that \\(\\hat{\\theta}\\) is a sequence of estimators of \\(\\theta_0 \\in \\R^d\\), and \\[\n\\sqrt{n}(\\hat{\\theta} - \\theta_0) \\indist S\n\\] Also, assume that \\(h: \\R^d \\to \\R^k\\) is differentiable at \\(\\theta_0\\), then \\[\n\\sqrt{n} \\left( h(\\hat{\\theta}) - h(\\theta_0) \\right) \\indist Dh(\\theta_0) S\n\\]"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#delta-method-example",
+    "href": "asymptotics/indistribution.html#delta-method-example",
+    "title": "Convergence in Distribution",
+    "section": "Delta Method: Example",
+    "text": "Delta Method: Example\n\nWhat is the asymptotic distribution of \\[\n\\hat{\\sigma} = \\sqrt{\\frac{1}{n}\n\\sum_{i=1}^n \\left(x_i - \\frac{1}{n} \\sum_j=1^n x_j \\right)^2}?\n\\]\n\n\nWe need some additional assumptions for this to have good answer. At a high level, we want \\(\\frac{1}{n} \\sum x_i \\inprob \\Er[x]\\), and \\(\\frac{1}{n} \\sum_{i=1}^n \\left(x_i - \\frac{1}{n} \\sum_j=1^n x_j \\right)^2 - \\sigma^2 \\indist W\\) for some known random variable \\(W\\). Sufficient more primitive assumptions would be that \\(x_i\\) is i.i.d. with mean \\(\\mu\\), variance \\(\\sigma^2&gt;0\\), and finite fourth moment."
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#continuous-mapping-theorem",
+    "href": "asymptotics/indistribution.html#continuous-mapping-theorem",
+    "title": "Convergence in Distribution",
+    "section": "Continuous Mapping Theorem",
+    "text": "Continuous Mapping Theorem\n\n\n\nContinuous Mapping Theorem\n\n\nLet \\(X_n \\indist X\\) and \\(g\\) be continuous on a set \\(C\\) with \\(P(X \\in C) = 1\\), then \\[\ng(X_n) \\indist g(X)\n\\]"
+  },
+  {
+    "objectID": "asymptotics/indistribution.html#continuous-mapping-theorem-example",
+    "href": "asymptotics/indistribution.html#continuous-mapping-theorem-example",
+    "title": "Convergence in Distribution",
+    "section": "Continuous Mapping Theorem: Example",
+    "text": "Continuous Mapping Theorem: Example\n\nIn linear regression, \\[\ny_i = x_i'\\beta_0 + \\epsilon_i\n\\]\nWhat is the asymptotic distribution of \\[\nM(\\beta) = \\frac{1}{n} \\sum_{i=1} (y_i - x_i'\\beta)^2\n\\] when \\(\\beta=\\beta_0\\)? How about when \\(\\beta=\\hat{\\beta}?\\)"
+  },
+  {
     "objectID": "asymptotics/indistribution.html#i.-non-i.d.-central-limit-theorem",
     "href": "asymptotics/indistribution.html#i.-non-i.d.-central-limit-theorem",
     "title": "Convergence in Distribution",
     "section": "i. non i.d. Central Limit Theorem",
-    "text": "i. non i.d. Central Limit Theorem\n\nTriangular array \\[\n\\begin{array}{ccc}\nX_{1,1}, & ..., & X{1,k(1)} \\\\\nX_{2,1}, & ..., & X{2,k(2)} \\\\\n\\vdots & & \\vdots \\\\\nX_{n,1}, & ..., & X{n,k(n)}\n\\end{array}\n\\] with \\(k(n) \\to \\infty\\) as \\(n \\to \\infty\\)"
+    "text": "i. non i.d. Central Limit Theorem\n\nTriangular array \\[\n\\begin{array}{ccc}\nX_{1,1}, & ..., & X_{1,k(1)} \\\\\nX_{2,1}, & ..., & X_{2,k(2)} \\\\\n\\vdots & & \\vdots \\\\\nX_{n,1}, & ..., & X_{n,k(n)}\n\\end{array}\n\\] with \\(k(n) \\to \\infty\\) as \\(n \\to \\infty\\)"
   },
   {
     "objectID": "asymptotics/indistribution.html#i.-non-i.d.-central-limit-theorem-1",
     "href": "asymptotics/indistribution.html#i.-non-i.d.-central-limit-theorem-1",
     "title": "Convergence in Distribution",
     "section": "i. non i.d. Central Limit Theorem",
-    "text": "i. non i.d. Central Limit Theorem\n\n\n\nTheorem 2.5 (Lindeberg’s Theorem)\n\n\nAssume that for each \\(n\\), \\(X_{n,1}, ..., X_{n,k(n)}\\) are independent with \\(\\Er[X_{nj}] = 0\\), and \\[\n\\frac{1}{k(n)} \\sum_{j=1}^{k(n)} \\Er[X_{nj}^2]  = 1\n\\] and for any \\(\\epsilon&gt;0\\), \\[\n\\lim_{n \\to \\infty} \\frac{1}{k(n)} \\sum_{j=1}^{k(n)} \\Er\\left[ X_{nj}^2 1\\{|X_{nj}|&gt;\\epsilon \\sqrt{k(n)}  \\right]  = 0\n\\] Then, \\[\n\\frac{1}{\\sqrt{k(n)}} \\sum_{j=1}^{k(n)} X_{n,j} \\indist N(0,1)\n\\]"
-  },
-  {
-    "objectID": "asymptotics/indistribution.html#delta-method",
-    "href": "asymptotics/indistribution.html#delta-method",
-    "title": "Convergence in Distribution",
-    "section": "Delta Method",
-    "text": "Delta Method\n\n\n\nLemma 3.1\n\n\nSuppose \\(h:\\R^d \\to \\R\\) with \\(h(0) = 0\\), and \\(X_n \\inprob 0\\). Then for every \\(p&gt;0\\), 1. If \\(h(y) = o(\\norm{y}^p)\\) as \\(y \\to 0\\), then \\(h(X_n) = o_p(\\norm{X}_n^p)\\) 2. If \\(h(y) = O(\\norm{y}^p)\\) as \\(y \\to 0\\), then \\(h(X_n) = O_p(\\norm{X}_n^p)\\)\n\n\n\n\n\n\nTheorem 3.1 (Delta Method)\n\n\nSuppose that \\(\\hat{\\theta}\\) is a sequence of estimators of \\(\\theta_0 \\in \\R^d\\), and \\[\n\\sqrt{n}(\\hat{\\theta} - \\theta_0) \\indist S\n\\] Also, assume that \\(h: \\R^d \\to \\R^k\\) is differentiable at \\(\\theta_0\\), then \\[\n\\sqrt{n} \\left( h(\\hat{\\theta}) - h(\\theta_0) \\right) \\indist Dh(\\theta_0) S\n\\]"
+    "text": "i. non i.d. Central Limit Theorem\n\n\n\nTheorem 2.5 (Lindeberg’s Theorem)\n\n\nAssume that for each \\(n\\), \\(X_{n,1}, ..., X_{n,k(n)}\\) are independent with \\(\\Er[X_{nj}] = 0\\), and \\(\\frac{1}{k(n)} \\sum_{j=1}^{k(n)} \\Er[X_{nj}^2] = 1\\) and for any \\(\\epsilon&gt;0\\), \\[\n\\lim_{n \\to \\infty} \\frac{1}{k(n)} \\sum_{j=1}^{k(n)} \\Er\\left[ X_{nj}^2 1\\{|X_{nj}|&gt;\\epsilon \\sqrt{k(n)}  \\right]  = 0\n\\] Then, \\[\n\\frac{1}{\\sqrt{k(n)}} \\sum_{j=1}^{k(n)} X_{n,j} \\indist N(0,1)\n\\]"
   },
   {
     "objectID": "asymptotics/indistribution.html#characterizing-convergence-in-distribution-1",
@@ -1160,13 +1181,6 @@
     "title": "Convergence in Distribution",
     "section": "Characterizing Convergence in Distribution",
     "text": "Characterizing Convergence in Distribution\n\n\n\nTheorem 1.1\n\n\nIf \\(X_n \\indist X\\) if and only if \\(P(X_n \\leq t) \\to P(X \\leq t)\\) for all \\(t\\) where \\(P(X \\leq t)\\) is continuous\n\n\n\n\n\n\n\nTheorem 1.2\n\n\nIf \\(X_n \\indist X\\) and \\(X\\) is continuous, then \\[\n\\sup_{t \\in \\R^d} | P(X_n \\leq t) - P(X \\leq t) | \\to 0\n\\]"
-  },
-  {
-    "objectID": "asymptotics/indistribution.html#continuous-mapping-theorem",
-    "href": "asymptotics/indistribution.html#continuous-mapping-theorem",
-    "title": "Convergence in Distribution",
-    "section": "Continuous Mapping Theorem",
-    "text": "Continuous Mapping Theorem\n\n\n\nContinuous Mapping Theorem\n\n\nLet \\(X_n \\indist X\\) and \\(g\\) be continuous on a set \\(C\\) with \\(P(X \\in C) = 1\\), then \\[\ng(X_n) \\indist g(X)\n\\]"
   },
   {
     "objectID": "about.html",
@@ -1936,6 +1950,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   }
 ]

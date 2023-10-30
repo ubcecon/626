@@ -264,51 +264,21 @@ $$
 
 :::
 
-##  i. non i.d. Central Limit Theorem
+<!-- ## Delta Method -->
 
-- Triangular array
-$$
-\begin{array}{ccc}
-X_{1,1}, & ..., & X{1,k(1)} \\
-X_{2,1}, & ..., & X{2,k(2)} \\
-\vdots & & \vdots \\
-X_{n,1}, & ..., & X{n,k(n)}
-\end{array}
-$$
-with $k(n) \to \infty$ as $n \to \infty$
+<!-- ::: {.callout-warning icon=false} -->
 
-##  i. non i.d. Central Limit Theorem
+<!-- ### Lemma 3.1 -->
 
-::: {.callout-warning icon=false}
+<!-- Suppose $h:\R^d \to \R$ with $h(0) = 0$, and $X_n \inprob 0$. Then for every $p>0$, -->
 
-### Theorem 2.5 (Lindeberg's Theorem)
+<!-- 1. If $h(y) = o(\norm{y}^p)$ as $y \to 0$, then $h(X_n) = o_p(\norm{X}_n^p)$ -->
 
-Assume that for each $n$, $X_{n,1}, ..., X_{n,k(n)}$ are independent
-with $\Er[X_{nj}] = 0$, and
-$$
-\frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er[X_{nj}^2]  = 1
-$$
-and for any $\epsilon>0$,
-$$
-\lim_{n \to \infty} \frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er\left[ X_{nj}^2 1\{|X_{nj}|>\epsilon \sqrt{k(n)}  \right]  = 0
-$$
-Then,
-$$
-\frac{1}{\sqrt{k(n)}} \sum_{j=1}^{k(n)} X_{n,j} \indist N(0,1)
-$$
-:::
+<!-- 2. If $h(y) = O(\norm{y}^p)$ as $y \to 0$, then $h(X_n) = O_p(\norm{X}_n^p)$ -->
+
+<!-- ::: -->
 
 ## Delta Method
-
-::: {.callout-warning icon=false}
-
-### Lemma 3.1
-
-Suppose $h:\R^d \to \R$ with $h(0) = 0$, and $X_n \inprob 0$. Then for every $p>0$,
-1. If $h(y) = o(\norm{y}^p)$ as $y \to 0$, then $h(X_n) = o_p(\norm{X}_n^p)$
-2. If $h(y) = O(\norm{y}^p)$ as $y \to 0$, then $h(X_n) = O_p(\norm{X}_n^p)$
-
-:::
 
 ::: {.callout-warning icon=false}
 
@@ -324,6 +294,81 @@ $$
 $$
 
 :::
+
+## Delta Method: Example
+
+- What is the asymptotic distribution of
+$$
+\hat{\sigma} = \sqrt{\frac{1}{n}
+  \sum_{i=1}^n \left(x_i - \frac{1}{n} \sum_j=1^n x_j \right)^2}?
+$$
+
+::: {.notes}
+
+We need some additional assumptions for this to have good
+answer.  At a high level, we want $\frac{1}{n} \sum x_i \inprob \Er[x]$, and
+$\frac{1}{n} \sum_{i=1}^n \left(x_i - \frac{1}{n} \sum_j=1^n x_j \right)^2 - \sigma^2 \indist W$ for some known random variable $W$. Sufficient more primitive assumptions would be that $x_i$ is i.i.d. with mean $\mu$, variance $\sigma^2>0$, and finite fourth moment.
+
+
+:::
+
+## Continuous Mapping Theorem
+
+::: {.callout-warning icon=false}
+
+### Continuous Mapping Theorem
+
+Let $X_n \indist X$ and $g$ be continuous on a set $C$ with
+$P(X \in C) = 1$, then
+$$
+g(X_n) \indist g(X)
+$$
+
+:::
+
+## Continuous Mapping Theorem: Example
+
+- In linear regression,
+$$
+y_i = x_i'\beta_0 + \epsilon_i
+$$
+- What is the asymptotic distribution of
+$$
+M(\beta) = \frac{1}{n} \sum_{i=1} (y_i - x_i'\beta)^2
+$$
+when $\beta=\beta_0$? How about when $\beta=\hat{\beta}?$
+
+##  i. non i.d. Central Limit Theorem
+
+- Triangular array
+$$
+\begin{array}{ccc}
+X_{1,1}, & ..., & X_{1,k(1)} \\
+X_{2,1}, & ..., & X_{2,k(2)} \\
+\vdots & & \vdots \\
+X_{n,1}, & ..., & X_{n,k(n)}
+\end{array}
+$$
+with $k(n) \to \infty$ as $n \to \infty$
+
+##  i. non i.d. Central Limit Theorem
+
+::: {.callout-warning icon=false}
+
+### Theorem 2.5 (Lindeberg's Theorem)
+
+Assume that for each $n$, $X_{n,1}, ..., X_{n,k(n)}$ are independent
+with $\Er[X_{nj}] = 0$, and $\frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er[X_{nj}^2]  = 1$
+and for any $\epsilon>0$,
+$$
+\lim_{n \to \infty} \frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er\left[ X_{nj}^2 1\{|X_{nj}|>\epsilon \sqrt{k(n)}  \right]  = 0
+$$
+Then,
+$$
+\frac{1}{\sqrt{k(n)}} \sum_{j=1}^{k(n)} X_{n,j} \indist N(0,1)
+$$
+:::
+
 
 # Characterizing Convergence in Distribution
 
@@ -371,20 +416,6 @@ $$
 
 :::
 
-
-## Continuous Mapping Theorem
-
-::: {.callout-warning icon=false}
-
-### Continuous Mapping Theorem
-
-Let $X_n \indist X$ and $g$ be continuous on a set $C$ with
-$P(X \in C) = 1$, then
-$$
-g(X_n) \indist g(X)
-$$
-
-:::
 
 
 # References

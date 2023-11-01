@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-10-16">
+  <meta name="dcterms.date" content="2023-11-01">
   <title>ECON 626 - Asymptotic Theory of Least Squares</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -426,7 +426,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-10-16</p>
+  <p class="date">2023-11-01</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -489,10 +489,11 @@ Paul Schrimpf
 <ul>
 <li>For both <span class="math inline">\(Z_i = X_i'\)</span> and <span class="math inline">\(Z_i = \epsilon_i\)</span>,
 <ul>
-<li><span class="math inline">\(\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j Z_j) - \Er[X_j Z_j]\right)\right] = 0\)</span> and</li>
+<li><span class="math inline">\(\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j  Z_j) - \Er[X_j Z_j]\right)' 1\{\right] = 0\)</span> for <span class="math inline">\(i \neq j\)</span> and</li>
 <li><span class="math inline">\(\frac{1}{n} \max_{1 \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0\)</span></li>
 </ul></li>
-<li><span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span></li>
+<li><span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span> for all <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er[X_i X_i'] = C\)</span> is invertible</li>
 </ul></li>
 </ul>
 </section>
@@ -584,7 +585,7 @@ Paul Schrimpf
 <section id="heteroskedasticity-1" class="slide level2">
 <h2>Heteroskedasticity</h2>
 <ul>
-<li><p>With homoskedasticity, = ^{-1} ^2$</p></li>
+<li><p>With homoskedasticity, <span class="math inline">\(\Sigma = \Er[X_i X_i']^{-1} \sigma^2\)</span></p></li>
 <li><p>With heteroskedasticity, <span class="math inline">\(\Sigma = \Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}\)</span> and can be (with appropriate assumptions) consistently estimated by <span class="math display">\[
 \hat{\Sigma}^{robust} = (\frac{1}{n} X ' X)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \epsilon_i^2 \right) (\frac{1}{n} X'X)^{-1}
 \]</span></p></li>
@@ -705,8 +706,8 @@ Paul Schrimpf
 <span id="cb4-9"><a href="#cb4-9"></a></span>
 <span id="cb4-10"><a href="#cb4-10"></a>plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
 <span id="cb4-11"><a href="#cb4-11"></a>plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="fu">plt</span>(x <span class="op">=</span> Xh<span class="op">*</span>bh, y<span class="op">=</span>eh, name<span class="op">=</span><span class="st">"Homoskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a>fig <span class="op">=</span><span class="fu">plt</span>(x <span class="op">=</span> X<span class="op">*</span>b, y <span class="op">=</span> <span class="cn">e</span>, name<span class="op">=</span><span class="st">"Heteroskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="fu">plt</span>(x <span class="op">=</span> <span class="fu">vec</span>(Xh<span class="op">*</span>bh), y<span class="op">=</span><span class="fu">vec</span>(eh), name<span class="op">=</span><span class="st">"Homoskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>, <span class="kw">type</span><span class="op">=</span><span class="st">"scatter"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>fig <span class="op">=</span><span class="fu">plt</span>(x <span class="op">=</span> <span class="fu">vec</span>(X<span class="op">*</span>b), y <span class="op">=</span> <span class="fu">vec</span>(<span class="cn">e</span>), name<span class="op">=</span><span class="st">"Heteroskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>)</span>
 <span id="cb4-14"><a href="#cb4-14"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"resid.html"</span>)</span>
 <span id="cb4-15"><a href="#cb4-15"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">resid.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1000</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">650</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -941,7 +942,7 @@ Paul Schrimpf
 \]</span></li>
 </ul>
 </section>
-<section id="time-dependence---gordins-clt" class="slide level2">
+<section id="time-dependence---gordins-clt" class="slide level2 smaller">
 <h2>Time Dependence - Gordin’s CLT</h2>
 <div class="callout callout-warning no-icon callout-titled callout-style-default">
 <div class="callout-body">

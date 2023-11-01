@@ -334,9 +334,9 @@ y_i = x_i'\beta_0 + \epsilon_i
 $$
 - What is the asymptotic distribution of
 $$
-M(\beta) = \frac{1}{n} \sum_{i=1} (y_i - x_i'\beta)^2
+M(\beta) = \left\Vert \frac{1}{n} \sum_{i=1} x_i (y_i - x_i'\beta) \right\Vert^2
 $$
-when $\beta=\beta_0$? How about when $\beta=\hat{\beta}?$
+when $\beta=\beta_0$?
 
 ##  i. non i.d. Central Limit Theorem
 

@@ -1,0 +1,138 @@
+---
+title: "Difference in Diffferences"
+author: "Paul Schrimpf"
+date: last-modified
+format:
+  revealjs:
+    theme: moon
+    width: 1575
+    height: 1050
+    min-scale: 0.1
+    max-scale: 3.0
+    css: ../styles.css
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 2
+      chalk-width: 2
+      chalk-effect: 0.0
+    title-slide-attributes:
+      data-background-image: ""
+      data-background-size: contain
+bibliography: ../626.bib
+---
+
+
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{E}_n}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+$$
+
+# Difference in Differences
+
+## Setup
+
+- Two periods, binary treatment in second period
+- Potential outcomes $\{y_{it}(0),y_{it}(1)\}_{t=0}^1$ for $i=1,...,N$
+- Treatment $D_{it} \in \{0,1\}$,
+    - $D_{i0} = 0$ $\forall i$
+    - $D_{i1} = 1$ for some, $0$ for others
+- Observe $y_{it} = y_{it}(0)(1-D_{it}) + D_{it} y_{it}(1)$
+
+## Identification
+
+- Average treatment effect on the treated:
+$$
+\begin{align*}
+ATT & = \Er[y_{i1}(1) - \color{red}{y_{i1}(0)} | D_{i1} = 1] \\
+& = \Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \Er[\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] \\
+& \text{ assume } \Er[\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] =  \Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\
+& = \Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\
+& = \Er[y_{i1} - y_{i0} | D_{i1}=1, D_{i0}=0] - \Er[y_{i1} - y_{i0} | D_{i1}=0, D_{i0}=0]
+\end{align*}
+$$
+
+## Important Assumptions
+
+- No anticipation: $D_{i1}=1$ does not affect $y_{i0}$
+  - built into the potential outcomes notation we used, relaxing would
+  be allowing potential outcomes given sequence of $D$ -- $y_{it}(D_{i0},D_{i1})$
+
+- Parallel trends: $\Er[\color{red}{y_{i1}(0)} - y_{i0}(0) |D_{i1}=1,D_{i0}=0] =  \Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0], D_{i0}=0]$
+  - not invariant to tranformations of $y$
+
+
+## Estimation
+
+:::.{incremental}
+
+- Plugin:
+$$
+\widehat{ATT} = \frac{ \sum_{i=1}^n (y_{i1} - y_{i0})D_{i1}(1-D_{i0})}{\sum_{i=1}^n D_{i1}(1-D_{i0})} -  \frac{ \sum_{i=1}^n (y_{i1} - y_{i0})(1-D_{i1})(1-D_{i0})}{\sum_{i=1}^n (1-D_{i1})(1-D_{i0})}
+$$
+
+- Regression:
+$$
+y_{it} = \delta_t + \alpha 1\{D_{i1}=1\} + \beta D_{it} + \epsilon_{it}
+$$
+then $\hat{\beta} = \widehat{ATT}$
+
+- Fixed effects:
+$$
+y_{it} = \delta_t + \alpha_i + \beta D_{it} + u_{it}
+$$
+then $\hat{\beta} = \widehat{ATT}
+
+:::
+
+# Multiple Periods
+
+## Identification
+
+- Same logic as before,
+$$
+\begin{align*}
+ATT_{t,t-s} & = \Er[y_{it}(1) - \color{red}{y_{it}(0)} | D_{it} = 1, D_{it-s}=0] \\
+& = \Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] -
+  \Er[\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0] \\
+& \text{ assume } \Er[\color{red}{y_{it}(0)} - y_{it}(0) | D_{it}=1,
+  D_{it-s}=0] =  \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0] \\
+& = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]
+\end{align*}
+$$
+- Similarly, can identify various other interpretable average
+treatment effects conditional on being treated at some times and not others
+
+## Estimation
+
+- Plugin
+
+- Fixed effects?
+$$
+y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
+$$
+When will $\hat{\beta}^{FE}$ consistently estimate some interpretable conditional average of treatment effects?
+
+
+## Reading
+
+- Early work pointing to problems with fixed effects:
+  - @laporte2005, @wooldridge2005
+- Explosion of papers written just before 2020, published just after:
+  - @borusyak2018
+  - @dd2020
+  - @callaway2021
+  - @goodmanbacon2021
+  - @sun2021
+
+
+# References

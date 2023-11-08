@@ -1,6 +1,6 @@
 ---
-title: "ECON 626: Midterm"
-#author: "Paul Schrimpf"
+title: "Midterm Solutions 2023"
+author: "Paul Schrimpf"
 date: "2023-10-25"
 #bibliography: ~/626/site/626.bib
 

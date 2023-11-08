@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 6"
 #author: "Paul Schrimpf"
-date: 2022-11-23
+date: 2023-11-09
 bibliography: ../../626.bib
 ---
 
@@ -103,6 +103,46 @@ $$
 \hat{\beta}_1 =  \textrm{arg}\min_{b_1} \norm{M_{X_2} y - M_{X_2} X_1 b_1 }^2
 $$
 where $M_{X_2} = I - X_2 (X_2' X_2)^{-1} X_2'$.
+
+# Problem 3
+
+Consider estimating the linear model,^[This problem is partially based on @borusyak2018.]
+$$
+y_i = \beta D_i + x_i' \alpha + \epsilon_i
+$$
+where $\beta \in \R$, $D_i \in \{0,1\}$ and $x_i \in \R^k$.
+
+
+1. Show that the OLS estimate for $\beta$ can be written as
+$$
+\hat{\beta} = \frac{1}{n} \sum_{i=1}^n y_i \hat{\omega}(x_i,D_i)
+$$
+where $\frac{1}{n} \sum_{i=1}^n D_i \hat{\omega}(x_i,D_i) = 1$, and $\frac{1}{n} \sum_{i=1}^n (1-D_i) \hat{\omega}(x_i,D_i) = -1$. [Hint: use the result of problem 2.]
+
+2. Let
+$$
+\pi \in \mathrm{arg}\min_{\pi} \Er[(D_i - x_i'\pi)^2].
+$$
+Show that
+$$
+\hat{\omega}(x,D) \inprob \frac{D - x'\pi}{\Er[(D - x'\pi)^2]}
+$$
+If needed, state additional assumptions about dependence or moments.
+
+3. Suppose that the linear model being estimated might not be the data
+generating process. Instead, assume the data comes from a potential
+outcomes framework. There are potential outcomes
+$(y_i(1),y_i(0))$. You observe $y_i = y_i(1)D_i + y_i(0)(1-D_i)$.
+Show that
+$$
+\hat{\beta} \inprob \Er[y_i(0) \omega(x_i,D_i)] + \Er\left[\left(y_i(1) - y_i(0)\right) D_i \omega(x_i,D_i) \right].
+$$
+
+4. If you assume that $(y_i(1),y_i(0))$ are independent of $D_i$ conditional on $x_i$, does $\hat{\beta}$ have any nice interpretation?
+[Hint: what can be the range of $\omega(x,1)$, especially if the range
+of $x$ is large?]
+
+
 
 
 # References

@@ -46,6 +46,10 @@ bibliography: 626.bib
 - [Delta Methods](asymptotics/indistribution.qmd)
 - [Asymptotics of Least Squares](asymptotics/ols.qmd)
 
+# Part IV
+
+- [Difference in differences](did/did.qmd)
+
 # Part V: Linear Models with Endogeneity
 
 - [Endogeneity](iv/endogeneity.qmd)

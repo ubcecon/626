@@ -80,9 +80,11 @@ Consistent, $\hat{\beta} \inprob \beta$,  if
 
 - Using non-iid WLLN from [convergence in distribution slides](indistribution.qmd) ("low level assumption"):
     - For both $Z_i = X_i'$ and $Z_i = \epsilon_i$,
-        - $\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j Z_j) - \Er[X_j Z_j]\right)\right] = 0$ and
+        - $\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j
+            Z_j) - \Er[X_j Z_j]\right)' 1\{\right] = 0$ for $i \neq j$ and
         - $\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0$
-    - $\Er[X_i \epsilon_i] = 0$
+    - $\Er[X_i \epsilon_i] = 0$ for all $i$
+    - $\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er[X_i X_i'] = C$  is invertible
 
 
 ## Asymptotic Distribution
@@ -162,7 +164,7 @@ $\epsilon$ is **homoskedastic** if $\Er[\epsilon_i^2 | X_i] = \sigma^2$, otherwi
 
 ## Heteroskedasticity
 
-- With homoskedasticity,  \Sigma = \Er[X_i X_i']^{-1} \sigma^2$
+- With homoskedasticity,  $\Sigma = \Er[X_i X_i']^{-1} \sigma^2$
 
 - With heteroskedasticity, $\Sigma = \Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}$ and can be (with appropriate assumptions) consistently estimated by
 $$
@@ -271,8 +273,8 @@ e = y - X*b
 
 plt = Plot()
 plt.layout = Config()
-plt(x = Xh*bh, y=eh, name="Homoskedastic", mode="markers")
-fig =plt(x = X*b, y = e, name="Heteroskedastic", mode="markers")
+plt(x = vec(Xh*bh), y=vec(eh), name="Homoskedastic", mode="markers", type="scatter")
+fig =plt(x = vec(X*b), y = vec(e), name="Heteroskedastic", mode="markers")
 Cobweb.save(Page(fig), "resid.html")
 HTML("<iframe src=\"resid.html\" width=\"1000\"  height=\"650\"></iframe>\n")
 ```
@@ -484,7 +486,7 @@ $$
 \frac{1}{\sqrt{n}} \sum_{i=1}^n x_i \indist N(0,\mathcal{J})
 $$
 
-## Time Dependence - Gordin's CLT
+## Time Dependence - Gordin's CLT {.smaller}
 
 ::: {.callout-warning icon=false}
 
@@ -607,7 +609,8 @@ $$
 
 ## Likelihood Ratio
 
-- If $\epsilon_i \sim N(0, \sigma^2)$, twice the log likelihood ratio for $H_0: R\beta = r$,
+- If $\epsilon_i \sim N(0, \sigma^2)$, twice the log likelihood ratio
+for $H_0: R\beta = r$,
 $$
 \begin{align*}
 2\max_{b,\sigma} & \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] - \\

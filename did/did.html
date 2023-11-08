@@ -401,7 +401,7 @@ Paul Schrimpf
 \begin{align*}
 ATT &amp; = \Er[y_{i1}(1) - \color{red}{y_{i1}(0)} | D_{i1} = 1] \\
 &amp; = \Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \Er[\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] \\
-\text{ assume } \Er[\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] =  \Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\
+&amp; \text{ assume } \Er[\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] =  \Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\
 &amp; = \Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\
 &amp; = \Er[y_{i1} - y_{i0} | D_{i1}=1, D_{i0}=0] - \Er[y_{i1} - y_{i0} | D_{i1}=0, D_{i0}=0]
 \end{align*}
@@ -429,7 +429,7 @@ ATT &amp; = \Er[y_{i1}(1) - \color{red}{y_{i1}(0)} | D_{i1} = 1] \\
 \widehat{ATT} = \frac{ \sum_{i=1}^n (y_{i1} - y_{i0})D_{i1}(1-D_{i0})}{\sum_{i=1}^n D_{i1}(1-D_{i0})} -  \frac{ \sum_{i=1}^n (y_{i1} - y_{i0})(1-D_{i1})(1-D_{i0})}{\sum_{i=1}^n (1-D_{i1})(1-D_{i0})}
 \]</span></p></li>
 <li><p>Regression: <span class="math display">\[
-y_{it} = \delta_t + \alpha \mathbbm{1}\{D_{i1}=1\} + \beta D_{it} + \epsilon_{it}
+y_{it} = \delta_t + \alpha 1\{D_{i1}=1\} + \beta D_{it} + \epsilon_{it}
 \]</span> then <span class="math inline">\(\hat{\beta} = \widehat{ATT}\)</span></p></li>
 <li><p>Fixed effects: <span class="math display">\[
 y_{it} = \delta_t + \alpha_i + \beta D_{it} + u_{it}
@@ -450,7 +450,7 @@ y_{it} = \delta_t + \alpha_i + \beta D_{it} + u_{it}
 ATT_{t,t-s} &amp; = \Er[y_{it}(1) - \color{red}{y_{it}(0)} | D_{it} = 1, D_{it-s}=0] \\
 &amp; = \Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] -
 \Er[\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0] \\
-\text{ assume } \Er[\color{red}{y_{it}(0)} - y_{it}(0) | D_{it}=1,
+&amp; \text{ assume } \Er[\color{red}{y_{it}(0)} - y_{it}(0) | D_{it}=1,
 D_{it-s}=0] =  \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0] \\
 &amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]
 \end{align*}

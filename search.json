@@ -802,7 +802,7 @@
     "href": "did/did.html#identification",
     "title": "Difference in Diffferences",
     "section": "Identification",
-    "text": "Identification\n\nAverage treatment effect on the treated: \\[\n\\begin{align*}\nATT & = \\Er[y_{i1}(1) - \\color{red}{y_{i1}(0)} | D_{i1} = 1] \\\\\n& = \\Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \\Er[\\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] \\\\\n\\text{ assume } \\Er[\\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] =  \\Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\\\\n& = \\Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \\Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\\\\n& = \\Er[y_{i1} - y_{i0} | D_{i1}=1, D_{i0}=0] - \\Er[y_{i1} - y_{i0} | D_{i1}=0, D_{i0}=0]\n\\end{align*}\n\\]"
+    "text": "Identification\n\nAverage treatment effect on the treated: \\[\n\\begin{align*}\nATT & = \\Er[y_{i1}(1) - \\color{red}{y_{i1}(0)} | D_{i1} = 1] \\\\\n& = \\Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \\Er[\\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] \\\\\n& \\text{ assume } \\Er[\\color{red}{y_{i1}(0)} - y_{i0}(0) | D_{i1}=1] =  \\Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\\\\n& = \\Er[y_{i1}(1) - y_{i0}(0) | D_{i1} = 1] - \\Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0] \\\\\n& = \\Er[y_{i1} - y_{i0} | D_{i1}=1, D_{i0}=0] - \\Er[y_{i1} - y_{i0} | D_{i1}=0, D_{i0}=0]\n\\end{align*}\n\\]"
   },
   {
     "objectID": "did/did.html#important-assumptions",
@@ -816,14 +816,14 @@
     "href": "did/did.html#estimation",
     "title": "Difference in Diffferences",
     "section": "Estimation",
-    "text": "Estimation\n\n\nPlugin: \\[\n\\widehat{ATT} = \\frac{ \\sum_{i=1}^n (y_{i1} - y_{i0})D_{i1}(1-D_{i0})}{\\sum_{i=1}^n D_{i1}(1-D_{i0})} -  \\frac{ \\sum_{i=1}^n (y_{i1} - y_{i0})(1-D_{i1})(1-D_{i0})}{\\sum_{i=1}^n (1-D_{i1})(1-D_{i0})}\n\\]\nRegression: \\[\ny_{it} = \\delta_t + \\alpha \\mathbbm{1}\\{D_{i1}=1\\} + \\beta D_{it} + \\epsilon_{it}\n\\] then \\(\\hat{\\beta} = \\widehat{ATT}\\)\nFixed effects: \\[\ny_{it} = \\delta_t + \\alpha_i + \\beta D_{it} + u_{it}\n\\] then $ ="
+    "text": "Estimation\n\n\nPlugin: \\[\n\\widehat{ATT} = \\frac{ \\sum_{i=1}^n (y_{i1} - y_{i0})D_{i1}(1-D_{i0})}{\\sum_{i=1}^n D_{i1}(1-D_{i0})} -  \\frac{ \\sum_{i=1}^n (y_{i1} - y_{i0})(1-D_{i1})(1-D_{i0})}{\\sum_{i=1}^n (1-D_{i1})(1-D_{i0})}\n\\]\nRegression: \\[\ny_{it} = \\delta_t + \\alpha 1\\{D_{i1}=1\\} + \\beta D_{it} + \\epsilon_{it}\n\\] then \\(\\hat{\\beta} = \\widehat{ATT}\\)\nFixed effects: \\[\ny_{it} = \\delta_t + \\alpha_i + \\beta D_{it} + u_{it}\n\\] then $ ="
   },
   {
     "objectID": "did/did.html#identification-1",
     "href": "did/did.html#identification-1",
     "title": "Difference in Diffferences",
     "section": "Identification",
-    "text": "Identification\n\nSame logic as before, \\[\n\\begin{align*}\nATT_{t,t-s} & = \\Er[y_{it}(1) - \\color{red}{y_{it}(0)} | D_{it} = 1, D_{it-s}=0] \\\\\n& = \\Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] -\n\\Er[\\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0] \\\\\n\\text{ assume } \\Er[\\color{red}{y_{it}(0)} - y_{it}(0) | D_{it}=1,\nD_{it-s}=0] =  \\Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0] \\\\\n& = \\Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \\Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]\n\\end{align*}\n\\]\nSimilarly, can identify various other interpretable average treatment effects conditional on being treated at some times and not others"
+    "text": "Identification\n\nSame logic as before, \\[\n\\begin{align*}\nATT_{t,t-s} & = \\Er[y_{it}(1) - \\color{red}{y_{it}(0)} | D_{it} = 1, D_{it-s}=0] \\\\\n& = \\Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] -\n\\Er[\\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0] \\\\\n& \\text{ assume } \\Er[\\color{red}{y_{it}(0)} - y_{it}(0) | D_{it}=1,\nD_{it-s}=0] =  \\Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0] \\\\\n& = \\Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \\Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]\n\\end{align*}\n\\]\nSimilarly, can identify various other interpretable average treatment effects conditional on being treated at some times and not others"
   },
   {
     "objectID": "did/did.html#estimation-1",

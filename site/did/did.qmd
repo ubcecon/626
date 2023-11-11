@@ -16,12 +16,12 @@ format:
       chalk-width: 2
       chalk-effect: 0.0
     title-slide-attributes:
-      data-background-image: ""
+      data-background-image: "slesse.jpg"
       data-background-size: contain
 bibliography: ../626.bib
 ---
 
-
+# Difference in Differences
 
 $$
 \def\Er{{\mathrm{E}}}
@@ -37,7 +37,6 @@ $$
 \DeclareMathOperator*{\plim}{plim}
 $$
 
-# Difference in Differences
 
 ## Setup
 
@@ -122,9 +121,161 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 $$
 When will $\hat{\beta}^{FE}$ consistently estimate some interpretable conditional average of treatment effects?
 
+## Fixed Effects
+
+- As on problem set 6,
+$$
+\begin{align*}
+\hat{\beta} = & \sum_{i=1,t=1}^{n,T} y_{it} \overbrace{\frac{\tilde{D}_{it}}{ \sum_{i,t} \tilde{D}_{it}^2 }}^{\hat{\omega}_{it}(D_it)} \\
+= & \sum_{i=1,t=1}^{n,T} y_{it}(0) \hat{\omega}_{it}(D_it) + \sum_{i=1,t=1}^{n,T} D_{it} (y_{it}(1) - y_{it}(0)) \hat{\omega}_{it}(D_it)
+\end{align*}
+$$
+where
+$$
+\begin{align*}
+\tilde{D}_{it} & = D_{it} - \frac{1}{n} \sum_{j=1}^n (D_{jt} - \frac{1}{T} \sum_{s=1}^T D_{js}) - \frac{1}{T} \sum_{s=1}^T D_{is} \\
+& = D_{it} - \frac{1}{n} \sum_{j=1}^n D_{jt} - \frac{1}{T} \sum_{s=1}^T D_{is} + \frac{1}{nT} \sum{j,s} D_{js}
+\end{align*}
+$$
+
+## Weights
+
+```{julia}
+using Statistics
+function assigntreat(n,T;portiontreated=vcat(zeros(T ÷ 2), 0.5, zeros(T - (T ÷ 2) - 1)))
+  treated = falses(n,T)
+  for t=2:T
+    treated[:,t] = treated[:,t-1]
+    if (portiontreated[t]>0)
+      treated[:,t] = (treated[:,t] .|| rand(n) .< portiontreated[t])
+    end
+  end
+  return(treated)
+end
+
+function weights(D)
+  D̃ = D .- mean(D,dims=1) .- mean(D,dims=2) .+ mean(D)
+  ω = D̃./sum(D̃.^2)
+end
+
+n = 100
+T = 9
+D = assigntreat(n,T)
+
+
+# check that sum(y*weights) = fixed effect estimate
+n,T = size(D)
+using DataFrames, FixedEffectModels
+y = randn(n,T)
+df = DataFrame(id = vec((1:n)*ones(Int,T)'), t = vec(ones(Int,n)*(1:T)'), y = vec(y), D=vec(D))
+reg(df, @formula(y ~ D + fe(t) + fe(id)))
+sum(y.*weights(D))
+```
+
+## Weights with Single Treatment Time
+```{julia}
+#| code-fold: true
+#| code-summary: "plotting code"
+#| echo: true
+using PlotlyLight, Cobweb
+function plotp(D)
+  n,T=size(D)
+  plt=Plot()
+  plt.layout=Config(xaxis=Config(title="time",tickvals=1:T),
+                    yaxis=Config(title="Portion Treated"))
+  plt(x=1:T,y=vec(mean(D,dims=1)))
+  plt()
+end
+
+function plotweights(D)
+  n,T = size(D)
+  ω = weights(D)
+  groups = unique(eachrow(D))
+  plt = Plot()
+  plt.layout=Config(xaxis=Config(title="time",tickvals=1:T),
+                    yaxis=Config(title="weight"))
+  for g in groups
+    i = findfirst(d == g for d in eachrow(D))
+    wt = ω[i,:]
+    plt(x=1:T,y=wt,name="Treated $(sum(g)) times", mode="markers",type="scatter")
+    end
+  fig=plt()
+  return(fig)
+end
+pfig = plotp(D)
+Cobweb.save(Page(pfig), "p-samet.html")
+HTML("<iframe src=\"p-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
+```
+
+```{julia}
+#| code-fold: true
+fig = plotweights(D)
+Cobweb.save(Page(fig), "w-samet.html")
+HTML("<iframe src=\"w-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
+```
+
+## Weights with Uniform Treatment Time
+
+```{julia}
+#| code-fold: true
+#| code-summary: "plotting code"
+#| echo: true
+D = assigntreat(n,T,portiontreated=vcat(0,fill(0.5/(T-1),T-1)))
+pfig = plotp(D)
+Cobweb.save(Page(pfig), "p-unit.html")
+HTML("<iframe src=\"p-unit.html\" width=\"1200\"  height=\"350\"></iframe>")
+```
+
+```{julia}
+#| code-fold: true
+fig = plotweights(D)
+Cobweb.save(Page(fig), "w-unit.html")
+HTML("<iframe src=\"w-unit.html\" width=\"1200\"  height=\"350\"></iframe>")
+```
+
+## Weights with Early and Late Treated
+
+```{julia}
+#| code-fold: true
+#| code-summary: "plotting code"
+#| echo: true
+pt = zeros(T)
+pt[2] = 1/3
+pt[end-1]=1/3
+D = assigntreat(n,T,portiontreated=pt)
+pfig = plotp(D)
+Cobweb.save(Page(pfig), "p-el.html")
+HTML("<iframe src=\"p-el.html\" width=\"1200\"  height=\"350\"></iframe>")
+```
+
+```{julia}
+#| code-fold: true
+fig = plotweights(D)
+Cobweb.save(Page(fig), "w-el.html")
+HTML("<iframe src=\"w-el.html\" width=\"1200\"  height=\"350\"></iframe>")
+```
+
+## When to worry
+
+- If multiple time times and treatment heterogeneity
+- Even if weights do not have wrong sign, the fixed effects estimate is hard to interpret
+- Same logic applies more generally -- not just to time
+  - E.g. if have group effects, some treated units in multiple groups,
+  and $E[y(1) - y(0) | group]$ varies
+
+# Pre-trends
+
+
+
+
+
+
+
+
 
 ## Reading
 
+- Recent reviews: @roth2023, @dd2022
 - Early work pointing to problems with fixed effects:
   - @laporte2005, @wooldridge2005
 - Explosion of papers written just before 2020, published just after:
@@ -133,6 +284,7 @@ When will $\hat{\beta}^{FE}$ consistently estimate some interpretable conditiona
   - @callaway2021
   - @goodmanbacon2021
   - @sun2021
+
 
 
 # References

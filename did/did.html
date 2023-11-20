@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-11-08">
+  <meta name="dcterms.date" content="2023-11-20">
   <title>ECON 626 - Difference in Diffferences</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -342,12 +407,15 @@
       margin-right: 0; 
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="" data-background-size="contain" class="quarto-title-block center">
+<section id="title-slide" data-background-image="slesse.jpg" data-background-size="contain" class="quarto-title-block center">
   <h1 class="title">Difference in Diffferences</h1>
 
 <div class="quarto-title-authors">
@@ -358,10 +426,11 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-11-08</p>
+  <p class="date">2023-11-20</p>
 </section>
-<section class="slide level2">
-
+<section>
+<section id="difference-in-differences" class="title-slide slide level1 center">
+<h1>Difference in Differences</h1>
 <p><span class="math display">\[
 \def\Er{{\mathrm{E}}}
 \def\En{{\mathbb{E}_n}}
@@ -375,11 +444,6 @@ Paul Schrimpf
 \def\indist{\,{\buildrel d \over \rightarrow}\,}
 \DeclareMathOperator*{\plim}{plim}
 \]</span></p>
-</section>
-<section>
-<section id="difference-in-differences" class="title-slide slide level1 center">
-<h1>Difference in Differences</h1>
-
 </section>
 <section id="setup" class="slide level2">
 <h2>Setup</h2>
@@ -433,7 +497,7 @@ y_{it} = \delta_t + \alpha 1\{D_{i1}=1\} + \beta D_{it} + \epsilon_{it}
 \]</span> then <span class="math inline">\(\hat{\beta} = \widehat{ATT}\)</span></p></li>
 <li><p>Fixed effects: <span class="math display">\[
 y_{it} = \delta_t + \alpha_i + \beta D_{it} + u_{it}
-\]</span> then $ = </p></li>
+\]</span> then <span class="math inline">\(\hat{\beta} = \widehat{ATT}\)</span></p></li>
 </ul>
 </div>
 </section></section>
@@ -445,18 +509,22 @@ y_{it} = \delta_t + \alpha_i + \beta D_{it} + u_{it}
 <section id="identification-1" class="slide level2">
 <h2>Identification</h2>
 <ul>
-<li>Same logic as before, <span class="math display">\[
+<li><p>Same logic as before, <span class="math display">\[
 \begin{align*}
 ATT_{t,t-s} &amp; = \Er[y_{it}(1) - \color{red}{y_{it}(0)} | D_{it} = 1, D_{it-s}=0] \\
-&amp; = \Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] -
-\Er[\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0] \\
-&amp; \text{ assume } \Er[\color{red}{y_{it}(0)} - y_{it}(0) | D_{it}=1,
-D_{it-s}=0] =  \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0] \\
-&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]
+&amp; = \Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] - \\
+&amp; \;\; -  \Er[\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0]
 \end{align*}
-\]</span></li>
-<li>Similarly, can identify various other interpretable average treatment effects conditional on being treated at some times and not others</li>
+\]</span></p>
+<ul>
+<li>assume <span class="math inline">\(\Er[\color{red}{y_{it}(0)} - y_{it-s}(0) | D_{it}=1, D_{it-s}=0] = \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0]\)</span></li>
+</ul></li>
 </ul>
+<p><span class="math display">\[
+\begin{align*}
+ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]
+\end{align*}
+\]</span> - Similarly, can identify various other interpretable average treatment effects conditional on being treated at some times and not others</p>
 </section>
 <section id="estimation-1" class="slide level2">
 <h2>Estimation</h2>
@@ -467,9 +535,379 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 \]</span> When will <span class="math inline">\(\hat{\beta}^{FE}\)</span> consistently estimate some interpretable conditional average of treatment effects?</p></li>
 </ul>
 </section>
+<section id="fixed-effects" class="slide level2">
+<h2>Fixed Effects</h2>
+<ul>
+<li>As on problem set 6, <span class="math display">\[
+\begin{align*}
+\hat{\beta} = &amp; \sum_{i=1,t=1}^{n,T} y_{it} \overbrace{\frac{\tilde{D}_{it}}{ \sum_{i,t} \tilde{D}_{it}^2 }}^{\hat{\omega}_{it}(D_it)} \\
+= &amp; \sum_{i=1,t=1}^{n,T} y_{it}(0) \hat{\omega}_{it}(D_it) + \sum_{i=1,t=1}^{n,T} D_{it} (y_{it}(1) - y_{it}(0)) \hat{\omega}_{it}(D_it)
+\end{align*}
+\]</span> where <span class="math display">\[
+\begin{align*}
+\tilde{D}_{it} &amp; = D_{it} - \frac{1}{n} \sum_{j=1}^n (D_{jt} - \frac{1}{T} \sum_{s=1}^T D_{js}) - \frac{1}{T} \sum_{s=1}^T D_{is} \\
+&amp; = D_{it} - \frac{1}{n} \sum_{j=1}^n D_{jt} - \frac{1}{T} \sum_{s=1}^T D_{is} + \frac{1}{nT} \sum_{j,s} D_{js}
+\end{align*}
+\]</span></li>
+</ul>
+</section>
+<section id="weights" class="slide level2">
+<h2>Weights</h2>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">function</span> <span class="fu">assigntreat</span>(n,T;portiontreated<span class="op">=</span><span class="fu">vcat</span>(<span class="fu">zeros</span>(T <span class="op">÷</span> <span class="fl">2</span>), <span class="fl">0.5</span>, <span class="fu">zeros</span>(T <span class="op">-</span> (T <span class="op">÷</span> <span class="fl">2</span>) <span class="op">-</span> <span class="fl">1</span>)))</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  treated <span class="op">=</span> <span class="fu">falses</span>(n,T)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="cf">for</span> t<span class="op">=</span><span class="fl">2</span><span class="op">:</span>T</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    treated[<span class="op">:</span>,t] <span class="op">=</span> treated[<span class="op">:</span>,t<span class="op">-</span><span class="fl">1</span>]</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="cf">if</span> (portiontreated[t]<span class="op">&gt;</span><span class="fl">0</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>      treated[<span class="op">:</span>,t] <span class="op">=</span> (treated[<span class="op">:</span>,t] <span class="op">.||</span> <span class="fu">rand</span>(n) <span class="op">.&lt;</span> portiontreated[t])</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="cf">end</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="cf">end</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="cf">return</span>(treated)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">end</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">function</span> <span class="fu">weights</span>(D)</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  D̃ <span class="op">=</span> D <span class="op">.-</span> <span class="fu">mean</span>(D,dims<span class="op">=</span><span class="fl">1</span>) <span class="op">.-</span> <span class="fu">mean</span>(D,dims<span class="op">=</span><span class="fl">2</span>) <span class="op">.+</span> <span class="fu">mean</span>(D)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>  ω <span class="op">=</span> D̃<span class="op">./</span><span class="fu">sum</span>(D̃<span class="op">.^</span><span class="fl">2</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="kw">end</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a>n <span class="op">=</span> <span class="fl">100</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>T <span class="op">=</span> <span class="fl">9</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T)</span>
+<span id="cb1-21"><a href="#cb1-21"></a>y <span class="op">=</span> <span class="fu">randn</span>(n,T)</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="fu">sum</span>(y<span class="op">.*</span><span class="fu">weights</span>(D))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>-0.08630842961495712</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1"></a>n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">using</span> <span class="bu">DataFrames</span>, <span class="bu">FixedEffectModels</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(id <span class="op">=</span> <span class="fu">vec</span>((<span class="fl">1</span><span class="op">:</span>n)<span class="fu">*ones</span>(<span class="dt">Int</span>,T)<span class="ch">'), t = vec(ones(Int,n)*(1:T)'</span>), y <span class="op">=</span> <span class="fu">vec</span>(y), D<span class="op">=</span><span class="fu">vec</span>(D))</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>                          FixedEffectModel                          
+====================================================================
+Number of obs:                900  Converged:                   true
+dof (model):                    1  dof (residuals):              791
+R²:                         0.115  R² adjusted:               -0.007
+F-statistic:             0.401961  P-value:                    0.526
+R² within:                  0.001  Iterations:                     2
+====================================================================
+     Estimate  Std. Error     t-stat  Pr(&gt;|t|)  Lower 95%  Upper 95%
+────────────────────────────────────────────────────────────────────
+D  -0.0863084    0.136132  -0.634004    0.5263  -0.353532   0.180915
+====================================================================</code></pre>
+</div>
+</div>
+</section>
+<section id="weights-with-single-treatment-time" class="slide level2">
+<h2>Weights with Single Treatment Time</h2>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">using</span> <span class="bu">PlotlyLight</span>, <span class="bu">Cobweb</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">function</span> <span class="fu">plotp</span>(D)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  n,T<span class="op">=</span><span class="fu">size</span>(D)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  plt<span class="op">=</span><span class="fu">Plot</span>()</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  plt.layout<span class="op">=</span><span class="fu">Config</span>(xaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"time"</span>,tickvals<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T),</span>
+<span id="cb5-6"><a href="#cb5-6"></a>                    yaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"Portion Treated"</span>))</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">plt</span>(x<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T,y<span class="op">=</span><span class="fu">vec</span>(<span class="fu">mean</span>(D,dims<span class="op">=</span><span class="fl">1</span>)))</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">plt</span>()</span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="kw">end</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="kw">function</span> <span class="fu">plotweights</span>(D)</span>
+<span id="cb5-12"><a href="#cb5-12"></a>  n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  ω <span class="op">=</span> <span class="fu">weights</span>(D)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>  groups <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">eachrow</span>(D))</span>
+<span id="cb5-15"><a href="#cb5-15"></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb5-16"><a href="#cb5-16"></a>  plt.layout<span class="op">=</span><span class="fu">Config</span>(xaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"time"</span>,tickvals<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T),</span>
+<span id="cb5-17"><a href="#cb5-17"></a>                    yaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"weight"</span>))</span>
+<span id="cb5-18"><a href="#cb5-18"></a>  <span class="cf">for</span> g <span class="kw">in</span> groups</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    i <span class="op">=</span> <span class="fu">findfirst</span>(d <span class="op">==</span> g <span class="cf">for</span> d <span class="kw">in</span> <span class="fu">eachrow</span>(D))</span>
+<span id="cb5-20"><a href="#cb5-20"></a>    wt <span class="op">=</span> ω[i,<span class="op">:</span>]</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    <span class="fu">plt</span>(x<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T,y<span class="op">=</span>wt,name<span class="op">=</span><span class="st">"Treated </span><span class="sc">$</span>(<span class="fu">sum</span>(g))<span class="st"> times"</span>, mode<span class="op">=</span><span class="st">"markers"</span>,<span class="kw">type</span><span class="op">=</span><span class="st">"scatter"</span>)</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    <span class="cf">end</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>  fig<span class="op">=</span><span class="fu">plt</span>()</span>
+<span id="cb5-24"><a href="#cb5-24"></a>  <span class="cf">return</span>(fig)</span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="cf">end</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
+<span id="cb5-27"><a href="#cb5-27"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(pfig), <span class="st">"p-samet.html"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">p-samet.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1200</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">350</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<iframe src="p-samet.html" width="1200" height="350"></iframe>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"w-samet.html"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">w-samet.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1200</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">350</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<iframe src="w-samet.html" width="1200" height="350"></iframe>
+</div>
+</div>
+</section>
+<section id="weights-with-uniform-treatment-time" class="slide level2">
+<h2>Weights with Uniform Treatment Time</h2>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1"></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T,portiontreated<span class="op">=</span><span class="fu">vcat</span>(<span class="fl">0</span>,<span class="fu">fill</span>(<span class="fl">0.5</span><span class="op">/</span>(T<span class="op">-</span><span class="fl">1</span>),T<span class="op">-</span><span class="fl">1</span>)))</span>
+<span id="cb7-2"><a href="#cb7-2"></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(pfig), <span class="st">"p-unit.html"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">p-unit.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1200</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">350</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<iframe src="p-unit.html" width="1200" height="350"></iframe>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1"></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"w-unit.html"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">w-unit.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1200</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">350</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<iframe src="w-unit.html" width="1200" height="350"></iframe>
+</div>
+</div>
+</section>
+<section id="weights-with-early-and-late-treated" class="slide level2">
+<h2>Weights with Early and Late Treated</h2>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1"></a>pt <span class="op">=</span> <span class="fu">zeros</span>(T)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>pt[<span class="fl">2</span>] <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>pt[<span class="kw">end</span><span class="op">-</span><span class="fl">1</span>]<span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T,portiontreated<span class="op">=</span>pt)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(pfig), <span class="st">"p-el.html"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">p-el.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1200</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">350</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<iframe src="p-el.html" width="1200" height="350"></iframe>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1"></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"w-el.html"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">w-el.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1200</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">350</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<iframe src="w-el.html" width="1200" height="350"></iframe>
+</div>
+</div>
+</section>
+<section id="sign-reversal-with-fixed-effects" class="slide level2">
+<h2>Sign Reversal with Fixed Effects</h2>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1"></a>pt <span class="op">=</span> <span class="fu">zeros</span>(T)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>pt[<span class="fl">2</span>] <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>pt[<span class="kw">end</span><span class="op">-</span><span class="fl">1</span>]<span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="kw">function</span> <span class="fu">simulate</span>(n,T,portiontreated, ATT, σ<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>  D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T,portiontreated<span class="op">=</span>portiontreated)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>  y <span class="op">=</span> <span class="fu">randn</span>(n,T)<span class="op">*</span>σ</span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="fu">axes</span>(y)[<span class="fl">1</span>]</span>
+<span id="cb11-9"><a href="#cb11-9"></a>    timetreated<span class="op">=</span><span class="fu">cumsum</span>(D[i,<span class="op">:</span>])</span>
+<span id="cb11-10"><a href="#cb11-10"></a>    y[i,<span class="op">:</span>] <span class="op">.+=</span> (tt<span class="op">&gt;</span><span class="fl">0</span> ? ATT[tt] <span class="op">:</span> <span class="fl">0.0</span> <span class="cf">for</span> tt <span class="kw">in</span> timetreated)</span>
+<span id="cb11-11"><a href="#cb11-11"></a>  <span class="cf">end</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a>  <span class="fu">DataFrame</span>(id <span class="op">=</span> <span class="fu">vec</span>((<span class="fl">1</span><span class="op">:</span>n)<span class="fu">*ones</span>(<span class="dt">Int</span>,T)<span class="ch">'), t = vec(ones(Int,n)*(1:T)'</span>), y <span class="op">=</span> <span class="fu">vec</span>(y), D<span class="op">=</span><span class="fu">vec</span>(D))</span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="cf">end</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a></span>
+<span id="cb11-15"><a href="#cb11-15"></a>ATT <span class="op">=</span>  <span class="fu">vcat</span>(<span class="fu">ones</span>(T<span class="op">-</span><span class="fl">3</span>),<span class="fl">10</span><span class="fu">*ones</span>(<span class="fl">3</span>))</span>
+<span id="cb11-16"><a href="#cb11-16"></a>df <span class="op">=</span> <span class="fu">simulate</span>(n,T, pt,ATT)</span>
+<span id="cb11-17"><a href="#cb11-17"></a><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>                         FixedEffectModel                         
+==================================================================
+Number of obs:               900  Converged:                  true
+dof (model):                   1  dof (residuals):             791
+R²:                        0.521  R² adjusted:               0.455
+F-statistic:             1.37127  P-value:                   0.242
+R² within:                 0.002  Iterations:                    2
+==================================================================
+    Estimate  Std. Error    t-stat  Pr(&gt;|t|)  Lower 95%  Upper 95%
+──────────────────────────────────────────────────────────────────
+D  -0.311916    0.266364  -1.17101    0.2419  -0.834781   0.210948
+==================================================================</code></pre>
+</div>
+</div>
+</section>
+<section id="sign-reversal-with-fixed-effects-1" class="slide level2">
+<h2>Sign Reversal with Fixed Effects</h2>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1"></a>D <span class="op">=</span> <span class="fu">reshape</span>(df.D, n,T)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>y <span class="op">=</span> <span class="fu">reshape</span>(df.y, n,T)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="kw">function</span> <span class="fu">plotATT</span>(D, y)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>  groups <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">eachrow</span>(D))</span>
+<span id="cb13-6"><a href="#cb13-6"></a>  ATT <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">0</span>)</span>
+<span id="cb13-7"><a href="#cb13-7"></a>  tt <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">0</span>)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>  ts <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">0</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="cf">for</span> t <span class="op">∈</span> <span class="fl">2</span><span class="op">:</span>T</span>
+<span id="cb13-10"><a href="#cb13-10"></a>    <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>t<span class="op">-</span><span class="fl">1</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>      treatts <span class="op">=</span> D[<span class="op">:</span>,t] <span class="op">.&amp;</span> .!D[<span class="op">:</span>,s]</span>
+<span id="cb13-12"><a href="#cb13-12"></a>      controlts <span class="op">=</span> .!D[<span class="op">:</span>,t] <span class="op">.&amp;</span> .!D[<span class="op">:</span>,s]</span>
+<span id="cb13-13"><a href="#cb13-13"></a>      <span class="cf">if</span> <span class="fu">any</span>(treatts) <span class="op">&amp;&amp;</span> <span class="fu">any</span>(controlts)</span>
+<span id="cb13-14"><a href="#cb13-14"></a>        <span class="fu">push!</span>(ATT, <span class="fu">mean</span>(y[treatts,t] <span class="op">-</span> y[treatts,s]) <span class="op">-</span> <span class="fu">mean</span>(y[controlts,t] <span class="op">-</span> y[controlts,s]))</span>
+<span id="cb13-15"><a href="#cb13-15"></a>        <span class="fu">push!</span>(tt,t)</span>
+<span id="cb13-16"><a href="#cb13-16"></a>        <span class="fu">push!</span>(ts,s)</span>
+<span id="cb13-17"><a href="#cb13-17"></a>      <span class="cf">end</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>    <span class="cf">end</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>  <span class="cf">end</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb13-21"><a href="#cb13-21"></a>  hiddenaxis<span class="op">=</span><span class="fu">Config</span>(autorange<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb13-22"><a href="#cb13-22"></a>                    showgrid<span class="op">=</span><span class="cn">false</span>,</span>
+<span id="cb13-23"><a href="#cb13-23"></a>                    zeroline<span class="op">=</span><span class="cn">false</span>,</span>
+<span id="cb13-24"><a href="#cb13-24"></a>                    showline<span class="op">=</span><span class="cn">false</span>,</span>
+<span id="cb13-25"><a href="#cb13-25"></a>                    autotick<span class="op">=</span><span class="cn">true</span>,</span>
+<span id="cb13-26"><a href="#cb13-26"></a>                    ticks<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb13-27"><a href="#cb13-27"></a>                    showticklabels<span class="op">=</span><span class="cn">false</span>)</span>
+<span id="cb13-28"><a href="#cb13-28"></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>(xaxis<span class="op">=</span>hiddenaxis,yaxis<span class="op">=</span>hiddenaxis)</span>
+<span id="cb13-29"><a href="#cb13-29"></a>  fig<span class="op">=</span><span class="fu">plt</span>(x<span class="op">=</span>tt,y<span class="op">=</span>ts,z<span class="op">=</span>ATT,name<span class="op">=</span><span class="st">"ATTₜ,ₜ₋ₛ"</span>, mode<span class="op">=</span><span class="st">"markers"</span>,<span class="kw">type</span><span class="op">=</span><span class="st">"scatter3d"</span>)</span>
+<span id="cb13-30"><a href="#cb13-30"></a><span class="kw">end</span></span>
+<span id="cb13-31"><a href="#cb13-31"></a>fig<span class="op">=</span><span class="fu">plotATT</span>(D,y)</span>
+<span id="cb13-32"><a href="#cb13-32"></a>Cobweb.<span class="fu">save</span>(<span class="fu">Page</span>(fig), <span class="st">"ATT.html"</span>)</span>
+<span id="cb13-33"><a href="#cb13-33"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">ATT.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">900</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">700</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<iframe src="ATT.html" width="900" height="700"></iframe>
+</div>
+</div>
+</section>
+<section id="when-to-worry" class="slide level2">
+<h2>When to worry</h2>
+<ul>
+<li>If multiple treatment times and treatment heterogeneity</li>
+<li>Even if weights do not have wrong sign, the fixed effects estimate is hard to interpret</li>
+<li>Same logic applies more generally – not just to time
+<ul>
+<li>E.g. if have group effects, some treated units in multiple groups, and <span class="math inline">\(E[y(1) - y(0) | group]\)</span> varies</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="pre-trends" class="title-slide slide level1 center">
+<h1>Pre-trends</h1>
+
+</section>
+<section id="pre-trends-1" class="slide level2">
+<h2>Pre-trends</h2>
+<ul>
+<li>Parallel trends assumption</li>
+</ul>
+<p><span class="math display">\[
+\Er[\color{red}{y_{it}(0)} - y_{it-s}(0) | D_{it}=1,  D_{it-s}=0] = \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0]
+\]</span></p>
+<ul>
+<li>More plausible if there are parallel pre-trends</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+&amp; \Er[y_{it-r}(0) - y_{it-s}(0) | D_{it}=1, D_{it-r}=0,  D_{it-s}=0] = \\
+&amp; = \Er[y_{it-r}(0) - y_{it-s}(0) | D_{it}=0, D_{it-r}=0, D_{it-s}=0]
+\end{align*}
+\]</span></p>
+<ul>
+<li>Always at least plot pre-trends</li>
+</ul>
+</section>
+<section id="testing-for-pre-trends" class="slide level2">
+<h2>Testing for Pre-trends</h2>
+<ul>
+<li>Is it a good idea to test</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+H_0 : &amp; \Er[y_{it-r} - y_{it-s} | D_{it}=1, D_{it-r}=0,  D_{it-s}=0] = \\
+&amp; = \Er[y_{it-r} - y_{it-s} | D_{it}=0, D_{it-r}=0, D_{it-s}=0]?
+\end{align*}
+\]</span> - Even if not testing formally, we do it informally by plotting</p>
+</section>
+<section id="testing-for-pre-trends-1" class="slide level2">
+<h2>Testing for Pre-trends</h2>
+<ul>
+<li>Assume: <span class="math inline">\((y_{i1}, ..., y_{iT}, D_{i1},..., D_{iT})\)</span> i.i.d. across <span class="math inline">\(i\)</span> with finite second moments</li>
+<li>Let <span class="math display">\[
+\tau^{1t}_{r,s} = \Er[y_{ir}|D_{it}=1, D_{ir}=0, D_{is}=0]
+\]</span> <span class="math display">\[
+\tau^{0t}_{r,s} = \Er[y_{ir}|D_{it}=0, D_{ir}=0, D_{is}=0]
+\]</span></li>
+<li>Plugin estimators <span class="math display">\[
+\hat{\tau}^{1t}_{r,s} = \frac{\sum_i y_{ir} D_{it}(1-D_{ir})(1-D_{is})} {\sum_i D_{it}(1-D_{ir})(1-D_{is})}
+\]</span> <span class="math display">\[
+\hat{\tau}^{0t}_{r,s} = \frac{\sum_i y_{ir} (1-D_{it})(1-D_{ir})(1-D_{is})} {\sum_i (1-D_{it})(1-D_{ir})(1-D_{is})}
+\]</span></li>
+</ul>
+</section>
+<section id="testing-for-pre-trends-2" class="slide level2">
+<h2>Testing for Pre-trends</h2>
+<ul>
+<li>Note: <span class="math display">\[
+\begin{align*}
+\hat{\tau}^{1t}_{r,s} - \tau^{1t}_{r,s} = &amp; \frac{\frac{1}{n}\sum_i y_{ir} D_{it}(1-D_{ir})(1-D_{is}) - \Er[y_{ir} D_{it}(1-D_{ir})(1-D_{is})]}{\Er[D_{it}(1-D_{ir})(1-D_{is})]} + \\
+&amp; + \frac{\Er[y_{it} D_{it}(1-D_{ir})(1-D_{is})]}{\Er[D_{it}(1-D_{ir})(1-D_{is})]^2} \left(\frac{1}{n} \sum_i D_{it}(1-D_{ir})(1-D_{is}) - \Er[D_{it}(1-D_{ir})(1-D_{is})] \right)
+\end{align*}
+\]</span> and similar expression for <span class="math inline">\(\hat{\tau}^{0t}_{r,s}\)</span></li>
+<li>Use CLT to get joint asymptotic distribution of pre-trends and <span class="math inline">\(ATT_{t,t-s}\)</span></li>
+</ul>
+</section>
+<section id="testing-for-pre-trends-3" class="slide level2">
+<h2>Testing for Pre-trends</h2>
+<ul>
+<li><p>E.g. <span class="math inline">\(T=3\)</span>, <span class="math inline">\(D_{i3}=1\)</span> for some <span class="math inline">\(i\)</span>, other <span class="math inline">\(D_{it}=0\)</span> <span class="math display">\[
+\begin{align*}
+\sqrt{n} \left[
+\begin{pmatrix} \hat{\tau}^{13}_{2,1} - \hat{\tau}^{03}_{2,1} \\
+\underbrace{\hat{\tau}^{13}_{3,2} - \hat{\tau}^{03}_{3,2}}_{\widehat{ATT}_{3,2}}
+\end{pmatrix} -
+\begin{pmatrix}
+\tau^{13}_{2,1} - \tau^{03}_{2,1} \\
+ATT_{3,2}
+\end{pmatrix}
+\right] \indist N(0, \Sigma)
+\end{align*}
+\]</span></p></li>
+<li><p>Distribution of <span class="math inline">\(\widehat{ATT}_{3,2}\)</span> conditional on fail to reject <span class="math inline">\(\tau^{13}_{2,1} - \tau^{03}_{2,1} = 0\)</span> is a truncated normal</p></li>
+<li><p><span class="citation" data-cites="roth2022">Roth (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> : test can have low power, and in plausible violations, <span class="math inline">\(\widehat{ATT}_{3,2}\)</span> conditional on failing to reject is biased</p></li>
+</ul>
+</section>
+<section id="bounds-from-pre-trends" class="slide level2">
+<h2>Bounds from Pre-trends</h2>
+<ul>
+<li><p>Let <span class="math inline">\(\Delta\)</span> be violation of parallel trends <span class="math display">\[
+\Delta = \Er[\color{red}{y_{it}(0)} - y_{it-1}(0) | D_{it}=1,  D_{it-1}=0] - \Er[y_{it}(0) - y_{it-1}(0) | D_{it}=0, D_{it-1}=0]
+\]</span></p></li>
+<li><p>Assume <span class="math inline">\(\Delta\)</span> is bounded by deviation from parallel of pre-trends <span class="math display">\[
+|\Delta| \leq M \max_{r} \left\vert \tau^{1t}_{t-r,t-r-1} - \tau^{0t}_{t-r,t-r-1} \right\vert
+\]</span> for some chosen <span class="math inline">\(M\)</span></p></li>
+<li><p>See <span class="citation" data-cites="rambachan2023">Rambachan and Roth (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p></li>
+</ul>
+</section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
+<li>Recent reviews: <span class="citation" data-cites="roth2023">Roth et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>, <span class="citation" data-cites="dd2022">Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></li>
 <li>Early work pointing to problems with fixed effects:
 <ul>
 <li><span class="citation" data-cites="laporte2005">Laporte and Windmeijer (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span>, <span class="citation" data-cites="wooldridge2005">Wooldridge (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></li>
@@ -500,11 +938,23 @@ Callaway, Brantly, and Pedro H. C. Sant’Anna. 2021. <span>“Difference-in-Dif
 <div id="ref-dd2020" class="csl-entry" role="listitem">
 Chaisemartin, Clément de, and Xavier D’Haultfœuille. 2020. <span>“Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects.”</span> <em>American Economic Review</em> 110 (9): 2964–96. <a href="https://doi.org/10.1257/aer.20181169">https://doi.org/10.1257/aer.20181169</a>.
 </div>
+<div id="ref-dd2022" class="csl-entry" role="listitem">
+———. 2022. <span>“<span class="nocase">Two-way fixed effects and differences-in-differences with heterogeneous treatment effects: a survey</span>.”</span> <em>The Econometrics Journal</em> 26 (3): C1–30. <a href="https://doi.org/10.1093/ectj/utac017">https://doi.org/10.1093/ectj/utac017</a>.
+</div>
 <div id="ref-goodmanbacon2021" class="csl-entry" role="listitem">
 Goodman-Bacon, Andrew. 2021. <span>“Difference-in-Differences with Variation in Treatment Timing.”</span> <em>Journal of Econometrics</em> 225 (2): 254–77. https://doi.org/<a href="https://doi.org/10.1016/j.jeconom.2021.03.014">https://doi.org/10.1016/j.jeconom.2021.03.014</a>.
 </div>
 <div id="ref-laporte2005" class="csl-entry" role="listitem">
 Laporte, Audrey, and Frank Windmeijer. 2005. <span>“Estimation of Panel Data Models with Binary Indicators When Treatment Effects Are Not Constant over Time.”</span> <em>Economics Letters</em> 88 (3): 389–96. https://doi.org/<a href="https://doi.org/10.1016/j.econlet.2005.04.002">https://doi.org/10.1016/j.econlet.2005.04.002</a>.
+</div>
+<div id="ref-rambachan2023" class="csl-entry" role="listitem">
+Rambachan, Ashesh, and Jonathan Roth. 2023. <span>“<span class="nocase">A More Credible Approach to Parallel Trends</span>.”</span> <em>The Review of Economic Studies</em> 90 (5): 2555–91. <a href="https://doi.org/10.1093/restud/rdad018">https://doi.org/10.1093/restud/rdad018</a>.
+</div>
+<div id="ref-roth2022" class="csl-entry" role="listitem">
+Roth, Jonathan. 2022. <span>“Pretest with Caution: Event-Study Estimates After Testing for Parallel Trends.”</span> <em>American Economic Review: Insights</em> 4 (3): 305–22. <a href="https://doi.org/10.1257/aeri.20210236">https://doi.org/10.1257/aeri.20210236</a>.
+</div>
+<div id="ref-roth2023" class="csl-entry" role="listitem">
+Roth, Jonathan, Pedro H. C. Sant’Anna, Alyssa Bilinski, and John Poe. 2023. <span>“What’s Trending in Difference-in-Differences? A Synthesis of the Recent Econometrics Literature.”</span> <em>Journal of Econometrics</em> 235 (2): 2218–44. https://doi.org/<a href="https://doi.org/10.1016/j.jeconom.2023.03.008">https://doi.org/10.1016/j.jeconom.2023.03.008</a>.
 </div>
 <div id="ref-sun2021" class="csl-entry" role="listitem">
 Sun, Liyang, and Sarah Abraham. 2021. <span>“Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.”</span> <em>Journal of Econometrics</em> 225 (2): 175–99. https://doi.org/<a href="https://doi.org/10.1016/j.jeconom.2020.09.006">https://doi.org/10.1016/j.jeconom.2020.09.006</a>.

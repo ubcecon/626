@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-11-27">
+<meta name="dcterms.date" content="2022-12-06">
 
 <title>ECON 626 - ECON 626: Problem Set 7</title>
 <style>
@@ -137,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 27, 2023</p>
+      <p class="date">December 6, 2022</p>
     </div>
   </div>
   
@@ -162,9 +162,21 @@ ul.task-list li input[type="checkbox"] {
 \]</span></p>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
+<p>Consider the following linear regression model such that <span class="math display">\[
+Y_i = β_0 + X_i β_1 + u_i ,
+\]</span> where <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are observed random variables. Let us assume that <span class="math inline">\(\Er [u_i ] = 0\)</span> but <span class="math inline">\(\cov(X_i , u_i ) \neq 0\)</span>. Suppose that there exists a variable <span class="math inline">\(Z_i\)</span> such that <span class="math inline">\(\cov(X_i , Z_i ) &gt; 0\)</span> and <span class="math inline">\(\cov(Z_i , u_i ) &gt; 0\)</span>.</p>
+<p>Find the asymptotic bias of the 2SLS estimator of <span class="math inline">\(\hat{\beta}_1\)</span>. (Recall that the asymptotic bias of an estimator is its probability limit minus the true parameter.) Can you determine unambiguously whether the 2SLS estimator tends to underestimate or overestimate the parameter <span class="math inline">\(β_1\)</span> ? If so, give explanations how.</p>
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
+<p>In the linear model, <span class="math display">\[
+Y_i = \beta_0 + X_i \beta_1 + u_i
+\]</span> assume that <span class="math inline">\(\Er[u_i] = 0\)</span> and <span class="math inline">\(X_i \in \R^1\)</span>. Suppose that <span class="math inline">\(\Er[X_i u_i] \neq 0\)</span>, but, somewhat strangely, you assume <span class="math inline">\(\Er[u_i^2|X_i] = \sigma^2\)</span>.</p>
+<ol type="1">
+<li><p>Show that a set of two elements that contains <span class="math inline">\(\beta_1\)</span> is identified. Denote this set by <span class="math inline">\(B_1\)</span>. <strong>Hint: use the moment condition <span class="math inline">\(\Er[u_i^2 (X_i-\Er[X_i])]\)</span>.</strong></p></li>
+<li><p>Describe an estimator for <span class="math inline">\(B_1\)</span> and show that it is consistent. State any additional assumptions needed.</p></li>
+<li><p>Find the asymptotic distribution of your estimator for <span class="math inline">\(B_1\)</span>. State any additional assumptions needed.</p></li>
+</ol>
 
 
 </section>

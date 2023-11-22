@@ -321,12 +321,24 @@ abstract = {In this note we present a new short and direct proof of Lévy’s co
  year = {1972}
 }
 
-@article{Andrews2019WeakII,
-  title={Weak Instruments in Instrumental Variables Regression: Theory and Practice},
-  author={Isaiah Andrews and James H. Stock and Liyang Sun},
-  journal={Annual Review of Economics},
-  year={2019}
+@article{andrews2019,
+author = {Andrews, Isaiah and Stock, James H. and Sun, Liyang},
+title = {Weak Instruments in Instrumental Variables Regression: Theory and Practice},
+journal = {Annual Review of Economics},
+volume = {11},
+number = {1},
+pages = {727-753},
+year = {2019},
+doi = {10.1146/annurev-economics-080218-025643},
+URL = {
+        https://doi.org/10.1146/annurev-economics-080218-025643
+},
+eprint = {
+        https://doi.org/10.1146/annurev-economics-080218-025643
+},
+    abstract = { When instruments are weakly correlated with endogenous regressors, conventional methods for instrumental variables (IV) estimation and inference become unreliable. A large literature in econometrics has developed procedures for detecting weak instruments and constructing robust confidence sets, but many of the results in this literature are limited to settings with independent and homoskedastic data, while data encountered in practice frequently violate these assumptions. We review the literature on weak instruments in linear IV regression with an emphasis on results for nonhomoskedastic (heteroskedastic, serially correlated, or clustered) data. To assess the practical importance of weak instruments, we also report tabulations and simulations based on a survey of papers published in the American Economic Review from 2014 to 2018 that use IV. These results suggest that weak instruments remain an important issue for empirical practice, and that there are simple steps that researchers can take to better handle weak instruments in applications. }
 }
+
 
 @article{aizer2018,
 Author = {Aizer, Anna and Currie, Janet and Simon, Peter and Vivier, Patrick},
@@ -585,4 +597,34 @@ url = {https://www.sciencedirect.com/science/article/pii/S0304407623001318},
 author = {Jonathan Roth and Pedro H.C. Sant’Anna and Alyssa Bilinski and John Poe},
 keywords = {Difference-in-differences, Causal Inference, Staggered Treatment timing, Sensitivity Analysis, Clustering, Parallel trends, Treatment Effect Heterogeneity},
 abstract = {This paper synthesizes recent advances in the econometrics of difference-in-differences (DiD) and provides concrete recommendations for practitioners. We begin by articulating a simple set of “canonical” assumptions under which the econometrics of DiD are well-understood. We then argue that recent advances in DiD methods can be broadly classified as relaxing some components of the canonical DiD setup, with a focus on (i) multiple periods and variation in treatment timing, (ii) potential violations of parallel trends, or (iii) alternative frameworks for inference. Our discussion highlights the different ways that the DiD literature has advanced beyond the canonical model, and helps to clarify when each of the papers will be relevant for empirical work. We conclude by discussing some promising areas for future research.}
+}
+
+
+
+@article{roth2022,
+Author = {Roth, Jonathan},
+Title = {Pretest with Caution: Event-Study Estimates after Testing for Parallel Trends},
+Journal = {American Economic Review: Insights},
+Volume = {4},
+Number = {3},
+Year = {2022},
+Month = {September},
+Pages = {305-22},
+DOI = {10.1257/aeri.20210236},
+URL = {https://www.aeaweb.org/articles?id=10.1257/aeri.20210236}}
+
+@article{rambachan2023,
+    author = {Rambachan, Ashesh and Roth, Jonathan},
+    title = "{A More Credible Approach to Parallel Trends}",
+    journal = {The Review of Economic Studies},
+    volume = {90},
+    number = {5},
+    pages = {2555-2591},
+    year = {2023},
+    month = {02},
+    abstract = "{This paper proposes tools for robust inference in difference-in-differences and event-study designs where the parallel trends assumption may be violated. Instead of requiring that parallel trends holds exactly, we impose restrictions on how different the post-treatment violations of parallel trends can be from the pre-treatment differences in trends (“pre-trends”). The causal parameter of interest is partially identified under these restrictions. We introduce two approaches that guarantee uniformly valid inference under the imposed restrictions, and we derive novel results showing that they have desirable power properties in our context. We illustrate how economic knowledge can inform the restrictions on the possible violations of parallel trends in two economic applications. We also highlight how our approach can be used to conduct sensitivity analyses showing what causal conclusions can be drawn under various restrictions on the possible violations of the parallel trends assumption.}",
+    issn = {0034-6527},
+    doi = {10.1093/restud/rdad018},
+    url = {https://doi.org/10.1093/restud/rdad018},
+    eprint = {https://academic.oup.com/restud/article-pdf/90/5/2555/51356029/rdad018.pdf},
 }

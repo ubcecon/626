@@ -2,8 +2,13 @@
 title: "Difference in Diffferences"
 author: "Paul Schrimpf"
 date: last-modified
+execute:
+  echo: true
+  cache: true
+  freeze: auto
 format:
   revealjs:
+    code-fold: true
     theme: moon
     width: 1575
     height: 1050
@@ -89,7 +94,7 @@ then $\hat{\beta} = \widehat{ATT}$
 $$
 y_{it} = \delta_t + \alpha_i + \beta D_{it} + u_{it}
 $$
-then $\hat{\beta} = \widehat{ATT}
+then $\hat{\beta} = \widehat{ATT}$
 
 :::
 
@@ -101,11 +106,16 @@ then $\hat{\beta} = \widehat{ATT}
 $$
 \begin{align*}
 ATT_{t,t-s} & = \Er[y_{it}(1) - \color{red}{y_{it}(0)} | D_{it} = 1, D_{it-s}=0] \\
-& = \Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] -
-  \Er[\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0] \\
-& \text{ assume } \Er[\color{red}{y_{it}(0)} - y_{it}(0) | D_{it}=1,
-  D_{it-s}=0] =  \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0] \\
-& = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]
+& = \Er[y_{it}(1) - y_{it-s}(0) | D_{it} = 1, D_{it-s}=0] - \\
+& \;\; -  \Er[\color{red}{y_{it}(0)} - y_{t-s}(0) | D_{it}=1, D_{it-s}=0]
+\end{align*}
+$$
+
+  - assume $\Er[\color{red}{y_{it}(0)} - y_{it-s}(0) | D_{it}=1,  D_{it-s}=0] = \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0]$
+
+$$
+\begin{align*}
+ATT_{t,t-s}& = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]
 \end{align*}
 $$
 - Similarly, can identify various other interpretable average
@@ -134,9 +144,10 @@ where
 $$
 \begin{align*}
 \tilde{D}_{it} & = D_{it} - \frac{1}{n} \sum_{j=1}^n (D_{jt} - \frac{1}{T} \sum_{s=1}^T D_{js}) - \frac{1}{T} \sum_{s=1}^T D_{is} \\
-& = D_{it} - \frac{1}{n} \sum_{j=1}^n D_{jt} - \frac{1}{T} \sum_{s=1}^T D_{is} + \frac{1}{nT} \sum{j,s} D_{js}
+& = D_{it} - \frac{1}{n} \sum_{j=1}^n D_{jt} - \frac{1}{T} \sum_{s=1}^T D_{is} + \frac{1}{nT} \sum_{j,s} D_{js}
 \end{align*}
 $$
+
 
 ## Weights
 
@@ -161,22 +172,20 @@ end
 n = 100
 T = 9
 D = assigntreat(n,T)
-
-
-# check that sum(y*weights) = fixed effect estimate
-n,T = size(D)
-using DataFrames, FixedEffectModels
 y = randn(n,T)
-df = DataFrame(id = vec((1:n)*ones(Int,T)'), t = vec(ones(Int,n)*(1:T)'), y = vec(y), D=vec(D))
-reg(df, @formula(y ~ D + fe(t) + fe(id)))
 sum(y.*weights(D))
 ```
 
-## Weights with Single Treatment Time
 ```{julia}
-#| code-fold: true
-#| code-summary: "plotting code"
-#| echo: true
+n,T = size(D)
+using DataFrames, FixedEffectModels
+df = DataFrame(id = vec((1:n)*ones(Int,T)'), t = vec(ones(Int,n)*(1:T)'), y = vec(y), D=vec(D))
+reg(df, @formula(y ~ D + fe(t) + fe(id)))
+```
+
+## Weights with Single Treatment Time
+
+```{julia}
 using PlotlyLight, Cobweb
 function plotp(D)
   n,T=size(D)
@@ -208,7 +217,6 @@ HTML("<iframe src=\"p-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
 ```
 
 ```{julia}
-#| code-fold: true
 fig = plotweights(D)
 Cobweb.save(Page(fig), "w-samet.html")
 HTML("<iframe src=\"w-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
@@ -217,9 +225,6 @@ HTML("<iframe src=\"w-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
 ## Weights with Uniform Treatment Time
 
 ```{julia}
-#| code-fold: true
-#| code-summary: "plotting code"
-#| echo: true
 D = assigntreat(n,T,portiontreated=vcat(0,fill(0.5/(T-1),T-1)))
 pfig = plotp(D)
 Cobweb.save(Page(pfig), "p-unit.html")
@@ -227,7 +232,6 @@ HTML("<iframe src=\"p-unit.html\" width=\"1200\"  height=\"350\"></iframe>")
 ```
 
 ```{julia}
-#| code-fold: true
 fig = plotweights(D)
 Cobweb.save(Page(fig), "w-unit.html")
 HTML("<iframe src=\"w-unit.html\" width=\"1200\"  height=\"350\"></iframe>")
@@ -236,9 +240,6 @@ HTML("<iframe src=\"w-unit.html\" width=\"1200\"  height=\"350\"></iframe>")
 ## Weights with Early and Late Treated
 
 ```{julia}
-#| code-fold: true
-#| code-summary: "plotting code"
-#| echo: true
 pt = zeros(T)
 pt[2] = 1/3
 pt[end-1]=1/3
@@ -249,28 +250,259 @@ HTML("<iframe src=\"p-el.html\" width=\"1200\"  height=\"350\"></iframe>")
 ```
 
 ```{julia}
-#| code-fold: true
 fig = plotweights(D)
 Cobweb.save(Page(fig), "w-el.html")
 HTML("<iframe src=\"w-el.html\" width=\"1200\"  height=\"350\"></iframe>")
 ```
 
+## Sign Reversal with Fixed Effects
+
+```{julia}
+pt = zeros(T)
+pt[2] = 1/3
+pt[end-1]=1/3
+
+function simulate(n,T,portiontreated, ATT, σ=0.01)
+  D = assigntreat(n,T,portiontreated=portiontreated)
+  y = randn(n,T)*σ
+  for i in axes(y)[1]
+    timetreated=cumsum(D[i,:])
+    y[i,:] .+= (tt>0 ? ATT[tt] : 0.0 for tt in timetreated)
+  end
+  DataFrame(id = vec((1:n)*ones(Int,T)'), t = vec(ones(Int,n)*(1:T)'), y = vec(y), D=vec(D))
+end
+
+ATT =  vcat(ones(T-3),10*ones(3))
+df = simulate(n,T, pt,ATT)
+reg(df, @formula(y ~ D + fe(t) + fe(id)))
+```
+
+## Sign Reversal with Fixed Effects
+
+```{julia}
+D = reshape(df.D, n,T)
+y = reshape(df.y, n,T)
+function plotATT(D, y)
+  n,T = size(D)
+  groups = unique(eachrow(D))
+  ATT = zeros(0)
+  tt = zeros(0)
+  ts = zeros(0)
+  for t ∈ 2:T
+    for s ∈ 1:t-1
+      treatts = D[:,t] .& .!D[:,s]
+      controlts = .!D[:,t] .& .!D[:,s]
+      if any(treatts) && any(controlts)
+        push!(ATT, mean(y[treatts,t] - y[treatts,s]) - mean(y[controlts,t] - y[controlts,s]))
+        push!(tt,t)
+        push!(ts,s)
+      end
+    end
+  end
+  plt = Plot()
+  hiddenaxis=Config(autorange=true,
+                    showgrid=false,
+                    zeroline=false,
+                    showline=false,
+                    autotick=true,
+                    ticks="",
+                    showticklabels=false)
+  plt.layout = Config(xaxis=hiddenaxis,yaxis=hiddenaxis)
+  fig=plt(x=tt,y=ts,z=ATT,name="ATTₜ,ₜ₋ₛ", mode="markers",type="scatter3d")
+end
+fig=plotATT(D,y)
+Cobweb.save(Page(fig), "ATT.html")
+HTML("<iframe src=\"ATT.html\" width=\"900\"  height=\"700\"></iframe>")
+```
+
 ## When to worry
 
-- If multiple time times and treatment heterogeneity
+- If multiple treatment times and treatment heterogeneity
 - Even if weights do not have wrong sign, the fixed effects estimate is hard to interpret
 - Same logic applies more generally -- not just to time
   - E.g. if have group effects, some treated units in multiple groups,
   and $E[y(1) - y(0) | group]$ varies
 
+# What to Do?
+
+## Plug-in Estimator
+
+- Follow identification
+$$
+\begin{align*}
+ATT_{t,t-s}& = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]
+\end{align*}
+$$
+and estimate
+$$
+\begin{align*}
+\widehat{ATT}_{t,t-s} = & \frac{\sum_i y_{it} D_{it}(1-D_{it-s})}{\sum_i D_{it}(1-D_{it-s})} \\
+& - \frac{\sum_i y_{it} (1-D_{it})(1-D_{it-s})}{\sum_i (1-D_{it})(1-D_{it-s})}
+\end{align*}
+$$
+and perhaps some average, e.g. (there are other reasonable weighted averages)
+$$
+\sum_{t=1}^T \frac{\sum_i D_{it}}{\sum_{i,s} D_{i,s}} \frac{1}{t-1} \sum_{s=1}^{t-1} \widehat{ATT}_{t,t-s}
+$$
+  - Inference? Optimal? Code?
+
+## What to Do?
+
+- Problem is possible correlation of $(y_{it}(1) - y_{it}(0))D_{it}$ with $\tilde{D}_{it}$
+   - $\tilde{D}_{it}$ is function of $t$ and $(D_{i1}, ..., D_{iT})$
+   - Estimating separate coefficient for each combination of $t$ and $(D_{i1}, ..., D_{iT})$ will eliminate correlation / flexibly model treatment effect heterogeneity
+
+## Cohorts
+
+- Cohorts = unique sequences of $(D_{i1}, ..., D_{iT})$
+  - In last simulated example, three cohorts
+      1. $(0, 0, 0, 0, 0, 0, 0, 0, 0)$
+      2. $(0, 0, 0, 0, 0, 0, 0, 1, 1)$
+      3. $(0, 1, 1, 1, 1, 1, 1, 1, 1)$
+
+## Regression with Cohort Interactions
+
+```{julia}
+using CategoricalArrays
+
+function createCohorts(df)
+  n = length(unique(df.id))
+  T = length(unique(df.t))
+  sorted = sort(df, [:id, :t])
+  D = reshape(sorted.D, T,n)'
+  groups = sort(unique(eachrow(D)))
+  cohorts = [findfirst(d == g for g in groups) for d in eachrow(D)]
+  df=leftjoin(sorted, DataFrame(cohort=categorical(cohorts), id=unique(sorted.id)), on=:id)
+  df.DCt .= "untreated"
+  for r in 1:T
+    for c in unique(df.cohort)
+      dct = (df.t .== r) .& (df.cohort .== c) .& df.D
+      if (any(dct))
+        df.DCt[dct] .= "c$(c),t$(r)"
+        df[!,"Dc$(c)t$(r)"] .= false
+        df[!,"Dc$(c)t$(r)"][dct] .= true
+      end
+    end
+  end
+  df.ct = categorical(df.t)
+  df
+end
+
+dfc = createCohorts(df)
+
+reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)))
+```
+## Regression with Cohort Interactions
+
+```{julia}
+m=reg(dfc, @formula(y ~ -1 + cohort*ct + fe(id)), save=:fe)
+```
+
+## What to Do?
+
+- Understand existing methods: read reviews @dd2022, @roth2023
+- Use an appropriate package: partial list on https://asjadnaqvi.github.io/DiD/
+
+
 # Pre-trends
 
+## Pre-trends
 
+- Parallel trends assumption
 
+$$
+\Er[\color{red}{y_{it}(0)} - y_{it-s}(0) | D_{it}=1,  D_{it-s}=0] = \Er[y_{it}(0) - y_{it-s}(0) | D_{it}=0, D_{it-s}=0]
+$$
 
+- More plausible if there are parallel pre-trends
 
+$$
+\begin{align*}
+& \Er[y_{it-r}(0) - y_{it-s}(0) | D_{it}=1, D_{it-r}=0,  D_{it-s}=0] = \\
+& = \Er[y_{it-r}(0) - y_{it-s}(0) | D_{it}=0, D_{it-r}=0, D_{it-s}=0]
+\end{align*}
+$$
 
+- Always at least plot pre-trends
 
+## Testing for Pre-trends
+
+- Is it a good idea to test
+
+$$
+\begin{align*}
+H_0 : & \Er[y_{it-r} - y_{it-s} | D_{it}=1, D_{it-r}=0,  D_{it-s}=0] = \\
+& = \Er[y_{it-r} - y_{it-s} | D_{it}=0, D_{it-r}=0, D_{it-s}=0]?
+\end{align*}
+$$
+  - Even if not testing formally, we do it informally by plotting
+
+## Testing for Pre-trends
+
+- Assume: $(y_{i1}, ..., y_{iT}, D_{i1},..., D_{iT})$ i.i.d. across $i$ with finite second moments
+- Let
+$$
+\tau^{1t}_{r,s} = \Er[y_{ir}|D_{it}=1, D_{ir}=0, D_{is}=0]
+$$
+$$
+\tau^{0t}_{r,s} = \Er[y_{ir}|D_{it}=0, D_{ir}=0, D_{is}=0]
+$$
+- Plugin estimators
+$$
+\hat{\tau}^{1t}_{r,s} = \frac{\sum_i y_{ir} D_{it}(1-D_{ir})(1-D_{is})} {\sum_i D_{it}(1-D_{ir})(1-D_{is})}
+$$
+$$
+\hat{\tau}^{0t}_{r,s} = \frac{\sum_i y_{ir} (1-D_{it})(1-D_{ir})(1-D_{is})} {\sum_i (1-D_{it})(1-D_{ir})(1-D_{is})}
+$$
+
+## Testing for Pre-trends
+
+- Note:
+$$
+\begin{align*}
+\hat{\tau}^{1t}_{r,s} - \tau^{1t}_{r,s} = & \frac{\frac{1}{n}\sum_i y_{ir} D_{it}(1-D_{ir})(1-D_{is}) - \Er[y_{ir} D_{it}(1-D_{ir})(1-D_{is})]}{\Er[D_{it}(1-D_{ir})(1-D_{is})]} + \\
+& + \frac{\Er[y_{it} D_{it}(1-D_{ir})(1-D_{is})]}{\Er[D_{it}(1-D_{ir})(1-D_{is})]^2} \left(\frac{1}{n} \sum_i D_{it}(1-D_{ir})(1-D_{is}) - \Er[D_{it}(1-D_{ir})(1-D_{is})] \right)
+\end{align*}
+$$
+and similar expression for $\hat{\tau}^{0t}_{r,s}$
+- Use CLT to get joint asymptotic distribution of pre-trends and $ATT_{t,t-s}$
+
+## Testing for Pre-trends
+
+- E.g. $T=3$, $D_{i3}=1$ for some $i$, other $D_{it}=0$
+$$
+\begin{align*}
+\sqrt{n} \left[
+\begin{pmatrix} \hat{\tau}^{13}_{2,1} - \hat{\tau}^{03}_{2,1} \\
+\underbrace{\hat{\tau}^{13}_{3,2} - \hat{\tau}^{03}_{3,2}}_{\widehat{ATT}_{3,2}}
+\end{pmatrix} -
+\begin{pmatrix}
+\tau^{13}_{2,1} - \tau^{03}_{2,1} \\
+ATT_{3,2}
+\end{pmatrix}
+\right] \indist N(0, \Sigma)
+\end{align*}
+$$
+
+- Distribution of $\widehat{ATT}_{3,2}$ conditional on fail to reject
+$\tau^{13}_{2,1} - \tau^{03}_{2,1} = 0$ is a truncated normal
+
+- @roth2022 : test can have low power, and in plausible violations, $\widehat{ATT}_{3,2}$ conditional on failing to reject is biased
+
+## Bounds from Pre-trends
+
+- Let $\Delta$ be violation of parallel trends
+$$
+\Delta = \Er[\color{red}{y_{it}(0)} - y_{it-1}(0) | D_{it}=1,  D_{it-1}=0] - \Er[y_{it}(0) - y_{it-1}(0) | D_{it}=0, D_{it-1}=0]
+$$
+
+- Assume $\Delta$ is bounded by deviation from parallel of pre-trends
+$$
+|\Delta| \leq M \max_{r} \left\vert \tau^{1t}_{t-r,t-r-1} - \tau^{0t}_{t-r,t-r-1} \right\vert
+$$
+for some chosen $M$
+
+- See @rambachan2023
 
 
 ## Reading

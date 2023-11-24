@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 7"
 #author: "Paul Schrimpf"
-date: 2023-11-27
+date: 2023-12-01
 bibliography: ../../626.bib
 ---
 
@@ -21,7 +21,50 @@ $$
 
 # Problem 1
 
+In "Marijuana legalization and traffic fatalities revisited", @chen2023 analyze how marijuana legalization in the US affected traffic fatalities.
 
+## TWFE
 
+@chen2023 begin by estimating a two-way fixed effects (TWFE) model,
+$$
+F_{it} = \alpha + \beta_1 MM_{it} + \beta_2 RM_{it} + X_{it}\gamma + \eta_i + \theta_t + \varepsilon_{it}
+$$
+where $F_{it}$ is log traffic fatalaties per 100,000 in state $i$ and year $t$, $MM_{it}$ is an indicator for medical marijuana being legal, $RM_{it}$ is an indicator for legalized recreational marijuana, and $X_{it}$ are state covariates including traffic volume, economic conditions, and demographics. @chen2023 present estimates of the TWFE model "for comparison with the literature," but also compute other estimators. Why? What is a problem with TWFE here?
+
+## Multiple Treatments
+
+Suppose $1/2$ of states legalized medical marijuana in a single year and no other changes occurred in $MM_{it}$. Also suppose $1/4$ of states legalized recretaional marijuana in a single later year and no other changes occurred in $RM_{it}$. That is, there is no variation in treatment timing, but there are multiple treatments. For simplicity, ignore covariates. Would estimating a TWFE model,
+$$
+F_{it} = \alpha + \beta_1 MM_{it} + \beta_2 RM_{it} + \eta_i + \theta_t + \varepsilon_{it}
+$$
+recover an interpretable average treatment effect on the treated?
+
+## $DID_M$, $DID_\ell$
+
+@chen2023 also report the $DID_M$ and $DID_\ell$ estimators? What are these? What sort of average treatment effect do they estimate? (You will need to read @chen2023 and perhaps also @dd2020 to answer this.)
+
+## Results
+
+Table 2 and Figure 1 show the main results of the paper. What conclusions would you draw from these?
+
+![table 2](chen-tab2.png)
+
+![figure 1](chen-fig1.png)
 
 # Problem 2
+
+Consider the following linear regression model such that
+$$
+Y_i = β_0 + X_i β_1 + u_i ,
+$$
+where $X_i$ and $Y_i$ are observed random variables. Let us assume that
+$\Er [u_i ] = 0$ but $\cov(X_i , u_i ) \neq 0$.
+Suppose that there exists a variable $Z_i$ such that
+$\cov(X_i , Z_i ) > 0$ and
+$\cov(Z_i , u_i ) > 0$.
+
+Find the asymptotic bias of the 2SLS estimator of
+$\hat{\beta}_1$. (Recall that the asymptotic bias of an estimator is
+its probability limit minus the true parameter.) Can you determine
+unambiguously whether the 2SLS estimator tends to underestimate or
+overestimate the parameter $β_1$ ? If so, give explanations how.

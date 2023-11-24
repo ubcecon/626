@@ -1,0 +1,55 @@
+---
+title: "ECON 626: Problem Set 7"
+#author: "Paul Schrimpf"
+date: 2022-12-06
+bibliography: ../../626.bib
+---
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+$$
+
+# Problem 1
+
+
+Consider the following linear regression model such that
+$$
+Y_i = β_0 + X_i β_1 + u_i ,
+$$
+where $X_i$ and $Y_i$ are observed random variables. Let us assume that
+$\Er [u_i ] = 0$ but $\cov(X_i , u_i ) \neq 0$.
+Suppose that there exists a variable $Z_i$ such that
+$\cov(X_i , Z_i ) > 0$ and
+$\cov(Z_i , u_i ) > 0$.
+
+Find the asymptotic bias of the 2SLS estimator of
+$\hat{\beta}_1$. (Recall that the asymptotic bias of an estimator is
+its probability limit minus the true parameter.) Can you determine
+unambiguously whether the 2SLS estimator tends to underestimate or
+overestimate the parameter $β_1$ ? If so, give explanations how.
+
+# Problem 2
+
+In the linear model,
+$$
+Y_i = \beta_0 + X_i \beta_1 + u_i
+$$
+assume that $\Er[u_i] = 0$ and $X_i \in \R^1$. Suppose that $\Er[X_i u_i] \neq 0$, but,
+somewhat strangely, you assume $\Er[u_i^2|X_i] = \sigma^2$.
+
+1. Show that a set of two elements that contains $\beta_1$ is identified. Denote this set by $B_1$.
+**Hint: use the moment condition $\Er[u_i^2 (X_i-\Er[X_i])]$.**
+
+2. Describe an estimator for $B_1$ and show that it is consistent. State any additional assumptions needed.
+
+3. Find the asymptotic distribution of your estimator for $B_1$. State any additional assumptions needed.

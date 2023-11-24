@@ -347,7 +347,35 @@
     "href": "problemsets/07/ps07.html",
     "title": "ECON 626: Problem Set 7",
     "section": "",
-    "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]\n\nProblem 1\n\n\nProblem 2"
+    "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#twfe",
+    "href": "problemsets/07/ps07.html#twfe",
+    "title": "ECON 626: Problem Set 7",
+    "section": "TWFE",
+    "text": "TWFE\nChen and French (2023) begin by estimating a two-way fixed effects (TWFE) model, \\[\nF_{it} = \\alpha + \\beta_1 MM_{it} + \\beta_2 RM_{it} + X_{it}\\gamma + \\eta_i + \\theta_t + \\varepsilon_{it}\n\\] where \\(F_{it}\\) is log traffic fatalaties per 100,000 in state \\(i\\) and year \\(t\\), \\(MM_{it}\\) is an indicator for medical marijuana being legal, \\(RM_{it}\\) is an indicator for legalized recreational marijuana, and \\(X_{it}\\) are state covariates including traffic volume, economic conditions, and demographics. Chen and French (2023) present estimates of the TWFE model “for comparison with the literature,” but also compute other estimators. Why? What is a problem with TWFE here?"
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#multiple-treatments",
+    "href": "problemsets/07/ps07.html#multiple-treatments",
+    "title": "ECON 626: Problem Set 7",
+    "section": "Multiple Treatments",
+    "text": "Multiple Treatments\nSuppose \\(1/2\\) of states legalized medical marijuana in a single year and no other changes occurred in \\(MM_{it}\\). Also suppose \\(1/4\\) of states legalized recretaional marijuana in a single later year and no other changes occurred in \\(RM_{it}\\). That is, there is no variation in treatment timing, but there are multiple treatments. For simplicity, ignore covariates. Would estimating a TWFE model, \\[\nF_{it} = \\alpha + \\beta_1 MM_{it} + \\beta_2 RM_{it} + \\eta_i + \\theta_t + \\varepsilon_{it}\n\\] recover an interpretable average treatment effect on the treated?"
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#did_m-did_ell",
+    "href": "problemsets/07/ps07.html#did_m-did_ell",
+    "title": "ECON 626: Problem Set 7",
+    "section": "\\(DID_M\\), \\(DID_\\ell\\)",
+    "text": "\\(DID_M\\), \\(DID_\\ell\\)\nChen and French (2023) also report the \\(DID_M\\) and \\(DID_\\ell\\) estimators? What are these? What sort of average treatment effect do they estimate? (You will need to read Chen and French (2023) and perhaps also Chaisemartin and D’Haultfœuille (2020) to answer this.)"
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#results",
+    "href": "problemsets/07/ps07.html#results",
+    "title": "ECON 626: Problem Set 7",
+    "section": "Results",
+    "text": "Results\nTable 2 and Figure 1 show the main results of the paper. What conclusions would you draw from these?\n\n\n\ntable 2\n\n\n\n\n\nfigure 1"
   },
   {
     "objectID": "problemsets/05/ps05.html",
@@ -2153,6 +2181,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\n\nNov 22, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nNov 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\n\nOct 12, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\n\nNov 22, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n  \n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\n\nSep 24, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\n\nOct 16, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\n\nSep 11, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n  \n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\n\nSep 17, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   }
 ]

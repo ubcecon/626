@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-10-16">
+  <meta name="dcterms.date" content="2023-11-27">
   <title>ECON 626 - Instrumental Variables Estimation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -426,7 +426,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-10-16</p>
+  <p class="date">2023-11-27</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -504,7 +504,7 @@ Y_i = \underbrace{X_i}_{\in \R^k}' \beta_0 + u_i
 \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\hat{\beta}^{IV}) \approx 0
 \]</span> by solving <span class="math display">\[
 \begin{align*}
-\hat{\beta}^{IV} &amp; = \mathrm{arg}\min_\beta \norm{ \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta }_{W^{1/2}}^2 \\
+\hat{\beta}^{IV} &amp; = \mathrm{arg}\min_\beta \norm{ \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta) }_{W}^2 \\
 &amp; = \mathrm{arg}\min_\beta \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)' W \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)
 \end{align*}
 \]</span></li>
@@ -557,7 +557,7 @@ Y_i = \underbrace{X_i}_{\in \R^k}' \beta_0 + u_i
 <ul>
 <li>E.g. if i.i.d. with <span class="math inline">\(\Er[\norm{X_i}^4]\)</span> and <span class="math inline">\(\Er[\norm{Z_i}^4]\)</span> finite and <span class="math inline">\(\Er[u_i^2|Z_i=z] = \sigma^2\)</span></li>
 <li>then <span class="math inline">\(\frac{1}{\sqrt{n}} \sum Z_i u_i \indist N(0, \sigma^2 \Er[Z_iZ_i'])\)</span></li>
-<li><span class="math inline">\(V = \sigma^2 (\Er[Z_iX_i]' W \Er[Z_iX_i'])^{-1} (\Er[Z_iX_i']' W \Er[Z_i Z_i'] W \Er[Z_i X_i']) (\Er[Z_iX_i]' W \Er[Z_iX_i'])^{-1}\)</span></li>
+<li><span class="math inline">\(V = \sigma^2 (\Er[Z_iX_i']' W \Er[Z_iX_i'])^{-1} (\Er[Z_iX_i']' W \Er[Z_i Z_i'] W \Er[Z_i X_i']) (\Er[Z_iX_i']' W \Er[Z_iX_i'])^{-1}\)</span></li>
 </ul></li>
 </ul>
 </section>

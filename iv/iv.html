@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-11-27">
+  <meta name="dcterms.date" content="2023-11-28">
   <title>ECON 626 - Instrumental Variables Estimation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -426,7 +426,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-11-27</p>
+  <p class="date">2023-11-28</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -780,7 +780,7 @@ X_i = Z_i' \pi_z + W_i' \pi_W + \nu_i
 <section id="testing-for-relevance-2" class="slide level2">
 <h2>Testing for Relevance</h2>
 <ul>
-<li><span class="citation" data-cites="lee2022">Lee et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> : F<span class="math inline">\(&gt;&gt;10\)</span> is needed in practice<sup>1</sup></li>
+<li><span class="citation" data-cites="lee2022">David S. Lee et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> : F<span class="math inline">\(&gt;&gt;10\)</span> is needed in practice<sup>1</sup></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>The argument here is that practitioners misuse the <span class="math inline">\(F&gt;10\)</span> threshold, not that <span class="citation" data-cites="stockyogo2002">Stock and Yogo (<a href="#/references" role="doc-biblioref" onclick="">2002</a>)</span> is wrong.</p></li></ol></aside></section>
 <section id="identification-robust-inference" class="slide level2">
@@ -808,7 +808,18 @@ AR(\beta) = n\left(\frac{1}{n} Z'(y-X\beta) \right)' \Sigma(\beta)^{-1} \left(\f
 <li>Only gives confidence region for all of <span class="math inline">\(\beta\)</span>, not confidence intervals for single co-ordinates</li>
 </ol></li>
 <li><p>Kleibergen’s LM and Moreira CLR tests address 1, see <a href="https://schrimpf.github.io/GMMInference.jl/identificationRobustInference/#other-identification-robust-tests">my other notes</a> for simulations and references</p></li>
-<li><p>tF test from <span class="citation" data-cites="lee2022">Lee et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> addresses 2</p></li>
+<li><p>Various approaches to 2 see <span class="citation" data-cites="ass2019">Andrews, Stock, and Sun (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span> for a review</p></li>
+<li><p>If you want something close to the usual t-test and have 1 endogenous regression and 1 instrument, the tF test from <span class="citation" data-cites="lee2022">David S. Lee et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, or better yet, recently improved VtF test in <span class="citation" data-cites="lee2023">David S. Lee et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p></li>
+</ul>
+</section>
+<section id="further-reading" class="slide level2">
+<h2>Further Reading</h2>
+<ul>
+<li>Recent reviews:
+<ul>
+<li><span class="citation" data-cites="ass2019">Andrews, Stock, and Sun (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
+<li><span class="citation" data-cites="keane2023">Keane and Neal (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
+</ul></li>
 </ul>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
@@ -818,8 +829,17 @@ AR(\beta) = n\left(\frac{1}{n} Z'(y-X\beta) \right)' \Sigma(\beta)^{-1} \left(\f
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-ass2019" class="csl-entry" role="listitem">
+Andrews, Isaiah, James H. Stock, and Liyang Sun. 2019. <span>“Weak Instruments in Instrumental Variables Regression: Theory and Practice.”</span> <em>Annual Review of Economics</em> 11 (1): 727–53. <a href="https://doi.org/10.1146/annurev-economics-080218-025643">https://doi.org/10.1146/annurev-economics-080218-025643</a>.
+</div>
+<div id="ref-keane2023" class="csl-entry" role="listitem">
+Keane, Michael, and Timothy Neal. 2023. <span>“Instrument Strength in IV Estimation and Inference: A Guide to Theory and Practice.”</span> <em>Journal of Econometrics</em> 235 (2): 1625–53. https://doi.org/<a href="https://doi.org/10.1016/j.jeconom.2022.12.009">https://doi.org/10.1016/j.jeconom.2022.12.009</a>.
+</div>
 <div id="ref-lee2022" class="csl-entry" role="listitem">
 Lee, David S., Justin McCrary, Marcelo J. Moreira, and Jack Porter. 2022. <span>“Valid t-Ratio Inference for IV.”</span> <em>American Economic Review</em> 112 (10): 3260–90. <a href="https://doi.org/10.1257/aer.20211063">https://doi.org/10.1257/aer.20211063</a>.
+</div>
+<div id="ref-lee2023" class="csl-entry" role="listitem">
+Lee, David S, Justin McCrary, Marcelo J Moreira, Jack R Porter, and Luther Yap. 2023. <span>“What to Do When You Can’t Use ’1.96’ Confidence Intervals for IV.”</span> Working Paper 31893. Working Paper Series. National Bureau of Economic Research. <a href="https://doi.org/10.3386/w31893">https://doi.org/10.3386/w31893</a>.
 </div>
 <div id="ref-song2021" class="csl-entry" role="listitem">
 Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>

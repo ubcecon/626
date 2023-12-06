@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-10-16">
+  <meta name="dcterms.date" content="2023-12-06">
   <title>ECON 626 - Generalized Method of Moments</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -358,7 +358,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-10-16</p>
+  <p class="date">2023-12-06</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -464,12 +464,12 @@ Y_i = X_i' \beta_0 + u_i
 </section>
 <section id="identification" class="slide level2">
 <h2>Identification</h2>
-<section id="assumption-id" class="callout-info" data-icon="false">
-<h3>Assumption: ID</h3>
+<ul>
+<li>Assume:</li>
+</ul>
 <p><span class="math inline">\(\exists \theta_0 \in \Theta\)</span> s.t. <span class="math inline">\(\forall \epsilon&gt;0\)</span>, <span class="math display">\[
 \inf_{\theta: \norm{\theta-\theta_0} &gt; \epsilon} \norm{\Er[g(Z_i,\theta)]} &gt; \norm{\Er[g(Z_i,\theta_0)]}
 \]</span></p>
-</section>
 <ul>
 <li>Slightly easier assumption to verify is (loosely) <span class="math inline">\(g(z,\theta)\)</span> continuous and <span class="math inline">\(\theta_0\)</span> is unique minimizer of <span class="math inline">\(\norm{\Er[g(Z_i,\theta)]}\)</span>, see lemma 1 in <span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
 </ul>
@@ -490,12 +490,6 @@ Q^{GMM}(\theta) = \frac{1}{2} \norm{\Er[g(Z_i,\theta)]}^2_s = \frac{1}{2} \Er[g(
 </section>
 <section id="consistency" class="slide level2">
 <h2>Consistency</h2>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>GMM Consistency</strong></p>
-</div>
-<div class="callout-content">
 <p>Suppose:</p>
 <ol type="1">
 <li><p><span class="math inline">\(\exists \theta_0 \in \Theta\)</span> s.t. <span class="math inline">\(\forall \epsilon&gt;0\)</span>, <span class="math inline">\(\inf_{\theta: \norm{\theta-\theta_0} &gt; \epsilon} \norm{\Er[g(Z_i,\theta)]} &gt; \norm{\Er[g(Z_i,\theta_0)]}\)</span></p></li>
@@ -503,18 +497,9 @@ Q^{GMM}(\theta) = \frac{1}{2} \norm{\Er[g(Z_i,\theta)]}^2_s = \frac{1}{2} \Er[g(
 <li><p><span class="math inline">\(S_n \inprob S\)</span></p></li>
 </ol>
 <p>Then <span class="math inline">\(\hat{\theta} \inprob \theta_0\)</span></p>
-</div>
-</div>
-</div>
 </section>
 <section id="asymptotic-normality" class="slide level2">
 <h2>Asymptotic Normality</h2>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>GMM Asymptotic Normality</strong></p>
-</div>
-<div class="callout-content">
 <p>Suppose:</p>
 <ol type="1">
 <li><p><span class="math inline">\(\theta_0 \in int(\Theta)\)</span>, &amp; <span class="math inline">\(g(z,\theta)\)</span> is twice continuously differentiable</p></li>
@@ -524,27 +509,15 @@ Q^{GMM}(\theta) = \frac{1}{2} \norm{\Er[g(Z_i,\theta)]}^2_s = \frac{1}{2} \Er[g(
 <p>Then, <span class="math display">\[
 \sqrt{n}(\hat{\theta} - \theta_0) \indist N(0, B_0^{-1} \Omega_0 B_0^{-1})
 \]</span></p>
-</div>
-</div>
-</div>
 </section>
 <section id="optimal-weighting-matrix" class="slide level2">
 <h2>Optimal Weighting Matrix</h2>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Lemma 3</strong></p>
-</div>
-<div class="callout-content">
 <p>Let <span class="math display">\[
 \begin{align*}
 M &amp; = (\Gamma'C\Gamma)^{-1} \Gamma' C \Sigma C \Gamma (\Gamma'C\Gamma)^{-1} \\
 M^* &amp; = (\Gamma' \Sigma^{-1} \Gamma)^{-1}
 \end{align*}
 \]</span> then <span class="math inline">\(M \geq M^*\)</span></p>
-</div>
-</div>
-</div>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>

@@ -117,16 +117,12 @@ for any $Z_t \in \mathcal{I}_t$
 
 ## Identification
 
-::: {.callout-info icon=false}
-
-### Assumption: ID
+- Assume:
 
 $\exists \theta_0 \in \Theta$ s.t. $\forall \epsilon>0$,
 $$
 \inf_{\theta: \norm{\theta-\theta_0} > \epsilon} \norm{\Er[g(Z_i,\theta)]} > \norm{\Er[g(Z_i,\theta_0)]}
 $$
-
-:::
 
 - Slightly easier assumption to verify is (loosely) $g(z,\theta)$ continuous and
 $\theta_0$ is unique minimizer of $\norm{\Er[g(Z_i,\theta)]}$, see lemma 1 in @song2021
@@ -148,9 +144,6 @@ $$
 
 ## Consistency
 
-::: {.callout-tip icon=false}
-
-### GMM Consistency
 
 Suppose:
 
@@ -162,15 +155,8 @@ Suppose:
 
 Then $\hat{\theta} \inprob \theta_0$
 
-
-:::
-
 ## Asymptotic Normality
 
-
-::: {.callout-tip icon=false}
-
-### GMM Asymptotic Normality
 
 Suppose:
 
@@ -188,13 +174,7 @@ $$
 \sqrt{n}(\hat{\theta} - \theta_0) \indist N(0, B_0^{-1} \Omega_0 B_0^{-1})
 $$
 
-:::
-
 ## Optimal Weighting Matrix
-
-::: {.callout-tip icon=false}
-
-### Lemma 3
 
 Let
 $$
@@ -204,8 +184,6 @@ M^* & = (\Gamma' \Sigma^{-1} \Gamma)^{-1}
 \end{align*}
 $$
 then $M \geq M^*$
-
-:::
 
 
 # References

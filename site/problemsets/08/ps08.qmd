@@ -1,0 +1,85 @@
+---
+title: "ECON 626: Problem Set 8"
+#author: "Paul Schrimpf"
+date: 2023-12-06 (not graded)
+bibliography: ../../626.bib
+---
+
+$$
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{En}}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+$$
+
+# Problem 1
+
+In the linear model,
+$$
+Y_i = \beta_0 + X_i \beta_1 + u_i
+$$
+assume that $\Er[u_i] = 0$ and $X_i \in \R^1$. Suppose that $\Er[X_i u_i] \neq 0$, but,
+somewhat strangely, you assume $\Er[u_i^2|X_i] = \sigma^2$.
+
+1. Show that a set of two elements that contains $\beta_1$ is identified. Denote this set by $B_1$.
+**Hint: use the moment condition $\Er[u_i^2 (X_i-\Er[X_i])]$.**
+
+2. Describe an estimator for $B_1$ and show that it is consistent. State any additional assumptions needed.
+
+3. Find the asymptotic distribution of your estimator for $B_1$. State any additional assumptions needed.
+
+# Problem 2
+
+^[Adapted from the final for this course in 2019.]
+
+Suppose that we observe $Y_1,...,Y_n$ and $X_1,...,X_n$ such that
+$$
+\begin{eqnarray*}
+	Y_i = f(X_i;\beta) + u_i,
+\end{eqnarray*}
+$$
+where, $\beta = (\beta_0,...,\beta_{k-1})' \in \mathbf{R}^k$,
+$$
+\begin{eqnarray*}
+	f(x;b) = b_0 + b_1 x + b_2 x^2+....+ b_{k-1}x^{k-1}, \quad b = (b_0,b_1,...,b_{k-1})',
+\end{eqnarray*}
+$$
+and $X_i, u_i$ are i.i.d. with $\Er[|X_i|^{2(k-1)}]<\infty$ and
+$\Er[|X_i^{k-1} u_i|^2] < \infty$. Assume that $\Er[\tilde{X}_i
+\tilde{X}_i'] is nonsingular, where $\tilde X_i = [1,X_i,X_i^2,...,X_i^{k-1}]'$.
+Our focus on the predicted value of
+$$
+\begin{eqnarray*}
+	\theta_0 = f(2.5;\beta).
+\end{eqnarray*}\medskip
+$$
+
+## Asymptotic Distribution
+
+Let $\hat \beta$ be the least squares estimator of $\beta$. Find out the asymptotic distribution of $\hat \theta = f(2.5;\hat \beta)$.
+
+## Confidence Interval
+Construct a confidence interval $C$ for the predicted value $\theta_0$ using $\hat \theta$ such that
+$$
+\begin{eqnarray*}
+	P\{\theta_0 \in C\} = 0.95.
+\end{eqnarray*}
+$$
+
+## Testing Linearity
+
+We would like to test whether $f(x;b)$ is linear in $x$ or not. Let $\gamma = (\beta_2,\beta_3,...,\beta_{k-1})'$, and consider the following hypothesis:
+$$
+\begin{eqnarray*}
+	H_0&:& \gamma = 0, \text{ against}\\
+	H_1&:& \gamma \ne 0.
+\end{eqnarray*}
+$$
+Provide a test with size 5\%. Give a brief explanation of why the test works (i.e., why it has size 5\% and has nontrivial power under the alternative hypothesis).

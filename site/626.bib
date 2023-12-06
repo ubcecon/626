@@ -1,3 +1,4 @@
+
 @misc{song2021,
 title={Introduction to Econometrics},
 author={Song, Kyunchul},
@@ -642,4 +643,70 @@ url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/soej.12657},
 eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/soej.12657},
 abstract = {Abstract The legal landscape for marijuana in the United States has changed dramatically over the last three decades. While several studies have examined the relationship between marijuana legalization and traffic fatalities, some of the research is becoming outdated and existing evidence remains mixed. Our research revisits the topic with two updates. First, our study includes states that legalized marijuana more recently and provides updated evidence on the effects of marijuana legalization. Second, considering recent discussions about the limitations of difference-in-differences designs, we employ alternative estimators that are robust to heterogeneous and dynamic treatment effects. Overall, our alternative estimators suggest either a smaller reduction (i.e., 3.9\% drop in the overall fatality rate) or no change in traffic fatalities associated with legalizing marijuana for medical use, compared to the two-way fixed-effect estimator. We find no significant impact on traffic fatalities associated with legalizing marijuana for recreational use.},
 year = {2023}
+}
+
+
+@techreport{lee2023,
+ title = "What to do when you can't use '1.96' Confidence Intervals for IV",
+ author = "Lee, David S and McCrary, Justin and Moreira, Marcelo J and Porter, Jack R and Yap, Luther",
+ institution = "National Bureau of Economic Research",
+ type = "Working Paper",
+ series = "Working Paper Series",
+ number = "31893",
+ year = "2023",
+ month = "November",
+ doi = {10.3386/w31893},
+ URL = "http://www.nber.org/papers/w31893",
+ abstract = {To address the well-established large-sample invalidity of the +/-1.96 critical values for the t-ratio in the single variable just-identified IV model, applied research typically qualifies the inference based on the first-stage-F (Staiger and Stock (1997) and Stock and Yogo (2005)). We fully extend this F-based approach to its logical conclusion by presenting new critical values for the t-ratio to additionally accommodate values of F that do not meet existing thresholds needed for validity. These new t-ratio critical values simultaneously fix the main problem of over-rejection (invalidity) and the under-appreciated possibility of under-rejection (conservativeness) that can occur when relying solely on the usual 1.96 critical value. We show that the corresponding new confidence intervals are generally expected to be substantially shorter than competing “robust to weak instrument” intervals, including those from the recommended benchmark of Anderson and Rubin (1949) (AR). In a sample of 89 specifications from 10 recent empirical studies drawn from five general interest journals, the new “VtF” intervals are shorter than AR intervals 100 percent of the time, and even more likely to produce statistically significant results than the usual +/-1.96 procedure.},
+}
+
+
+@article{ass2019,
+author = {Andrews, Isaiah and Stock, James H. and Sun, Liyang},
+title = {Weak Instruments in Instrumental Variables Regression: Theory and Practice},
+journal = {Annual Review of Economics},
+volume = {11},
+number = {1},
+pages = {727-753},
+year = {2019},
+doi = {10.1146/annurev-economics-080218-025643},
+
+URL = {
+
+        https://doi.org/10.1146/annurev-economics-080218-025643
+
+
+
+},
+eprint = {
+
+        https://doi.org/10.1146/annurev-economics-080218-025643
+
+
+
+}
+,
+    abstract = { When instruments are weakly correlated with endogenous regressors, conventional methods for instrumental variables (IV) estimation and inference become unreliable. A large literature in econometrics has developed procedures for detecting weak instruments and constructing robust confidence sets, but many of the results in this literature are limited to settings with independent and homoskedastic data, while data encountered in practice frequently violate these assumptions. We review the literature on weak instruments in linear IV regression with an emphasis on results for nonhomoskedastic (heteroskedastic, serially correlated, or clustered) data. To assess the practical importance of weak instruments, we also report tabulations and simulations based on a survey of papers published in the American Economic Review from 2014 to 2018 that use IV. These results suggest that weak instruments remain an important issue for empirical practice, and that there are simple steps that researchers can take to better handle weak instruments in applications. }
+}
+
+@article{keane2023,
+title = {Instrument strength in IV estimation and inference: A guide to theory and practice},
+journal = {Journal of Econometrics},
+volume = {235},
+number = {2},
+pages = {1625-1653},
+year = {2023},
+issn = {0304-4076},
+doi = {https://doi.org/10.1016/j.jeconom.2022.12.009},
+url = {https://www.sciencedirect.com/science/article/pii/S0304407623000222},
+author = {Michael Keane and Timothy Neal},
+keywords = {Instrumental variables, Weak instruments, 2SLS, Endogeneity, F-test, Size distortion, Anderson–Rubin test, Likelihood ratio test, LIML, GMM, Fuller, JIVE},
+abstract = {Two stage least squares (2SLS) has poor properties if instruments are exogenous but weak. But how strong do instruments need to be for 2SLS estimates and test statistics to exhibit acceptable properties? A common standard is that first-stage F≥10. This is adequate to ensure two-tailed t-tests have modest size distortions. But other problems persist: In particular, we show 2SLS standard errors are artificially small in samples where the estimate is most contaminated by the OLS bias. Hence, if the bias is positive, the t-test has little power to detect true negative effects, and inflated power to find positive effects. This phenomenon, which we call a “power asymmetry,” persists even if first-stage F is in the thousands. Robust tests like Anderson–Rubin perform better, and should be used in lieu of the t-test even with strong instruments. We also show how 2SLS test statistics typically suffer from very low power if first-stage F is only 10, leading us to suggest a higher standard of instrument strength in empirical practice.}
+}
+
+@misc{arkhangelsky2023,
+Author = {Dmitry Arkhangelsky and Guido Imbens},
+Title = {Causal Models for Longitudinal and Panel Data: A Survey},
+Year = {2023},
+Eprint = {arXiv:2311.15458},
 }

@@ -507,7 +507,7 @@ for some chosen $M$
 
 ## Reading
 
-- Recent reviews: @roth2023, @dd2022
+- Recent reviews: @roth2023, @dd2022, @arkhangelsky2023
 - Early work pointing to problems with fixed effects:
   - @laporte2005, @wooldridge2005
 - Explosion of papers written just before 2020, published just after:

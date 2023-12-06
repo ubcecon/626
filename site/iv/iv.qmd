@@ -93,7 +93,7 @@ $$
 by solving
 $$
 \begin{align*}
-\hat{\beta}^{IV} & = \mathrm{arg}\min_\beta \norm{ \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta }_{W^{1/2}}^2 \\
+\hat{\beta}^{IV} & = \mathrm{arg}\min_\beta \norm{ \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta) }_{W}^2 \\
 & = \mathrm{arg}\min_\beta \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)' W \left( \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\beta\right)
 \end{align*}
 $$
@@ -137,7 +137,7 @@ $$
 - $\sqrt{n}(\hat{\beta}^{IV} - \beta_0) \indist N(0, V)$ if LLN applies to $\frac{1}{n}\sum_{i=1}^n Z_i X_i'$ and CLT to $\frac{1}{\sqrt{n}}\sum_{i=1}^n Z_i u_i$
   - E.g. if i.i.d. with $\Er[\norm{X_i}^4]$ and $\Er[\norm{Z_i}^4]$ finite and $\Er[u_i^2|Z_i=z] = \sigma^2$
   - then $\frac{1}{\sqrt{n}} \sum Z_i u_i \indist N(0, \sigma^2 \Er[Z_iZ_i'])$
-  - $V = \sigma^2 (\Er[Z_iX_i]' W \Er[Z_iX_i'])^{-1} (\Er[Z_iX_i']' W \Er[Z_i Z_i'] W \Er[Z_i X_i']) (\Er[Z_iX_i]' W \Er[Z_iX_i'])^{-1}$
+  - $V = \sigma^2 (\Er[Z_iX_i']' W \Er[Z_iX_i'])^{-1} (\Er[Z_iX_i']' W \Er[Z_i Z_i'] W \Er[Z_i X_i']) (\Er[Z_iX_i']' W \Er[Z_iX_i'])^{-1}$
 
 ## Optimal $W$
 
@@ -363,6 +363,14 @@ where $\Sigma(\beta) = \frac{1}{n} \sum_{i=1}^n Z_iZ_i' (y_i - X_i'\beta)^2$
 
 - Kleibergen's LM and Moreira CLR tests address 1, see [my other notes](https://schrimpf.github.io/GMMInference.jl/identificationRobustInference/#other-identification-robust-tests) for simulations and references
 
-- tF test from @lee2022 addresses 2
+- Various approaches to 2 see @ass2019 for a review
+
+- If you want something close to the usual t-test and have 1 endogenous regression and 1 instrument, the tF test from @lee2022, or better yet, recently improved VtF test in @lee2023
+
+## Further Reading
+
+- Recent reviews:
+  - @ass2019
+  - @keane2023
 
 # References

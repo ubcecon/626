@@ -2,118 +2,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ubcecon.github.io/626/syllabus626.html</loc>
-    <lastmod>2023-12-06T18:32:29.448Z</lastmod>
+    <lastmod>2023-12-13T22:40:57.299Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/projection/projection.html</loc>
-    <lastmod>2023-12-06T18:32:27.718Z</lastmod>
+    <lastmod>2023-12-13T22:40:55.469Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/midterm2023/midterm2023_solution.html</loc>
-    <lastmod>2023-12-06T18:32:26.471Z</lastmod>
+    <lastmod>2023-12-13T22:40:54.123Z</lastmod>
   </url>
   <url>
-    <loc>https://ubcecon.github.io/626/problemsets/final2022/final2022solution.html</loc>
-    <lastmod>2023-12-06T18:32:23.775Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/07/ps07_2022.html</loc>
-    <lastmod>2023-12-06T18:32:22.581Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/06/ps06.html</loc>
-    <lastmod>2023-12-06T18:32:21.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/04/ps04.html</loc>
-    <lastmod>2023-12-06T18:32:21.078Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/02/ps02.html</loc>
-    <lastmod>2023-12-06T18:32:20.381Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/probability/probability.html</loc>
-    <lastmod>2023-12-06T18:32:19.595Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/iv/iv.html</loc>
-    <lastmod>2023-12-06T18:32:01.121Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/index.html</loc>
-    <lastmod>2023-12-06T18:31:32.234Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/gmm/gmm.html</loc>
-    <lastmod>2023-12-06T18:31:31.037Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/did/did.html</loc>
-    <lastmod>2023-12-06T18:31:29.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/asymptotics/inprobability.html</loc>
-    <lastmod>2023-12-06T18:31:05.390Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/about.html</loc>
-    <lastmod>2023-12-06T18:28:35.078Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/asymptotics/indistribution.html</loc>
-    <lastmod>2023-12-06T18:31:04.830Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/asymptotics/ols.html</loc>
-    <lastmod>2023-12-06T18:31:28.724Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/estimation/estimation.html</loc>
-    <lastmod>2023-12-06T18:31:30.617Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/identification/identification.html</loc>
-    <lastmod>2023-12-06T18:31:31.711Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/iv/endogeneity.html</loc>
-    <lastmod>2023-12-06T18:31:32.554Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/measure/measure.html</loc>
-    <lastmod>2023-12-06T18:32:18.961Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/01/ps01.html</loc>
-    <lastmod>2023-12-06T18:32:20.028Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/03/ps03.html</loc>
-    <lastmod>2023-12-06T18:32:20.775Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/05/ps05.html</loc>
-    <lastmod>2023-12-06T18:32:21.445Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ubcecon.github.io/626/problemsets/07/ps07.html</loc>
-    <lastmod>2023-12-06T18:32:22.258Z</lastmod>
+    <loc>https://ubcecon.github.io/626/problemsets/final2023/final2023_solutions.html</loc>
+    <lastmod>2023-12-13T22:40:51.616Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/08/ps08.html</loc>
-    <lastmod>2023-12-06T18:32:22.965Z</lastmod>
+    <lastmod>2023-12-13T22:40:49.939Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/07/ps07.html</loc>
+    <lastmod>2023-12-13T22:40:49.289Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/05/ps05.html</loc>
+    <lastmod>2023-12-13T22:40:48.419Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/03/ps03.html</loc>
+    <lastmod>2023-12-13T22:40:47.749Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/01/ps01.html</loc>
+    <lastmod>2023-12-13T22:40:47.089Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/measure/measure.html</loc>
+    <lastmod>2023-12-13T22:40:45.943Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/iv/endogeneity.html</loc>
+    <lastmod>2023-12-13T22:40:04.169Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/identification/identification.html</loc>
+    <lastmod>2023-12-13T22:40:03.422Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/estimation/estimation.html</loc>
+    <lastmod>2023-12-13T22:40:02.325Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/asymptotics/ols.html</loc>
+    <lastmod>2023-12-13T22:40:00.488Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/asymptotics/indistribution.html</loc>
+    <lastmod>2023-12-13T22:39:36.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/about.html</loc>
+    <lastmod>2023-12-13T22:39:14.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/asymptotics/inprobability.html</loc>
+    <lastmod>2023-12-13T22:39:36.751Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/did/did.html</loc>
+    <lastmod>2023-12-13T22:40:01.758Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/gmm/gmm.html</loc>
+    <lastmod>2023-12-13T22:40:02.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/index.html</loc>
+    <lastmod>2023-12-13T22:40:03.865Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/iv/iv.html</loc>
+    <lastmod>2023-12-13T22:40:27.839Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/probability/probability.html</loc>
+    <lastmod>2023-12-13T22:40:46.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/02/ps02.html</loc>
+    <lastmod>2023-12-13T22:40:47.433Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/04/ps04.html</loc>
+    <lastmod>2023-12-13T22:40:48.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/06/ps06.html</loc>
+    <lastmod>2023-12-13T22:40:48.859Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/07/ps07_2022.html</loc>
+    <lastmod>2023-12-13T22:40:49.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ubcecon.github.io/626/problemsets/final2022/final2022solution.html</loc>
+    <lastmod>2023-12-13T22:40:50.743Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/midterm2022/midterm2022_solution.html</loc>
-    <lastmod>2023-12-06T18:32:24.465Z</lastmod>
+    <lastmod>2023-12-13T22:40:52.226Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/problemsets/midterm_review/midterm_review.html</loc>
-    <lastmod>2023-12-06T18:32:27.115Z</lastmod>
+    <lastmod>2023-12-13T22:40:54.816Z</lastmod>
   </url>
   <url>
     <loc>https://ubcecon.github.io/626/slides.html</loc>
-    <lastmod>2023-12-06T18:32:29.002Z</lastmod>
+    <lastmod>2023-12-13T22:40:56.846Z</lastmod>
   </url>
 </urlset>

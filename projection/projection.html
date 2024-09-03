@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-10-03">
-  <title>ECON 626 - Least Squares as a Projection</title>
+  <meta name="dcterms.date" content="2024-09-03">
+  <title>ECON 626 – Least Squares as a Projection</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,6 +34,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -178,7 +179,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -357,7 +359,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-10-03</p>
+  <p class="date">2024-09-03</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -429,7 +431,8 @@ y = X\beta + u
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>An <span class="math inline">\(L \subset V\)</span> is a <strong>subspace</strong> if <span class="math inline">\(\forall x, y \in L\)</span>, <span class="math inline">\(\alpha, \beta \in \R\)</span>, <span class="math inline">\(\alpha x + \beta y \in L\)</span></p>
+<p>An <span class="math inline">\(L \subset V\)</span> is a <strong>subspace</strong> if <span class="math inline">\(\forall x, y \in L\)</span>, <span class="math inline">\(\alpha,
+\beta \in \R\)</span>, <span class="math inline">\(\alpha x + \beta y \in L\)</span></p>
 </div>
 </div>
 </div>
@@ -481,7 +484,7 @@ L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(P_L y \in L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
+<p><span class="math inline">\(P_L y \in  L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
 \norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
 \]</span></p>
 </div>
@@ -529,7 +532,7 @@ L^\perp = \{x \in V: x' l = 0 \,\forall l \in L\}
 <div class="callout-content">
 <p>Linear <span class="math inline">\(G: V \to V\)</span> is</p>
 <ul>
-<li><p><strong>idempotent</strong> if <span class="math inline">\(G (G y) = G y\)</span> <span class="math inline">\(\forall y \in V\)</span></p></li>
+<li><p><strong>idempotent</strong> if <span class="math inline">\(G (G y) =  G y\)</span> <span class="math inline">\(\forall y \in V\)</span></p></li>
 <li><p><strong>symmetric</strong> if <span class="math inline">\(G'y = G y\)</span> <span class="math inline">\(\forall y \in V\)</span></p></li>
 </ul>
 </div>
@@ -656,7 +659,7 @@ Y = \theta + u
 Y_i = x_{i,1} \beta_1 + \cdots + x_{i,k} \beta_k + u_i
 \]</span>
 <ul>
-<li><span class="math inline">\(X_k \equiv (x_{1,k}, ... , x{n,k})'\)</span>, <span class="math inline">\(X \equiv(X_1, ..., X_k)\)</span>, <span class="math inline">\(\beta \equiv (\beta_1, ..., \beta_k)'\)</span>, <span class="math inline">\(y \equiv (Y_1, ..., Y_n)'\)</span>, <span class="math inline">\(u \equiv (u_1, ..., u_n)'\)</span> <span class="math display">\[y= X\beta + u\]</span> fits setup with <span class="math inline">\(L = \mathcal{R}(X)\)</span></li>
+<li><span class="math inline">\(X_k \equiv (x_{1,k}, ... , x{n,k})'\)</span>, <span class="math inline">\(X \equiv(X_1, ...,  X_k)\)</span>, <span class="math inline">\(\beta \equiv (\beta_1, ..., \beta_k)'\)</span>, <span class="math inline">\(y \equiv (Y_1, ..., Y_n)'\)</span>, <span class="math inline">\(u \equiv (u_1, ..., u_n)'\)</span> <span class="math display">\[y= X\beta + u\]</span> fits setup with <span class="math inline">\(L = \mathcal{R}(X)\)</span></li>
 </ul></li>
 </ul>
 </div>
@@ -693,7 +696,8 @@ Y_i = x_{i,1} \beta_1 + \cdots + x_{i,k} \beta_k + u_i
 <div class="callout-content">
 <p>If <span class="math display">\[
 y = X'\beta + u
-\]</span> and <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the BLUE of <span class="math inline">\(c'\beta\)</span> is <span class="math inline">\(c'\hat{\beta}\)</span> with <span class="math inline">\(\hat{\beta} = (X'X)^{-1} X' y\)</span></p>
+\]</span> and <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the BLUE of <span class="math inline">\(c'\beta\)</span> is <span class="math inline">\(c'\hat{\beta}\)</span> with <span class="math inline">\(\hat{\beta} =
+(X'X)^{-1} X' y\)</span></p>
 </div>
 </div>
 </div>
@@ -702,10 +706,12 @@ y = X'\beta + u
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-schrimpf2013b" class="csl-entry" role="listitem">
 Schrimpf, Paul. 2013a. <span>“Matrix Algebra and Introduction to Vector Spaces.”</span> <a href="http://faculty.arts.ubc.ca/pschrimpf/526/lec03matrixAlgebra.pdf">http://faculty.arts.ubc.ca/pschrimpf/526/lec03matrixAlgebra.pdf</a>.
 </div>
@@ -753,14 +759,13 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true,"chalkWidth":6,"chalkEffect":0.5},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -905,9 +910,9 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1600,
+        width: 1050,
 
-        height: 900,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -974,18 +979,7 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1017,11 +1011,50 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1031,8 +1064,17 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1046,7 +1088,11 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

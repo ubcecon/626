@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-09-17">
-  <title>ECON 626 - Probability</title>
+  <meta name="dcterms.date" content="2024-09-03">
+  <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,6 +34,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -176,7 +177,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -355,7 +357,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-09-17</p>
+  <p class="date">2024-09-03</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -460,25 +462,6 @@ P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
 <p>The CDF of a random variable <span class="math inline">\(X\)</span> with distribution <span class="math inline">\(P_{X}\)</span> is defined to be a function <span class="math inline">\(F:\mathbf{R}\rightarrow [0,1]\)</span> such that <span class="math display">\[
 F(t)=P_{X}\left( (-\infty ,t]\right) .
 \]</span></p>
-</div>
-</div>
-</div>
-</section>
-<section id="stochastic-dominance" class="slide level2">
-<h2>Stochastic Dominance</h2>
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Definition</strong></p>
-</div>
-<div class="callout-content">
-<p>Suppose that two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> have CDFs <span class="math inline">\(F_1\)</span> and <span class="math inline">\(F_2\)</span>.</p>
-<ol type="1">
-<li><p>Suppose that <span class="math inline">\(F_1(x) \le F_2(x)\)</span> for all <span class="math inline">\(x \in \mathbf{R}\)</span>. Then <span class="math inline">\(X_1\)</span> <strong>first order stochastically dominates (FOSD)</strong> <span class="math inline">\(X_2\)</span>.</p></li>
-<li><p>Suppose that for all <span class="math inline">\(y \in \mathbf{R}\)</span>, <span class="math display">\[
-     \int_{-\infty}^y F_1(x) dx \le \int_{-\infty}^y F_2(x) dx.
-\]</span> Then <span class="math inline">\(X_1\)</span> <strong>second order stochastically dominates (SOSD)</strong> <span class="math inline">\(X_2\)</span></p></li>
-</ol>
 </div>
 </div>
 </div>
@@ -655,7 +638,8 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 <p><strong>Exercise 4.7</strong></p>
 </div>
 <div class="callout-content">
-<p>Suppose <span class="math inline">\(g:\R \to \R\)</span> is Borel measurable, then show <span class="math inline">\(\sigma(g(X)) \subset \sigma(X)\)</span></p>
+<p>Suppose <span class="math inline">\(g:\R \to \R\)</span> is Borel measurable, then show <span class="math inline">\(\sigma(g(X))
+\subset \sigma(X)\)</span></p>
 </div>
 </div>
 </div>
@@ -703,7 +687,9 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 <li>Events <span class="math inline">\(A_1, ..., A_m\)</span> are <strong>independent</strong> if for any sub-collection <span class="math inline">\(A_{i_1}, ..., A_{i_s}\)</span> <span class="math display">\[
 P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
 \]</span></li>
-<li><span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(\mathscr{F}_1, .., \mathscr{F}_m \subset \mathscr{F}\)</span> are <strong>independent</strong> if for any <span class="math inline">\(\mathscr{F}_{i_1}, .., \mathscr{F}_{i_s}\)</span> and <span class="math inline">\(E_j \in \mathscr{F}_j\)</span>, <span class="math display">\[
+<li><span class="math inline">\(\sigma\)</span>-fields, <span class="math inline">\(\mathscr{F}_1, .., \mathscr{F}_m \subset
+\mathscr{F}\)</span> are <strong>independent</strong> if for any <span class="math inline">\(\mathscr{F}_{i_1}, ..,
+\mathscr{F}_{i_s}\)</span> and <span class="math inline">\(E_j \in \mathscr{F}_j\)</span>, <span class="math display">\[
 P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 \]</span></li>
 <li>Random variables <span class="math inline">\(X_1, ..., X_m\)</span> are <strong>independent</strong> if <span class="math inline">\(\sigma(X_1), ..., \sigma(X_m)\)</span> are independent</li>
@@ -841,10 +827,12 @@ P\left( \cap_{j=1}^s E_{i_j} | \mathscr{G} \right) = \prod_{j=1}^s P(E_{i_j} | \
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-cinlar2011" class="csl-entry" role="listitem">
 Çinlar, Erhan. 2011. <em>Probability and Stochastics</em>. Vol. 261. Springer.
 </div>
@@ -882,13 +870,12 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -1033,9 +1020,9 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1600,
+        width: 1050,
 
-        height: 900,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -1102,18 +1089,7 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1145,11 +1121,50 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1159,8 +1174,17 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1174,7 +1198,11 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

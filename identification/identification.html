@@ -8,11 +8,11 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2023-09-24">
-  <title>ECON 626 - Identification</title>
+  <meta name="dcterms.date" content="2024-09-03">
+  <title>ECON 626 – Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,6 +34,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -178,7 +179,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -361,7 +363,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2023-09-24</p>
+  <p class="date">2024-09-03</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -398,7 +400,8 @@ Paul Schrimpf
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(X\)</span> be an observed random vector with distribution <span class="math inline">\(P_X\)</span>. Let <span class="math inline">\(\mathcal{P}\)</span> be a<strong>probability model</strong> — a collection of probabilities such that <span class="math inline">\(P_X \in \mathcal{P}\)</span>. Then <span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t.</p>
+<p>Let <span class="math inline">\(X\)</span> be an observed random vector with distribution <span class="math inline">\(P_X\)</span>. Let <span class="math inline">\(\mathcal{P}\)</span> be a<strong>probability model</strong> — a collection of probabilities such that <span class="math inline">\(P_X \in \mathcal{P}\)</span>. Then <span class="math inline">\(\theta_0 \in
+\R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t.</p>
 <p><span class="math display">\[
 \theta_0 = \psi(P_X)
 \]</span></p>
@@ -432,7 +435,7 @@ Y = \alpha + \beta X + \epsilon
 <li><p><span class="math inline">\(\mathcal{P} = \{P_{X,Y}:\)</span> <span class="math inline">\(Y=\alpha + \beta X + \epsilon\)</span>,</p>
 <ol type="1">
 <li><p><span class="math inline">\(| \mathrm{Cov}(X,Y) | &lt; \infty\)</span>, <span class="math inline">\(0 &lt; \mathrm{Var}(X) &lt; \infty\)</span></p></li>
-<li><p><span class="math inline">\(\mathrm{Cov}(X, \epsilon) = 0\)</span> <span class="math inline">\(\}\)</span></p></li>
+<li><p><span class="math inline">\(\mathrm{Cov}(X, \epsilon)  = 0\)</span> <span class="math inline">\(\}\)</span></p></li>
 </ol></li>
 <li><p><span class="math inline">\(\beta\)</span> identified as</p></li>
 </ul>
@@ -548,15 +551,17 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <!--  \path[->] (E) edge[dashed] (Y); -->
 <!--  \end{tikzpicture} -->
 <!-- ``` -->
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-fig-height="2">
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-fig-height="2" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     X --&gt; Y
     ϵ -.-&gt; Y
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -569,9 +574,10 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <section id="example-regression-1" class="slide level2">
 <h2>Example: Regression</h2>
 <p>If you believe:</p>
-<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph " Y"
@@ -590,6 +596,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
     end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -598,9 +605,10 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <section id="example-regression-2" class="slide level2">
 <h2>Example: Regression</h2>
 <p>But reality is likely more complex …</p>
-<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
    subgraph " Y"
@@ -625,15 +633,17 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
    end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 </section>
 <section id="example-potential-outcomes-1" class="slide level2">
 <h2>Example: Potential Outcomes</h2>
-<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     u -.-&gt; D
@@ -642,15 +652,17 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
     ϵ -.-&gt; Y
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 </section>
 <section id="example-potential-outcomes-2" class="slide level2">
 <h2>Example: Potential Outcomes</h2>
-<div class="cell" data-reveal="true" data-fig-width="6.5">
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph Treatment
@@ -673,6 +685,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
     end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -802,7 +815,7 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 <section id="example-random-coefficients-logit" class="slide level2">
 <h2>Example: Random Coefficients Logit</h2>
 <ul>
-<li><p><span class="math inline">\(Y_i = 1\{\beta_0 + \beta_i X_i \geq U_i \}\)</span></p>
+<li><p><span class="math inline">\(Y_i = 1\{\beta_0 + \beta_i X_i  \geq U_i \}\)</span></p>
 <ul>
 <li><span class="math inline">\(U\)</span> independent <span class="math inline">\(X_i,\beta_i\)</span>,</li>
 <li><span class="math inline">\(\beta_i\)</span> indepedent <span class="math inline">\(X_i\)</span>,</li>
@@ -829,10 +842,12 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-chernozhukov2021" class="csl-entry" role="listitem">
 Chernozhukov, Victor, Hiroyuki Kasahara, and Paul Schrimpf. 2021. <span>“Causal Impact of Masks, Policies, Behavior on Early Covid-19 Pandemic in the US.”</span> <em>Journal of Econometrics</em> 220 (1): 23–62.
 </div>
@@ -904,14 +919,13 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true,"chalkWidth":6,"chalkEffect":0.5},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -1056,9 +1070,9 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1600,
+        width: 1050,
 
-        height: 900,
+        height: 700,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -1125,18 +1139,7 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1168,11 +1171,50 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1182,8 +1224,17 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1197,7 +1248,11 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

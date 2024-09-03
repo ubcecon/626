@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 1"
 #author: "Paul Schrimpf"
-date: 2023-09-14
+date: 2024-09-12
 bibliography: ../../626.bib
 ---
 
@@ -87,20 +87,31 @@ $\mathscr{B}(\mathbf{R})$.
 
 # Problem 3
 
-Show that if for some $u ≥ 2$, $E[|X|^u ] < \infty$ and $E[|Y|^u ] < \infty$, then for some $s \in (0, 1)$,
+Suppose that $f_n(x) \to f(x)$ and $f_n \geq 0$, $\int f_n d\mu = 1$
+for all $n$ and $f \geq 0$, $\int f d\mu = 1$. Use Jensen's inequality
+and the dominated convergence theorem to show that for any measurable
+set $A$, $\int_A f_n d\mu \to \int_A f d\mu$.
+
+::: {.callout-tip}
+
+The fact that
 $$
-\lim_{a \to \infty} a^{1−s} P \left(|XY| > a\right) = 0
+|f(x) - f_n(x)| = f_n(x) - f(x) + 2max\{0, f(x) - f_n(x)\}
+$$
+might be useful.
+
+:::
+
+# Problem 4
+
+Show that if for some $u > 0$, $E[|X|^u ] < \infty$ and $E[|Y|^u ] <
+\infty$, then for any $q \in (0, u/2)$,
+$$
+\lim_{a \to \infty} a^{q} P \left(|XY| > a\right) = 0
 $$
 
 ::: {.callout-tip }
 
 Use Markov's inequality and the Cauchy-Schwarz inequality.
-
-I won't change the question now (it comes from a problem set for this course from a few years ago, before I was teaching it), but
-a perhaps better statement of the problem would be to show that
-$$
-\lim_{a \to \infty} a^{q} P \left(|XY| > a\right) = 0
-$$
-for $q<u/2$. Also, the requirement that $u \geq 2$ could be replaced with just $u>0$. Of course, this result implies the result the question askes for.
 
 :::

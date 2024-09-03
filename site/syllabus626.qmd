@@ -14,22 +14,22 @@ Paul Schrimpf
 
 paul.schrimpf@ubc.ca
 
-Office Hours: Wednesday 12:30pm-1:30pm
+Office Hours: Wednesday 12:30pm-1:30pm (until October 16), TBA after
 
 ### TA
 
-Yige Duan
+Bo-Yu Chen
 
-yige.duan@gmail.com
+boyu0721@student.ubc.ca
 
-Office Hours: Monxday 2-3pm
+Office Hours: TBA <!-- Monday 2-3pm  -->
 
 
 ### Time and Place
 
-Lecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 633
+Lecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533
 
-Discussion: Friday 1:30pm  - 2:50pm, Buchanan D209
+Discussion: Friday 1:30pm  - 2:50pm, Buchanan D319
 
 
 ### Textbooks
@@ -51,7 +51,7 @@ will be dropped from final grading.
 
 ### Midterm Exam (30%)
 
-Given in class on Wednesday, October 25. Closed books and notes.
+Given in class on Wednesday, October 23. Closed books and notes.
 There will be no make-up exam for midterm. When a student is excused
 from midterm exam, his or her grade will be based on reweighting of
 the problem sets (30%) and the final exam (70%).
@@ -124,7 +124,7 @@ Requests for academic concessions should be made before the due date for that gr
 :::
 
 ::: {.callout-note icon=false collapse="true"}
-## Policy on the Use of AI Learning Tools
+## Policy on the Use of AI Tools
 
 The use of AI tools is permitted except where explicitly forbidden. However, that usage must be documented and attributed within your assessment(s). Students are responsible for all factual inaccuracies that are created by the use of AI tools.
 :::

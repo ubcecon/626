@@ -6,9 +6,6 @@ bibliography: 626.bib
 
 # Part I: Basics
 
-## Measure and Integration
-
-
 - [Measure slides](measure/measure.qmd)
 
    - Required reading: @song2021  Chapter 1

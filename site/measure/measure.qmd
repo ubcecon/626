@@ -5,14 +5,15 @@ date: last-modified
 format:
   revealjs:
     theme: moon
-    width: 1820
-    height: 1000
+    #width: 1600
+    #height: 1000
     min-scale: 0.1
+    smaller: true
 title-slide-attributes:
   data-background-image: "mcarthur.jpg"
   data-background-size: contain
 bibliography: ../626.bib
-
+engine: julia
 # jupyter: julia-1.9
 # execute:
 #   cache: false
@@ -49,6 +50,12 @@ bibliography: ../626.bib
    - discrete vs continuous
    - uni- vs multi-variate
 3. Resolves some difficulties with infinity
+
+:::
+
+::: {.notes}
+
+One difficulty with infinity in probability is defining probability over uncountably infinite sets. In probability, we start with a sample space, say $\Omega$, and then say a probability is a mapping from subsets of $\Omega$ to $[0,1]$ satisfying some conditions. One question is can we define such a probability on all subsets of $\Omega$. If $\Omega$ is uncountable, then the answer no. We have to limit our attention to certain well behaved subsets. These turn out to be exactly a $\sigma$-field, which we now define.
 
 :::
 
@@ -165,8 +172,8 @@ k(ω) = minimum(j for j ∈ 0:n if M/n*j > f(ω))
 ϕ(ω)  = M/n*(k(ω)-1)*(f(ω) > 0.0)
 fig(x=Ω, y=ψ.(Ω), name="ψₙ(ω)")
 fig(x=Ω, y=ϕ.(Ω), name="ϕₙ(ω)")
-Cobweb.save(Page(fig), "tmp.html")
-HTML("<iframe src=\"tmp.html\" width=\"1500\"  height=\"700\"></iframe>")
+#Cobweb.IFrame(fig, width=1500, height=800)
+fig
 ```
 
 ----

@@ -5,18 +5,14 @@ date: last-modified
 format:
   revealjs:
     theme: moon
-    width: 1600
-    height: 900
+    smaller: true
     min-scale: 0.1
 title-slide-attributes:
   data-background-image: "ratney.jpg"
   data-background-size: contain
 
 bibliography: ../626.bib
-
-# jupyter: julia-1.9
-# execute:
-#   cache: false
+engine: julia
 ---
 
 
@@ -97,7 +93,7 @@ A **distribution** $P_{X}$ induced by $X$ is a probability measure on $(\mathbf{
 that : $\forall B\in \mathscr{B}(\mathbf{R})$,
 $$
 P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
- $$
+$$
 
 :::
 
@@ -114,23 +110,6 @@ $$
 F(t)=P_{X}\left( (-\infty ,t]\right) .
 $$
 
-:::
-
-## Stochastic Dominance
-
-::: {.callout-tip icon=false}
-
-### Definition
-
-Suppose that two random variables $X_1$ and $X_2$ have CDFs $F_1$ and $F_2$.
-
-1. Suppose that $F_1(x) \le F_2(x)$ for all $x \in \mathbf{R}$. Then $X_1$ **first order stochastically dominates (FOSD)** $X_2$.
-
-2. Suppose that for all $y \in \mathbf{R}$,
-$$
-		\int_{-\infty}^y F_1(x) dx \le \int_{-\infty}^y F_2(x) dx.
-$$
-    Then $X_1$ **second order stochastically dominates (SOSD)** $X_2$
 :::
 
 ## Density

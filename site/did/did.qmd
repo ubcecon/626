@@ -10,8 +10,7 @@ format:
   revealjs:
     code-fold: true
     theme: moon
-    width: 1575
-    height: 1050
+    smaller: true
     min-scale: 0.1
     max-scale: 3.0
     css: ../styles.css
@@ -24,6 +23,7 @@ format:
       data-background-image: "slesse.jpg"
       data-background-size: contain
 bibliography: ../626.bib
+engine: julia
 ---
 
 # Difference in Differences
@@ -186,7 +186,7 @@ reg(df, @formula(y ~ D + fe(t) + fe(id)))
 ## Weights with Single Treatment Time
 
 ```{julia}
-using PlotlyLight, Cobweb
+using PlotlyLight
 function plotp(D)
   n,T=size(D)
   plt=Plot()
@@ -212,14 +212,12 @@ function plotweights(D)
   return(fig)
 end
 pfig = plotp(D)
-Cobweb.save(Page(pfig), "p-samet.html")
-HTML("<iframe src=\"p-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
+pfig
 ```
 
 ```{julia}
 fig = plotweights(D)
-Cobweb.save(Page(fig), "w-samet.html")
-HTML("<iframe src=\"w-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
+fig
 ```
 
 ## Weights with Uniform Treatment Time
@@ -227,14 +225,12 @@ HTML("<iframe src=\"w-samet.html\" width=\"1200\"  height=\"350\"></iframe>")
 ```{julia}
 D = assigntreat(n,T,portiontreated=vcat(0,fill(0.5/(T-1),T-1)))
 pfig = plotp(D)
-Cobweb.save(Page(pfig), "p-unit.html")
-HTML("<iframe src=\"p-unit.html\" width=\"1200\"  height=\"350\"></iframe>")
+pfig
 ```
 
 ```{julia}
 fig = plotweights(D)
-Cobweb.save(Page(fig), "w-unit.html")
-HTML("<iframe src=\"w-unit.html\" width=\"1200\"  height=\"350\"></iframe>")
+fig
 ```
 
 ## Weights with Early and Late Treated
@@ -245,14 +241,12 @@ pt[2] = 1/3
 pt[end-1]=1/3
 D = assigntreat(n,T,portiontreated=pt)
 pfig = plotp(D)
-Cobweb.save(Page(pfig), "p-el.html")
-HTML("<iframe src=\"p-el.html\" width=\"1200\"  height=\"350\"></iframe>")
+pfig
 ```
 
 ```{julia}
 fig = plotweights(D)
-Cobweb.save(Page(fig), "w-el.html")
-HTML("<iframe src=\"w-el.html\" width=\"1200\"  height=\"350\"></iframe>")
+fig
 ```
 
 ## Sign Reversal with Fixed Effects
@@ -311,8 +305,7 @@ function plotATT(D, y)
   fig=plt(x=tt,y=ts,z=ATT,name="ATTₜ,ₜ₋ₛ", mode="markers",type="scatter3d")
 end
 fig=plotATT(D,y)
-Cobweb.save(Page(fig), "ATT.html")
-HTML("<iframe src=\"ATT.html\" width=\"900\"  height=\"700\"></iframe>")
+fig
 ```
 
 ## When to worry

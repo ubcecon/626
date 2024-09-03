@@ -1,4 +1,3 @@
-# 626
+# Lecture notes for 626
 
-This is the source for slides and notes for ECON 626: Econometric
- Theory I at UBC in 2022.
+ Originally written Kyungchul Song with some updates by Paul Schrimpf.

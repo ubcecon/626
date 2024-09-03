@@ -5,8 +5,7 @@ date: last-modified
 format:
   revealjs:
     theme: moon
-    width: 1600
-    height: 900
+    smaller: true
     min-scale: 0.1
     css: ../styles.css
     chalkboard:
@@ -17,6 +16,7 @@ format:
     title-slide-attributes:
       data-background-image: "skier.jpg"
       data-background-size: contain
+engine: julia
 bibliography: ../626.bib
 ---
 
@@ -180,7 +180,6 @@ Fn = [let z=simulateCLT(n,S, dist);
 #| code-fold: true
 #| code-summary: "plotting code"
 #| echo: true
-using Cobweb
 plt = Plot()
 plt.layout = Config()
 for i in axes(N)[1]
@@ -188,8 +187,7 @@ for i in axes(N)[1]
 end
 plt(x=x, y=cdf.(Normal(),x), name="Normal CDF")
 fig = plt()
-Cobweb.save(Page(fig), "cdf.html")
-HTML("<iframe src=\"cdf.html\" width=\"1200\"  height=\"700\"></iframe>")
+fig
 ```
 
 ## Size Distortion
@@ -207,8 +205,7 @@ for i in axes(N)[1]
   plt(x=p,y=p - Fn[i].(quantile.(Normal(),p)), name="N=$(N[i])")
 end
 fig = plt()
-Cobweb.save(Page(fig), "size.html")
-HTML("<iframe src=\"size.html\" width=\"1200\"  height=\"700\"></iframe>")
+fig
 ```
 
 ## Histogram
@@ -233,8 +230,7 @@ for i in axes(N)[1]
   plt(x=x,y=Hn.(x, Fn[i]), name="N=$(N[i])")
 end
 fig = plt()
-Cobweb.save(Page(fig), "hist.html")
-HTML("<iframe src=\"hist.html\" width=\"1200\"  height=\"700\"></iframe>")
+fig
 ```
 
 

@@ -15,7 +15,7 @@ format:
       data-background-image: "widowmaker.jpg"
       data-background-size: contain
 bibliography: ../626.bib
-
+engine: julia
 # jupyter: julia-1.8
 # execute:
 #   cache: false

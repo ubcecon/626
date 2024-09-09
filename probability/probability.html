@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-09-03">
+  <meta name="dcterms.date" content="2024-09-09">
   <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -357,7 +357,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-09-03</p>
+  <p class="date">2024-09-09</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -431,7 +431,7 @@ Paul Schrimpf
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>A <strong>random variable</strong> <span class="math inline">\(X\)</span> is a measurable function from <span class="math inline">\(\Omega\)</span> to <span class="math inline">\(\mathbf{R}\)</span></p>
+<p>A <strong>random variable</strong> <span class="math inline">\(X\)</span> is a measurable function from <span class="math inline">\(\Omega\)</span> to <span class="math inline">\(\R\)</span></p>
 </div>
 </div>
 </div>
@@ -444,7 +444,7 @@ Paul Schrimpf
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\((\Omega ,\mathscr{F},P)\)</span> be a probability space, <span class="math inline">\(X\)</span> a random variable on <span class="math inline">\((\Omega ,\mathscr{F})\)</span>. A <strong>distribution</strong> <span class="math inline">\(P_{X}\)</span> induced by <span class="math inline">\(X\)</span> is a probability measure on <span class="math inline">\((\mathbf{R},\mathscr{B}(\mathbf{R}))\)</span> such that : <span class="math inline">\(\forall B\in \mathscr{B}(\mathbf{R})\)</span>, <span class="math display">\[
+<p>Let <span class="math inline">\((\Omega ,\mathscr{F},P)\)</span> be a probability space, <span class="math inline">\(X\)</span> a random variable on <span class="math inline">\((\Omega ,\mathscr{F})\)</span>. A <strong>distribution</strong> <span class="math inline">\(P_{X}\)</span> induced by <span class="math inline">\(X\)</span> is a probability measure on <span class="math inline">\((\R,\mathscr{B}(\R))\)</span> such that : <span class="math inline">\(\forall B\in \mathscr{B}(\R)\)</span>, <span class="math display">\[
 P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
 \]</span></p>
 </div>
@@ -459,7 +459,7 @@ P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>The CDF of a random variable <span class="math inline">\(X\)</span> with distribution <span class="math inline">\(P_{X}\)</span> is defined to be a function <span class="math inline">\(F:\mathbf{R}\rightarrow [0,1]\)</span> such that <span class="math display">\[
+<p>The cumulative distribution function (CDF) of a random variable <span class="math inline">\(X\)</span> with distribution <span class="math inline">\(P_{X}\)</span> is defined to be a function <span class="math inline">\(F:\R\rightarrow [0,1]\)</span> such that <span class="math display">\[
 F(t)=P_{X}\left( (-\infty ,t]\right) .
 \]</span></p>
 </div>
@@ -476,7 +476,7 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 <div class="callout-content">
 <ol type="i">
 <li><p>Let <span class="math inline">\(X\)</span> be a random variable with distribution <span class="math inline">\(P_{X}\)</span>. When <span class="math inline">\(P_{X}\ll \lambda\)</span>, we call <span class="math inline">\(X\)</span> a <strong>continuous random variable</strong>, and call the Radon-Nikodym derivative <span class="math inline">\(f\equiv dP_{X}/d\lambda\)</span> the (probability) <strong>density function</strong> of <span class="math inline">\(P_{X}\)</span>.</p></li>
-<li><p>We say that <span class="math inline">\(X\)</span> is a <strong>discrete random variable</strong>, if there exists a countable set <span class="math inline">\(A\subset \mathbf{R}\)</span> and such that <span class="math inline">\(P_{X}A^{c}=0\)</span></p></li>
+<li><p>We say that <span class="math inline">\(X\)</span> is a <strong>discrete random variable</strong>, if there exists a countable set <span class="math inline">\(A\subset \R\)</span> and such that <span class="math inline">\(P_{X}A^{c}=0\)</span></p></li>
 </ol>
 </div>
 </div>

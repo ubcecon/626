@@ -550,14 +550,14 @@
     "href": "syllabus626.html",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 12:30pm-1:30pm (until October 16), TBA after\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533\nDiscussion: Friday 1:30pm - 2:50pm, Buchanan D319\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
+    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 12:30pm-1:30pm Iona 112 (until October 16), TBA after\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: Monday 2-3pm Iona 342\n\n\n\nLecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533\nDiscussion: Friday 1:30pm - 2:50pm, Buchanan D319\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
   },
   {
     "objectID": "syllabus626.html#basic-information",
     "href": "syllabus626.html#basic-information",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 12:30pm-1:30pm (until October 16), TBA after\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533\nDiscussion: Friday 1:30pm - 2:50pm, Buchanan D319\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
+    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 12:30pm-1:30pm Iona 112 (until October 16), TBA after\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: Monday 2-3pm Iona 342\n\n\n\nLecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533\nDiscussion: Friday 1:30pm - 2:50pm, Buchanan D319\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
   },
   {
     "objectID": "syllabus626.html#grading",
@@ -1411,28 +1411,28 @@
     "href": "probability/probability.html#random-variable",
     "title": "Probability",
     "section": "Random Variable",
-    "text": "Random Variable\n\n\n\nDefinition\n\n\nA random variable \\(X\\) is a measurable function from \\(\\Omega\\) to \\(\\mathbf{R}\\)"
+    "text": "Random Variable\n\n\n\nDefinition\n\n\nA random variable \\(X\\) is a measurable function from \\(\\Omega\\) to \\(\\R\\)"
   },
   {
     "objectID": "probability/probability.html#distribution",
     "href": "probability/probability.html#distribution",
     "title": "Probability",
     "section": "Distribution",
-    "text": "Distribution\n\n\n\nDefinition\n\n\nLet \\((\\Omega ,\\mathscr{F},P)\\) be a probability space, \\(X\\) a random variable on \\((\\Omega ,\\mathscr{F})\\). A distribution \\(P_{X}\\) induced by \\(X\\) is a probability measure on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that : \\(\\forall B\\in \\mathscr{B}(\\mathbf{R})\\), \\[\nP_{X}(B)\\equiv P\\left\\{ \\omega \\in \\Omega :X(\\omega )\\in B\\right\\}\n\\]"
+    "text": "Distribution\n\n\n\nDefinition\n\n\nLet \\((\\Omega ,\\mathscr{F},P)\\) be a probability space, \\(X\\) a random variable on \\((\\Omega ,\\mathscr{F})\\). A distribution \\(P_{X}\\) induced by \\(X\\) is a probability measure on \\((\\R,\\mathscr{B}(\\R))\\) such that : \\(\\forall B\\in \\mathscr{B}(\\R)\\), \\[\nP_{X}(B)\\equiv P\\left\\{ \\omega \\in \\Omega :X(\\omega )\\in B\\right\\}\n\\]"
   },
   {
     "objectID": "probability/probability.html#distribution-function",
     "href": "probability/probability.html#distribution-function",
     "title": "Probability",
     "section": "Distribution Function",
-    "text": "Distribution Function\n\n\n\nDefinition\n\n\nThe CDF of a random variable \\(X\\) with distribution \\(P_{X}\\) is defined to be a function \\(F:\\mathbf{R}\\rightarrow [0,1]\\) such that \\[\nF(t)=P_{X}\\left( (-\\infty ,t]\\right) .\n\\]"
+    "text": "Distribution Function\n\n\n\nDefinition\n\n\nThe cumulative distribution function (CDF) of a random variable \\(X\\) with distribution \\(P_{X}\\) is defined to be a function \\(F:\\R\\rightarrow [0,1]\\) such that \\[\nF(t)=P_{X}\\left( (-\\infty ,t]\\right) .\n\\]"
   },
   {
     "objectID": "probability/probability.html#density",
     "href": "probability/probability.html#density",
     "title": "Probability",
     "section": "Density",
-    "text": "Density\n\n\n\nDefinition\n\n\n\nLet \\(X\\) be a random variable with distribution \\(P_{X}\\). When \\(P_{X}\\ll \\lambda\\), we call \\(X\\) a continuous random variable, and call the Radon-Nikodym derivative \\(f\\equiv dP_{X}/d\\lambda\\) the (probability) density function of \\(P_{X}\\).\nWe say that \\(X\\) is a discrete random variable, if there exists a countable set \\(A\\subset \\mathbf{R}\\) and such that \\(P_{X}A^{c}=0\\)\n\n\n\n\n\nDensity wrt to other measures? e.g. dirac?"
+    "text": "Density\n\n\n\nDefinition\n\n\n\nLet \\(X\\) be a random variable with distribution \\(P_{X}\\). When \\(P_{X}\\ll \\lambda\\), we call \\(X\\) a continuous random variable, and call the Radon-Nikodym derivative \\(f\\equiv dP_{X}/d\\lambda\\) the (probability) density function of \\(P_{X}\\).\nWe say that \\(X\\) is a discrete random variable, if there exists a countable set \\(A\\subset \\R\\) and such that \\(P_{X}A^{c}=0\\)\n\n\n\n\n\nDensity wrt to other measures? e.g. dirac?"
   },
   {
     "objectID": "probability/probability.html#markovs",
@@ -1873,7 +1873,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "measure/measure.html#references",
@@ -1887,7 +1887,7 @@
     "href": "measure/measure.html#why-measure-theory",
     "title": "Measure",
     "section": "Why Measure Theory?",
-    "text": "Why Measure Theory?\n\n\nSimplifies some arguments\n\nExample from Pollard (2002), define independence as factorization of distribution functions \\[ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) \\]\nIf \\(X_1,X_2,X_3, X_4\\) are independent, show that \\[ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) \\] is independent of \\[ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) \\]"
+    "text": "Why Measure Theory?\n\n\nSimplifies some arguments\n\nExample from Pollard (2002), define independence as factorization of distribution functions \\[ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) \\]\nIf \\(X_1,X_2,X_3, X_4\\) are independent, show that \\[ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) \\] is independent of \\[ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) \\]\n\n\n\n\\[\n\\def\\R{\\mathbb{R}}\n\\def\\B{\\mathscr{B}}\n\\]"
   },
   {
     "objectID": "measure/measure.html#why-measure-theory-1",
@@ -1908,14 +1908,14 @@
     "href": "measure/measure.html#measurable-function",
     "title": "Measure",
     "section": "Measurable Function",
-    "text": "Measurable Function\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\)\n\n\nWhen working with \\(R^d\\), we will generally use \\(\\mathscr{B}(\\mathbf{R}^d)\\) as our \\(\\sigma\\)-field.\n\n\n\\(f: \\Omega \\to \\mathbf{R}\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\mathscr{B}(\\mathbf{R})\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)\na statement holds almost everywhere (a.e.) if the measure of the set where the statement is false is 0"
+    "text": "Measurable Function\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\)\n\n\nWhen working with \\(R^d\\), we will generally use \\(\\B(\\R^d)\\) as our \\(\\sigma\\)-field.\n\n\n\\(f: \\Omega \\to \\R\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\B(\\R)\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)\na statement holds almost everywhere (a.e.) if the measure of the set where the statement is false is 0"
   },
   {
     "objectID": "measure/measure.html#simple-functions",
     "href": "measure/measure.html#simple-functions",
     "title": "Measure",
     "section": "Simple Functions",
-    "text": "Simple Functions\n\nAssume \\(\\mu(\\Omega) &lt; \\infty\\)\n\\(f\\) is a simple function if \\(f = \\sum_{j=1}^n a_j 1\\{\\omega \\in E_j \\}\\) for \\(a_j \\in \\mathbf{R}\\) and \\(E_j \\in \\mathscr{F}\\)\nIntegral of simple functions: \\[ \\int f d \\mu = \\sum_{j=1}^n a_j \\mu(E_j) \\]"
+    "text": "Simple Functions\n\nAssume \\(\\mu(\\Omega) &lt; \\infty\\)\n\\(f\\) is a simple function if \\(f = \\sum_{j=1}^n a_j 1\\{\\omega \\in E_j \\}\\) for \\(a_j \\in \\R\\) and \\(E_j \\in \\mathscr{F}\\)\nIntegral of simple functions: \\[ \\int f d \\mu = \\sum_{j=1}^n a_j \\mu(E_j) \\]"
   },
   {
     "objectID": "measure/measure.html#bounded-functions",
@@ -1937,6 +1937,13 @@
     "title": "Measure",
     "section": "Measurable Functions",
     "text": "Measurable Functions\n\nIf \\(f\\) is measurable, let \\(f^{+} = \\max\\{f, 0\\}\\) and \\(f^{-} = \\max\\{-f, 0\\}\\) and define the Lesbegue integral\n\n\\[ \\int f d\\mu = \\int f^{+} d\\mu - \\int f^{-} d\\mu \\]"
+  },
+  {
+    "objectID": "measure/measure.html#measurability-and-continuity",
+    "href": "measure/measure.html#measurability-and-continuity",
+    "title": "Measure",
+    "section": "Measurability and Continuity",
+    "text": "Measurability and Continuity\n\n\n\nLemma\n\n\nIf \\(f: \\R^n \\to \\R^k\\) is continuous, then \\(f\\) is \\(\\B(\\R^n)\\) measurable.\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\(f: \\Omega \\to \\R\\) is measurable and \\(g: \\R \\to \\R\\) is continuous, then \\(g \\circ f\\) is measurable.\n\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\(f: \\Omega \\to \\R\\) and \\(g: \\Omega \\to \\R\\) are measurable, then \\(f+g\\) is measurable."
   },
   {
     "objectID": "measure/measure.html#finite-measure",
@@ -1985,21 +1992,21 @@
     "href": "measure/measure.html#monotone-convergence-theorem",
     "title": "Measure",
     "section": "Monotone Convergence Theorem",
-    "text": "Monotone Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\uparrow f(\\omega )\\), then \\(\\int f_{n}d\\mu \\uparrow \\int fd\\mu\\) as \\(n\\rightarrow \\infty\\)"
+    "text": "Monotone Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\uparrow f(\\omega )\\), then \\(\\int f_{n}d\\mu \\uparrow \\int fd\\mu\\) as \\(n\\rightarrow \\infty\\)\n\n\n\n\n\n\n\nExercise\n\n\nSuppose \\(g_n: \\Omega \\to \\R\\) are measurable and \\(g_n \\geq 0\\). Show that \\[\n\\int \\sum_{n=1}^\\infty g_n d\\mu = \\sum_{n=1}^\\infty \\int g_n d\\mu\n\\]\n\n\n\n\n\nHow do we know \\(f = \\lim_{n\\to \\infty} f_n\\) is measurable?\nNote that half open intervals \\((-\\infty, c)\\) generate \\(\\B(\\R)\\), so it suffices to show that \\(f^{-1}((-\\infty, c))\\) is in \\(\\mathscr{F}\\). Since \\(f_n\\) are measurable, \\(f_n^{-1}((-\\infty,c)) \\in \\mathscr{F}\\) for all \\(n\\). Also, \\[\nf_n^{-1}((-\\infty,c)) = \\{x: f_n(x) &lt; c\\}\n\\] and since \\(f_n\\) are increasing, \\(f_n^{-1}((-\\infty,c)) \\supset\nf_m^{-1}((-\\infty, c))\\) for an \\(m \\geq n\\). Moreover, \\[\nf^{-1}((-\\infty,c)) = \\{x : f(x) &lt; c \\} = \\cup_{n=1}^\\infty \\{x: f_n(x) &lt; c\\}\n\\] and hence is in \\(\\mathscr{F}\\)."
   },
   {
     "objectID": "measure/measure.html#fatous-lemma",
     "href": "measure/measure.html#fatous-lemma",
     "title": "Measure",
     "section": "Fatou’s Lemma",
-    "text": "Fatou’s Lemma\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), then \\[\n\\int \\left( \\text{liminf}_{n\\rightarrow \\infty }f_{n}d\\mu \\right) \\leq \\text{liminf}_{n\\rightarrow \\infty }\\int f_{n}d\\mu\n\\]"
+    "text": "Fatou’s Lemma\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\R\\) are measurable, \\(f_{n}\\geq 0\\), then \\[\n\\int \\left( \\text{liminf}_{n\\rightarrow \\infty }f_{n}d\\mu \\right) \\leq \\text{liminf}_{n\\rightarrow \\infty }\\int f_{n}d\\mu\n\\]"
   },
   {
     "objectID": "measure/measure.html#dominated-convergence-theorem",
     "href": "measure/measure.html#dominated-convergence-theorem",
     "title": "Measure",
     "section": "Dominated Convergence Theorem",
-    "text": "Dominated Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu &lt;\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)\n\n\n\n\nThe measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory."
+    "text": "Dominated Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\R\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu &lt;\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)\n\n\n\n\n\n\n\nExercise\n\n\nShow that if \\(g_n: \\Omega \\to \\R\\) are measurable and \\(\\sum_{n=1}^\\infty \\int |g_n| d\\mu &lt; \\infty\\), then \\[\n\\int \\sum_{n=1}^\\infty g_n d\\mu = \\sum_{n=1}^\\infty \\int g_n d\\mu\n\\]\n\n\n\n\n\nThe measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory."
   },
   {
     "objectID": "asymptotics/indistribution.html#reading",

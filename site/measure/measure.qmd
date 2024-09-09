@@ -39,6 +39,11 @@ engine: julia
     $$ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) $$
 ::::
 
+$$
+\def\R{\mathbb{R}}
+\def\B{\mathscr{B}}
+$$
+
 ## Why Measure Theory?
 
 
@@ -86,12 +91,12 @@ Example of sigma fields
 
 ::: {.notes}
 
-When working with $R^d$, we will generally use $\mathscr{B}(\mathbf{R}^d)$ as our $\sigma$-field.
+When working with $R^d$, we will generally use $\B(\R^d)$ as our $\sigma$-field.
 
 :::
 
-- $f: \Omega \to \mathbf{R}$ is ($\mathscr{F}$-)**measurable** if $\forall$
-$B \in \mathscr{B}(\mathbf{R})$, $f^{-1}(B) \in \mathscr{F}$
+- $f: \Omega \to \R$ is ($\mathscr{F}$-)**measurable** if $\forall$
+$B \in \B(\R)$, $f^{-1}(B) \in \mathscr{F}$
 
 - a statement holds *almost everywhere* (a.e.) if the measure of the set where the statement is false is 0
 
@@ -110,7 +115,7 @@ $B \in \mathscr{B}(\mathbf{R})$, $f^{-1}(B) \in \mathscr{F}$
 
 - Assume $\mu(\Omega) < \infty$
 - $f$ is a **simple function** if
-$f = \sum_{j=1}^n a_j 1\{\omega \in E_j \}$ for $a_j \in \mathbf{R}$ and
+$f = \sum_{j=1}^n a_j 1\{\omega \in E_j \}$ for $a_j \in \R$ and
 $E_j \in \mathscr{F}$
 - Integral of simple functions:
 $$ \int f d \mu = \sum_{j=1}^n a_j \mu(E_j) $$
@@ -134,7 +139,7 @@ Show that if $f$ and $g$ are simple, then
 
 1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
 
-2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+2. $\forall a \in \R$ , $\int a f d\mu = a \int f d\mu$
 
 3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
 
@@ -186,7 +191,7 @@ Show that for all bounded $f$ and $g$ that vanish outside a finite measure set,
 
 1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
 
-2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+2. $\forall a \in \R$ , $\int a f d\mu = a \int f d\mu$
 
 3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
 
@@ -209,7 +214,7 @@ Show that for all $f \geq 0$,
 
 1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
 
-2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+2. $\forall a \in \R$ , $\int a f d\mu = a \int f d\mu$
 
 3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
 
@@ -232,11 +237,51 @@ Show that for all measurable $f$
 
 1. If $f \geq 0$ a.e., then $\int f d\mu \geq 0$
 
-2. $\forall a \in \mathbf{R}$ , $\int a f d\mu = a \int f d\mu$
+2. $\forall a \in \R$ , $\int a f d\mu = a \int f d\mu$
 
 3. $\int (f + g) d\mu = \int f d\mu + \int g d \mu$
 
 :::
+
+
+## Measurability and Continuity
+
+
+
+::: {.callout-warning icon=false}
+
+### Lemma
+
+If $f: \R^n \to \R^k$ is continuous, then $f$ is $\B(\R^n)$ measurable.
+
+:::
+
+
+::: {.fragment}
+
+::: {.callout-warning icon=false}
+
+### Corollary
+
+If $f: \Omega \to \R$ is measurable and $g: \R \to \R$ is continuous,
+then $g \circ f$ is measurable.
+
+:::
+
+:::
+
+::: {.fragment}
+
+::: {.callout-warning icon=false}
+
+### Corollary
+
+If $f: \Omega \to \R$ and $g: \Omega \to \R$ are measurable, then $f+g$ is measurable.
+
+:::
+
+:::
+
 
 
 # Radon-Nikodym Derivatives
@@ -346,13 +391,48 @@ $f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu$ a
 
 :::
 
+::: {.fragment}
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Suppose $g_n: \Omega \to \R$ are measurable and $g_n \geq 0$. Show that
+$$
+\int \sum_{n=1}^\infty g_n d\mu = \sum_{n=1}^\infty \int g_n d\mu
+$$
+
+:::
+
+:::
+
+::: {.notes}
+
+How do we know $f = \lim_{n\to \infty} f_n$ is measurable?
+
+Note that half open intervals $(-\infty, c)$ generate $\B(\R)$, so it
+suffices to show that $f^{-1}((-\infty, c))$ is in $\mathscr{F}$. Since $f_n$ are measurable,
+$f_n^{-1}((-\infty,c)) \in \mathscr{F}$ for all $n$. Also,
+$$
+f_n^{-1}((-\infty,c)) = \{x: f_n(x) < c\}
+$$
+and since $f_n$ are increasing, $f_n^{-1}((-\infty,c)) \supset
+f_m^{-1}((-\infty, c))$ for an $m \geq n$. Moreover,
+$$
+f^{-1}((-\infty,c)) = \{x : f(x) < c \} = \cup_{n=1}^\infty \{x: f_n(x) < c\}
+$$
+and hence is in $\mathscr{F}$.
+
+:::
+
+
 ## Fatou's Lemma
 
 ::: {.callout-warning icon=false}
 
 ### Lemma
 
-If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, then
+If $f_n:\Omega \to \R$ are measurable, $f_{n}\geq 0$, then
 $$
 \int \left( \text{liminf}_{n\rightarrow \infty }f_{n}d\mu \right) \leq \text{liminf}_{n\rightarrow \infty }\int f_{n}d\mu
 $$
@@ -366,7 +446,22 @@ $$
 
 ### Lemma
 
-If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu$
+If $f_n:\Omega \to \R$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu$
+
+:::
+
+::: {.fragment}
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+Show that if $g_n: \Omega \to \R$ are measurable and $\sum_{n=1}^\infty \int |g_n| d\mu < \infty$, then
+$$
+\int \sum_{n=1}^\infty g_n d\mu = \sum_{n=1}^\infty \int g_n d\mu
+$$
+
+:::
 
 :::
 

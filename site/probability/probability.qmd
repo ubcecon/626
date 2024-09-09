@@ -78,7 +78,7 @@ Show $\forall A, B \in \mathscr{F}$
 
 ### Definition
 
-A **random variable** $X$ is a measurable function from $\Omega$ to $\mathbf{R}$
+A **random variable** $X$ is a measurable function from $\Omega$ to $\R$
 
 :::
 
@@ -89,8 +89,8 @@ A **random variable** $X$ is a measurable function from $\Omega$ to $\mathbf{R}$
 ### Definition
 
 Let $(\Omega ,\mathscr{F},P)$ be a probability space, $X$ a random variable on $(\Omega ,\mathscr{F})$.
-A **distribution** $P_{X}$ induced by $X$ is a probability measure on $(\mathbf{R},\mathscr{B}(\mathbf{R}))$ such
-that : $\forall B\in \mathscr{B}(\mathbf{R})$,
+A **distribution** $P_{X}$ induced by $X$ is a probability measure on $(\R,\mathscr{B}(\R))$ such
+that : $\forall B\in \mathscr{B}(\R)$,
 $$
 P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
 $$
@@ -103,9 +103,9 @@ $$
 
 ### Definition
 
-The CDF of a random variable $X$ with
+The cumulative distribution function (CDF) of a random variable $X$ with
 distribution $P_{X}$ is defined to be a function
-$F:\mathbf{R}\rightarrow [0,1]$ such that
+$F:\R\rightarrow [0,1]$ such that
 $$
 F(t)=P_{X}\left( (-\infty ,t]\right) .
 $$
@@ -124,7 +124,7 @@ distribution $P_{X}$. When $P_{X}\ll \lambda$, we call $X$ a
 $f\equiv dP_{X}/d\lambda$ the (probability) **density function** of $P_{X}$.
 
 (ii) We say that $X$ is a **discrete random variable**, if
-there exists a countable set $A\subset \mathbf{R}$ and such that
+there exists a countable set $A\subset \R$ and such that
 $P_{X}A^{c}=0$
 
 :::
@@ -392,7 +392,7 @@ P\left( \cap_{j=1}^s E_{i_j} | \mathscr{G} \right) = \prod_{j=1}^s P(E_{i_j} | \
 $$
 
 3. Random variables $X_1, ..., X_m$ are **conditionally independent**
-given $\mathscr{G}$ if $\sigma(X_1), ..., \sigma(X_m)$ are conditionally independent given $\mathscr{G}$
+ given $\mathscr{G}$ if $\sigma(X_1), ..., \sigma(X_m)$ are conditionally independent given $\mathscr{G}$
 
 
 :::

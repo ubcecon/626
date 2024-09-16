@@ -331,6 +331,25 @@ $\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
 
 :::
 
+## Conditional Expectation
+
+::: {.callout-note icon=false}
+
+### Exercise
+
+1. If $X$ and $Y$ are discrete with support $\{x_i\}_{i=1}^I \times \{y_j\}_{j=1}^J$,
+ then
+ $$
+ \Er[Y|X=x_i] = \frac{\sum_{j=1}^J y_j P(y_j,x_i)}{\sum_{i}^I P(y_j,x_i)}}
+ $$
+
+2. If $X$ and $Y$ are continuous with density $f$, then
+$$
+\Er[Y|X=x] = \frac{\int y f(x,y) dy}{\int x f(x,y) dx}
+$$
+
+:::
+
 
 ## Properties of Conditional Expectation
 

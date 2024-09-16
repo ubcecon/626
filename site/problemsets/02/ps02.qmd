@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 2"
 #author: "Paul Schrimpf"
-date: 2023-09-21
+date: 2024-09-23
 bibliography: ../../626.bib
 ---
 
@@ -12,14 +12,8 @@ $$
 
 # Problem 1
 
-Let $f: \R^2 \to \R$. Assume $f(\cdot, y): \R \to \R$ is measurable
-for all $y : |y - y_0| < \epsilon$ for some $\epsilon>0$. Also assume
-that $f(x, \dot): \R \to \R$ is differentiable at $y_0$ for all $x \in
-A \subset \R$ and $\left\vert \frac{\partial f}{\partial y}(x, y_0)
-\right \vert \leq M(x)$ for all $x \in A$ and $M(x)$ is integrable. Show that
-$$
-\frac{d}{dy} \int_A f(\cdot, y) d\mu \vert_{y=y_0} = \int_A \frac{\partial f}{\partial y} f(\cdot, y_0) d\mu.
-$$
+Let $X_{1},...,X_{n}$ be independent and identically distribution and $P(X_{1}\leq t)=F(t)$ for some function $F$. Then, write the probability
+$P(\max_{1\leq i\leq n}X_{i}\leq t)$ in terms of $F$.
 
 # Problem 2
 

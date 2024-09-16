@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-09-09">
+  <meta name="dcterms.date" content="2024-09-16">
   <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -357,7 +357,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-09-09</p>
+  <p class="date">2024-09-16</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -758,6 +758,26 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 <li class="fragment">Existence from Radon-Nikodym theorem</li>
 <li class="fragment"><span class="math inline">\(\Er[Y|X] \equiv \Er[Y|\sigma(X)]\)</span></li>
 </ul>
+</div>
+</section>
+<section id="conditional-expectation-1" class="slide level2">
+<h2>Conditional Expectation</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li><p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete with support <span class="math inline">\(\{x_i\}_{i=1}^I \times \{y_j\}_{j=1}^J\)</span> and PMF <span class="math inline">\(p\)</span> then <span class="math display">\[
+\Er[Y|X=x_i] = \frac{\sum_{j=1}^J y_j p(x_i,y_j)} {\sum_{j=1}^J p(x_i,y_j)}
+\]</span></p></li>
+<li><p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous with density <span class="math inline">\(f\)</span>, then <span class="math display">\[
+\Er[Y|X=x] = \frac{\int y f(x,y) dy}{\int f(x,y) dy}
+\]</span></p></li>
+</ol>
+</div>
+</div>
 </div>
 </section>
 <section id="properties-of-conditional-expectation" class="slide level2">

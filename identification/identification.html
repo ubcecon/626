@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-09-16">
+  <meta name="dcterms.date" content="2024-09-18">
   <title>ECON 626 – Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -363,14 +363,14 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-09-16</p>
+  <p class="date">2024-09-18</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
 <li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 4</strong> (which is the basis for these slides)</li>
 <li>Recommended: <span class="citation" data-cites="lewbel2019">Lewbel (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
-<li>Supplementary: <span class="citation" data-cites="matzkin2013">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+<li>Supplementary: <span class="citation" data-cites="matzkin2013">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>, <span class="citation" data-cites="causalmlbook">V. Chernozhukov et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></li>
 </ul>
 <p><span class="math display">\[
 \def\Er{{\mathrm{E}}}
@@ -534,7 +534,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> or <a href="https://www.causalml-book.org/">CausalMLBook</a> chapters 7 and 8</li>
 <li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
 <ul>
-<li>e.g. <span class="citation" data-cites="chernozhukov2021">Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
+<li>e.g. <span class="citation" data-cites="chernozhukov2021">Victor Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
 </ul></li>
 </ul>
 </section>
@@ -659,7 +659,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </section>
 <section id="example-potential-outcomes-2" class="slide level2">
 <h2>Example: Potential Outcomes</h2>
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
+<div class="cell" data-reveal="true" data-fig-width="8" data-fig-height="6" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
@@ -689,11 +689,34 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </div>
 </div>
 </div>
+</section>
+<section id="more-on-causal-graphs" class="slide level2">
+<h2>More on Causal Graphs</h2>
+<div>
+<ul>
+<li class="fragment">Given a graph, what can be identified?
+<ul>
+<li class="fragment"><span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are d-separated by a collection of nodes <span class="math inline">\(S\)</span> if there are no paths between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> except through <span class="math inline">\(S\)</span></li>
+<li class="fragment">d-separation implies conditional independence <span class="math inline">\(Y \upvDash X | S\)</span></li>
+</ul></li>
+<li class="fragment">Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)
+<ul>
+<li class="fragment">Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible</li>
+<li class="fragment">But neighborhood of exceptions is large, so causal discovery very difficult</li>
+</ul></li>
+<li class="fragment"><span class="citation" data-cites="causalmlbook">V. Chernozhukov et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>, especially chapters 7 &amp; 8</li>
+</ul>
+</div>
 </section></section>
 <section>
-<section id="generalized-andor-descriptive-intrepretation-of-population-estimator" class="title-slide slide level1 center">
-<h1>Generalized and/or Descriptive Intrepretation of Population Estimator</h1>
+<section id="reintrepretation-of-estimators" class="title-slide slide level1 center">
+<h1>Reintrepretation of Estimators</h1>
+
+</section>
+<section id="reintrepretation-of-estimators-1" class="slide level2">
+<h2>Reintrepretation of Estimators</h2>
 <ul>
+<li>Generalized and/or descriptive interpretation of population estimator</li>
 <li>Analyze familiar estimator under more general assumptions
 <ul>
 <li>Understand bias when exogeneity assumptions fail</li>
@@ -704,7 +727,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <section id="example-regression-3" class="slide level2">
 <h2>Example: Regression</h2>
 <ul>
-<li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er X X'\)</span> invertible,</li>
+<li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er[X X']\)</span> invertible,</li>
 <li>Population regression <span class="math display">\[
 \begin{align*}
 \theta = &amp; \Er[ X X']^{-1} \Er[ X Y]  \\
@@ -746,12 +769,12 @@ Y_i = \alpha D_i + X_i' \beta + \epsilon_i
       }</style></aside>
 </section></section>
 <section>
-<section id="non-constructive-identification" class="title-slide slide level1 center">
-<h1>Non-constructive Identification</h1>
+<section id="observational-equivalence" class="title-slide slide level1 center">
+<h1>Observational Equivalence</h1>
 
 </section>
-<section id="non-constructive-identification-1" class="slide level2">
-<h2>Non-constructive Identification</h2>
+<section id="observational-equivalence-1" class="slide level2">
+<h2>Observational Equivalence</h2>
 <ul>
 <li>Identification sometimes defined without explicit mapping from data to parameters, e.g. <span class="citation" data-cites="hsiao1983">Hsiao (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>, <span class="citation" data-cites="matzkin2007">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></li>
 </ul>
@@ -772,7 +795,7 @@ Y_i = \alpha D_i + X_i' \beta + \epsilon_i
 </div>
 </div>
 </section>
-<section id="non-constructive-identification-2" class="slide level2">
+<section id="non-constructive-identification" class="slide level2">
 <h2>Non-constructive Identification</h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -795,6 +818,7 @@ Y_i = \alpha D_i + X_i' \beta + \epsilon_i
 <ul>
 <li>Less clear how to use identification to estimate</li>
 <li>Easier to show non-identification</li>
+<li>Set of observationally equivalent structures can be of interest</li>
 </ul></li>
 </ul>
 </section>
@@ -808,7 +832,7 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 <li class="fragment"><p><span class="math inline">\(X = [X_1\, X_2]'\)</span>, if rank <span class="math inline">\(\Er X X' = 1\)</span>, then <span class="math inline">\(\beta_1, \beta_2\)</span> is observationally equivalent to any <span class="math inline">\(\tilde{\beta}_1, \tilde{\beta}_2\)</span> s.t. <span class="math display">\[
 \tilde{\beta}_1 + \tilde{\beta}_2 = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_2)}
 \]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2\)</span> is identified if rank <span class="math inline">\(\Er X X' \geq 1\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2\)</span> is identified if rank <span class="math inline">\(\Er [X X'] \geq 1\)</span></p></li>
 </ul>
 </div>
 </section>
@@ -848,6 +872,9 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-causalmlbook" class="csl-entry" role="listitem">
+Chernozhukov, V, C. Hansen, N. Kallus, M. Spindler, and V Syrgkanis. 2024. <em>CasualMLBook: Applied Causal Inference Powered by ML and AI</em>. <a href="https://causalml-book.org/">https://causalml-book.org/</a>.
+</div>
 <div id="ref-chernozhukov2021" class="csl-entry" role="listitem">
 Chernozhukov, Victor, Hiroyuki Kasahara, and Paul Schrimpf. 2021. <span>“Causal Impact of Masks, Policies, Behavior on Early Covid-19 Pandemic in the US.”</span> <em>Journal of Econometrics</em> 220 (1): 23–62.
 </div>

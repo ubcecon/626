@@ -263,7 +263,7 @@
     "href": "identification/identification.html#reading",
     "title": "Identification",
     "section": "Reading",
-    "text": "Reading\n\nRequired: Song (2021) chapter 4 (which is the basis for these slides)\nRecommended: Lewbel (2019)\nSupplementary: Matzkin (2013), Molinari (2020) , Imbens (2020)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]\n\nMotivate by wanting to go from data to parameters …"
+    "text": "Reading\n\nRequired: Song (2021) chapter 4 (which is the basis for these slides)\nRecommended: Lewbel (2019)\nSupplementary: Matzkin (2013), Molinari (2020) , Imbens (2020), V. Chernozhukov et al. (2024)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]\n\nMotivate by wanting to go from data to parameters …"
   },
   {
     "objectID": "identification/identification.html#example-descriptive-statistics",
@@ -305,7 +305,7 @@
     "href": "identification/identification.html#causal-diagrams-1",
     "title": "Identification",
     "section": "Causal Diagrams",
-    "text": "Causal Diagrams\n\nOriginate with Wright around 1920, e.g. Wright (1934)\nRecently advocated by Pearl, e.g. Pearl (2015), Pearl and Mackenzie (2018)\nRecommended introduction Imbens (2020) or CausalMLBook chapters 7 and 8\nSometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach\n\ne.g. Chernozhukov, Kasahara, and Schrimpf (2021)"
+    "text": "Causal Diagrams\n\nOriginate with Wright around 1920, e.g. Wright (1934)\nRecently advocated by Pearl, e.g. Pearl (2015), Pearl and Mackenzie (2018)\nRecommended introduction Imbens (2020) or CausalMLBook chapters 7 and 8\nSometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach\n\ne.g. Victor Chernozhukov, Kasahara, and Schrimpf (2021)"
   },
   {
     "objectID": "identification/identification.html#example-regression",
@@ -343,11 +343,25 @@
     "text": "Example: Potential Outcomes\n\n\n\n\n\nflowchart LR\n    subgraph Treatment\n        D[Naloxone distribution site opens]\n    end\n    subgraph Outcome\n        Y[ER visits for overdose]\n    end\n    u -.-&gt; D\n    ϵ -.-&gt; Y\n    subgraph X\n        Income --&gt; Y\n        Unemployment --&gt; Y\n        Income --&gt; D\n        Unemployment --&gt; D\n        OD[OD rate prior to opening] --&gt; Y\n        OD --&gt; D\n        Crime --&gt; Y\n        Crime --&gt; D\n    end"
   },
   {
+    "objectID": "identification/identification.html#more-on-causal-graphs",
+    "href": "identification/identification.html#more-on-causal-graphs",
+    "title": "Identification",
+    "section": "More on Causal Graphs",
+    "text": "More on Causal Graphs\n\n\nGiven a graph, what can be identified?\n\n\\(Y\\) and \\(X\\) are d-separated by a collection of nodes \\(S\\) if there are no paths between \\(Y\\) and \\(X\\) except through \\(S\\)\nd-separation implies conditional independence \\(Y \\upvDash X | S\\)\n\nDoes conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)\n\nConditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible\nBut neighborhood of exceptions is large, so causal discovery very difficult\n\nV. Chernozhukov et al. (2024), especially chapters 7 & 8"
+  },
+  {
+    "objectID": "identification/identification.html#reintrepretation-of-estimators-1",
+    "href": "identification/identification.html#reintrepretation-of-estimators-1",
+    "title": "Identification",
+    "section": "Reintrepretation of Estimators",
+    "text": "Reintrepretation of Estimators\n\nGeneralized and/or descriptive interpretation of population estimator\nAnalyze familiar estimator under more general assumptions\n\nUnderstand bias when exogeneity assumptions fail\nSometimes give more general interpretation of existing estimator"
+  },
+  {
     "objectID": "identification/identification.html#example-regression-3",
     "href": "identification/identification.html#example-regression-3",
     "title": "Identification",
     "section": "Example: Regression",
-    "text": "Example: Regression\n\nIn linear model \\(Y_i = X_i'\\beta + \\epsilon_i\\), if just assume \\(\\Er X X'\\) invertible,\nPopulation regression \\[\n\\begin{align*}\n\\theta = & \\Er[ X X']^{-1} \\Er[ X Y]  \\\\\n= & \\Er[X X']^{-1} \\Er[X (X' \\beta + \\epsilon)] \\\\\n= & \\beta + \\Er[X X']^{-1} \\Er[X\\epsilon]\n\\end{align*}\n\\]"
+    "text": "Example: Regression\n\nIn linear model \\(Y_i = X_i'\\beta + \\epsilon_i\\), if just assume \\(\\Er[X X']\\) invertible,\nPopulation regression \\[\n\\begin{align*}\n\\theta = & \\Er[ X X']^{-1} \\Er[ X Y]  \\\\\n= & \\Er[X X']^{-1} \\Er[X (X' \\beta + \\epsilon)] \\\\\n= & \\beta + \\Er[X X']^{-1} \\Er[X\\epsilon]\n\\end{align*}\n\\]"
   },
   {
     "objectID": "identification/identification.html#example-regression-4",
@@ -364,25 +378,25 @@
     "text": "Example: Potential Outcomes\n\nMatching initially studied with a linear regression model, e.g. Cochran (1953) \\[\nY_i = \\alpha D_i + X_i' \\beta + \\epsilon_i\n\\]\nImplies constant treatment effect \\(Y_{i,1} - Y_{i,0} = \\alpha\\)\n\n\nThe LATE interpretation of IV developed along similar lines – replace a constant treatment effect linear model with a heterogenous effect potential outcomes framework, and see what IV does.\nSimilarly, the recent literature on difference in differences with staggered treatment timing arises from moving from a model with a constant treatment effect over time to one where treatment effects vary with time."
   },
   {
-    "objectID": "identification/identification.html#non-constructive-identification-1",
-    "href": "identification/identification.html#non-constructive-identification-1",
+    "objectID": "identification/identification.html#observational-equivalence-1",
+    "href": "identification/identification.html#observational-equivalence-1",
     "title": "Identification",
-    "section": "Non-constructive Identification",
-    "text": "Non-constructive Identification\n\nIdentification sometimes defined without explicit mapping from data to parameters, e.g. Hsiao (1983), Matzkin (2007)\n\n\n\n\nDefinition: Observationally Equivalent\n\n\n\nLet \\(\\mathcal{P} = \\{ P(\\cdot; s) : s \\in S \\}\\), two structures \\(s\\) and \\(\\tilde{s}\\) in \\(S\\) are observationally equivalent if they imply the same distribution for the observed data, i.e. \\[ P(B;s) = P(B; \\tilde{s}) \\] for all \\(B \\in \\sigma(X)\\).\nLet \\(\\lambda: S \\to \\R^k\\), \\(\\theta\\) is observationally equivalent to \\(\\tilde{\\theta}\\) if \\(\\exists s, \\tilde{s} \\in S\\) that are observationally equivalent and \\(\\theta = \\lambda(s)\\) and \\(\\tilde{\\theta} = \\lambda(\\tilde{s})\\)\n\nLet \\(\\Gamma(\\theta, S) = \\{P(\\dot; s) | s \\in S, \\theta = \\lambda(s) \\}\\), then \\(\\theta\\) and \\(\\tilde{\\theta}\\) are observationally equivalent iff \\(\\Gamma(\\theta,S) \\cap \\Gamma(\\tilde{\\theta}, S) \\neq \\emptyset\\)"
+    "section": "Observational Equivalence",
+    "text": "Observational Equivalence\n\nIdentification sometimes defined without explicit mapping from data to parameters, e.g. Hsiao (1983), Matzkin (2007)\n\n\n\n\nDefinition: Observationally Equivalent\n\n\n\nLet \\(\\mathcal{P} = \\{ P(\\cdot; s) : s \\in S \\}\\), two structures \\(s\\) and \\(\\tilde{s}\\) in \\(S\\) are observationally equivalent if they imply the same distribution for the observed data, i.e. \\[ P(B;s) = P(B; \\tilde{s}) \\] for all \\(B \\in \\sigma(X)\\).\nLet \\(\\lambda: S \\to \\R^k\\), \\(\\theta\\) is observationally equivalent to \\(\\tilde{\\theta}\\) if \\(\\exists s, \\tilde{s} \\in S\\) that are observationally equivalent and \\(\\theta = \\lambda(s)\\) and \\(\\tilde{\\theta} = \\lambda(\\tilde{s})\\)\n\nLet \\(\\Gamma(\\theta, S) = \\{P(\\dot; s) | s \\in S, \\theta = \\lambda(s) \\}\\), then \\(\\theta\\) and \\(\\tilde{\\theta}\\) are observationally equivalent iff \\(\\Gamma(\\theta,S) \\cap \\Gamma(\\tilde{\\theta}, S) \\neq \\emptyset\\)"
   },
   {
-    "objectID": "identification/identification.html#non-constructive-identification-2",
-    "href": "identification/identification.html#non-constructive-identification-2",
+    "objectID": "identification/identification.html#non-constructive-identification",
+    "href": "identification/identification.html#non-constructive-identification",
     "title": "Identification",
     "section": "Non-constructive Identification",
-    "text": "Non-constructive Identification\n\n\n\nDefinition: (Non-Constructive) Identification\n\n\n\n\\(s_0 \\in S\\) is identified if there is no \\(s\\) that is observationally equivalent to \\(s_0\\)\n\\(\\theta_0\\) is identified (in \\(S\\)) if there is no observationally equivalent \\(\\theta \\neq \\theta_0\\)\n\ni.e. \\(\\Gamma(\\theta_0, S) \\cap \\Gamma(\\theta, S) = \\emptyset\\) \\(\\forall \\theta \\neq \\theta_0\\)\n\n\n\n\n\n\nCompared to constructive definition with \\(\\theta_0 = \\psi(P)\\):\n\nLess clear how to use identification to estimate\nEasier to show non-identification"
+    "text": "Non-constructive Identification\n\n\n\nDefinition: (Non-Constructive) Identification\n\n\n\n\\(s_0 \\in S\\) is identified if there is no \\(s\\) that is observationally equivalent to \\(s_0\\)\n\\(\\theta_0\\) is identified (in \\(S\\)) if there is no observationally equivalent \\(\\theta \\neq \\theta_0\\)\n\ni.e. \\(\\Gamma(\\theta_0, S) \\cap \\Gamma(\\theta, S) = \\emptyset\\) \\(\\forall \\theta \\neq \\theta_0\\)\n\n\n\n\n\n\nCompared to constructive definition with \\(\\theta_0 = \\psi(P)\\):\n\nLess clear how to use identification to estimate\nEasier to show non-identification\nSet of observationally equivalent structures can be of interest"
   },
   {
     "objectID": "identification/identification.html#example-multiple-regression-1",
     "href": "identification/identification.html#example-multiple-regression-1",
     "title": "Identification",
     "section": "Example: Multiple Regression",
-    "text": "Example: Multiple Regression\n\\[\nY = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon\n\\]\n\n\n\\(X = [X_1\\, X_2]'\\), if rank \\(\\Er X X' = 1\\), then \\(\\beta_1, \\beta_2\\) is observationally equivalent to any \\(\\tilde{\\beta}_1, \\tilde{\\beta}_2\\) s.t. \\[\n\\tilde{\\beta}_1 + \\tilde{\\beta}_2 = \\beta_1 + \\beta_2 \\frac{\\cov(X_1, X_2)}{\\var(X_2)}\n\\]\n\\(\\theta_0 = \\lambda( \\beta ) = \\beta_1 + \\beta_2\\) is identified if rank \\(\\Er X X' \\geq 1\\)"
+    "text": "Example: Multiple Regression\n\\[\nY = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon\n\\]\n\n\n\\(X = [X_1\\, X_2]'\\), if rank \\(\\Er X X' = 1\\), then \\(\\beta_1, \\beta_2\\) is observationally equivalent to any \\(\\tilde{\\beta}_1, \\tilde{\\beta}_2\\) s.t. \\[\n\\tilde{\\beta}_1 + \\tilde{\\beta}_2 = \\beta_1 + \\beta_2 \\frac{\\cov(X_1, X_2)}{\\var(X_2)}\n\\]\n\\(\\theta_0 = \\lambda( \\beta ) = \\beta_1 + \\beta_2\\) is identified if rank \\(\\Er [X X'] \\geq 1\\)"
   },
   {
     "objectID": "identification/identification.html#example-random-coefficients-logit",
@@ -1880,7 +1894,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 13, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 9, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 18, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "measure/measure.html#references",

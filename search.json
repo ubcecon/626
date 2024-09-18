@@ -277,14 +277,21 @@
     "href": "identification/identification.html#example-linear-model",
     "title": "Identification",
     "section": "Example: Linear Model",
-    "text": "Example: Linear Model\n\\[\nY = \\alpha + \\beta X + \\epsilon\n\\]\n\n\\(\\mathcal{P} = \\{P_{X,Y}:\\) \\(Y=\\alpha + \\beta X + \\epsilon\\),\n\n\\(| \\mathrm{Cov}(X,Y) | &lt; \\infty\\), \\(0 &lt; \\mathrm{Var}(X) &lt; \\infty\\)\n\\(\\mathrm{Cov}(X, \\epsilon)  = 0\\) \\(\\}\\)\n\n\\(\\beta\\) identified as\n\n\\[\n\\beta = \\frac{\\int (x - \\Er X) (y - \\Er Y ) dP_{X,Y}(x,y)}\n{\\int (x - \\Er X)^2 dP_{X}(x)}  = \\frac{ \\cov(X,Y) }{ \\var(X) }\n\\]\n\n\nIdentification requires:\n\nUsually innocuous regularity conditions\nSubstantive exogeneity restriction\n\nEvaluating plausibility of exogeneity restrictions requires a priori knowledge of data context and related economic theory\n\n\n\nExamples of production function and returns to schooling here?\n2 is more difficult to get right and more context dependent, so we will first tackle the easier problem of 1."
+    "text": "Example: Linear Model\n\\[\nY = \\alpha + \\beta X + \\epsilon\n\\]\n\n\\(\\mathcal{P} = \\{P_{X,Y}:\\) \\(Y=\\alpha + \\beta X + \\epsilon\\),\n\n\\(| \\mathrm{Cov}(X,Y) | &lt; \\infty\\), \\(0 &lt; \\mathrm{Var}(X) &lt; \\infty\\)\n\\(\\mathrm{Cov}(X, \\epsilon)  = 0\\) \\(\\}\\)\n\n\\(\\beta\\) identified as\n\n\\[\n\\beta = \\frac{\\int (x - \\Er X) (y - \\Er Y ) dP_{X,Y}(x,y)}\n{\\int (x - \\Er X)^2 dP_{X}(x)}  = \\frac{ \\cov(X,Y) }{ \\var(X) }\n\\]"
+  },
+  {
+    "objectID": "identification/identification.html#section",
+    "href": "identification/identification.html#section",
+    "title": "Identification",
+    "section": "",
+    "text": "Identification requires:\n\nUsually innocuous regularity conditions\nSubstantive exogeneity restriction\n\nEvaluating plausibility of exogeneity restrictions requires a priori knowledge of data context and related economic theory\n\n\nExamples of production function and returns to schooling here?\n2 is more difficult to get right and more context dependent, so we will first tackle the easier problem of 1."
   },
   {
     "objectID": "identification/identification.html#example-multiple-regression",
     "href": "identification/identification.html#example-multiple-regression",
     "title": "Identification",
     "section": "Example: Multiple Regression",
-    "text": "Example: Multiple Regression\n\\[\nY = X'\\beta + \\epsilon\n\\]\n\n\\(\\mathcal{P} = \\{P: \\Er X \\epsilon = 0, \\Er X X' \\text{ invertible} \\}\\)"
+    "text": "Example: Multiple Regression\n\\[\nY = X'\\beta + \\epsilon\n\\]\n\n\\(\\mathcal{P} = \\{P: \\Er [X \\epsilon] = 0, \\Er [X X'] \\text{ invertible} \\}\\)"
   },
   {
     "objectID": "identification/identification.html#example-binary-choice",
@@ -312,7 +319,7 @@
     "href": "identification/identification.html#example-regression",
     "title": "Identification",
     "section": "Example: Regression",
-    "text": "Example: Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart LR\n    X --&gt; Y\n    ϵ -.-&gt; Y\n\n\n\n\n\n\n\nArrow means \\(X\\) causes \\(Y\\)\nDashed arrow means \\(\\epsilon\\) causes \\(Y\\) and is unobserved\nLack of connection between \\(X\\) and \\(\\epsilon\\) means they are independent"
+    "text": "Example: Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart LR\n    X --&gt; Y\n    ϵ -.-&gt; Y\n\n\n\n\n\n\n\nArrow means \\(X\\) causes \\(Y\\)\nDashed arrow means \\(\\epsilon\\) causes \\(Y\\) and is unobserved (not universal, often dashed box around \\(\\epsilon\\) instead)\nLack of connection between \\(X\\) and \\(\\epsilon\\) means they are independent"
   },
   {
     "objectID": "identification/identification.html#example-regression-1",
@@ -326,28 +333,28 @@
     "href": "identification/identification.html#example-regression-2",
     "title": "Identification",
     "section": "Example: Regression",
-    "text": "Example: Regression\nBut reality is likely more complex …\n\n\n\n\n\nflowchart LR\n   subgraph \" Y\"\n        Y[Wage]\n   end\n   subgraph X\n       E[Education] --&gt; Y\n       T[SAT] --&gt; E\n       F[Family SES] --&gt; E\n       F --&gt; Y\n   end\n   subgraph eps\n        I[Intelligence] -.-&gt; Y\n        L[Luck] -.-&gt; Y\n        G[Grit] -.-&gt; Y\n        G -.-&gt; E\n        L -.-&gt; E\n        I -.-&gt; T\n        I -.-&gt; E\n        I -.-&gt; G\n        G -.-&gt; I\n   end"
+    "text": "Example: Regression\nBut reality is likely more complex …\n\n\n\n\n\nflowchart LR\n   subgraph \" Y\"\n        Y[Wage]\n   end\n   subgraph X\n       E[Education] --&gt; Y\n       T[SAT] --&gt; E\n       F[Family SES] --&gt; E\n       F --&gt; Y\n   end\n   subgraph ϵ\n        I[Intelligence] -.-&gt; Y\n        L[Luck] -.-&gt; Y\n        G[Grit] -.-&gt; Y\n        G -.-&gt; E\n        L -.-&gt; E\n        I -.-&gt; T\n        I -.-&gt; E\n        I -.-&gt; G\n        G -.-&gt; I\n   end"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-1",
     "href": "identification/identification.html#example-potential-outcomes-1",
     "title": "Identification",
     "section": "Example: Potential Outcomes",
-    "text": "Example: Potential Outcomes\n\n\n\n\n\nflowchart LR\n    u -.-&gt; D\n    X --&gt; Y\n    X --&gt; D\n    ϵ -.-&gt; Y"
+    "text": "Example: Potential Outcomes\n\n\n\n\n\nflowchart LR\n    u -.-&gt; D\n    X --&gt; Y\n    X --&gt; D\n    D --&gt; Y\n    ϵ -.-&gt; Y"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-2",
     "href": "identification/identification.html#example-potential-outcomes-2",
     "title": "Identification",
     "section": "Example: Potential Outcomes",
-    "text": "Example: Potential Outcomes\n\n\n\n\n\nflowchart LR\n    subgraph Treatment\n        D[Naloxone distribution site opens]\n    end\n    subgraph Outcome\n        Y[ER visits for overdose]\n    end\n    u -.-&gt; D\n    ϵ -.-&gt; Y\n    subgraph X\n        Income --&gt; Y\n        Unemployment --&gt; Y\n        Income --&gt; D\n        Unemployment --&gt; D\n        OD[OD rate prior to opening] --&gt; Y\n        OD --&gt; D\n        Crime --&gt; Y\n        Crime --&gt; D\n    end"
+    "text": "Example: Potential Outcomes\n\n\n\n\n\nflowchart LR\n    subgraph Treatment\n        D[Naloxone distribution site opens]\n    end\n    subgraph Outcome\n        Y[ER visits for overdose]\n    end\n    u -.-&gt; D\n    D --&gt; Y\n    ϵ -.-&gt; Y\n    subgraph X\n        Income --&gt; Y\n        Unemployment --&gt; Y\n        Income --&gt; D\n        Unemployment --&gt; D\n        OD[OD rate prior to opening] --&gt; Y\n        OD --&gt; D\n        Crime --&gt; Y\n        Crime --&gt; D\n    end"
   },
   {
     "objectID": "identification/identification.html#more-on-causal-graphs",
     "href": "identification/identification.html#more-on-causal-graphs",
     "title": "Identification",
     "section": "More on Causal Graphs",
-    "text": "More on Causal Graphs\n\n\nGiven a graph, what can be identified?\n\n\\(Y\\) and \\(X\\) are d-separated by a collection of nodes \\(S\\) if there are no paths between \\(Y\\) and \\(X\\) except through \\(S\\)\nd-separation implies conditional independence \\(Y \\upvDash X | S\\)\n\nDoes conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)\n\nConditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible\nBut neighborhood of exceptions is large, so causal discovery very difficult\n\nV. Chernozhukov et al. (2024), especially chapters 7 & 8"
+    "text": "More on Causal Graphs\n\n\nGiven a graph, what can be identified?\n\n\\(Y\\) and \\(X\\) are d-separated by a collection of nodes \\(S\\) if there are no paths between \\(Y\\) and \\(X\\) except through \\(S\\)\nd-separation implies conditional independence \\(Y \\perp X | S\\)\n\nDoes conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)\n\nConditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible\nBut neighborhood of exceptions is large, so causal discovery very difficult\n\nV. Chernozhukov et al. (2024), especially chapters 7 & 8"
   },
   {
     "objectID": "identification/identification.html#reintrepretation-of-estimators-1",

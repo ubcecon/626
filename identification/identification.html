@@ -443,7 +443,9 @@ Y = \alpha + \beta X + \epsilon
 \beta = \frac{\int (x - \Er X) (y - \Er Y ) dP_{X,Y}(x,y)}
 {\int (x - \Er X)^2 dP_{X}(x)}  = \frac{ \cov(X,Y) }{ \var(X) }
 \]</span></p>
-<div class="fragment">
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 <ul>
 <li>Identification requires:
 <ol type="1">
@@ -452,7 +454,6 @@ Y = \alpha + \beta X + \epsilon
 </ol></li>
 <li>Evaluating plausibility of exogeneity restrictions requires a priori knowledge of data context and related economic theory</li>
 </ul>
-</div>
 <aside class="notes">
 <p>Examples of production function and returns to schooling here?</p>
 <p>2 is more difficult to get right and more context dependent, so we will first tackle the easier problem of 1.</p>
@@ -474,7 +475,7 @@ Y = \alpha + \beta X + \epsilon
 Y = X'\beta + \epsilon
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\mathcal{P} = \{P: \Er X \epsilon = 0, \Er X X' \text{ invertible} \}\)</span></li>
+<li><span class="math inline">\(\mathcal{P} = \{P: \Er [X \epsilon] = 0, \Er [X X'] \text{ invertible} \}\)</span></li>
 </ul>
 </section>
 <section id="example-binary-choice" class="slide level2">
@@ -567,7 +568,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </div>
 <ul>
 <li>Arrow means <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span></li>
-<li>Dashed arrow means <span class="math inline">\(\epsilon\)</span> causes <span class="math inline">\(Y\)</span> and is unobserved</li>
+<li>Dashed arrow means <span class="math inline">\(\epsilon\)</span> causes <span class="math inline">\(Y\)</span> and is unobserved (not universal, often dashed box around <span class="math inline">\(\epsilon\)</span> instead)</li>
 <li>Lack of connection between <span class="math inline">\(X\)</span> and <span class="math inline">\(\epsilon\)</span> means they are independent</li>
 </ul>
 </section>
@@ -620,7 +621,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
        F[Family SES] --&gt; E
        F --&gt; Y
    end
-   subgraph eps
+   subgraph ϵ
         I[Intelligence] -.-&gt; Y
         L[Luck] -.-&gt; Y
         G[Grit] -.-&gt; Y
@@ -649,6 +650,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
     u -.-&gt; D
     X --&gt; Y
     X --&gt; D
+    D --&gt; Y
     ϵ -.-&gt; Y
 </pre>
 </div>
@@ -672,6 +674,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
         Y[ER visits for overdose]
     end
     u -.-&gt; D
+    D --&gt; Y
     ϵ -.-&gt; Y
     subgraph X
         Income --&gt; Y
@@ -697,7 +700,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <li class="fragment">Given a graph, what can be identified?
 <ul>
 <li class="fragment"><span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are d-separated by a collection of nodes <span class="math inline">\(S\)</span> if there are no paths between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> except through <span class="math inline">\(S\)</span></li>
-<li class="fragment">d-separation implies conditional independence <span class="math inline">\(Y \upvDash X | S\)</span></li>
+<li class="fragment">d-separation implies conditional independence <span class="math inline">\(Y \perp X | S\)</span></li>
 </ul></li>
 <li class="fragment">Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)
 <ul>
@@ -873,7 +876,7 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-causalmlbook" class="csl-entry" role="listitem">
-Chernozhukov, V, C. Hansen, N. Kallus, M. Spindler, and V Syrgkanis. 2024. <em>CasualMLBook: Applied Causal Inference Powered by ML and AI</em>. <a href="https://causalml-book.org/">https://causalml-book.org/</a>.
+Chernozhukov, V., C. Hansen, N. Kallus, M. Spindler, and V. Syrgkanis. 2024. <em>CasualMLBook: Applied Causal Inference Powered by ML and AI</em>. <a href="https://causalml-book.org/">https://causalml-book.org/</a>.
 </div>
 <div id="ref-chernozhukov2021" class="csl-entry" role="listitem">
 Chernozhukov, Victor, Hiroyuki Kasahara, and Paul Schrimpf. 2021. <span>“Causal Impact of Masks, Policies, Behavior on Early Covid-19 Pandemic in the US.”</span> <em>Journal of Econometrics</em> 220 (1): 23–62.

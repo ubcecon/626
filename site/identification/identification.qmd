@@ -15,6 +15,7 @@ format:
       data-background-size: contain
     mermaid:
       theme: dark
+      format: svg
 bibliography: ../626.bib
 ---
 
@@ -23,7 +24,7 @@ bibliography: ../626.bib
 
 - Required: **@song2021 chapter 4** (which is the basis for these slides)
 - Recommended: @lewbel2019
-- Supplementary: @matzkin2013, @molinari2020 , @imbens2020
+- Supplementary: @matzkin2013, @molinari2020 , @imbens2020, @causalmlbook
 
 $$
 \def\Er{{\mathrm{E}}}
@@ -91,15 +92,14 @@ $$
 {\int (x - \Er X)^2 dP_{X}(x)}  = \frac{ \cov(X,Y) }{ \var(X) }
 $$
 
-::: {.fragment}
+
+##
 
 - Identification requires:
     1. Usually innocuous regularity conditions
     2. **Substantive exogeneity restriction**
 
 - Evaluating plausibility of exogeneity restrictions requires a priori knowledge of data context and related economic theory
-
-:::
 
 ::: {.notes}
 
@@ -115,7 +115,7 @@ $$
 Y = X'\beta + \epsilon
 $$
 
-- $\mathcal{P} = \{P: \Er X \epsilon = 0, \Er X X' \text{ invertible} \}$
+- $\mathcal{P} = \{P: \Er [X \epsilon] = 0, \Er [X X'] \text{ invertible} \}$
 
 
 
@@ -159,7 +159,7 @@ More generally, think about importance of statistical assumptions in terms of ho
 
 - Originate with Wright around 1920, e.g. @wright1934
 - Recently advocated by Pearl, e.g. @pearl2015, @pearl2018
-- Recommended introduction @imbens2020
+- Recommended introduction @imbens2020 or [CausalMLBook](https://www.causalml-book.org/) chapters 7 and 8
 - Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
      - e.g. @chernozhukov2021
 
@@ -185,7 +185,7 @@ flowchart LR
     ϵ -.-> Y
 ```
 - Arrow means $X$ causes $Y$
-- Dashed arrow means $\epsilon$ causes $Y$ and is unobserved
+- Dashed arrow means $\epsilon$ causes $Y$ and is unobserved (not universal, often dashed box around $\epsilon$ instead)
 - Lack of connection between $X$ and $\epsilon$ means they are independent
 
 ## Example: Regression
@@ -227,7 +227,7 @@ flowchart LR
        F[Family SES] --> E
        F --> Y
    end
-   subgraph eps
+   subgraph ϵ
         I[Intelligence] -.-> Y
         L[Luck] -.-> Y
         G[Grit] -.-> Y
@@ -248,13 +248,15 @@ flowchart LR
     u -.-> D
     X --> Y
     X --> D
+    D --> Y
     ϵ -.-> Y
 ```
 
 ## Example: Potential Outcomes
 
 ```{mermaid}
-%%| fig-width: 6.5
+%%| fig-width: 8
+%%| fig-height: 6
 flowchart LR
     subgraph Treatment
         D[Naloxone distribution site opens]
@@ -263,6 +265,7 @@ flowchart LR
         Y[ER visits for overdose]
     end
     u -.-> D
+    D --> Y
     ϵ -.-> Y
     subgraph X
         Income --> Y
@@ -276,15 +279,32 @@ flowchart LR
     end
 ```
 
-# Generalized and/or Descriptive Intrepretation of Population Estimator
+## More on Causal Graphs
 
+::: {.incremental}
+
+- Given a graph, what can be identified?
+  - $Y$ and $X$ are d-separated by a collection of nodes $S$ if there are no paths between $Y$ and $X$ except through $S$
+  - d-separation implies conditional independence $Y \perp X | S$
+- Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)
+  - Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible
+  - But neighborhood of exceptions is large, so causal discovery very difficult
+- @causalmlbook, especially chapters 7 & 8
+
+:::
+
+# Reintrepretation of Estimators
+
+## Reintrepretation of Estimators
+
+- Generalized and/or descriptive interpretation of population estimator
 - Analyze familiar estimator under more general assumptions
     - Understand bias when exogeneity assumptions fail
     - Sometimes give more general interpretation of existing estimator
 
 ## Example: Regression
 
-- In linear model $Y_i = X_i'\beta + \epsilon_i$, if just assume $\Er X X'$ invertible,
+- In linear model $Y_i = X_i'\beta + \epsilon_i$, if just assume $\Er[X X']$ invertible,
 - Population regression
 $$
    \begin{align*}
@@ -322,9 +342,9 @@ vary with time.
 
 :::
 
-# Non-constructive Identification
+# Observational Equivalence
 
-## Non-constructive Identification
+## Observational Equivalence
 
 - Identification sometimes defined without explicit mapping from data to parameters, e.g. @hsiao1983, @matzkin2007
 
@@ -362,6 +382,7 @@ $\tilde{\theta} = \lambda(\tilde{s})$
 - Compared to constructive definition with $\theta_0 = \psi(P)$:
     - Less clear how to use identification to estimate
     - Easier to show non-identification
+    - Set of observationally equivalent structures can be of interest
 
 
 ## Example: Multiple Regression
@@ -379,7 +400,7 @@ $$
 $$
 
 - $\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2$ is identified if
-rank $\Er X X' \geq 1$
+rank $\Er [X X'] \geq 1$
 
 :::
 

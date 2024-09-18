@@ -12,7 +12,7 @@ title-slide-attributes:
   data-background-size: contain
 
 bibliography: ../626.bib
-engine: julia
+#engine: julia
 ---
 
 
@@ -337,15 +337,15 @@ $\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
 
 ### Exercise
 
-1. If $X$ and $Y$ are discrete with support $\{x_i\}_{i=1}^I \times \{y_j\}_{j=1}^J$,
+1. If $X$ and $Y$ are discrete with support $\{x_i\}_{i=1}^I \times \{y_j\}_{j=1}^J$ and PMF $p$
  then
  $$
- \Er[Y|X=x_i] = \frac{\sum_{j=1}^J y_j P(y_j,x_i)}{\sum_{i}^I P(y_j,x_i)}}
+ \Er[Y|X=x_i] = \frac{\sum_{j=1}^J y_j p(x_i,y_j)} {\sum_{j=1}^J p(x_i,y_j)}
  $$
 
 2. If $X$ and $Y$ are continuous with density $f$, then
 $$
-\Er[Y|X=x] = \frac{\int y f(x,y) dy}{\int x f(x,y) dx}
+\Er[Y|X=x] = \frac{\int y f(x,y) dy}{\int f(x,y) dy}
 $$
 
 :::

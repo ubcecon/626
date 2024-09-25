@@ -382,7 +382,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=9,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\nusing LinearAlgebra\nn = 10_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\nusing LinearAlgebra\nn = 10_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-3",

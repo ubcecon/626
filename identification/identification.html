@@ -817,7 +817,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <h2>Caution</h2>
 <ul>
 <li><p>Regression being a linear approximation to <span class="math inline">\(\Er[Y|X]\)</span> does not mean <span class="math inline">\(\beta = \Er[X X']^{-1} \Er[X Y]\)</span> necessarily has the sign you want</p></li>
-<li><p>In example below, <span class="math inline">\(\Er[Y|x_1=1, x_2] &gt; \Er[Y|x_1=9,x_2]\)</span>, but <span class="math inline">\(\beta_1 &lt; 0\)</span></p></li>
+<li><p>In example below, <span class="math inline">\(\Er[Y|x_1=1, x_2] &gt; \Er[Y|x_1=0,x_2]\)</span>, but <span class="math inline">\(\beta_1 &lt; 0\)</span></p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {julia} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>using LinearAlgebra</span>
 <span id="cb1-2"><a></a>n = 10_000</span>

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-09-03">
+  <meta name="dcterms.date" content="2024-10-21">
   <title>ECON 626 – Difference in Diffferences</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -117,7 +117,6 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <link rel="stylesheet" href="../styles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -428,7 +427,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-09-03</p>
+  <p class="date">2024-10-21</p>
 </section>
 <section>
 <section id="difference-in-differences" class="title-slide slide level1 center">
@@ -582,7 +581,7 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 <span id="cb1-22"><a></a><span class="fu">sum</span>(y<span class="op">.*</span><span class="fu">weights</span>(D))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>-0.09173775638518751</code></pre>
+<pre><code>-0.0313689933940951</code></pre>
 </div>
 </div>
 <div id="4" class="cell" data-execution_count="1">
@@ -594,18 +593,18 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 <span id="cb3-4"><a></a><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>                 FixedEffectModels.FixedEffectModel                 
-====================================================================
-Number of obs:                900  Converged:                   true
-dof (model):                    1  dof (residuals):              791
-R²:                         0.129  R² adjusted:                0.009
-F-statistic:             0.481479  P-value:                    0.488
-R² within:                  0.001  Iterations:                     2
-====================================================================
-     Estimate  Std. Error     t-stat  Pr(&gt;|t|)  Lower 95%  Upper 95%
-────────────────────────────────────────────────────────────────────
-D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
-====================================================================</code></pre>
+<pre><code>                FixedEffectModels.FixedEffectModel                
+===================================================================
+Number of obs:               900   Converged:                  true
+dof (model):                   1   dof (residuals):             791
+R²:                        0.107   R² adjusted:              -0.016
+F-statistic:           0.0554795   P-value:                   0.814
+R² within:                 0.000   Iterations:                    2
+===================================================================
+    Estimate  Std. Error     t-stat  Pr(&gt;|t|)  Lower 95%  Upper 95%
+───────────────────────────────────────────────────────────────────
+D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
+===================================================================</code></pre>
 </div>
 </div>
 </section>
@@ -643,7 +642,7 @@ D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
 <span id="cb5-27"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;OGVZYdnrPr&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;OGVZYdnrPr&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.48,0.48,0.48,0.48,0.48]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;500e12Szua&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;500e12Szua&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.5,0.5,0.5,0.5,0.5]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
 </div>
 </div>
 <div id="8" class="cell" data-execution_count="1">
@@ -653,7 +652,7 @@ D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
 <span id="cb6-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;miYqiVbkis&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;miYqiVbkis&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.004807692307692304,0.004807692307692304,0.004807692307692304,0.004807692307692304,-0.003846153846153843,-0.003846153846153843,-0.003846153846153843,-0.003846153846153843,-0.003846153846153843],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.00520833333333333,-0.00520833333333333,-0.00520833333333333,-0.00520833333333333,0.004166666666666663,0.004166666666666663,0.004166666666666663,0.004166666666666663,0.004166666666666663],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;6KZhYmVcc0&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;6KZhYmVcc0&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.004999999999999989,-0.004999999999999989,-0.004999999999999989,-0.004999999999999989,0.0039999999999999905,0.0039999999999999905,0.0039999999999999905,0.0039999999999999905,0.0039999999999999905],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.004999999999999989,0.004999999999999989,0.004999999999999989,0.004999999999999989,-0.0039999999999999905,-0.0039999999999999905,-0.0039999999999999905,-0.0039999999999999905,-0.0039999999999999905],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
 </div>
 </div>
 </section>
@@ -667,7 +666,7 @@ D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
 <span id="cb7-3"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;OfKzmpOqUH&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;OfKzmpOqUH&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.05,0.15,0.23,0.27,0.3,0.31,0.39,0.42]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;wf1YMWcdEJ&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;wf1YMWcdEJ&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.1,0.19,0.25,0.32,0.38,0.39,0.44,0.46]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
 </div>
 </div>
 <div id="12" class="cell" data-execution_count="1">
@@ -677,7 +676,7 @@ D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
 <span id="cb8-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;tCWUef7uoK&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;tCWUef7uoK&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.010414443638226134,-0.011374791924537971,0.0059114772290750775,0.004374919970976141,0.003606641341926672,0.00303043237013957,0.0028383627128772027,0.0013018054547782659,0.0007255964829911658],&quot;name&quot;:&quot;Treated 7 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.004524307482180205,0.0035639591958683686,0.001643262623244697,0.00010670536514575917,-0.0006615732639037098,-0.0012377822356908108,-0.0014298518929531782,-0.002966409151052116,-0.003542618122839217],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.004012121729480559,-0.004972470015792394,-0.006893166588416068,-0.008429723846515004,-0.009198002475564473,0.009432754278885144,0.009240684621622777,0.007704127363523839,0.007127918391736739],&quot;name&quot;:&quot;Treated 4 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0061462290323957515,-0.007106577318707588,-0.00902727389133126,-0.010563831149430197,0.007874855947757053,0.007298646975969951,0.007106577318707584,0.005570020060608647,0.004993811088821547],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.000256092876349823,-0.0007042554099620128,-0.0026249519825856855,-0.004161509240684622,-0.004929787869734092,-0.005505996841521192,-0.0056980664987835595,0.011972341969354221,0.01139613299756712],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.008280336335310941,-0.009240684621622778,-0.01116138119424645,0.006509027273891333,0.0057407486448418634,0.005164539673054761,0.004972470015792394,0.0034359127576934576,0.0028597037859063577],&quot;name&quot;:&quot;Treated 6 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.012548550941141323,0.0056980664987835595,0.0037773699261598884,0.0022408126680609516,0.0014725340390114821,0.0008963250672243802,0.0007042554099620128,-0.000832301848136924,-0.001408510819924024],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0023902001792650137,0.0014298518929531782,-0.0004908446796704933,-0.0020274019377694323,-0.002795680566818901,-0.0033718895386060017,-0.003563959195868369,-0.005100516453967307,0.013530240300482313],&quot;name&quot;:&quot;Treated 1 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.001878014426565368,-0.0028383627128772035,-0.004759059285500875,-0.006295616543599815,-0.007063895172649282,-0.007640104144436384,0.011374791924537967,0.009838234666439032,0.009262025694651932],&quot;name&quot;:&quot;Treated 3 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;fLrxK6g64K&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;fLrxK6g64K&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0050940281077598345,0.003281923247291909,0.0016510288728707762,0.0005637659565900209,-0.0007047074457375271,-0.0017919703620182823,-0.001973180848065075,-0.0028792332782990376,-0.003241654250392623],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.006986670962026335,-0.00879877582249426,-0.010429670196915394,0.006604115491483107,0.005335642089155558,0.004248379172874803,0.004067168686828011,0.0031611162565940492,0.0027986952845004635],&quot;name&quot;:&quot;Treated 6 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.009000120806990697,-0.010812225667458623,0.0056779285627995,0.004590665646518744,0.003322192244191195,0.0022349293279104406,0.002053718841863648,0.0011476664116296866,0.000785245439536101],&quot;name&quot;:&quot;Treated 7 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0029597712720976117,-0.004771876132565537,-0.006402770506986669,-0.0074900334232674256,-0.008758506825594974,0.008275278862803527,0.008094068376756733,0.007188015946522772,0.006825594974429187],&quot;name&quot;:&quot;Treated 4 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.004973221117061974,-0.006785325977529899,-0.008416220351951031,-0.009503483268231788,0.007349091934119918,0.006261829017839164,0.006080618531792371,0.0051745661015584095,0.004812145129464825],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.011013570651955058,0.005295373092256272,0.0036644787178351395,0.0025772158015543835,0.0013087423992268344,0.0002214794829460802,4.026899689928749e-5,-0.0008657834333346741,-0.0012282044054282594],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0010671284178311116,-0.0007449764426368135,-0.002375870817057947,-0.0034631337333387024,-0.00473160713566625,-0.005818870051947005,-0.0060000805379937985,0.011214915636451495,0.01085249466435791],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.003080578262795473,0.0012684734023275474,-0.00036242097209358544,-0.0014496838883743407,-0.0027181572907018885,-0.003805420206982644,-0.003986630693029436,-0.0048926831232634,0.01286594450932227],&quot;name&quot;:&quot;Treated 1 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0009463214271332501,-0.002758426287601176,-0.004389320662022309,-0.005476583578303063,-0.006745056980630612,-0.007832319896911369,0.010107518221721094,0.009201465791487135,0.008839044819393549],&quot;name&quot;:&quot;Treated 3 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
 </div>
 </div>
 </section>
@@ -694,7 +693,7 @@ D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
 <span id="cb9-6"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;6RBbB513QX&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;6RBbB513QX&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.3,0.3,0.3,0.3,0.3,0.3,0.5,0.5]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;0ONh7xZ496&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;0ONh7xZ496&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.28,0.28,0.28,0.28,0.28,0.28,0.54,0.54]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
 </div>
 </div>
 <div id="16" class="cell" data-execution_count="1">
@@ -704,7 +703,7 @@ D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
 <span id="cb10-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;ID8N9i7R6n&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;ID8N9i7R6n&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.007608695652173917,0.0002717391304347831,0.0002717391304347831,0.0002717391304347831,0.0002717391304347831,0.0002717391304347831,0.0002717391304347831,-0.004619565217391306,-0.004619565217391306],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.002173913043478262,-0.00516304347826087,-0.00516304347826087,-0.00516304347826087,-0.00516304347826087,-0.00516304347826087,-0.00516304347826087,0.014402173913043485,0.014402173913043485],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0141304347826087,0.00298913043478261,0.00298913043478261,0.00298913043478261,0.00298913043478261,0.00298913043478261,0.00298913043478261,-0.0019021739130434777,-0.0019021739130434777],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;J5OQF11IHA&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;J5OQF11IHA&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.006873879258816495,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,-0.005230125523012552,-0.005230125523012552],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.013050408447897984,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,-0.002739589559673241,-0.002739589559673241],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0018928073321378754,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,0.012203626220362617,0.012203626220362617],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
 </div>
 </div>
 </section>
@@ -732,18 +731,18 @@ D  -0.0917378    0.132208  -0.693887    0.4880  -0.351259   0.167783
 <span id="cb11-17"><a></a><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>                FixedEffectModels.FixedEffectModel                
-==================================================================
-Number of obs:               900  Converged:                  true
-dof (model):                   1  dof (residuals):             791
-R²:                        0.540  R² adjusted:               0.476
-F-statistic:             4.09293  P-value:                   0.043
-R² within:                 0.005  Iterations:                    2
-==================================================================
-    Estimate  Std. Error   t-stat  Pr(&gt;|t|)  Lower 95%   Upper 95%
-──────────────────────────────────────────────────────────────────
-D  -0.543671    0.268731  -2.0231    0.0434   -1.07118  -0.0161596
-==================================================================</code></pre>
+<pre><code>               FixedEffectModels.FixedEffectModel               
+=================================================================
+Number of obs:              900   Converged:                 true
+dof (model):                  1   dof (residuals):            791
+R²:                       0.509   R² adjusted:              0.441
+F-statistic:           0.120785   P-value:                  0.728
+R² within:                0.000   Iterations:                   2
+=================================================================
+   Estimate  Std. Error    t-stat  Pr(&gt;|t|)  Lower 95%  Upper 95%
+─────────────────────────────────────────────────────────────────
+D  0.096785    0.278485  0.347541    0.7283  -0.449872   0.643442
+=================================================================</code></pre>
 </div>
 </div>
 </section>
@@ -786,7 +785,7 @@ D  -0.543671    0.268731  -2.0231    0.0434   -1.07118  -0.0161596
 <span id="cb13-32"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;BnbrA4EQHG&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;BnbrA4EQHG&quot;, [{},{&quot;x&quot;:[2.0,3.0,4.0,5.0,6.0,7.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0],&quot;y&quot;:[1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0],&quot;z&quot;:[1.0025363030814032,1.003221789785816,0.9986879816839666,1.0003258398697057,1.0008146602972015,1.0011186911894043,5.90135561203787,1.0036986076047114,1.0052747072869623,1.0035916746161784,1.004962451080302,0.9986078089954302,1.0040913624022834,5.894454081973427,0.9985273741154727,1.0001034737977232,0.9984204411269392,0.9997912175910628,0.9934365755061916,0.9989201289130449],&quot;name&quot;:&quot;ATTₜ,ₜ₋ₛ&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter3d&quot;}], {&quot;xaxis&quot;:{&quot;autorange&quot;:true,&quot;showgrid&quot;:false,&quot;zeroline&quot;:false,&quot;showline&quot;:false,&quot;autotick&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;showticklabels&quot;:false},&quot;yaxis&quot;:{&quot;autorange&quot;:true,&quot;showgrid&quot;:false,&quot;zeroline&quot;:false,&quot;showline&quot;:false,&quot;autotick&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;showticklabels&quot;:false}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;TIxd7xjzdr&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;TIxd7xjzdr&quot;, [{},{&quot;x&quot;:[2.0,3.0,4.0,5.0,6.0,7.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0],&quot;y&quot;:[1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0],&quot;z&quot;:[0.996145438990516,0.9949074880011091,1.0000234289679037,1.0003782279624136,1.0046524196830875,0.999686857485719,6.171026061342649,1.0028987023499276,0.9965935395827415,1.0011507343447708,1.0023041003497615,0.9980989106553831,0.9995748746126898,6.17242464873874,1.007792429735783,1.001487266968597,1.0060444617306263,1.0071978277356164,1.0029926380412382,1.0044686019985454],&quot;name&quot;:&quot;ATTₜ,ₜ₋ₛ&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter3d&quot;}], {&quot;xaxis&quot;:{&quot;autorange&quot;:true,&quot;showgrid&quot;:false,&quot;zeroline&quot;:false,&quot;showline&quot;:false,&quot;autotick&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;showticklabels&quot;:false},&quot;yaxis&quot;:{&quot;autorange&quot;:true,&quot;showgrid&quot;:false,&quot;zeroline&quot;:false,&quot;showline&quot;:false,&quot;autotick&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;showticklabels&quot;:false}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
 </div>
 </div>
 </section>
@@ -885,27 +884,27 @@ ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - 
 <span id="cb14-28"><a></a><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> DCt <span class="op">+</span> <span class="fu">fe</span>(id) <span class="op">+</span> <span class="fu">fe</span>(t)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>                           FixedEffectModels.FixedEffectModel                           
-=========================================================================================
-Number of obs:                          900   Converged:                             true
-dof (model):                             10   dof (residuals):                        781
-R²:                                   1.000   R² adjusted:                          1.000
-F-statistic:                      2.72595e6   P-value:                              0.000
-R² within:                            1.000   Iterations:                               2
-=========================================================================================
-                    Estimate  Std. Error       t-stat  Pr(&gt;|t|)    Lower 95%    Upper 95%
-─────────────────────────────────────────────────────────────────────────────────────────
-DCt: c2,t9      -0.00517123   0.00343198    -1.50678     0.1323  -0.0119082    0.00156575
-DCt: c3,t2      -0.00115484   0.00395635    -0.291895    0.7704  -0.00892118   0.0066115
-DCt: c3,t3      -0.000469353  0.00395635    -0.118633    0.9056  -0.00823569   0.00729699
-DCt: c3,t4      -0.00500316   0.00395635    -1.26459     0.2064  -0.0127695    0.00276318
-DCt: c3,t5      -0.0033653    0.00395635    -0.850608    0.3952  -0.0111316    0.00440104
-DCt: c3,t6      -0.00287648   0.00395635    -0.727055    0.4674  -0.0106428    0.00488986
-DCt: c3,t7      -0.00257245   0.00395635    -0.650208    0.5157  -0.0103388    0.00519389
-DCt: c3,t8       9.00305      0.00339648  2650.7         &lt;1e-99   8.99638      9.00972
-DCt: c3,t9       8.9947       0.00399679  2250.48        &lt;1e-99   8.98685      9.00254
-DCt: untreated  -1.00369      0.00259433  -386.879       &lt;1e-99  -1.00878     -0.998598
-=========================================================================================</code></pre>
+<pre><code>                            FixedEffectModels.FixedEffectModel                            
+==========================================================================================
+Number of obs:                           900  Converged:                              true
+dof (model):                              10  dof (residuals):                         781
+R²:                                    1.000  R² adjusted:                           1.000
+F-statistic:                       2.34917e6  P-value:                               0.000
+R² within:                             1.000  Iterations:                                2
+==========================================================================================
+                    Estimate  Std. Error        t-stat  Pr(&gt;|t|)    Lower 95%    Upper 95%
+──────────────────────────────────────────────────────────────────────────────────────────
+DCt: c2,t9       0.00489373   0.00379128     1.29079      0.1972  -0.00254858   0.012336
+DCt: c3,t2      -0.00396207   0.00433623    -0.913712     0.3612  -0.0124741    0.00454998
+DCt: c3,t3      -0.00520002   0.00433623    -1.1992       0.2308  -0.0137121    0.00331203
+DCt: c3,t4      -8.4077e-5    0.00433623    -0.0193894    0.9845  -0.00859613   0.00842797
+DCt: c3,t5       0.000270722  0.00433623     0.0624325    0.9502  -0.00824133   0.00878277
+DCt: c3,t6       0.00454491   0.00433623     1.04813      0.2949  -0.00396714   0.013057
+DCt: c3,t7      -0.000420649  0.00433623    -0.0970078    0.9227  -0.0089327    0.0080914
+DCt: c3,t8       9.0012       0.00386249  2330.41         &lt;1e-99   8.99362      9.00879
+DCt: c3,t9       9.00001      0.00434245  2072.57         &lt;1e-99   8.99149      9.00854
+DCt: untreated  -1.00011      0.00286594  -348.964        &lt;1e-99  -1.00573     -0.994482
+==========================================================================================</code></pre>
 </div>
 </div>
 </section>
@@ -921,43 +920,43 @@ DCt: untreated  -1.00369      0.00259433  -386.879       &lt;1e-99  -1.00878    
 [ Info: RHS-variable cohort: 3 is collinear with the fixed effects.</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>                                FixedEffectModels.FixedEffectModel                                
-===================================================================================================
-Number of obs:                               900   Converged:                                  true
-dof (model):                                  24   dof (residuals):                             777
-R²:                                        1.000   R² adjusted:                               1.000
-F-statistic:                           1.79143e6   P-value:                                   0.000
-R² within:                                 1.000   Iterations:                                    1
-===================================================================================================
-                       Estimate    Std. Error        t-stat  Pr(&gt;|t|)      Lower 95%      Upper 95%
-───────────────────────────────────────────────────────────────────────────────────────────────────
-cohort: 2           0.0          NaN            NaN            NaN     NaN            NaN
-cohort: 3           0.0          NaN            NaN            NaN     NaN            NaN
-ct: 2              -0.00338449     0.00210571    -1.60729      0.1084   -0.00751804     0.000749066
-ct: 3              -0.00292339     0.00210571    -1.38832      0.1654   -0.00705694     0.00121016
-ct: 4              -0.00247939     0.00210571    -1.17746      0.2394   -0.00661294     0.00165416
-ct: 5              -0.000693602    0.00210571    -0.329391     0.7419   -0.00482715     0.00343995
-ct: 6              -0.00440529     0.00210571    -2.09207      0.0368   -0.00853885    -0.000271742
-ct: 7              -0.000525       0.00210571    -0.249322     0.8032   -0.00465855     0.00360855
-ct: 8              -0.00444013     0.00210571    -2.10862      0.0353   -0.00857369    -0.000306583
-ct: 9              -0.00129807     0.00210571    -0.616454     0.5378   -0.00543162     0.00283548
-cohort: 2 &amp; ct: 2   0.00191278     0.00343033     0.557608     0.5773   -0.00482103     0.0086466
-cohort: 3 &amp; ct: 2   1.00326        0.00325337   308.375        &lt;1e-99    0.996871       1.00964
-cohort: 2 &amp; ct: 3   0.000336681    0.00343033     0.0981483    0.9218   -0.00639713     0.0070705
-cohort: 3 &amp; ct: 3   1.00335        0.00325337   308.403        &lt;1e-99    0.996962       1.00974
-cohort: 2 &amp; ct: 4   0.00201971     0.00343033     0.588781     0.5562   -0.0047141      0.00875353
-cohort: 3 &amp; ct: 4   0.999449       0.00325337   307.204        &lt;1e-99    0.993063       1.00584
-cohort: 2 &amp; ct: 5   0.000648937    0.00343033     0.189176     0.8500   -0.00608488     0.00738275
-cohort: 3 &amp; ct: 5   1.00057        0.00325337   307.549        &lt;1e-99    0.994184       1.00696
-cohort: 2 &amp; ct: 6   0.00700358     0.00343033     2.04166      0.0415    0.000269764    0.0137374
-cohort: 3 &amp; ct: 6   1.00345        0.00325337   308.435        &lt;1e-99    0.997067       1.00984
-cohort: 2 &amp; ct: 7   0.00152003     0.00343033     0.443113     0.6578   -0.00521379     0.00825384
-cohort: 3 &amp; ct: 7   1.00169        0.00325337   307.894        &lt;1e-99    0.995305       1.00808
-cohort: 2 &amp; ct: 8   1.00561        0.00343033   293.153        &lt;1e-99    0.998878       1.01235
-cohort: 3 &amp; ct: 8  10.0075         0.00325337  3076.03         &lt;1e-99   10.0011        10.0139
-cohort: 2 &amp; ct: 9   1.00044        0.00343033   291.645        &lt;1e-99    0.993706       1.00717
-cohort: 3 &amp; ct: 9   9.99911        0.00325337  3073.46         &lt;1e-99    9.99272       10.0055
-===================================================================================================</code></pre>
+<pre><code>                               FixedEffectModels.FixedEffectModel                               
+=================================================================================================
+Number of obs:                              900   Converged:                                 true
+dof (model):                                 24   dof (residuals):                            777
+R²:                                       1.000   R² adjusted:                              1.000
+F-statistic:                          1.42219e6   P-value:                                  0.000
+R² within:                                1.000   Iterations:                                   1
+=================================================================================================
+                       Estimate    Std. Error        t-stat  Pr(&gt;|t|)     Lower 95%     Upper 95%
+─────────────────────────────────────────────────────────────────────────────────────────────────
+cohort: 2           0.0          NaN            NaN            NaN     NaN           NaN
+cohort: 3           0.0          NaN            NaN            NaN     NaN           NaN
+ct: 2               0.00247013     0.00198544     1.24413      0.2138   -0.00142732    0.00636758
+ct: 3              -5.52803e-5     0.00198544    -0.0278429    0.9778   -0.00395273    0.00384217
+ct: 4               0.000563884    0.00198544     0.28401      0.7765   -0.00333357    0.00446134
+ct: 5               0.000169635    0.00198544     0.0854398    0.9319   -0.00372782    0.00406709
+ct: 6              -0.00387163     0.00198544    -1.95002      0.0515   -0.00776909    2.58203e-5
+ct: 7               0.000146721    0.00198544     0.0738988    0.9411   -0.00375073    0.00404417
+ct: 8              -0.000917581    0.00198544    -0.462156     0.6441   -0.00481503    0.00297987
+ct: 9              -0.000935692    0.00198544    -0.471278     0.6376   -0.00483314    0.00296176
+cohort: 2 &amp; ct: 2  -0.00276702     0.00379317    -0.729475     0.4659   -0.0102131     0.00467905
+cohort: 3 &amp; ct: 2   0.995387       0.00341758   291.255        &lt;1e-99    0.988679      1.0021
+cohort: 2 &amp; ct: 3   0.00353814     0.00379317     0.932766     0.3512   -0.00390793    0.0109842
+cohort: 3 &amp; ct: 3   0.995877       0.00341758   291.398        &lt;1e-99    0.989168      1.00259
+cohort: 2 &amp; ct: 4  -0.00101905     0.00379317    -0.268655     0.7883   -0.00846513    0.00642702
+cohort: 3 &amp; ct: 4   0.999744       0.00341758   292.53         &lt;1e-99    0.993035      1.00645
+cohort: 2 &amp; ct: 5  -0.00217242     0.00379317    -0.572719     0.5670   -0.00961849    0.00527365
+cohort: 3 &amp; ct: 5   0.999783       0.00341758   292.541        &lt;1e-99    0.993074      1.00649
+cohort: 2 &amp; ct: 6   0.00203277     0.00379317     0.535903     0.5922   -0.0054133     0.00947884
+cohort: 3 &amp; ct: 6   1.00521        0.00341758   294.129        &lt;1e-99    0.998501      1.01192
+cohort: 2 &amp; ct: 7   0.000556806    0.00379317     0.146792     0.8833   -0.00688927    0.00800288
+cohort: 3 &amp; ct: 7   0.999839       0.00341758   292.558        &lt;1e-99    0.993131      1.00655
+cohort: 2 &amp; ct: 8   1.00013        0.00379317   263.667        &lt;1e-99    0.992686      1.00758
+cohort: 3 &amp; ct: 8  10.0013         0.00341758  2926.43         &lt;1e-99    9.99461      10.008
+cohort: 2 &amp; ct: 9   1.00503        0.00379317   264.957        &lt;1e-99    0.997579      1.01247
+cohort: 3 &amp; ct: 9  10.0001         0.00341758  2926.08         &lt;1e-99    9.99342      10.0068
+=================================================================================================</code></pre>
 </div>
 </div>
 </section>

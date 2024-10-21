@@ -299,7 +299,7 @@ $$
 
 ## Least-Squares
 
-- $\hat{\theta} = P_L y$, i.e. $\norm{y - \hat{\theta} y } = \inf_{w \in L} \norm{y - w}$
+- $\hat{\theta} = P_L y$, i.e. $\norm{y - \hat{\theta} y }^2 = \inf_{w \in L} \norm{y - w}^2$
 
 
 # Gauss-Markov Theorem

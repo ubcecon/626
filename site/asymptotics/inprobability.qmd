@@ -7,12 +7,12 @@ format:
     theme: moon
     smaller: true
     min-scale: 0.1
-    css: ../styles.css
+    #css: ../styles.css
     chalkboard:
       theme: whiteboard
       boardmarker-width: 2
-      chalk-width: 2
-      chalk-effect: 0.0
+      chalk-width: 6
+      chalk-effect: 0.5
     title-slide-attributes:
       data-background-image: "rexford_g.jpg"
       data-background-size: contain

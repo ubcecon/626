@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 3"
 #author: "Paul Schrimpf"
-date: 2023-09-29
+date: 2024-09-30
 bibliography: ../../626.bib
 ---
 

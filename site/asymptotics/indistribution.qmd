@@ -7,7 +7,7 @@ format:
     theme: moon
     smaller: true
     min-scale: 0.1
-    css: ../styles.css
+    #css: ../styles.css
     chalkboard:
       theme: whiteboard
       boardmarker-width: 2

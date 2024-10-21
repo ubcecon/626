@@ -321,6 +321,25 @@ $$
  \Er[ X X']^{-1} \Er[ X Y]  \in \mathrm{arg}\min_b \Er[ (X'b - \Er[Y|X])^2 ]
 $$
 
+## Caution
+
+- Regression being a linear approximation to $\Er[Y|X]$ does not mean
+$\beta = \Er[X X']^{-1} \Er[X Y]$ necessarily has the sign you want
+
+- In example below, $\Er[Y|x_1=1, x_2] > \Er[Y|x_1=0,x_2]$, but $\beta_1 < 0$
+
+```{julia}
+using LinearAlgebra
+n = 10_000
+EYX(x) = x[2]>0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])
+x2 = randn(n)
+x1 = (x2*3 + randn(n) .> 0)
+X = hcat(x1,x2)
+y = EYX.(eachrow(X)) + randn(n)
+X = hcat(ones(n), X)
+β = (X'*X) \ (X'*y)
+```
+
 ## Example: Potential Outcomes
 
 -  Matching initially studied with a linear regression model, e.g. @cochran1953

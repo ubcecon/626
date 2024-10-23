@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-20">
+<meta name="dcterms.date" content="2023-10-30">
 
 <title>ECON 626: Problem Set 5 – ECON 626</title>
 <style>
@@ -191,7 +191,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 20, 2023</p>
+      <p class="date">October 30, 2023</p>
     </div>
   </div>
   
@@ -204,6 +204,7 @@ window.Quarto = {
 
 
 <p><span class="math display">\[
+\def\indep{{\perp\!\!\!\perp}}
 \def\R{{\mathbb{R}}}
 \def\Er{{\mathrm{E}}}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
@@ -225,6 +226,28 @@ window.Quarto = {
 <li><p>Show that <span class="math inline">\(\hat{\tau} - \tau = O_p(n^{-1/2})\)</span></p></li>
 <li><p>Show that <span class="math inline">\(\sqrt{n}(\hat{\tau}-\tau) \to^d N(0,\sigma_\tau^2)\)</span> and calculate <span class="math inline">\(\sigma_\tau^2\)</span>.</p></li>
 </ol>
+<!-- # Problem 3 -->
+<!-- Again, suppose that each individual person $i$ has potential outcomes $Y_i(1)$ and $Y_i(0)$ and treatment $T_i$. Suppose that for $t \in \{0,1\}$ -->
+<!-- $$ -->
+<!-- Y_i(t) = X_i'\beta_t + u_i(t) -->
+<!-- $$ -->
+<!-- Assume that observations are i.i.d. with $T_i \indep (X_i, u_i(1), u_(0))$ and $\Er[u_i(t)|X_i]=0$. Also assume that $\Er[u(t)u(t)'] = \sigma_t^2 I_n$. In parts 2 and 3, assume that $X_i' = (1, W_i')$ with $\Er[W_i] = 0$. -->
+<!-- 1. Show that in the linear model  -->
+<!-- $$ -->
+<!-- Y_i = \alpha_0 + \alpha_1 T_i + \epsilon_i, -->
+<!-- $$ -->
+<!-- the OLS estimate $\hat{\alpha}_1$ is a consistent estimate of the average treatment effect. -->
+<!-- 2. Show that in the additive linear model  -->
+<!-- $$ -->
+<!-- Y_i = \gamma_0 + \gamma_1 T_i + W_i'\gamma_2 + \nu_i -->
+<!-- $$ -->
+<!-- the OLS estimate $\hat{\gamma}_1$ is a consistent estimate of the average treatment effect. -->
+<!-- 3. Show that in the interactive linear model -->
+<!-- $$ -->
+<!-- Y_i = \delta_0 + \delta_1 T_i + W_i'\delta_2 + T_i W_i' \delta_3 + \eta_i -->
+<!-- $$ -->
+<!-- the OLS estimate of $\hat{\delta}_1$ is a consistent estimate of the average treatment effect. -->
+<!-- 4.  -->
 
 
 

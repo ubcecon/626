@@ -1,11 +1,12 @@
 ---
 title: "ECON 626: Problem Set 5"
 #author: "Paul Schrimpf"
-date: 2023-10-20
+date: 2023-10-30
 bibliography: ../../626.bib
 ---
 
 $$
+\def\indep{{\perp\!\!\!\perp}}
 \def\R{{\mathbb{R}}}
 \def\Er{{\mathrm{E}}}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
@@ -36,3 +37,31 @@ is a consistent estimator for $\tau$.
 2. Show that $\hat{\tau} - \tau = O_p(n^{-1/2})$
 
 3. Show that $\sqrt{n}(\hat{\tau}-\tau) \to^d N(0,\sigma_\tau^2)$ and calculate $\sigma_\tau^2$.
+
+<!-- # Problem 3 -->
+
+<!-- Again, suppose that each individual person $i$ has potential outcomes $Y_i(1)$ and $Y_i(0)$ and treatment $T_i$. Suppose that for $t \in \{0,1\}$ -->
+<!-- $$ -->
+<!-- Y_i(t) = X_i'\beta_t + u_i(t) -->
+<!-- $$ -->
+<!-- Assume that observations are i.i.d. with $T_i \indep (X_i, u_i(1), u_(0))$ and $\Er[u_i(t)|X_i]=0$. Also assume that $\Er[u(t)u(t)'] = \sigma_t^2 I_n$. In parts 2 and 3, assume that $X_i' = (1, W_i')$ with $\Er[W_i] = 0$. -->
+
+<!-- 1. Show that in the linear model  -->
+<!-- $$ -->
+<!-- Y_i = \alpha_0 + \alpha_1 T_i + \epsilon_i, -->
+<!-- $$ -->
+<!-- the OLS estimate $\hat{\alpha}_1$ is a consistent estimate of the average treatment effect. -->
+
+<!-- 2. Show that in the additive linear model  -->
+<!-- $$ -->
+<!-- Y_i = \gamma_0 + \gamma_1 T_i + W_i'\gamma_2 + \nu_i -->
+<!-- $$ -->
+<!-- the OLS estimate $\hat{\gamma}_1$ is a consistent estimate of the average treatment effect. -->
+
+<!-- 3. Show that in the interactive linear model -->
+<!-- $$ -->
+<!-- Y_i = \delta_0 + \delta_1 T_i + W_i'\delta_2 + T_i W_i' \delta_3 + \eta_i -->
+<!-- $$ -->
+<!-- the OLS estimate of $\hat{\delta}_1$ is a consistent estimate of the average treatment effect. -->
+
+<!-- 4.  -->

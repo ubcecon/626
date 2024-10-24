@@ -1,0 +1,12 @@
+*~
+\#*\#
+\.\#*
+/song
+/tex
+/tmp/*
+*.aux
+*.log
+*.html
+/grades
+/site
+/.quarto/

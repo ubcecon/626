@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 6"
 #author: "Paul Schrimpf"
-date: 2023-11-09
+date: 2023-11-08
 bibliography: ../../626.bib
 ---
 
@@ -139,8 +139,7 @@ $$
 $$
 
 4. If you assume that $(y_i(1),y_i(0))$ are independent of $D_i$ conditional on $x_i$, does $\hat{\beta}$ have any nice interpretation?
-[Hint: what can be the range of $\omega(x,1)$, especially if the range
-of $x$ is large?]
+[Hint: what can be the range of $\omega(x,1)$, especially if the range of $x$ is large?]
 
 
 

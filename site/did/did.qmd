@@ -149,6 +149,11 @@ $$
 $$
 
 
+## Simulation
+
+- $T$ periods
+- Once $i$ treated, remains treated
+
 ## Weights
 
 ```{julia}
@@ -169,7 +174,7 @@ function weights(D)
   ω = D̃./sum(D̃.^2)
 end
 
-n = 100
+n = 1000
 T = 9
 D = assigntreat(n,T)
 y = randn(n,T)
@@ -178,31 +183,47 @@ sum(y.*weights(D))
 
 ```{julia}
 n,T = size(D)
-using DataFrames, FixedEffectModels
+using DataFrames, FixedEffectModels, RegressionTables
 df = DataFrame(id = vec((1:n)*ones(Int,T)'), t = vec(ones(Int,n)*(1:T)'), y = vec(y), D=vec(D))
-reg(df, @formula(y ~ D + fe(t) + fe(id)))
+m=reg(df, @formula(y ~ D + fe(t) + fe(id)))
+regtable(m, render=AsciiTable())
 ```
 
 ## Weights with Single Treatment Time
 
 ```{julia}
 using PlotlyLight
-function plotp(D)
+
+function plotp(D; width=900, height=300)
   n,T=size(D)
   plt=Plot()
   plt.layout=Config(xaxis=Config(title="time",tickvals=1:T),
-                    yaxis=Config(title="Portion Treated"))
+                    yaxis=Config(title="Portion Treated"),
+                    autosize=false,
+                    width=width,
+                    height=height)
   plt(x=1:T,y=vec(mean(D,dims=1)))
   plt()
 end
 
-function plotweights(D)
+pfig = plotp(D)
+pfig
+```
+
+## Weights with Single Treatment Time
+
+```{julia}
+function plotweights(D; width=900, height=300)
   n,T = size(D)
   ω = weights(D)
   groups = unique(eachrow(D))
   plt = Plot()
   plt.layout=Config(xaxis=Config(title="time",tickvals=1:T),
-                    yaxis=Config(title="weight"))
+                    yaxis=Config(title="weight"),
+                    autosize=false,
+                    width=width,
+                    height=height)
+
   for g in groups
     i = findfirst(d == g for d in eachrow(D))
     wt = ω[i,:]
@@ -211,11 +232,6 @@ function plotweights(D)
   fig=plt()
   return(fig)
 end
-pfig = plotp(D)
-pfig
-```
-
-```{julia}
 fig = plotweights(D)
 fig
 ```
@@ -227,6 +243,8 @@ D = assigntreat(n,T,portiontreated=vcat(0,fill(0.5/(T-1),T-1)))
 pfig = plotp(D)
 pfig
 ```
+
+## Weights with Uniform Treatment Time
 
 ```{julia}
 fig = plotweights(D)
@@ -243,6 +261,7 @@ D = assigntreat(n,T,portiontreated=pt)
 pfig = plotp(D)
 pfig
 ```
+## Weights with Early and Late Treatde
 
 ```{julia}
 fig = plotweights(D)
@@ -251,6 +270,8 @@ fig
 
 ## Sign Reversal with Fixed Effects
 
+
+- True Treatment Effects
 ```{julia}
 pt = zeros(T)
 pt[2] = 1/3
@@ -268,45 +289,43 @@ end
 
 ATT =  vcat(ones(T-3),10*ones(3))
 df = simulate(n,T, pt,ATT)
-reg(df, @formula(y ~ D + fe(t) + fe(id)))
+
+function plotGAT(ATT,D; width=900, height=300)
+  n,T = size(D)
+  groups = unique(eachrow(D))
+  plt = Plot()
+  plt.layout=Config(xaxis=Config(title="time",tickvals=1:T),
+                    yaxis=Config(title="ATT"),
+                    autosize=false,
+                    width=width,
+                    height=height)
+
+  for g in groups
+    t = findfirst(g)
+    if (isnothing(t))
+      t=T+1
+    end
+    ate = vcat(zeros(t-1), ATT[1:(T-t+1)])
+    plt(x=1:T,y=ate,name="Treated $(sum(g)) times", mode="markers",type="scatter")
+    end
+  fig=plt()
+  return(fig)
+end
+
+plotGAT(ATT,D)
 ```
 
 ## Sign Reversal with Fixed Effects
 
+- Fixed Effects Estimate
+
 ```{julia}
-D = reshape(df.D, n,T)
-y = reshape(df.y, n,T)
-function plotATT(D, y)
-  n,T = size(D)
-  groups = unique(eachrow(D))
-  ATT = zeros(0)
-  tt = zeros(0)
-  ts = zeros(0)
-  for t ∈ 2:T
-    for s ∈ 1:t-1
-      treatts = D[:,t] .& .!D[:,s]
-      controlts = .!D[:,t] .& .!D[:,s]
-      if any(treatts) && any(controlts)
-        push!(ATT, mean(y[treatts,t] - y[treatts,s]) - mean(y[controlts,t] - y[controlts,s]))
-        push!(tt,t)
-        push!(ts,s)
-      end
-    end
-  end
-  plt = Plot()
-  hiddenaxis=Config(autorange=true,
-                    showgrid=false,
-                    zeroline=false,
-                    showline=false,
-                    autotick=true,
-                    ticks="",
-                    showticklabels=false)
-  plt.layout = Config(xaxis=hiddenaxis,yaxis=hiddenaxis)
-  fig=plt(x=tt,y=ts,z=ATT,name="ATTₜ,ₜ₋ₛ", mode="markers",type="scatter3d")
-end
-fig=plotATT(D,y)
-fig
+#| echo: true
+#| code-fold: false
+m=reg(df, @formula(y ~ D + fe(t) + fe(id)))
+regtable(m, render=AsciiTable())
 ```
+
 
 ## When to worry
 
@@ -337,7 +356,7 @@ and perhaps some average, e.g. (there are other reasonable weighted averages)
 $$
 \sum_{t=1}^T \frac{\sum_i D_{it}}{\sum_{i,s} D_{i,s}} \frac{1}{t-1} \sum_{s=1}^{t-1} \widehat{ATT}_{t,t-s}
 $$
-  - Inference? Optimal? Code?
+  - Inference? Optimal?
 
 ## What to Do?
 
@@ -352,8 +371,6 @@ $$
       1. $(0, 0, 0, 0, 0, 0, 0, 0, 0)$
       2. $(0, 0, 0, 0, 0, 0, 0, 1, 1)$
       3. $(0, 1, 1, 1, 1, 1, 1, 1, 1)$
-
-## Regression with Cohort Interactions
 
 ```{julia}
 using CategoricalArrays
@@ -381,20 +398,27 @@ function createCohorts(df)
   df
 end
 
-dfc = createCohorts(df)
-
-reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)))
+dfc = createCohorts(df);
 ```
-## Regression with Cohort Interactions
+
+## Regression with Cohort Interactions {.smaller}
+
+```{julia}
+m=reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)))
+regtable(m, render=AsciiTable())
+```
+## Regression with Cohort Interactions {.smaller}
 
 ```{julia}
 m=reg(dfc, @formula(y ~ -1 + cohort*ct + fe(id)), save=:fe)
+regtable(m, render=AsciiTable())
 ```
 
 ## What to Do?
 
-- Understand existing methods: read reviews @dd2022, @roth2023
-- Use an appropriate package: partial list on https://asjadnaqvi.github.io/DiD/
+- Understand existing methods: read reviews @dd2022, @roth2023, @dd2023
+- Use an appropriate package:
+   - partial list on [https://asjadnaqvi.github.io/DiD/](https://asjadnaqvi.github.io/DiD/)
 
 
 # Pre-trends
@@ -500,6 +524,7 @@ for some chosen $M$
 
 ## Reading
 
+- Book: @dd2023
 - Recent reviews: @roth2023, @dd2022, @arkhangelsky2023
 - Early work pointing to problems with fixed effects:
   - @laporte2005, @wooldridge2005
@@ -512,4 +537,4 @@ for some chosen $M$
 
 
 
-# References
+## References

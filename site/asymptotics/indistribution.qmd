@@ -261,7 +261,7 @@ all $t \in \R^d$
 
 ### Theorem 2.4
 
-Suppose $X_1, ..., X_n$ are i.i.d. with $\Er[X_1] = \mu \in \R^d$, $\Er[\norm{X_i}^2] < \infty$ and
+Suppose $X_1, ..., X_n$ are i.i.d. with $\Er[X_1] = \mu \in \R^d$ and
 $\var(X_1) = \Sigma > 0$, then
 $$
 \frac{1}{\sqrt{n}} \sum_{i=1}^n (X_i - \mu) \indist N(0,\Sigma)
@@ -553,9 +553,6 @@ function plotcdfwithbounds(dgp,  e3, n=[10,100,1000], S=9999)
 end
 xhi = 2.5
 plotcdfwithbounds(n->dgp(n,xhi), Ex3(xhi))
-#unif = n->rand(n)*2sqrt(3) .- sqrt(3)
-# e3 = mean(abs.(unif(100_000)).^3)
-#plotcdfwithbounds(unif,e3)
 ```
 
 ::: {.notes}
@@ -564,6 +561,13 @@ This simulation is constructed so that the bound is close to the actual error. F
 
 :::
 
+## Simulated Illustration of Berry-Esseen CLT : Slack Bounds
+
+```{julia}
+unif = n->rand(n)*2sqrt(3) .- sqrt(3)
+e3 = mean(abs.(unif(100_000)).^3)
+plotcdfwithbounds(unif,e3)
+```
 
 
 

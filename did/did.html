@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.32">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-10-21">
+  <meta name="dcterms.date" content="2024-11-06">
   <title>ECON 626 – Difference in Diffferences</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -426,7 +426,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-10-21</p>
+  <p class="date">2024-11-06</p>
 </section>
 <section>
 <section id="difference-in-differences" class="title-slide slide level1 center">
@@ -551,6 +551,13 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 \]</span></li>
 </ul>
 </section>
+<section id="simulation" class="slide level2">
+<h2>Simulation</h2>
+<ul>
+<li><span class="math inline">\(T\)</span> periods</li>
+<li>Once <span class="math inline">\(i\)</span> treated, remains treated</li>
+</ul>
+</section>
 <section id="weights" class="slide level2">
 <h2>Weights</h2>
 <div id="2" class="cell" data-execution_count="1">
@@ -573,37 +580,41 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 <span id="cb1-15"><a></a>  ω <span class="op">=</span> D̃<span class="op">./</span><span class="fu">sum</span>(D̃<span class="op">.^</span><span class="fl">2</span>)</span>
 <span id="cb1-16"><a></a><span class="kw">end</span></span>
 <span id="cb1-17"><a></a></span>
-<span id="cb1-18"><a></a>n <span class="op">=</span> <span class="fl">100</span></span>
+<span id="cb1-18"><a></a>n <span class="op">=</span> <span class="fl">1000</span></span>
 <span id="cb1-19"><a></a>T <span class="op">=</span> <span class="fl">9</span></span>
 <span id="cb1-20"><a></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T)</span>
 <span id="cb1-21"><a></a>y <span class="op">=</span> <span class="fu">randn</span>(n,T)</span>
 <span id="cb1-22"><a></a><span class="fu">sum</span>(y<span class="op">.*</span><span class="fu">weights</span>(D))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>-0.0313689933940951</code></pre>
+<pre><code>0.007077771753723077</code></pre>
 </div>
 </div>
 <div id="4" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a></a>n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
-<span id="cb3-2"><a></a><span class="im">using</span> <span class="bu">DataFrames</span>, <span class="bu">FixedEffectModels</span></span>
+<span id="cb3-2"><a></a><span class="im">using</span> <span class="bu">DataFrames</span>, <span class="bu">FixedEffectModels</span>, <span class="bu">RegressionTables</span></span>
 <span id="cb3-3"><a></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(id <span class="op">=</span> <span class="fu">vec</span>((<span class="fl">1</span><span class="op">:</span>n)<span class="fu">*ones</span>(<span class="dt">Int</span>,T)<span class="ch">'), t = vec(ones(Int,n)*(1:T)'</span>), y <span class="op">=</span> <span class="fu">vec</span>(y), D<span class="op">=</span><span class="fu">vec</span>(D))</span>
-<span id="cb3-4"><a></a><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a></a>m<span class="op">=</span><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span>
+<span id="cb3-5"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>                FixedEffectModels.FixedEffectModel                
-===================================================================
-Number of obs:               900   Converged:                  true
-dof (model):                   1   dof (residuals):             791
-R²:                        0.107   R² adjusted:              -0.016
-F-statistic:           0.0554795   P-value:                   0.814
-R² within:                 0.000   Iterations:                    2
-===================================================================
-    Estimate  Std. Error     t-stat  Pr(&gt;|t|)  Lower 95%  Upper 95%
-───────────────────────────────────────────────────────────────────
-D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
-===================================================================</code></pre>
+<pre><code>
+--------------------------
+                      y   
+--------------------------
+D                    0.007
+                   (0.042)
+--------------------------
+t Fixed Effects        Yes
+id Fixed Effects       Yes
+--------------------------
+N                    9,000
+R2                   0.112
+Within-R2            0.000
+--------------------------
+</code></pre>
 </div>
 </div>
 </section>
@@ -613,45 +624,56 @@ D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a></a><span class="im">using</span> <span class="bu">PlotlyLight</span></span>
-<span id="cb5-2"><a></a><span class="kw">function</span> <span class="fu">plotp</span>(D)</span>
-<span id="cb5-3"><a></a>  n,T<span class="op">=</span><span class="fu">size</span>(D)</span>
-<span id="cb5-4"><a></a>  plt<span class="op">=</span><span class="fu">Plot</span>()</span>
-<span id="cb5-5"><a></a>  plt.layout<span class="op">=</span><span class="fu">Config</span>(xaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"time"</span>,tickvals<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T),</span>
-<span id="cb5-6"><a></a>                    yaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"Portion Treated"</span>))</span>
-<span id="cb5-7"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T,y<span class="op">=</span><span class="fu">vec</span>(<span class="fu">mean</span>(D,dims<span class="op">=</span><span class="fl">1</span>)))</span>
-<span id="cb5-8"><a></a>  <span class="fu">plt</span>()</span>
-<span id="cb5-9"><a></a><span class="kw">end</span></span>
-<span id="cb5-10"><a></a></span>
-<span id="cb5-11"><a></a><span class="kw">function</span> <span class="fu">plotweights</span>(D)</span>
-<span id="cb5-12"><a></a>  n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
-<span id="cb5-13"><a></a>  ω <span class="op">=</span> <span class="fu">weights</span>(D)</span>
-<span id="cb5-14"><a></a>  groups <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">eachrow</span>(D))</span>
-<span id="cb5-15"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
-<span id="cb5-16"><a></a>  plt.layout<span class="op">=</span><span class="fu">Config</span>(xaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"time"</span>,tickvals<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T),</span>
-<span id="cb5-17"><a></a>                    yaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"weight"</span>))</span>
-<span id="cb5-18"><a></a>  <span class="cf">for</span> g <span class="kw">in</span> groups</span>
-<span id="cb5-19"><a></a>    i <span class="op">=</span> <span class="fu">findfirst</span>(d <span class="op">==</span> g <span class="cf">for</span> d <span class="kw">in</span> <span class="fu">eachrow</span>(D))</span>
-<span id="cb5-20"><a></a>    wt <span class="op">=</span> ω[i,<span class="op">:</span>]</span>
-<span id="cb5-21"><a></a>    <span class="fu">plt</span>(x<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T,y<span class="op">=</span>wt,name<span class="op">=</span><span class="st">"Treated </span><span class="sc">$</span>(<span class="fu">sum</span>(g))<span class="st"> times"</span>, mode<span class="op">=</span><span class="st">"markers"</span>,<span class="kw">type</span><span class="op">=</span><span class="st">"scatter"</span>)</span>
-<span id="cb5-22"><a></a>    <span class="cf">end</span></span>
-<span id="cb5-23"><a></a>  fig<span class="op">=</span><span class="fu">plt</span>()</span>
-<span id="cb5-24"><a></a>  <span class="cf">return</span>(fig)</span>
-<span id="cb5-25"><a></a><span class="cf">end</span></span>
-<span id="cb5-26"><a></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
-<span id="cb5-27"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="kw">function</span> <span class="fu">plotp</span>(D; width<span class="op">=</span><span class="fl">900</span>, height<span class="op">=</span><span class="fl">300</span>)</span>
+<span id="cb5-4"><a></a>  n,T<span class="op">=</span><span class="fu">size</span>(D)</span>
+<span id="cb5-5"><a></a>  plt<span class="op">=</span><span class="fu">Plot</span>()</span>
+<span id="cb5-6"><a></a>  plt.layout<span class="op">=</span><span class="fu">Config</span>(xaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"time"</span>,tickvals<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T),</span>
+<span id="cb5-7"><a></a>                    yaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"Portion Treated"</span>),</span>
+<span id="cb5-8"><a></a>                    autosize<span class="op">=</span><span class="cn">false</span>,</span>
+<span id="cb5-9"><a></a>                    width<span class="op">=</span>width,</span>
+<span id="cb5-10"><a></a>                    height<span class="op">=</span>height)</span>
+<span id="cb5-11"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T,y<span class="op">=</span><span class="fu">vec</span>(<span class="fu">mean</span>(D,dims<span class="op">=</span><span class="fl">1</span>)))</span>
+<span id="cb5-12"><a></a>  <span class="fu">plt</span>()</span>
+<span id="cb5-13"><a></a><span class="kw">end</span></span>
+<span id="cb5-14"><a></a></span>
+<span id="cb5-15"><a></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
+<span id="cb5-16"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;500e12Szua&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;500e12Szua&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.5,0.5,0.5,0.5,0.5]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;2iwLH6harR&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;2iwLH6harR&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.512,0.512,0.512,0.512,0.512]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
 </div>
 </div>
+</section>
+<section id="weights-with-single-treatment-time-1" class="slide level2">
+<h2>Weights with Single Treatment Time</h2>
 <div id="8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
-<span id="cb6-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a><span class="kw">function</span> <span class="fu">plotweights</span>(D; width<span class="op">=</span><span class="fl">900</span>, height<span class="op">=</span><span class="fl">300</span>)</span>
+<span id="cb6-2"><a></a>  n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
+<span id="cb6-3"><a></a>  ω <span class="op">=</span> <span class="fu">weights</span>(D)</span>
+<span id="cb6-4"><a></a>  groups <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">eachrow</span>(D))</span>
+<span id="cb6-5"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb6-6"><a></a>  plt.layout<span class="op">=</span><span class="fu">Config</span>(xaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"time"</span>,tickvals<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T),</span>
+<span id="cb6-7"><a></a>                    yaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"weight"</span>),</span>
+<span id="cb6-8"><a></a>                    autosize<span class="op">=</span><span class="cn">false</span>,</span>
+<span id="cb6-9"><a></a>                    width<span class="op">=</span>width,</span>
+<span id="cb6-10"><a></a>                    height<span class="op">=</span>height)</span>
+<span id="cb6-11"><a></a></span>
+<span id="cb6-12"><a></a>  <span class="cf">for</span> g <span class="kw">in</span> groups</span>
+<span id="cb6-13"><a></a>    i <span class="op">=</span> <span class="fu">findfirst</span>(d <span class="op">==</span> g <span class="cf">for</span> d <span class="kw">in</span> <span class="fu">eachrow</span>(D))</span>
+<span id="cb6-14"><a></a>    wt <span class="op">=</span> ω[i,<span class="op">:</span>]</span>
+<span id="cb6-15"><a></a>    <span class="fu">plt</span>(x<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T,y<span class="op">=</span>wt,name<span class="op">=</span><span class="st">"Treated </span><span class="sc">$</span>(<span class="fu">sum</span>(g))<span class="st"> times"</span>, mode<span class="op">=</span><span class="st">"markers"</span>,<span class="kw">type</span><span class="op">=</span><span class="st">"scatter"</span>)</span>
+<span id="cb6-16"><a></a>    <span class="cf">end</span></span>
+<span id="cb6-17"><a></a>  fig<span class="op">=</span><span class="fu">plt</span>()</span>
+<span id="cb6-18"><a></a>  <span class="cf">return</span>(fig)</span>
+<span id="cb6-19"><a></a><span class="cf">end</span></span>
+<span id="cb6-20"><a></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
+<span id="cb6-21"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;6KZhYmVcc0&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;6KZhYmVcc0&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.004999999999999989,-0.004999999999999989,-0.004999999999999989,-0.004999999999999989,0.0039999999999999905,0.0039999999999999905,0.0039999999999999905,0.0039999999999999905,0.0039999999999999905],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.004999999999999989,0.004999999999999989,0.004999999999999989,0.004999999999999989,-0.0039999999999999905,-0.0039999999999999905,-0.0039999999999999905,-0.0039999999999999905,-0.0039999999999999905],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;HZIKdLBDnY&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;HZIKdLBDnY&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0005122950819672129,0.0005122950819672129,0.0005122950819672129,0.0005122950819672129,-0.0004098360655737704,-0.0004098360655737704,-0.0004098360655737704,-0.0004098360655737704,-0.0004098360655737704],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0004882812499999999,-0.0004882812499999999,-0.0004882812499999999,-0.0004882812499999999,0.0003906249999999998,0.0003906249999999998,0.0003906249999999998,0.0003906249999999998,0.0003906249999999998],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
 </div>
 </div>
 </section>
@@ -665,9 +687,12 @@ D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
 <span id="cb7-3"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;wf1YMWcdEJ&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;wf1YMWcdEJ&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.1,0.19,0.25,0.32,0.38,0.39,0.44,0.46]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;bG9AIZuRnZ&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;bG9AIZuRnZ&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.068,0.11,0.165,0.221,0.26,0.314,0.352,0.395]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
 </div>
 </div>
+</section>
+<section id="weights-with-uniform-treatment-time-1" class="slide level2">
+<h2>Weights with Uniform Treatment Time</h2>
 <div id="12" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
@@ -675,7 +700,7 @@ D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
 <span id="cb8-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;fLrxK6g64K&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;fLrxK6g64K&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0050940281077598345,0.003281923247291909,0.0016510288728707762,0.0005637659565900209,-0.0007047074457375271,-0.0017919703620182823,-0.001973180848065075,-0.0028792332782990376,-0.003241654250392623],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.006986670962026335,-0.00879877582249426,-0.010429670196915394,0.006604115491483107,0.005335642089155558,0.004248379172874803,0.004067168686828011,0.0031611162565940492,0.0027986952845004635],&quot;name&quot;:&quot;Treated 6 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.009000120806990697,-0.010812225667458623,0.0056779285627995,0.004590665646518744,0.003322192244191195,0.0022349293279104406,0.002053718841863648,0.0011476664116296866,0.000785245439536101],&quot;name&quot;:&quot;Treated 7 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0029597712720976117,-0.004771876132565537,-0.006402770506986669,-0.0074900334232674256,-0.008758506825594974,0.008275278862803527,0.008094068376756733,0.007188015946522772,0.006825594974429187],&quot;name&quot;:&quot;Treated 4 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.004973221117061974,-0.006785325977529899,-0.008416220351951031,-0.009503483268231788,0.007349091934119918,0.006261829017839164,0.006080618531792371,0.0051745661015584095,0.004812145129464825],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.011013570651955058,0.005295373092256272,0.0036644787178351395,0.0025772158015543835,0.0013087423992268344,0.0002214794829460802,4.026899689928749e-5,-0.0008657834333346741,-0.0012282044054282594],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0010671284178311116,-0.0007449764426368135,-0.002375870817057947,-0.0034631337333387024,-0.00473160713566625,-0.005818870051947005,-0.0060000805379937985,0.011214915636451495,0.01085249466435791],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.003080578262795473,0.0012684734023275474,-0.00036242097209358544,-0.0014496838883743407,-0.0027181572907018885,-0.003805420206982644,-0.003986630693029436,-0.0048926831232634,0.01286594450932227],&quot;name&quot;:&quot;Treated 1 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0009463214271332501,-0.002758426287601176,-0.004389320662022309,-0.005476583578303063,-0.006745056980630612,-0.007832319896911369,0.010107518221721094,0.009201465791487135,0.008839044819393549],&quot;name&quot;:&quot;Treated 3 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;yFzoDcZzRS&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;yFzoDcZzRS&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0004122029569275245,0.0002783736679940258,0.00019571440129980604,8.747012348594681e-5,-2.2742232106346208e-5,-9.949726546526458e-5,-0.00020577346550069,-0.0002805604210811745,-0.0003651877655538282],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.00046249827793194394,-0.0005963275668654427,-0.0006789868335596624,-0.0007872311113735217,-0.0008974434669658146,0.0009938792781090712,0.0008876030780736456,0.0008128161224931612,0.0007281887780205076],&quot;name&quot;:&quot;Treated 4 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0011185242040765455,-0.001252353493010044,0.0006330650187295403,0.000524820740915681,0.00041460838532338806,0.00033785335196446966,0.00023157715192904412,0.00015679019634855972,7.216285187590607e-5],&quot;name&quot;:&quot;Treated 7 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0006811735866468112,-0.00081500287558031,-0.0008976621422745295,-0.001005906420088389,0.0008519590027531223,0.0007752039693942038,0.0006689277693587783,0.0005941408137782939,0.0005095134693056403],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.00019352764821265738,5.969835927915871e-5,-2.2960907415061033e-5,-0.00013120518522892024,-0.00024141754082121337,-0.0003181725741801317,-0.0004244487742155571,-0.0004992357297960416,0.001384214704165109],&quot;name&quot;:&quot;Treated 1 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0013371995127914123,0.000497048976708893,0.0004143897100146733,0.000306145432200814,0.00019593307660852106,0.00011917804324960263,1.2901843214177122e-5,-6.188511236630728e-5,-0.00014651245683896093],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0008998488953616781,-0.0010336781842951767,-0.0011163374509893967,0.0007434960496305482,0.0006332836940382553,0.0005565286606793369,0.00045025246064391136,0.00037546550506342696,0.0002908381605907733],&quot;name&quot;:&quot;Treated 6 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.00024382296921707683,-0.00037765225815057554,-0.00046031152484479526,-0.0005685558026586545,-0.0006787681582509476,-0.0007555231916098658,0.0011062783867885125,0.0010314914312080283,0.0009468640867353746],&quot;name&quot;:&quot;Treated 3 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-2.5147660502209718e-5,-0.0001589769494357084,-0.00024163621612992815,-0.00034988049394378746,-0.00046009284953608037,-0.0005368478828949988,-0.000643124082930424,0.0012501667399228953,0.0011655393954502417],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
 </div>
 </div>
 </section>
@@ -692,9 +717,12 @@ D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
 <span id="cb9-6"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;0ONh7xZ496&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;0ONh7xZ496&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.28,0.28,0.28,0.28,0.28,0.28,0.54,0.54]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;dvAiCDA4ao&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;dvAiCDA4ao&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.344,0.344,0.344,0.344,0.344,0.344,0.551,0.551]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
 </div>
 </div>
+</section>
+<section id="weights-with-early-and-late-treatde" class="slide level2">
+<h2>Weights with Early and Late Treatde</h2>
 <div id="16" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
@@ -702,12 +730,15 @@ D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
 <span id="cb10-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;J5OQF11IHA&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;J5OQF11IHA&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.006873879258816495,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,0.0005977286312014333,-0.005230125523012552,-0.005230125523012552],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.013050408447897984,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,0.0030882645945407446,-0.002739589559673241,-0.002739589559673241],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0018928073321378754,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,-0.004383343295477187,0.012203626220362617,0.012203626220362617],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;FpRcjxqtQs&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;FpRcjxqtQs&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.000829100972766416,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,-0.00046954454964314086,-0.00046954454964314086],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.001265910960945311,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,-0.00020766805792917488,-0.00020766805792917488],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.00030534798933848427,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,0.0013635908923546201,0.0013635908923546201],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
 </div>
 </div>
 </section>
 <section id="sign-reversal-with-fixed-effects" class="slide level2">
 <h2>Sign Reversal with Fixed Effects</h2>
+<ul>
+<li>True Treatment Effects</li>
+</ul>
 <div id="18" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
@@ -727,64 +758,60 @@ D  -0.031369    0.133179  -0.235541    0.8138  -0.292794   0.230056
 <span id="cb11-14"><a></a></span>
 <span id="cb11-15"><a></a>ATT <span class="op">=</span>  <span class="fu">vcat</span>(<span class="fu">ones</span>(T<span class="op">-</span><span class="fl">3</span>),<span class="fl">10</span><span class="fu">*ones</span>(<span class="fl">3</span>))</span>
 <span id="cb11-16"><a></a>df <span class="op">=</span> <span class="fu">simulate</span>(n,T, pt,ATT)</span>
-<span id="cb11-17"><a></a><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-17"><a></a></span>
+<span id="cb11-18"><a></a><span class="kw">function</span> <span class="fu">plotGAT</span>(ATT,D; width<span class="op">=</span><span class="fl">900</span>, height<span class="op">=</span><span class="fl">300</span>)</span>
+<span id="cb11-19"><a></a>  n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
+<span id="cb11-20"><a></a>  groups <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">eachrow</span>(D))</span>
+<span id="cb11-21"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb11-22"><a></a>  plt.layout<span class="op">=</span><span class="fu">Config</span>(xaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"time"</span>,tickvals<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T),</span>
+<span id="cb11-23"><a></a>                    yaxis<span class="op">=</span><span class="fu">Config</span>(title<span class="op">=</span><span class="st">"ATT"</span>),</span>
+<span id="cb11-24"><a></a>                    autosize<span class="op">=</span><span class="cn">false</span>,</span>
+<span id="cb11-25"><a></a>                    width<span class="op">=</span>width,</span>
+<span id="cb11-26"><a></a>                    height<span class="op">=</span>height)</span>
+<span id="cb11-27"><a></a></span>
+<span id="cb11-28"><a></a>  <span class="cf">for</span> g <span class="kw">in</span> groups</span>
+<span id="cb11-29"><a></a>    t <span class="op">=</span> <span class="fu">findfirst</span>(g)</span>
+<span id="cb11-30"><a></a>    <span class="cf">if</span> (<span class="fu">isnothing</span>(t))</span>
+<span id="cb11-31"><a></a>      t<span class="op">=</span>T<span class="op">+</span><span class="fl">1</span></span>
+<span id="cb11-32"><a></a>    <span class="cf">end</span></span>
+<span id="cb11-33"><a></a>    ate <span class="op">=</span> <span class="fu">vcat</span>(<span class="fu">zeros</span>(t<span class="op">-</span><span class="fl">1</span>), ATT[<span class="fl">1</span><span class="op">:</span>(T<span class="op">-</span>t<span class="op">+</span><span class="fl">1</span>)])</span>
+<span id="cb11-34"><a></a>    <span class="fu">plt</span>(x<span class="op">=</span><span class="fl">1</span><span class="op">:</span>T,y<span class="op">=</span>ate,name<span class="op">=</span><span class="st">"Treated </span><span class="sc">$</span>(<span class="fu">sum</span>(g))<span class="st"> times"</span>, mode<span class="op">=</span><span class="st">"markers"</span>,<span class="kw">type</span><span class="op">=</span><span class="st">"scatter"</span>)</span>
+<span id="cb11-35"><a></a>    <span class="cf">end</span></span>
+<span id="cb11-36"><a></a>  fig<span class="op">=</span><span class="fu">plt</span>()</span>
+<span id="cb11-37"><a></a>  <span class="cf">return</span>(fig)</span>
+<span id="cb11-38"><a></a><span class="kw">end</span></span>
+<span id="cb11-39"><a></a></span>
+<span id="cb11-40"><a></a><span class="fu">plotGAT</span>(ATT,D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>               FixedEffectModels.FixedEffectModel               
-=================================================================
-Number of obs:              900   Converged:                 true
-dof (model):                  1   dof (residuals):            791
-R²:                       0.509   R² adjusted:              0.441
-F-statistic:           0.120785   P-value:                  0.728
-R² within:                0.000   Iterations:                   2
-=================================================================
-   Estimate  Std. Error    t-stat  Pr(&gt;|t|)  Lower 95%  Upper 95%
-─────────────────────────────────────────────────────────────────
-D  0.096785    0.278485  0.347541    0.7283  -0.449872   0.643442
-=================================================================</code></pre>
+<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;90grcIjY0D&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;90grcIjY0D&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,1.0,1.0,1.0,1.0,1.0,1.0,10.0,10.0],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;ATT&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
 </div>
 </div>
 </section>
 <section id="sign-reversal-with-fixed-effects-1" class="slide level2">
 <h2>Sign Reversal with Fixed Effects</h2>
+<ul>
+<li>Fixed Effects Estimate</li>
+</ul>
 <div id="20" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a></a>D <span class="op">=</span> <span class="fu">reshape</span>(df.D, n,T)</span>
-<span id="cb13-2"><a></a>y <span class="op">=</span> <span class="fu">reshape</span>(df.y, n,T)</span>
-<span id="cb13-3"><a></a><span class="kw">function</span> <span class="fu">plotATT</span>(D, y)</span>
-<span id="cb13-4"><a></a>  n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
-<span id="cb13-5"><a></a>  groups <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">eachrow</span>(D))</span>
-<span id="cb13-6"><a></a>  ATT <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">0</span>)</span>
-<span id="cb13-7"><a></a>  tt <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">0</span>)</span>
-<span id="cb13-8"><a></a>  ts <span class="op">=</span> <span class="fu">zeros</span>(<span class="fl">0</span>)</span>
-<span id="cb13-9"><a></a>  <span class="cf">for</span> t <span class="op">∈</span> <span class="fl">2</span><span class="op">:</span>T</span>
-<span id="cb13-10"><a></a>    <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>t<span class="op">-</span><span class="fl">1</span></span>
-<span id="cb13-11"><a></a>      treatts <span class="op">=</span> D[<span class="op">:</span>,t] <span class="op">.&amp;</span> .!D[<span class="op">:</span>,s]</span>
-<span id="cb13-12"><a></a>      controlts <span class="op">=</span> .!D[<span class="op">:</span>,t] <span class="op">.&amp;</span> .!D[<span class="op">:</span>,s]</span>
-<span id="cb13-13"><a></a>      <span class="cf">if</span> <span class="fu">any</span>(treatts) <span class="op">&amp;&amp;</span> <span class="fu">any</span>(controlts)</span>
-<span id="cb13-14"><a></a>        <span class="fu">push!</span>(ATT, <span class="fu">mean</span>(y[treatts,t] <span class="op">-</span> y[treatts,s]) <span class="op">-</span> <span class="fu">mean</span>(y[controlts,t] <span class="op">-</span> y[controlts,s]))</span>
-<span id="cb13-15"><a></a>        <span class="fu">push!</span>(tt,t)</span>
-<span id="cb13-16"><a></a>        <span class="fu">push!</span>(ts,s)</span>
-<span id="cb13-17"><a></a>      <span class="cf">end</span></span>
-<span id="cb13-18"><a></a>    <span class="cf">end</span></span>
-<span id="cb13-19"><a></a>  <span class="cf">end</span></span>
-<span id="cb13-20"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
-<span id="cb13-21"><a></a>  hiddenaxis<span class="op">=</span><span class="fu">Config</span>(autorange<span class="op">=</span><span class="cn">true</span>,</span>
-<span id="cb13-22"><a></a>                    showgrid<span class="op">=</span><span class="cn">false</span>,</span>
-<span id="cb13-23"><a></a>                    zeroline<span class="op">=</span><span class="cn">false</span>,</span>
-<span id="cb13-24"><a></a>                    showline<span class="op">=</span><span class="cn">false</span>,</span>
-<span id="cb13-25"><a></a>                    autotick<span class="op">=</span><span class="cn">true</span>,</span>
-<span id="cb13-26"><a></a>                    ticks<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb13-27"><a></a>                    showticklabels<span class="op">=</span><span class="cn">false</span>)</span>
-<span id="cb13-28"><a></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>(xaxis<span class="op">=</span>hiddenaxis,yaxis<span class="op">=</span>hiddenaxis)</span>
-<span id="cb13-29"><a></a>  fig<span class="op">=</span><span class="fu">plt</span>(x<span class="op">=</span>tt,y<span class="op">=</span>ts,z<span class="op">=</span>ATT,name<span class="op">=</span><span class="st">"ATTₜ,ₜ₋ₛ"</span>, mode<span class="op">=</span><span class="st">"markers"</span>,<span class="kw">type</span><span class="op">=</span><span class="st">"scatter3d"</span>)</span>
-<span id="cb13-30"><a></a><span class="kw">end</span></span>
-<span id="cb13-31"><a></a>fig<span class="op">=</span><span class="fu">plotATT</span>(D,y)</span>
-<span id="cb13-32"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span>
+<span id="cb12-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>body { margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.29.1.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;TIxd7xjzdr&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;TIxd7xjzdr&quot;, [{},{&quot;x&quot;:[2.0,3.0,4.0,5.0,6.0,7.0,8.0,8.0,8.0,8.0,8.0,8.0,8.0,9.0,9.0,9.0,9.0,9.0,9.0,9.0],&quot;y&quot;:[1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0],&quot;z&quot;:[0.996145438990516,0.9949074880011091,1.0000234289679037,1.0003782279624136,1.0046524196830875,0.999686857485719,6.171026061342649,1.0028987023499276,0.9965935395827415,1.0011507343447708,1.0023041003497615,0.9980989106553831,0.9995748746126898,6.17242464873874,1.007792429735783,1.001487266968597,1.0060444617306263,1.0071978277356164,1.0029926380412382,1.0044686019985454],&quot;name&quot;:&quot;ATTₜ,ₜ₋ₛ&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter3d&quot;}], {&quot;xaxis&quot;:{&quot;autorange&quot;:true,&quot;showgrid&quot;:false,&quot;zeroline&quot;:false,&quot;showline&quot;:false,&quot;autotick&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;showticklabels&quot;:false},&quot;yaxis&quot;:{&quot;autorange&quot;:true,&quot;showgrid&quot;:false,&quot;zeroline&quot;:false,&quot;showline&quot;:false,&quot;autotick&quot;:true,&quot;ticks&quot;:&quot;&quot;,&quot;showticklabels&quot;:false}}, {&quot;responsive&quot;:true})</script></div></body></html>" height="100%" width="100%" style="min-width:350px;display:block;border:none;min-height:350px"></iframe>
+<pre><code>
+----------------------------
+                       y    
+----------------------------
+D                  -0.461***
+                     (0.087)
+----------------------------
+t Fixed Effects          Yes
+id Fixed Effects         Yes
+----------------------------
+N                      9,000
+R2                     0.543
+Within-R2              0.004
+----------------------------
+</code></pre>
 </div>
 </div>
 </section>
@@ -820,7 +847,7 @@ ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - 
 \sum_{t=1}^T \frac{\sum_i D_{it}}{\sum_{i,s} D_{i,s}} \frac{1}{t-1} \sum_{s=1}^{t-1} \widehat{ATT}_{t,t-s}
 \]</span>
 <ul>
-<li>Inference? Optimal? Code?</li>
+<li>Inference? Optimal?</li>
 </ul></li>
 </ul>
 </section>
@@ -847,9 +874,6 @@ ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - 
 </ol></li>
 </ul></li>
 </ul>
-</section>
-<section id="regression-with-cohort-interactions" class="slide level2">
-<h2>Regression with Cohort Interactions</h2>
 <div id="22" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
@@ -878,92 +902,143 @@ ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - 
 <span id="cb14-23"><a></a>  df</span>
 <span id="cb14-24"><a></a><span class="kw">end</span></span>
 <span id="cb14-25"><a></a></span>
-<span id="cb14-26"><a></a>dfc <span class="op">=</span> <span class="fu">createCohorts</span>(df)</span>
-<span id="cb14-27"><a></a></span>
-<span id="cb14-28"><a></a><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> DCt <span class="op">+</span> <span class="fu">fe</span>(id) <span class="op">+</span> <span class="fu">fe</span>(t)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-26"><a></a>dfc <span class="op">=</span> <span class="fu">createCohorts</span>(df);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>                            FixedEffectModels.FixedEffectModel                            
-==========================================================================================
-Number of obs:                           900  Converged:                              true
-dof (model):                              10  dof (residuals):                         781
-R²:                                    1.000  R² adjusted:                           1.000
-F-statistic:                       2.34917e6  P-value:                               0.000
-R² within:                             1.000  Iterations:                                2
-==========================================================================================
-                    Estimate  Std. Error        t-stat  Pr(&gt;|t|)    Lower 95%    Upper 95%
-──────────────────────────────────────────────────────────────────────────────────────────
-DCt: c2,t9       0.00489373   0.00379128     1.29079      0.1972  -0.00254858   0.012336
-DCt: c3,t2      -0.00396207   0.00433623    -0.913712     0.3612  -0.0124741    0.00454998
-DCt: c3,t3      -0.00520002   0.00433623    -1.1992       0.2308  -0.0137121    0.00331203
-DCt: c3,t4      -8.4077e-5    0.00433623    -0.0193894    0.9845  -0.00859613   0.00842797
-DCt: c3,t5       0.000270722  0.00433623     0.0624325    0.9502  -0.00824133   0.00878277
-DCt: c3,t6       0.00454491   0.00433623     1.04813      0.2949  -0.00396714   0.013057
-DCt: c3,t7      -0.000420649  0.00433623    -0.0970078    0.9227  -0.0089327    0.0080914
-DCt: c3,t8       9.0012       0.00386249  2330.41         &lt;1e-99   8.99362      9.00879
-DCt: c3,t9       9.00001      0.00434245  2072.57         &lt;1e-99   8.99149      9.00854
-DCt: untreated  -1.00011      0.00286594  -348.964        &lt;1e-99  -1.00573     -0.994482
-==========================================================================================</code></pre>
-</div>
 </div>
 </section>
-<section id="regression-with-cohort-interactions-1" class="slide level2">
+<section id="regression-with-cohort-interactions" class="slide level2 smaller">
 <h2>Regression with Cohort Interactions</h2>
 <div id="24" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> cohort<span class="op">*</span>ct <span class="op">+</span> <span class="fu">fe</span>(id)), save<span class="op">=:</span>fe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> DCt <span class="op">+</span> <span class="fu">fe</span>(id) <span class="op">+</span> <span class="fu">fe</span>(t)))</span>
+<span id="cb15-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>
+----------------------------
+                       y    
+----------------------------
+DCt: c2,t9             0.002
+                     (0.001)
+DCt: c3,t2            -0.000
+                     (0.001)
+DCt: c3,t3             0.001
+                     (0.001)
+DCt: c3,t4            -0.000
+                     (0.001)
+DCt: c3,t5            -0.000
+                     (0.001)
+DCt: c3,t6            -0.001
+                     (0.001)
+DCt: c3,t7            -0.000
+                     (0.001)
+DCt: c3,t8          9.000***
+                     (0.001)
+DCt: c3,t9          9.001***
+                     (0.001)
+DCt: untreated     -0.999***
+                     (0.001)
+----------------------------
+id Fixed Effects         Yes
+t Fixed Effects          Yes
+----------------------------
+N                      9,000
+R2                     1.000
+Within-R2              1.000
+----------------------------
+</code></pre>
+</div>
+</div>
+</section>
+<section id="regression-with-cohort-interactions-1" class="slide level2 smaller">
+<h2>Regression with Cohort Interactions</h2>
+<div id="26" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> cohort<span class="op">*</span>ct <span class="op">+</span> <span class="fu">fe</span>(id)), save<span class="op">=:</span>fe)</span>
+<span id="cb17-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ Info: RHS-variable cohort: 2 is collinear with the fixed effects.
 [ Info: RHS-variable cohort: 3 is collinear with the fixed effects.</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>                               FixedEffectModels.FixedEffectModel                               
-=================================================================================================
-Number of obs:                              900   Converged:                                 true
-dof (model):                                 24   dof (residuals):                            777
-R²:                                       1.000   R² adjusted:                              1.000
-F-statistic:                          1.42219e6   P-value:                                  0.000
-R² within:                                1.000   Iterations:                                   1
-=================================================================================================
-                       Estimate    Std. Error        t-stat  Pr(&gt;|t|)     Lower 95%     Upper 95%
-─────────────────────────────────────────────────────────────────────────────────────────────────
-cohort: 2           0.0          NaN            NaN            NaN     NaN           NaN
-cohort: 3           0.0          NaN            NaN            NaN     NaN           NaN
-ct: 2               0.00247013     0.00198544     1.24413      0.2138   -0.00142732    0.00636758
-ct: 3              -5.52803e-5     0.00198544    -0.0278429    0.9778   -0.00395273    0.00384217
-ct: 4               0.000563884    0.00198544     0.28401      0.7765   -0.00333357    0.00446134
-ct: 5               0.000169635    0.00198544     0.0854398    0.9319   -0.00372782    0.00406709
-ct: 6              -0.00387163     0.00198544    -1.95002      0.0515   -0.00776909    2.58203e-5
-ct: 7               0.000146721    0.00198544     0.0738988    0.9411   -0.00375073    0.00404417
-ct: 8              -0.000917581    0.00198544    -0.462156     0.6441   -0.00481503    0.00297987
-ct: 9              -0.000935692    0.00198544    -0.471278     0.6376   -0.00483314    0.00296176
-cohort: 2 &amp; ct: 2  -0.00276702     0.00379317    -0.729475     0.4659   -0.0102131     0.00467905
-cohort: 3 &amp; ct: 2   0.995387       0.00341758   291.255        &lt;1e-99    0.988679      1.0021
-cohort: 2 &amp; ct: 3   0.00353814     0.00379317     0.932766     0.3512   -0.00390793    0.0109842
-cohort: 3 &amp; ct: 3   0.995877       0.00341758   291.398        &lt;1e-99    0.989168      1.00259
-cohort: 2 &amp; ct: 4  -0.00101905     0.00379317    -0.268655     0.7883   -0.00846513    0.00642702
-cohort: 3 &amp; ct: 4   0.999744       0.00341758   292.53         &lt;1e-99    0.993035      1.00645
-cohort: 2 &amp; ct: 5  -0.00217242     0.00379317    -0.572719     0.5670   -0.00961849    0.00527365
-cohort: 3 &amp; ct: 5   0.999783       0.00341758   292.541        &lt;1e-99    0.993074      1.00649
-cohort: 2 &amp; ct: 6   0.00203277     0.00379317     0.535903     0.5922   -0.0054133     0.00947884
-cohort: 3 &amp; ct: 6   1.00521        0.00341758   294.129        &lt;1e-99    0.998501      1.01192
-cohort: 2 &amp; ct: 7   0.000556806    0.00379317     0.146792     0.8833   -0.00688927    0.00800288
-cohort: 3 &amp; ct: 7   0.999839       0.00341758   292.558        &lt;1e-99    0.993131      1.00655
-cohort: 2 &amp; ct: 8   1.00013        0.00379317   263.667        &lt;1e-99    0.992686      1.00758
-cohort: 3 &amp; ct: 8  10.0013         0.00341758  2926.43         &lt;1e-99    9.99461      10.008
-cohort: 2 &amp; ct: 9   1.00503        0.00379317   264.957        &lt;1e-99    0.997579      1.01247
-cohort: 3 &amp; ct: 9  10.0001         0.00341758  2926.08         &lt;1e-99    9.99342      10.0068
-=================================================================================================</code></pre>
+<pre><code>
+-----------------------------
+                        y    
+-----------------------------
+cohort: 2               0.000
+                        (NaN)
+cohort: 3               0.000
+                        (NaN)
+ct: 2                  0.002*
+                      (0.001)
+ct: 3                  -0.000
+                      (0.001)
+ct: 4                   0.000
+                      (0.001)
+ct: 5                   0.001
+                      (0.001)
+ct: 6                   0.001
+                      (0.001)
+ct: 7                   0.000
+                      (0.001)
+ct: 8                   0.001
+                      (0.001)
+ct: 9                  -0.000
+                      (0.001)
+cohort: 2 &amp; ct: 2      -0.001
+                      (0.001)
+cohort: 3 &amp; ct: 2    0.999***
+                      (0.001)
+cohort: 2 &amp; ct: 3       0.001
+                      (0.001)
+cohort: 3 &amp; ct: 3    1.000***
+                      (0.001)
+cohort: 2 &amp; ct: 4       0.001
+                      (0.001)
+cohort: 3 &amp; ct: 4    0.999***
+                      (0.001)
+cohort: 2 &amp; ct: 5      -0.000
+                      (0.001)
+cohort: 3 &amp; ct: 5    0.999***
+                      (0.001)
+cohort: 2 &amp; ct: 6       0.000
+                      (0.001)
+cohort: 3 &amp; ct: 6    0.998***
+                      (0.001)
+cohort: 2 &amp; ct: 7      -0.000
+                      (0.001)
+cohort: 3 &amp; ct: 7    0.999***
+                      (0.001)
+cohort: 2 &amp; ct: 8    0.999***
+                      (0.001)
+cohort: 3 &amp; ct: 8    9.999***
+                      (0.001)
+cohort: 2 &amp; ct: 9    1.001***
+                      (0.001)
+cohort: 3 &amp; ct: 9   10.000***
+                      (0.001)
+-----------------------------
+id Fixed Effects          Yes
+-----------------------------
+N                       9,000
+R2                      1.000
+Within-R2               1.000
+-----------------------------
+</code></pre>
 </div>
 </div>
 </section>
 <section id="what-to-do-2" class="slide level2">
 <h2>What to Do?</h2>
 <ul>
-<li>Understand existing methods: read reviews <span class="citation" data-cites="dd2022">Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, <span class="citation" data-cites="roth2023">Roth et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
-<li>Use an appropriate package: partial list on https://asjadnaqvi.github.io/DiD/</li>
+<li>Understand existing methods: read reviews <span class="citation" data-cites="dd2022">Clément de Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, <span class="citation" data-cites="roth2023">Roth et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>, <span class="citation" data-cites="dd2023">C. de Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
+<li>Use an appropriate package:
+<ul>
+<li>partial list on <a href="https://asjadnaqvi.github.io/DiD/">https://asjadnaqvi.github.io/DiD/</a></li>
+</ul></li>
 </ul>
 </section></section>
 <section>
@@ -1067,7 +1142,8 @@ ATT_{3,2}
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
-<li>Recent reviews: <span class="citation" data-cites="roth2023">Roth et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>, <span class="citation" data-cites="dd2022">Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, <span class="citation" data-cites="arkhangelsky2023">Arkhangelsky and Imbens (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
+<li>Book: <span class="citation" data-cites="dd2023">C. de Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
+<li>Recent reviews: <span class="citation" data-cites="roth2023">Roth et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span>, <span class="citation" data-cites="dd2022">Clément de Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, <span class="citation" data-cites="arkhangelsky2023">Arkhangelsky and Imbens (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
 <li>Early work pointing to problems with fixed effects:
 <ul>
 <li><span class="citation" data-cites="laporte2005">Laporte and Windmeijer (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span>, <span class="citation" data-cites="wooldridge2005">Wooldridge (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></li>
@@ -1075,15 +1151,15 @@ ATT_{3,2}
 <li>Explosion of papers written just before 2020, published just after:
 <ul>
 <li><span class="citation" data-cites="borusyak2018">Borusyak and Jaravel (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
-<li><span class="citation" data-cites="dd2020">Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
+<li><span class="citation" data-cites="dd2020">Clément de Chaisemartin and D’Haultfœuille (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span></li>
 <li><span class="citation" data-cites="callaway2021">Callaway and Sant’Anna (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
 <li><span class="citation" data-cites="goodmanbacon2021">Goodman-Bacon (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
 <li><span class="citation" data-cites="sun2021">Sun and Abraham (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
 </ul></li>
 </ul>
-</section></section>
-<section id="references" class="title-slide slide level1 smaller scrollable">
-<h1>References</h1>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -1095,6 +1171,9 @@ Borusyak, Kirill, and Xavier Jaravel. 2018. <span>“Revisiting Event Study Desi
 </div>
 <div id="ref-callaway2021" class="csl-entry" role="listitem">
 Callaway, Brantly, and Pedro H. C. Sant’Anna. 2021. <span>“Difference-in-Differences with Multiple Time Periods.”</span> <em>Journal of Econometrics</em> 225 (2): 200–230. https://doi.org/<a href="https://doi.org/10.1016/j.jeconom.2020.12.001">https://doi.org/10.1016/j.jeconom.2020.12.001</a>.
+</div>
+<div id="ref-dd2023" class="csl-entry" role="listitem">
+Chaisemartin, C de, and X D’Haultfœuille. 2023. <em>Credible Answers to Hard Questions: Differences-in-Differences for Natural Experiments</em>. <a href="https://dx.doi.org/10.2139/ssrn.4487202">https://dx.doi.org/10.2139/ssrn.4487202</a>.
 </div>
 <div id="ref-dd2020" class="csl-entry" role="listitem">
 Chaisemartin, Clément de, and Xavier D’Haultfœuille. 2020. <span>“Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects.”</span> <em>American Economic Review</em> 110 (9): 2964–96. <a href="https://doi.org/10.1257/aer.20181169">https://doi.org/10.1257/aer.20181169</a>.
@@ -1124,7 +1203,7 @@ Sun, Liyang, and Sarah Abraham. 2021. <span>“Estimating Dynamic Treatment Effe
 Wooldridge, Jeffrey M. 2005. <span>“<span class="nocase">Fixed-Effects and Related Estimators for Correlated Random-Coefficient and Treatment-Effect Panel Data Models</span>.”</span> <em>The Review of Economics and Statistics</em> 87 (2): 385–90. <a href="https://doi.org/10.1162/0034653053970320">https://doi.org/10.1162/0034653053970320</a>.
 </div>
 </div>
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

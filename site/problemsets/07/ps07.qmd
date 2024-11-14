@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 7"
 #author: "Paul Schrimpf"
-date: 2023-12-01
+date: 2024-11-21
 bibliography: ../../626.bib
 ---
 
@@ -37,7 +37,7 @@ Suppose $1/2$ of states legalized medical marijuana in a single year and no othe
 $$
 F_{it} = \alpha + \beta_1 MM_{it} + \beta_2 RM_{it} + \eta_i + \theta_t + \varepsilon_{it}
 $$
-recover an interpretable average treatment effect on the treated?
+recover an interpretable average treatment effect on the treated? Your answer should include some algebra or perhaps computer computations relating $\hat{\beta}_1$ and/or $\hat{\beta}_2$ to potential outcomes. Feel free to make reasonable additional assumptions to help simplify the analysis.
 
 ## $DID_M$, $DID_\ell$
 

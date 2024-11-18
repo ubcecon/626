@@ -85,7 +85,10 @@ $$
 $$
 \Er[Z_i(Y_i - X_i'\beta_0)] = 0
 $$
-- Estimate by replacing $\Er$ with $\frac{1}{n}\sum_{i=1}n$
+- Estimate by replacing $\Er$ with $\frac{1}{n}\sum_{i=1}^n$
+
+## Method of Moments Estimation
+
 - $d$ equations, $k \geq d$ unknowns, so find
 $$
 \frac{1}{n} \sum_{i=1}^n Z_i(Y_i - X_i'\hat{\beta}^{IV}) \approx 0
@@ -109,7 +112,7 @@ $$
 - $\hat{\beta}^{IV}_W = (X'Z W Z'W)^{-1}(X'Z W Z'y)$
 :::
 
-# Asymptotic Properties
+# Asymptotic Properties {.smaller}
 
 ## Consistency
 
@@ -124,7 +127,7 @@ $$
 - Consistent if LLN applies to $\frac{1}{n}\sum_{i=1}^n Z_i X_i'$ and $\frac{1}{n}\sum_{i=1}^n Z_i u_i$
    - E.g. if i.i.d. with $\Er[\norm{X_i}^4]$ and $\Er[\norm{Z_i}^4]$ finite and $\Er[u_i^2|Z_i=z] = \sigma^2$ ^[these are stronger than needed, for LLN, but needed for CLT]
 
-## Asymptotic Normality
+## Asymptotic Normality {.smaller}
 
 $$
 \begin{align*}
@@ -238,6 +241,7 @@ plt = Plot()
 plt(x=j0s, type="histogram", name="E[Zu] = 0")
 plt(x=j1s, type="histogram", name="E[Zu] = [0,0,3]")
 fig=plt(x=j2s, type="histogram", name="E[Zu] = [1,1,1]")
+
 fig
 ```
 
@@ -246,9 +250,11 @@ fig
 ## Simulated Distribution of $\hat{\beta}^{IV}$
 
 - First stage $X = Z\gamma + e$, simulation with
- $\Er[Z_i Z_i] = I$ and $e \sigma N(0,0.25)$, so first stage $t \approx \sqrt{n}\gamma/0.5$
+ $\Er[Z_i Z_i] = I$ and $e \sim N(0,0.25)$, so first stage $t \approx \sqrt{n}\gamma/0.5$
 
-- Distribution of $\hat{\beta}^IV$ with $\gamma = 1$, $\gamma=0.2$, and $\gamma=0.1$
+- Distribution of $\hat{\beta}^{IV}$ with $\gamma = 1$, $\gamma=0.2$, and $\gamma=0.1$
+
+## Simulated Distribution of $\hat{\beta}^{IV}$
 
 ```{julia}
 #| echo: true
@@ -348,7 +354,7 @@ $$
 AR(\beta) = n\left(\frac{1}{n} Z'(y-X\beta) \right)' \Sigma(\beta)^{-1} \left(\frac{1}{n} Z'(y - X\beta)\right)
 $$
 where $\Sigma(\beta) = \frac{1}{n} \sum_{i=1}^n Z_iZ_i' (y_i - X_i'\beta)^2$
-- $\AR(\beta) \indist \chi^2_d$ (under either weak instrument or usual asymptotics)
+- $AR(\beta) \indist \chi^2_d$ (under either weak instrument or usual asymptotics)
 
 - See [my other notes](https://schrimpf.github.io/GMMInference.jl/identificationRobustInference/) for simulations and references
 

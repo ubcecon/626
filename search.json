@@ -739,7 +739,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\nusing LinearAlgebra\nn = 10_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5306651767454199\n -0.13968690251779875\n -0.3575684047753106"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-3",
@@ -1796,7 +1796,7 @@
     "href": "iv/iv.html#reading",
     "title": "Instrumental Variables Estimation",
     "section": "Reading",
-    "text": "Reading\n\nRequired: Song (2021) chapter 12\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{E}_n}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
+    "text": "Reading\n\nRequired: Song (2021) chapter 12\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{E}_n}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\def\\indep{{\\perp\\!\\!\\!\\perp}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
   },
   {
     "objectID": "iv/iv.html#model",
@@ -1880,7 +1880,7 @@
     "href": "iv/iv.html#over-identifying-test",
     "title": "Instrumental Variables Estimation",
     "section": "Over-identifying Test",
-    "text": "Over-identifying Test\n\nOnly has power when instruments have different covariances with \\(u\\)\n\n\n\nCode\nusing PlotlyLight, Distributions, LinearAlgebra\nfunction sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))\n  zu = randn(n,d)\n  Z = randn(n,d) + mapslices(x-&gt;x.*EZu, zu, dims=2)\n  xu = randn(n)\n  X = Z*gamma + xu*Exu\n  u = vec(sum(zu,dims=2) + xu + randn(n))\n  y = X*beta + u\n  return(y,X,Z)\nend\n\nbiv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \\ (X'*Z*inv(Z'*Z)*Z'*y)\n\nfunction J(y,X,Z)\n  n = length(y)\n  bhat = biv(y,X,Z)\n  uhat = y - X*bhat\n  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))\n  Zu = Z'*uhat/n\n  J = n*Zu'*C*Zu\nend\n\nS = 1_000\nn = 100\nj0s = [J(sim(n)...) for _ in 1:S]\nj1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]\nj2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]\n\nplt = Plot()\nplt(x=j0s, type=\"histogram\", name=\"E[Zu] = 0\")\nplt(x=j1s, type=\"histogram\", name=\"E[Zu] = [0,0,3]\")\nfig=plt(x=j2s, type=\"histogram\", name=\"E[Zu] = [1,1,1]\")\n\nfig"
+    "text": "Over-identifying Test\n\nOnly has power when instruments have different covariances with \\(u\\)\n\n\n\nCode\nusing Distributions, LinearAlgebra\nimport PlotlyLight\nfunction sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))\n  zu = randn(n,d)\n  Z = randn(n,d) + mapslices(x-&gt;x.*EZu, zu, dims=2)\n  xu = randn(n)\n  X = Z*gamma + xu*Exu\n  u = vec(sum(zu,dims=2) + xu + randn(n))\n  y = X*beta + u\n  return(y,X,Z)\nend\n\nbiv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \\ (X'*Z*inv(Z'*Z)*Z'*y)\n\nfunction J(y,X,Z)\n  n = length(y)\n  bhat = biv(y,X,Z)\n  uhat = y - X*bhat\n  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))\n  Zu = Z'*uhat/n\n  J = n*Zu'*C*Zu\nend\n\nS = 1_000\nn = 100\nj0s = [J(sim(n)...) for _ in 1:S]\nj1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]\nj2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]\n\nplt = PlotlyLight.Plot()\nplt(x=j0s, type=\"histogram\", name=\"E[Zu] = 0\")\nplt(x=j1s, type=\"histogram\", name=\"E[Zu] = [0,0,3]\")\nfig=plt(x=j2s, type=\"histogram\", name=\"E[Zu] = [1,1,1]\")\n\nfig"
   },
   {
     "objectID": "iv/iv.html#simulated-distribution-of-hatbetaiv",
@@ -1894,7 +1894,7 @@
     "href": "iv/iv.html#simulated-distribution-of-hatbetaiv-1",
     "title": "Instrumental Variables Estimation",
     "section": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)",
-    "text": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n  b = biv(y,X,Z)\n  u = y - X*b\n  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n  (b - b0)./sqrt.(diag(V))\nend\nn = 100\nS = 10_000\nplt = Plot()\nfor g in [1, 0.2, 0.1]\n  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]\n  # crop outliers so figure looks okay\n  b .= max.(b, -4)\n  b .= min.(b, 4)\n  plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig"
+    "text": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n  b = biv(y,X,Z)\n  u = y - X*b\n  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n  (b - b0)./sqrt.(diag(V))\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nfor g in [1, 0.2, 0.1]\n  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]\n  # crop outliers so figure looks okay\n  b .= max.(b, -4)\n  b .= min.(b, 4)\n  plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig"
   },
   {
     "objectID": "iv/iv.html#weak-instruments-1",
@@ -1915,7 +1915,7 @@
     "href": "iv/iv.html#weak-instrument-asymptotics",
     "title": "Instrumental Variables Estimation",
     "section": "Weak Instrument Asymptotics",
-    "text": "Weak Instrument Asymptotics\n\nLet \\(\\Er[Z_i X_i'] = \\frac{1}{\\sqrt{n}} \\Gamma\\)\nThen \\(\\frac{1}{\\sqrt{n}} Z' X = \\Gamma + H\\)\nand \\[\n\\hat{\\beta}^{IV} - \\beta_0 \\indist\n\\left((\\Gamma + H)' \\Er[Z_i Z_i]^{-1} H\\right)^{-1} \\left((\\Gamma + H) \\Er[Z_i Z_i']^{-1} \\zeta_2\\right)\n\\]\n\\(\\Gamma\\) cannot be estimated, but we can try to develop estimators and inference methods for \\(\\beta\\) that work for any \\(\\Gamma\\)"
+    "text": "Weak Instrument Asymptotics\n\nLet \\(\\Er[Z_i X_i'] = \\frac{1}{\\sqrt{n}} \\Gamma\\)\nThen \\(\\frac{1}{\\sqrt{n}} Z' X = \\Gamma + H\\)\nand \\[\n\\hat{\\beta}^{IV} - \\beta_0 \\indist\n\\left((\\Gamma + H)' \\Er[Z_i Z_i]^{-1} (\\Gamma + H)\\right)^{-1} \\left((\\Gamma + H) \\Er[Z_i Z_i']^{-1} \\zeta_2\\right)\n\\]\n\\(\\Gamma\\) cannot be estimated, but we can try to develop estimators and inference methods for \\(\\beta\\) that work for any \\(\\Gamma\\)"
   },
   {
     "objectID": "iv/iv.html#testing-for-relevance",
@@ -1936,7 +1936,7 @@
     "href": "iv/iv.html#testing-for-relevance-2",
     "title": "Instrumental Variables Estimation",
     "section": "Testing for Relevance",
-    "text": "Testing for Relevance\n\nDavid S. Lee et al. (2022) : F\\(&gt;&gt;10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F&gt;10\\) threshold, not that Stock and Yogo (2002) is wrong."
+    "text": "Testing for Relevance\n\nLee et al. (2022) : F\\(&gt;&gt;10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F&gt;10\\) threshold, not that Stock and Yogo (2002) is wrong."
   },
   {
     "objectID": "iv/iv.html#identification-robust-inference",
@@ -1950,7 +1950,14 @@
     "href": "iv/iv.html#identification-robust-inference-1",
     "title": "Instrumental Variables Estimation",
     "section": "Identification Robust Inference",
-    "text": "Identification Robust Inference\n\nTwo downsides of AR test:\n\nAR statistic is similar to over-identifying test (\\(AR(\\hat{\\beta}^{IV}) = J\\))\n\n\nSmall (even empty) confidence region if model is misspecified\n\n\nOnly gives confidence region for all of \\(\\beta\\), not confidence intervals for single co-ordinates\n\nKleibergen’s LM and Moreira CLR tests address 1, see my other notes for simulations and references\nVarious approaches to 2 see Andrews, Stock, and Sun (2019) for a review\nIf you want something close to the usual t-test and have 1 endogenous regression and 1 instrument, the tF test from David S. Lee et al. (2022), or better yet, recently improved VtF test in David S. Lee et al. (2023)"
+    "text": "Identification Robust Inference\n\nTwo downsides of AR test:\n\nAR statistic is similar to over-identifying test (\\(AR(\\hat{\\beta}^{IV}) = J\\))\n\n\nSmall (even empty) confidence region if model is misspecified\n\n\nOnly gives confidence region for all of \\(\\beta\\), not confidence intervals for single co-ordinates\n\nKleibergen’s LM and Moreira CLR tests address 1, see my other notes for simulations and references"
+  },
+  {
+    "objectID": "iv/iv.html#identification-robust-inference-2",
+    "href": "iv/iv.html#identification-robust-inference-2",
+    "title": "Instrumental Variables Estimation",
+    "section": "Identification Robust Inference",
+    "text": "Identification Robust Inference\n\nVarious approaches to 2 see Andrews, Stock, and Sun (2019) for a review\n\nLondschien and Bühlmann (2024) seems like a promising approach, implemented in ivmodels python package (assumes homoscedasticity)\nGuggenberger, Kleibergen, and Mavroeidis (2024) and Tuvaandorj (2024) allow heteroscedasticity\n\nIf you want something close to the usual t-test and have 1 endogenous regression and 1 instrument, the tF test from Lee et al. (2022), or better yet, recently improved VtF test in Lee et al. (2023)"
   },
   {
     "objectID": "iv/iv.html#further-reading",
@@ -1958,6 +1965,97 @@
     "title": "Instrumental Variables Estimation",
     "section": "Further Reading",
     "text": "Further Reading\n\nRecent reviews:\n\nAndrews, Stock, and Sun (2019)\nKeane and Neal (2023)"
+  },
+  {
+    "objectID": "iv/iv.html#model-1",
+    "href": "iv/iv.html#model-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Model",
+    "text": "Model\n\n\\(Z_i \\in \\{0,1\\}\\)\n\\(D_i \\in \\{0,1\\}\\)\nPotential treatments \\(D_i(z)\\)\nPotential outcomes \\(Y_i(d)\\)\nExogenous instruments \\(Y_i(0),Y_i(1), D_i(0), D_i(1) \\indep Z_i\\)"
+  },
+  {
+    "objectID": "iv/iv.html#late",
+    "href": "iv/iv.html#late",
+    "title": "Instrumental Variables Estimation",
+    "section": "LATE",
+    "text": "LATE\n\nWald estimator \\[\n\\frac{\\Er[Y_i | Z_i=1] - \\Er[Y_i|Z_i=0]}{\\Er[D_i|Z_i=1] - \\Er[D_i|Z_i=0]} =  \\frac{\\Er[Y_i(D_i(1))] - \\Er[Y_i(D_i(0))]}{\\Er[D_i(1)] - \\Er[D_i(0)]} \\text{ (exogeneity)\n\\]\n\n\\[\n= \\frac{\\Er[Y_i(D_i(1)) - Y_i(D_i(0)) | D_i(1) \\neq D_i(0)] P(D_i(1) \\neq D_i(0))} { P(D_i(1) &gt; D_i(0)) - P(D_i(1) &lt; D_i(0))}\n\\]\n\nAssume monotonicity \\(P(D_i(1)&lt;D_i(0)) = 0\\), then \\[\n\\frac{\\Er[Y_i | Z_i=1] - \\Er[Y_i|Z_i=0]}{\\Er[D_i|Z_i=1] - \\Er[D_i|Z_i=0]} = \\Er[Y_i(1) - Y_i(0) | D_i(1)=1, D_i(0) = 0 ]\n\\]\nlocal average treatment effect"
+  },
+  {
+    "objectID": "iv/iv.html#ivlate",
+    "href": "iv/iv.html#ivlate",
+    "title": "Instrumental Variables Estimation",
+    "section": "IV=LATE",
+    "text": "IV=LATE\n\nWith single binary \\(Z\\) and \\(D\\), \\[\n\\begin{align*}\n\\hat{\\beta}^{IV} & = \\frac{\\sum Y_i(Z_i - \\bar{Z})} {\\sum D_i(Z_i - \\bar{Z})} \\\\\n& \\inprob \\Er[Y_i(1) - Y_i(0) | D_i(1)=1, D_i(0) = 0 ]\n\\end{align*}\n\\]\n\n\n\n\n\nHow general is this interpretation?\n\nMulti-valued \\(D\\)?\nMulti-values or multiple \\(Z\\)?\nExogenous controls \\(X\\)?\n\nCan salvage some LATE like intrepretation with multiple treatments or instruments, but monotonocity assumption needs to be stronger\n\nMogstad and Torgovitsky (2024) for comprehensive review"
+  },
+  {
+    "objectID": "iv/iv.html#controls",
+    "href": "iv/iv.html#controls",
+    "title": "Instrumental Variables Estimation",
+    "section": "Controls",
+    "text": "Controls\n\nConditional exogeneity: \\(Y_i(0),Y_i(1), D_i(0), D_i(1) \\indep Z_i | X_i\\)\nEstimate \\[\ny_i = D_i \\beta + X_i'\\gamma + \\epsilon_i\n\\] by 2SLS\nPartial out \\(X\\) to show \\[\n\\hat{\\beta}^{IV} = \\frac{\\sum y_i \\tilde{Z}_i}{\\sum D_i \\tilde{Z}_i}\n\\] where \\(\\tilde{Z}_i = Z_i - X_i' (X'X)^{-1} X'Z\\)"
+  },
+  {
+    "objectID": "iv/iv.html#sls-with-controls",
+    "href": "iv/iv.html#sls-with-controls",
+    "title": "Instrumental Variables Estimation",
+    "section": "2SLS with Controls",
+    "text": "2SLS with Controls\n\\[\n\\begin{align*}\n\\hat{\\beta}^{IV} = & \\frac{\\sum y_i \\tilde{Z}_i}{\\sum D_i \\tilde{Z}_i} \\\\\n\\inprob & \\frac{\\Er[Y_i \\tilde{Z}_i]}{\\Er[D_i \\tilde{Z}_i]} \\\\\n= & \\frac{\\Er[\\cov(Y_i \\tilde{Z}_i|X_i)] + \\Er[\\Er[Y_i|X_i]\\Er[\\tilde{Z}_i|X_i]]}{\\Er[D_i \\tilde{Z}_i]}\n\\end{align*}\n\\] - If \\(\\Er[\\Er[Y_i|X_i]\\Er[\\tilde{Z}_i|X_i]] = 0\\), we get average of \\(X\\) specific LATEs - But unless \\(\\Er[Z_i|X_i]\\) is linear, \\(\\Er[\\Er[Y_i|X_i]\\Er[\\tilde{Z}_i|X_i]] \\neq 0\\)"
+  },
+  {
+    "objectID": "iv/iv.html#sls-with-controls-is-not-late",
+    "href": "iv/iv.html#sls-with-controls-is-not-late",
+    "title": "Instrumental Variables Estimation",
+    "section": "2SLS with Controls is not LATE",
+    "text": "2SLS with Controls is not LATE\n\nBlandhol et al. (2022) show \\[\n\\begin{align*}\n\\beta^{IV} \\inprob & \\Er\\left[\\omega(cp,X)\\Er[Y(1) - Y(0) |D(1)&gt;D(0), X] \\right] + \\\\\n&  + \\Er\\left[\\omega(at,X)\\Er[Y(1) - Y(0) |D(1)=D(0)=1, X] \\right]\n\\end{align*}\n\\] with \\[\n\\begin{align*}\n\\omega(cp,X) = & \\Er[Z|X](1 - L[Z|X])P(D(1)&gt;D(0)|X)\\Er[\\tilde{Z}D]^{-1} \\\\\n\\omega(at,X) = & \\Er[\\tilde{Z}|X] P(D(1)=D(0)=1|X)\\Er[\\tilde{Z}D]^{-1}\n\\end{align*}\n\\]\n\n\\(\\Er[\\tilde{Z}] = 0\\), so unless \\(\\Er[\\tilde{Z}|X] = 0\\), it will sometimes be negative"
+  },
+  {
+    "objectID": "iv/iv.html#simulation-low-bias",
+    "href": "iv/iv.html#simulation-low-bias",
+    "title": "Instrumental Variables Estimation",
+    "section": "Simulation: Low Bias",
+    "text": "Simulation: Low Bias\n\nusing Plots, Statistics, Distributions, Printf\n\nfunction sim(n; ezx = x-&gt;cdf(Normal(),x), Δ = x-&gt;x^2, covde=1, vare=2)\n  xd = randn(n)\n  x = randn(n) + xd\n  de = randn(n)\n  z = rand(n) .&lt; ezx.(x)\n  d = (xd + randn(n) + z + de .&gt; 0)\n  d1 = (xd + randn(n) .+ 1 + de .&gt; 0)\n  d0 = (xd + randn(n) .+ 0 + de .&gt; 0)\n  ϵ = de*covde + randn(n)*sqrt(vare-covde^2)\n  y = (Δ.(x) + de).*d + ϵ\n\n  return(y=y,x=x,z=z,d=d,Δ=(Δ.(x) + de), d0=d0, d1=d1)\nend\n\nfunction bols(y,d,x)\n  n = length(y)\n  X = hcat(ones(n), d, x)\n  return((X'*X) \\ X'*y)\nend\n\nfunction b2sls(y,d,x,z)\n  n = length(y)\n  Z = hcat(ones(n), z, x)\n  X = hcat(ones(n), d, x)\n  iZZ = inv(Z'*Z)\n  XZ = X'*Z\n  return((XZ*iZZ*XZ') \\ (XZ*iZZ*(Z'*y)))\nend\n\n\nfunction plotTE(y,d,x,z,Δ,d0,d1; ezx=x-&gt;cdf(Normal(),x))\n  te=scatter(x,Δ, group=[(t0,t1) for (t0,t1) in zip(d0,d1)], alpha=1.0, markersize=1,markerstrokewidth=0)\n  xlabel!(\"x\")\n  ylabel!(\"Treatment Effect\")\n  title!(\"Treatment Effects\")\n  xy=scatter(x,y,group=d,markersize=1,markerstrokewidth=0)\n  xlabel!(\"x\")\n  ylabel!(\"y\")\n  title!(\"Observed Data\")\n  xs = sort(x)\n  pz=plot(xs,ezx.(xs), xlabel=\"x\",ylabel=\"P(Z=1|X)\",title=\"P(Z|X)\",legend=:none)\n  n = length(z)\n  X = hcat(ones(n),x)\n  lzx = X*inv(X'*X)*X'*z\n  scatter!(x,lzx,label=\"L[Z|X]\",markersize=1,markerstrokewidth=0,alpha=0.5)\n\n  bo = bols(y,d,x)[2]\n  bi = b2sls(y,d,x,z)[2]\n  LATE = mean(Δ[d1.&gt;d0])\n  numbers=plot(xlims=(0,1),ylims=(0,1), axis=([], false))\n  annotate!([(0,0.8,(@sprintf(\"E[y1-y0|d1&gt;d0] = %.2f\",LATE),:left)),\n             (0,0.6,(@sprintf(\"βols = %.2f\",bo),:left)),\n             (0,0.4,(@sprintf(\"βiv = %.2f\",bi),:left))])\n\n\n  plot(xy,te,pz,numbers)\nend\n\ny,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x-&gt;1)\nplotTE(y,d,x,z,Δ,d0,d1)"
+  },
+  {
+    "objectID": "iv/iv.html#simulation-low-bias-output",
+    "href": "iv/iv.html#simulation-low-bias-output",
+    "title": "Instrumental Variables Estimation",
+    "section": "Simulation: Low Bias",
+    "text": "Simulation: Low Bias"
+  },
+  {
+    "objectID": "iv/iv.html#simulation-low-bias-1",
+    "href": "iv/iv.html#simulation-low-bias-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Simulation: Low Bias",
+    "text": "Simulation: Low Bias\n\nezx = x-&gt;cdf(Normal(),x/10)\ny,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x-&gt;1+x^3/10, ezx = ezx)\nplotTE(y,d,x,z,Δ,d0,d1,  ezx = ezx)"
+  },
+  {
+    "objectID": "iv/iv.html#simulation-high-bias",
+    "href": "iv/iv.html#simulation-high-bias",
+    "title": "Instrumental Variables Estimation",
+    "section": "Simulation: High Bias",
+    "text": "Simulation: High Bias\n\ny,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x-&gt;1+x^3/10)\nplotTE(y,d,x,z,Δ,d0,d1)"
+  },
+  {
+    "objectID": "iv/iv.html#observations",
+    "href": "iv/iv.html#observations",
+    "title": "Instrumental Variables Estimation",
+    "section": "Observations",
+    "text": "Observations\n\nNonlinearity in \\(\\Er[Z|X]\\) and \\(\\Er[Y|X]\\) can lead to substantial bias in 2SLS"
+  },
+  {
+    "objectID": "iv/iv.html#what-to-do",
+    "href": "iv/iv.html#what-to-do",
+    "title": "Instrumental Variables Estimation",
+    "section": "What to do?",
+    "text": "What to do?\n\nFlexibly control for \\(X\\)\nIf discrete, saturated regression\nOtherwise, double robust estimator for average conditional LATE\n\nChernozhukov et al. (2024) chapter 13, doubleml python & R package"
+  },
+  {
+    "objectID": "iv/iv.html#further-reading-1",
+    "href": "iv/iv.html#further-reading-1",
+    "title": "Instrumental Variables Estimation",
+    "section": "Further Reading",
+    "text": "Further Reading\n\nMogstad and Torgovitsky (2024)"
   },
   {
     "objectID": "probability/probability.html#reading",
@@ -2447,6 +2545,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nOct 30, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nNov 18, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nOct 30, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nNov 25, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   }
 ]

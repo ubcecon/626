@@ -493,9 +493,10 @@ function sim(n; ezx = x->cdf(Normal(),x), Δ = x->x^2, covde=1, vare=2)
   x = randn(n) + xd
   de = randn(n)
   z = rand(n) .< ezx.(x)
-  d = (xd + randn(n) + z + de .> 0)
-  d1 = (xd + randn(n) .+ 1 + de .> 0)
-  d0 = (xd + randn(n) .+ 0 + de .> 0)
+  derr = randn(n)
+  d = (xd + derr + z + de .> 0)
+  d1 = (xd + derr .+ 1 + de .> 0)
+  d0 = (xd + derr .+ 0 + de .> 0)
   ϵ = de*covde + randn(n)*sqrt(vare-covde^2)
   y = (Δ.(x) + de).*d + ϵ
 

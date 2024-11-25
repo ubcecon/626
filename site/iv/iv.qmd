@@ -32,6 +32,7 @@ $$
 \def\cov{{\mathrm{Cov}}}
 \def\var{{\mathrm{Var}}}
 \def\R{{\mathbb{R}}}
+\def\indep{{\perp\!\!\!\perp}}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
 \def\rank{{\mathrm{rank}}}
 \newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
@@ -209,7 +210,8 @@ $$
 #| echo: true
 #| code-fold: true
 
-using PlotlyLight, Distributions, LinearAlgebra
+using Distributions, LinearAlgebra
+import PlotlyLight
 function sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))
   zu = randn(n,d)
   Z = randn(n,d) + mapslices(x->x.*EZu, zu, dims=2)
@@ -237,7 +239,7 @@ j0s = [J(sim(n)...) for _ in 1:S]
 j1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]
 j2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]
 
-plt = Plot()
+plt = PlotlyLight.Plot()
 plt(x=j0s, type="histogram", name="E[Zu] = 0")
 plt(x=j1s, type="histogram", name="E[Zu] = [0,0,3]")
 fig=plt(x=j2s, type="histogram", name="E[Zu] = [1,1,1]")
@@ -267,7 +269,7 @@ function tiv(y,X,Z; b0 = ones(size(X,2)))
 end
 n = 100
 S = 10_000
-plt = Plot()
+plt = PlotlyLight.Plot()
 for g in [1, 0.2, 0.1]
   b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]
   # crop outliers so figure looks okay
@@ -315,7 +317,7 @@ where $vec(H) = \zeta_1$
 - and
 $$
 \hat{\beta}^{IV} - \beta_0 \indist
- \left((\Gamma + H)' \Er[Z_i Z_i]^{-1} H\right)^{-1} \left((\Gamma + H) \Er[Z_i Z_i']^{-1} \zeta_2\right)
+ \left((\Gamma + H)' \Er[Z_i Z_i]^{-1} (\Gamma + H)\right)^{-1} \left((\Gamma + H) \Er[Z_i Z_i']^{-1} \zeta_2\right)
 $$
 - $\Gamma$ cannot be estimated, but we can try to develop estimators and inference methods for $\beta$ that work for any $\Gamma$
 
@@ -367,7 +369,12 @@ where $\Sigma(\beta) = \frac{1}{n} \sum_{i=1}^n Z_iZ_i' (y_i - X_i'\beta)^2$
 
 - Kleibergen's LM and Moreira CLR tests address 1, see [my other notes](https://schrimpf.github.io/GMMInference.jl/identificationRobustInference/#other-identification-robust-tests) for simulations and references
 
+## Identification Robust Inference
+
 - Various approaches to 2 see @ass2019 for a review
+  - @londschien2024 seems like a promising approach, implemented in [`ivmodels`](https://github.com/mlondschien/ivmodels) python package (assumes homoscedasticity)
+  - @gkm2024 and @tuvaandorj2024 allow heteroscedasticity
+
 
 - If you want something close to the usual t-test and have 1 endogenous regression and 1 instrument, the tF test from @lee2022, or better yet, recently improved VtF test in @lee2023
 
@@ -376,5 +383,204 @@ where $\Sigma(\beta) = \frac{1}{n} \sum_{i=1}^n Z_iZ_i' (y_i - X_i'\beta)^2$
 - Recent reviews:
   - @ass2019
   - @keane2023
+
+# IV with Treatment Effect Heterogeneity
+
+## Model
+
+- $Z_i \in \{0,1\}$
+- $D_i \in \{0,1\}$
+- Potential treatments $D_i(z)$
+- Potential outcomes $Y_i(d)$
+- Exogenous instruments $Y_i(0),Y_i(1), D_i(0), D_i(1) \indep Z_i$
+
+## LATE {.smaller}
+
+- Wald estimator
+$$
+\frac{\Er[Y_i | Z_i=1] - \Er[Y_i|Z_i=0]}{\Er[D_i|Z_i=1] - \Er[D_i|Z_i=0]} =  \frac{\Er[Y_i(D_i(1))] - \Er[Y_i(D_i(0))]}{\Er[D_i(1)] - \Er[D_i(0)]} \text{ (exogeneity)
+$$
+
+$$
+= \frac{\Er[Y_i(D_i(1)) - Y_i(D_i(0)) | D_i(1) \neq D_i(0)] P(D_i(1) \neq D_i(0))} { P(D_i(1) > D_i(0)) - P(D_i(1) < D_i(0))}
+$$
+
+- Assume *monotonicity* $P(D_i(1)<D_i(0)) = 0$, then
+$$
+\frac{\Er[Y_i | Z_i=1] - \Er[Y_i|Z_i=0]}{\Er[D_i|Z_i=1] - \Er[D_i|Z_i=0]} = \Er[Y_i(1) - Y_i(0) | D_i(1)=1, D_i(0) = 0 ]
+$$
+- local average treatment effect
+
+## IV=LATE
+
+- With single binary $Z$ and $D$,
+$$
+\begin{align*}
+\hat{\beta}^{IV} & = \frac{\sum Y_i(Z_i - \bar{Z})} {\sum D_i(Z_i - \bar{Z})} \\
+& \inprob \Er[Y_i(1) - Y_i(0) | D_i(1)=1, D_i(0) = 0 ]
+\end{align*}
+$$
+
+<!-- % \frac{\cov(Y,Z)}{\cov(D,Z)} = \frac{\Er[Y_i | Z_i=1] - \Er[Y_i|Z_i=0]}{\Er[D_i|Z_i=1] - \Er[D_i|Z_i=0]} -->
+<!-- % = \frac{\Er[Y|Z=1]P(Z=1) - (\Er[Y|Z=1]P(Z=1) + \Er[Y|Z=0]P(Z=0))P(Z=1)}{} -->
+<!-- % = \frac{\Er[Y|Z=1]P(Z=1)P(Z=0) - Er[Y|Z=0]P(Z=0))P(Z=1)}{} -->
+
+
+- How general is this interpretation?
+  - Multi-valued $D$?
+  - Multi-values or multiple $Z$?
+  - Exogenous controls $X$?
+
+- Can salvage some LATE like intrepretation with multiple treatments or instruments, but monotonocity assumption needs to be stronger
+  - @mogstad2024 for comprehensive review
+
+## Controls
+
+- Conditional exogeneity: $Y_i(0),Y_i(1), D_i(0), D_i(1) \indep Z_i | X_i$
+
+- Estimate
+$$
+y_i = D_i \beta + X_i'\gamma + \epsilon_i
+$$
+by 2SLS
+
+- Partial out $X$ to show
+$$
+\hat{\beta}^{IV} = \frac{\sum y_i \tilde{Z}_i}{\sum D_i \tilde{Z}_i}
+$$
+where $\tilde{Z}_i = Z_i - X_i' (X'X)^{-1} X'Z$
+
+## 2SLS with Controls
+
+$$
+\begin{align*}
+\hat{\beta}^{IV} = & \frac{\sum y_i \tilde{Z}_i}{\sum D_i \tilde{Z}_i} \\
+\inprob & \frac{\Er[Y_i \tilde{Z}_i]}{\Er[D_i \tilde{Z}_i]} \\
+= & \frac{\Er[\cov(Y_i \tilde{Z}_i|X_i)] + \Er[\Er[Y_i|X_i]\Er[\tilde{Z}_i|X_i]]}{\Er[D_i \tilde{Z}_i]}
+\end{align*}
+$$
+- If $\Er[\Er[Y_i|X_i]\Er[\tilde{Z}_i|X_i]] = 0$, we get average of $X$ specific LATEs
+- But unless $\Er[Z_i|X_i]$ is linear, $\Er[\Er[Y_i|X_i]\Er[\tilde{Z}_i|X_i]] \neq 0$
+
+## 2SLS with Controls is not LATE
+
+- @blandhol2022 show
+$$
+\begin{align*}
+\beta^{IV} \inprob & \Er\left[\omega(cp,X)\Er[Y(1) - Y(0) |D(1)>D(0), X] \right] + \\
+&  + \Er\left[\omega(at,X)\Er[Y(1) - Y(0) |D(1)=D(0)=1, X] \right]
+\end{align*}
+$$
+with
+$$
+\begin{align*}
+\omega(cp,X) = & \Er[Z|X](1 - L[Z|X])P(D(1)>D(0)|X)\Er[\tilde{Z}D]^{-1} \\
+\omega(at,X) = & \Er[\tilde{Z}|X] P(D(1)=D(0)=1|X)\Er[\tilde{Z}D]^{-1}
+\end{align*}
+$$
+  - $\Er[\tilde{Z}] = 0$, so unless $\Er[\tilde{Z}|X] = 0$, it will sometimes be negative
+
+## Simulation: Low Bias
+
+
+```{julia}
+#| echo: true
+#| output-location: slide
+using Plots, Statistics, Distributions, Printf
+
+function sim(n; ezx = x->cdf(Normal(),x), Δ = x->x^2, covde=1, vare=2)
+  xd = randn(n)
+  x = randn(n) + xd
+  de = randn(n)
+  z = rand(n) .< ezx.(x)
+  d = (xd + randn(n) + z + de .> 0)
+  d1 = (xd + randn(n) .+ 1 + de .> 0)
+  d0 = (xd + randn(n) .+ 0 + de .> 0)
+  ϵ = de*covde + randn(n)*sqrt(vare-covde^2)
+  y = (Δ.(x) + de).*d + ϵ
+
+  return(y=y,x=x,z=z,d=d,Δ=(Δ.(x) + de), d0=d0, d1=d1)
+end
+
+function bols(y,d,x)
+  n = length(y)
+  X = hcat(ones(n), d, x)
+  return((X'*X) \ X'*y)
+end
+
+function b2sls(y,d,x,z)
+  n = length(y)
+  Z = hcat(ones(n), z, x)
+  X = hcat(ones(n), d, x)
+  iZZ = inv(Z'*Z)
+  XZ = X'*Z
+  return((XZ*iZZ*XZ') \ (XZ*iZZ*(Z'*y)))
+end
+
+
+function plotTE(y,d,x,z,Δ,d0,d1; ezx=x->cdf(Normal(),x))
+  te=scatter(x,Δ, group=[(t0,t1) for (t0,t1) in zip(d0,d1)], alpha=1.0, markersize=1,markerstrokewidth=0)
+  xlabel!("x")
+  ylabel!("Treatment Effect")
+  title!("Treatment Effects")
+  xy=scatter(x,y,group=d,markersize=1,markerstrokewidth=0)
+  xlabel!("x")
+  ylabel!("y")
+  title!("Observed Data")
+  xs = sort(x)
+  pz=plot(xs,ezx.(xs), xlabel="x",ylabel="P(Z=1|X)",title="P(Z|X)",legend=:none)
+  n = length(z)
+  X = hcat(ones(n),x)
+  lzx = X*inv(X'*X)*X'*z
+  scatter!(x,lzx,label="L[Z|X]",markersize=1,markerstrokewidth=0,alpha=0.5)
+
+  bo = bols(y,d,x)[2]
+  bi = b2sls(y,d,x,z)[2]
+  LATE = mean(Δ[d1.>d0])
+  numbers=plot(xlims=(0,1),ylims=(0,1), axis=([], false))
+  annotate!([(0,0.8,(@sprintf("E[y1-y0|d1>d0] = %.2f",LATE),:left)),
+             (0,0.6,(@sprintf("βols = %.2f",bo),:left)),
+             (0,0.4,(@sprintf("βiv = %.2f",bi),:left))])
+
+
+  plot(xy,te,pz,numbers)
+end
+
+y,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x->1)
+plotTE(y,d,x,z,Δ,d0,d1)
+```
+
+## Simulation: Low Bias
+
+```{julia}
+#| echo: true
+ezx = x->cdf(Normal(),x/10)
+y,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x->1+x^3/10, ezx = ezx)
+plotTE(y,d,x,z,Δ,d0,d1,  ezx = ezx)
+```
+
+## Simulation: High Bias
+
+```{julia}
+#| echo: true
+y,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x->1+x^3/10)
+plotTE(y,d,x,z,Δ,d0,d1)
+```
+
+## Observations
+
+- Nonlinearity in $\Er[Z|X]$ and $\Er[Y|X]$ can lead to substantial bias in 2SLS
+
+## What to do?
+
+- Flexibly control for $X$
+- If discrete, saturated regression
+- Otherwise, double robust estimator for average conditional LATE
+  - @causalml2024 chapter 13, `doubleml` python & R package
+
+
+## Further Reading
+
+- @mogstad2024
 
 # References

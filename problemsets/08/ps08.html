@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-12-06">
+<meta name="dcterms.date" content="2024-12-04">
 
 <title>ECON 626: Problem Set 8 – ECON 626</title>
 <style>
@@ -150,12 +150,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
+  <ul class="collapse">
+  <li><a href="#ols-is-inconsistent" id="toc-ols-is-inconsistent" class="nav-link" data-scroll-target="#ols-is-inconsistent">OLS is Inconsistent</a></li>
+  <li><a href="#instrument" id="toc-instrument" class="nav-link" data-scroll-target="#instrument">Instrument?</a></li>
+  <li><a href="#or-something-else" id="toc-or-something-else" class="nav-link" data-scroll-target="#or-something-else">Or Something Else?</a></li>
+  </ul></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a>
   <ul class="collapse">
-  <li><a href="#asymptotic-distribution" id="toc-asymptotic-distribution" class="nav-link" data-scroll-target="#asymptotic-distribution">Asymptotic Distribution</a></li>
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
-  <li><a href="#testing-linearity" id="toc-testing-linearity" class="nav-link" data-scroll-target="#testing-linearity">Testing Linearity</a></li>
+  <li><a href="#first-differences" id="toc-first-differences" class="nav-link" data-scroll-target="#first-differences">First Differences</a></li>
+  <li><a href="#fixed-effects-inconsistent" id="toc-fixed-effects-inconsistent" class="nav-link" data-scroll-target="#fixed-effects-inconsistent">Fixed Effects Inconsistent</a></li>
+  <li><a href="#gmm" id="toc-gmm" class="nav-link" data-scroll-target="#gmm">GMM</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -176,7 +181,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 6, 2023</p>
+      <p class="date">December 4, 2024</p>
     </div>
   </div>
   
@@ -203,63 +208,51 @@ window.Quarto = {
 \]</span></p>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p>In the linear model, <span class="math display">\[
-Y_i = \beta_0 + X_i \beta_1 + u_i
-\]</span> assume that <span class="math inline">\(\Er[u_i] = 0\)</span> and <span class="math inline">\(X_i \in \R^1\)</span>. Suppose that <span class="math inline">\(\Er[X_i u_i] \neq 0\)</span>, but, somewhat strangely, you assume <span class="math inline">\(\Er[u_i^2|X_i] = \sigma^2\)</span>.</p>
-<ol type="1">
-<li><p>Show that a set of two elements that contains <span class="math inline">\(\beta_1\)</span> is identified. Denote this set by <span class="math inline">\(B_1\)</span>. <strong>Hint: use the moment condition <span class="math inline">\(\Er[u_i^2 (X_i-\Er[X_i])]\)</span>.</strong></p></li>
-<li><p>Describe an estimator for <span class="math inline">\(B_1\)</span> and show that it is consistent. State any additional assumptions needed.</p></li>
-<li><p>Find the asymptotic distribution of your estimator for <span class="math inline">\(B_1\)</span>. State any additional assumptions needed.</p></li>
-</ol>
+<p>Consider the linear model <span class="math display">\[
+Y_i = \beta X_i^* + \epsilon_i
+\]</span> with <span class="math inline">\(\var(X_i^*)&gt;0\)</span>, <span class="math inline">\(\Er[\epsilon_i X_i^*] = 0\)</span>, and <span class="math inline">\(\Er[\epsilon_i]=0\)</span>. Furthermore suppose <span class="math inline">\(X_i^* \in \{0,1\}\)</span>, but <span class="math inline">\(X_i^*\)</span> is unobserved. Instead, you observe <span class="math inline">\(X_i \in \{0,1\}\)</span> and know that <span class="math display">\[
+P(X_i = 1 | X_i^* = 1) = P(X_i=0 | X_i^*=0) = p
+\]</span> where <span class="math inline">\(p &gt; 1/2\)</span> is unknown.</p>
+<section id="ols-is-inconsistent" class="level2">
+<h2 class="anchored" data-anchor-id="ols-is-inconsistent">OLS is Inconsistent</h2>
+<p>Let <span class="math inline">\(\hat{\beta}^{OLS} = \frac{\sum X_i Y_i}{\sum X_i^2}\)</span> be the least squares estimator. Let <span class="math inline">\(\pi = P(X_i^*=1)\)</span>. Compute <span class="math inline">\(\plim \hat{\beta}^{OLS}\)</span> in terms of <span class="math inline">\(p\)</span>, <span class="math inline">\(\pi\)</span>, and <span class="math inline">\(\beta\)</span>.</p>
+</section>
+<section id="instrument" class="level2">
+<h2 class="anchored" data-anchor-id="instrument">Instrument?</h2>
+<p>Suppose you also observe <span class="math inline">\(Z_i \in \{0,1\}\)</span> with <span class="math display">\[
+P(Z_i = 1 | X_i^* = 1) = P(Z_i=0 | X_i^*=0) = q
+\]</span> where <span class="math inline">\(q&gt;1/2\)</span>, and <span class="math inline">\(Z_i\)</span> and <span class="math inline">\(X_i\)</span> are independent conditional on <span class="math inline">\(X_i^*\)</span>. Let <span class="math inline">\(\hat{\beta}^{IV} = \frac{\sum Z_i Y_i}{\sum Z_i X_i}\)</span> be the instrumental variable estimator. Compute <span class="math inline">\(\plim \hat{\beta}^{IV}\)</span></p>
+</section>
+<section id="or-something-else" class="level2">
+<h2 class="anchored" data-anchor-id="or-something-else">Or Something Else?</h2>
+<p>Describe how <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, and <span class="math inline">\(Z\)</span> could be used to estimate <span class="math inline">\(\beta\)</span>.</p>
+<p><em>Hint: think of <span class="math inline">\(\beta\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>, and <span class="math inline">\(\pi = P(X^*_i = 1)\)</span> as four parameters to estimate, and come up with four moment conditions that involve these parameters.</em></p>
+</section>
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>Suppose that we observe <span class="math inline">\(Y_1,...,Y_n\)</span> and <span class="math inline">\(X_1,...,X_n\)</span> such that <span class="math display">\[
-\begin{eqnarray*}
-    Y_i = f(X_i;\beta) + u_i,
-\end{eqnarray*}
-\]</span> where, <span class="math inline">\(\beta = (\beta_0,...,\beta_{k-1})' \in \mathbf{R}^k\)</span>, <span class="math display">\[
-\begin{eqnarray*}
-    f(x;b) = b_0 + b_1 x + b_2 x^2+....+ b_{k-1}x^{k-1}, \quad b = (b_0,b_1,...,b_{k-1})',
-\end{eqnarray*}
-\]</span> and <span class="math inline">\(X_i, u_i\)</span> are i.i.d. with <span class="math inline">\(\Er[|X_i|^{2(k-1)}]&lt;\infty\)</span> and <span class="math inline">\(\Er[|X_i^{k-1} u_i|^2] &lt; \infty\)</span>. Assume that $is nonsingular, where <span class="math inline">\(\tilde X_i = [1,X_i,X_i^2,...,X_i^{k-1}]'\)</span>. Our focus on the predicted value of <span class="math display">\[
-\begin{eqnarray*}
-    \theta_0 = f(2.5;\beta).
-\end{eqnarray*}\medskip
-\]</span></p>
-<section id="asymptotic-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="asymptotic-distribution">Asymptotic Distribution</h2>
-<p>Let <span class="math inline">\(\hat \beta\)</span> be the least squares estimator of <span class="math inline">\(\beta\)</span>. Find out the asymptotic distribution of <span class="math inline">\(\hat \theta = f(2.5;\hat \beta)\)</span>.</p>
+<p>Consider the model: <span class="math display">\[
+y_{it} = \rho y_{it-1} + x_{it}'\beta + \alpha_i + u_{it}
+\]</span> for <span class="math inline">\(i=1,.., N\)</span> and <span class="math inline">\(t=1,...,T\)</span>. Assume observations are independent accross <span class="math inline">\(i\)</span>, <span class="math inline">\(x\)</span> is strictly exogenous, <span class="math inline">\(\Er[x_{it} u_{is}] = 0 \forall s,t\)</span>, and <span class="math inline">\(y_{it-1}\)</span> is weakly exogenous, <span class="math inline">\(\Er[y_{it-1} u_{it+s}] = 0\)</span> for <span class="math inline">\(s \geq 0\)</span>.</p>
+<section id="first-differences" class="level2">
+<h2 class="anchored" data-anchor-id="first-differences">First Differences</h2>
+<p>Let <span class="math inline">\(\Delta y_{it} = y_{it} - y_{it-1}\)</span>. Take differences of the model to eliminate <span class="math inline">\(\alpha_i\)</span>, leaving <span class="math display">\[
+\Delta y_{it} = \rho \Delta y_{it-1} + \Delta x_{it}'\beta + \Delta u_{it}.
+\]</span> Will OLS on this equation be consistent?</p>
 </section>
-<section id="confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>Construct a confidence interval <span class="math inline">\(C\)</span> for the predicted value <span class="math inline">\(\theta_0\)</span> using <span class="math inline">\(\hat \theta\)</span> such that <span class="math display">\[
-\begin{eqnarray*}
-    P\{\theta_0 \in C\} = 0.95.
-\end{eqnarray*}
-\]</span></p>
+<section id="fixed-effects-inconsistent" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-effects-inconsistent">Fixed Effects Inconsistent</h2>
+<p>Show that for <span class="math inline">\(T\)</span> fixed and <span class="math inline">\(N \to \infty\)</span>, the fixed effects estimator, i.e.&nbsp;regressing <span class="math inline">\(y_{it}\)</span> on <span class="math inline">\(y_{it-1} - \bar{y}_i\)</span> and <span class="math inline">\(x_{it} - \bar{x}_i\)</span>, is not consistent. <em>Hint: what is <span class="math inline">\(\Er[\bar{y}_i u_{it}]\)</span>?</em></p>
 </section>
-<section id="testing-linearity" class="level2">
-<h2 class="anchored" data-anchor-id="testing-linearity">Testing Linearity</h2>
-<p>We would like to test whether <span class="math inline">\(f(x;b)\)</span> is linear in <span class="math inline">\(x\)</span> or not. Let <span class="math inline">\(\gamma = (\beta_2,\beta_3,...,\beta_{k-1})'\)</span>, and consider the following hypothesis: <span class="math display">\[
-\begin{eqnarray*}
-    H_0&amp;:&amp; \gamma = 0, \text{ against}\\
-    H_1&amp;:&amp; \gamma \ne 0.
-\end{eqnarray*}
-\]</span> Provide a test with size 5%. Give a brief explanation of why the test works (i.e., why it has size 5% and has nontrivial power under the alternative hypothesis).</p>
+<section id="gmm" class="level2">
+<h2 class="anchored" data-anchor-id="gmm">GMM</h2>
+<p>Assume <span class="math inline">\(T \geq 3\)</span>. Argue that <span class="math inline">\(\Er[\Delta u_{it} y_{it-\ell}]=0\)</span> for <span class="math inline">\(\ell \geq 2\)</span>, and that <span class="math inline">\(\Er[\Delta y_{it-1} y_{it-\ell}] \neq 0\)</span>. Use this fact, along with the assumptions above to derive a GMM estimator for <span class="math inline">\(\rho\)</span> and <span class="math inline">\(\beta\)</span>.</p>
 
 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Adapted from the final for this course in 2019.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

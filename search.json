@@ -284,7 +284,7 @@
     "href": "problemsets/final2023/final2023_solutions.html#estimator-7-points",
     "title": "ECON 626: Final - Solutions",
     "section": "Estimator (7 points)",
-    "text": "Estimator (7 points)\nSuppose you observe \\(\\{y_i,d_i,x_i\\}_{i=1}^n\\), and want to estimate the model \\[\ny_i = \\theta d_i + x_i'\\beta + \\epsilon_i.\n\\] Assume \\(\\Er[d \\epsilon] = 0\\), but it might be that \\(\\Er[x \\epsilon]\n\\neq 0\\). Fortunately have an estimate of \\(\\beta\\), \\(\\hat{\\beta}\\) (say from some other dataset), that is consistent and asymptotically normal, \\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\).\nUse \\(\\hat{\\beta}\\) and the assumption that \\(\\Er[d \\epsilon]=0\\) to find an estimator for \\(\\theta\\).\n\nSolution. We can put the model into the moment condition and derive a plug-in estimator. \\[\n\\begin{align*}\n0 = & \\Er[d (y - \\theta d - x'\\beta)] \\\\\n\\theta  = & \\frac{\\Er[d(y-x'\\beta)}{\\Er[d^2]}\n\\end{align*}\n\\] so assuming \\(\\Er[d^2] \\neq 0\\), we can use the estimator \\[\n\\hat{\\theta} = \\frac{\\sum_i d_i (y_i -\nx_i'\\hat{\\beta})}{\\sum_i d_i^2}\n\\]"
+    "text": "Estimator (7 points)\nSuppose you observe \\(\\{y_i,d_i,x_i\\}_{i=1}^n\\), and want to estimate the model \\[\ny_i = \\theta d_i + x_i'\\beta + \\epsilon_i.\n\\] Assume \\(\\Er[d \\epsilon] = 0\\), but it might be that \\(\\Er[x \\epsilon]\n\\neq 0\\). Fortunately you have an estimate of \\(\\beta\\), \\(\\hat{\\beta}\\) (say from some other dataset), that is consistent and asymptotically normal, \\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\).\nUse \\(\\hat{\\beta}\\) and the assumption that \\(\\Er[d \\epsilon]=0\\) to find an estimator for \\(\\theta\\).\n\nSolution. We can put the model into the moment condition and derive a plug-in estimator. \\[\n\\begin{align*}\n0 = & \\Er[d (y - \\theta d - x'\\beta)] \\\\\n\\theta  = & \\frac{\\Er[d(y-x'\\beta)}{\\Er[d^2]}\n\\end{align*}\n\\] so assuming \\(\\Er[d^2] \\neq 0\\), we can use the estimator \\[\n\\hat{\\theta} = \\frac{\\sum_i d_i (y_i -\nx_i'\\hat{\\beta})}{\\sum_i d_i^2}\n\\]"
   },
   {
     "objectID": "problemsets/final2023/final2023_solutions.html#consistency-7-points",
@@ -350,32 +350,46 @@
     "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
   },
   {
-    "objectID": "problemsets/08/ps08.html#asymptotic-distribution",
-    "href": "problemsets/08/ps08.html#asymptotic-distribution",
+    "objectID": "problemsets/08/ps08.html#ols-is-inconsistent",
+    "href": "problemsets/08/ps08.html#ols-is-inconsistent",
     "title": "ECON 626: Problem Set 8",
-    "section": "Asymptotic Distribution",
-    "text": "Asymptotic Distribution\nLet \\(\\hat \\beta\\) be the least squares estimator of \\(\\beta\\). Find out the asymptotic distribution of \\(\\hat \\theta = f(2.5;\\hat \\beta)\\)."
+    "section": "OLS is Inconsistent",
+    "text": "OLS is Inconsistent\nLet \\(\\hat{\\beta}^{OLS} = \\frac{\\sum X_i Y_i}{\\sum X_i^2}\\) be the least squares estimator. Let \\(\\pi = P(X_i^*=1)\\). Compute \\(\\plim \\hat{\\beta}^{OLS}\\) in terms of \\(p\\), \\(\\pi\\), and \\(\\beta\\)."
   },
   {
-    "objectID": "problemsets/08/ps08.html#confidence-interval",
-    "href": "problemsets/08/ps08.html#confidence-interval",
+    "objectID": "problemsets/08/ps08.html#instrument",
+    "href": "problemsets/08/ps08.html#instrument",
     "title": "ECON 626: Problem Set 8",
-    "section": "Confidence Interval",
-    "text": "Confidence Interval\nConstruct a confidence interval \\(C\\) for the predicted value \\(\\theta_0\\) using \\(\\hat \\theta\\) such that \\[\n\\begin{eqnarray*}\n    P\\{\\theta_0 \\in C\\} = 0.95.\n\\end{eqnarray*}\n\\]"
+    "section": "Instrument?",
+    "text": "Instrument?\nSuppose you also observe \\(Z_i \\in \\{0,1\\}\\) with \\[\nP(Z_i = 1 | X_i^* = 1) = P(Z_i=0 | X_i^*=0) = q\n\\] where \\(q&gt;1/2\\), and \\(Z_i\\) and \\(X_i\\) are independent conditional on \\(X_i^*\\). Let \\(\\hat{\\beta}^{IV} = \\frac{\\sum Z_i Y_i}{\\sum Z_i X_i}\\) be the instrumental variable estimator. Compute \\(\\plim \\hat{\\beta}^{IV}\\)"
   },
   {
-    "objectID": "problemsets/08/ps08.html#testing-linearity",
-    "href": "problemsets/08/ps08.html#testing-linearity",
+    "objectID": "problemsets/08/ps08.html#or-something-else",
+    "href": "problemsets/08/ps08.html#or-something-else",
     "title": "ECON 626: Problem Set 8",
-    "section": "Testing Linearity",
-    "text": "Testing Linearity\nWe would like to test whether \\(f(x;b)\\) is linear in \\(x\\) or not. Let \\(\\gamma = (\\beta_2,\\beta_3,...,\\beta_{k-1})'\\), and consider the following hypothesis: \\[\n\\begin{eqnarray*}\n    H_0&:& \\gamma = 0, \\text{ against}\\\\\n    H_1&:& \\gamma \\ne 0.\n\\end{eqnarray*}\n\\] Provide a test with size 5%. Give a brief explanation of why the test works (i.e., why it has size 5% and has nontrivial power under the alternative hypothesis)."
+    "section": "Or Something Else?",
+    "text": "Or Something Else?\nDescribe how \\(X\\), \\(Y\\), and \\(Z\\) could be used to estimate \\(\\beta\\).\nHint: think of \\(\\beta\\), \\(p\\), \\(q\\), and \\(\\pi = P(X^*_i = 1)\\) as four parameters to estimate, and come up with four moment conditions that involve these parameters."
   },
   {
-    "objectID": "problemsets/08/ps08.html#footnotes",
-    "href": "problemsets/08/ps08.html#footnotes",
+    "objectID": "problemsets/08/ps08.html#first-differences",
+    "href": "problemsets/08/ps08.html#first-differences",
     "title": "ECON 626: Problem Set 8",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nAdapted from the final for this course in 2019.↩︎"
+    "section": "First Differences",
+    "text": "First Differences\nLet \\(\\Delta y_{it} = y_{it} - y_{it-1}\\). Take differences of the model to eliminate \\(\\alpha_i\\), leaving \\[\n\\Delta y_{it} = \\rho \\Delta y_{it-1} + \\Delta x_{it}'\\beta + \\Delta u_{it}.\n\\] Will OLS on this equation be consistent?"
+  },
+  {
+    "objectID": "problemsets/08/ps08.html#fixed-effects-inconsistent",
+    "href": "problemsets/08/ps08.html#fixed-effects-inconsistent",
+    "title": "ECON 626: Problem Set 8",
+    "section": "Fixed Effects Inconsistent",
+    "text": "Fixed Effects Inconsistent\nShow that for \\(T\\) fixed and \\(N \\to \\infty\\), the fixed effects estimator, i.e. regressing \\(y_{it}\\) on \\(y_{it-1} - \\bar{y}_i\\) and \\(x_{it} - \\bar{x}_i\\), is not consistent. Hint: what is \\(\\Er[\\bar{y}_i u_{it}]\\)?"
+  },
+  {
+    "objectID": "problemsets/08/ps08.html#gmm",
+    "href": "problemsets/08/ps08.html#gmm",
+    "title": "ECON 626: Problem Set 8",
+    "section": "GMM",
+    "text": "GMM\nAssume \\(T \\geq 3\\). Argue that \\(\\Er[\\Delta u_{it} y_{it-\\ell}]=0\\) for \\(\\ell \\geq 2\\), and that \\(\\Er[\\Delta y_{it-1} y_{it-\\ell}] \\neq 0\\). Use this fact, along with the assumptions above to derive a GMM estimator for \\(\\rho\\) and \\(\\beta\\)."
   },
   {
     "objectID": "problemsets/07/ps07.html",
@@ -739,7 +753,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5306651767454199\n -0.13968690251779875\n -0.3575684047753106"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5390047792750503\n -0.15040551509742583\n -0.3414822998216634"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-3",
@@ -2545,6 +2559,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nOct 30, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nNov 25, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nOct 30, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nNov 25, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
   }
 ]

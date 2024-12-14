@@ -16,6 +16,7 @@ format:
     mermaid:
       theme: dark
       format: svg
+engine: julia
 bibliography: ../626.bib
 ---
 

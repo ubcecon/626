@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 8"
 #author: "Paul Schrimpf"
-date: 2023-12-06 (not graded)
+date: 2024-12-04
 bibliography: ../../626.bib
 ---
 
@@ -21,65 +21,67 @@ $$
 
 # Problem 1
 
-In the linear model,
+Consider the linear model
 $$
-Y_i = \beta_0 + X_i \beta_1 + u_i
+Y_i = \beta X_i^* + \epsilon_i
 $$
-assume that $\Er[u_i] = 0$ and $X_i \in \R^1$. Suppose that $\Er[X_i u_i] \neq 0$, but,
-somewhat strangely, you assume $\Er[u_i^2|X_i] = \sigma^2$.
+with $\var(X_i^*)>0$, $\Er[\epsilon_i X_i^*] = 0$, and $\Er[\epsilon_i]=0$. Furthermore
+suppose $X_i^* \in \{0,1\}$, but $X_i^*$ is unobserved. Instead, you
+observe $X_i \in \{0,1\}$ and know that
+$$
+P(X_i = 1 | X_i^* = 1) = P(X_i=0 | X_i^*=0) = p
+$$
+where $p > 1/2$ is unknown.
 
-1. Show that a set of two elements that contains $\beta_1$ is identified. Denote this set by $B_1$.
-**Hint: use the moment condition $\Er[u_i^2 (X_i-\Er[X_i])]$.**
 
-2. Describe an estimator for $B_1$ and show that it is consistent. State any additional assumptions needed.
+## OLS is Inconsistent
 
-3. Find the asymptotic distribution of your estimator for $B_1$. State any additional assumptions needed.
+Let $\hat{\beta}^{OLS} = \frac{\sum X_i Y_i}{\sum X_i^2}$ be the least
+squares estimator. Let $\pi = P(X_i^*=1)$. Compute $\plim \hat{\beta}^{OLS}$ in terms of $p$, $\pi$, and $\beta$.
+
+## Instrument?
+
+Suppose you also observe $Z_i \in \{0,1\}$ with
+$$
+P(Z_i = 1 | X_i^* = 1) = P(Z_i=0 | X_i^*=0) = q
+$$
+where $q>1/2$, and $Z_i$ and $X_i$ are independent conditional on $X_i^*$.
+Let $\hat{\beta}^{IV} = \frac{\sum Z_i Y_i}{\sum Z_i X_i}$
+be the instrumental variable estimator. Compute $\plim \hat{\beta}^{IV}$
+
+## Or Something Else?
+
+Describe how $X$, $Y$, and $Z$ could be used to estimate $\beta$.
+
+*Hint: think of $\beta$, $p$, $q$, and $\pi = P(X^*_i = 1)$ as four parameters to estimate, and come up with four moment conditions that involve these parameters.*
 
 # Problem 2
 
-^[Adapted from the final for this course in 2019.]
+Consider the model:
+$$
+y_{it} = \rho y_{it-1} + x_{it}'\beta + \alpha_i + u_{it}
+$$
+for $i=1,.., N$ and $t=1,...,T$. Assume observations are independent accross $i$, $x$ is strictly
+exogenous, $\Er[x_{it} u_{is}] = 0 \forall s,t$, and $y_{it-1}$ is
+weakly exogenous, $\Er[y_{it-1} u_{it+s}] = 0$ for $s \geq 0$.
 
-Suppose that we observe $Y_1,...,Y_n$ and $X_1,...,X_n$ such that
-$$
-\begin{eqnarray*}
-	Y_i = f(X_i;\beta) + u_i,
-\end{eqnarray*}
-$$
-where, $\beta = (\beta_0,...,\beta_{k-1})' \in \mathbf{R}^k$,
-$$
-\begin{eqnarray*}
-	f(x;b) = b_0 + b_1 x + b_2 x^2+....+ b_{k-1}x^{k-1}, \quad b = (b_0,b_1,...,b_{k-1})',
-\end{eqnarray*}
-$$
-and $X_i, u_i$ are i.i.d. with $\Er[|X_i|^{2(k-1)}]<\infty$ and
-$\Er[|X_i^{k-1} u_i|^2] < \infty$. Assume that $\Er[\tilde{X}_i
-\tilde{X}_i'] is nonsingular, where $\tilde X_i = [1,X_i,X_i^2,...,X_i^{k-1}]'$.
-Our focus on the predicted value of
-$$
-\begin{eqnarray*}
-	\theta_0 = f(2.5;\beta).
-\end{eqnarray*}\medskip
-$$
+## First Differences
 
-## Asymptotic Distribution
-
-Let $\hat \beta$ be the least squares estimator of $\beta$. Find out the asymptotic distribution of $\hat \theta = f(2.5;\hat \beta)$.
-
-## Confidence Interval
-Construct a confidence interval $C$ for the predicted value $\theta_0$ using $\hat \theta$ such that
+Let $\Delta y_{it} = y_{it} - y_{it-1}$. Take differences of the model to eliminate $\alpha_i$, leaving
 $$
-\begin{eqnarray*}
-	P\{\theta_0 \in C\} = 0.95.
-\end{eqnarray*}
+\Delta y_{it} = \rho \Delta y_{it-1} + \Delta x_{it}'\beta + \Delta u_{it}.
 $$
+Will OLS on this equation be consistent?
 
-## Testing Linearity
 
-We would like to test whether $f(x;b)$ is linear in $x$ or not. Let $\gamma = (\beta_2,\beta_3,...,\beta_{k-1})'$, and consider the following hypothesis:
-$$
-\begin{eqnarray*}
-	H_0&:& \gamma = 0, \text{ against}\\
-	H_1&:& \gamma \ne 0.
-\end{eqnarray*}
-$$
-Provide a test with size 5\%. Give a brief explanation of why the test works (i.e., why it has size 5\% and has nontrivial power under the alternative hypothesis).
+## Fixed Effects Inconsistent
+
+Show that for $T$ fixed and $N \to \infty$, the fixed effects
+estimator, i.e. regressing $y_{it}$ on $y_{it-1} - \bar{y}_i$ and
+$x_{it} - \bar{x}_i$, is not consistent. *Hint: what is $\Er[\bar{y}_i u_{it}]$?*
+
+## GMM
+
+Assume $T \geq 3$. Argue that $\Er[\Delta u_{it} y_{it-\ell}]=0$ for
+$\ell \geq 2$, and that $\Er[\Delta y_{it-1} y_{it-\ell}] \neq 0$. Use this fact, along
+with the assumptions above to derive a GMM estimator for $\rho$ and $\beta$.

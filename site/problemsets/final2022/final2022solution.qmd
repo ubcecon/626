@@ -33,7 +33,7 @@ the others.
 
 # Air Pollution and Mortality
 
-In "As the Wind Blows: The Effects of Long-Term Exposure to Air Pollution on Mortality", @anderson2019 estimates the effect of air pollution on mortality and other health outcomes. Anderso uses data on census-block mortality, location, and highway locations to estimate
+In "As the Wind Blows: The Effects of Long-Term Exposure to Air Pollution on Mortality", @anderson2019 estimates the effect of air pollution on mortality and other health outcomes. Anderson uses data on census-block mortality, location, and highway locations to estimate
 
 $$
 y_i = \beta w_i + x_i \delta + \epsilon_i

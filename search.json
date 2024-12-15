@@ -739,7 +739,7 @@
     "href": "iv/iv.html#over-identifying-test",
     "title": "Instrumental Variables Estimation",
     "section": "Over-identifying Test",
-    "text": "Over-identifying Test\n\nOnly has power when instruments have different covariances with \\(u\\)\n\n\n\nCode\nusing Distributions, LinearAlgebra\nimport PlotlyLight\nfunction sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))\n  zu = randn(n,d)\n  Z = randn(n,d) + mapslices(x-&gt;x.*EZu, zu, dims=2)\n  xu = randn(n)\n  X = Z*gamma + xu*Exu\n  u = vec(sum(zu,dims=2) + xu + randn(n))\n  y = X*beta + u\n  return(y,X,Z)\nend\n\nbiv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \\ (X'*Z*inv(Z'*Z)*Z'*y)\n\nfunction J(y,X,Z)\n  n = length(y)\n  bhat = biv(y,X,Z)\n  uhat = y - X*bhat\n  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))\n  Zu = Z'*uhat/n\n  J = n*Zu'*C*Zu\nend\n\nS = 1_000\nn = 100\nj0s = [J(sim(n)...) for _ in 1:S]\nj1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]\nj2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]\n\nplt = PlotlyLight.Plot()\nplt(x=j0s, type=\"histogram\", name=\"E[Zu] = 0\")\nplt(x=j1s, type=\"histogram\", name=\"E[Zu] = [0,0,3]\")\nfig=plt(x=j2s, type=\"histogram\", name=\"E[Zu] = [1,1,1]\")\n\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at iv.qmd:248\n└ @ Core ~/626/site/iv/iv.qmd:248"
+    "text": "Over-identifying Test\n\nOnly has power when instruments have different covariances with \\(u\\)\n\n\n\nCode\nusing Distributions, LinearAlgebra\nimport PlotlyLight\nfunction sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))\n  zu = randn(n,d)\n  Z = randn(n,d) + mapslices(x-&gt;x.*EZu, zu, dims=2)\n  xu = randn(n)\n  X = Z*gamma + xu*Exu\n  u = vec(sum(zu,dims=2) + xu + randn(n))\n  y = X*beta + u\n  return(y,X,Z)\nend\n\nbiv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \\ (X'*Z*inv(Z'*Z)*Z'*y)\n\nfunction J(y,X,Z)\n  n = length(y)\n  bhat = biv(y,X,Z)\n  uhat = y - X*bhat\n  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))\n  Zu = Z'*uhat/n\n  J = n*Zu'*C*Zu\nend\n\nS = 1_000\nn = 100\nj0s = [J(sim(n)...) for _ in 1:S]\nj1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]\nj2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]\n\nplt = PlotlyLight.Plot()\nplt(x=j0s, type=\"histogram\", name=\"E[Zu] = 0\")\nplt(x=j1s, type=\"histogram\", name=\"E[Zu] = [0,0,3]\")\nfig=plt(x=j2s, type=\"histogram\", name=\"E[Zu] = [1,1,1]\")\n\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at iv.qmd:246\n└ @ Core ~/626/site/iv/iv.qmd:246"
   },
   {
     "objectID": "iv/iv.html#simulated-distribution-of-hatbetaiv",
@@ -753,7 +753,7 @@
     "href": "iv/iv.html#simulated-distribution-of-hatbetaiv-1",
     "title": "Instrumental Variables Estimation",
     "section": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)",
-    "text": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n  b = biv(y,X,Z)\n  u = y - X*b\n  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n  (b - b0)./sqrt.(diag(V))\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nfor g in [1, 0.2, 0.1]\n  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]\n  # crop outliers so figure looks okay\n  b .= max.(b, -4)\n  b .= min.(b, 4)\n  plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at iv.qmd:284\n└ @ Core ~/626/site/iv/iv.qmd:284"
+    "text": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n  b = biv(y,X,Z)\n  u = y - X*b\n  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n  (b - b0)./sqrt.(diag(V))\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nfor g in [1, 0.2, 0.1]\n  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]\n  # crop outliers so figure looks okay\n  b .= max.(b, -4)\n  b .= min.(b, 4)\n  plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at iv.qmd:280\n└ @ Core ~/626/site/iv/iv.qmd:280"
   },
   {
     "objectID": "iv/iv.html#weak-instruments-1",
@@ -2055,7 +2055,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5090190558017514\n -0.10246689723449122\n -0.35932779542347526"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5287246116536986\n -0.12031069784398347\n -0.3384637353611731"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-3",

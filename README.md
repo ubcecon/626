@@ -1,3 +1,3 @@
-# Lecture notes for 626
+# 626
 
- Originally written Kyungchul Song with some updates by Paul Schrimpf.
+Slides and assignments for ECON626. https://ubcecon.github.io/626/

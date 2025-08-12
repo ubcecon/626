@@ -14,7 +14,7 @@ Paul Schrimpf
 
 paul.schrimpf@ubc.ca
 
-Office Hours: Wednesday 12:30pm-1:30pm Iona 112 (until October 16), Wednesday 2:30-3:30pm after
+Office Hours: Wednesday 2:30pm-3:20pm Iona 112
 
 ### TA
 
@@ -22,14 +22,14 @@ Bo-Yu Chen
 
 boyu0721@student.ubc.ca
 
-Office Hours: Monday 2-3pm Iona 342
+Office Hours: TBA <!-- Monday 2-3pm Iona 342 -->
 
 
 ### Time and Place
 
-Lecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533
+Lecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306
 
-Discussion: Friday 1:30pm  - 2:50pm, Buchanan D319
+<!-- Discussion: Friday 1:30pm  - 2:50pm, Buchanan D319 -->
 
 
 ### Textbooks
@@ -51,7 +51,7 @@ will be dropped from final grading.
 
 ### Midterm Exam (30%)
 
-Given in class on Wednesday, October 23. Closed books and notes.
+Given in class on Wednesday, October 29. Closed books and notes.
 There will be no make-up exam for midterm. When a student is excused
 from midterm exam, his or her grade will be based on reweighting of
 the problem sets (30%) and the final exam (70%).

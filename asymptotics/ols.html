@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c634bf5241e7a0f0add955421922332b.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.3">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.34">
 
   <meta name="author" content="Paul Schrimpf">
   <meta name="dcterms.date" content="2024-10-21">
@@ -30,8 +30,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -64,7 +65,7 @@
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
     code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.al { color: #f07178; } /* Alert */
     code span.an { color: #d4d0ab; } /* Annotation */
     code span.at { color: #00e0e0; } /* Attribute */
     code span.bn { color: #d4d0ab; } /* BaseN */
@@ -115,7 +116,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ab7a322b4ca39adb1086c9e0171297e3.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0c8acc74dca0c2faaedea4940f202713.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -269,12 +270,10 @@ Paul Schrimpf
 \end{align*}
 \]</span></p>
 <p>Consistent, <span class="math inline">\(\hat{\beta} \inprob \beta\)</span>, if</p>
-<div>
 <ul>
 <li class="fragment"><span class="math inline">\((X'X)^{-1} X' \epsilon \inprob 0\)</span> (“high level assumption”), or</li>
 <li class="fragment"><span class="math inline">\(\frac{1}{n} X'X \inprob C\)</span> and <span class="math inline">\(\frac{1}{n} X' \epsilon \inprob 0\)</span>, or</li>
 </ul>
-</div>
 </section>
 <section id="consistency-1" class="slide level2">
 <h2>Consistency</h2>
@@ -309,7 +308,6 @@ Paul Schrimpf
 \end{align*}
 \]</span></p>
 <p><span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)\)</span> if:</p>
-<div>
 <ul>
 <li class="fragment"><span class="math inline">\(\frac{1}{n} X'X \inprob C\)</span> nonsingular, and <span class="math inline">\(\frac{1}{\sqrt{n}} X' \epsilon \indist N(0,V)\)</span>, or</li>
 <li class="fragment">Using i.i.d. CLT and WLLN:
@@ -319,7 +317,6 @@ Paul Schrimpf
 <li class="fragment">Exercise: what is <span class="math inline">\(\Sigma\)</span> under these assumptions?</li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section id="asymptotic-distribution-1" class="slide level2">
 <h2>Asymptotic Distribution</h2>
@@ -330,7 +327,6 @@ Paul Schrimpf
 \end{align*}
 \]</span></p>
 <p><span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)\)</span> if:</p>
-<div>
 <ul>
 <li class="fragment">Using Lindeberg’s CLT and non-iid WLLN:
 <ul>
@@ -343,7 +339,6 @@ Paul Schrimpf
 <li class="fragment">Exercise: what is <span class="math inline">\(\Sigma\)</span> under these assumptions?</li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section id="estimated-variance" class="slide level2">
 <h2>Estimated Variance</h2>
@@ -516,11 +511,6 @@ Paul Schrimpf
 <span id="cb4-14"><a></a>PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"resid.html"</span>)</span>
 <span id="cb4-15"><a></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">resid.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1000</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">650</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.
-│   caller = top-level scope at ols.qmd:298
-└ @ Core ~/626/site/asymptotics/ols.qmd:298</code></pre>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe src="resid.html" width="1000" height="650"></iframe>
 </div>
@@ -531,14 +521,14 @@ Paul Schrimpf
 <div id="16" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
-<span id="cb6-2"><a></a>k <span class="op">=</span> <span class="fl">2</span></span>
-<span id="cb6-3"><a></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
-<span id="cb6-4"><a></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
-<span id="cb6-5"><a></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))<span class="op">...</span>,n)</span>
-<span id="cb6-6"><a></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
-<span id="cb6-7"><a></a>  <span class="cf">end</span></span>
-<span id="cb6-8"><a></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
+<span id="cb5-2"><a></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb5-3"><a></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
+<span id="cb5-4"><a></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb5-5"><a></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))<span class="op">...</span>,n)</span>
+<span id="cb5-6"><a></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb5-7"><a></a>  <span class="cf">end</span></span>
+<span id="cb5-8"><a></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="18" class="cell" data-execution_count="1">
@@ -614,72 +604,72 @@ g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span><
 <section id="clustering" class="slide level2">
 <h2>Clustering</h2>
 <div id="26" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a></a><span class="kw">function</span> <span class="fu">olscl</span>(X,y, group<span class="op">=</span>group)</span>
-<span id="cb7-2"><a></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
-<span id="cb7-3"><a></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
-<span id="cb7-4"><a></a>  V <span class="op">=</span> <span class="fu">olsclvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored, group<span class="op">=</span>group)</span>
-<span id="cb7-5"><a></a>  <span class="cf">return</span>(β̂, V)</span>
-<span id="cb7-6"><a></a><span class="kw">end</span></span>
-<span id="cb7-7"><a></a></span>
-<span id="cb7-8"><a></a><span class="kw">function</span> <span class="fu">olsclvar</span>(X, ϵ, XXf; group<span class="op">=</span><span class="fu">axes</span>(X)[<span class="fl">1</span>])</span>
-<span id="cb7-9"><a></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
-<span id="cb7-10"><a></a>  groups<span class="op">=</span><span class="fu">unique</span>(group)</span>
-<span id="cb7-11"><a></a>  G <span class="op">=</span> <span class="fu">length</span>(groups)</span>
-<span id="cb7-12"><a></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
-<span id="cb7-13"><a></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> G<span class="op">/</span>(G<span class="op">-</span>k)<span class="op">*</span>iXX<span class="op">*</span></span>
-<span id="cb7-14"><a></a>    <span class="fu">sum</span>(X[group<span class="op">.==</span>g,<span class="op">:</span>]<span class="ch">'*ϵ[group.==g]*ϵ[group.==g]'</span><span class="op">*</span>X[group<span class="op">.==</span>g,<span class="op">:</span>] <span class="cf">for</span>  g <span class="kw">in</span> groups)<span class="op">*</span>iXX</span>
-<span id="cb7-15"><a></a>  <span class="cf">return</span>(Vr)</span>
-<span id="cb7-16"><a></a><span class="cf">end</span></span>
-<span id="cb7-17"><a></a></span>
-<span id="cb7-18"><a></a><span class="kw">function</span> <span class="fu">simcluster</span>(n,k,G; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb7-19"><a></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
-<span id="cb7-20"><a></a>  group <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>G,n)</span>
-<span id="cb7-21"><a></a>  <span class="cf">for</span> g <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>G <span class="co"># ensure all groups included</span></span>
-<span id="cb7-22"><a></a>    <span class="cf">if</span> <span class="fu">sum</span>(group<span class="op">.==</span>g)<span class="op">==</span><span class="fl">0</span></span>
-<span id="cb7-23"><a></a>      group[g]<span class="op">=</span>g</span>
-<span id="cb7-24"><a></a>    <span class="cf">end</span></span>
-<span id="cb7-25"><a></a>  <span class="cf">end</span></span>
-<span id="cb7-26"><a></a>  X[<span class="op">:</span>,<span class="fl">1</span>] <span class="op">.+=</span> (group<span class="op">.&gt;</span>(G<span class="op">/</span><span class="fl">2</span>))</span>
-<span id="cb7-27"><a></a>  u <span class="op">=</span> <span class="fu">randn</span>(G)</span>
-<span id="cb7-28"><a></a>  ϵ <span class="op">=</span> (ρ<span class="op">*</span>u[group] <span class="op">+</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>ρ<span class="op">^</span><span class="fl">2</span>)<span class="fu">*randn</span>(n))<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
-<span id="cb7-29"><a></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
-<span id="cb7-30"><a></a>  <span class="cf">return</span>(X,y, group)</span>
-<span id="cb7-31"><a></a><span class="kw">end</span></span>
-<span id="cb7-32"><a></a></span>
-<span id="cb7-33"><a></a><span class="kw">function</span> <span class="fu">simsizecluster</span>(n,k,G,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb7-34"><a></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
-<span id="cb7-35"><a></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
-<span id="cb7-36"><a></a>    X,y,group <span class="op">=</span> <span class="fu">simcluster</span>(n,k,G,β<span class="op">=</span>β,σ<span class="op">=</span>σ, ρ<span class="op">=</span>ρ)</span>
-<span id="cb7-37"><a></a>    β̂, Vcr <span class="op">=</span> <span class="fu">olscl</span>(X,y, group)</span>
-<span id="cb7-38"><a></a>    _, Vr, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
-<span id="cb7-39"><a></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vcr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
-<span id="cb7-40"><a></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
-<span id="cb7-41"><a></a>  <span class="cf">end</span></span>
-<span id="cb7-42"><a></a>  p <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z), <span class="fu">cdf</span>.(<span class="fu">TDist</span>(G<span class="op">-</span>k),z))</span>
-<span id="cb7-43"><a></a>  <span class="cf">return</span>(p, z)</span>
-<span id="cb7-44"><a></a><span class="kw">end</span></span>
-<span id="cb7-45"><a></a></span>
-<span id="cb7-46"><a></a><span class="kw">function</span> <span class="fu">makeplotcl</span>(p,z,n,g; u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
-<span id="cb7-47"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
-<span id="cb7-48"><a></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
-<span id="cb7-49"><a></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">, G=</span><span class="sc">$</span>g<span class="st">"</span></span>
-<span id="cb7-50"><a></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
-<span id="cb7-51"><a></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
-<span id="cb7-52"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (Normal Distribution)"</span>)</span>
-<span id="cb7-53"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
-<span id="cb7-54"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">3</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (t-Distribution)"</span>)</span>
-<span id="cb7-55"><a></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
-<span id="cb7-56"><a></a><span class="kw">end</span></span>
-<span id="cb7-57"><a></a></span>
-<span id="cb7-58"><a></a>N <span class="op">=</span> [<span class="fl">200</span>, <span class="fl">200</span>, <span class="fl">5000</span>, <span class="fl">5000</span>]</span>
-<span id="cb7-59"><a></a>G <span class="op">=</span> [<span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">10</span>, <span class="fl">100</span>]</span>
-<span id="cb7-60"><a></a>k <span class="op">=</span> <span class="fl">2</span></span>
-<span id="cb7-61"><a></a><span class="cf">for</span> (n,g) <span class="op">∈</span> <span class="fu">zip</span>(N,G)</span>
-<span id="cb7-62"><a></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
-<span id="cb7-63"><a></a>    fig <span class="op">=</span> <span class="fu">makeplotcl</span>(<span class="fu">simsizecluster</span>(n,k,g,<span class="fl">10_000</span>)<span class="op">...</span>,n,g)</span>
-<span id="cb7-64"><a></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
-<span id="cb7-65"><a></a>  <span class="cf">end</span></span>
-<span id="cb7-66"><a></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a><span class="kw">function</span> <span class="fu">olscl</span>(X,y, group<span class="op">=</span>group)</span>
+<span id="cb6-2"><a></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
+<span id="cb6-3"><a></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
+<span id="cb6-4"><a></a>  V <span class="op">=</span> <span class="fu">olsclvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored, group<span class="op">=</span>group)</span>
+<span id="cb6-5"><a></a>  <span class="cf">return</span>(β̂, V)</span>
+<span id="cb6-6"><a></a><span class="kw">end</span></span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a><span class="kw">function</span> <span class="fu">olsclvar</span>(X, ϵ, XXf; group<span class="op">=</span><span class="fu">axes</span>(X)[<span class="fl">1</span>])</span>
+<span id="cb6-9"><a></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb6-10"><a></a>  groups<span class="op">=</span><span class="fu">unique</span>(group)</span>
+<span id="cb6-11"><a></a>  G <span class="op">=</span> <span class="fu">length</span>(groups)</span>
+<span id="cb6-12"><a></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
+<span id="cb6-13"><a></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> G<span class="op">/</span>(G<span class="op">-</span>k)<span class="op">*</span>iXX<span class="op">*</span></span>
+<span id="cb6-14"><a></a>    <span class="fu">sum</span>(X[group<span class="op">.==</span>g,<span class="op">:</span>]<span class="ch">'*ϵ[group.==g]*ϵ[group.==g]'</span><span class="op">*</span>X[group<span class="op">.==</span>g,<span class="op">:</span>] <span class="cf">for</span>  g <span class="kw">in</span> groups)<span class="op">*</span>iXX</span>
+<span id="cb6-15"><a></a>  <span class="cf">return</span>(Vr)</span>
+<span id="cb6-16"><a></a><span class="cf">end</span></span>
+<span id="cb6-17"><a></a></span>
+<span id="cb6-18"><a></a><span class="kw">function</span> <span class="fu">simcluster</span>(n,k,G; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-19"><a></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
+<span id="cb6-20"><a></a>  group <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>G,n)</span>
+<span id="cb6-21"><a></a>  <span class="cf">for</span> g <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>G <span class="co"># ensure all groups included</span></span>
+<span id="cb6-22"><a></a>    <span class="cf">if</span> <span class="fu">sum</span>(group<span class="op">.==</span>g)<span class="op">==</span><span class="fl">0</span></span>
+<span id="cb6-23"><a></a>      group[g]<span class="op">=</span>g</span>
+<span id="cb6-24"><a></a>    <span class="cf">end</span></span>
+<span id="cb6-25"><a></a>  <span class="cf">end</span></span>
+<span id="cb6-26"><a></a>  X[<span class="op">:</span>,<span class="fl">1</span>] <span class="op">.+=</span> (group<span class="op">.&gt;</span>(G<span class="op">/</span><span class="fl">2</span>))</span>
+<span id="cb6-27"><a></a>  u <span class="op">=</span> <span class="fu">randn</span>(G)</span>
+<span id="cb6-28"><a></a>  ϵ <span class="op">=</span> (ρ<span class="op">*</span>u[group] <span class="op">+</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>ρ<span class="op">^</span><span class="fl">2</span>)<span class="fu">*randn</span>(n))<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
+<span id="cb6-29"><a></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
+<span id="cb6-30"><a></a>  <span class="cf">return</span>(X,y, group)</span>
+<span id="cb6-31"><a></a><span class="kw">end</span></span>
+<span id="cb6-32"><a></a></span>
+<span id="cb6-33"><a></a><span class="kw">function</span> <span class="fu">simsizecluster</span>(n,k,G,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-34"><a></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
+<span id="cb6-35"><a></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
+<span id="cb6-36"><a></a>    X,y,group <span class="op">=</span> <span class="fu">simcluster</span>(n,k,G,β<span class="op">=</span>β,σ<span class="op">=</span>σ, ρ<span class="op">=</span>ρ)</span>
+<span id="cb6-37"><a></a>    β̂, Vcr <span class="op">=</span> <span class="fu">olscl</span>(X,y, group)</span>
+<span id="cb6-38"><a></a>    _, Vr, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb6-39"><a></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vcr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb6-40"><a></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb6-41"><a></a>  <span class="cf">end</span></span>
+<span id="cb6-42"><a></a>  p <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z), <span class="fu">cdf</span>.(<span class="fu">TDist</span>(G<span class="op">-</span>k),z))</span>
+<span id="cb6-43"><a></a>  <span class="cf">return</span>(p, z)</span>
+<span id="cb6-44"><a></a><span class="kw">end</span></span>
+<span id="cb6-45"><a></a></span>
+<span id="cb6-46"><a></a><span class="kw">function</span> <span class="fu">makeplotcl</span>(p,z,n,g; u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
+<span id="cb6-47"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb6-48"><a></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
+<span id="cb6-49"><a></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">, G=</span><span class="sc">$</span>g<span class="st">"</span></span>
+<span id="cb6-50"><a></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
+<span id="cb6-51"><a></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
+<span id="cb6-52"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (Normal Distribution)"</span>)</span>
+<span id="cb6-53"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
+<span id="cb6-54"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">3</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (t-Distribution)"</span>)</span>
+<span id="cb6-55"><a></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
+<span id="cb6-56"><a></a><span class="kw">end</span></span>
+<span id="cb6-57"><a></a></span>
+<span id="cb6-58"><a></a>N <span class="op">=</span> [<span class="fl">200</span>, <span class="fl">200</span>, <span class="fl">5000</span>, <span class="fl">5000</span>]</span>
+<span id="cb6-59"><a></a>G <span class="op">=</span> [<span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">10</span>, <span class="fl">100</span>]</span>
+<span id="cb6-60"><a></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb6-61"><a></a><span class="cf">for</span> (n,g) <span class="op">∈</span> <span class="fu">zip</span>(N,G)</span>
+<span id="cb6-62"><a></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
+<span id="cb6-63"><a></a>    fig <span class="op">=</span> <span class="fu">makeplotcl</span>(<span class="fu">simsizecluster</span>(n,k,g,<span class="fl">10_000</span>)<span class="op">...</span>,n,g)</span>
+<span id="cb6-64"><a></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
+<span id="cb6-65"><a></a>  <span class="cf">end</span></span>
+<span id="cb6-66"><a></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="clustering-1" class="slide level2">
@@ -1131,190 +1121,172 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

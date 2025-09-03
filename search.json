@@ -4,21 +4,21 @@
     "href": "syllabus626.html",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 12:30pm-1:30pm Iona 112 (until October 16), Wednesday 2:30-3:30pm after\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: Monday 2-3pm Iona 342\n\n\n\nLecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533\nDiscussion: Friday 1:30pm - 2:50pm, Buchanan D319\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
+    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 2:30pm-3:20pm Iona 112\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306\nTutorial: Wednesday 12:30pm - 1:50pm, Buchanan D214\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nAris Spanos (2019) Probability Theory and Statistical Inference: Empirical Modeling with Observational Data\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
   },
   {
     "objectID": "syllabus626.html#basic-information",
     "href": "syllabus626.html#basic-information",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 12:30pm-1:30pm Iona 112 (until October 16), Wednesday 2:30-3:30pm after\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: Monday 2-3pm Iona 342\n\n\n\nLecture: Mondays and Wednesdays 11:00am - 12:20pm, Iona 533\nDiscussion: Friday 1:30pm - 2:50pm, Buchanan D319\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
+    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 2:30pm-3:20pm Iona 112\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306\nTutorial: Wednesday 12:30pm - 1:50pm, Buchanan D214\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nAris Spanos (2019) Probability Theory and Statistical Inference: Empirical Modeling with Observational Data\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
   },
   {
     "objectID": "syllabus626.html#grading",
     "href": "syllabus626.html#grading",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "Grading",
-    "text": "Grading\n\nProblem Sets (30%)\nThere will be 6-9 problem sets. A problem set with the lowest grade will be dropped from final grading.\n\n\nMidterm Exam (30%)\nGiven in class on Wednesday, October 23. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (30%) and the final exam (70%).\n\n\nFinal Exam (40%)\nClosed books and notes."
+    "text": "Grading\n\nProblem Sets (25%)\nThere will be 6-9 problem sets. A problem set with the lowest grade will be dropped from final grading.\n\n\nMidterm Exam (30%)\nGiven in class on Wednesday, October 15. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (25%) and the final exam (75%).\n\n\nFinal Exam (45%)\nClosed books and notes."
   },
   {
     "objectID": "syllabus626.html#part-i-basics",
@@ -613,7 +613,7 @@
     "href": "probability/probability.html#conditional-expectation",
     "title": "Probability",
     "section": "Conditional Expectation",
-    "text": "Conditional Expectation\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| &lt; \\infty\\), then the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t.\n\n\\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable\n\\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\n\n\n\n\nEx: \\(\\{E_k\\}_{k=1}^m\\) partition of \\(\\Omega\\), let \\(\\mathscr{G} = \\sigma(\\{E_k\\}_{k=1}^m)\\)\n\n\\(\\Er[Y | \\mathscr{G}](\\omega) = \\sum_{k=1}^m c_k 1\\{\\omega \\in E_k\\}\\), then use 2 to solve for \\(c_k\\)\n\nExistence from Radon-Nikodym theorem\n\\(\\Er[Y|X] \\equiv \\Er[Y|\\sigma(X)]\\)"
+    "text": "Conditional Expectation\n\n\n\nDefinition\n\n\nLet \\(\\mathscr{G} \\subset \\mathscr{F}\\) be \\(\\sigma\\)-fields, \\(Y\\) a random variable with \\(\\Er |Y| &lt; \\infty\\), then the conditional expectation of \\(Y\\) given \\(\\mathscr{G}\\) is \\(\\Er[Y|\\mathscr{G}](\\cdot): \\Omega \\to \\R\\) s.t.\n\n\\(\\Er[Y|\\mathscr{G}](\\cdot)\\) is \\(\\mathscr{G}\\) measurable\n\\(\\int_A \\Er[Y|\\mathscr{G}] dP = \\int_A Y dP\\) \\(\\forall A \\in \\mathscr{G}\\)\n\n\n\n\n\nEx: \\(\\{E_k\\}_{k=1}^m\\) partition of \\(\\Omega\\), let \\(\\mathscr{G} = \\sigma(\\{E_k\\}_{k=1}^m)\\)\n\n\\(\\Er[Y | \\mathscr{G}](\\omega) = \\sum_{k=1}^m c_k 1\\{\\omega \\in E_k\\}\\), then use 2 to solve for \\(c_k\\)\n\nExistence from Radon-Nikodym theorem\n\\(\\Er[Y|X] \\equiv \\Er[Y|\\sigma(X)]\\)"
   },
   {
     "objectID": "probability/probability.html#conditional-expectation-1",
@@ -627,7 +627,7 @@
     "href": "probability/probability.html#properties-of-conditional-expectation",
     "title": "Probability",
     "section": "Properties of Conditional Expectation",
-    "text": "Properties of Conditional Expectation\n\n\nIf \\(X\\) is \\(\\mathscr{G}\\) measurable, then \\(\\Er[XY| \\mathscr{G}] = X \\Er[Y|\\mathscr{G}]\\) a.e.\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[XY|Z] = X \\Er[Y|Z]\\)\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[\\Er[Y|Z]|X] = \\Er[Y|X]\\)\nIf \\(Y\\) and \\(X\\) are independent, then \\(\\Er[Y | X ] = \\Er[Y]\\)"
+    "text": "Properties of Conditional Expectation\n\nIf \\(X\\) is \\(\\mathscr{G}\\) measurable, then \\(\\Er[XY| \\mathscr{G}] = X \\Er[Y|\\mathscr{G}]\\) a.e.\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[XY|Z] = X \\Er[Y|Z]\\)\nIf \\(\\sigma(X) \\subset \\sigma(Z)\\), then \\(\\Er[\\Er[Y|Z]|X] = \\Er[Y|X]\\)\nIf \\(Y\\) and \\(X\\) are independent, then \\(\\Er[Y | X ] = \\Er[Y]\\)"
   },
   {
     "objectID": "probability/probability.html#erymathscrg-as-orthogonal-projection",
@@ -739,7 +739,7 @@
     "href": "iv/iv.html#over-identifying-test",
     "title": "Instrumental Variables Estimation",
     "section": "Over-identifying Test",
-    "text": "Over-identifying Test\n\nOnly has power when instruments have different covariances with \\(u\\)\n\n\n\nCode\nusing Distributions, LinearAlgebra\nimport PlotlyLight\nfunction sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))\n  zu = randn(n,d)\n  Z = randn(n,d) + mapslices(x-&gt;x.*EZu, zu, dims=2)\n  xu = randn(n)\n  X = Z*gamma + xu*Exu\n  u = vec(sum(zu,dims=2) + xu + randn(n))\n  y = X*beta + u\n  return(y,X,Z)\nend\n\nbiv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \\ (X'*Z*inv(Z'*Z)*Z'*y)\n\nfunction J(y,X,Z)\n  n = length(y)\n  bhat = biv(y,X,Z)\n  uhat = y - X*bhat\n  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))\n  Zu = Z'*uhat/n\n  J = n*Zu'*C*Zu\nend\n\nS = 1_000\nn = 100\nj0s = [J(sim(n)...) for _ in 1:S]\nj1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]\nj2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]\n\nplt = PlotlyLight.Plot()\nplt(x=j0s, type=\"histogram\", name=\"E[Zu] = 0\")\nplt(x=j1s, type=\"histogram\", name=\"E[Zu] = [0,0,3]\")\nfig=plt(x=j2s, type=\"histogram\", name=\"E[Zu] = [1,1,1]\")\n\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at iv.qmd:246\n└ @ Core ~/626/site/iv/iv.qmd:246"
+    "text": "Over-identifying Test\n\nOnly has power when instruments have different covariances with \\(u\\)\n\n\n\nCode\nusing Distributions, LinearAlgebra\nimport PlotlyLight\nfunction sim(n; d=3, EZu = zeros(d), Exu = 0.5, beta = 1, gamma = ones(d))\n  zu = randn(n,d)\n  Z = randn(n,d) + mapslices(x-&gt;x.*EZu, zu, dims=2)\n  xu = randn(n)\n  X = Z*gamma + xu*Exu\n  u = vec(sum(zu,dims=2) + xu + randn(n))\n  y = X*beta + u\n  return(y,X,Z)\nend\n\nbiv(y,X,Z) = (X'*Z*inv(Z'*Z)*Z'*X) \\ (X'*Z*inv(Z'*Z)*Z'*y)\n\nfunction J(y,X,Z)\n  n = length(y)\n  bhat = biv(y,X,Z)\n  uhat = y - X*bhat\n  C = inv(1/n*sum(z*z'*u^2 for (z,u) in zip(eachrow(Z),uhat)))\n  Zu = Z'*uhat/n\n  J = n*Zu'*C*Zu\nend\n\nS = 1_000\nn = 100\nj0s = [J(sim(n)...) for _ in 1:S]\nj1s = [J(sim(n,EZu=[0.,0., 3.])...) for _ in 1:S]\nj2s = [J(sim(n,EZu=[1.,1., 1.])...) for _ in 1:S]\n\nplt = PlotlyLight.Plot()\nplt(x=j0s, type=\"histogram\", name=\"E[Zu] = 0\")\nplt(x=j1s, type=\"histogram\", name=\"E[Zu] = [0,0,3]\")\nfig=plt(x=j2s, type=\"histogram\", name=\"E[Zu] = [1,1,1]\")\n\nfig"
   },
   {
     "objectID": "iv/iv.html#simulated-distribution-of-hatbetaiv",
@@ -753,7 +753,7 @@
     "href": "iv/iv.html#simulated-distribution-of-hatbetaiv-1",
     "title": "Instrumental Variables Estimation",
     "section": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)",
-    "text": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n  b = biv(y,X,Z)\n  u = y - X*b\n  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n  (b - b0)./sqrt.(diag(V))\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nfor g in [1, 0.2, 0.1]\n  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]\n  # crop outliers so figure looks okay\n  b .= max.(b, -4)\n  b .= min.(b, 4)\n  plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at iv.qmd:280\n└ @ Core ~/626/site/iv/iv.qmd:280"
+    "text": "Simulated Distribution of \\(\\hat{\\beta}^{IV}\\)\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n  b = biv(y,X,Z)\n  u = y - X*b\n  V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n  (b - b0)./sqrt.(diag(V))\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nfor g in [1, 0.2, 0.1]\n  b = [tiv(sim(n,d=1,EZu=0,gamma=g)...)[1] for _ in 1:S]\n  # crop outliers so figure looks okay\n  b .= max.(b, -4)\n  b .= min.(b, 4)\n  plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig"
   },
   {
     "objectID": "iv/iv.html#weak-instruments-1",
@@ -921,7 +921,7 @@
     "href": "index.html",
     "title": "ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Part I: Basics\n\nMeasure slides\n\nRequired reading: Song (2021) Chapter 1\nSupplementary reading: Pollard (2002), Tao (2011)\n\nProbability slides\n\nRequired reading: Song (2021) Chapter 2\nSupplementary reading: Pollard (2002), Çinlar (2011)\nRandom Variables, and Distributions\nConditional Expectations and Conditional Distributions\n\nFamily of Distributions : we will not cover in class, read and refer to Song (2021) Chapter 3 as needed\nBasics of Inference\n\nRequired reading: Song (2021) Chapter 4\nIdentification\nEstimation\nHypothesis Testing\n\n\n\n\nPart II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nConvergence in probability\nConvergence in distribution\nDelta Methods\nAsymptotics of Least Squares\n\n\n\nPart IV\n\nDifference in differences\n\n\n\nPart V: Linear Models with Endogeneity\n\nEndogeneity\nIdentification through IV and Inference\nPreview of GMM\n\n\n\n\n\n\nReferences\n\nÇinlar, Erhan. 2011. Probability and Stochastics. Vol. 261. Springer.\n\n\nPollard, David. 2002. A User’s Guide to Measure Theoretic Probability. 8. Cambridge University Press.\n\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”\n\n\nTao, Terence. 2011. An Introduction to Measure Theory. Vol. 126. American Mathematical Society Providence."
+    "text": "Part I: Basics\n\nMeasure slides\nProbability slides\n\nRandom Variables, and Distributions\nConditional Expectations and Conditional Distributions\n\nFamily of Distributions : we will not cover in class, read and refer to Song (2021) Chapter 3 as needed\nBasics of Inference\n\nIdentification\nEstimation\nHypothesis Testing\n\n\n\n\nPart II: Generalized Linear Model\n\nPreliminaries of Projection Geometry\nGeneralized Linear Models and Gauss-Markov Theorem\nTests of Linear Hypothesis\n\nMidterm Review\n\n\nPart III: Tools of Asymptotic Theory\n\nConvergence in probability\nConvergence in distribution\nDelta Methods\nAsymptotics of Least Squares\n\n\n\nPart IV\n\nDifference in differences\n\n\n\nPart V: Linear Models with Endogeneity\n\nEndogeneity\nIdentification through IV and Inference\nPreview of GMM\n\n\n\n\n\n\nReferences\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”"
   },
   {
     "objectID": "gmm/gmm.html#reading",
@@ -1285,7 +1285,7 @@
     "href": "asymptotics/inprobability.html#consistency-of-least-squares",
     "title": "Convergence in Probability",
     "section": "Consistency of Least-Squares",
-    "text": "Consistency of Least-Squares\n\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} = (X'X)^{-1} X' y\\) \\(\\inprob \\beta_0\\)?\nSufficient that \\(MSE(\\hat{\\beta}) = tr[\\var(\\hat{\\beta})] +\nBias(\\hat{\\beta})'Bias(\\hat{\\beta}) \\to 0\\)\n\\(\\var(\\hat{\\beta}) = \\sigma^2 (X'X)^{-1}\\) (treating \\(X\\) as non-stochastic)\n\\(tr((X'X)^{-1}) \\leq \\frac{k}{\\lambda_{ min}(X'X)}\\)"
+    "text": "Consistency of Least-Squares\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} = (X'X)^{-1} X' y\\) \\(\\inprob \\beta_0\\)?\nSufficient that \\(MSE(\\hat{\\beta}) = tr[\\var(\\hat{\\beta})] +\nBias(\\hat{\\beta})'Bias(\\hat{\\beta}) \\to 0\\)\n\\(\\var(\\hat{\\beta}) = \\sigma^2 (X'X)^{-1}\\) (treating \\(X\\) as non-stochastic)\n\\(tr((X'X)^{-1}) \\leq \\frac{k}{\\lambda_{ min}(X'X)}\\)"
   },
   {
     "objectID": "asymptotics/inprobability.html#convergence-in-probability-of-functions",
@@ -1306,7 +1306,7 @@
     "href": "asymptotics/inprobability.html#consistency-of-least-squares-revisited",
     "title": "Convergence in Probability",
     "section": "Consistency of Least Squares Revisited",
-    "text": "Consistency of Least Squares Revisited\n\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} \\inprob \\beta_0\\)?\nTreat \\(X\\) as stochastic\n\\(\\hat{\\beta} = \\left(\\frac{1}{n} \\sum_{i=1}^n X_i X_i' \\right)^{-1} \\left(\\frac{1}{n} \\sum_{i=1}^n X_i y_i \\right)\\)\nIf WLLN applies to \\(\\frac{1}{n} \\sum_{i=1}^n X_i X_i'\\) and \\(\\frac{1}{n} \\sum_{i=1}^n X_i y_i\\) (and \\(\\Er[X_i X_i']^{-1}\\) exists)\nSufficient for i.i.d, \\(\\Er[X_i u_i] = 0\\), 4th moments of \\(X_i\\) to exist, \\(\\Er[u_i^2]\\) to exist"
+    "text": "Consistency of Least Squares Revisited\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} \\inprob \\beta_0\\)?\nTreat \\(X\\) as stochastic\n\\(\\hat{\\beta} = \\left(\\frac{1}{n} \\sum_{i=1}^n X_i X_i' \\right)^{-1} \\left(\\frac{1}{n} \\sum_{i=1}^n X_i y_i \\right)\\)\nIf WLLN applies to \\(\\frac{1}{n} \\sum_{i=1}^n X_i X_i'\\) and \\(\\frac{1}{n} \\sum_{i=1}^n X_i y_i\\) (and \\(\\Er[X_i X_i']^{-1}\\) exists)\nSufficient for i.i.d, \\(\\Er[X_i u_i] = 0\\), 4th moments of \\(X_i\\) to exist, \\(\\Er[u_i^2]\\) to exist"
   },
   {
     "objectID": "asymptotics/inprobability.html#convergence-rates-1",
@@ -1320,7 +1320,7 @@
     "href": "asymptotics/inprobability.html#example-little-o_p",
     "title": "Convergence in Probability",
     "section": "Example: Little \\(o_p\\)",
-    "text": "Example: Little \\(o_p\\)\n\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | &gt; a \\right) \\leq \\frac{\\var(\\En X_i - \\mu)}{a^2} \\leq  \\frac{\\sigma^2}{n a^2}\n\\]\nLet \\(a = \\epsilon n^{-\\alpha}\\), then \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-\\alpha}} &gt; \\epsilon \\right) \\leq \\frac{\\sigma^2}{n^{1 - 2\\alpha}\\epsilon^2}\n\\]\n\\(|\\En X_i - \\mu | = o_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2)\\)"
+    "text": "Example: Little \\(o_p\\)\n\nReal valued \\(X_1, ..., X_n\\) i.i.d., with \\(\\Er[X] = \\mu\\), \\(\\var(X_i) = \\sigma^2\\)\nMarkov’s inequality \\[\nP\\left( |\\overbrace{\\En X_i}^{\\equiv \\frac{1}{n} \\sum_{i=1}^n X_i} - \\mu | &gt; a \\right) \\leq \\frac{\\var(\\En X_i - \\mu)}{a^2} \\leq  \\frac{\\sigma^2}{n a^2}\n\\]\nLet \\(a = \\epsilon n^{-\\alpha}\\), then \\[\nP\\left( \\frac{|\\En X_i - \\mu |}{n^{-\\alpha}} &gt; \\epsilon \\right) \\leq \\frac{\\sigma^2}{n^{1 - 2\\alpha}\\epsilon^2}\n\\]\n\\(|\\En X_i - \\mu | = o_p(n^{-\\alpha})\\) for \\(\\alpha \\in (0, 1/2)\\)"
   },
   {
     "objectID": "asymptotics/inprobability.html#example-big-o_p",
@@ -1348,7 +1348,7 @@
     "href": "asymptotics/inprobability.html#non-asymptotic-bounds-3",
     "title": "Convergence in Probability",
     "section": "Non-Asymptotic Bounds",
-    "text": "Non-Asymptotic Bounds\n\n\nSuppose \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] \\leq e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\), then \\[\nP(X-\\mu&gt;\\epsilon) \\leq \\inf_{\\lambda \\geq 0} e^{-\\lambda \\epsilon + \\lambda^2 \\sigma^2/2} = e^{-\\frac{\\epsilon^2}{2 \\sigma^2}}\n\\]\nSuppose \\(\\Er\\left[e^{\\lambda (X_i-\\mu)}\\right] \\leq e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\) and \\(X_i\\) are independent, then \\[\nP\\left(\\frac{1}{n} \\sum_{i=1}^n X_i-\\mu &gt;\\epsilon\\right) \\leq e^{-\\frac{\\epsilon^2 n}{2 \\sigma^2}}\n\\]"
+    "text": "Non-Asymptotic Bounds\n\nSuppose \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] \\leq e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\), then \\[\nP(X-\\mu&gt;\\epsilon) \\leq \\inf_{\\lambda \\geq 0} e^{-\\lambda \\epsilon + \\lambda^2 \\sigma^2/2} = e^{-\\frac{\\epsilon^2}{2 \\sigma^2}}\n\\]\nSuppose \\(\\Er\\left[e^{\\lambda (X_i-\\mu)}\\right] \\leq e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\) and \\(X_i\\) are independent, then \\[\nP\\left(\\frac{1}{n} \\sum_{i=1}^n X_i-\\mu &gt;\\epsilon\\right) \\leq e^{-\\frac{\\epsilon^2 n}{2 \\sigma^2}}\n\\]"
   },
   {
     "objectID": "about.html",
@@ -1411,21 +1411,21 @@
     "href": "asymptotics/indistribution.html#cdf",
     "title": "Convergence in Distribution",
     "section": "CDF",
-    "text": "CDF\n\n\nplotting code\nplt = Plot()\nplt.layout = Config()\nfor i in axes(N)[1]\n  plt(x=x, y=Fn[i].(x), name=\"N=$(N[i])\")\nend\nplt(x=x, y=cdf.(Normal(),x), name=\"Normal CDF\")\nfig = plt()\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at indistribution.qmd:200\n└ @ Core ~/626/site/asymptotics/indistribution.qmd:200"
+    "text": "CDF\n\n\nplotting code\nplt = Plot()\nplt.layout = Config()\nfor i in axes(N)[1]\n  plt(x=x, y=Fn[i].(x), name=\"N=$(N[i])\")\nend\nplt(x=x, y=cdf.(Normal(),x), name=\"Normal CDF\")\nfig = plt()\nfig"
   },
   {
     "objectID": "asymptotics/indistribution.html#size-distortion",
     "href": "asymptotics/indistribution.html#size-distortion",
     "title": "Convergence in Distribution",
     "section": "Size Distortion",
-    "text": "Size Distortion\n\n\nplotting code\np = range(0,1,length=200)\nplt = Plot()\nplt.layout = Config()\nplt.layout.yaxis.title.text=\"p - Fn(Φ^{-1}(p))\"\nplt.layout.xaxis.title.text=\"p\"\nfor i in axes(N)[1]\n  plt(x=p,y=p - Fn[i].(quantile.(Normal(),p)), name=\"N=$(N[i])\")\nend\nfig = plt()\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at indistribution.qmd:221\n└ @ Core ~/626/site/asymptotics/indistribution.qmd:221"
+    "text": "Size Distortion\n\n\nplotting code\np = range(0,1,length=200)\nplt = Plot()\nplt.layout = Config()\nplt.layout.yaxis.title.text=\"p - Fn(Φ^{-1}(p))\"\nplt.layout.xaxis.title.text=\"p\"\nfor i in axes(N)[1]\n  plt(x=p,y=p - Fn[i].(quantile.(Normal(),p)), name=\"N=$(N[i])\")\nend\nfig = plt()\nfig"
   },
   {
     "objectID": "asymptotics/indistribution.html#histogram",
     "href": "asymptotics/indistribution.html#histogram",
     "title": "Convergence in Distribution",
     "section": "Histogram",
-    "text": "Histogram\n\n\nplotting code\nbins = range(-2.5,2.5,length=21)\nx = range(-2.5,2.5, length=1000)\nplt = Plot();\nplt.layout=Config()\nfunction Hn(x, F)\n  if (x &lt;= bins[1] || x&gt;bins[end])\n    return 0.0\n  end\n  j = findfirst( x .&lt;= bins )\n  return (F(bins[j]) - F(bins[j-1]))\nend\nplt(x=x,y=Hn.(x,x-&gt;cdf(Normal(),x)), name=\"Normal\")\nfor i in axes(N)[1]\n  plt(x=x,y=Hn.(x, Fn[i]), name=\"N=$(N[i])\")\nend\nfig = plt()\nfig\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at indistribution.qmd:243\n└ @ Core ~/626/site/asymptotics/indistribution.qmd:243"
+    "text": "Histogram\n\n\nplotting code\nbins = range(-2.5,2.5,length=21)\nx = range(-2.5,2.5, length=1000)\nplt = Plot();\nplt.layout=Config()\nfunction Hn(x, F)\n  if (x &lt;= bins[1] || x&gt;bins[end])\n    return 0.0\n  end\n  j = findfirst( x .&lt;= bins )\n  return (F(bins[j]) - F(bins[j-1]))\nend\nplt(x=x,y=Hn.(x,x-&gt;cdf(Normal(),x)), name=\"Normal\")\nfor i in axes(N)[1]\n  plt(x=x,y=Hn.(x, Fn[i]), name=\"N=$(N[i])\")\nend\nfig = plt()\nfig"
   },
   {
     "objectID": "asymptotics/indistribution.html#cramér-wold-device",
@@ -1516,7 +1516,7 @@
     "href": "asymptotics/indistribution.html#simulated-illustration-of-berry-esseen-clt",
     "title": "Convergence in Distribution",
     "section": "Simulated Illustration of Berry-Esseen CLT",
-    "text": "Simulated Illustration of Berry-Esseen CLT\n\n\nplotting code\nusing Plots, Distributions\n\nfunction dgp(n, xhi=2)\n  p = 1/(1+xhi^2)\n  xlo = -p*xhi/(1-p)\n  hi = rand(n) .&lt; p\n  x = ifelse.(hi, xhi, xlo)\nend\n\nfunction Ex3(xhi)\n  p = 1/(1+xhi^2)\n  xlo = -p*xhi/(1-p)\n  p*xhi^3 + (1-p)*-xlo^3\nend\n\nfunction plotcdfwithbounds(dgp,  e3, n=[10,100,1000], S=9999)\n  cmap = palette(:tab10)\n  x = range(-2.5, 2.5, length=200)\n  cdfx=x-&gt;cdf(Normal(), x)\n  fig=Plots.plot(x, cdfx, label=\"Normal\", color=\"black\", linestyle=:dash)\n  for (i,ni) in enumerate(n)\n    truedist = [mean(dgp(ni))*sqrt(ni) for _ in 1:S]\n    ecdf = x-&gt; mean(truedist .&lt;= x)\n    Plots.plot!(x, ecdf, label=\"n=$ni\", color=cmap[i])\n    Plots.plot!(x, cdfx.(x), ribbon = 0.5*e3/√ni, fillalpha=0.2, label=\"\", color=cmap[i])\n  end\n  xlims!(-2.5,2.5)\n  ylims!(0,1)\n  title!(\"Distribution of Scaled Sample Mean\")\n  return(fig)\nend\nxhi = 2.5\nplotcdfwithbounds(n-&gt;dgp(n,xhi), Ex3(xhi))\n\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis simulation is constructed so that the bound is close to the actual error. For many distributions, the bound is large and slack. It is usually not as informative as it appears in this example."
+    "text": "Simulated Illustration of Berry-Esseen CLT\n\n\nplotting code\nusing Plots, Distributions\n\nfunction dgp(n, xhi=2)\n  p = 1/(1+xhi^2)\n  xlo = -p*xhi/(1-p)\n  hi = rand(n) .&lt; p\n  x = ifelse.(hi, xhi, xlo)\nend\n\nfunction Ex3(xhi)\n  p = 1/(1+xhi^2)\n  xlo = -p*xhi/(1-p)\n  p*xhi^3 + (1-p)*-xlo^3\nend\n\nfunction plotcdfwithbounds(dgp,  e3, n=[10,100,1000], S=9999)\n  cmap = palette(:tab10)\n  x = range(-2.5, 2.5, length=200)\n  cdfx=x-&gt;cdf(Normal(), x)\n  fig=Plots.plot(x, cdfx, label=\"Normal\", color=\"black\", linestyle=:dash)\n  for (i,ni) in enumerate(n)\n    truedist = [mean(dgp(ni))*sqrt(ni) for _ in 1:S]\n    ecdf = x-&gt; mean(truedist .&lt;= x)\n    Plots.plot!(x, ecdf, label=\"n=$ni\", color=cmap[i])\n    Plots.plot!(x, cdfx.(x), ribbon = 0.5*e3/√ni, fillalpha=0.2, label=\"\", color=cmap[i])\n  end\n  xlims!(-2.5,2.5)\n  ylims!(0,1)\n  title!(\"Distribution of Scaled Sample Mean\")\n  return(fig)\nend\nxhi = 2.5\nplotcdfwithbounds(n-&gt;dgp(n,xhi), Ex3(xhi))\n\n\n\nPrecompiling Plots...\n    278.1 ms  ✓ EpollShim_jll\n    296.7 ms  ✓ Libuuid_jll\n    297.9 ms  ✓ LLVMOpenMP_jll\n    322.7 ms  ✓ Libmount_jll\n    303.6 ms  ✓ Expat_jll\n    346.7 ms  ✓ JpegTurbo_jll\n    317.1 ms  ✓ Dbus_jll\n    345.2 ms  ✓ Wayland_jll\n    319.9 ms  ✓ Libtiff_jll\n    382.5 ms  ✓ Glib_jll\n    386.6 ms  ✓ Fontconfig_jll\n    300.6 ms  ✓ Vulkan_Loader_jll\n    324.6 ms  ✓ Cairo_jll\n    319.7 ms  ✓ HarfBuzz_jll\n    472.5 ms  ✓ Qt6Base_jll\n    329.3 ms  ✓ Pango_jll\n    333.0 ms  ✓ libass_jll\n    341.9 ms  ✓ Qt6ShaderTools_jll\n    319.3 ms  ✓ libdecor_jll\n    425.8 ms  ✓ FFMPEG_jll\n    319.9 ms  ✓ GLFW_jll\n    300.3 ms  ✓ FFMPEG\n    799.5 ms  ✓ Qt6Declarative_jll\n    381.1 ms  ✓ GR_jll\n    346.9 ms  ✓ Qt6Wayland_jll\n   1402.2 ms  ✓ GR\n  23196.6 ms  ✓ Plots\n   1390.0 ms  ✓ Plots → UnitfulExt\n  28 dependencies successfully precompiled in 29 seconds. 152 already precompiled.\n\n\n\n\n\n\nThis simulation is constructed so that the bound is close to the actual error. For many distributions, the bound is large and slack. It is usually not as informative as it appears in this example."
   },
   {
     "objectID": "asymptotics/indistribution.html#simulated-illustration-of-berry-esseen-clt-slack-bounds",
@@ -1537,7 +1537,7 @@
     "href": "asymptotics/ols.html#consistency",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Consistency",
-    "text": "Consistency\n\\[\n\\begin{align*}\n\\hat{\\beta} = & (X'X)^{-1} X' y \\\\\n= & (X'X)^{-1} X' (X \\beta + \\epsilon) \\\\\n= & \\beta + (X'X)^{-1} X' \\epsilon\n\\end{align*}\n\\]\nConsistent, \\(\\hat{\\beta} \\inprob \\beta\\), if\n\n\n\\((X'X)^{-1} X' \\epsilon \\inprob 0\\) (“high level assumption”), or\n\\(\\frac{1}{n} X'X \\inprob C\\) and \\(\\frac{1}{n} X' \\epsilon \\inprob 0\\), or"
+    "text": "Consistency\n\\[\n\\begin{align*}\n\\hat{\\beta} = & (X'X)^{-1} X' y \\\\\n= & (X'X)^{-1} X' (X \\beta + \\epsilon) \\\\\n= & \\beta + (X'X)^{-1} X' \\epsilon\n\\end{align*}\n\\]\nConsistent, \\(\\hat{\\beta} \\inprob \\beta\\), if\n\n\\((X'X)^{-1} X' \\epsilon \\inprob 0\\) (“high level assumption”), or\n\\(\\frac{1}{n} X'X \\inprob C\\) and \\(\\frac{1}{n} X' \\epsilon \\inprob 0\\), or"
   },
   {
     "objectID": "asymptotics/ols.html#consistency-1",
@@ -1551,14 +1551,14 @@
     "href": "asymptotics/ols.html#asymptotic-distribution",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Asymptotic Distribution",
-    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\n\n\\(\\frac{1}{n} X'X \\inprob C\\) nonsingular, and \\(\\frac{1}{\\sqrt{n}} X' \\epsilon \\indist N(0,V)\\), or\nUsing i.i.d. CLT and WLLN:\n\n\\((X_i, \\epsilon_i)\\) i.i.d.\n\\(\\Er[X_i X_i' ]\\) is nonsingular, \\(\\Er[X_i \\epsilon_i] = 0\\), and \\(\\var(X_i \\epsilon_i) = \\Omega &gt; 0\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
+    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\n\\(\\frac{1}{n} X'X \\inprob C\\) nonsingular, and \\(\\frac{1}{\\sqrt{n}} X' \\epsilon \\indist N(0,V)\\), or\nUsing i.i.d. CLT and WLLN:\n\n\\((X_i, \\epsilon_i)\\) i.i.d.\n\\(\\Er[X_i X_i' ]\\) is nonsingular, \\(\\Er[X_i \\epsilon_i] = 0\\), and \\(\\var(X_i \\epsilon_i) = \\Omega &gt; 0\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
   },
   {
     "objectID": "asymptotics/ols.html#asymptotic-distribution-1",
     "href": "asymptotics/ols.html#asymptotic-distribution-1",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Asymptotic Distribution",
-    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\n\nUsing Lindeberg’s CLT and non-iid WLLN:\n\n\\((X_i, \\epsilon_i) \\perp (X_j, \\epsilon_j)\\) if \\(i \\neq j\\), and\n\\(\\frac{1}{n} \\max_{1  \\leq i \\leq n} \\Er[ (X_i X_i' - \\Er[X_i X_i']) (X_i X_i' - \\Er[X_i X_i])'] \\to 0\\), and\n\\(\\frac{1}{n} \\sum_{i=1}^n \\Er[X_i \\epsilon_i^2 X_i'] = \\Omega_n\\) is non singular, and \\(\\Omega_n \\to \\Omega\\), and\n\\(\\lim_{n \\to \\infty} \\frac{1}{n} \\sum_{i=1}^n \\Er\\left[ c'( X_i\n\\epsilon_i^2 X_i') c 1\\{ | c'( X_i \\epsilon_i)| &gt; \\delta\n\\sqrt{n} \\} \\right]  = 0\\) for all \\(\\delta &gt; 0\\) and \\(c \\in \\R^k\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
+    "text": "Asymptotic Distribution\n\\[\n\\begin{align*}\n\\sqrt{n}(\\hat{\\beta} - \\beta) = & \\sqrt{n} (X'X)^{-1} (X' \\epsilon) \\\\\n= & (\\frac{1}{n} X'X)^{-1} \\frac{1}{\\sqrt{n}} X' \\epsilon\n\\end{align*}\n\\]\n\\(\\sqrt{n}(\\hat{\\beta} - \\beta) \\indist N(0, \\Sigma)\\) if:\n\nUsing Lindeberg’s CLT and non-iid WLLN:\n\n\\((X_i, \\epsilon_i) \\perp (X_j, \\epsilon_j)\\) if \\(i \\neq j\\), and\n\\(\\frac{1}{n} \\max_{1  \\leq i \\leq n} \\Er[ (X_i X_i' - \\Er[X_i X_i']) (X_i X_i' - \\Er[X_i X_i])'] \\to 0\\), and\n\\(\\frac{1}{n} \\sum_{i=1}^n \\Er[X_i \\epsilon_i^2 X_i'] = \\Omega_n\\) is non singular, and \\(\\Omega_n \\to \\Omega\\), and\n\\(\\lim_{n \\to \\infty} \\frac{1}{n} \\sum_{i=1}^n \\Er\\left[ c'( X_i\n\\epsilon_i^2 X_i') c 1\\{ | c'( X_i \\epsilon_i)| &gt; \\delta\n\\sqrt{n} \\} \\right]  = 0\\) for all \\(\\delta &gt; 0\\) and \\(c \\in \\R^k\\)\nExercise: what is \\(\\Sigma\\) under these assumptions?"
   },
   {
     "objectID": "asymptotics/ols.html#estimated-variance",
@@ -1621,7 +1621,7 @@
     "href": "asymptotics/ols.html#plot-of-residuals-vs-predictions",
     "title": "Asymptotic Theory of Least Squares",
     "section": "Plot of Residuals vs Predictions",
-    "text": "Plot of Residuals vs Predictions\n\n\nCode\nn = 250\nk = 3\nXh,yh = sim(n,k)\nbh, _, _ = ols(Xh,yh)\neh = yh - Xh*bh\nX,y = sim(n,k, σ=x-&gt;(0.1 + norm(x'*ones(k) .+ 3)/3))\nb, _, _ = ols(X,y)\ne = y - X*b\n\nplt = Plot()\nplt.layout = Config()\nplt(x = vec(Xh*bh), y=vec(eh), name=\"Homoskedastic\", mode=\"markers\", type=\"scatter\")\nfig =plt(x = vec(X*b), y = vec(e), name=\"Heteroskedastic\", mode=\"markers\")\nPlotlyLight.save(fig, \"resid.html\")\nHTML(\"&lt;iframe src=\\\"resid.html\\\" width=\\\"1000\\\"  height=\\\"650\\\"&gt;&lt;/iframe&gt;\\n\")\n\n\n┌ Warning: `Plot(; kw...)` is deprecated. Use `plot(; kw...)` instead.\n│   caller = top-level scope at ols.qmd:298\n└ @ Core ~/626/site/asymptotics/ols.qmd:298"
+    "text": "Plot of Residuals vs Predictions\n\n\nCode\nn = 250\nk = 3\nXh,yh = sim(n,k)\nbh, _, _ = ols(Xh,yh)\neh = yh - Xh*bh\nX,y = sim(n,k, σ=x-&gt;(0.1 + norm(x'*ones(k) .+ 3)/3))\nb, _, _ = ols(X,y)\ne = y - X*b\n\nplt = Plot()\nplt.layout = Config()\nplt(x = vec(Xh*bh), y=vec(eh), name=\"Homoskedastic\", mode=\"markers\", type=\"scatter\")\nfig =plt(x = vec(X*b), y = vec(e), name=\"Heteroskedastic\", mode=\"markers\")\nPlotlyLight.save(fig, \"resid.html\")\nHTML(\"&lt;iframe src=\\\"resid.html\\\" width=\\\"1000\\\"  height=\\\"650\\\"&gt;&lt;/iframe&gt;\\n\")"
   },
   {
     "objectID": "asymptotics/ols.html#heteroskedastic-robust-errors-with-heteroskedastic-data",
@@ -1810,7 +1810,7 @@
     "href": "estimation/estimation.html#sample-analogue-estimation---examples",
     "title": "Estimation",
     "section": "Sample Analogue Estimation - Examples",
-    "text": "Sample Analogue Estimation - Examples\n\n\nMean\nOLS\n\n\n\nGo over some examples. Introduce empirical expectation.\nMention idea of conditions on \\(\\psi\\) and \\(\\hat{P}\\) such that estimator has good properties."
+    "text": "Sample Analogue Estimation - Examples\n\nMean\nOLS\n\n\nGo over some examples. Introduce empirical expectation.\nMention idea of conditions on \\(\\psi\\) and \\(\\hat{P}\\) such that estimator has good properties."
   },
   {
     "objectID": "estimation/estimation.html#maximum-likelihood-estimation",
@@ -1824,7 +1824,7 @@
     "href": "estimation/estimation.html#mle-examples",
     "title": "Estimation",
     "section": "MLE: Examples",
-    "text": "MLE: Examples\n\n\n\\(X_i \\sim N(\\mu, 1)\\)\n\\(Y_i = \\alpha_0 + \\beta_0 X_i + \\epsilon_i\\), \\(\\epsilon_i \\sim N(0, \\sigma_0^2)\\)"
+    "text": "MLE: Examples\n\n\\(X_i \\sim N(\\mu, 1)\\)\n\\(Y_i = \\alpha_0 + \\beta_0 X_i + \\epsilon_i\\), \\(\\epsilon_i \\sim N(0, \\sigma_0^2)\\)"
   },
   {
     "objectID": "estimation/estimation.html#mle-equivariance",
@@ -1943,7 +1943,7 @@
     "href": "identification/identification.html#example-descriptive-statistics",
     "title": "Identification",
     "section": "Example: Descriptive Statistics",
-    "text": "Example: Descriptive Statistics\n\n\n\\(\\theta_0 =\\) mean of \\(X\\), then \\(\\theta_0\\) is identified by \\[\n\\psi_\\mu(P) = \\int x dP(x)\n\\] in \\(\\mathcal{P} = \\{P : \\int x dP(x) &lt; \\infty \\}\\)\nGenerally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist"
+    "text": "Example: Descriptive Statistics\n\n\\(\\theta_0 =\\) mean of \\(X\\), then \\(\\theta_0\\) is identified by \\[\n\\psi_\\mu(P) = \\int x dP(x)\n\\] in \\(\\mathcal{P} = \\{P : \\int x dP(x) &lt; \\infty \\}\\)\nGenerally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist"
   },
   {
     "objectID": "identification/identification.html#example-linear-model",
@@ -2027,7 +2027,7 @@
     "href": "identification/identification.html#more-on-causal-graphs",
     "title": "Identification",
     "section": "More on Causal Graphs",
-    "text": "More on Causal Graphs\n\n\nGiven a graph, what can be identified?\n\n\\(Y\\) and \\(X\\) are d-separated by a collection of nodes \\(S\\) if there are no paths between \\(Y\\) and \\(X\\) except through \\(S\\)\nd-separation implies conditional independence \\(Y \\perp X | S\\)\n\nDoes conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)\n\nConditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible\nBut neighborhood of exceptions is large, so causal discovery very difficult\n\nV. Chernozhukov et al. (2024), especially chapters 7 & 8"
+    "text": "More on Causal Graphs\n\nGiven a graph, what can be identified?\n\n\\(Y\\) and \\(X\\) are d-separated by a collection of nodes \\(S\\) if there are no paths between \\(Y\\) and \\(X\\) except through \\(S\\)\nd-separation implies conditional independence \\(Y \\perp X | S\\)\n\nDoes conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)\n\nConditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible\nBut neighborhood of exceptions is large, so causal discovery very difficult\n\nV. Chernozhukov et al. (2024), especially chapters 7 & 8"
   },
   {
     "objectID": "identification/identification.html#reintrepretation-of-estimators-1",
@@ -2055,7 +2055,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5287246116536986\n -0.12031069784398347\n -0.3384637353611731"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5306227224526043\n -0.1783219059866139\n -0.3431082024527612"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-3",
@@ -2083,7 +2083,7 @@
     "href": "identification/identification.html#example-multiple-regression-1",
     "title": "Identification",
     "section": "Example: Multiple Regression",
-    "text": "Example: Multiple Regression\n\\[\nY = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon\n\\]\n\n\n\\(X = [X_1\\, X_2]'\\), if rank \\(\\Er X X' = 1\\), then \\(\\beta_1, \\beta_2\\) is observationally equivalent to any \\(\\tilde{\\beta}_1, \\tilde{\\beta}_2\\) s.t. \\[\n\\tilde{\\beta}_1 + \\tilde{\\beta}_2 = \\beta_1 + \\beta_2 \\frac{\\cov(X_1, X_2)}{\\var(X_2)}\n\\]\n\\(\\theta_0 = \\lambda( \\beta ) = \\beta_1 + \\beta_2\\) is identified if rank \\(\\Er [X X'] \\geq 1\\)"
+    "text": "Example: Multiple Regression\n\\[\nY = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon\n\\]\n\n\\(X = [X_1\\, X_2]'\\), if rank \\(\\Er X X' = 1\\), then \\(\\beta_1, \\beta_2\\) is observationally equivalent to any \\(\\tilde{\\beta}_1, \\tilde{\\beta}_2\\) s.t. \\[\n\\tilde{\\beta}_1 + \\tilde{\\beta}_2 = \\beta_1 + \\beta_2 \\frac{\\cov(X_1, X_2)}{\\var(X_2)}\n\\]\n\\(\\theta_0 = \\lambda( \\beta ) = \\beta_1 + \\beta_2\\) is identified if rank \\(\\Er [X X'] \\geq 1\\)"
   },
   {
     "objectID": "identification/identification.html#example-random-coefficients-logit",
@@ -2146,35 +2146,70 @@
     "href": "measure/measure.html#references",
     "title": "Measure",
     "section": "References",
-    "text": "References\n\nSong (2021) chapter 1 (which is the basis for these slides)\nPollard (2002)\nTao (2011)"
+    "text": "References\n\nSong (2021) chapter 1\nWatt (2022) chapter 8\nSpanos (2019) chapters 1 & 2\nPollard (2002)\nTao (2011)"
   },
   {
     "objectID": "measure/measure.html#why-measure-theory",
     "href": "measure/measure.html#why-measure-theory",
     "title": "Measure",
     "section": "Why Measure Theory?",
-    "text": "Why Measure Theory?\n\n\nSimplifies some arguments\n\nExample from Pollard (2002), define independence as factorization of distribution functions \\[ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) \\]\nIf \\(X_1,X_2,X_3, X_4\\) are independent, show that \\[ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) \\] is independent of \\[ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) \\]\n\n\n\n\\[\n\\def\\R{\\mathbb{R}}\n\\def\\B{\\mathscr{B}}\n\\]"
+    "text": "Why Measure Theory?\n\nSimplifies some arguments\n\nExample from Pollard (2002), define independence as factorization of distribution functions \\[ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) \\]\nIf \\(X_1,X_2,X_3, X_4\\) are independent, show that \\[ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) \\] is independent of \\[ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) \\]\n\n\n\\[\n\\def\\R{\\mathbb{R}}\n\\def\\B{\\mathscr{B}}\n\\]"
   },
   {
     "objectID": "measure/measure.html#why-measure-theory-1",
     "href": "measure/measure.html#why-measure-theory-1",
     "title": "Measure",
     "section": "Why Measure Theory?",
-    "text": "Why Measure Theory?\n\nSimplifies some arguments\n\n\n\nUnifies treatment\n\ndiscrete vs continuous\nuni- vs multi-variate\n\nResolves some difficulties with infinity\n\n\n\nOne difficulty with infinity in probability is defining probability over uncountably infinite sets. In probability, we start with a sample space, say \\(\\Omega\\), and then say a probability is a mapping from subsets of \\(\\Omega\\) to \\([0,1]\\) satisfying some conditions. One question is can we define such a probability on all subsets of \\(\\Omega\\). If \\(\\Omega\\) is uncountable, then the answer no. We have to limit our attention to certain well behaved subsets. These turn out to be exactly a \\(\\sigma\\)-field, which we now define."
+    "text": "Why Measure Theory?\n\nSimplifies some arguments\nUnifies treatment\n\ndiscrete vs continuous\nuni- vs multi-variate\n\nResolves some difficulties with infinity\n\n\nOne difficulty with infinity in probability is defining probability over uncountably infinite sets. In probability, we start with a sample space, say \\(\\Omega\\), and then say a probability is a mapping from subsets of \\(\\Omega\\) to \\([0,1]\\) satisfying some conditions. One question is can we define such a probability on all subsets of \\(\\Omega\\). If \\(\\Omega\\) is uncountable, then the answer no. We have to limit our attention to certain well behaved subsets. These turn out to be exactly a \\(\\sigma\\)-field, which we now define.\nAnother important difficulty with infinity is that the limit of bounded Riemann integrable functions need not be Riemann integrable. This concerns us because limits of random variables, which are functions, are essential for asymptotic theory and practical statistics."
   },
   {
     "objectID": "measure/measure.html#measure-space",
     "href": "measure/measure.html#measure-space",
     "title": "Measure",
     "section": "Measure Space",
-    "text": "Measure Space\n\n\nA set \\(\\Omega\\)\nA collection of subsets, \\(\\mathscr{F}\\), of \\(\\Omega\\) that is a \\(\\sigma\\)-field (aka \\(\\sigma\\)-algebra) , that is\n\n\\(\\Omega \\in \\mathscr{F}\\)\nIf \\(A \\in \\mathscr{F}\\), then \\(A^c \\in \\mathscr{F}\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\), then \\(\\cup_{j=1}^\\infty A_j \\in \\mathscr{F}\\)\n\nA measure, \\(\\mu: \\mathcal{F} \\to [0, \\infty]\\) s.t.\n\n\\(\\mu(\\emptyset) = 0\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\) are pairwise disjoint, then \\(\\mu\\left(\\cup_{j=1}^\\infty A_j \\right) = \\sum_{j=1}^\\infty \\mu(A_j)\\)\n\n\n\n\nExample of sigma fields"
+    "text": "Measure Space\n\nA set \\(\\Omega\\)\nA collection of subsets, \\(\\mathscr{F}\\), of \\(\\Omega\\) that is a \\(\\sigma\\)-field (aka \\(\\sigma\\)-algebra) , that is\n\n\\(\\Omega \\in \\mathscr{F}\\)\nIf \\(A \\in \\mathscr{F}\\), then \\(A^c \\in \\mathscr{F}\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\), then \\(\\cup_{j=1}^\\infty A_j \\in \\mathscr{F}\\)\n\nA measure, \\(\\mu: \\mathcal{F} \\to [0, \\infty]\\) s.t.\n\n\\(\\mu(\\emptyset) = 0\\)\nIf \\(A_1, A_2, ... \\in \\mathscr{F}\\) are pairwise disjoint, then \\(\\mu\\left(\\cup_{j=1}^\\infty A_j \\right) = \\sum_{j=1}^\\infty \\mu(A_j)\\)\n\n\n\nWhy do we need sigma fields? We need them because we cannot assign a sensible measure to all subsets. Construct the set \\(V\\) as follows. Let \\(x \\sim y\\) iff \\(x-y \\in \\mathbb{Q}\\). Form \\(V\\) by choosing one element from each equivalence class in \\([0,1)\\). For \\(x,y \\in [0,1]\\), let \\(+_1\\) be addition modulo \\(1\\), so \\(x +_1 y = x+y\\) if \\(x+y \\in [0,1]\\) and \\(x+y - 1\\) otherwise. Translation invariance implies \\(\\mu(V +_1 x) = \\mu(V)\\), but \\(\\mu\\left([0,1)\\right) = \\mu\\left( \\cup_{q \\in \\mathbb{Q} \\cap [0,1)} V +_1 q \\right) = \\sum_{q \\in \\mathbb{Q} \\cap [0,1)} \\mu(V +_1 q)\\) and then either \\(\\mu\\left([0,1))\\right) = 0\\) or \\(\\infty\\).\nExamples of sigma fields."
+  },
+  {
+    "objectID": "measure/measure.html#generated-sigma-field",
+    "href": "measure/measure.html#generated-sigma-field",
+    "title": "Measure",
+    "section": "Generated \\(\\sigma\\)-field",
+    "text": "Generated \\(\\sigma\\)-field\nGiven \\(\\mathcal{C} \\subseteq 2^\\Omega\\), the \\(\\sigma\\)-field generated by \\(\\mathcal{C}\\) is the intersection of all \\(\\sigma\\)-fields containing \\(\\mathcal{C}\\)\n\n\n\nExercise\n\n\nIf \\(\\Omega = \\{a, b, c\\}\\) and \\(\\mathcal{C} = \\{ \\{a, b\\} \\}\\), what is \\(\\sigma(\\mathcal{C})\\)?"
+  },
+  {
+    "objectID": "measure/measure.html#carathéodarys-extension-theorem",
+    "href": "measure/measure.html#carathéodarys-extension-theorem",
+    "title": "Measure",
+    "section": "Carathéodary’s Extension Theorem",
+    "text": "Carathéodary’s Extension Theorem\n\n\n\nTheorem\n\n\nIf \\(\\mathcal{C}\\) is a ring of sets, i.e.\n\n\\(\\emptyset \\in \\mathcal{C}\\)\nFor all \\(A,B \\in \\mathcal{C}\\), \\(A \\cup B \\in \\mathcal{C}\\) and \\(A \\setminus B \\in \\mathcal{C}\\)\n\nand \\(\\mu: \\mathcal{C} \\to \\R\\) is a pre-measure, i.e.\n\n\\(\\mu(\\emptyset) = 0\\)\nFor any \\(A = \\cup_{i=1}^\\infty A_i\\) where \\(A_i\\) are disjoint, \\(\\mu(A) = \\sum_{i=1}^\\infty \\mu(A_i)\\)\n\nthen there exists a measure \\(\\mu': \\sigma(\\mathcal{C}) \\to \\R\\).\n\n\n\n\nThis ensures existence of measures. It is not too difficult to specify a pre-measure on a ring of sets, and this theorem ensures that measures extends to a \\(\\sigma\\)-field.\nIf \\(\\mu\\) is \\(\\sigma\\)-finite, then the extension is unique."
+  },
+  {
+    "objectID": "measure/measure.html#finite-measure",
+    "href": "measure/measure.html#finite-measure",
+    "title": "Measure",
+    "section": "Finite Measure",
+    "text": "Finite Measure\n\nMeasure \\(\\mu\\) is finite if \\(\\mu(\\Omega)\\) is finite\n\\(\\mu\\) is \\(\\sigma\\)-finite if \\(\\exists\\) \\(\\{A_n\\}_{n=1}^\\infty \\in\n\\mathscr{F}\\) s.t. \\(\\mu(A_n)\\) is finite \\(\\forall n\\) and \\(\\cup_{n=1}^\\infty A_n = \\Omega\\)\n\n\n\n\nExercise\n\n\nLet \\(\\Omega\\) be countable with any \\(\\mathscr{F}\\), define \\(\\mu(A)\\) as the number of elements of \\(A\\). Show \\(\\mu\\) is \\(\\sigma\\) finite."
+  },
+  {
+    "objectID": "measure/measure.html#lebesgue-measure",
+    "href": "measure/measure.html#lebesgue-measure",
+    "title": "Measure",
+    "section": "Lebesgue Measure",
+    "text": "Lebesgue Measure\n\n\n\nTheorem\n\n\nThere exists a unique \\(\\sigma\\)-finite measure \\(\\mu\\) on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that for any \\(a\\leq b\\) with \\(a,b\\in \\mathbf{R}\\), \\[\n\\mu ((a,b])=b-a\n\\]"
   },
   {
     "objectID": "measure/measure.html#measurable-function",
     "href": "measure/measure.html#measurable-function",
     "title": "Measure",
     "section": "Measurable Function",
-    "text": "Measurable Function\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\)\n\n\nWhen working with \\(R^d\\), we will generally use \\(\\B(\\R^d)\\) as our \\(\\sigma\\)-field.\n\n\n\\(f: \\Omega \\to \\R\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\B(\\R)\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)\na statement holds almost everywhere (a.e.) if the measure of the set where the statement is false is 0"
+    "text": "Measurable Function\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\)\n\n\nWhen working with \\(R^d\\), we will generally use \\(\\B(\\R^d)\\) as our \\(\\sigma\\)-field.\n\n\n\\(f: \\Omega \\to \\R\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\B(\\R)\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)"
+  },
+  {
+    "objectID": "measure/measure.html#measurability-and-continuity",
+    "href": "measure/measure.html#measurability-and-continuity",
+    "title": "Measure",
+    "section": "Measurability and Continuity",
+    "text": "Measurability and Continuity\n\n\n\nLemma\n\n\nIf \\(f: \\R^n \\to \\R^k\\) is continuous, then \\(f\\) is \\(\\B(\\R^n)\\) measurable.\n\n\n\n\nTo prove this, we show another useful claim. Let \\((X,\\mathcal{A})\\) and \\((Y, \\sigma(\\mathcal{C}))\\) be measure spaces. Then, \\(f:X \\to Y\\) is measurable if \\(f^{-1}(C) \\in \\mathcal{A}\\) for all \\(C \\in \\mathcal{C}\\). The lemma on the slide immediately follows since \\(\\B(\\R^k)\\) is generated by open sets and continuous pre-images of open-sets are open.\nTo prove the claim, note that \\(\\mathcal{D} = \\{ B \\in Y : f^{-1}(B) \\in \\mathcal{A}\\}\\) is a \\(\\sigma\\)-field on \\(Y\\). Also, if \\(f^{-1}(C) \\in \\mathcal{A}\\) for all \\(C \\in \\mathcal{C}\\), then \\(\\mathcal{C} \\subseteq \\mathcal{D}\\). Thus, \\(\\sigma(\\mathcal{C}) \\subseteq \\mathcal{D}\\), so \\(f\\) is measurable.\n\n\n\n\n\nCorollary\n\n\nIf \\(f: \\Omega \\to \\R\\) is measurable and \\(g: \\R \\to \\R\\) is continuous, then \\(g \\circ f\\) is measurable.\n\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\(f: \\Omega \\to \\R\\) and \\(g: \\Omega \\to \\R\\) are measurable, then \\(f+g\\) is measurable."
   },
   {
     "objectID": "measure/measure.html#simple-functions",
@@ -2205,25 +2240,39 @@
     "text": "Measurable Functions\n\nIf \\(f\\) is measurable, let \\(f^{+} = \\max\\{f, 0\\}\\) and \\(f^{-} = \\max\\{-f, 0\\}\\) and define the Lesbegue integral\n\n\\[ \\int f d\\mu = \\int f^{+} d\\mu - \\int f^{-} d\\mu \\]"
   },
   {
-    "objectID": "measure/measure.html#measurability-and-continuity",
-    "href": "measure/measure.html#measurability-and-continuity",
+    "objectID": "measure/measure.html#sequences-of-sets",
+    "href": "measure/measure.html#sequences-of-sets",
     "title": "Measure",
-    "section": "Measurability and Continuity",
-    "text": "Measurability and Continuity\n\n\n\nLemma\n\n\nIf \\(f: \\R^n \\to \\R^k\\) is continuous, then \\(f\\) is \\(\\B(\\R^n)\\) measurable.\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\(f: \\Omega \\to \\R\\) is measurable and \\(g: \\R \\to \\R\\) is continuous, then \\(g \\circ f\\) is measurable.\n\n\n\n\n\n\n\n\nCorollary\n\n\nIf \\(f: \\Omega \\to \\R\\) and \\(g: \\Omega \\to \\R\\) are measurable, then \\(f+g\\) is measurable."
+    "section": "Sequences of Sets",
+    "text": "Sequences of Sets\n\n\\(\\{E_n\\}_{n \\geq 1} \\in \\mathscr{F}\\)\n\nincreasing if \\(E_1 \\subset E_2 \\subset ...\\)\ndecreasing if \\(E_1 \\supset E_2 \\supset ...\\)\nmonotone if either increasing or decreasing\n\nFor increasing \\(E_n\\), define \\(\\lim_{n \\to \\infty} E_n =\\cup_{n=1}^\\infty E_n\\)\nFor decreasing \\(E_n\\), define \\(\\lim_{n \\to \\infty} E_n =\\cap_{n=1}^\\infty E_n\\)"
   },
   {
-    "objectID": "measure/measure.html#finite-measure",
-    "href": "measure/measure.html#finite-measure",
+    "objectID": "measure/measure.html#continuity-of-measure",
+    "href": "measure/measure.html#continuity-of-measure",
     "title": "Measure",
-    "section": "Finite Measure",
-    "text": "Finite Measure\n\nMeasure \\(\\mu\\) is finite if \\(\\mu(\\Omega)\\) is finite\n\\(\\mu\\) is \\(\\sigma\\)-finite if \\(\\exists\\) \\(\\{A_n\\}_{n=1}^\\infty \\in\n\\mathscr{F}\\) s.t. \\(\\mu(A_n)\\) is finite \\(\\forall n\\) and \\(\\cup_{n=1}^\\infty A_n = \\Omega\\)\n\n\n\n\nExercise\n\n\nLet \\(\\Omega\\) be countable with any \\(\\mathscr{F}\\), define \\(\\mu(A)\\) as the number of elements of \\(A\\). Show \\(\\mu\\) is \\(\\sigma\\) finite."
+    "section": "Continuity of Measure",
+    "text": "Continuity of Measure\n\n\n\nLemma\n\n\nSuppose that \\(\\{E_{n}\\}\\) is a monotone sequence of sets. Then \\[\n\\mu \\left( \\lim_{n\\rightarrow \\infty}E_{n}\\right) =\\lim_{n\\rightarrow \\infty }\\mu (E_{n}).\n\\]\n\n\n\n\nTo see what this has to do with “continuity”, remember that one way to define continuity of functions is that for all \\(x_n \\to x\\), \\(f(x_n) \\to x\\)."
   },
   {
-    "objectID": "measure/measure.html#lebesgue-measure",
-    "href": "measure/measure.html#lebesgue-measure",
+    "objectID": "measure/measure.html#monotone-convergence-theorem",
+    "href": "measure/measure.html#monotone-convergence-theorem",
     "title": "Measure",
-    "section": "Lebesgue Measure",
-    "text": "Lebesgue Measure\n\n\n\nTheorem\n\n\nThere exists a unique \\(\\sigma\\)-finite measure \\(\\mu\\) on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that for any \\(a\\leq b\\) with \\(a,b\\in \\mathbf{R}\\), \\[\n\\mu ((a,b])=b-a\n\\]"
+    "section": "Monotone Convergence Theorem",
+    "text": "Monotone Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\uparrow f(\\omega )\\), then \\(\\int f_{n}d\\mu \\uparrow \\int fd\\mu\\) as \\(n\\rightarrow \\infty\\)\n\n\n\n\n\n\n\nExercise\n\n\nSuppose \\(g_n: \\Omega \\to \\R\\) are measurable and \\(g_n \\geq 0\\). Show that \\[\n\\int \\sum_{n=1}^\\infty g_n d\\mu = \\sum_{n=1}^\\infty \\int g_n d\\mu\n\\]\n\n\n\n\n\nHow do we know \\(f = \\lim_{n\\to \\infty} f_n\\) is measurable?\nNote that half open intervals \\((-\\infty, c)\\) generate \\(\\B(\\R)\\), so it suffices to show that \\(f^{-1}((-\\infty, c))\\) is in \\(\\mathscr{F}\\). Since \\(f_n\\) are measurable, \\(f_n^{-1}((-\\infty,c)) \\in \\mathscr{F}\\) for all \\(n\\). Also, \\[\nf_n^{-1}((-\\infty,c)) = \\{x: f_n(x) &lt; c\\}\n\\] and since \\(f_n\\) are increasing, \\(f_n^{-1}((-\\infty,c)) \\supset\nf_m^{-1}((-\\infty, c))\\) for an \\(m \\geq n\\). Moreover, \\[\nf^{-1}((-\\infty,c)) = \\{x : f(x) &lt; c \\} = \\cup_{n=1}^\\infty \\{x: f_n(x) &lt; c\\}\n\\] and hence is in \\(\\mathscr{F}\\)."
+  },
+  {
+    "objectID": "measure/measure.html#fatous-lemma",
+    "href": "measure/measure.html#fatous-lemma",
+    "title": "Measure",
+    "section": "Fatou’s Lemma",
+    "text": "Fatou’s Lemma\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\R\\) are measurable, \\(f_{n}\\geq 0\\), then \\[\n\\int \\left( \\text{liminf}_{n\\rightarrow \\infty }f_{n}d\\mu \\right) \\leq \\text{liminf}_{n\\rightarrow \\infty }\\int f_{n}d\\mu\n\\]\n\n\n\n\n\\(\\text{liminf}_{n\\rightarrow \\infty} x_n = \\lim_{n \\to \\infty} \\left(\\inf m \\geq n x_m \\right)\\)"
+  },
+  {
+    "objectID": "measure/measure.html#dominated-convergence-theorem",
+    "href": "measure/measure.html#dominated-convergence-theorem",
+    "title": "Measure",
+    "section": "Dominated Convergence Theorem",
+    "text": "Dominated Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\R\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu &lt;\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)\n\n\n\n\n\n\n\nExercise\n\n\nShow that if \\(g_n: \\Omega \\to \\R\\) are measurable and \\(\\sum_{n=1}^\\infty \\int |g_n| d\\mu &lt; \\infty\\), then \\(\\sum_{n=1}^\\infty |g_n(x)| &lt; \\infty\\) almost everywhere and if \\(g(x) = \\sum_{n=1}^\\infty g_n(x)\\), then \\[\n\\lim_{N \\to \\infty} \\int \\left\\vert g(x) - \\sum_{n=1}^N g_n(x) \\right\\vert d\\mu(x) = 0\n\\]"
   },
   {
     "objectID": "measure/measure.html#absolute-continuity",
@@ -2238,41 +2287,6 @@
     "title": "Measure",
     "section": "Radon-Nikodym Derivative",
     "text": "Radon-Nikodym Derivative\n\n\n\nTheorem\n\n\nLet \\((\\Omega,\\mathscr{F},\\mu)\\) be a measure space, and let \\(\\nu\\) and \\(\\mu\\) be \\(\\sigma\\)-finite measures defined on \\(\\mathscr{F}\\) and \\(\\nu \\ll \\mu\\). Then there is a nonnegative measurable function \\(f\\) such that for each set \\(A\\in \\mathscr{F}\\), \\[\n\\nu (A)=\\int_{A}fd\\mu\n\\] For any such \\(f\\) and \\(g\\), \\(\\mu (\\{\\omega \\in \\Omega:f(\\omega )\\neq g(\\omega )\\})=0\\)\n\n\n\n\nDenote $f = \nExercise: show coincides with usual derivative?"
-  },
-  {
-    "objectID": "measure/measure.html#sequences-of-sets",
-    "href": "measure/measure.html#sequences-of-sets",
-    "title": "Measure",
-    "section": "Sequences of Sets",
-    "text": "Sequences of Sets\n\n\\(\\{E_n\\}_{n \\geq 1} \\in \\mathscr{F}\\)\n\nincreasing if \\(E_1 \\subset E_2 \\subset ...\\)\ndecreasing if \\(E_1 \\supset E_2 \\supset ...\\)\nmonotone if either increasing or decreasing\n\nFor increasing \\(E_n\\), define \\(\\lim_{n \\to \\infty} E_n =\\cup_{n=1}^\\infty E_n\\)\nFor decreasing \\(E_n\\), define \\(\\lim_{n \\to \\infty} E_n =\\cap_{n=1}^\\infty E_n\\)"
-  },
-  {
-    "objectID": "measure/measure.html#continuity-of-measure",
-    "href": "measure/measure.html#continuity-of-measure",
-    "title": "Measure",
-    "section": "Continuity of Measure",
-    "text": "Continuity of Measure\n\n\n\nLemma\n\n\nSuppose that \\(\\{E_{n}\\}\\) is a monotone sequence of events. Then \\[\n\\mu \\left( \\lim_{n\\rightarrow \\infty}E_{n}\\right) =\\lim_{n\\rightarrow \\infty }\\mu (E_{n}).\n\\]"
-  },
-  {
-    "objectID": "measure/measure.html#monotone-convergence-theorem",
-    "href": "measure/measure.html#monotone-convergence-theorem",
-    "title": "Measure",
-    "section": "Monotone Convergence Theorem",
-    "text": "Monotone Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\mathbf{R}\\) are measurable, \\(f_{n}\\geq 0\\), and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\uparrow f(\\omega )\\), then \\(\\int f_{n}d\\mu \\uparrow \\int fd\\mu\\) as \\(n\\rightarrow \\infty\\)\n\n\n\n\n\n\n\nExercise\n\n\nSuppose \\(g_n: \\Omega \\to \\R\\) are measurable and \\(g_n \\geq 0\\). Show that \\[\n\\int \\sum_{n=1}^\\infty g_n d\\mu = \\sum_{n=1}^\\infty \\int g_n d\\mu\n\\]\n\n\n\n\n\nHow do we know \\(f = \\lim_{n\\to \\infty} f_n\\) is measurable?\nNote that half open intervals \\((-\\infty, c)\\) generate \\(\\B(\\R)\\), so it suffices to show that \\(f^{-1}((-\\infty, c))\\) is in \\(\\mathscr{F}\\). Since \\(f_n\\) are measurable, \\(f_n^{-1}((-\\infty,c)) \\in \\mathscr{F}\\) for all \\(n\\). Also, \\[\nf_n^{-1}((-\\infty,c)) = \\{x: f_n(x) &lt; c\\}\n\\] and since \\(f_n\\) are increasing, \\(f_n^{-1}((-\\infty,c)) \\supset\nf_m^{-1}((-\\infty, c))\\) for an \\(m \\geq n\\). Moreover, \\[\nf^{-1}((-\\infty,c)) = \\{x : f(x) &lt; c \\} = \\cup_{n=1}^\\infty \\{x: f_n(x) &lt; c\\}\n\\] and hence is in \\(\\mathscr{F}\\)."
-  },
-  {
-    "objectID": "measure/measure.html#fatous-lemma",
-    "href": "measure/measure.html#fatous-lemma",
-    "title": "Measure",
-    "section": "Fatou’s Lemma",
-    "text": "Fatou’s Lemma\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\R\\) are measurable, \\(f_{n}\\geq 0\\), then \\[\n\\int \\left( \\text{liminf}_{n\\rightarrow \\infty }f_{n}d\\mu \\right) \\leq \\text{liminf}_{n\\rightarrow \\infty }\\int f_{n}d\\mu\n\\]"
-  },
-  {
-    "objectID": "measure/measure.html#dominated-convergence-theorem",
-    "href": "measure/measure.html#dominated-convergence-theorem",
-    "title": "Measure",
-    "section": "Dominated Convergence Theorem",
-    "text": "Dominated Convergence Theorem\n\n\n\nLemma\n\n\nIf \\(f_n:\\Omega \\to \\R\\) are measurable, and for each \\(\\omega \\in \\Omega\\), \\(f_{n}(\\omega )\\rightarrow f(\\omega ).\\) Furthermore, for some \\(g\\geq 0\\) such that \\(\\int gd\\mu &lt;\\infty\\), \\(|f_{n}|\\leq g\\) for each \\(n\\geq 1\\). Then, \\(\\int f_{n}d\\mu \\rightarrow \\int fd\\mu\\)\n\n\n\n\n\n\n\nExercise\n\n\nShow that if \\(g_n: \\Omega \\to \\R\\) are measurable and \\(\\sum_{n=1}^\\infty \\int |g_n| d\\mu &lt; \\infty\\), then \\[\n\\int \\sum_{n=1}^\\infty g_n d\\mu = \\sum_{n=1}^\\infty \\int g_n d\\mu\n\\]\n\n\n\n\n\nThe measurable condition here can be dropped and outermeasure used instead. This simplifies some proofs in asymptotic theory."
   },
   {
     "objectID": "problemsets/01/ps01.html",
@@ -2664,6 +2678,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\n\n\n\nSep 9, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 3, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 3, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 16, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
   }
 ]

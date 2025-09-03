@@ -29,13 +29,14 @@ Office Hours: TBA <!-- Monday 2-3pm Iona 342 -->
 
 Lecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306
 
-<!-- Discussion: Friday 1:30pm  - 2:50pm, Buchanan D319 -->
+Tutorial: Wednesday 12:30pm  - 1:50pm, Buchanan D214
 
 
 ### Textbooks
 
 Our primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:
 
+- [Aris Spanos (2019) *Probability Theory and Statistical Inference: Empirical Modeling with Observational Data*](https://ubc.summon.serialssolutions.com/2.0.0/link/0/eLvHCXMwlV3fb9MwELZY-0Jf2PghyjYUQHvgoVtju3aMxhCMVYCExANCEy-W7dhTtZGgtEPsv-fOTqq2CE1IVaUkl8S9XO8-5-4-E8Lo4Xi04RPMhFmTO1vKwLgqXZAA-51g3FhPmdgs1Sm61pi1dH4e-WBzXGqpwJbLN-juF4vXuGbMK5hkG3ezRfqyEHzSI_23n87Pvy9ft0AUKyAYxbWCIKoCzuAKN-BiggkmaUv_1B3strvjvOXn_GsQAzIw80twSOCsFvNVhgZsXYI57Qx2blWz2bqzp20Em94jv7sfe1Ef4pJZiPzA4PDNRONTYKubo9RmuGSJxHo5sGT4tCpKM_CWNWlthAdsmhR1wN6jquDMpKxt0vfYUbFD7vjqPhl8XhLFzh8QdfzDNJcnXxpwK7FM9yZLbAGZqcoMkXAkkjZX2ceuM_H4KJ7ykHybnn09_TBqV3MYGcBkVIy8tWESCiqFoZgcZNQoNrbIMAe4KJSA9SQzygrKnVKc5la4EuCOY4FLEzh7RHpVXfnHJFMyGA-eCSzQcxO8KgB9F85MbBF86eyQPF95KPrXVcw8z_WaXm4RUhzAK7tNCPnrQOjF8qlrZ2udSufk5v1erkjVTXulf8gOk-3on4l0RGO6LEf6xvGQ7IM5aTfD7xwTzwDyBAB1qTApSofkWWdoOt6jLfPVZ-9OY688U_zJf4xll9wFlBgL63K1R3qL5trvR5KKp-2_7A8NQRm-)
 - Bruce Hansen (2022) *Probability and Statistics for Economists* and *Econometrics*
 - Fumio Hayashi (2000) *Econometrics*
 - George Casella and Roger L. Berger (2002) *Statistical Inference*
@@ -44,19 +45,18 @@ Our primary textbook will be notes written by Kyunchul Song. You can find them o
 
 ## Grading
 
-### Problem Sets (30%)
+### Problem Sets (25%)
 
 There will be 6-9 problem sets. A problem set with the lowest grade
 will be dropped from final grading.
 
 ### Midterm Exam (30%)
-
-Given in class on Wednesday, October 29. Closed books and notes.
+Given in class on Wednesday, October 15. Closed books and notes.
 There will be no make-up exam for midterm. When a student is excused
 from midterm exam, his or her grade will be based on reweighting of
-the problem sets (30%) and the final exam (70%).
+the problem sets (25%) and the final exam (75%).
 
-### Final Exam (40%)
+### Final Exam (45%)
 
 Closed books and notes.
 

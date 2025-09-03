@@ -8,14 +8,9 @@ bibliography: 626.bib
 
 - [Measure slides](measure/measure.qmd)
 
-   - Required reading: @song2021  Chapter 1
-   - Supplementary reading: @pollard2002, @tao2011
-
 
 -  [Probability slides](probability/probability.qmd)
 
-   - Required reading: @song2021  Chapter 2
-   - Supplementary reading: @pollard2002, @cinlar2011
    - Random Variables, and Distributions
    - Conditional Expectations and Conditional Distributions
 
@@ -23,7 +18,6 @@ bibliography: 626.bib
 
 - Basics of Inference
 
-   - Required reading: @song2021 Chapter 4
    - [Identification](identification/identification.qmd)
    - [Estimation](estimation/estimation.qmd)
    - Hypothesis Testing

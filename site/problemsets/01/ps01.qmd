@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 1"
 #author: "Paul Schrimpf"
-date: 2025-09-12
+date: 2025-09-15
 bibliography: ../../626.bib
 ---
 
@@ -81,7 +81,7 @@ $\mathscr{G}$ be the collection of the sets of the form
 $\{\omega \in \Omega :X(\omega )\in B\}$ with
 $B\in \mathscr{B}(\mathbf{R})$. Then show that $\mathscr{G}$ is a $\sigma$-field.
 
-2. Show that $\{X^{-1}(A):A\in \sigma (\mathscr{C})\}=\sigma(\{X^{-1}(A):A\in \mathscr{C}\})$
+2. *Optional, more difficult* Show that $\{X^{-1}(A):A\in \sigma (\mathscr{C})\}=\sigma(\{X^{-1}(A):A\in \mathscr{C}\})$
 for any subset $\mathscr{C}$ of
 $\mathscr{B}(\mathbf{R})$.
 
@@ -115,3 +115,20 @@ $$
 Use Markov's inequality and the Cauchy-Schwarz inequality.
 
 :::
+
+
+# Problem 5
+
+Consider repeatedly performing the same experiment $n$ times and recording some measurement.
+
+Each trial, the outcome is a random variable $X_i$ with sigma-field $\mathscr{B}(\mathbf{R})$ and distribution $P_X$. The outcome of each trial has no influence on any other.
+
+1. Show that there is a unique measure on $\mathscr{B}(\mathbf{R}^n)$ such that $P_n(A_1 \times A_2 \times \cdots \times A_n) = P_X(A_1)P_X(A_n) \cdots P_X(A_n)$ for all $A_1, ..., A_n \in \mathscr{B}(\mathbf{R})$.
+
+::: {.callout-tip }
+
+Use Carathéodary's extension theorem.
+
+:::
+
+2. Suppose $\mathrm{E}[X_1] = \mu$ and $P(|X_1-\mu| > b) = 0$. Show that $P\left( \left\vert \frac{1}{n} \sum_{i=1}^n X_i - \mu \right\vert > \epsilon \right) \leq \frac{b^2}{n \epsilon^2}$

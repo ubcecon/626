@@ -501,6 +501,17 @@ $$
 
 # Radon-Nikodym Derivatives
 
+::: {.notes}
+
+Recall that if $f(x) = \frac{dF}{dx}(x)$, then $F(x) - F(0) = \int_0^x f(x) dx$. The idea of this section is to generalize this relationship to measures.
+
+Suppose you have a measure $\mu$. You can build another measure be taking a measurable, nonnegative function and defining $\nu(A) = \int_A f(x) d\mu(x)$
+
+Now, let's try to reverse this exercise. Given measures $\mu$ and $\nu$, can we find $f$ such that $\nu = f \mu$? One needed condition is if $\mu(A) = 0$, then we must have
+$\nu(A) = \int_A f d\mu = 0$.
+
+:::
+
 
 ## Absolute Continuity
 
@@ -509,11 +520,6 @@ for $A \in \mathscr{F}$, $\mu(A) = 0$ implies $\nu(A) = 0$
     - denotate as $\nu \ll \mu$
     - $\mu$ is called a **dominating measure**
 
-::: {.notes}
-
-Relation with continuity?
-
-:::
 
 ## Radon-Nikodym Derivative
 
@@ -533,7 +539,7 @@ For any such $f$ and $g$, $\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})
 
 ::: {.notes}
 
-Denote $f = \frac{d\nu}{d\mu}
+Denote $f = \frac{d\nu}{d\mu}$
 
 Exercise: show coincides with usual derivative?
 

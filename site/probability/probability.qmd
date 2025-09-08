@@ -19,7 +19,9 @@ bibliography: ../626.bib
 ## Reading
 
 - **@song2021 chapter 2** (which is the basis for these slides)
+- @spanos chapters 2 & 3
 - @pollard2002
+
 
 $$
 \def\Er{{\mathrm{E}}}
@@ -47,6 +49,17 @@ measure s.t. $P(\Omega )=1$
 - $A \in \mathscr{F}$ is an **event**
 
 :::
+
+::: {.notes}
+
+Emphasize that development of probability was motivated by practical problems.
+
+Give an example with coins or dice.
+
+Events needed both because intrinsically interesting and to describe measurability.
+
+:::
+
 
 ---
 
@@ -82,6 +95,12 @@ A **random variable** $X$ is a measurable function from $\Omega$ to $\R$
 
 :::
 
+::: {.notes}
+
+A sample space can be a set of anything. Most analysis will be done with numbers, so we need random variables.
+
+:::
+
 ## Distribution
 
 ::: {.callout-tip icon=false}
@@ -97,6 +116,14 @@ $$
 
 :::
 
+::: {.notes}
+
+In many applications, the underlying probability $(\Omega, \matscr{F}, P)$ will mostly sit in the background and most calculations will be done with $(\R, \mathscr{B})(\R), P_X)$.
+
+Given an example.
+
+:::
+
 ## Distribution Function
 
 ::: {.callout-tip icon=false}
@@ -105,12 +132,19 @@ $$
 
 The cumulative distribution function (CDF) of a random variable $X$ with
 distribution $P_{X}$ is defined to be a function
-$F:\R\rightarrow [0,1]$ such that
+$F_X:\R\rightarrow [0,1]$ such that
 $$
-F(t)=P_{X}\left( (-\infty ,t]\right) .
+F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 $$
 
 :::
+
+::: {.notes}
+
+By definition, we can go from $P_X$ to $F_X$. By Cartheodary's extension theorem, we can do the reverse. Either the CDF or $P_X$ tells completely characterizes the distribution.
+
+:::
+
 
 ## Density
 
@@ -121,7 +155,7 @@ $$
 (i) Let $X$ be a random variable with
 distribution $P_{X}$. When $P_{X}\ll \lambda$, we call $X$ a
 **continuous random variable**, and call the Radon-Nikodym derivative
-$f\equiv dP_{X}/d\lambda$ the (probability) **density function** of $P_{X}$.
+$f_X\equiv dP_{X}/d\lambda$ the (probability) **density function** of $P_{X}$.
 
 (ii) We say that $X$ is a **discrete random variable**, if
 there exists a countable set $A\subset \R$ and such that
@@ -163,11 +197,19 @@ The **expection** of $X$ is $\Er X = \int_\Omega x dP$
 
 ::: {.notes}
 
-Expand on how $\int_{\R} x dP_X(x)$ relates to Lebesgue measure for continuous random variables, and probability mass function for discrete. See @song2021 page 16.
+If $X$ is continuous, i.e. $P_X << \lambda$ where $\lambda$ is Lesbegue measure, then there is a Radon-Nikodym derivative, $f_x$, and we can write the expectation as
+$$
+\Er X = \int_{R} x f_x(x) d\lambda(x).
+$$
+
+
+For any measurable function $g$, we can define $\mathcal{E}_X: \{measurable functions\} \to \R$ by $\mathcal{E}_X(g) = \Er[g(X)]$. We could call this the expectation functional of $X$.  Taking $g = 1\{X \leq x\}$ for $x \in \R$, we can recover the CDF, $F_X(x) = \mathcal{E}_X(1\{X \leq x \}). Thus, the expectation functional is a third way, along with the CDF and probability measure, to describe the distribution of $X$.
 
 :::
 
+
 # Inequalities
+
 
 ## Markov's
 
@@ -208,6 +250,18 @@ $\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]$
 
 :::
 
+::: {.notes}
+
+Proof:
+
+- $\Er[(X-Y)^2] \geq 0$, so
+- $2\Er[XY] \leq \Er[X^2] + \Er[Y^2]$
+- $\Er[XY] = \Er[\lambda X \lambda^{-1}Y]$, so
+- $2\Er[XY] \leq \lambda^2 \Er[X^2] + \lambda^{-2} \Er[Y^2]$
+- set $\lambda^2 = \sqrt{\Er[X^2]/\Er[Y^2]}$
+
+:::
+
 # Dependence and Information
 
 ## Generated $\sigma$-field
@@ -216,7 +270,12 @@ $\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]$
   - smallest $\sigma$-field w.r.t. which $X$ is measurable
   - $\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}$
 
+::: {.notes}
 
+Explain some simple example(s).
+
+
+:::
 
 ## Information
 
@@ -259,6 +318,7 @@ Proof in @cinlar2011 chapter 2, section 4.
 
 # Independence
 
+
 ## Independence
 
 ::: {.callout-tip icon=false}
@@ -278,6 +338,12 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 $$
 - Random variables $X_1, ..., X_m$ are **independent** if
 $\sigma(X_1), ..., \sigma(X_m)$ are independent
+
+:::
+
+::: {.notes}
+
+Show some simple example(s).
 
 :::
 

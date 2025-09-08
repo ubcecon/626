@@ -816,7 +816,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5416847120186464\n -0.14249888186582535\n -0.3640781436849894"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.4859277368803867\n -0.10715764238088142\n -0.3817130280184443"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-3",
@@ -2139,7 +2139,7 @@
     "href": "probability/probability.html#reading",
     "title": "Probability",
     "section": "Reading",
-    "text": "Reading\n\nSong (2021) chapter 2 (which is the basis for these slides)\n(spanos?) chapters 2 & 3\nPollard (2002)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
+    "text": "Reading\n\nSong (2021) chapter 2 (which is the basis for these slides)\nSpanos (2019) chapters 2 & 3\nPollard (2002)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
   },
   {
     "objectID": "probability/probability.html#probability-space",

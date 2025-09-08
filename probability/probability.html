@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.34">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-09-16">
+  <meta name="dcterms.date" content="2025-09-08">
   <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -158,12 +158,13 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-09-16</p>
+  <p class="date">2025-09-08</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
 <li><strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 2</strong> (which is the basis for these slides)</li>
+<li><span class="citation" data-cites="spanos">(<a href="#/references" role="doc-biblioref" onclick=""><strong>spanos?</strong></a>)</span> chapters 2 &amp; 3</li>
 <li><span class="citation" data-cites="pollard2002">Pollard (<a href="#/references" role="doc-biblioref" onclick="">2002</a>)</span></li>
 </ul>
 <p><span class="math display">\[
@@ -197,6 +198,21 @@ Paul Schrimpf
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Emphasize that development of probability was motivated by practical problems.</p>
+<p>Give an example with coins or dice.</p>
+<p>Events needed both because intrinsically interesting and to describe measurability.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section class="slide level2">
 
@@ -236,6 +252,19 @@ Paul Schrimpf
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>A sample space can be a set of anything. Most analysis will be done with numbers, so we need random variables.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="distribution" class="slide level2">
 <h2>Distribution</h2>
@@ -251,6 +280,20 @@ P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>In many applications, the underlying probability <span class="math inline">\((\Omega, \matscr{F}, P)\)</span> will mostly sit in the background and most calculations will be done with <span class="math inline">\((\R, \mathscr{B})(\R), P_X)\)</span>.</p>
+<p>Given an example.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="distribution-function" class="slide level2">
 <h2>Distribution Function</h2>
@@ -260,12 +303,25 @@ P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>The cumulative distribution function (CDF) of a random variable <span class="math inline">\(X\)</span> with distribution <span class="math inline">\(P_{X}\)</span> is defined to be a function <span class="math inline">\(F:\R\rightarrow [0,1]\)</span> such that <span class="math display">\[
-F(t)=P_{X}\left( (-\infty ,t]\right) .
+<p>The cumulative distribution function (CDF) of a random variable <span class="math inline">\(X\)</span> with distribution <span class="math inline">\(P_{X}\)</span> is defined to be a function <span class="math inline">\(F_X:\R\rightarrow [0,1]\)</span> such that <span class="math display">\[
+F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 \]</span></p>
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>By definition, we can go from <span class="math inline">\(P_X\)</span> to <span class="math inline">\(F_X\)</span>. By Cartheodary’s extension theorem, we can do the reverse. Either the CDF or <span class="math inline">\(P_X\)</span> tells completely characterizes the distribution.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="density" class="slide level2">
 <h2>Density</h2>
@@ -276,7 +332,7 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 <div class="callout-content">
 <ol type="i">
-<li><p>Let <span class="math inline">\(X\)</span> be a random variable with distribution <span class="math inline">\(P_{X}\)</span>. When <span class="math inline">\(P_{X}\ll \lambda\)</span>, we call <span class="math inline">\(X\)</span> a <strong>continuous random variable</strong>, and call the Radon-Nikodym derivative <span class="math inline">\(f\equiv dP_{X}/d\lambda\)</span> the (probability) <strong>density function</strong> of <span class="math inline">\(P_{X}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X\)</span> be a random variable with distribution <span class="math inline">\(P_{X}\)</span>. When <span class="math inline">\(P_{X}\ll \lambda\)</span>, we call <span class="math inline">\(X\)</span> a <strong>continuous random variable</strong>, and call the Radon-Nikodym derivative <span class="math inline">\(f_X\equiv dP_{X}/d\lambda\)</span> the (probability) <strong>density function</strong> of <span class="math inline">\(P_{X}\)</span>.</p></li>
 <li><p>We say that <span class="math inline">\(X\)</span> is a <strong>discrete random variable</strong>, if there exists a countable set <span class="math inline">\(A\subset \R\)</span> and such that <span class="math inline">\(P_{X}A^{c}=0\)</span></p></li>
 </ol>
 </div>
@@ -328,7 +384,10 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 <li>linear : <span class="math inline">\(\Er[aX + bY] = a \Er X + b \Er Y\)</span></li>
 </ul>
 <aside class="notes">
-<p>Expand on how <span class="math inline">\(\int_{\R} x dP_X(x)\)</span> relates to Lebesgue measure for continuous random variables, and probability mass function for discrete. See <span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> page 16.</p>
+<p>If <span class="math inline">\(X\)</span> is continuous, i.e.&nbsp;<span class="math inline">\(P_X &lt;&lt; \lambda\)</span> where <span class="math inline">\(\lambda\)</span> is Lesbegue measure, then there is a Radon-Nikodym derivative, <span class="math inline">\(f_x\)</span>, and we can write the expectation as <span class="math display">\[
+\Er X = \int_{R} x f_x(x) d\lambda(x).
+\]</span></p>
+<p>For any measurable function <span class="math inline">\(g\)</span>, we can define <span class="math inline">\(\mathcal{E}_X: \{measurable functions\} \to \R\)</span> by <span class="math inline">\(\mathcal{E}_X(g) = \Er[g(X)]\)</span>. We could call this the expectation functional of <span class="math inline">\(X\)</span>. Taking <span class="math inline">\(g = 1\{X \leq x\}\)</span> for <span class="math inline">\(x \in \R\)</span>, we can recover the CDF, $F_X(x) = _X(1{X x }). Thus, the expectation functional is a third way, along with the CDF and probability measure, to describe the distribution of <span class="math inline">\(X\)</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -395,6 +454,26 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Proof:</p>
+<ul>
+<li><span class="math inline">\(\Er[(X-Y)^2] \geq 0\)</span>, so</li>
+<li><span class="math inline">\(2\Er[XY] \leq \Er[X^2] + \Er[Y^2]\)</span></li>
+<li><span class="math inline">\(\Er[XY] = \Er[\lambda X \lambda^{-1}Y]\)</span>, so</li>
+<li><span class="math inline">\(2\Er[XY] \leq \lambda^2 \Er[X^2] + \lambda^{-2} \Er[Y^2]\)</span></li>
+<li>set <span class="math inline">\(\lambda^2 = \sqrt{\Er[X^2]/\Er[Y^2]}\)</span></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="dependence-and-information" class="title-slide slide level1 center">
@@ -410,6 +489,19 @@ F(t)=P_{X}\left( (-\infty ,t]\right) .
 <li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}\)</span></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>Explain some simple example(s).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="information" class="slide level2">
 <h2>Information</h2>
@@ -498,6 +590,19 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Show some simple example(s).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="random-vectors" class="slide level2">
 <h2>Random Vectors</h2>

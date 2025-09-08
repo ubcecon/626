@@ -4,14 +4,14 @@
     "href": "syllabus626.html",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 2:30pm-3:20pm Iona 112\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306\nTutorial: Wednesday 12:30pm - 1:50pm, Buchanan D214\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nAris Spanos (2019) Probability Theory and Statistical Inference: Empirical Modeling with Observational Data\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
+    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Tuesdays 11:30am-12:20pm Iona 112\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306\nTutorial: Wednesday 12:30pm - 1:50pm, Buchanan D214\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nAris Spanos (2019) Probability Theory and Statistical Inference: Empirical Modeling with Observational Data\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
   },
   {
     "objectID": "syllabus626.html#basic-information",
     "href": "syllabus626.html#basic-information",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "",
-    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Wednesday 2:30pm-3:20pm Iona 112\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306\nTutorial: Wednesday 12:30pm - 1:50pm, Buchanan D214\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nAris Spanos (2019) Probability Theory and Statistical Inference: Empirical Modeling with Observational Data\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
+    "text": "Paul Schrimpf\n112 Iona\npaul.schrimpf@ubc.ca\nOffice Hours: Tuesdays 11:30am-12:20pm Iona 112\n\n\n\nBo-Yu Chen\nboyu0721@student.ubc.ca\nOffice Hours: TBA \n\n\n\nLecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306\nTutorial: Wednesday 12:30pm - 1:50pm, Buchanan D214\n\n\n\nOur primary textbook will be notes written by Kyunchul Song. You can find them on Canvas. Other recommended (but not required) textbooks include:\n\nAris Spanos (2019) Probability Theory and Statistical Inference: Empirical Modeling with Observational Data\nBruce Hansen (2022) Probability and Statistics for Economists and Econometrics\nFumio Hayashi (2000) Econometrics\nGeorge Casella and Roger L. Berger (2002) Statistical Inference\nTakeshi Amemiya (1985) Advanced Econometrics"
   },
   {
     "objectID": "syllabus626.html#grading",
@@ -816,7 +816,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5503113654768726\n -0.15936843176383975\n -0.3392158204909951"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\n\n3-element Vector{Float64}:\n  0.5416847120186464\n -0.14249888186582535\n -0.3640781436849894"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-3",

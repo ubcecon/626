@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.34">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2025-09-08">
+  <meta name="dcterms.date" content="2025-09-10">
   <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -158,7 +158,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2025-09-08</p>
+  <p class="date">2025-09-10</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -374,17 +374,17 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>The <strong>expection</strong> of <span class="math inline">\(X\)</span> is <span class="math inline">\(\Er X = \int_\Omega x dP\)</span></p>
+<p>The <strong>expection</strong> of <span class="math inline">\(X\)</span> is <span class="math inline">\(\Er [X] = \int_\Omega x dP\)</span></p>
 </div>
 </div>
 </div>
 <ul>
-<li><span class="math inline">\(\Er X = \int_{\R} x dP_X(x)\)</span></li>
-<li>positive: <span class="math inline">\(X \geq 0\)</span> implies <span class="math inline">\(\Er X \geq 0\)</span></li>
-<li>linear : <span class="math inline">\(\Er[aX + bY] = a \Er X + b \Er Y\)</span></li>
+<li><span class="math inline">\(\Er [X] = \int_{\R} x dP_X(x)\)</span></li>
+<li>positive semi-definite: <span class="math inline">\(X \geq 0\)</span> implies <span class="math inline">\(\Er [X] \geq 0\)</span></li>
+<li>linear : <span class="math inline">\(\Er[aX + bY] = a \Er [X] + b \Er [Y]\)</span></li>
 </ul>
 <aside class="notes">
-<p>If <span class="math inline">\(X\)</span> is continuous, i.e.&nbsp;<span class="math inline">\(P_X &lt;&lt; \lambda\)</span> where <span class="math inline">\(\lambda\)</span> is Lesbegue measure, then there is a Radon-Nikodym derivative, <span class="math inline">\(f_x\)</span>, and we can write the expectation as <span class="math display">\[
+<p>If <span class="math inline">\(X\)</span> is continuous, i.e.&nbsp;<span class="math inline">\(P_X &lt;&lt; \lambda\)</span> where <span class="math inline">\(\lambda\)</span> is Lebesgue measure, then there is a Radon-Nikodym derivative, <span class="math inline">\(f_x\)</span>, and we can write the expectation as <span class="math display">\[
 \Er X = \int_{R} x f_x(x) d\lambda(x).
 \]</span></p>
 <p>For any measurable function <span class="math inline">\(g\)</span>, we can define <span class="math inline">\(\mathcal{E}_X: \{measurable functions\} \to \R\)</span> by <span class="math inline">\(\mathcal{E}_X(g) = \Er[g(X)]\)</span>. We could call this the expectation functional of <span class="math inline">\(X\)</span>. Taking <span class="math inline">\(g = 1\{X \leq x\}\)</span> for <span class="math inline">\(x \in \R\)</span>, we can recover the CDF, $F_X(x) = _X(1{X x }). Thus, the expectation functional is a third way, along with the CDF and probability measure, to describe the distribution of <span class="math inline">\(X\)</span>.</p>
@@ -418,6 +418,20 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Follows from <span class="math inline">\(1\{|X|&gt;\epsilon\} \leq \frac{|X|^k}{\epsilon^k}\)</span>.</p>
+<p>Example to get LLN.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="jensens" class="slide level2">
 <h2>Jensen’s</h2>
@@ -441,6 +455,19 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>To show Jensen’s inequality note that convexity implies that for any <span class="math inline">\(x_0\)</span>, <span class="math inline">\(\exists c\)</span> s.t. <span class="math inline">\(g(x) \geq g(x_0) + c(x-x_0)\)</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="cauchy-schwarz" class="slide level2">
 <h2>Cauchy-Schwarz</h2>

@@ -351,7 +351,7 @@ Show that for all $f \geq 0$,
 ## Measurable Functions
 
 - If $f$ is measurable, let $f^{+} = \max\{f, 0\}$ and
-$f^{-} = \max\{-f, 0\}$ and define the *Lesbegue integral*
+$f^{-} = \max\{-f, 0\}$ and define the *Lebesgue integral*
 
 $$ \int f d\mu = \int f^{+} d\mu - \int f^{-} d\mu $$
 

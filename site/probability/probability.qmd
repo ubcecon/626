@@ -19,7 +19,7 @@ bibliography: ../626.bib
 ## Reading
 
 - **@song2021 chapter 2** (which is the basis for these slides)
-- @spanos chapters 2 & 3
+- @spanos2019 chapters 2 & 3
 - @pollard2002
 
 
@@ -187,17 +187,17 @@ Show that when $X$ is continuous, its CDF is a continuous function
 
 ### Definition
 
-The **expection** of $X$ is $\Er X = \int_\Omega x dP$
+The **expection** of $X$ is $\Er [X] = \int_\Omega x dP$
 
 :::
 
-- $\Er X = \int_{\R} x dP_X(x)$
-- positive: $X \geq 0$ implies $\Er X \geq 0$
-- linear : $\Er[aX + bY] = a \Er X + b \Er Y$
+- $\Er [X] = \int_{\R} x dP_X(x)$
+- positive semi-definite: $X \geq 0$ implies $\Er [X] \geq 0$
+- linear : $\Er[aX + bY] = a \Er [X] + b \Er [Y]$
 
 ::: {.notes}
 
-If $X$ is continuous, i.e. $P_X << \lambda$ where $\lambda$ is Lesbegue measure, then there is a Radon-Nikodym derivative, $f_x$, and we can write the expectation as
+If $X$ is continuous, i.e. $P_X << \lambda$ where $\lambda$ is Lebesgue measure, then there is a Radon-Nikodym derivative, $f_x$, and we can write the expectation as
 $$
 \Er X = \int_{R} x f_x(x) d\lambda(x).
 $$
@@ -221,6 +221,14 @@ $P(|X|>\epsilon) \leq \frac{\Er[|X|^k]}{\epsilon^k}$
 $\forall \epsilon > 0, k > 0$
 :::
 
+::: {.notes}
+
+Follows from $1\{|X|>\epsilon\} \leq \frac{|X|^k}{\epsilon^k}$.
+
+Example to get LLN.
+
+:::
+
 ## Jensen's
 
 ::: {.callout-warning icon=false}
@@ -237,6 +245,13 @@ $g(\Er X) \leq \Er[g(X)]$
 ### Exercise
 
 Show $\Er[|X|^p] \leq \left(\Er[|X|^q] \right)^{p/q}$ for all $0 < p \leq q$.
+
+:::
+
+::: {.notes}
+
+To show Jensen's inequality note that convexity implies that for any
+$x_0$, $\exists c$ s.t. $g(x) \geq g(x_0) + c(x-x_0)$
 
 :::
 

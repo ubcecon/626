@@ -10,3 +10,5 @@
 /grades
 /site
 /.quarto/
+.aider*
+.juliahistory

@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Paul Schrimpf">
   <meta name="dcterms.date" content="2024-11-06">
@@ -116,7 +116,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0c8acc74dca0c2faaedea4940f202713.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -366,7 +366,7 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 <div id="2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a></a><span class="im">using</span> <span class="bu">Statistics</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a></a><span class="im">using</span> <span class="bu">Statistics</span></span>
 <span id="cb1-2"><a></a><span class="kw">function</span> <span class="fu">assigntreat</span>(n,T;portiontreated<span class="op">=</span><span class="fu">vcat</span>(<span class="fu">zeros</span>(T <span class="op">÷</span> <span class="fl">2</span>), <span class="fl">0.5</span>, <span class="fu">zeros</span>(T <span class="op">-</span> (T <span class="op">÷</span> <span class="fl">2</span>) <span class="op">-</span> <span class="fl">1</span>)))</span>
 <span id="cb1-3"><a></a>  treated <span class="op">=</span> <span class="fu">falses</span>(n,T)</span>
 <span id="cb1-4"><a></a>  <span class="cf">for</span> t<span class="op">=</span><span class="fl">2</span><span class="op">:</span>T</span>
@@ -387,7 +387,7 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 <span id="cb1-19"><a></a>T <span class="op">=</span> <span class="fl">9</span></span>
 <span id="cb1-20"><a></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T)</span>
 <span id="cb1-21"><a></a>y <span class="op">=</span> <span class="fu">randn</span>(n,T)</span>
-<span id="cb1-22"><a></a><span class="fu">sum</span>(y<span class="op">.*</span><span class="fu">weights</span>(D))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a></a><span class="fu">sum</span>(y<span class="op">.*</span><span class="fu">weights</span>(D))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>0.007077771753723077</code></pre>
@@ -396,11 +396,11 @@ y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}
 <div id="4" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a></a>n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a></a>n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
 <span id="cb3-2"><a></a><span class="im">using</span> <span class="bu">DataFrames</span>, <span class="bu">FixedEffectModels</span>, <span class="bu">RegressionTables</span></span>
 <span id="cb3-3"><a></a>df <span class="op">=</span> <span class="fu">DataFrame</span>(id <span class="op">=</span> <span class="fu">vec</span>((<span class="fl">1</span><span class="op">:</span>n)<span class="fu">*ones</span>(<span class="dt">Int</span>,T)<span class="ch">'), t = vec(ones(Int,n)*(1:T)'</span>), y <span class="op">=</span> <span class="fu">vec</span>(y), D<span class="op">=</span><span class="fu">vec</span>(D))</span>
 <span id="cb3-4"><a></a>m<span class="op">=</span><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span>
-<span id="cb3-5"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>
@@ -426,7 +426,7 @@ Within-R2            0.000
 <div id="6" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a></a><span class="im">using</span> <span class="bu">PlotlyLight</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a></a><span class="im">using</span> <span class="bu">PlotlyLight</span></span>
 <span id="cb5-2"><a></a></span>
 <span id="cb5-3"><a></a><span class="kw">function</span> <span class="fu">plotp</span>(D; width<span class="op">=</span><span class="fl">900</span>, height<span class="op">=</span><span class="fl">300</span>)</span>
 <span id="cb5-4"><a></a>  n,T<span class="op">=</span><span class="fu">size</span>(D)</span>
@@ -441,7 +441,7 @@ Within-R2            0.000
 <span id="cb5-13"><a></a><span class="kw">end</span></span>
 <span id="cb5-14"><a></a></span>
 <span id="cb5-15"><a></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
-<span id="cb5-16"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-16"><a></a>pfig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;2iwLH6harR&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;2iwLH6harR&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.512,0.512,0.512,0.512,0.512]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
@@ -453,7 +453,7 @@ Within-R2            0.000
 <div id="8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a><span class="kw">function</span> <span class="fu">plotweights</span>(D; width<span class="op">=</span><span class="fl">900</span>, height<span class="op">=</span><span class="fl">300</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a><span class="kw">function</span> <span class="fu">plotweights</span>(D; width<span class="op">=</span><span class="fl">900</span>, height<span class="op">=</span><span class="fl">300</span>)</span>
 <span id="cb6-2"><a></a>  n,T <span class="op">=</span> <span class="fu">size</span>(D)</span>
 <span id="cb6-3"><a></a>  ω <span class="op">=</span> <span class="fu">weights</span>(D)</span>
 <span id="cb6-4"><a></a>  groups <span class="op">=</span> <span class="fu">unique</span>(<span class="fu">eachrow</span>(D))</span>
@@ -473,7 +473,7 @@ Within-R2            0.000
 <span id="cb6-18"><a></a>  <span class="cf">return</span>(fig)</span>
 <span id="cb6-19"><a></a><span class="cf">end</span></span>
 <span id="cb6-20"><a></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
-<span id="cb6-21"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-21"><a></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;HZIKdLBDnY&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;HZIKdLBDnY&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0005122950819672129,0.0005122950819672129,0.0005122950819672129,0.0005122950819672129,-0.0004098360655737704,-0.0004098360655737704,-0.0004098360655737704,-0.0004098360655737704,-0.0004098360655737704],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0004882812499999999,-0.0004882812499999999,-0.0004882812499999999,-0.0004882812499999999,0.0003906249999999998,0.0003906249999999998,0.0003906249999999998,0.0003906249999999998,0.0003906249999999998],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
@@ -485,9 +485,9 @@ Within-R2            0.000
 <div id="10" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T,portiontreated<span class="op">=</span><span class="fu">vcat</span>(<span class="fl">0</span>,<span class="fu">fill</span>(<span class="fl">0.5</span><span class="op">/</span>(T<span class="op">-</span><span class="fl">1</span>),T<span class="op">-</span><span class="fl">1</span>)))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T,portiontreated<span class="op">=</span><span class="fu">vcat</span>(<span class="fl">0</span>,<span class="fu">fill</span>(<span class="fl">0.5</span><span class="op">/</span>(T<span class="op">-</span><span class="fl">1</span>),T<span class="op">-</span><span class="fl">1</span>)))</span>
 <span id="cb7-2"><a></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
-<span id="cb7-3"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a></a>pfig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;bG9AIZuRnZ&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;bG9AIZuRnZ&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.068,0.11,0.165,0.221,0.26,0.314,0.352,0.395]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
@@ -499,8 +499,8 @@ Within-R2            0.000
 <div id="12" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
-<span id="cb8-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
+<span id="cb8-2"><a></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;yFzoDcZzRS&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;yFzoDcZzRS&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0004122029569275245,0.0002783736679940258,0.00019571440129980604,8.747012348594681e-5,-2.2742232106346208e-5,-9.949726546526458e-5,-0.00020577346550069,-0.0002805604210811745,-0.0003651877655538282],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.00046249827793194394,-0.0005963275668654427,-0.0006789868335596624,-0.0007872311113735217,-0.0008974434669658146,0.0009938792781090712,0.0008876030780736456,0.0008128161224931612,0.0007281887780205076],&quot;name&quot;:&quot;Treated 4 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0011185242040765455,-0.001252353493010044,0.0006330650187295403,0.000524820740915681,0.00041460838532338806,0.00033785335196446966,0.00023157715192904412,0.00015679019634855972,7.216285187590607e-5],&quot;name&quot;:&quot;Treated 7 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0006811735866468112,-0.00081500287558031,-0.0008976621422745295,-0.001005906420088389,0.0008519590027531223,0.0007752039693942038,0.0006689277693587783,0.0005941408137782939,0.0005095134693056403],&quot;name&quot;:&quot;Treated 5 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.00019352764821265738,5.969835927915871e-5,-2.2960907415061033e-5,-0.00013120518522892024,-0.00024141754082121337,-0.0003181725741801317,-0.0004244487742155571,-0.0004992357297960416,0.001384214704165109],&quot;name&quot;:&quot;Treated 1 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0013371995127914123,0.000497048976708893,0.0004143897100146733,0.000306145432200814,0.00019593307660852106,0.00011917804324960263,1.2901843214177122e-5,-6.188511236630728e-5,-0.00014651245683896093],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.0008998488953616781,-0.0010336781842951767,-0.0011163374509893967,0.0007434960496305482,0.0006332836940382553,0.0005565286606793369,0.00045025246064391136,0.00037546550506342696,0.0002908381605907733],&quot;name&quot;:&quot;Treated 6 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.00024382296921707683,-0.00037765225815057554,-0.00046031152484479526,-0.0005685558026586545,-0.0006787681582509476,-0.0007555231916098658,0.0011062783867885125,0.0010314914312080283,0.0009468640867353746],&quot;name&quot;:&quot;Treated 3 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-2.5147660502209718e-5,-0.0001589769494357084,-0.00024163621612992815,-0.00034988049394378746,-0.00046009284953608037,-0.0005368478828949988,-0.000643124082930424,0.0012501667399228953,0.0011655393954502417],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
@@ -512,12 +512,12 @@ Within-R2            0.000
 <div id="14" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a></a>pt <span class="op">=</span> <span class="fu">zeros</span>(T)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a></a>pt <span class="op">=</span> <span class="fu">zeros</span>(T)</span>
 <span id="cb9-2"><a></a>pt[<span class="fl">2</span>] <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
 <span id="cb9-3"><a></a>pt[<span class="kw">end</span><span class="op">-</span><span class="fl">1</span>]<span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
 <span id="cb9-4"><a></a>D <span class="op">=</span> <span class="fu">assigntreat</span>(n,T,portiontreated<span class="op">=</span>pt)</span>
 <span id="cb9-5"><a></a>pfig <span class="op">=</span> <span class="fu">plotp</span>(D)</span>
-<span id="cb9-6"><a></a>pfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a></a>pfig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;dvAiCDA4ao&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;dvAiCDA4ao&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.344,0.344,0.344,0.344,0.344,0.344,0.551,0.551]},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Portion Treated&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
@@ -529,8 +529,8 @@ Within-R2            0.000
 <div id="16" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
-<span id="cb10-2"><a></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a></a>fig <span class="op">=</span> <span class="fu">plotweights</span>(D)</span>
+<span id="cb10-2"><a></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;FpRcjxqtQs&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;FpRcjxqtQs&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.000829100972766416,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,1.833135441997773e-5,-0.00046954454964314086,-0.00046954454964314086],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[-0.001265910960945311,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,0.0002802078461339437,-0.00020766805792917488,-0.00020766805792917488],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.00030534798933848427,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,-0.0005054216290079539,0.0013635908923546201,0.0013635908923546201],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;weight&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
@@ -545,7 +545,7 @@ Within-R2            0.000
 <div id="18" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a></a>pt <span class="op">=</span> <span class="fu">zeros</span>(T)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a></a>pt <span class="op">=</span> <span class="fu">zeros</span>(T)</span>
 <span id="cb11-2"><a></a>pt[<span class="fl">2</span>] <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
 <span id="cb11-3"><a></a>pt[<span class="kw">end</span><span class="op">-</span><span class="fl">1</span>]<span class="op">=</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span></span>
 <span id="cb11-4"><a></a></span>
@@ -584,7 +584,7 @@ Within-R2            0.000
 <span id="cb11-37"><a></a>  <span class="cf">return</span>(fig)</span>
 <span id="cb11-38"><a></a><span class="kw">end</span></span>
 <span id="cb11-39"><a></a></span>
-<span id="cb11-40"><a></a><span class="fu">plotGAT</span>(ATT,D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-40"><a></a><span class="fu">plotGAT</span>(ATT,D)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe srcdoc="<html><head><meta charset=&quot;utf-8&quot;><meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;><meta name=&quot;description&quot; content=&quot;PlotlyLight.jl&quot;><title>PlotlyLight.jl</title><style>html, body { padding: 0px; margin: 0px; } /* remove scrollbar in iframe */</style></head><body><div class=&quot;plotlylight-parent-div&quot;><script src=&quot;https://cdn.plot.ly/plotly-2.35.2.min.js&quot; charset=&quot;utf-8&quot;></script><div style=&quot;height:100vh;width:100vw;&quot; id=&quot;90grcIjY0D&quot; class=&quot;plotlylight-plot-div&quot;></div><script>Plotly.newPlot(&quot;90grcIjY0D&quot;, [{},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],&quot;name&quot;:&quot;Treated 0 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,1.0,1.0,1.0,1.0,1.0,1.0,10.0,10.0],&quot;name&quot;:&quot;Treated 8 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{&quot;x&quot;:[1,2,3,4,5,6,7,8,9],&quot;y&quot;:[0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0],&quot;name&quot;:&quot;Treated 2 times&quot;,&quot;mode&quot;:&quot;markers&quot;,&quot;type&quot;:&quot;scatter&quot;},{}], {&quot;xaxis&quot;:{&quot;title&quot;:&quot;time&quot;,&quot;tickvals&quot;:[1,2,3,4,5,6,7,8,9]},&quot;yaxis&quot;:{&quot;title&quot;:&quot;ATT&quot;},&quot;autosize&quot;:false,&quot;width&quot;:900,&quot;height&quot;:300}, {&quot;responsive&quot;:true})</script></div></body></html>" style="min-width:350px;height:100%;display:block;border:none;min-height:350px;width:100%"></iframe>
@@ -597,8 +597,8 @@ Within-R2            0.000
 <li>Fixed Effects Estimate</li>
 </ul>
 <div id="20" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span>
-<span id="cb12-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(df, <span class="pp">@formula</span>(y <span class="op">~</span> D <span class="op">+</span> <span class="fu">fe</span>(t) <span class="op">+</span> <span class="fu">fe</span>(id)))</span>
+<span id="cb12-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>
 ----------------------------
@@ -680,7 +680,7 @@ ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - 
 <div id="22" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a></a><span class="im">using</span> <span class="bu">CategoricalArrays</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a></a><span class="im">using</span> <span class="bu">CategoricalArrays</span></span>
 <span id="cb14-2"><a></a></span>
 <span id="cb14-3"><a></a><span class="kw">function</span> <span class="fu">createCohorts</span>(df)</span>
 <span id="cb14-4"><a></a>  n <span class="op">=</span> <span class="fu">length</span>(<span class="fu">unique</span>(df.id))</span>
@@ -705,7 +705,7 @@ ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - 
 <span id="cb14-23"><a></a>  df</span>
 <span id="cb14-24"><a></a><span class="kw">end</span></span>
 <span id="cb14-25"><a></a></span>
-<span id="cb14-26"><a></a>dfc <span class="op">=</span> <span class="fu">createCohorts</span>(df);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-26"><a></a>dfc <span class="op">=</span> <span class="fu">createCohorts</span>(df);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -714,8 +714,8 @@ ATT_{t,t-s}&amp; = \Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \Er[y_{it} - 
 <div id="24" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> DCt <span class="op">+</span> <span class="fu">fe</span>(id) <span class="op">+</span> <span class="fu">fe</span>(t)))</span>
-<span id="cb15-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> DCt <span class="op">+</span> <span class="fu">fe</span>(id) <span class="op">+</span> <span class="fu">fe</span>(t)))</span>
+<span id="cb15-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>
@@ -759,8 +759,8 @@ Within-R2              1.000
 <div id="26" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> cohort<span class="op">*</span>ct <span class="op">+</span> <span class="fu">fe</span>(id)), save<span class="op">=:</span>fe)</span>
-<span id="cb17-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a></a>m<span class="op">=</span><span class="fu">reg</span>(dfc, <span class="pp">@formula</span>(y <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> cohort<span class="op">*</span>ct <span class="op">+</span> <span class="fu">fe</span>(id)), save<span class="op">=:</span>fe)</span>
+<span id="cb17-2"><a></a><span class="fu">regtable</span>(m, render<span class="op">=</span><span class="fu">AsciiTable</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ Info: RHS-variable cohort: 2 is collinear with the fixed effects.
@@ -1203,7 +1203,7 @@ Wooldridge, Jeffrey M. 2005. <span>“<span class="nocase">Fixed-Effects and Rel
         maxScale: 3,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1277,13 +1277,14 @@ Wooldridge, Jeffrey M. 2005. <span>“<span class="nocase">Fixed-Effects and Rel
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

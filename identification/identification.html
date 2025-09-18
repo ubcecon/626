@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-12-14">
+  <meta name="dcterms.date" content="2025-09-17">
   <title>ECON 626 – Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -29,6 +29,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -50,7 +116,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0c8acc74dca0c2faaedea4940f202713.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -164,7 +230,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-12-14</p>
+  <p class="date">2025-09-17</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -193,8 +259,32 @@ Paul Schrimpf
           display:block!important;
       }</style></aside>
 </section>
+<section>
 <section id="identification" class="title-slide slide level1 center">
 <h1>Identification</h1>
+
+</section>
+<section id="the-identification-problem" class="slide level2">
+<h2>The Identification Problem</h2>
+<ul>
+<li>We have an <strong>economic model</strong> that describes how the world works. This model has <strong>parameters</strong> we care about (<span class="math inline">\(\theta_0\)</span>).</li>
+<li>We have <strong>data</strong>, which we view as a sample from some probability distribution (<span class="math inline">\(P_X\)</span>).</li>
+</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The Question of Identification</strong></p>
+</div>
+<div class="callout-content">
+<p>Can we learn the true value of the parameter <span class="math inline">\(\theta_0\)</span> if we knew the true distribution of the data <span class="math inline">\(P_X\)</span>?</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Identification is a conceptual problem about what is possible with infinite data.</li>
+<li>It is distinct from <strong>estimation</strong>, which is the problem of how to learn about <span class="math inline">\(\theta_0\)</span> from a finite sample.</li>
+<li>Identification must come before estimation.</li>
+</ul>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -209,8 +299,23 @@ Paul Schrimpf
 </div>
 </div>
 </div>
-</section>
-
+<aside class="notes">
+<p>The motivating idea here is we observe data. We do not know exactly the distribution of the data, <span class="math inline">\(P_X\)</span>, but we are willing to assume it comes from some collection of distributions, <span class="math inline">\(\mathcal{P}\)</span>. For example, suppose the data is the result of flipping a possibly biased coin <span class="math inline">\(n\)</span> times. Then we could have <span class="math display">\[
+\mathcal{P} = \{ (\{0,1\}, 2^\{0,1\}, P(1) = p )^n : p \in [0,1] \}
+\]</span> where the probability space to the <span class="math inline">\(n\)</span> means the product space as constructed in the last question on problem set 1.</p>
+<p><span class="math inline">\(\theta_0\)</span> is some parameter of interest related to <span class="math inline">\(P_X\)</span>. In the example, there is not for <span class="math inline">\(\theta_0\)</span> to be other than <span class="math inline">\(p\)</span>, but in general <span class="math inline">\(\theta_0\)</span> could be some aspect of <span class="math inline">\(P_X\)</span> that we especially care about instead of a complete description of it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
 <section>
 <section id="examples" class="title-slide slide level1 center">
 <h1>Examples</h1>
@@ -224,6 +329,19 @@ Paul Schrimpf
 \]</span> in <span class="math inline">\(\mathcal{P} = \{P : \int x dP(x) &lt; \infty \}\)</span></p></li>
 <li class="fragment"><p>Generally, descriptive statistics identified in a broad probability model with just regularity restrictions to ensure the statistics exist</p></li>
 </ul>
+<aside class="notes">
+<p>In this example, the probability model, <span class="math inline">\(\mathcal{P}\)</span>, is a very large collection of distributions. This constrasts with the previous, biased-coin flipping, example where we could describe each element of <span class="math inline">\(\mathcal{P}\)</span> with a single number.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="example-linear-model" class="slide level2">
 <h2>Example: Linear Model</h2>
@@ -287,10 +405,17 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </ul>
 <div class="fragment">
 <ul>
-<li>Is <span class="math inline">\(u \sim N(0,1)\)</span> innocuous?</li>
+<li><p>Is <span class="math inline">\(u \sim N(0,1)\)</span> innocuous?</p>
+<ul>
+<li>Suppose <span class="math inline">\(\theta_0 = \int \frac{\partial E[Y|X=x]}{dx} dP_X(x)\)</span> (the average marginal effect or average derivative)</li>
+</ul></li>
 </ul>
 </div>
 <aside class="notes">
+<p>As, an aside, what the heck does <span class="math inline">\(\frac{\partial E[Y|X=x]}{dx}\)</span> even mean? <span class="math inline">\(E[Y|X=x]\)</span> is only unique almost everywhere, so we could pick a version that is not differentiable. One approach to just declare that we always work with the smoothest version of <span class="math inline">\(E[Y|X=x]\)</span> and hope everything is okay. This mostly works in practice. But, the technically correct construction is that <span class="math inline">\(\frac{\partial E[Y|X=x]}{dx}\)</span> is a <em>weak derivative</em>, i.e.&nbsp;it satisfies an integration by parts formula. Suppose <span class="math inline">\(f\)</span> is differentiable in the usual sense with <span class="math inline">\(f(a)=f(b)=0\)</span>, then integration by parts says <span class="math display">\[
+\int_a^b E[Y|X=x] \frac{df}{dx}(x) dP_X(x) = \int_a^b \frac{\partial E[Y|X=x]}{dx} f(x) dP_X(x)
+\]</span> We define <span class="math inline">\(\frac{\partial E[Y|X=x]}{dx}\)</span> as the unique (almost everywhere) function that satisfies this equation for all such <span class="math inline">\(f\)</span>.</p>
+<p>Anyway, some calculation will show that the average marginal effect is unaffected by change from <span class="math inline">\(N(0,1)\)</span> to <span class="math inline">\(N(\mu, \sigma^2)\)</span>.</p>
 <p>More generally, think about importance of statistical assumptions in terms of how they affect identifiable quantities and counterfactuals of interest.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -322,193 +447,6 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </ul>
 </section></section>
 <section>
-<section id="causal-diagrams" class="title-slide slide level1 center">
-<h1>Causal Diagrams</h1>
-
-</section>
-<section id="causal-diagrams-1" class="slide level2">
-<h2>Causal Diagrams</h2>
-<ul>
-<li>Originate with Wright around 1920, e.g. <span class="citation" data-cites="wright1934">Wright (<a href="#/references" role="doc-biblioref" onclick="">1934</a>)</span></li>
-<li>Recently advocated by Pearl, e.g. <span class="citation" data-cites="pearl2015">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <span class="citation" data-cites="pearl2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
-<li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> or <a href="https://www.causalml-book.org/">CausalMLBook</a> chapters 7 and 8</li>
-<li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
-<ul>
-<li>e.g. <span class="citation" data-cites="chernozhukov2021">Victor Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="example-regression" class="slide level2">
-<h2>Example: Regression</h2>
-<!-- ```{r, engine = 'tikz'} -->
-<!--  \usetikzlibrary{positioning} -->
-<!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
-<!--                      obs/.style={circle, draw,black, text=black}] -->
-<!--  \node[obs] (X){$X_i$}; -->
-<!--  \node[obs] (Y) [right=of X] {$Y_i$}; -->
-<!--  \node(E) [below=of Y]{$\epsilon_i$}; -->
-<!--  \path[->] (X) edge (Y); -->
-<!--  \path[->] (E) edge[dashed] (Y); -->
-<!--  \end{tikzpicture} -->
-<!-- ``` -->
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-fig-height="2" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    X --&gt; Y
-    ϵ -.-&gt; Y
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Arrow means <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span></li>
-<li>Dashed arrow means <span class="math inline">\(\epsilon\)</span> causes <span class="math inline">\(Y\)</span> and is unobserved (not universal, often dashed box around <span class="math inline">\(\epsilon\)</span> instead)</li>
-<li>Lack of connection between <span class="math inline">\(X\)</span> and <span class="math inline">\(\epsilon\)</span> means they are independent</li>
-</ul>
-</section>
-<section id="example-regression-1" class="slide level2">
-<h2>Example: Regression</h2>
-<p>If you believe:</p>
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    subgraph " Y"
-        Y[Wage]
-    end
-    subgraph X
-       E[Education] --&gt; Y
-       T[SAT] --&gt; E
-       F[Family SES] --&gt; E
-       F --&gt; Y
-    end
-    subgraph ϵ
-        I[Intelligence] -.-&gt; Y
-        L[Luck] -.-&gt; Y
-        I -.-&gt; T
-    end
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>then regression <span class="math inline">\(Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon\)</span> identifies causal effect of education on wages</p>
-</section>
-<section id="example-regression-2" class="slide level2">
-<h2>Example: Regression</h2>
-<p>But reality is likely more complex …</p>
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-   subgraph " Y"
-        Y[Wage]
-   end
-   subgraph X
-       E[Education] --&gt; Y
-       T[SAT] --&gt; E
-       F[Family SES] --&gt; E
-       F --&gt; Y
-   end
-   subgraph ϵ
-        I[Intelligence] -.-&gt; Y
-        L[Luck] -.-&gt; Y
-        G[Grit] -.-&gt; Y
-        G -.-&gt; E
-        L -.-&gt; E
-        I -.-&gt; T
-        I -.-&gt; E
-        I -.-&gt; G
-        G -.-&gt; I
-   end
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="example-potential-outcomes-1" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    u -.-&gt; D
-    X --&gt; Y
-    X --&gt; D
-    D --&gt; Y
-    ϵ -.-&gt; Y
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="example-potential-outcomes-2" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<div class="cell" data-reveal="true" data-fig-width="8" data-fig-height="6" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    subgraph Treatment
-        D[Naloxone distribution site opens]
-    end
-    subgraph Outcome
-        Y[ER visits for overdose]
-    end
-    u -.-&gt; D
-    D --&gt; Y
-    ϵ -.-&gt; Y
-    subgraph X
-        Income --&gt; Y
-        Unemployment --&gt; Y
-        Income --&gt; D
-        Unemployment --&gt; D
-        OD[OD rate prior to opening] --&gt; Y
-        OD --&gt; D
-        Crime --&gt; Y
-        Crime --&gt; D
-    end
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="more-on-causal-graphs" class="slide level2">
-<h2>More on Causal Graphs</h2>
-<ul>
-<li class="fragment">Given a graph, what can be identified?
-<ul>
-<li class="fragment"><span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are d-separated by a collection of nodes <span class="math inline">\(S\)</span> if there are no paths between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> except through <span class="math inline">\(S\)</span></li>
-<li class="fragment">d-separation implies conditional independence <span class="math inline">\(Y \perp X | S\)</span></li>
-</ul></li>
-<li class="fragment">Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)
-<ul>
-<li class="fragment">Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible</li>
-<li class="fragment">But neighborhood of exceptions is large, so causal discovery very difficult</li>
-</ul></li>
-<li class="fragment"><span class="citation" data-cites="causalmlbook">V. Chernozhukov et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>, especially chapters 7 &amp; 8</li>
-</ul>
-</section></section>
-<section>
 <section id="reintrepretation-of-estimators" class="title-slide slide level1 center">
 <h1>Reintrepretation of Estimators</h1>
 
@@ -524,7 +462,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </ul></li>
 </ul>
 </section>
-<section id="example-regression-3" class="slide level2">
+<section id="example-regression" class="slide level2">
 <h2>Example: Regression</h2>
 <ul>
 <li>In linear model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span>, if just assume <span class="math inline">\(\Er[X X']\)</span> invertible,</li>
@@ -537,7 +475,7 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 \]</span></li>
 </ul>
 </section>
-<section id="example-regression-4" class="slide level2">
+<section id="example-regression-1" class="slide level2">
 <h2>Example: Regression</h2>
 <ul>
 <li>If relevant moments exist (no linear model required) population regression solves <span class="math display">\[
@@ -552,15 +490,24 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <li><p>In example below, <span class="math inline">\(\Er[Y|x_1=1, x_2] &gt; \Er[Y|x_1=0,x_2]\)</span>, but <span class="math inline">\(\beta_1 &lt; 0\)</span></p></li>
 </ul>
 <div id="2" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a></a>n <span class="op">=</span> <span class="fl">100_000</span></span>
+<span id="cb1-3"><a></a><span class="fu">EYX</span>(x) <span class="op">=</span> x[<span class="fl">2</span>]<span class="op">&gt;</span><span class="fl">0</span> ? <span class="op">-</span><span class="fl">1.0</span> <span class="op">+</span> <span class="fl">1.0</span><span class="op">*</span>x[<span class="fl">1</span>] <span class="op">:</span> (<span class="fl">1.0</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span>x[<span class="fl">1</span>])</span>
+<span id="cb1-4"><a></a>x2 <span class="op">=</span> <span class="fu">randn</span>(n)</span>
+<span id="cb1-5"><a></a>x1 <span class="op">=</span> (x2<span class="op">*</span><span class="fl">3</span> <span class="op">+</span> <span class="fu">randn</span>(n) <span class="op">.&gt;</span> <span class="fl">0</span>)</span>
+<span id="cb1-6"><a></a>X <span class="op">=</span> <span class="fu">hcat</span>(x1,x2)</span>
+<span id="cb1-7"><a></a>y <span class="op">=</span> <span class="fu">EYX</span>.(<span class="fu">eachrow</span>(X)) <span class="op">+</span> <span class="fu">randn</span>(n)</span>
+<span id="cb1-8"><a></a>X <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">ones</span>(n), X)</span>
+<span id="cb1-9"><a></a>β <span class="op">=</span> (X<span class="op">'*</span>X) <span class="op">\</span> (X<span class="op">'*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3-element Vector{Float64}:
-  0.547126677408277
- -0.16213764722093657
- -0.36138404622282255</code></pre>
+  0.5204798315141062
+ -0.13815508758898998
+ -0.3590473098316015</code></pre>
 </div>
 </div>
 </section>
-<section id="example-potential-outcomes-3" class="slide level2">
+<section id="example-potential-outcomes-1" class="slide level2">
 <h2>Example: Potential Outcomes</h2>
 <ul>
 <li>Matching initially studied with a linear regression model, e.g. <span class="citation" data-cites="cochran1953">Cochran (<a href="#/references" role="doc-biblioref" onclick="">1953</a>)</span> <span class="math display">\[
@@ -675,6 +622,193 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="appendix-causal-diagrams" class="title-slide slide level1 center">
+<h1>Appendix: Causal Diagrams</h1>
+
+</section>
+<section id="causal-diagrams" class="slide level2">
+<h2>Causal Diagrams</h2>
+<ul>
+<li>Originate with Wright around 1920, e.g. <span class="citation" data-cites="wright1934">Wright (<a href="#/references" role="doc-biblioref" onclick="">1934</a>)</span></li>
+<li>Recently advocated by Pearl, e.g. <span class="citation" data-cites="pearl2015">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <span class="citation" data-cites="pearl2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
+<li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> or <a href="https://www.causalml-book.org/">CausalMLBook</a> chapters 7 and 8</li>
+<li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
+<ul>
+<li>e.g. <span class="citation" data-cites="chernozhukov2021">Victor Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-regression-2" class="slide level2">
+<h2>Example: Regression</h2>
+<!-- ```{r, engine = 'tikz'} -->
+<!--  \usetikzlibrary{positioning} -->
+<!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
+<!--                      obs/.style={circle, draw,black, text=black}] -->
+<!--  \node[obs] (X){$X_i$}; -->
+<!--  \node[obs] (Y) [right=of X] {$Y_i$}; -->
+<!--  \node(E) [below=of Y]{$\epsilon_i$}; -->
+<!--  \path[->] (X) edge (Y); -->
+<!--  \path[->] (E) edge[dashed] (Y); -->
+<!--  \end{tikzpicture} -->
+<!-- ``` -->
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-fig-height="2" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    X --&gt; Y
+    ϵ -.-&gt; Y
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Arrow means <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span></li>
+<li>Dashed arrow means <span class="math inline">\(\epsilon\)</span> causes <span class="math inline">\(Y\)</span> and is unobserved (not universal, often dashed box around <span class="math inline">\(\epsilon\)</span> instead)</li>
+<li>Lack of connection between <span class="math inline">\(X\)</span> and <span class="math inline">\(\epsilon\)</span> means they are independent</li>
+</ul>
+</section>
+<section id="example-regression-3" class="slide level2">
+<h2>Example: Regression</h2>
+<p>If you believe:</p>
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph " Y"
+        Y[Wage]
+    end
+    subgraph X
+       E[Education] --&gt; Y
+       T[SAT] --&gt; E
+       F[Family SES] --&gt; E
+       F --&gt; Y
+    end
+    subgraph ϵ
+        I[Intelligence] -.-&gt; Y
+        L[Luck] -.-&gt; Y
+        I -.-&gt; T
+    end
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>then regression <span class="math inline">\(Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon\)</span> identifies causal effect of education on wages</p>
+</section>
+<section id="example-regression-4" class="slide level2">
+<h2>Example: Regression</h2>
+<p>But reality is likely more complex …</p>
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+   subgraph " Y"
+        Y[Wage]
+   end
+   subgraph X
+       E[Education] --&gt; Y
+       T[SAT] --&gt; E
+       F[Family SES] --&gt; E
+       F --&gt; Y
+   end
+   subgraph ϵ
+        I[Intelligence] -.-&gt; Y
+        L[Luck] -.-&gt; Y
+        G[Grit] -.-&gt; Y
+        G -.-&gt; E
+        L -.-&gt; E
+        I -.-&gt; T
+        I -.-&gt; E
+        I -.-&gt; G
+        G -.-&gt; I
+   end
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-potential-outcomes-2" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
+<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    u -.-&gt; D
+    X --&gt; Y
+    X --&gt; D
+    D --&gt; Y
+    ϵ -.-&gt; Y
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-potential-outcomes-3" class="slide level2">
+<h2>Example: Potential Outcomes</h2>
+<div class="cell" data-reveal="true" data-fig-width="8" data-fig-height="6" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph Treatment
+        D[Naloxone distribution site opens]
+    end
+    subgraph Outcome
+        Y[ER visits for overdose]
+    end
+    u -.-&gt; D
+    D --&gt; Y
+    ϵ -.-&gt; Y
+    subgraph X
+        Income --&gt; Y
+        Unemployment --&gt; Y
+        Income --&gt; D
+        Unemployment --&gt; D
+        OD[OD rate prior to opening] --&gt; Y
+        OD --&gt; D
+        Crime --&gt; Y
+        Crime --&gt; D
+    end
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="more-on-causal-graphs" class="slide level2">
+<h2>More on Causal Graphs</h2>
+<ul>
+<li class="fragment">Given a graph, what can be identified?
+<ul>
+<li class="fragment"><span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are d-separated by a collection of nodes <span class="math inline">\(S\)</span> if there are no paths between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> except through <span class="math inline">\(S\)</span></li>
+<li class="fragment">d-separation implies conditional independence <span class="math inline">\(Y \perp X | S\)</span></li>
+</ul></li>
+<li class="fragment">Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)
+<ul>
+<li class="fragment">Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible</li>
+<li class="fragment">But neighborhood of exceptions is large, so causal discovery very difficult</li>
+</ul></li>
+<li class="fragment"><span class="citation" data-cites="causalmlbook">V. Chernozhukov et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>, especially chapters 7 &amp; 8</li>
+</ul>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -922,7 +1056,7 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
         minScale: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -996,13 +1130,14 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2025-09-17">
+  <meta name="dcterms.date" content="2025-09-22">
   <title>ECON 626 – Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -230,7 +230,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2025-09-17</p>
+  <p class="date">2025-09-22</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -280,11 +280,17 @@ Paul Schrimpf
 </div>
 </div>
 </div>
+</section>
+<section id="the-identification-problem-1" class="slide level2">
+<h2>The Identification Problem</h2>
 <ul>
 <li>Identification is a conceptual problem about what is possible with infinite data.</li>
 <li>It is distinct from <strong>estimation</strong>, which is the problem of how to learn about <span class="math inline">\(\theta_0\)</span> from a finite sample.</li>
 <li>Identification must come before estimation.</li>
 </ul>
+</section>
+<section id="identification-1" class="slide level2">
+<h2>Identification</h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -501,9 +507,9 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <span id="cb1-9"><a></a>β <span class="op">=</span> (X<span class="op">'*</span>X) <span class="op">\</span> (X<span class="op">'*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3-element Vector{Float64}:
-  0.5204798315141062
- -0.13815508758898998
- -0.3590473098316015</code></pre>
+  0.5216168258321447
+ -0.13914671276985113
+ -0.3575844927841084</code></pre>
 </div>
 </div>
 </section>
@@ -538,8 +544,22 @@ Y_i = \alpha D_i + X_i' \beta + \epsilon_i
 <section id="observational-equivalence-1" class="slide level2">
 <h2>Observational Equivalence</h2>
 <ul>
-<li>Identification sometimes defined without explicit mapping from data to parameters, e.g. <span class="citation" data-cites="hsiao1983">Hsiao (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>, <span class="citation" data-cites="matzkin2007">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span></li>
+<li>Identification can be defined without explicit mapping from data to parameters, e.g. <span class="citation" data-cites="hsiao1983">Hsiao (<a href="#/references" role="doc-biblioref" onclick="">1983</a>)</span>, <span class="citation" data-cites="matzkin2007">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span> by using observational equivalence</li>
+<li>Especially useful for showing non-identification</li>
 </ul>
+</section>
+<section id="structures" class="slide level2">
+<h2>Structures</h2>
+<ul>
+<li>Be explicit about how distribution of data relates to an underlying economic model</li>
+<li>Set of model structures <span class="math inline">\(S\)</span></li>
+<li>Mapping from structure to distribution of observed data <span class="math inline">\(P(\cdot;s)\)</span> <span class="math display">\[
+\mathcal{P} = \{ P(\cdot; s): s \in S \}
+\]</span></li>
+</ul>
+</section>
+<section id="observational-equivalence-2" class="slide level2">
+<h2>Observational Equivalence</h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -547,8 +567,22 @@ Y_i = \alpha D_i + X_i' \beta + \epsilon_i
 </div>
 <div class="callout-content">
 <ul>
-<li><p>Let <span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></p>
+<li>Let <span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="observationally-equivalent-parameters" class="slide level2">
+<h2>Observationally Equivalent Parameters</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition: Observationally Equivalent Parameters</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span>
 <ul>
 <li>Let <span class="math inline">\(\Gamma(\theta, S) = \{P(\dot; s) | s \in S, \theta = \lambda(s) \}\)</span>, then <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\tilde{\theta}\)</span> are observationally equivalent iff <span class="math inline">\(\Gamma(\theta,S) \cap \Gamma(\tilde{\theta}, S) \neq \emptyset\)</span></li>
 </ul></li>

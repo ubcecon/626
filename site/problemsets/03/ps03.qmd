@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 3"
 #author: "Paul Schrimpf"
-date: 2024-09-30
+date: 2025-09-30
 bibliography: ../../626.bib
 ---
 
@@ -10,11 +10,11 @@ $$
 \def\Er{{\mathrm{E}}}
 $$
 
+<!-- # Problem 1 -->
+
+<!-- In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\mathrm{Var}(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent. -->
+
 # Problem 1
-
-In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\mathrm{Var}(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent.
-
-# Problem 2
 
 Suppose $Y_i = m(X_i' \beta + u_i)$ for $i=1, ... , n$ with $X_i \in \R^k$
 and  $m:\R \to \R$ is a known function. Throughout, assume that observations are independent across $i$, $\Er[u] =0$,
@@ -24,7 +24,7 @@ and $u$ is independent of $X$, and $\Er[XX']$ is nonsingular. $Y$ and $X$ are ob
 
 2. Suppose $m(z) = 1\{z \geq 0\}$. For simplicitly, let $k=1$ and $X_i \in \{-1, 1\}$. Show that $\beta$ is not identified by finding an observationally equivalent $\tilde{\beta}$.
 
-# Problem 3
+# Problem 2
 
 @song2021 Chatper 4, exercise 1.3.
 

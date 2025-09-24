@@ -53,12 +53,17 @@ Motivate by wanting to go from data to parameters ...
 
 Can we learn the true value of the parameter $\theta_0$ if we knew the true distribution of the data $P_X$?
 
+
 :::
+
+
+## The Identification Problem
 
 - Identification is a conceptual problem about what is possible with infinite data.
 - It is distinct from **estimation**, which is the problem of how to learn about $\theta_0$ from a finite sample.
 - Identification must come before estimation.
 
+## Identification
 
 ::: {.callout-tip icon=false}
 
@@ -273,7 +278,19 @@ vary with time.
 
 ## Observational Equivalence
 
-- Identification sometimes defined without explicit mapping from data to parameters, e.g. @hsiao1983, @matzkin2007
+- Identification can be defined without explicit mapping from data to parameters, e.g. @hsiao1983, @matzkin2007 by using observational equivalence
+- Especially useful for showing non-identification
+
+## Structures
+
+- Be explicit about how distribution of data relates to an underlying economic model
+- Set of model structures $S$
+- Mapping from structure to distribution of observed data $P(\cdot;s)$
+$$
+\mathcal{P} = \{ P(\cdot; s): s \in S \}
+$$
+
+## Observational Equivalence
 
 ::: {.callout-tip icon=false}
 
@@ -282,6 +299,15 @@ vary with time.
 - Let $\mathcal{P} = \{ P(\cdot; s) : s \in S \}$,  two structures $s$ and $\tilde{s}$ in $S$ are **observationally equivalent**  if they imply the same distribution for the observed data, i.e.
 $$ P(B;s) = P(B; \tilde{s}) $$
 for all $B \in \sigma(X)$.
+
+:::
+
+## Observationally Equivalent Parameters
+
+
+::: {.callout-tip icon=false}
+
+### Definition: Observationally Equivalent Parameters
 
 - Let $\lambda: S \to \R^k$, $\theta$ is **observationally equivalent** to
 $\tilde{\theta}$ if $\exists s, \tilde{s} \in S$  that are

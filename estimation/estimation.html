@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-09-03">
+  <meta name="dcterms.date" content="2025-09-24">
   <title>ECON 626 – Estimation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -160,7 +160,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-09-03</p>
+  <p class="date">2025-09-24</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -280,7 +280,7 @@ Paul Schrimpf
 <h2>Mean Squared Error</h2>
 <ul>
 <li><strong>Loss function</strong> <span class="math inline">\(L: \R^d \times \Theta \to [0,\infty)\)</span> with <span class="math inline">\(L(\theta,\theta)=0\)</span></li>
-<li><strong>Risk</strong> of at <span class="math inline">\(\theta_0\)</span> <span class="math inline">\(\Er[L(\hat{\theta}, \theta_0)]\)</span></li>
+<li><strong>Risk</strong> of <span class="math inline">\(\hat{\theta}\)</span> at <span class="math inline">\(\theta_0\)</span> = <span class="math inline">\(\Er[L(\hat{\theta}, \theta_0)]\)</span></li>
 <li>Squared error loss <span class="math inline">\(L_2(\theta, \theta_0) = (\theta-\theta_0)'(\theta-\theta_0)\)</span></li>
 <li>Mean squared error <span class="math display">\[
 MSE(\hat{\theta}) = \Er[ (\theta-\theta_0)'(\theta-\theta_0) ]
@@ -308,7 +308,7 @@ MSE(\hat{\theta}) = \textrm{Bias}(\hat{\theta})'\textrm{Bias}(\hat{\theta}) + \t
 <ul>
 <li>If <span class="math inline">\(\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =
 \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)\)</span>, then <span class="math display">\[
-\int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
+\int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{``score"}=s(x,\theta)} dP_\theta(x) = 0
 \]</span></li>
 </ul>
 </section>
@@ -319,7 +319,7 @@ MSE(\hat{\theta}) = \textrm{Bias}(\hat{\theta})'\textrm{Bias}(\hat{\theta}) + \t
 <li>If <span class="math inline">\(\frac{\partial^2}{\partial \theta\partial \theta'} \int f_X(x;\theta) d\mu(x) =
 \int \frac{\partial^2}{\partial \theta\partial \theta'} f_X(x;\theta)
 d\mu(x)\)</span>, then <span class="math display">\[
-I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{"Hessian"}=h(x,\theta)} dP_\theta(x)
+I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{``Hessian"}=h(x,\theta)} dP_\theta(x)
 \]</span></li>
 </ul>
 </section>

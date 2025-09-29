@@ -137,7 +137,7 @@
     "href": "projection/projection.html#generalized-linear-model-1",
     "title": "Least Squares as a Projection",
     "section": "Generalized Linear Model",
-    "text": "Generalized Linear Model\n\\[\nY = \\theta + u\n\\]\n\n\\(\\theta \\in L \\subset \\R^n\\), \\(L\\) a known subspace\n\\(u \\in \\R^n\\) unobserved\n\n\n\nExample: \\[\nY_i = x_{i,1} \\beta_1 + \\cdots + x_{i,k} \\beta_k + u_i\n\\]\n\n\\(X_k \\equiv (x_{1,k}, ... , x{n,k})'\\), \\(X \\equiv(X_1, ...,  X_k)\\), \\(\\beta \\equiv (\\beta_1, ..., \\beta_k)'\\), \\(y \\equiv (Y_1, ..., Y_n)'\\), \\(u \\equiv (u_1, ..., u_n)'\\) \\[y= X\\beta + u\\] fits setup with \\(L = \\mathcal{R}(X)\\)"
+    "text": "Generalized Linear Model\n\\[\nY = \\theta + u\n\\]\n\n\\(\\theta \\in L \\subset \\R^n\\), \\(L\\) a known subspace\n\\(u \\in \\R^n\\) unobserved\n\n\n\nExample: \\[\nY_i = x_{i,1} \\beta_1 + \\cdots + x_{i,k} \\beta_k + u_i\n\\]\n\n\\(X_k \\equiv (x_{1,k}, ... , x_{n,k})'\\), \\(X \\equiv(X_1, ...,  X_k)\\), \\(\\beta \\equiv (\\beta_1, ..., \\beta_k)'\\), \\(y \\equiv (Y_1, ..., Y_n)'\\), \\(u \\equiv (u_1, ..., u_n)'\\) \\[y= X\\beta + u\\] fits setup with \\(L = \\mathcal{R}(X)\\)"
   },
   {
     "objectID": "projection/projection.html#least-squares",
@@ -788,7 +788,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.528459365511004\n -0.15049648671025698\n -0.35383765336940187"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.5194805244482199\n -0.1397700054935712\n -0.36017259040892236"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-1",
@@ -963,14 +963,14 @@
     "href": "estimation/estimation.html#score-equality",
     "title": "Estimation",
     "section": "Score Equality",
-    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\underbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{``score\"}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]"
+    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\underbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{``score''}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#information-equality",
     "href": "estimation/estimation.html#information-equality",
     "title": "Estimation",
     "section": "Information Equality",
-    "text": "Information Equality\n\nFischer Information \\(I(\\theta) = \\int s(x,\\theta) s(x,\\theta)' dP_\\theta(x)\\)\nIf \\(\\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} f_X(x;\\theta)\nd\\mu(x)\\), then \\[\nI(\\theta) = -\\int \\underbrace{\\frac{\\partial^2 \\ell(\\theta;x)}{\\partial \\theta \\partial \\theta'}}_{\\text{``Hessian\"}=h(x,\\theta)} dP_\\theta(x)\n\\]"
+    "text": "Information Equality\n\nFischer Information \\(I(\\theta) = \\int s(x,\\theta) s(x,\\theta)' dP_\\theta(x)\\)\nIf \\(\\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} f_X(x;\\theta)\nd\\mu(x)\\), then \\[\nI(\\theta) = -\\int \\underbrace{\\frac{\\partial^2 \\ell(\\theta;x)}{\\partial \\theta \\partial \\theta'}}_{\\text{``Hessian''}=h(x,\\theta)} dP_\\theta(x)\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#section",
@@ -1012,7 +1012,7 @@
     "href": "estimation/estimation.html#p-value",
     "title": "Estimation",
     "section": "p-value",
-    "text": "p-value\n\ntest statistic \\(\\tau(X)\\) , define \\[ G_P(t)  =  P(\\tau(X) &gt; t) \\]\np-value is \\[\np= \\sup_{P \\in \\mathcal{P}_0} G_P(\\tau(X))\n\\]\n\n\n\nif \\(\\mathcal{P}_0 = \\{P_0\\}\\), critical value \\(c\\), let \\(\\alpha = G_{P_0}(c)\\), then \\(\\tau(X) &gt; c\\) iff \\(p &lt; \\alpha\\)"
+    "text": "p-value\n\ntest statistic \\(\\tau(X)\\) , define \\[ G_{P_x}(t)  =  P_x(\\tau(X) &gt; t) \\]\nGiven observed data \\(\\hat{X}\\), p-value is \\[\np(\\hat{X}) = \\sup_{P_x \\in \\mathcal{P}_0} P_x(\\tau(X) &gt; \\tau(\\hat{X})) = \\sup_{P_x \\in \\mathcal{P}_0} G_{P_x}(\\tau(\\hat{X}))\n\\]\n\n\n\nif \\(\\mathcal{P}_0 = \\{P_0\\}\\), critical value \\(c\\), let \\(\\alpha = G_{P_0}(c)\\), then \\(\\tau(X) &gt; c\\) iff \\(p(\\hat{X}) &lt; \\alpha\\)"
   },
   {
     "objectID": "estimation/estimation.html#testing-in-parametric-family",
@@ -1022,11 +1022,25 @@
     "text": "Testing in Parametric Family\n\nParametric family \\(\\mathcal{P} = \\{P_\\theta: \\theta  \\in \\Theta\\}\\)\n\n\\(\\Theta_0 = \\{\\theta \\in \\Theta: P_\\theta \\in \\mathcal{P}_0\\}\\)\n\\(\\Theta_1 = \\{\\theta \\in \\Theta: P_\\theta \\in \\mathcal{P}_1\\}\\)\n\nHypotheses\n\n\\(H_0 : \\theta  \\in \\Theta_0\\)\n\\(H_1: \\theta \\in \\Theta_1\\)\n\nPower function of test \\(C\\) \\[\\pi:\\Theta \\to [0,1] , \\;\\;  \\pi(\\theta) = P_\\theta(C)\\]\nSize \\(= \\sup_{\\theta \\in \\Theta_0} \\pi(\\theta)\\)"
   },
   {
+    "objectID": "estimation/estimation.html#example-testing-in-parametric-family",
+    "href": "estimation/estimation.html#example-testing-in-parametric-family",
+    "title": "Estimation",
+    "section": "Example: Testing in Parametric Family",
+    "text": "Example: Testing in Parametric Family\n\n\\(\\mathcal{P} = \\{ P_\\mu(A) = \\int_A \\frac{1}{\\sqrt{2\\pi}} e^{-(x-\\mu)^2/2} dx : \\mu \\in \\in \\R \\}\\)\n\\(\\Theta_0 = [-a,a]\\)\n\\(\\Theta_1 = (-\\infty,-a) \\cup (a,\\infty)\\)\n\\(C(X;c) = \\max\\{\\frac{1}{n} \\sum_{i=1}^n x_i - a, 0\\} + \\max\n\\{-\\frac{1}{n} \\sum_{i=1}^n x_i + a, 0\\} &gt; c\\)"
+  },
+  {
     "objectID": "estimation/estimation.html#more-powerful",
     "href": "estimation/estimation.html#more-powerful",
     "title": "Estimation",
     "section": "More Powerful",
-    "text": "More Powerful\n\n\n\nDefinition\n\n\n\nFor test \\(C_1\\) and \\(C_2\\) with same size, \\(C_1\\) is more powerful at \\(\\theta \\in \\Theta_1\\) than \\(C_2\\) if \\(P_\\theta(C_1) \\geq P_\\theta(C_2)\\)\n\\(C\\) is most powerful at \\(\\theta \\in \\Theta_1\\) if is more powerfull than any test of the same size\n\\(C\\) is uniformly most powerful if it is most powerful at any \\(\\theta \\in \\Theta_1\\)"
+    "text": "More Powerful\n\n\n\nDefinition\n\n\n\nFor test \\(C_1\\) and \\(C_2\\) with same size, \\(C_1\\) is more powerful at \\(\\theta \\in \\Theta_1\\) than \\(C_2\\) if \\(P_\\theta(C_1) \\geq P_\\theta(C_2)\\)\n\\(C\\) is most powerful at \\(\\theta \\in \\Theta_1\\) if it is more powerful than any test of the same size\n\\(C\\) is uniformly most powerful if it is most powerful at any \\(\\theta \\in \\Theta_1\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#example-power-comparisons",
+    "href": "estimation/estimation.html#example-power-comparisons",
+    "title": "Estimation",
+    "section": "Example: Power Comparisons",
+    "text": "Example: Power Comparisons\n\nSame setup as previous figure, but consider tests \\[\n\\begin{align*}\nC(X;c) = & \\max\\{\\frac{1}{n} \\sum_{i=1}^n x_i - a, 0\\} + \\max\n\\{-\\frac{1}{n} \\sum_{i=1}^n x_i +a, 0\\} &gt; c \\\\\n\\tilde{C}(x;c) = & \\sum_{i=1}^n 1\\{x_i &gt; a\\} + 1\\{x_i &lt; -a\\} &gt; c\n\\end{align*}\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#neyman-pearson",
@@ -2776,6 +2790,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 24, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 6, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
   }
 ]

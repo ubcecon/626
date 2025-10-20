@@ -291,7 +291,7 @@ $$
 $$
 Y_i = x_{i,1} \beta_1 + \cdots + x_{i,k} \beta_k + u_i
 $$
-    - $X_k \equiv (x_{1,k}, ... , x{n,k})'$, $X \equiv(X_1, ...,  X_k)$, $\beta \equiv (\beta_1, ..., \beta_k)'$,
+    - $X_k \equiv (x_{1,k}, ... , x_{n,k})'$, $X \equiv(X_1, ...,  X_k)$, $\beta \equiv (\beta_1, ..., \beta_k)'$,
       $y \equiv (Y_1, ..., Y_n)'$, $u \equiv (u_1, ..., u_n)'$
     $$y= X\beta + u$$
     fits setup with $L = \mathcal{R}(X)$

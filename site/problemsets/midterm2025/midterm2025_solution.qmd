@@ -1,0 +1,364 @@
+---
+title: "ECON 626: Midterm"
+#author: "Paul Schrimpf"
+date: "2025-10-15"
+#bibliography: ~/626/site/626.bib
+
+format:
+  html:
+    embed-resources: true
+    theme: journal
+    standalone: true
+    css: styles.css
+---
+
+# Problem 1
+
+$$
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+$$
+
+
+Suppose $y_i = x_i \beta_i + \epsilon_i$ for $i=1, ..., n$ with $x_i
+\in \R$. $y_i$ and $x_i$ are observed, but $\beta_i$ and $\epsilon_i$ are not.
+Assume that independent of $x_i$ and idependent and identically across $i$,
+$$
+\begin{pmatrix}
+\beta_i \\
+\epsilon_i
+\end{pmatrix} \sim N\left( \begin{pmatrix} \bar{\beta} \\ 0 \end{pmatrix}, \begin{pmatrix} \sigma_\beta^2 & 0 \\ 0 & \sigma_\epsilon^2 \end{pmatrix} \right)
+$$
+
+## Identification
+
+1. Show that $\bar{\beta}$ is identified. [Hint: consider $\Er\left[x_i\left(
+(\beta_i - \bar{\beta})x_i + \epsilon_i\right)\right]$ and write $(\beta_i - \bar{\beta})x_i + \epsilon_i$ in terms of $y_i$, $x_i$, and $\bar{\beta}$.]
+
+2. Show that $\sigma_\beta^2$ and $\sigma_\epsilon^2$ are
+identified. [Hint: look at $\Er[(y_i - x_i \bar{\beta})^2 | x_i]$.
+
+::: {.solution}
+
+1. As suggested by the hint, notice that since $\beta_i$ and $\epsilon_i$ are independent of $x_i$,
+$$
+0 = \Er\left[x_i \left((\beta_i - \bar{\beta}) x_i + \epsilon_i \right) \right]
+$$
+rewriting in terms of observables, we have
+$$
+0 = \Er\left[x_i (y_i - x_i \bar{\beta}) \right]
+$$
+solving for $\bar{\beta}$ gives $\bar{\beta} = \Er[x_i^2]^{-1} \Er[x_i y_i]$
+
+2. The assumptions and model imply that
+$$
+\begin{align*}
+\Er[(y_i - x_i \bar{\beta})^2 | x_i] = & \Er[((\beta_i - \bar{\beta})x_i + \epsilon_i)^2|x_i] \\
+= & \sigma_\beta^2 x_i^2 + \sigma_\epsilon^2
+\end{align*}
+$$
+The left hand side is identified because it is a conditional
+expectation of observed data and the already identified
+$\bar{\beta}$. If $x_i$ takes on two different values with positive
+probability, then we can simply look at the above equation for those
+two values of $x_i$ and solve for the $\sigma$'s. If $x$ is continuously distributed we should be more careful to deal with the fact that $\Er[\cdot|x]$ is only unique almost everywhere. To do so, note that for any function $g$,
+$$
+\begin{align*}
+\Er\left[ (y_i - x_i \bar{\beta})^2 g(x_i) \right] = & \sigma_\beta^2 \Er[x_i^2 g(x_i)] + \sigma_\epsilon^2 \Er[g(x_i)]
+\end{align*}
+$$
+choosing e.g. $g() = 1$ and $g(x) = x$ gives two equations to solve for the $\sigma$'s
+$$
+\begin{align*}
+\Er\left[ (y_i - x_i \bar{\beta})^2 \right] = & \sigma_\beta^2 \Er[x_i^2 ] + \sigma_\epsilon^2  \\
+\Er\left[ (y_i - x_i \bar{\beta})^2 x_i \right] = & \sigma_\beta^2 \Er[x_i^3 ] + \sigma_\epsilon^2 \Er[x_i]
+\end{align*}
+$$
+so
+$$
+\begin{align*}
+\sigma_\beta^2 = & \frac{\Er\left[(y_i - x_i \bar{\beta})^2 x_i \right] - \Er\left[ (y_i - x_i \bar{\beta})^2 \right]\Er[x_i]}{\Er[x_i^3] - \Er[x_i] \Er[x_i^2]} \\
+\sigma_\epsilon^2 = & \Er\left[ (y_i - x_i \bar{\beta})^2 \right] - \sigma_\beta^2 \Er[x_i^2 ]
+\end{align*}
+$$
+identifies the $\sigma$s assuming $\Er[x_i^3] - \Er[x_i] \Er[x_i^2] \neq 0$.
+
+
+:::
+
+## Estimation
+
+1. Describe a sample analog estimator for $\bar{\beta}$.
+
+2. Find the maximum likelihood estimator for $\bar{\beta}$ given
+$\sigma_\beta^2$ and $\sigma_\epsilon^2$. [Hint: The normal pdf with mean
+$\mu$ and variance $\sigma^2$ is $\frac{1}{\sqrt{2\pi\sigma^2}}
+e^{-\frac{(x-\mu)^2}{2\sigma^2}}$. If $A$ and $B$ are independently
+normal with mean zero and variances $\sigma_A^2$ and $\sigma_B^2$,
+then $A+B$ is also normally distributed with mean zero and variance
+$\sigma_A^2 + \sigma_B^2$.]
+
+::: {.solution}
+
+1. The sample analog estimator is just the least squares estimator,
+$\hat{\beta} = \left(\sum_i x_i^2 \right)^{-1} \left(\sum x_i y_i\right)$.
+
+2. The log likelihood is
+$$
+\begin{align*}
+\mathcal{L}(\bar{\beta}) = \sum_{i=1}^n -1/2 \log(2 \pi (\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2)) - \frac{(y_i - x_i \bar{\beta})^2 }{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}
+\end{align*}
+$$
+The first order conditiion is:
+$$
+\begin{align*}
+0 = & \sum \frac{x_i (y_i - x_i \bar{\beta})} {\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}
+\end{align*}
+$$
+so,
+$$
+\hat{\bar{\beta}}^{MLE} = \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-1}  \left(\sum \frac{x_i y_i}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2} \right)
+$$
+
+:::
+
+## Efficiency
+
+For this part, you can treat $x$ as nonstochastic.
+
+1. Show that for any known function, $w: \R \to \R^+$, $\hat{\beta}^w =
+\left(\sum_{i=1}^n w(x_i) x_i^2 \right)^{-1}\left(\sum_{i=1}^n w(x_i)
+  x_i y\right)$ is an unbiased, linear in $y$, estimate of $\bar{\beta}$.
+
+2. What choice of $w$ leads to the smallest variance of $\hat{\beta}^{w}$?
+
+3. Is there a nonlinear unbiased estimator with even smaller variance? [Hint: calculate the Cramér-Rao lower bound and compare it with the variance of $\hat{\beta}^{w}$.]
+
+::: {.solution}
+
+1. To show it is unbiased, we substitute in the model for $y$ and use iterated expectations.
+$$
+\begin{align*}
+\Er[\hat{\beta}^w] = & \Er\left[ \Er[\left(\sum_{i=1}^n w(x_i) x_i^2 \right)^{-1}\left(\sum_{i=1}^n w(x_i)
+  x_i (x_i \bar{\beta} + x_i(\beta_i - \bar{\beta}) +\epsilon_i) \right)| x_1, ..., x_n]\right] \\
+  = & \bar{\beta}
+\end{align*}
+$$
+
+2. In the model,
+$$
+y_i = x_i \bar{\beta} + \underbrace{(\beta_i - \bar{\beta})x_i + \epsilon_i}_{u_i}
+$$
+the errors, $u_i$, are not homoskedastic. However, if we multiple by
+$\frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}}$, to get
+$$
+\frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}} y_i = \frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}} x_i \bar{\beta} + \underbrace{\frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}} u_i}_{\tilde{u}_i}
+$$
+then the $\tilde{u}$ have $\Er[\tilde{u}\tilde{u}'] = I$. Therefore, by the Gauss Markov theorem, the best linear unbiased estimator for $\bar{\beta}$ is least squares in this transformed model,
+$$
+\hat{\beta}^* = \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-1}  \left(\sum \frac{x_i y_i}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2} \right).
+$$
+Also, any choice of $w()$ leads to a linear, unbiased estimator in the
+transformed model, so the best possible $w()$ must be exactly the one
+in $\hat{\beta}^*$, $w(x_i) = \frac{1}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}$.
+
+3. The Cramer-Rao lower bound is
+
+$$
+\Er[-H(\beta)]^{-1} = [\sum_i x_i^2\frac{1}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2} ]^{-1}
+$$
+
+The variance of $\hat{\beta}^*$ is
+
+$$
+\begin{align*}
+Var(\hat{\beta}^*) = & \Er\left[ \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-2}  \left(\sum \frac{x_i ((\beta_i - \bar{\beta})x_i + \epsilon_i)}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^2 \right] \\
+= & \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-2}
+\left( \sum_i \frac{x_i^2 (\Er[(\beta_i - \bar{\beta})^2]x_i^2 + \sigma_\epsilon^2)}{(\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2)^2} \right) \\
+= & \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-1}
+\end{align*}
+$$
+
+which coincides with the lower bound, so there is no unbiased estimator with smaller variance.
+
+:::
+
+
+\newpage
+
+# Problem 2
+
+Consider the probability space with sample space $\Omega = \{ ♠️, ♥️, ♦️, ♣️  \}$, sigma field $\mathscr{F} = 2^\Omega$, the power set of $\Omega$, and probability measure $P$.
+
+1. Is $\mathscr{G} = \{ \Omega, \emptyset, \{ ♠️ \} \}$ a sigma-field? If not, what is $\sigma(\mathscr{G})$?
+
+2. Let $X(\omega) = \begin{cases} 1 & \text{ if } \omega = ♦️ \\
+  0 & \text{ otherwise}
+\end{cases}$. List the elements of $\sigma(X)$.
+
+3. Let $Y(\omega) = \begin{cases} 1 & \text{ if } \omega = ♠️ \\
+  0 & \text{ otherwise}
+\end{cases}$. Assume that $\Er[X] > 0$ and $\Er[Y]>0$. Could $X$ and $Y$ be independent?
+
+::: {.solution}
+
+1. No, it is missing $\{  ♠️ \}^c$.  $\sigma(\mathscr{G}) =  \{
+\Omega, \emptyset, \{ ♠️ \},  \{ ♥️, ♦️, ♣️ \} \}$.
+
+2. $\sigma(X) = \{ \Omega, \emptyset, \{♦️\}, \{ ♠️,  ♥️ , ♣️ \} \}$
+
+3. No, because $X=1$ implies $Y=0$, we can never have $P(X=1 \cap Y=1)
+= P(X=1) P(Y=1)$ since the left is 0 and the right is not.
+
+:::
+
+# Problem 3
+
+Suppose $Z_i \in S^k \subseteq \R^k$ where $S^k = \{ z \in \R^k : 0
+\leq z_j \leq 1 \text{ and } \sum_{j=1}^k z_j = 1\}$ are independent
+and identically distributed for $i = 1, ..., n$. Assume that the pdf of $Z_i$ is
+$$
+f(z_i; \alpha) = \frac{\Gamma(k \alpha)}{\Gamma(\alpha)^k} \prod_{j=1}^k z_{ij}^{\alpha-1}
+$$
+where $\Gamma$ is the gamma function (its exact value will not be important for what follows) and scalar parameter $\alpha>0$.
+
+1. Describe the most powerful test for testing $H_0: \alpha =
+\alpha_0$ vs $H_1: \alpha=\alpha_1$.
+
+2. Show that there is a uniformly
+most powerful test for test $H_0: \alpha = \alpha_0$ vs $H_1: \alpha > \alpha_0$ by
+showing that the critical region
+for the likelihood ratio test for $H_0: \alpha = \alpha_0$ vs $H_1:
+\alpha=\alpha_1$ for any $\alpha_1 > \alpha_0$ only depends on $\sum_{i=1}^n \sum_{j=1}^k \log(z_{ij})$ and $\alpha_0$.
+
+::: {.solution}
+
+1. The likelihood ratio test is the most powerful test for point hypotheses like this. In this case, the likelihood ratio is
+$$
+\begin{align*}
+lr(\alpha_1, \alpha_0) = & \frac{\prod_{i=1}^n \Gamma(k \alpha_1)/\Gamma(\alpha_1)^k \prod_{j=1}^k z_{ij}^{\alpha_1 - 1}}{\prod_{i=1}^n \Gamma(k \alpha_0)/\Gamma(\alpha_0)^k \prod_{j=1}^k z_{ij}^{\alpha_0 - 1}} \\
+= & \frac{\Gamma(k\alpha_1)^n /\Gamma(\alpha_1)^{kn}}{\Gamma(k\alpha_0)^n /\Gamma(\alpha_0)^{kn}} \prod_{i=1}^n \prod_{j=1}^k z_{ij}^{\alpha_1 - \alpha_0}
+\end{align*}
+$$
+The test will reject if
+$$
+lr(\alpha_1, \alpha_0) > c
+$$
+where $c$ is chosen to control size under $H_0$. Equivalently if
+$$
+\prod_{i=1}^n \prod_{j=1}^k z_{ij}^{\alpha_1 - \alpha_0} > \tilde{c}
+$$
+or
+$$
+\sum_{i=1}^n \sum_{j=1}^k (\alpha_1 - \alpha_0) \log(z_{ij}) > \log \tilde{c}
+$$
+
+[It is acceptable to have less derivation here and more in part 2.]
+
+2. From the previous part, the critical region is
+$$
+CR = \sum_{i=1}^n \sum_{j=1}^k \log(z_{ij}) > \frac{1}{(\alpha_1 - \alpha_0)} \log \tilde{c}
+$$
+For the test to have correct size, $c^* = \frac{1}{(\alpha_1 - \alpha_0)} \log \tilde{c}$ must be chosen such that
+$$
+P(CR | H_0) = P(\sum_{i=1}^n \sum_{j=1}^k \log(z_{ij}) > c^*) = size.
+$$
+Importantly, the value of $c^*$ and the critical region do not depend
+on value of $\alpha_1$, so this test is uniformly most powerful for testing
+all $\alpha_1 > \alpha_0$.
+
+
+:::
+
+
+\newpage
+
+# Definitions and Results
+
+- Measure and Probability:
+
+    - A collection of subsets, $\mathscr{F}$, of $\Omega$ is a $\sigma$*-field* , if
+       1. $\Omega \in \mathscr{F}$
+       2. If $A \in \mathscr{F}$, then $A^c \in \mathscr{F}$
+       3. If $A_1, A_2, ... \in \mathscr{F}$, then $\cup_{j=1}^\infty A_j \in \mathscr{F}$
+
+    - A measure, $\mu: \mathcal{F} \to [0, \infty]$ s.t.
+       1. $\mu(\emptyset) = 0$
+       2. If $A_1, A_2, ... \in \mathscr{F}$ are pairwise disjoint, then $\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)$
+
+    - Lesbegue integral is
+       1. Positive: if $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+       2. Linear:  $\int (af + bg) d\mu = a\int f d\mu + b \int g d \mu$
+
+    - Radon-Nikodym derivative: if $\nu \ll \mu$, then $\exists$ nonnegative measureable function, $\frac{d\nu}{d\mu}$, s.t.
+       $$
+       \nu(A) = \int_A \frac{d\nu}{d\mu} d\mu
+       $$
+
+    - Monotone convergence: If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\omega \in \Omega$,
+$f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu$ as $n\rightarrow \infty$
+
+    - Dominated converegence: If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu$
+
+   - Markov's inequality: $P(|X|>\epsilon) \leq  \frac{\Er[|X|^k]}{\epsilon^k}$ $\forall \epsilon > 0, k > 0$
+
+   - Jensen's inequality: if $g$ is convex, then $g(\Er[X]) \leq \Er[g(X)]$
+
+   - Cauchy-Schwarz inequality: $\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]$
+
+   - $\sigma(X)$ is $\sigma$**-field generated by** $X$, it is
+       - smallest $\sigma$-field w.r.t. which $X$ is measurable
+       - $\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}$
+
+    - $\sigma(W) \subset \sigma(X)$ iff $\exists$ $g$ s.t. $W = g(X)$
+
+    - Events $A_1, ..., A_m$ are **independent** if for any sub-collection $A_{i_1}, ..., A_{i_s}$
+    $$
+    P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
+    $$
+    $\sigma$-fields are independent if this is true for any events from them. Random variables are independent if their $\sigma$-fields are.
+
+    - Conditional expection of $Y$ given $\sigma$-field $\mathscr{G}$ satisfies
+    $\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP$ $\forall A \in  \mathscr{G}$
+
+- Identification $X$ observed, distribution $P_X$, probability model $\mathcal{P}$
+   -  $\theta_0 \in \R^k$ is **identified** in $\mathcal{P}$ if there exists a known
+      $\psi: \mathcal{P} \to \R^k$ s.t. $\theta_0 = \psi(P_X)$
+  - $\mathcal{P} = \{ P(\cdot; s) : s \in S \}$,  two structures $s$ and $\tilde{s}$ in $S$ are **observationally equivalent**  if they imply the same distribution for the observed data, i.e.
+  $$ P(B;s) = P(B; \tilde{s}) $$
+  for all $B \in \sigma(X)$.
+  - Let $\lambda: S \to \R^k$, $\theta$ is **observationally equivalent** to $\tilde{\theta}$ if $\exists s, \tilde{s} \in S$  that are observationally equivalent and $\theta = \lambda(s)$ and $\tilde{\theta} = \lambda(\tilde{s})$
+  - $s_0 \in S$ is **identified** if there is no $s \neq s_0$ that is observationally equivalent to $s_0$
+  - $\theta_0$ is **identified** (in $S$) if there is no observationally equivalent $\theta \neq \theta_0$
+
+\newpage
+
+- Cramér-Rao Bound: in the parametric model $P_X \in \{P_\theta:
+\theta \in \R^d\}$ with likelihood $\ell(\theta;x)$, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator $\tau(X)$,
+$$
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+$$
+where $I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x) = -\Er[H(x,\theta)]$ and
+$s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}$
+
+- Hypothesis testing:
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_0)$=*Type I error rate* $=P_x(C)$
+  - $P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)$=*Type II error rate*
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_1)$ = *power*
+  - $\sup_{P_x \in \mathcal{P}_0} P_x(C)$ = *size of test*
+  - Neyman-Pearson Lemma: Let $\Theta = \{0, 1\}$,  $f_0$ and $f_1$ be densities of $P_0$ and $P_1$,
+    $\tau(x) =f_1(x)/f_0(x)$ and $C^* =\{x \in X: \tau(x) > c\}$. Then among all
+    tests $C$ s.t. $P_0(C) = P_0(C^*)$, $C^*$ is most powerful.
+
+- Projection: $P_L y \in  L$ is the **projection** of $y$ on $L$ if
+  $$
+  \norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+  $$
+  1. $P_L y$ exists, is unique, and is a linear function of $y$
+  2. For any $y_1^* \in L$, $y_1^* = P_L y$ iff $y- y_1^* \perp L$
+  3. $G = P_L$ iff $Gy = y \forall y \in L$ and $Gy = 0 \forall y \in
+  L^\perp$
+  4.  Linear $G: V \to V$ is a projection map onto its range, $\mathcal{R}(G)$, iff $G$ is idempotent and symmetric.
+
+- Gauss-Markov: $Y = \theta + u$ with $\theta \in L \subset \R^n$, a known subspace. If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then the best linear unbiased estimator (BLUE) of $a'\theta = a'\hat{\theta}$ where $\hat{\theta} = P_L y$

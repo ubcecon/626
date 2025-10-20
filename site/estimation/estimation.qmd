@@ -127,7 +127,7 @@ $g:\Theta \to G$, the MLE of $g(\theta)$ is $g(\hat{\theta})$.
 ## Mean Squared Error
 
 - **Loss function** $L: \R^d \times \Theta \to [0,\infty)$ with $L(\theta,\theta)=0$
-- **Risk** of \hat{\theta} at $\theta_0$ $\Er[L(\hat{\theta}, \theta_0)]$
+- **Risk** of $\hat{\theta}$ at $\theta_0$ = $\Er[L(\hat{\theta}, \theta_0)]$
 - Squared error loss $L_2(\theta, \theta_0) = (\theta-\theta_0)'(\theta-\theta_0)$
 - Mean squared error
 $$
@@ -152,7 +152,7 @@ $$
 - If $\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =
  \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)$, then
  $$
- \int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
+ \int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{``score''}=s(x,\theta)} dP_\theta(x) = 0
  $$
 
 ## Information Equality
@@ -162,7 +162,7 @@ $$
  \int \frac{\partial^2}{\partial \theta\partial \theta'} f_X(x;\theta)
  d\mu(x)$, then
  $$
- I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{"Hessian"}=h(x,\theta)} dP_\theta(x)
+ I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{``Hessian''}=h(x,\theta)} dP_\theta(x)
  $$
 
 ##
@@ -230,16 +230,17 @@ Illustrate schematically how these vary with $C$
 ## p-value
 
 - test statistic $\tau(X)$ , define
-$$ G_P(t)  =  P(\tau(X) > t) $$
-- *p-value* is
+$$ G_{P_x}(t)  =  P_x(\tau(X) > t) $$
+- Given observed data $\hat{X}$, *p-value* is
 $$
-p= \sup_{P \in \mathcal{P}_0} G_P(\tau(X))
+p(\hat{X}) = \sup_{P_x \in \mathcal{P}_0} P_x(\tau(X) > \tau(\hat{X})) = \sup_{P_x \in \mathcal{P}_0} G_{P_x}(\tau(\hat{X}))
 $$
+
 
 ::: {.fragment}
 
 - if $\mathcal{P}_0 = \{P_0\}$, critical value $c$, let $\alpha = G_{P_0}(c)$, then $\tau(X) > c$
-iff $p < \alpha$
+iff $p(\hat{X}) < \alpha$
 
 :::
 
@@ -255,6 +256,32 @@ iff $p < \alpha$
 $$\pi:\Theta \to [0,1] , \;\;  \pi(\theta) = P_\theta(C)$$
 - Size $= \sup_{\theta \in \Theta_0} \pi(\theta)$
 
+## Example: Testing in Parametric Family
+
+- $\mathcal{P} = \{ P_\mu(A) = \int_A \frac{1}{\sqrt{2\pi}} e^{-(x-\mu)^2/2} dx : \mu \in \in \R \}$
+- $\Theta_0 = [-a,a]$
+- $\Theta_1 = (-\infty,-a) \cup (a,\infty)$
+- $C(X;c) = \max\{\frac{1}{n} \sum_{i=1}^n x_i - a, 0\} + \max
+  \{-\frac{1}{n} \sum_{i=1}^n x_i + a, 0\} > c$
+
+```{julia}
+#| code-fold: true
+#| output: true
+using Distributions, Plots, LaTeXStrings
+n = 100
+a = 0.5
+power(μ,c) = 1 - cdf(Normal(μ,1/sqrt(n)), a+c) + cdf(Normal(μ,1/sqrt(n)), -a-c)
+μ = -1.5:0.01:1.5
+fig=plot()
+fig=vline!([-a,a], linestyle=:dash, color=:black, label=:none,ylims=(0,1))
+for c in 0.1:0.1:0.4
+    fig=plot!(μ, power.(μ,c), xlabel="μ", ylabel="Power", label="c=$(round(c, digits=1))")
+    #fig=annotate!(-1, power(-1,c), "size=$(round(power(-1,c), digits=2))", :left)
+end
+fig = hline!([0.05], linestyle=:dash, color=:black, label=:none)
+fig
+```
+
 
 ## More Powerful
 
@@ -264,10 +291,40 @@ $$\pi:\Theta \to [0,1] , \;\;  \pi(\theta) = P_\theta(C)$$
 
 - For test $C_1$ and $C_2$ with same size, $C_1$ is **more powerful** at
 $\theta \in \Theta_1$ than $C_2$ if $P_\theta(C_1) \geq P_\theta(C_2)$
-- $C$ is **most powerful** at $\theta \in \Theta_1$ if is more powerfull than any test of the same size
+- $C$ is **most powerful** at $\theta \in \Theta_1$ if it is more powerful than any test of the same size
 - $C$ is **uniformly most powerful** if it is most powerful at any $\theta \in \Theta_1$
 
 :::
+
+## Example: Power Comparisons
+
+- Same setup as previous figure, but consider tests
+$$
+\begin{align*}
+C(X;c) = & \max\{\frac{1}{n} \sum_{i=1}^n x_i - a, 0\} + \max
+  \{-\frac{1}{n} \sum_{i=1}^n x_i +a, 0\} > c \\
+\tilde{C}(x;c) = & \sum_{i=1}^n 1\{x_i > a\} + 1\{x_i < -a\} > c
+\end{align*}
+$$
+
+```{julia}
+#| code-fold: true
+#| output: true
+n = 100
+power(μ,c) = 1 - cdf(Normal(μ,1/sqrt(n)), a+c) + cdf(Normal(μ,1/sqrt(n)), -a-c)
+tildepower(μ,c) = 1 - cdf(Binomial(n, 1-cdf(Normal(μ,1),a)+cdf(Normal(μ,1),-a)), c)
+μ = -1.5:0.01:1.5
+fig=plot()
+siz = 0.05
+cn = quantile(Normal(0,1/sqrt(n)),1-siz)
+cq = quantile(Binomial(n, 1-cdf(Normal(a,1),a)+cdf(Normal(a,1),-a)),1-siz)
+
+plot(μ, power.(μ,cn),label="C",ylabel="Power",xlabel="μ")
+plot!(μ, tildepower.(μ,cq),label=L"\tilde{C}")
+fig=vline!([-a,a], linestyle=:dash, color=:black, label=:none,ylims=(0,1))
+fig = hline!([0.05], linestyle=:dash, color=:black, label=:none)
+fig
+```
 
 ## Neyman-Pearson
 

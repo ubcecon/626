@@ -174,7 +174,7 @@ function weights(D)
   ω = D̃./sum(D̃.^2)
 end
 
-n = 1000
+n = 5000
 T = 9
 D = assigntreat(n,T)
 y = randn(n,T)
@@ -288,7 +288,7 @@ function simulate(n,T,portiontreated, ATT, σ=0.01)
 end
 
 ATT =  vcat(ones(T-3),10*ones(3))
-df = simulate(n,T, pt,ATT)
+df = simulate(n,T, pt,ATT,1.0)
 
 function plotGAT(ATT,D; width=900, height=300)
   n,T = size(D)
@@ -404,13 +404,13 @@ dfc = createCohorts(df);
 ## Regression with Cohort Interactions {.smaller}
 
 ```{julia}
-m=reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)))
+m=reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)), Vcov.cluster(:id), contrasts=Dict(:DCt=>DummyCoding(base="untreated")))
 regtable(m, render=AsciiTable())
 ```
 ## Regression with Cohort Interactions {.smaller}
 
 ```{julia}
-m=reg(dfc, @formula(y ~ -1 + cohort*ct + fe(id)), save=:fe)
+m=reg(dfc, @formula(y ~ -1 + cohort*ct + fe(id)), Vcov.cluster(:id))
 regtable(m, render=AsciiTable())
 ```
 
@@ -419,6 +419,41 @@ regtable(m, render=AsciiTable())
 - Understand existing methods: read reviews @dd2022, @roth2023, @dd2023
 - Use an appropriate package:
    - partial list on [https://asjadnaqvi.github.io/DiD/](https://asjadnaqvi.github.io/DiD/)
+
+## Stacked Event Study
+
+- Cengiz et al 2019
+
+```{julia}
+function stackeddata(dfc, groupvar=:cohort, controlgroup=1)
+    dfs = DataFrame()
+    for g in unique(dfc[!,groupvar])
+        if (g == controlgroup) continue end
+        dfg = dfc[(dfc[!,groupvar] .== g) .| (dfc[!,groupvar] .== controlgroup), :]
+        dfg = sort(dfg, [:id, :t])
+        dfg[!,:rtt] = dfg.t .- minimum(dfg.t[(dfg[!,groupvar] .== g) .& (dfg.D .== true)]) # time relative to treatment
+        dfg[!,:group] .= g
+        dfs = vcat(dfs, dfg)
+    end
+    dfs.rtt = categorical(dfs.rtt)
+    dfs.group = categorical(dfs.group)
+    dfs.evertreated = dfs[!,groupvar] .!= controlgroup
+    return(dfs)
+end
+
+dfs = stackeddata(dfc)
+
+m = reg(dfs, @formula(y ~ -1 + rtt*group + fe(id) + fe(t)))
+regtable(m, render=AsciiTable())
+```
+
+## Local Project
+
+- Dube et al 2025
+
+```{julia}
+
+```
 
 
 # Pre-trends

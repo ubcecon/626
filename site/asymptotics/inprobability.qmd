@@ -140,7 +140,7 @@ Bias(\hat{\beta})'Bias(\hat{\beta}) \to 0$
 
 - $\var(\hat{\beta}) = \sigma^2 (X'X)^{-1}$ (treating $X$ as non-stochastic)
 
-- $tr((X'X)^{-1}) \leq \frac{k}{\lambda_{ min}(X'X)}$
+- $tr((X'X)^{-1}) \leq \frac{k}{\lambda_{min}(X'X)}$
 
 :::
 
@@ -292,7 +292,27 @@ $$
 :::
 
 
+## Application: Generalization Bound
 
+
+::: {.incremental}
+
+- Given $\hat{\beta} = \argmin \sum_{i=1}^n \left( y_i - x_i' \beta \right)^2$, can we bound
+$$
+\Er[(Y - X'\hat{\beta})^2]?
+$$
+
+- Yes, under reasonable assumptions, we can show
+$$
+P\left( \Er[(Y - X'\hat{\beta})^2] \geq \frac{1}{n} \sum_{i=1}^n \left( y_i - x_i'\hat{\beta} \right)^2 + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + k/2\log(n)}{n}} \right) \leq \delta
+$$
+
+- To show use:
+    - Non-asymptotic bound for fixed $\beta$ from above
+    - Union-bound argument over finitely many different values of $\beta$
+    - Compactness to approximate infinite values of $\beta$ with finitely many
+
+:::
 <!---
 
 calculate order of least squares with k(n) . Too hard?

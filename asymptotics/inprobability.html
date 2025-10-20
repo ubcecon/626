@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.24">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-10-21">
+  <meta name="dcterms.date" content="2025-10-20">
   <title>ECON 626 – Convergence in Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -160,7 +160,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-10-21</p>
+  <p class="date">2025-10-20</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -276,7 +276,7 @@ MSE(\hat{\theta}_n) = &amp; \Er[ \norm{\hat{\theta}_n - \theta_0}^2 ] \\
 <li class="fragment"><p>Sufficient that <span class="math inline">\(MSE(\hat{\beta}) = tr[\var(\hat{\beta})] +
 Bias(\hat{\beta})'Bias(\hat{\beta}) \to 0\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\(\var(\hat{\beta}) = \sigma^2 (X'X)^{-1}\)</span> (treating <span class="math inline">\(X\)</span> as non-stochastic)</p></li>
-<li class="fragment"><p><span class="math inline">\(tr((X'X)^{-1}) \leq \frac{k}{\lambda_{ min}(X'X)}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(tr((X'X)^{-1}) \leq \frac{k}{\lambda_{min}(X'X)}\)</span></p></li>
 </ul>
 </section>
 <section id="convergence-in-probability-of-functions" class="slide level2">
@@ -420,6 +420,23 @@ P(X-\mu&gt;\epsilon) \leq \inf_{\lambda \geq 0} e^{-\lambda \epsilon + \lambda^2
 <li class="fragment"><p>Suppose <span class="math inline">\(\Er\left[e^{\lambda (X_i-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}\)</span> and <span class="math inline">\(X_i\)</span> are independent, then <span class="math display">\[
 P\left(\frac{1}{n} \sum_{i=1}^n X_i-\mu &gt;\epsilon\right) \leq e^{-\frac{\epsilon^2 n}{2 \sigma^2}}
 \]</span></p></li>
+</ul>
+</section>
+<section id="application-generalization-bound" class="slide level2">
+<h2>Application: Generalization Bound</h2>
+<ul>
+<li class="fragment"><p>Given <span class="math inline">\(\hat{\beta} = \argmin \sum_{i=1}^n \left( y_i - x_i' \beta \right)^2\)</span>, can we bound <span class="math display">\[
+\Er[(Y - X'\hat{\beta})^2]?
+\]</span></p></li>
+<li class="fragment"><p>Yes, under reasonable assumptions, we can show <span class="math display">\[
+P\left( \Er[(Y - X'\hat{\beta})^2] \geq \frac{1}{n} \sum_{i=1}^n \left( y_i - x_i'\hat{\beta} \right)^2 + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + k/2\log(n)}{n}} \right) \leq \delta
+\]</span></p></li>
+<li class="fragment"><p>To show use:</p>
+<ul>
+<li class="fragment">Non-asymptotic bound for fixed <span class="math inline">\(\beta\)</span> from above</li>
+<li class="fragment">Union-bound argument over finitely many different values of <span class="math inline">\(\beta\)</span></li>
+<li class="fragment">Compactness to approximate infinite values of <span class="math inline">\(\beta\)</span> with finitely many</li>
+</ul></li>
 </ul>
 <!---
 

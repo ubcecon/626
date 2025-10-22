@@ -255,6 +255,67 @@ $$
   $$
   so $|\En X_i - \mu | = O_p(n^{-\alpha})$ for $\alpha \in (0, 1/2]$
 
+## Simulation of Stochastic Order
+
+- $\frac{1}{n} \sum_{i=1}^n x_i = O_p(n^{-1/2})$ means that by scaling the red line by $M_\epsilon$, we can make the probability of the blue lines being above it less than $\epsilon$
+
+```{julia}
+#| code-fold: true
+#| echo: true
+using Distributions, Plots, Statistics, Random, LaTeXStrings
+Random.seed!(1234)
+S = 100
+n = 2:400
+distribution = Exponential(1)
+dgp(n) = rand(distribution, n)
+μ = mean(distribution)
+fig = plot()
+for s in 1:S
+    data = dgp(maximum(n))
+    plot!(fig, n, abs.(mean.(data[1:i] for i in n) .- μ), alpha=0.2, label=false, color=:blue)
+end
+plot!(fig, n, 1 ./ sqrt.(n), label=L"n^{-1/2}", color=:red, lw=3)
+fig
+```
+
+
+## Simulation of Stochatic Order
+
+- $\min_{i} x_i = o_p(1/n^{-1/2})$ implies all simulations should be below $n^{-1/2}$ for $n$ large enough
+
+```{julia}
+#| code-fold: true
+#| echo: true
+using Distributions, Plots, Statistics, Random, LaTeXStrings
+Random.seed!(1234)
+S = 100
+n = 2:400
+distribution = Exponential(1)
+dgp(n) = rand(distribution, n)
+m₀ = minimum(distribution)
+fig = plot()
+for s in 1:S
+    data = dgp(maximum(n))
+    plot!(fig, n, abs.(minimum.(data[1:i] for i in n) .- m₀), alpha=0.2, label=false, color=:blue)
+end
+plot!(fig, n, 1 ./ sqrt.(n), label=L"n^{-1/2}", lw=3)
+plot!(fig, n, 1 ./(n), label=L"n^{-1}", lw=3)
+ylims!(fig, (0, 1/sqrt(10)))
+fig
+```
+
+## Big $O$ and little $o$ calculus
+
+- If $X_n = o_p(a_n)$ and $Y_n=o_p(b_n)$, then
+  - $X_n + Y_n = o_p(\max\{a_n,b_n\})$
+  - $|X_n'Y_n| = o_p(a_n b_n)$
+
+- If $X_n = O_p(a_n)$ and $Y_n=O_p(b_n)$, then
+  - $X_n + Y_n = O_p(\max\{a_n,b_n\})$
+  - $|X_n'Y_n| = O_p(a_n b_n)$
+
+
+
 # Non-Asymptotic Bounds
 
 ## Non-Asymptotic Bounds
@@ -310,9 +371,10 @@ $$
 - To show use:
     - Non-asymptotic bound for fixed $\beta$ from above
     - Union-bound argument over finitely many different values of $\beta$
-    - Compactness to approximate infinite values of $\beta$ with finitely many
+    - Compactness to approximate infinite values of $\beta$ with finite set
 
 :::
+
 <!---
 
 calculate order of least squares with k(n) . Too hard?

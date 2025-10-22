@@ -508,7 +508,7 @@ P\left(\frac{1}{\sqrt{n}} \sum_{i=1}^n X_i \in A \right) - P(N(0,I_d) \in A) \ri
 (42 d^{1/4} + 16) \Er[\Vert X \Vert ^3]/\sqrt{n}
 $$
 
-^[See @raic2019 for details.]
+^[See @raic2019 for details and @cck2023 for a similar result in high dimensions.]
 
 :::
 
@@ -569,6 +569,25 @@ e3 = mean(abs.(unif(100_000)).^3)
 plotcdfwithbounds(unif,e3)
 ```
 
+## High-Dimensional CLT
+
+::: {.callout .note}
+
+### Multivariate Berry-Esseen Theorem
+If $X_i \in \R^d$ are independent with $\Er[X] = 0$,
+$\var\left(\frac{1}{\sqrt{n}} \sum_{i=1}^n X_i \right)=\Sigma$ with
+$diagonal(\Sigma) = (1, ..., 1)'$,
+$\Vert X_i \Vert_{\infty} \leq B_n$,
+and $Z \sim N(0,\Sigma)$, then
+$$
+\sup_{A \subset \R^d, \text{rectangle}} \left\vert
+P\left(\frac{1}{\sqrt{n}} \sum_{i=1}^n X_i \in A \right) - P(Z \in A) \right\vert \leq
+C B_n \sqrt{\frac{\log(d)^3}{n \lamba_{min}(\Sigma)}} \log(n)
+$$
+
+:::
+
+- See @cck2023 for this and similar results under different assumptions about $\Sigma$ and boundedness of $X_i$
 
 
 

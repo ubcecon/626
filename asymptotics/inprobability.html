@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2025-10-22">
+  <meta name="dcterms.date" content="2025-10-27">
   <title>ECON 626 – Convergence in Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -229,7 +229,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2025-10-22</p>
+  <p class="date">2025-10-27</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -563,11 +563,11 @@ P\left(\frac{1}{n} \sum_{i=1}^n X_i-\mu &gt;\epsilon\right) \leq e^{-\frac{\epsi
 <section id="application-generalization-bound" class="slide level2">
 <h2>Application: Generalization Bound</h2>
 <ul>
-<li class="fragment"><p>Given <span class="math inline">\(\hat{\beta} = \argmin \sum_{i=1}^n \left( y_i - x_i' \beta \right)^2\)</span>, can we bound <span class="math display">\[
-\Er[(Y - X'\hat{\beta})^2]?
+<li class="fragment"><p>Given <span class="math inline">\(\hat{\beta} = \mathrm{arg}\min \frac{1}{n} \sum_{i=1}^n \ell( y_i, x_i; \beta)\)</span>, can we bound <span class="math display">\[
+\Er[\ell(y_i,x_i;\hat{\beta})]?
 \]</span></p></li>
 <li class="fragment"><p>Yes, under reasonable assumptions, we can show <span class="math display">\[
-P\left( \Er[(Y - X'\hat{\beta})^2] \geq \frac{1}{n} \sum_{i=1}^n \left( y_i - x_i'\hat{\beta} \right)^2 + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + k/2\log(n)}{n}} \right) \leq \delta
+P\left( \Er[\ell(Y,X;\beta)] \geq \frac{1}{n} \sum_{i=1}^n \ell \left(y_i, x_i;\beta \right)^2 + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + k/2\log(n)}{n}} \forall \beta \in \mathscr{B} \right) \leq \delta
 \]</span></p></li>
 <li class="fragment"><p>To show use:</p>
 <ul>

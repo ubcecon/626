@@ -174,14 +174,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4</a></li>
-  </ul></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link active" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -227,47 +220,6 @@ window.Quarto = {
 \def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
 \def\indist{\,{\buildrel d \over \rightarrow}\,}
 \DeclareMathOperator*{\plim}{plim}\]</span></p>
-<section id="problem-1" class="level1">
-<h1>Problem 1</h1>
-<p>Consider the simple regression model <span class="math display">\[
-y_i = \beta_0 + \beta_1 x^*_i + \epsilon_i
-\]</span> Assume that <span class="math inline">\(\var(x^*)&gt;0\)</span> and <span class="math inline">\(\Er[x^* \epsilon] = 0\)</span>. However, <span class="math inline">\(x^*\)</span> is measured with error. Instead of observing <span class="math inline">\(x^*\)</span>, you observe <span class="math inline">\(x_i = x^*_i + u_i\)</span>. Assume that <span class="math inline">\(\Er[u] = 0\)</span>, <span class="math inline">\(\Er[u x^*] =0\)</span> and <span class="math inline">\(\Er[\epsilon u] = 0\)</span>.</p>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">1</h2>
-<p>Find <span class="math inline">\(\plim \hat{\beta}_1\)</span>, where <span class="math inline">\(\hat{\beta}_1\)</span> is the OLS etimator.</p>
-</section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2</h2>
-<p>In ``Do Low Levels of Blood Lead Reduce Children’s Future Test Scores?’’ <span class="citation" data-cites="aizer2018">Aizer et al. (<a href="#ref-aizer2018" role="doc-biblioref">2018</a>)</span> examine the relationship between blood lead levels and children’s test scores. Table 4 shows estimates of <span class="math inline">\(\beta_1\)</span> from regressions of</p>
-<p><span id="eq-lead"><span class="math display">\[
-test_i = \beta_0 + \beta_1 lead_i + \text{ other controls} + \epsilon_i
-\tag{1}\]</span></span></p>
-<p>where <span class="math inline">\(test_i\)</span> is a 3rd grade reading or math test and <span class="math inline">\(lead_i\)</span> is a blood lead level measurement taken before the age of six. Some children had multiple measurements of their blood lead levels taken. Each blood lead level measurement has some error. In comparing columns (1) and (2), note that venous tests are known to have less measurement error than capillary tests, and in comparing columns (3) and (4) the average of all blood lead levels has less measurement error than a single one. Are the changes in the estimates across columns what you would expect from part part 1? Why or why not?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="aizer-tab4.png" class="img-fluid figure-img"></p>
-<figcaption><span class="citation" data-cites="aizer2018">Aizer et al. (<a href="#ref-aizer2018" role="doc-biblioref">2018</a>)</span> table 4</figcaption>
-</figure>
-</div>
-</section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">3</h2>
-<p>Suppose <span class="math inline">\(z_i\)</span> is a second measurement of <span class="math inline">\(x^*\)</span>, [ z_i = x^*_i + e_i ] with <span class="math inline">\(\Er[e] = 0\)</span>, <span class="math inline">\(\Er[x^* e] = 0\)</span>, <span class="math inline">\(\Er[\epsilon e] = 0\)</span> and <span class="math inline">\(\Er[e u] = 0\)</span>. Show that <span class="math display">\[
-\hat{\beta}_1^{IV} = \frac{\sum_{i=1}^n (z_i - \bar{z}) y_i} {\sum_{i=1}^n
-   (z_i - \bar{z}) x_i}
-\]</span> is a consistent estimate of <span class="math inline">\(\beta_1\)</span>.</p>
-</section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">4</h2>
-<p>Table 5 from <span class="citation" data-cites="aizer2018">Aizer et al. (<a href="#ref-aizer2018" role="doc-biblioref">2018</a>)</span>, shows additional estimates of the model <a href="#eq-lead" class="quarto-xref">Equation&nbsp;1</a>. Column (1) shows standard multiple regression estimates. Columns (2) and (3) show estimates using the estimator <span class="math inline">\(\hat{\beta}_1^{IV}\)</span> from part 3. Is the change in the estimates between columns (1) and (2) what you would expect based on parts 1 and 3? Why or why not?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="aizer-tab5.png" class="img-fluid figure-img"></p>
-<figcaption><span class="citation" data-cites="aizer2018">Aizer et al. (<a href="#ref-aizer2018" role="doc-biblioref">2018</a>)</span> table 5</figcaption>
-</figure>
-</div>
-</section>
-</section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
 <p>In the linear model, <span class="math display">\[
@@ -313,9 +265,6 @@ y_i = \beta D_i + x_i' \alpha + \epsilon_i
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-aizer2018" class="csl-entry" role="listitem">
-Aizer, Anna, Janet Currie, Peter Simon, and Patrick Vivier. 2018. <span>“Do Low Levels of Blood Lead Reduce Children’s Future Test Scores?”</span> <em>American Economic Journal: Applied Economics</em> 10 (1): 307–41. <a href="https://doi.org/10.1257/app.20160404">https://doi.org/10.1257/app.20160404</a>.
-</div>
 <div id="ref-borusyak2018" class="csl-entry" role="listitem">
 Borusyak, Kirill, and Xavier Jaravel. 2018. <span>“Revisiting Event Study Designs.”</span> <a href="https://scholar.harvard.edu/files/borusyak/files/borusyak_jaravel_event_studies.pdf">https://scholar.harvard.edu/files/borusyak/files/borusyak_jaravel_event_studies.pdf</a>.
 </div>

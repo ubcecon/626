@@ -490,34 +490,6 @@
     "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\\]"
   },
   {
-    "objectID": "problemsets/06/ps06.html#section",
-    "href": "problemsets/06/ps06.html#section",
-    "title": "ECON 626: Problem Set 6",
-    "section": "1",
-    "text": "1\nFind \\(\\plim \\hat{\\beta}_1\\), where \\(\\hat{\\beta}_1\\) is the OLS etimator."
-  },
-  {
-    "objectID": "problemsets/06/ps06.html#section-1",
-    "href": "problemsets/06/ps06.html#section-1",
-    "title": "ECON 626: Problem Set 6",
-    "section": "2",
-    "text": "2\nIn ``Do Low Levels of Blood Lead Reduce Children’s Future Test Scores?’’ Aizer et al. (2018) examine the relationship between blood lead levels and children’s test scores. Table 4 shows estimates of \\(\\beta_1\\) from regressions of\n\\[\ntest_i = \\beta_0 + \\beta_1 lead_i + \\text{ other controls} + \\epsilon_i\n\\tag{1}\\]\nwhere \\(test_i\\) is a 3rd grade reading or math test and \\(lead_i\\) is a blood lead level measurement taken before the age of six. Some children had multiple measurements of their blood lead levels taken. Each blood lead level measurement has some error. In comparing columns (1) and (2), note that venous tests are known to have less measurement error than capillary tests, and in comparing columns (3) and (4) the average of all blood lead levels has less measurement error than a single one. Are the changes in the estimates across columns what you would expect from part part 1? Why or why not?\n\n\n\nAizer et al. (2018) table 4"
-  },
-  {
-    "objectID": "problemsets/06/ps06.html#section-2",
-    "href": "problemsets/06/ps06.html#section-2",
-    "title": "ECON 626: Problem Set 6",
-    "section": "3",
-    "text": "3\nSuppose \\(z_i\\) is a second measurement of \\(x^*\\), [ z_i = x^*_i + e_i ] with \\(\\Er[e] = 0\\), \\(\\Er[x^* e] = 0\\), \\(\\Er[\\epsilon e] = 0\\) and \\(\\Er[e u] = 0\\). Show that \\[\n\\hat{\\beta}_1^{IV} = \\frac{\\sum_{i=1}^n (z_i - \\bar{z}) y_i} {\\sum_{i=1}^n\n   (z_i - \\bar{z}) x_i}\n\\] is a consistent estimate of \\(\\beta_1\\)."
-  },
-  {
-    "objectID": "problemsets/06/ps06.html#section-3",
-    "href": "problemsets/06/ps06.html#section-3",
-    "title": "ECON 626: Problem Set 6",
-    "section": "4",
-    "text": "4\nTable 5 from Aizer et al. (2018), shows additional estimates of the model Equation 1. Column (1) shows standard multiple regression estimates. Columns (2) and (3) show estimates using the estimator \\(\\hat{\\beta}_1^{IV}\\) from part 3. Is the change in the estimates between columns (1) and (2) what you would expect based on parts 1 and 3? Why or why not?\n\n\n\nAizer et al. (2018) table 5"
-  },
-  {
     "objectID": "problemsets/06/ps06.html#footnotes",
     "href": "problemsets/06/ps06.html#footnotes",
     "title": "ECON 626: Problem Set 6",
@@ -1418,7 +1390,7 @@
     "href": "asymptotics/inprobability.html#application-generalization-bound",
     "title": "Convergence in Probability",
     "section": "Application: Generalization Bound",
-    "text": "Application: Generalization Bound\n\nGiven \\(\\hat{\\beta} = \\mathrm{arg}\\min \\frac{1}{n} \\sum_{i=1}^n \\ell( y_i, x_i; \\beta)\\), can we bound \\[\n\\Er[\\ell(y_i,x_i;\\hat{\\beta})]?\n\\]\nYes, under reasonable assumptions, we can show \\[\nP\\left( \\Er[\\ell(Y,X;\\beta)] \\geq \\frac{1}{n} \\sum_{i=1}^n \\ell \\left(y_i, x_i;\\beta \\right)^2 + \\sqrt{\\frac{C_0 + C_1 \\log(1/\\delta) + k/2\\log(n)}{n}} \\forall \\beta \\in \\mathscr{B} \\right) \\leq \\delta\n\\]\nTo show use:\n\nNon-asymptotic bound for fixed \\(\\beta\\) from above\nUnion-bound argument over finitely many different values of \\(\\beta\\)\nCompactness to approximate infinite values of \\(\\beta\\) with finite set"
+    "text": "Application: Generalization Bound\n\nGiven \\(\\hat{\\beta} = \\mathrm{arg}\\min \\frac{1}{n} \\sum_{i=1}^n \\ell( y_i, x_i; \\beta)\\), can we bound \\[\n\\Er[\\ell(y_i,x_i;\\hat{\\beta})]?\n\\]\nYes, under reasonable assumptions, we can show \\[\nP\\left( \\Er[\\ell(Y,X;\\beta)] \\geq \\frac{1}{n} \\sum_{i=1}^n \\ell \\left(y_i, x_i;\\beta \\right) + \\sqrt{\\frac{C_0 + C_1 \\log(1/\\delta) + k/2\\log(n)}{n}} \\forall \\beta \\in \\mathscr{B} \\right) \\leq \\delta\n\\]\nTo show use:\n\nNon-asymptotic bound for fixed \\(\\beta\\) from above\nUnion-bound argument over finitely many different values of \\(\\beta\\)\nCompactness to approximate infinite values of \\(\\beta\\) with finite set"
   },
   {
     "objectID": "about.html",
@@ -2118,7 +2090,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.526809094675253\n -0.14496184667692297\n -0.3537123934487732"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.5215587681590536\n -0.1291510036078996\n -0.3602293760447084"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-1",
@@ -2440,7 +2412,35 @@
     "href": "problemsets/05/ps05.html",
     "title": "ECON 626: Problem Set 5",
     "section": "",
-    "text": "\\[\n\\def\\indep{{\\perp\\!\\!\\!\\perp}}\n\\def\\R{{\\mathbb{R}}}\n\\def\\Er{{\\mathrm{E}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\]\n\nProblem 1\nSuppose \\(X_n = O_p(a_n)\\) and \\(Y_n - c = O_p(a_n)\\) for \\(c \\neq 0\\) and \\(a_n \\to 0\\). Show that \\(\\frac{X_n}{Y_n} = O_p(a_n)\\).\nHint: \\(\\frac{X_n}{Y_n} = \\frac{X_n}{c} + \\frac{X_n}{Y_n} (c - Y_n) \\frac{1}{c}\\), use Lemma 3.3 and Exericse 3.1 from Song (2021).\n\n\nProblem 2\nSuppose that each individual person \\(i\\) has potential outcomes \\(Y_i(1)\\) and \\(Y_i(0)\\) depending on the treated state or the untreated state. The average treatment effect is defined to be \\[\n    \\tau = \\Er[Y_i(1) - Y_i(0)].\n\\] We assume that the econometrician observes \\((Y_i,D_i)\\), where \\(Y_i = D_i Y_i(1) + (1 - D_i)Y_i(0)\\), \\(D_i\\) is a binary variable representing the treatment status, and that \\((Y_(1),Y_i(0))\\) is independent of \\(D_i\\). Finally, assume that \\(0 &lt; \\Er[D_i] &lt;1\\), \\(Y_i \\in [0,1]\\) for all \\(i =1,...,n\\), and that \\((Y_i(1),Y_i(0),D_i)\\) are i.i.d. across \\(i\\)’s.\n\nShow that \\[\n\\hat{\\tau} = \\frac{\\sum_{i=1}^n Y_i D_i}{\\sum_{i=1}^n D_i} - \\frac{\\sum_{i=1}^n Y_i (1-D_i)}{\\sum_{i=1}^n (1-D_i)}\n\\] is a consistent estimator for \\(\\tau\\).\nShow that \\(\\hat{\\tau} - \\tau = O_p(n^{-1/2})\\)\nShow that \\(\\sqrt{n}(\\hat{\\tau}-\\tau) \\to^d N(0,\\sigma_\\tau^2)\\) and calculate \\(\\sigma_\\tau^2\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReferences\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”"
+    "text": "\\[\n\\def\\indep{{\\perp\\!\\!\\!\\perp}}\n\\def\\R{{\\mathbb{R}}}\n\\def\\Er{{\\mathrm{E}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\]"
+  },
+  {
+    "objectID": "problemsets/05/ps05.html#section",
+    "href": "problemsets/05/ps05.html#section",
+    "title": "ECON 626: Problem Set 5",
+    "section": "1",
+    "text": "1\nFind \\(\\plim \\hat{\\beta}_1\\), where \\(\\hat{\\beta}_1\\) is the OLS etimator."
+  },
+  {
+    "objectID": "problemsets/05/ps05.html#section-1",
+    "href": "problemsets/05/ps05.html#section-1",
+    "title": "ECON 626: Problem Set 5",
+    "section": "2",
+    "text": "2\nIn ``Do Low Levels of Blood Lead Reduce Children’s Future Test Scores?’’ Aizer et al. (2018) examine the relationship between blood lead levels and children’s test scores. Table 4 shows estimates of \\(\\beta_1\\) from regressions of\n\\[\ntest_i = \\beta_0 + \\beta_1 lead_i + \\text{ other controls} + \\epsilon_i\n\\tag{1}\\]\nwhere \\(test_i\\) is a 3rd grade reading or math test and \\(lead_i\\) is a blood lead level measurement taken before the age of six. Some children had multiple measurements of their blood lead levels taken. Each blood lead level measurement has some error. In comparing columns (1) and (2), note that venous tests are known to have less measurement error than capillary tests, and in comparing columns (3) and (4) the average of all blood lead levels has less measurement error than a single one. Are the changes in the estimates across columns what you would expect from part part 1? Why or why not?\n\n\n\nAizer et al. (2018) table 4"
+  },
+  {
+    "objectID": "problemsets/05/ps05.html#section-2",
+    "href": "problemsets/05/ps05.html#section-2",
+    "title": "ECON 626: Problem Set 5",
+    "section": "3",
+    "text": "3\nSuppose \\(z_i\\) is a second measurement of \\(x^*\\), [ z_i = x^*_i + e_i ] with \\(\\Er[e] = 0\\), \\(\\Er[x^* e] = 0\\), \\(\\Er[\\epsilon e] = 0\\) and \\(\\Er[e u] = 0\\). Show that \\[\n\\hat{\\beta}_1^{IV} = \\frac{\\sum_{i=1}^n (z_i - \\bar{z}) y_i} {\\sum_{i=1}^n\n   (z_i - \\bar{z}) x_i}\n\\] is a consistent estimate of \\(\\beta_1\\)."
+  },
+  {
+    "objectID": "problemsets/05/ps05.html#section-3",
+    "href": "problemsets/05/ps05.html#section-3",
+    "title": "ECON 626: Problem Set 5",
+    "section": "4",
+    "text": "4\nTable 5 from Aizer et al. (2018), shows additional estimates of the model Equation 1. Column (1) shows standard multiple regression estimates. Columns (2) and (3) show estimates using the estimator \\(\\hat{\\beta}_1^{IV}\\) from part 3. Is the change in the estimates between columns (1) and (2) what you would expect based on parts 1 and 3? Why or why not?\n\n\n\nAizer et al. (2018) table 5"
   },
   {
     "objectID": "problemsets/07/ps07.html",
@@ -2867,6 +2867,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nOct 8, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nOct 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nOct 8, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
   }
 ]

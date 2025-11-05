@@ -490,6 +490,34 @@
     "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\\]"
   },
   {
+    "objectID": "problemsets/06/ps06.html#twfe",
+    "href": "problemsets/06/ps06.html#twfe",
+    "title": "ECON 626: Problem Set 6",
+    "section": "TWFE",
+    "text": "TWFE\nChen and French (2023) begin by estimating a two-way fixed effects (TWFE) model, \\[\nF_{it} = \\alpha + \\beta_1 MM_{it} + \\beta_2 RM_{it} + X_{it}\\gamma + \\eta_i + \\theta_t + \\varepsilon_{it}\n\\] where \\(F_{it}\\) is log traffic fatalaties per 100,000 in state \\(i\\) and year \\(t\\), \\(MM_{it}\\) is an indicator for medical marijuana being legal, \\(RM_{it}\\) is an indicator for legalized recreational marijuana, and \\(X_{it}\\) are state covariates including traffic volume, economic conditions, and demographics. Chen and French (2023) present estimates of the TWFE model “for comparison with the literature,” but also compute other estimators. Why? What is a problem with TWFE here?"
+  },
+  {
+    "objectID": "problemsets/06/ps06.html#multiple-treatments",
+    "href": "problemsets/06/ps06.html#multiple-treatments",
+    "title": "ECON 626: Problem Set 6",
+    "section": "Multiple Treatments",
+    "text": "Multiple Treatments\nSuppose \\(1/2\\) of states legalized medical marijuana in a single year and no other changes occurred in \\(MM_{it}\\). Also suppose \\(1/4\\) of states legalized recretaional marijuana in a single later year and no other changes occurred in \\(RM_{it}\\). That is, there is no variation in treatment timing, but there are multiple treatments. For simplicity, ignore covariates. Would estimating a TWFE model, \\[\nF_{it} = \\alpha + \\beta_1 MM_{it} + \\beta_2 RM_{it} + \\eta_i + \\theta_t + \\varepsilon_{it}\n\\] recover an interpretable average treatment effect on the treated? Your answer should include some algebra or perhaps computer computations relating \\(\\hat{\\beta}_1\\) and/or \\(\\hat{\\beta}_2\\) to potential outcomes. Feel free to make reasonable additional assumptions to help simplify the analysis."
+  },
+  {
+    "objectID": "problemsets/06/ps06.html#did_m-did_ell",
+    "href": "problemsets/06/ps06.html#did_m-did_ell",
+    "title": "ECON 626: Problem Set 6",
+    "section": "\\(DID_M\\), \\(DID_\\ell\\)",
+    "text": "\\(DID_M\\), \\(DID_\\ell\\)\nChen and French (2023) also report the \\(DID_M\\) and \\(DID_\\ell\\) estimators? What are these? What sort of average treatment effect do they estimate? (You will need to read Chen and French (2023) and perhaps also Chaisemartin and D’Haultfœuille (2020) to answer this.)"
+  },
+  {
+    "objectID": "problemsets/06/ps06.html#results",
+    "href": "problemsets/06/ps06.html#results",
+    "title": "ECON 626: Problem Set 6",
+    "section": "Results",
+    "text": "Results\nTable 2 and Figure 1 show the main results of the paper. What conclusions would you draw from these?\n\n\n\ntable 2\n\n\n\n\n\nfigure 1"
+  },
+  {
     "objectID": "problemsets/06/ps06.html#footnotes",
     "href": "problemsets/06/ps06.html#footnotes",
     "title": "ECON 626: Problem Set 6",
@@ -1033,7 +1061,28 @@
     "href": "did/did.html#important-assumptions",
     "title": "Difference in Diffferences",
     "section": "Important Assumptions",
-    "text": "Important Assumptions\n\nNo anticipation: \\(D_{i1}=1\\) does not affect \\(y_{i0}\\)\n\nbuilt into the potential outcomes notation we used, relaxing would be allowing potential outcomes given sequence of \\(D\\) – \\(y_{it}(D_{i0},D_{i1})\\)\n\nParallel trends: \\(\\Er[\\color{red}{y_{i1}(0)} - y_{i0}(0) |D_{i1}=1,D_{i0}=0] =  \\Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0], D_{i0}=0]\\)\n\nnot invariant to tranformations of \\(y\\)"
+    "text": "Important Assumptions\n\nNo anticipation: \\(D_{i1}=1\\) does not affect \\(y_{i0}\\)\n\nbuilt into the potential outcomes notation we used\nrelaxing would be allowing potential outcomes to depend on sequence of \\(D\\) – \\(y_{it}(D_{i0},D_{i1})\\) (would require different estimator and assumptions)\n\nParallel trends: \\(\\Er[\\color{red}{y_{i1}(0)} - y_{i0}(0) |D_{i1}=1,D_{i0}=0] =  \\Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0], D_{i0}=0]\\)\n\nnot invariant to tranformations of \\(y\\)"
+  },
+  {
+    "objectID": "did/did.html#parallel-trends-in-levels",
+    "href": "did/did.html#parallel-trends-in-levels",
+    "title": "Difference in Diffferences",
+    "section": "Parallel Trends in Levels",
+    "text": "Parallel Trends in Levels\n\n\nCode\nusing DataFrames, Statistics, Measures\nimport Plots\n\n# Parameters\nn_periods = 10\ngroup_names = [\"Control\", \"Treatment\"]\ninitials = [10.0, 5.0]\ntrend = 1\n\ndata = DataFrame(group=String[], time=Int[], y=Float64[])\nfor (g, initial) in enumerate(initials)\n    y = initial\n    for t in 1:n_periods\n        push!(data, (group_names[g], t, y))\n        y = initial + trend * t\n    end\nend\n\ndata.log_y = log.(data.y)\n\n# Compute growth rates (difference in logs)\ndata.growth_rate = vcat(missing, diff(data.log_y))\nsameid = vcat(true, data.group[1:(end-1)] .== data.group[2:end])\ndata.growth_rate[.!sameid] .= missing\n\n# Plot growth rates\nfunction plot_trends(data)\n    plt1 = Plots.plot(title=\"Levels\", xlabel=\"Time\", ylabel=\"y\");\n    for g in group_names\n        idx = data.group .== g\n        Plots.plot!(plt1, data.time[idx], data.y[idx], label=g, marker=:circle);\n    end\n\n    plt2 = Plots.plot(title=\"Logs\", xlabel=\"Time\", ylabel=\"log(y)\");\n    for g in group_names\n        idx = data.group .== g\n        Plots.plot!(plt2, data.time[idx], data.log_y[idx], label=g, marker=:circle);\n    end\n\n    plt3 = Plots.plot(title=\"Growth Rates\", xlabel=\"Time\", ylabel=\"Δlog(y)\");\n    for g in group_names\n        idx = (data.group .== g) .& (.!ismissing.(data.growth_rate))\n        Plots.plot!(plt3, data.time[idx], data.growth_rate[idx], label=g, marker=:circle);\n        if -(-)(extrema(skipmissing(data.growth_rate))...) &lt; 1e-4\n            Plots.ylims!(plt3, mean(skipmissing(data.growth_rate)) .+ (-0.01, 0.01))\n        end\n    end\n\n    Plots.plot(plt1, plt2, plt3, layout=(1,3), size=(900,300), margin=5mm)\nend\nplot_trends(data)"
+  },
+  {
+    "objectID": "did/did.html#parallel-trends-in-logs",
+    "href": "did/did.html#parallel-trends-in-logs",
+    "title": "Difference in Diffferences",
+    "section": "Parallel Trends in Logs",
+    "text": "Parallel Trends in Logs\n\n\nCode\nusing DataFrames\nimport Plots\n\n# Parameters\nn_periods = 10\ngroup_names = [\"Control\", \"Treatment\"]\ninitials = [5.0, 6.0]\ntrend = -0.1\n\ndata = DataFrame(group=String[], time=Int[], log_y=Float64[])\nfor (g, initial) in enumerate(initials)\n    log_y = initial\n    for t in 1:n_periods\n        push!(data, (group_names[g], t, log_y))\n        log_y = initial + t*trend\n    end\nend\n\ndata.y = exp.(data.log_y)\n\n# Compute growth rates (difference in logs)\ndata.growth_rate = vcat(missing, diff(data.log_y))\nsameid = vcat(true, data.group[1:(end-1)] .== data.group[2:end])\ndata.growth_rate[.!sameid] .= missing\n\nplot_trends(data)"
+  },
+  {
+    "objectID": "did/did.html#parallel-trends-in-growth-rates",
+    "href": "did/did.html#parallel-trends-in-growth-rates",
+    "title": "Difference in Diffferences",
+    "section": "Parallel Trends in Growth Rates",
+    "text": "Parallel Trends in Growth Rates\n\n\nCode\nusing DataFrames\nimport Plots\n\n# Parameters\nn_periods = 10\ngroup_names = [\"Control\", \"Treatment\"]\ninitials = [20.0, 19.0]\ngrowth = [1.10, 1.07]\ngrowth_trend = -0.004\n\ndata = DataFrame(group=String[], time=Int[], y=Float64[])\nfor (g, initial) in enumerate(initials)\n    y = initial\n    for t in 0:n_periods-1\n        push!(data, (group_names[g], t, y))\n        y *= growth[g] + growth_trend * t\n    end\nend\n\ndata.log_y = log.(data.y)\n\n# Compute growth rates (difference in logs)\ndata.growth_rate = vcat(missing, diff(data.log_y))\nsameid = vcat(true, data.group[1:(end-1)] .== data.group[2:end])\ndata.growth_rate[.!sameid] .= missing\n\nplot_trends(data)"
   },
   {
     "objectID": "did/did.html#estimation",
@@ -1075,49 +1124,70 @@
     "href": "did/did.html#weights",
     "title": "Difference in Diffferences",
     "section": "Weights",
-    "text": "Weights\n\n\nCode\nusing Statistics\nfunction assigntreat(n,T;portiontreated=vcat(zeros(T ÷ 2), 0.5, zeros(T - (T ÷ 2) - 1)))\n  treated = falses(n,T)\n  for t=2:T\n    treated[:,t] = treated[:,t-1]\n    if (portiontreated[t]&gt;0)\n      treated[:,t] = (treated[:,t] .|| rand(n) .&lt; portiontreated[t])\n    end\n  end\n  return(treated)\nend\n\nfunction weights(D)\n  D̃ = D .- mean(D,dims=1) .- mean(D,dims=2) .+ mean(D)\n  ω = D̃./sum(D̃.^2)\nend\n\nn = 5000\nT = 9\nD = assigntreat(n,T)\ny = randn(n,T)\nsum(y.*weights(D))\n\n\n0.017448349087872732\n\n\n\n\nCode\nn,T = size(D)\nusing DataFrames, FixedEffectModels, RegressionTables\ndf = DataFrame(id = vec((1:n)*ones(Int,T)'), t = vec(ones(Int,n)*(1:T)'), y = vec(y), D=vec(D))\nm=reg(df, @formula(y ~ D + fe(t) + fe(id)))\nregtable(m, render=AsciiTable())\n\n\n\nPrecompiling packages...\n    310.7 ms  ✓ TableTraits\n    293.5 ms  ✓ DataValueInterfaces\n    312.3 ms  ✓ InvertedIndices\n    354.2 ms  ✓ PooledArrays\n    393.3 ms  ✓ Compat\n    446.3 ms  ✓ InlineStrings\n    238.2 ms  ✓ Compat → CompatLinearAlgebraExt\n    462.5 ms  ✓ Tables\n   1018.8 ms  ✓ SentinelArrays\n   8013.2 ms  ✓ PrettyTables\n  16505.7 ms  ✓ DataFrames\n  11 dependencies successfully precompiled in 25 seconds. 25 already precompiled.\nPrecompiling packages...\n    489.1 ms  ✓ QuartoNotebookWorkerTablesExt (serial)\n  1 dependency successfully precompiled in 0 seconds\nPrecompiling packages...\n    487.9 ms  ✓ QuartoNotebookWorkerLaTeXStringsExt (serial)\n  1 dependency successfully precompiled in 0 seconds\nPrecompiling packages...\n    234.5 ms  ✓ ShiftedArrays\n    344.6 ms  ✓ GroupedArrays\n    938.7 ms  ✓ StatsModels\n   1829.0 ms  ✓ FixedEffects\n   5542.2 ms  ✓ Vcov\n   8363.7 ms  ✓ FixedEffectModels\n  6 dependencies successfully precompiled in 14 seconds. 57 already precompiled.\nPrecompiling packages...\n    856.0 ms  ✓ RegressionTables\n  1 dependency successfully precompiled in 1 seconds. 53 already precompiled.\nPrecompiling packages...\n   1208.1 ms  ✓ RegressionTables → RegressionTablesFixedEffectModelsExt\n  1 dependency successfully precompiled in 1 seconds. 73 already precompiled.\n\n\n\n\n\n--------------------------\n                      y   \n--------------------------\nD                    0.017\n                   (0.019)\n--------------------------\nt Fixed Effects        Yes\nid Fixed Effects       Yes\n--------------------------\nN                   45,000\nR2                   0.111\nWithin-R2            0.000\n--------------------------"
+    "text": "Weights\n\n\nCode\nusing Statistics\nfunction assigntreat(n,T;portiontreated=vcat(zeros(T ÷ 2), 0.5, zeros(T - (T ÷ 2) - 1)))\n  treated = falses(n,T)\n  for t=2:T\n    treated[:,t] = treated[:,t-1]\n    if (portiontreated[t]&gt;0)\n      treated[:,t] = (treated[:,t] .|| rand(n) .&lt; portiontreated[t])\n    end\n  end\n  return(treated)\nend\n\nfunction weights(D)\n  D̃ = D .- mean(D,dims=1) .- mean(D,dims=2) .+ mean(D)\n  ω = D̃./sum(D̃.^2)\nend\n\nn = 5000\nT = 9\nD = assigntreat(n,T)\ny = randn(n,T)\nsum(y.*weights(D))\n\n\n0.007945098815000627\n\n\n\n\nCode\nn,T = size(D)\nusing DataFrames, FixedEffectModels, RegressionTables\ndf = DataFrame(id = vec((1:n)*ones(Int,T)'), t = vec(ones(Int,n)*(1:T)'), y = vec(y), D=vec(D))\nm=reg(df, @formula(y ~ D + fe(t) + fe(id)))\nregtable(m, render=AsciiTable())\n\n\n\n--------------------------\n                      y   \n--------------------------\nD                    0.008\n                   (0.019)\n--------------------------\nt Fixed Effects        Yes\nid Fixed Effects       Yes\n--------------------------\nN                   45,000\nR2                   0.111\nWithin-R2            0.000\n--------------------------"
+  },
+  {
+    "objectID": "did/did.html#portion-treated-with-single-treatment-time",
+    "href": "did/did.html#portion-treated-with-single-treatment-time",
+    "title": "Difference in Diffferences",
+    "section": "Portion Treated with Single Treatment Time",
+    "text": "Portion Treated with Single Treatment Time\n\n\nCode\nusing PlotlyLight\n\nfunction plotp(D; width=900, height=300)\n  n,T=size(D)\n  plt=Plot()\n  plt.layout=Config(xaxis=Config(title=Config(text=\"time\"),tickvals=1:T),\n                    yaxis=Config(title=Config(text=\"Portion Treated\")),\n                    autosize=false,\n                    width=width,\n                    height=height)\n  plt(x=1:T,y=vec(mean(D,dims=1)))\n  plt()\nend\n\npfig = plotp(D)\npfig"
   },
   {
     "objectID": "did/did.html#weights-with-single-treatment-time",
     "href": "did/did.html#weights-with-single-treatment-time",
     "title": "Difference in Diffferences",
     "section": "Weights with Single Treatment Time",
-    "text": "Weights with Single Treatment Time\n\n\nCode\nusing PlotlyLight\n\nfunction plotp(D; width=900, height=300)\n  n,T=size(D)\n  plt=Plot()\n  plt.layout=Config(xaxis=Config(title=\"time\",tickvals=1:T),\n                    yaxis=Config(title=\"Portion Treated\"),\n                    autosize=false,\n                    width=width,\n                    height=height)\n  plt(x=1:T,y=vec(mean(D,dims=1)))\n  plt()\nend\n\npfig = plotp(D)\npfig\n\n\n\nPrecompiling packages...\n    232.2 ms  ✓ InlineStrings → ParsersExt\n  1 dependency successfully precompiled in 0 seconds. 9 already precompiled."
+    "text": "Weights with Single Treatment Time\n\n\nCode\nimport StatsPlots\nfunction plotweights(D; width=900, height=300)\n    n,T = size(D)\n    ω = weights(D)\n    groups = unique(eachrow(D))\n    plt = Plot()\n    plt.layout=Config(xaxis=Config(title=Config(text=\"time\"),tickvals=1:T),\n                      yaxis=Config(title=Config(text=\"weight\")),\n                      autosize=false,\n                      width=width,\n                      height=height)\n\n    for g in groups\n        i = findfirst(d == g for d in eachrow(D))\n        wt = ω[i,:]\n        plt(x=1:T,y=wt,name=\"Treated $(sum(g)) times\", mode=\"markers\",type=\"scatter\")\n    end\n    fig=plt()\n\n    evertreated = any(D, dims=2)*ones(Int,1,size(D,2)).==1\n    aftertreatment = ones(Int,size(D,1))*any(D,dims=1).==1\n    g=[(et ? \"Treated,\" : \"Control,\") * (at ? \"After\" : \"Before\") for (et,at) in zip(evertreated, aftertreatment)]\n    histo = StatsPlots.groupedhist(vec(ω),group=vec(g),\n                                   title=\"Histogram of Weights\",\n                                   xlabel=\"Weight\", ylabel=\"Frequency\",\n                                   bins=min(length(unique(ω)),20),\n                                   size=(900,300), margin=5mm)\n    Plots.vline!(histo, [0.0], line=(:black, :dash),label=:none, width=4)\n\n    return(fig, histo)\nend\nfig,histo = plotweights(D)\nfig"
   },
   {
-    "objectID": "did/did.html#weights-with-single-treatment-time-1",
-    "href": "did/did.html#weights-with-single-treatment-time-1",
+    "objectID": "did/did.html#weight-distribution-with-single-treatment-time",
+    "href": "did/did.html#weight-distribution-with-single-treatment-time",
     "title": "Difference in Diffferences",
-    "section": "Weights with Single Treatment Time",
-    "text": "Weights with Single Treatment Time\n\n\nCode\nfunction plotweights(D; width=900, height=300)\n  n,T = size(D)\n  ω = weights(D)\n  groups = unique(eachrow(D))\n  plt = Plot()\n  plt.layout=Config(xaxis=Config(title=\"time\",tickvals=1:T),\n                    yaxis=Config(title=\"weight\"),\n                    autosize=false,\n                    width=width,\n                    height=height)\n\n  for g in groups\n    i = findfirst(d == g for d in eachrow(D))\n    wt = ω[i,:]\n    plt(x=1:T,y=wt,name=\"Treated $(sum(g)) times\", mode=\"markers\",type=\"scatter\")\n    end\n  fig=plt()\n  return(fig)\nend\nfig = plotweights(D)\nfig"
+    "section": "Weight Distribution with Single Treatment Time",
+    "text": "Weight Distribution with Single Treatment Time\n\n\nCode\nhisto"
+  },
+  {
+    "objectID": "did/did.html#portion-treated-with-uniform-treatment-time",
+    "href": "did/did.html#portion-treated-with-uniform-treatment-time",
+    "title": "Difference in Diffferences",
+    "section": "Portion Treated with Uniform Treatment Time",
+    "text": "Portion Treated with Uniform Treatment Time\n\n\nCode\nD = assigntreat(n,T,portiontreated=vcat(0,fill(0.5/(T-1),T-1)))\npfig = plotp(D)\npfig"
   },
   {
     "objectID": "did/did.html#weights-with-uniform-treatment-time",
     "href": "did/did.html#weights-with-uniform-treatment-time",
     "title": "Difference in Diffferences",
     "section": "Weights with Uniform Treatment Time",
-    "text": "Weights with Uniform Treatment Time\n\n\nCode\nD = assigntreat(n,T,portiontreated=vcat(0,fill(0.5/(T-1),T-1)))\npfig = plotp(D)\npfig"
+    "text": "Weights with Uniform Treatment Time\n\n\nCode\nfig,histo = plotweights(D)\nfig"
   },
   {
-    "objectID": "did/did.html#weights-with-uniform-treatment-time-1",
-    "href": "did/did.html#weights-with-uniform-treatment-time-1",
+    "objectID": "did/did.html#distribution-of-weights-with-uniform-treatment-time",
+    "href": "did/did.html#distribution-of-weights-with-uniform-treatment-time",
     "title": "Difference in Diffferences",
-    "section": "Weights with Uniform Treatment Time",
-    "text": "Weights with Uniform Treatment Time\n\n\nCode\nfig = plotweights(D)\nfig"
+    "section": "Distribution of Weights with Uniform Treatment Time",
+    "text": "Distribution of Weights with Uniform Treatment Time\n\n\nCode\nhisto"
+  },
+  {
+    "objectID": "did/did.html#portion-treated-with-early-and-late-treated",
+    "href": "did/did.html#portion-treated-with-early-and-late-treated",
+    "title": "Difference in Diffferences",
+    "section": "Portion Treated with Early and Late Treated",
+    "text": "Portion Treated with Early and Late Treated\n\n\nCode\npt = zeros(T)\npt[2] = 1/3\npt[end-1]=1/3\nD = assigntreat(n,T,portiontreated=pt)\npfig = plotp(D)\npfig"
   },
   {
     "objectID": "did/did.html#weights-with-early-and-late-treated",
     "href": "did/did.html#weights-with-early-and-late-treated",
     "title": "Difference in Diffferences",
     "section": "Weights with Early and Late Treated",
-    "text": "Weights with Early and Late Treated\n\n\nCode\npt = zeros(T)\npt[2] = 1/3\npt[end-1]=1/3\nD = assigntreat(n,T,portiontreated=pt)\npfig = plotp(D)\npfig"
+    "text": "Weights with Early and Late Treated\n\n\nCode\nfig,histo = plotweights(D)\nfig"
   },
   {
-    "objectID": "did/did.html#weights-with-early-and-late-treatde",
-    "href": "did/did.html#weights-with-early-and-late-treatde",
+    "objectID": "did/did.html#distribution-of-weights-with-early-and-late-treated",
+    "href": "did/did.html#distribution-of-weights-with-early-and-late-treated",
     "title": "Difference in Diffferences",
-    "section": "Weights with Early and Late Treatde",
-    "text": "Weights with Early and Late Treatde\n\n\nCode\nfig = plotweights(D)\nfig"
+    "section": "Distribution of Weights with Early and Late Treated",
+    "text": "Distribution of Weights with Early and Late Treated\n\n\nCode\nhisto"
   },
   {
     "objectID": "did/did.html#sign-reversal-with-fixed-effects",
@@ -1131,7 +1201,7 @@
     "href": "did/did.html#sign-reversal-with-fixed-effects-1",
     "title": "Difference in Diffferences",
     "section": "Sign Reversal with Fixed Effects",
-    "text": "Sign Reversal with Fixed Effects\n\nFixed Effects Estimate\n\n\nm=reg(df, @formula(y ~ D + fe(t) + fe(id)))\nregtable(m, render=AsciiTable())\n\n\n----------------------------\n                       y    \n----------------------------\nD                  -0.423***\n                     (0.045)\n----------------------------\nt Fixed Effects          Yes\nid Fixed Effects         Yes\n----------------------------\nN                     45,000\nR2                     0.493\nWithin-R2              0.002\n----------------------------"
+    "text": "Sign Reversal with Fixed Effects\n\nFixed Effects Estimate\n\n\nm=reg(df, @formula(y ~ D + fe(t) + fe(id)))\nregtable(m, render=AsciiTable())\n\n\n----------------------------\n                       y    \n----------------------------\nD                  -0.319***\n                     (0.045)\n----------------------------\nt Fixed Effects          Yes\nid Fixed Effects         Yes\n----------------------------\nN                     45,000\nR2                     0.487\nWithin-R2              0.001\n----------------------------"
   },
   {
     "objectID": "did/did.html#when-to-worry",
@@ -1148,53 +1218,39 @@
     "text": "Plug-in Estimator\n\nFollow identification \\[\n\\begin{align*}\nATT_{t,t-s}& = \\Er[y_{it} - y_{it-s} | D_{it}=1, D_{it-s}=0] - \\Er[y_{it} - y_{it-s} | D_{it}=0, D_{it-s}=0]\n\\end{align*}\n\\] and estimate \\[\n\\begin{align*}\n\\widehat{ATT}_{t,t-s} = & \\frac{\\sum_i y_{it} D_{it}(1-D_{it-s})}{\\sum_i D_{it}(1-D_{it-s})} \\\\\n& - \\frac{\\sum_i y_{it} (1-D_{it})(1-D_{it-s})}{\\sum_i (1-D_{it})(1-D_{it-s})}\n\\end{align*}\n\\] and perhaps some average, e.g. (there are other reasonable weighted averages) \\[\n\\sum_{t=1}^T \\frac{\\sum_i D_{it}}{\\sum_{i,s} D_{i,s}} \\frac{1}{t-1} \\sum_{s=1}^{t-1} \\widehat{ATT}_{t,t-s}\n\\]\n\nInference? Optimal?"
   },
   {
-    "objectID": "did/did.html#what-to-do-1",
-    "href": "did/did.html#what-to-do-1",
+    "objectID": "did/did.html#what-to-do-flexibly-model-conditional-expectation",
+    "href": "did/did.html#what-to-do-flexibly-model-conditional-expectation",
     "title": "Difference in Diffferences",
-    "section": "What to Do?",
-    "text": "What to Do?\n\nProblem is possible correlation of \\((y_{it}(1) - y_{it}(0))D_{it}\\) with \\(\\tilde{D}_{it}\\)\n\n\\(\\tilde{D}_{it}\\) is function of \\(t\\) and \\((D_{i1}, ..., D_{iT})\\)\nEstimating separate coefficient for each combination of \\(t\\) and \\((D_{i1}, ..., D_{iT})\\) will eliminate correlation / flexibly model treatment effect heterogeneity"
+    "section": "What to Do? Flexibly Model Conditional Expectation",
+    "text": "What to Do? Flexibly Model Conditional Expectation\n\nProblem is possible correlation of \\((y_{it}(1) - y_{it}(0))D_{it}\\) with \\(\\tilde{D}_{it}\\)\n\n\\(\\tilde{D}_{it}\\) is function of \\(t\\) and \\((D_{i1}, ..., D_{iT})\\)\nEstimating separate coefficient for each combination of \\(t\\) and \\((D_{i1}, ..., D_{iT})\\) will eliminate correlation / flexibly model treatment effect heterogeneity"
   },
   {
     "objectID": "did/did.html#cohorts",
     "href": "did/did.html#cohorts",
     "title": "Difference in Diffferences",
     "section": "Cohorts",
-    "text": "Cohorts\n\nCohorts = unique sequences of \\((D_{i1}, ..., D_{iT})\\)\n\nIn last simulated example, three cohorts\n\n\\((0, 0, 0, 0, 0, 0, 0, 0, 0)\\)\n\\((0, 0, 0, 0, 0, 0, 0, 1, 1)\\)\n\\((0, 1, 1, 1, 1, 1, 1, 1, 1)\\)\n\n\n\n\n\nCode\nusing CategoricalArrays\n\nfunction createCohorts(df)\n  n = length(unique(df.id))\n  T = length(unique(df.t))\n  sorted = sort(df, [:id, :t])\n  D = reshape(sorted.D, T,n)'\n  groups = sort(unique(eachrow(D)))\n  cohorts = [findfirst(d == g for g in groups) for d in eachrow(D)]\n  df=leftjoin(sorted, DataFrame(cohort=categorical(cohorts), id=unique(sorted.id)), on=:id)\n  df.DCt .= \"untreated\"\n  for r in 1:T\n    for c in unique(df.cohort)\n      dct = (df.t .== r) .& (df.cohort .== c) .& df.D\n      if (any(dct))\n        df.DCt[dct] .= \"c$(c),t$(r)\"\n        df[!,\"Dc$(c)t$(r)\"] .= false\n        df[!,\"Dc$(c)t$(r)\"][dct] .= true\n      end\n    end\n  end\n  df.ct = categorical(df.t)\n  df\nend\n\ndfc = createCohorts(df);\n\n\n\nPrecompiling packages...\n    914.7 ms  ✓ CategoricalArrays\n  1 dependency successfully precompiled in 1 seconds. 12 already precompiled.\nPrecompiling packages...\n    331.3 ms  ✓ CategoricalArrays → CategoricalArraysStatsBaseExt\n  1 dependency successfully precompiled in 0 seconds. 27 already precompiled.\nPrecompiling packages...\n    235.3 ms  ✓ CategoricalArrays → CategoricalArraysStructTypesExt\n  1 dependency successfully precompiled in 0 seconds. 14 already precompiled.\nPrecompiling packages...\n    241.9 ms  ✓ CategoricalArrays → CategoricalArraysSentinelArraysExt\n  1 dependency successfully precompiled in 0 seconds. 14 already precompiled."
+    "text": "Cohorts\n\nCohorts = unique sequences of \\((D_{i1}, ..., D_{iT})\\)\n\nIn last simulated example, three cohorts\n\n\\((0, 0, 0, 0, 0, 0, 0, 0, 0)\\)\n\\((0, 0, 0, 0, 0, 0, 0, 1, 1)\\)\n\\((0, 1, 1, 1, 1, 1, 1, 1, 1)\\)\n\n\n\n\n\nCode\nusing CategoricalArrays\n\nfunction createCohorts(df)\n  n = length(unique(df.id))\n  T = length(unique(df.t))\n  sorted = sort(df, [:id, :t])\n  D = reshape(sorted.D, T,n)'\n  groups = sort(unique(eachrow(D)))\n  cohorts = [findfirst(d == g for g in groups) for d in eachrow(D)]\n  df=leftjoin(sorted, DataFrame(cohort=categorical(cohorts), id=unique(sorted.id)), on=:id)\n  df.DCt .= \"untreated\"\n  for r in 1:T\n    for c in unique(df.cohort)\n      dct = (df.t .== r) .& (df.cohort .== c) .& df.D\n      if (any(dct))\n        df.DCt[dct] .= \"c$(c),t$(r)\"\n        df[!,\"Dc$(c)t$(r)\"] .= false\n        df[!,\"Dc$(c)t$(r)\"][dct] .= true\n      end\n    end\n  end\n  df.ct = categorical(df.t)\n  df\nend\n\ndfc = createCohorts(df);"
   },
   {
     "objectID": "did/did.html#regression-with-cohort-interactions",
     "href": "did/did.html#regression-with-cohort-interactions",
     "title": "Difference in Diffferences",
     "section": "Regression with Cohort Interactions",
-    "text": "Regression with Cohort Interactions\n\n\nCode\nm=reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)), Vcov.cluster(:id), contrasts=Dict(:DCt=&gt;DummyCoding(base=\"untreated\")))\nregtable(m, render=AsciiTable())\n\n\n\n----------------------------\n                       y    \n----------------------------\nDCt: c2,t8          1.032***\n                     (0.039)\nDCt: c2,t9          0.977***\n                     (0.038)\nDCt: c3,t2          0.949***\n                     (0.041)\nDCt: c3,t3          0.982***\n                     (0.041)\nDCt: c3,t4          0.971***\n                     (0.042)\nDCt: c3,t5          1.002***\n                     (0.042)\nDCt: c3,t6          0.968***\n                     (0.042)\nDCt: c3,t7          0.949***\n                     (0.043)\nDCt: c3,t8          9.997***\n                     (0.043)\nDCt: c3,t9         10.006***\n                     (0.044)\n----------------------------\nid Fixed Effects         Yes\nt Fixed Effects          Yes\n----------------------------\nN                     45,000\nR2                     0.887\nWithin-R2              0.777\n----------------------------"
+    "text": "Regression with Cohort Interactions\n\n\nCode\nm=reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)), Vcov.cluster(:id), contrasts=Dict(:DCt=&gt;DummyCoding(base=\"untreated\")))\nregtable(m, render=AsciiTable())\n\n\n\n---------------------------\n                       y   \n---------------------------\nDCt: c2,t8         1.010***\n                    (0.038)\nDCt: c2,t9         1.015***\n                    (0.041)\nDCt: c3,t2         1.031***\n                    (0.042)\nDCt: c3,t3         1.036***\n                    (0.043)\nDCt: c3,t4         0.945***\n                    (0.042)\nDCt: c3,t5         0.974***\n                    (0.042)\nDCt: c3,t6         0.944***\n                    (0.042)\nDCt: c3,t7         0.943***\n                    (0.043)\nDCt: c3,t8         9.955***\n                    (0.044)\nDCt: c3,t9         9.948***\n                    (0.044)\n---------------------------\nid Fixed Effects        Yes\nt Fixed Effects         Yes\n---------------------------\nN                    45,000\nR2                    0.883\nWithin-R2             0.772\n---------------------------"
   },
   {
     "objectID": "did/did.html#regression-with-cohort-interactions-1",
     "href": "did/did.html#regression-with-cohort-interactions-1",
     "title": "Difference in Diffferences",
     "section": "Regression with Cohort Interactions",
-    "text": "Regression with Cohort Interactions\n\n\nCode\nm=reg(dfc, @formula(y ~ -1 + cohort*ct + fe(id)), Vcov.cluster(:id))\nregtable(m, render=AsciiTable())\n\n\n\n[ Info: RHS-variable cohort: 2 is collinear with the fixed effects.\n[ Info: RHS-variable cohort: 3 is collinear with the fixed effects.\n\n\n\n\n\n-----------------------------\n                        y    \n-----------------------------\ncohort: 2               0.000\n                        (NaN)\ncohort: 3               0.000\n                        (NaN)\nct: 2                   0.012\n                      (0.030)\nct: 3                   0.032\n                      (0.029)\nct: 4                   0.038\n                      (0.030)\nct: 5                   0.003\n                      (0.031)\nct: 6                   0.045\n                      (0.030)\nct: 7                   0.013\n                      (0.030)\nct: 8                  -0.003\n                      (0.030)\nct: 9                   0.006\n                      (0.029)\ncohort: 2 & ct: 2       0.064\n                      (0.051)\ncohort: 3 & ct: 2    0.970***\n                      (0.045)\ncohort: 2 & ct: 3       0.045\n                      (0.051)\ncohort: 3 & ct: 3    0.998***\n                      (0.045)\ncohort: 2 & ct: 4      -0.016\n                      (0.053)\ncohort: 3 & ct: 4    0.966***\n                      (0.046)\ncohort: 2 & ct: 5       0.011\n                      (0.051)\ncohort: 3 & ct: 5    1.005***\n                      (0.046)\ncohort: 2 & ct: 6      -0.049\n                      (0.052)\ncohort: 3 & ct: 6    0.951***\n                      (0.045)\ncohort: 2 & ct: 7      -0.007\n                      (0.050)\ncohort: 3 & ct: 7    0.947***\n                      (0.046)\ncohort: 2 & ct: 8    1.039***\n                      (0.052)\ncohort: 3 & ct: 8    9.999***\n                      (0.045)\ncohort: 2 & ct: 9    0.984***\n                      (0.051)\ncohort: 3 & ct: 9   10.009***\n                      (0.045)\n-----------------------------\nid Fixed Effects          Yes\n-----------------------------\nN                      45,000\nR2                      0.887\nWithin-R2               0.850\n-----------------------------"
+    "text": "Regression with Cohort Interactions\n\n\nCode\nm=reg(dfc, @formula(y ~ -1 + cohort*ct + fe(id)), Vcov.cluster(:id))\nregtable(m, render=AsciiTable())\n\n\n\n[ Info: RHS-variable cohort: 2 is collinear with the fixed effects.\n[ Info: RHS-variable cohort: 3 is collinear with the fixed effects.\n\n\n\n\n\n----------------------------\n                        y   \n----------------------------\ncohort: 2              0.000\n                       (NaN)\ncohort: 3              0.000\n                       (NaN)\nct: 2                 -0.021\n                     (0.030)\nct: 3                 -0.056\n                     (0.029)\nct: 4                  0.029\n                     (0.030)\nct: 5                 -0.037\n                     (0.030)\nct: 6                  0.014\n                     (0.030)\nct: 7                  0.031\n                     (0.030)\nct: 8                  0.004\n                     (0.030)\nct: 9                 -0.003\n                     (0.030)\ncohort: 2 & ct: 2     -0.026\n                     (0.053)\ncohort: 3 & ct: 2   1.023***\n                     (0.045)\ncohort: 2 & ct: 3      0.027\n                     (0.052)\ncohort: 3 & ct: 3   1.045***\n                     (0.046)\ncohort: 2 & ct: 4      0.037\n                     (0.051)\ncohort: 3 & ct: 4   0.957***\n                     (0.046)\ncohort: 2 & ct: 5      0.064\n                     (0.053)\ncohort: 3 & ct: 5   0.995***\n                     (0.045)\ncohort: 2 & ct: 6      0.057\n                     (0.053)\ncohort: 3 & ct: 6   0.963***\n                     (0.045)\ncohort: 2 & ct: 7     -0.007\n                     (0.052)\ncohort: 3 & ct: 7   0.940***\n                     (0.047)\ncohort: 2 & ct: 8   1.032***\n                     (0.051)\ncohort: 3 & ct: 8   9.962***\n                     (0.046)\ncohort: 2 & ct: 9   1.037***\n                     (0.052)\ncohort: 3 & ct: 9   9.955***\n                     (0.046)\n----------------------------\nid Fixed Effects         Yes\n----------------------------\nN                     45,000\nR2                     0.883\nWithin-R2              0.844\n----------------------------"
   },
   {
-    "objectID": "did/did.html#what-to-do-2",
-    "href": "did/did.html#what-to-do-2",
+    "objectID": "did/did.html#what-to-do-1",
+    "href": "did/did.html#what-to-do-1",
     "title": "Difference in Diffferences",
     "section": "What to Do?",
-    "text": "What to Do?\n\nUnderstand existing methods: read reviews Clément de Chaisemartin and D’Haultfœuille (2022), Roth et al. (2023), C. de Chaisemartin and D’Haultfœuille (2023)\nUse an appropriate package:\n\npartial list on https://asjadnaqvi.github.io/DiD/"
-  },
-  {
-    "objectID": "did/did.html#stacked-event-study",
-    "href": "did/did.html#stacked-event-study",
-    "title": "Difference in Diffferences",
-    "section": "Stacked Event Study",
-    "text": "Stacked Event Study\n\nCengiz et al 2019\n\n\n\nCode\nfunction stackeddata(dfc, groupvar=:cohort, controlgroup=1)\n    dfs = DataFrame()\n    for g in unique(dfc[!,groupvar])\n        if (g == controlgroup) continue end\n        dfg = dfc[(dfc[!,groupvar] .== g) .| (dfc[!,groupvar] .== controlgroup), :]\n        dfg = sort(dfg, [:id, :t])\n        dfg[!,:rtt] = dfg.t .- minimum(dfg.t[(dfg[!,groupvar] .== g) .& (dfg.D .== true)]) # time relative to treatment\n        dfg[!,:group] .= g\n        dfs = vcat(dfs, dfg)\n    end\n    dfs.rtt = categorical(dfs.rtt)\n    dfs.group = categorical(dfs.group)\n    dfs.evertreated = dfs[!,groupvar] .!= controlgroup\n    return(dfs)\nend\n\ndfs = stackeddata(dfc)\n\nm = reg(dfs, @formula(y ~ -1 + rtt*group + fe(id) + fe(t)))\nregtable(m, render=AsciiTable())\n\n\n\n------------------------------\n                         y    \n------------------------------\nrtt: -6              -2.066***\n                       (0.063)\nrtt: -5              -2.107***\n                       (0.063)\nrtt: -4               0.749***\n                       (0.043)\nrtt: -3               0.741***\n                       (0.043)\nrtt: -2               0.745***\n                       (0.043)\nrtt: -1              -1.177***\n                       (0.043)\nrtt: 0               -2.840***\n                       (0.043)\nrtt: 1               -2.863***\n                       (0.043)\nrtt: 2                   0.000\n                         (NaN)\nrtt: 3                   0.000\n                         (NaN)\nrtt: 4                   0.000\n                         (NaN)\nrtt: 5               -1.938***\n                       (0.063)\nrtt: 6                   0.000\n                         (NaN)\nrtt: 7                   0.000\n                         (NaN)\ngroup: 3                 0.000\n                         (NaN)\nrtt: -6 & group: 3       0.000\n                         (NaN)\nrtt: -5 & group: 3       0.000\n                         (NaN)\nrtt: -4 & group: 3       0.000\n                         (NaN)\nrtt: -3 & group: 3       0.000\n                         (NaN)\nrtt: -2 & group: 3       0.000\n                         (NaN)\nrtt: -1 & group: 3       0.000\n                         (NaN)\nrtt: 0 & group: 3        0.000\n                         (NaN)\nrtt: 1 & group: 3        0.000\n                         (NaN)\nrtt: 2 & group: 3        0.000\n                         (NaN)\nrtt: 3 & group: 3        0.000\n                         (NaN)\nrtt: 4 & group: 3        0.000\n                         (NaN)\nrtt: 5 & group: 3        0.000\n                         (NaN)\nrtt: 6 & group: 3        0.000\n                         (NaN)\nrtt: 7 & group: 3        0.000\n                         (NaN)\n------------------------------\nid Fixed Effects           Yes\nt Fixed Effects            Yes\n------------------------------\nN                       64,674\nR2                       0.521\nWithin-R2                0.170\n------------------------------"
-  },
-  {
-    "objectID": "did/did.html#local-project",
-    "href": "did/did.html#local-project",
-    "title": "Difference in Diffferences",
-    "section": "Local Project",
-    "text": "Local Project\n\nDube et al 2025\n\n\n\nCode"
+    "text": "What to Do?\n\nUnderstand existing methods: read reviews Clément de Chaisemartin and D’Haultfœuille (2022), Roth et al. (2023), C. de Chaisemartin and D’Haultfœuille (2023), Wing et al. (2024)\nUse an appropriate package:\n\npartial list on https://asjadnaqvi.github.io/DiD/"
   },
   {
     "objectID": "did/did.html#pre-trends-1",
@@ -1243,14 +1299,14 @@
     "href": "did/did.html#reading",
     "title": "Difference in Diffferences",
     "section": "Reading",
-    "text": "Reading\n\nBook: C. de Chaisemartin and D’Haultfœuille (2023)\nRecent reviews: Roth et al. (2023), Clément de Chaisemartin and D’Haultfœuille (2022), Arkhangelsky and Imbens (2023)\nEarly work pointing to problems with fixed effects:\n\nLaporte and Windmeijer (2005), Wooldridge (2005)\n\nExplosion of papers written just before 2020, published just after:\n\nBorusyak and Jaravel (2018)\nClément de Chaisemartin and D’Haultfœuille (2020)\nCallaway and Sant’Anna (2021)\nGoodman-Bacon (2021)\nSun and Abraham (2021)"
+    "text": "Reading\n\nBook: C. de Chaisemartin and D’Haultfœuille (2023)\nRecent reviews: Roth et al. (2023), Clément de Chaisemartin and D’Haultfœuille (2022), Arkhangelsky and Imbens (2023), Wing et al. (2024)\nEarly work pointing to problems with fixed effects:\n\nLaporte and Windmeijer (2005), Wooldridge (2005)\n\nExplosion of papers written just before 2020, published just after:\n\nBorusyak and Jaravel (2018)\nClément de Chaisemartin and D’Haultfœuille (2020)\nCallaway and Sant’Anna (2021)\nGoodman-Bacon (2021)\nSun and Abraham (2021)"
   },
   {
     "objectID": "did/did.html#references",
     "href": "did/did.html#references",
     "title": "Difference in Diffferences",
     "section": "References",
-    "text": "References\n\n\n\n\nArkhangelsky, Dmitry, and Guido Imbens. 2023. “Causal Models for Longitudinal and Panel Data: A Survey.”\n\n\nBorusyak, Kirill, and Xavier Jaravel. 2018. “Revisiting Event Study Designs.” https://scholar.harvard.edu/files/borusyak/files/borusyak_jaravel_event_studies.pdf.\n\n\nCallaway, Brantly, and Pedro H. C. Sant’Anna. 2021. “Difference-in-Differences with Multiple Time Periods.” Journal of Econometrics 225 (2): 200–230. https://doi.org/https://doi.org/10.1016/j.jeconom.2020.12.001.\n\n\nChaisemartin, C de, and X D’Haultfœuille. 2023. Credible Answers to Hard Questions: Differences-in-Differences for Natural Experiments. https://dx.doi.org/10.2139/ssrn.4487202.\n\n\nChaisemartin, Clément de, and Xavier D’Haultfœuille. 2020. “Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects.” American Economic Review 110 (9): 2964–96. https://doi.org/10.1257/aer.20181169.\n\n\n———. 2022. “Two-way fixed effects and differences-in-differences with heterogeneous treatment effects: a survey.” The Econometrics Journal 26 (3): C1–30. https://doi.org/10.1093/ectj/utac017.\n\n\nGoodman-Bacon, Andrew. 2021. “Difference-in-Differences with Variation in Treatment Timing.” Journal of Econometrics 225 (2): 254–77. https://doi.org/https://doi.org/10.1016/j.jeconom.2021.03.014.\n\n\nLaporte, Audrey, and Frank Windmeijer. 2005. “Estimation of Panel Data Models with Binary Indicators When Treatment Effects Are Not Constant over Time.” Economics Letters 88 (3): 389–96. https://doi.org/https://doi.org/10.1016/j.econlet.2005.04.002.\n\n\nRambachan, Ashesh, and Jonathan Roth. 2023. “A More Credible Approach to Parallel Trends.” The Review of Economic Studies 90 (5): 2555–91. https://doi.org/10.1093/restud/rdad018.\n\n\nRoth, Jonathan. 2022. “Pretest with Caution: Event-Study Estimates After Testing for Parallel Trends.” American Economic Review: Insights 4 (3): 305–22. https://doi.org/10.1257/aeri.20210236.\n\n\nRoth, Jonathan, Pedro H. C. Sant’Anna, Alyssa Bilinski, and John Poe. 2023. “What’s Trending in Difference-in-Differences? A Synthesis of the Recent Econometrics Literature.” Journal of Econometrics 235 (2): 2218–44. https://doi.org/https://doi.org/10.1016/j.jeconom.2023.03.008.\n\n\nSun, Liyang, and Sarah Abraham. 2021. “Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.” Journal of Econometrics 225 (2): 175–99. https://doi.org/https://doi.org/10.1016/j.jeconom.2020.09.006.\n\n\nWooldridge, Jeffrey M. 2005. “Fixed-Effects and Related Estimators for Correlated Random-Coefficient and Treatment-Effect Panel Data Models.” The Review of Economics and Statistics 87 (2): 385–90. https://doi.org/10.1162/0034653053970320."
+    "text": "References\n\n\n\n\nArkhangelsky, Dmitry, and Guido Imbens. 2023. “Causal Models for Longitudinal and Panel Data: A Survey.”\n\n\nBorusyak, Kirill, and Xavier Jaravel. 2018. “Revisiting Event Study Designs.” https://scholar.harvard.edu/files/borusyak/files/borusyak_jaravel_event_studies.pdf.\n\n\nCallaway, Brantly, and Pedro H. C. Sant’Anna. 2021. “Difference-in-Differences with Multiple Time Periods.” Journal of Econometrics 225 (2): 200–230. https://doi.org/https://doi.org/10.1016/j.jeconom.2020.12.001.\n\n\nChaisemartin, C de, and X D’Haultfœuille. 2023. Credible Answers to Hard Questions: Differences-in-Differences for Natural Experiments. https://dx.doi.org/10.2139/ssrn.4487202.\n\n\nChaisemartin, Clément de, and Xavier D’Haultfœuille. 2020. “Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects.” American Economic Review 110 (9): 2964–96. https://doi.org/10.1257/aer.20181169.\n\n\n———. 2022. “Two-way fixed effects and differences-in-differences with heterogeneous treatment effects: a survey.” The Econometrics Journal 26 (3): C1–30. https://doi.org/10.1093/ectj/utac017.\n\n\nGoodman-Bacon, Andrew. 2021. “Difference-in-Differences with Variation in Treatment Timing.” Journal of Econometrics 225 (2): 254–77. https://doi.org/https://doi.org/10.1016/j.jeconom.2021.03.014.\n\n\nLaporte, Audrey, and Frank Windmeijer. 2005. “Estimation of Panel Data Models with Binary Indicators When Treatment Effects Are Not Constant over Time.” Economics Letters 88 (3): 389–96. https://doi.org/https://doi.org/10.1016/j.econlet.2005.04.002.\n\n\nRambachan, Ashesh, and Jonathan Roth. 2023. “A More Credible Approach to Parallel Trends.” The Review of Economic Studies 90 (5): 2555–91. https://doi.org/10.1093/restud/rdad018.\n\n\nRoth, Jonathan. 2022. “Pretest with Caution: Event-Study Estimates After Testing for Parallel Trends.” American Economic Review: Insights 4 (3): 305–22. https://doi.org/10.1257/aeri.20210236.\n\n\nRoth, Jonathan, Pedro H. C. Sant’Anna, Alyssa Bilinski, and John Poe. 2023. “What’s Trending in Difference-in-Differences? A Synthesis of the Recent Econometrics Literature.” Journal of Econometrics 235 (2): 2218–44. https://doi.org/https://doi.org/10.1016/j.jeconom.2023.03.008.\n\n\nSun, Liyang, and Sarah Abraham. 2021. “Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.” Journal of Econometrics 225 (2): 175–99. https://doi.org/https://doi.org/10.1016/j.jeconom.2020.09.006.\n\n\nWing, Coady, Madeline Yozwiak, Alex Hollingsworth, Seth Freedman, and Kosali Simon. 2024. “Designing Difference-in-Difference Studies with Staggered Treatment Adoption: Key Concepts and Practical Guidelines.” Journal Article. Annual Review of Public Health 45 (Volume 45, 2024): 485–505. https://doi.org/https://doi.org/10.1146/annurev-publhealth-061022-050825.\n\n\nWooldridge, Jeffrey M. 2005. “Fixed-Effects and Related Estimators for Correlated Random-Coefficient and Treatment-Effect Panel Data Models.” The Review of Economics and Statistics 87 (2): 385–90. https://doi.org/10.1162/0034653053970320."
   },
   {
     "objectID": "asymptotics/inprobability.html#reading",
@@ -2090,7 +2146,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.5215587681590536\n -0.1291510036078996\n -0.3602293760447084"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.5056059675685748\n -0.10970588842350479\n -0.3664932678754356"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-1",
@@ -2447,35 +2503,7 @@
     "href": "problemsets/07/ps07.html",
     "title": "ECON 626: Problem Set 7",
     "section": "",
-    "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
-  },
-  {
-    "objectID": "problemsets/07/ps07.html#twfe",
-    "href": "problemsets/07/ps07.html#twfe",
-    "title": "ECON 626: Problem Set 7",
-    "section": "TWFE",
-    "text": "TWFE\nChen and French (2023) begin by estimating a two-way fixed effects (TWFE) model, \\[\nF_{it} = \\alpha + \\beta_1 MM_{it} + \\beta_2 RM_{it} + X_{it}\\gamma + \\eta_i + \\theta_t + \\varepsilon_{it}\n\\] where \\(F_{it}\\) is log traffic fatalaties per 100,000 in state \\(i\\) and year \\(t\\), \\(MM_{it}\\) is an indicator for medical marijuana being legal, \\(RM_{it}\\) is an indicator for legalized recreational marijuana, and \\(X_{it}\\) are state covariates including traffic volume, economic conditions, and demographics. Chen and French (2023) present estimates of the TWFE model “for comparison with the literature,” but also compute other estimators. Why? What is a problem with TWFE here?"
-  },
-  {
-    "objectID": "problemsets/07/ps07.html#multiple-treatments",
-    "href": "problemsets/07/ps07.html#multiple-treatments",
-    "title": "ECON 626: Problem Set 7",
-    "section": "Multiple Treatments",
-    "text": "Multiple Treatments\nSuppose \\(1/2\\) of states legalized medical marijuana in a single year and no other changes occurred in \\(MM_{it}\\). Also suppose \\(1/4\\) of states legalized recretaional marijuana in a single later year and no other changes occurred in \\(RM_{it}\\). That is, there is no variation in treatment timing, but there are multiple treatments. For simplicity, ignore covariates. Would estimating a TWFE model, \\[\nF_{it} = \\alpha + \\beta_1 MM_{it} + \\beta_2 RM_{it} + \\eta_i + \\theta_t + \\varepsilon_{it}\n\\] recover an interpretable average treatment effect on the treated? Your answer should include some algebra or perhaps computer computations relating \\(\\hat{\\beta}_1\\) and/or \\(\\hat{\\beta}_2\\) to potential outcomes. Feel free to make reasonable additional assumptions to help simplify the analysis."
-  },
-  {
-    "objectID": "problemsets/07/ps07.html#did_m-did_ell",
-    "href": "problemsets/07/ps07.html#did_m-did_ell",
-    "title": "ECON 626: Problem Set 7",
-    "section": "\\(DID_M\\), \\(DID_\\ell\\)",
-    "text": "\\(DID_M\\), \\(DID_\\ell\\)\nChen and French (2023) also report the \\(DID_M\\) and \\(DID_\\ell\\) estimators? What are these? What sort of average treatment effect do they estimate? (You will need to read Chen and French (2023) and perhaps also Chaisemartin and D’Haultfœuille (2020) to answer this.)"
-  },
-  {
-    "objectID": "problemsets/07/ps07.html#results",
-    "href": "problemsets/07/ps07.html#results",
-    "title": "ECON 626: Problem Set 7",
-    "section": "Results",
-    "text": "Results\nTable 2 and Figure 1 show the main results of the paper. What conclusions would you draw from these?\n\n\n\ntable 2\n\n\n\n\n\nfigure 1"
+    "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]\n\nProblem 2\nConsider the following linear regression model such that \\[\nY_i = β_0 + X_i β_1 + u_i ,\n\\] where \\(X_i\\) and \\(Y_i\\) are observed random variables. Let us assume that \\(\\Er [u_i ] = 0\\) but \\(\\cov(X_i , u_i ) \\neq 0\\). Suppose that there exists a variable \\(Z_i\\) such that \\(\\cov(X_i , Z_i ) &gt; 0\\) and \\(\\cov(Z_i , u_i ) &gt; 0\\).\nFind the asymptotic bias of the 2SLS estimator of \\(\\hat{\\beta}_1\\). (Recall that the asymptotic bias of an estimator is its probability limit minus the true parameter.) Can you determine unambiguously whether the 2SLS estimator tends to underestimate or overestimate the parameter \\(β_1\\) ? If so, give explanations how."
   },
   {
     "objectID": "problemsets/08/ps08.html",
@@ -2867,6 +2895,6 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nOct 8, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 8, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 5, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
   }
 ]

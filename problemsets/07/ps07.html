@@ -21,27 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -174,14 +154,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
-  <ul class="collapse">
-  <li><a href="#twfe" id="toc-twfe" class="nav-link" data-scroll-target="#twfe">TWFE</a></li>
-  <li><a href="#multiple-treatments" id="toc-multiple-treatments" class="nav-link" data-scroll-target="#multiple-treatments">Multiple Treatments</a></li>
-  <li><a href="#did_m-did_ell" id="toc-did_m-did_ell" class="nav-link" data-scroll-target="#did_m-did_ell"><span class="math inline">\(DID_M\)</span>, <span class="math inline">\(DID_\ell\)</span></a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  </ul></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link active" data-scroll-target="#problem-2">Problem 2</a></li>
   </ul>
 </nav>
     </div>
@@ -226,42 +199,6 @@ window.Quarto = {
 \def\indist{\,{\buildrel d \over \rightarrow}\,}
 \DeclareMathOperator*{\plim}{plim}
 \]</span></p>
-<section id="problem-1" class="level1">
-<h1>Problem 1</h1>
-<p>In “Marijuana legalization and traffic fatalities revisited”, <span class="citation" data-cites="chen2023">Chen and French (<a href="#ref-chen2023" role="doc-biblioref">2023</a>)</span> analyze how marijuana legalization in the US affected traffic fatalities.</p>
-<section id="twfe" class="level2">
-<h2 class="anchored" data-anchor-id="twfe">TWFE</h2>
-<p><span class="citation" data-cites="chen2023">Chen and French (<a href="#ref-chen2023" role="doc-biblioref">2023</a>)</span> begin by estimating a two-way fixed effects (TWFE) model, <span class="math display">\[
-F_{it} = \alpha + \beta_1 MM_{it} + \beta_2 RM_{it} + X_{it}\gamma + \eta_i + \theta_t + \varepsilon_{it}
-\]</span> where <span class="math inline">\(F_{it}\)</span> is log traffic fatalaties per 100,000 in state <span class="math inline">\(i\)</span> and year <span class="math inline">\(t\)</span>, <span class="math inline">\(MM_{it}\)</span> is an indicator for medical marijuana being legal, <span class="math inline">\(RM_{it}\)</span> is an indicator for legalized recreational marijuana, and <span class="math inline">\(X_{it}\)</span> are state covariates including traffic volume, economic conditions, and demographics. <span class="citation" data-cites="chen2023">Chen and French (<a href="#ref-chen2023" role="doc-biblioref">2023</a>)</span> present estimates of the TWFE model “for comparison with the literature,” but also compute other estimators. Why? What is a problem with TWFE here?</p>
-</section>
-<section id="multiple-treatments" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-treatments">Multiple Treatments</h2>
-<p>Suppose <span class="math inline">\(1/2\)</span> of states legalized medical marijuana in a single year and no other changes occurred in <span class="math inline">\(MM_{it}\)</span>. Also suppose <span class="math inline">\(1/4\)</span> of states legalized recretaional marijuana in a single later year and no other changes occurred in <span class="math inline">\(RM_{it}\)</span>. That is, there is no variation in treatment timing, but there are multiple treatments. For simplicity, ignore covariates. Would estimating a TWFE model, <span class="math display">\[
-F_{it} = \alpha + \beta_1 MM_{it} + \beta_2 RM_{it} + \eta_i + \theta_t + \varepsilon_{it}
-\]</span> recover an interpretable average treatment effect on the treated? Your answer should include some algebra or perhaps computer computations relating <span class="math inline">\(\hat{\beta}_1\)</span> and/or <span class="math inline">\(\hat{\beta}_2\)</span> to potential outcomes. Feel free to make reasonable additional assumptions to help simplify the analysis.</p>
-</section>
-<section id="did_m-did_ell" class="level2">
-<h2 class="anchored" data-anchor-id="did_m-did_ell"><span class="math inline">\(DID_M\)</span>, <span class="math inline">\(DID_\ell\)</span></h2>
-<p><span class="citation" data-cites="chen2023">Chen and French (<a href="#ref-chen2023" role="doc-biblioref">2023</a>)</span> also report the <span class="math inline">\(DID_M\)</span> and <span class="math inline">\(DID_\ell\)</span> estimators? What are these? What sort of average treatment effect do they estimate? (You will need to read <span class="citation" data-cites="chen2023">Chen and French (<a href="#ref-chen2023" role="doc-biblioref">2023</a>)</span> and perhaps also <span class="citation" data-cites="dd2020">Chaisemartin and D’Haultfœuille (<a href="#ref-dd2020" role="doc-biblioref">2020</a>)</span> to answer this.)</p>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>Table 2 and Figure 1 show the main results of the paper. What conclusions would you draw from these?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="chen-tab2.png" class="img-fluid figure-img"></p>
-<figcaption>table 2</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="chen-fig1.png" class="img-fluid figure-img"></p>
-<figcaption>figure 1</figcaption>
-</figure>
-</div>
-</section>
-</section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
 <p>Consider the following linear regression model such that <span class="math display">\[
@@ -270,17 +207,9 @@ Y_i = β_0 + X_i β_1 + u_i ,
 <p>Find the asymptotic bias of the 2SLS estimator of <span class="math inline">\(\hat{\beta}_1\)</span>. (Recall that the asymptotic bias of an estimator is its probability limit minus the true parameter.) Can you determine unambiguously whether the 2SLS estimator tends to underestimate or overestimate the parameter <span class="math inline">\(β_1\)</span> ? If so, give explanations how.</p>
 
 
-
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-dd2020" class="csl-entry" role="listitem">
-Chaisemartin, Clément de, and Xavier D’Haultfœuille. 2020. <span>“Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects.”</span> <em>American Economic Review</em> 110 (9): 2964–96. <a href="https://doi.org/10.1257/aer.20181169">https://doi.org/10.1257/aer.20181169</a>.
-</div>
-<div id="ref-chen2023" class="csl-entry" role="listitem">
-Chen, Weiwei, and Michael T. French. 2023. <span>“Marijuana Legalization and Traffic Fatalities Revisited.”</span> <em>Southern Economic Journal</em> 90 (2): 259–76. https://doi.org/<a href="https://doi.org/10.1002/soej.12657">https://doi.org/10.1002/soej.12657</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -358,14 +358,14 @@ $$
 
 ::: {.incremental}
 
-- Given $\hat{\beta} = \argmin \sum_{i=1}^n \left( y_i - x_i' \beta \right)^2$, can we bound
+- Given $\hat{\beta} = \mathrm{arg}\min \frac{1}{n} \sum_{i=1}^n \ell( y_i, x_i; \beta)$, can we bound
 $$
-\Er[(Y - X'\hat{\beta})^2]?
+\Er[\ell(y_i,x_i;\hat{\beta})]?
 $$
 
 - Yes, under reasonable assumptions, we can show
 $$
-P\left( \Er[(Y - X'\hat{\beta})^2] \geq \frac{1}{n} \sum_{i=1}^n \left( y_i - x_i'\hat{\beta} \right)^2 + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + k/2\log(n)}{n}} \right) \leq \delta
+P\left( \Er[\ell(Y,X;\beta)] \geq \frac{1}{n} \sum_{i=1}^n \ell \left(y_i, x_i;\beta \right) + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + k/2\log(n)}{n}} \forall \beta \in \mathscr{B} \right) \leq \delta
 $$
 
 - To show use:

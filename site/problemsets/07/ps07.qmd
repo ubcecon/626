@@ -19,37 +19,7 @@ $$
 \DeclareMathOperator*{\plim}{plim}
 $$
 
-# Problem 1
 
-In "Marijuana legalization and traffic fatalities revisited", @chen2023 analyze how marijuana legalization in the US affected traffic fatalities.
-
-## TWFE
-
-@chen2023 begin by estimating a two-way fixed effects (TWFE) model,
-$$
-F_{it} = \alpha + \beta_1 MM_{it} + \beta_2 RM_{it} + X_{it}\gamma + \eta_i + \theta_t + \varepsilon_{it}
-$$
-where $F_{it}$ is log traffic fatalaties per 100,000 in state $i$ and year $t$, $MM_{it}$ is an indicator for medical marijuana being legal, $RM_{it}$ is an indicator for legalized recreational marijuana, and $X_{it}$ are state covariates including traffic volume, economic conditions, and demographics. @chen2023 present estimates of the TWFE model "for comparison with the literature," but also compute other estimators. Why? What is a problem with TWFE here?
-
-## Multiple Treatments
-
-Suppose $1/2$ of states legalized medical marijuana in a single year and no other changes occurred in $MM_{it}$. Also suppose $1/4$ of states legalized recretaional marijuana in a single later year and no other changes occurred in $RM_{it}$. That is, there is no variation in treatment timing, but there are multiple treatments. For simplicity, ignore covariates. Would estimating a TWFE model,
-$$
-F_{it} = \alpha + \beta_1 MM_{it} + \beta_2 RM_{it} + \eta_i + \theta_t + \varepsilon_{it}
-$$
-recover an interpretable average treatment effect on the treated? Your answer should include some algebra or perhaps computer computations relating $\hat{\beta}_1$ and/or $\hat{\beta}_2$ to potential outcomes. Feel free to make reasonable additional assumptions to help simplify the analysis.
-
-## $DID_M$, $DID_\ell$
-
-@chen2023 also report the $DID_M$ and $DID_\ell$ estimators? What are these? What sort of average treatment effect do they estimate? (You will need to read @chen2023 and perhaps also @dd2020 to answer this.)
-
-## Results
-
-Table 2 and Figure 1 show the main results of the paper. What conclusions would you draw from these?
-
-![table 2](chen-tab2.png)
-
-![figure 1](chen-fig1.png)
 
 # Problem 2
 

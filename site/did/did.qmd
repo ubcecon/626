@@ -68,12 +68,134 @@ $$
 ## Important Assumptions
 
 - No anticipation: $D_{i1}=1$ does not affect $y_{i0}$
-  - built into the potential outcomes notation we used, relaxing would
-  be allowing potential outcomes given sequence of $D$ -- $y_{it}(D_{i0},D_{i1})$
+  - built into the potential outcomes notation we used
+  - relaxing would be allowing potential outcomes to depend on sequence of $D$ -- $y_{it}(D_{i0},D_{i1})$ (would require different estimator and assumptions)
 
 - Parallel trends: $\Er[\color{red}{y_{i1}(0)} - y_{i0}(0) |D_{i1}=1,D_{i0}=0] =  \Er[y_{i1}(0) - y_{i0}(0) | D_{i1}=0], D_{i0}=0]$
   - not invariant to tranformations of $y$
 
+## Parallel Trends in Levels
+
+```{julia}
+#| code-fold: true
+using DataFrames, Statistics, Measures
+import Plots
+
+# Parameters
+n_periods = 10
+group_names = ["Control", "Treatment"]
+initials = [10.0, 5.0]
+trend = 1
+
+data = DataFrame(group=String[], time=Int[], y=Float64[])
+for (g, initial) in enumerate(initials)
+    y = initial
+    for t in 1:n_periods
+        push!(data, (group_names[g], t, y))
+        y = initial + trend * t
+    end
+end
+
+data.log_y = log.(data.y)
+
+# Compute growth rates (difference in logs)
+data.growth_rate = vcat(missing, diff(data.log_y))
+sameid = vcat(true, data.group[1:(end-1)] .== data.group[2:end])
+data.growth_rate[.!sameid] .= missing
+
+# Plot growth rates
+function plot_trends(data)
+    plt1 = Plots.plot(title="Levels", xlabel="Time", ylabel="y");
+    for g in group_names
+        idx = data.group .== g
+        Plots.plot!(plt1, data.time[idx], data.y[idx], label=g, marker=:circle);
+    end
+
+    plt2 = Plots.plot(title="Logs", xlabel="Time", ylabel="log(y)");
+    for g in group_names
+        idx = data.group .== g
+        Plots.plot!(plt2, data.time[idx], data.log_y[idx], label=g, marker=:circle);
+    end
+
+    plt3 = Plots.plot(title="Growth Rates", xlabel="Time", ylabel="Δlog(y)");
+    for g in group_names
+        idx = (data.group .== g) .& (.!ismissing.(data.growth_rate))
+        Plots.plot!(plt3, data.time[idx], data.growth_rate[idx], label=g, marker=:circle);
+        if -(-)(extrema(skipmissing(data.growth_rate))...) < 1e-4
+            Plots.ylims!(plt3, mean(skipmissing(data.growth_rate)) .+ (-0.01, 0.01))
+        end
+    end
+
+    Plots.plot(plt1, plt2, plt3, layout=(1,3), size=(900,300), margin=5mm)
+end
+plot_trends(data)
+```
+
+## Parallel Trends in Logs
+
+```{julia}
+#| code-fold: true
+using DataFrames
+import Plots
+
+# Parameters
+n_periods = 10
+group_names = ["Control", "Treatment"]
+initials = [5.0, 6.0]
+trend = -0.1
+
+data = DataFrame(group=String[], time=Int[], log_y=Float64[])
+for (g, initial) in enumerate(initials)
+    log_y = initial
+    for t in 1:n_periods
+        push!(data, (group_names[g], t, log_y))
+        log_y = initial + t*trend
+    end
+end
+
+data.y = exp.(data.log_y)
+
+# Compute growth rates (difference in logs)
+data.growth_rate = vcat(missing, diff(data.log_y))
+sameid = vcat(true, data.group[1:(end-1)] .== data.group[2:end])
+data.growth_rate[.!sameid] .= missing
+
+plot_trends(data)
+```
+
+
+## Parallel Trends in Growth Rates
+
+```{julia}
+#| code-fold: true
+using DataFrames
+import Plots
+
+# Parameters
+n_periods = 10
+group_names = ["Control", "Treatment"]
+initials = [20.0, 19.0]
+growth = [1.10, 1.07]
+growth_trend = -0.004
+
+data = DataFrame(group=String[], time=Int[], y=Float64[])
+for (g, initial) in enumerate(initials)
+    y = initial
+    for t in 0:n_periods-1
+        push!(data, (group_names[g], t, y))
+        y *= growth[g] + growth_trend * t
+    end
+end
+
+data.log_y = log.(data.y)
+
+# Compute growth rates (difference in logs)
+data.growth_rate = vcat(missing, diff(data.log_y))
+sameid = vcat(true, data.group[1:(end-1)] .== data.group[2:end])
+data.growth_rate[.!sameid] .= missing
+
+plot_trends(data)
+```
 
 ## Estimation
 
@@ -174,7 +296,7 @@ function weights(D)
   ω = D̃./sum(D̃.^2)
 end
 
-n = 5000
+n = 500
 T = 9
 D = assigntreat(n,T)
 y = randn(n,T)
@@ -189,7 +311,7 @@ m=reg(df, @formula(y ~ D + fe(t) + fe(id)))
 regtable(m, render=AsciiTable())
 ```
 
-## Weights with Single Treatment Time
+## Portion Treated with Single Treatment Time
 
 ```{julia}
 using PlotlyLight
@@ -197,8 +319,8 @@ using PlotlyLight
 function plotp(D; width=900, height=300)
   n,T=size(D)
   plt=Plot()
-  plt.layout=Config(xaxis=Config(title="time",tickvals=1:T),
-                    yaxis=Config(title="Portion Treated"),
+  plt.layout=Config(xaxis=Config(title=Config(text="time"),tickvals=1:T),
+                    yaxis=Config(title=Config(text="Portion Treated")),
                     autosize=false,
                     width=width,
                     height=height)
@@ -213,30 +335,49 @@ pfig
 ## Weights with Single Treatment Time
 
 ```{julia}
+import StatsPlots
 function plotweights(D; width=900, height=300)
-  n,T = size(D)
-  ω = weights(D)
-  groups = unique(eachrow(D))
-  plt = Plot()
-  plt.layout=Config(xaxis=Config(title="time",tickvals=1:T),
-                    yaxis=Config(title="weight"),
-                    autosize=false,
-                    width=width,
-                    height=height)
+    n,T = size(D)
+    ω = weights(D)
+    groups = unique(eachrow(D))
+    plt = Plot()
+    plt.layout=Config(xaxis=Config(title=Config(text="time"),tickvals=1:T),
+                      yaxis=Config(title=Config(text="weight")),
+                      autosize=false,
+                      width=width,
+                      height=height)
 
-  for g in groups
-    i = findfirst(d == g for d in eachrow(D))
-    wt = ω[i,:]
-    plt(x=1:T,y=wt,name="Treated $(sum(g)) times", mode="markers",type="scatter")
+    for g in groups
+        i = findfirst(d == g for d in eachrow(D))
+        wt = ω[i,:]
+        plt(x=1:T,y=wt,name="Treated $(sum(g)) times", mode="markers",type="scatter")
     end
-  fig=plt()
-  return(fig)
+    fig=plt()
+
+    evertreated = any(D, dims=2)*ones(Int,1,size(D,2)).==1
+    aftertreatment = ones(Int,size(D,1))*any(D,dims=1).==1
+    g=[(et ? "Treated," : "Control,") * (at ? "After" : "Before") for (et,at) in zip(evertreated, aftertreatment)]
+    histo = StatsPlots.groupedhist(vec(ω),group=vec(g),
+                                   title="Histogram of Weights",
+                                   xlabel="Weight", ylabel="Frequency",
+                                   bins=min(length(unique(ω)),20),
+                                   size=(900,300), margin=5mm)
+    Plots.vline!(histo, [0.0], line=(:black, :dash),label=:none, width=4)
+
+    return(fig, histo)
 end
-fig = plotweights(D)
+fig,histo = plotweights(D)
 fig
 ```
 
-## Weights with Uniform Treatment Time
+## Weight Distribution with Single Treatment Time
+
+```{julia}
+histo
+```
+
+
+## Portion Treated with Uniform Treatment Time
 
 ```{julia}
 D = assigntreat(n,T,portiontreated=vcat(0,fill(0.5/(T-1),T-1)))
@@ -247,11 +388,16 @@ pfig
 ## Weights with Uniform Treatment Time
 
 ```{julia}
-fig = plotweights(D)
+fig,histo = plotweights(D)
 fig
 ```
 
-## Weights with Early and Late Treated
+## Distribution of Weights with Uniform Treatment Time
+```{julia}
+histo
+```
+
+## Portion Treated with Early and Late Treated
 
 ```{julia}
 pt = zeros(T)
@@ -261,23 +407,30 @@ D = assigntreat(n,T,portiontreated=pt)
 pfig = plotp(D)
 pfig
 ```
-## Weights with Early and Late Treatde
+## Weights with Early and Late Treated
 
 ```{julia}
-fig = plotweights(D)
+fig,histo = plotweights(D)
 fig
+```
+
+## Distribution of Weights with Early and Late Treated
+
+```{julia}
+histo
 ```
 
 ## Sign Reversal with Fixed Effects
 
 
 - True Treatment Effects
+
 ```{julia}
 pt = zeros(T)
 pt[2] = 1/3
 pt[end-1]=1/3
 
-function simulate(n,T,portiontreated, ATT, σ=0.01)
+function simulate(n,T,portiontreated, ATT, σ=0.25)
   D = assigntreat(n,T,portiontreated=portiontreated)
   y = randn(n,T)*σ
   for i in axes(y)[1]
@@ -358,11 +511,12 @@ $$
 $$
   - Inference? Optimal?
 
-## What to Do?
+## What to Do? Flexibly Model Conditional Expectation
 
 - Problem is possible correlation of $(y_{it}(1) - y_{it}(0))D_{it}$ with $\tilde{D}_{it}$
    - $\tilde{D}_{it}$ is function of $t$ and $(D_{i1}, ..., D_{iT})$
    - Estimating separate coefficient for each combination of $t$ and $(D_{i1}, ..., D_{iT})$ will eliminate correlation / flexibly model treatment effect heterogeneity
+
 
 ## Cohorts
 
@@ -371,6 +525,11 @@ $$
       1. $(0, 0, 0, 0, 0, 0, 0, 0, 0)$
       2. $(0, 0, 0, 0, 0, 0, 0, 1, 1)$
       3. $(0, 1, 1, 1, 1, 1, 1, 1, 1)$
+- Flexible conditional expectation
+$$
+\Er[y_{it}|t, D_{i1}=d_1, ..., D_{iT}=d_T] = \sum{c, s} \beta_{c,s} \mathbbm{1}\{cohort(i)=c,s=t\}
+$$
+
 
 ```{julia}
 using CategoricalArrays
@@ -400,6 +559,73 @@ end
 
 dfc = createCohorts(df);
 ```
+## Regression with Cohort Interactions {.smaller}
+
+```{julia}
+m=reg(dfc, @formula(y ~ -1 + cohort&ct), Vcov.cluster(:id))
+regtable(m, render=AsciiTable())
+```
+
+## Regression with Cohort Interactions: $\hat{\Er}[y|\mathrm{cohort}, t]$
+
+```{julia}
+using Plots, LinearAlgebra
+function plotEy(m)
+    rms = match.(r"cohort: (\d+) & ct: (\d+)", coefnames(m))
+    ct = [parse.(Int, r.captures) for r in rms]
+    cohort = [c[1] for c in ct]
+    time = [c[2] for c in ct]
+    ey = coef(m)
+    se = sqrt.(diag(vcov(m)))
+    fig=Plots.plot(time, ey, ribbon=1.96*se, group=cohort, xlabel="time", ylabel="E[y|cohort,t]", legend=:topleft)
+end
+plotEy(m)
+```
+
+## Differences in which Difference?
+
+- Time:
+  - For cohort 3, only one untreated period, so only possible difference across time is $t$ versus $1$
+  - For cohort 2, many differences across time possible because many untreated periods
+  - Typical to report differences between $t$ and last period before treatment in "event study" figure
+
+- Groups:
+  - For ATT for cohort 3 at time 2, should cohort 1 or cohort 2 or both be used a controls?
+
+## Event Study
+
+```{julia}
+function ploteventstudy(m,dfc)
+    rms = match.(r"cohort: (\d+) & ct: (\d+)", coefnames(m))
+    ct = [parse.(Int, r.captures) for r in rms]
+    cohort = [c[1] for c in ct]
+    time = [c[2] for c in ct]
+    ey = coef(m)
+    ttdf = combine(groupby(dfc,:cohort),[:t,:D] => ((t,d)->(any(d) ? minimum(t[d]) : missing)) => :treattime)
+    ttdict = Dict(ttdf.cohort .=> ttdf.treattime)
+    treattime= [ttdict[c] for c in cohort]
+    rtt = time .- treattime
+    controlgroup = cohort[ismissing.(treattime)][1]
+    ATT = zeros(length(ey))
+    se = zeros(length(ey))
+    for (i,(c,t)) in enumerate(zip(cohort, time))
+        if c == controlgroup
+            continue
+        end
+        baset = ttdict[c] - 1
+        DiD = 1*((cohort .== c) .& (time .== t)) - 1*((cohort .== controlgroup) .& (time .== t)) -
+            1*((cohort .== c) .& (time .== baset)) + 1*((cohort .== controlgroup) .& (time .== baset))
+        ATT[i] = DiD'*ey
+        se[i] = sqrt(DiD'*vcov(m)*DiD)
+    end
+    rtt = rtt[cohort.!=controlgroup]
+    se = se[cohort.!=controlgroup]
+    ATT = ATT[cohort.!=controlgroup]
+    fig=Plots.plot(rtt, ATT, ribbon=1.96*se, xlabel="time relative to treatment", ylabel="E[y_t-y_{-1}|cohort]-E[y_t-y_{-1}|nevertreated] ", group=cohort[cohort.!=controlgroup], legend=true)
+end
+ploteventstudy(m,dfc)
+```
+
 
 ## Regression with Cohort Interactions {.smaller}
 
@@ -407,53 +633,12 @@ dfc = createCohorts(df);
 m=reg(dfc, @formula(y ~ DCt + fe(id) + fe(t)), Vcov.cluster(:id), contrasts=Dict(:DCt=>DummyCoding(base="untreated")))
 regtable(m, render=AsciiTable())
 ```
-## Regression with Cohort Interactions {.smaller}
-
-```{julia}
-m=reg(dfc, @formula(y ~ -1 + cohort*ct + fe(id)), Vcov.cluster(:id))
-regtable(m, render=AsciiTable())
-```
 
 ## What to Do?
 
-- Understand existing methods: read reviews @dd2022, @roth2023, @dd2023
+- Understand existing methods: read reviews @dd2022, @roth2023, @dd2023, @wing2024
 - Use an appropriate package:
    - partial list on [https://asjadnaqvi.github.io/DiD/](https://asjadnaqvi.github.io/DiD/)
-
-## Stacked Event Study
-
-- Cengiz et al 2019
-
-```{julia}
-function stackeddata(dfc, groupvar=:cohort, controlgroup=1)
-    dfs = DataFrame()
-    for g in unique(dfc[!,groupvar])
-        if (g == controlgroup) continue end
-        dfg = dfc[(dfc[!,groupvar] .== g) .| (dfc[!,groupvar] .== controlgroup), :]
-        dfg = sort(dfg, [:id, :t])
-        dfg[!,:rtt] = dfg.t .- minimum(dfg.t[(dfg[!,groupvar] .== g) .& (dfg.D .== true)]) # time relative to treatment
-        dfg[!,:group] .= g
-        dfs = vcat(dfs, dfg)
-    end
-    dfs.rtt = categorical(dfs.rtt)
-    dfs.group = categorical(dfs.group)
-    dfs.evertreated = dfs[!,groupvar] .!= controlgroup
-    return(dfs)
-end
-
-dfs = stackeddata(dfc)
-
-m = reg(dfs, @formula(y ~ -1 + rtt*group + fe(id) + fe(t)))
-regtable(m, render=AsciiTable())
-```
-
-## Local Project
-
-- Dube et al 2025
-
-```{julia}
-
-```
 
 
 # Pre-trends
@@ -560,7 +745,7 @@ for some chosen $M$
 ## Reading
 
 - Book: @dd2023
-- Recent reviews: @roth2023, @dd2022, @arkhangelsky2023
+- Recent reviews: @roth2023, @dd2022, @arkhangelsky2023, @wing2024
 - Early work pointing to problems with fixed effects:
   - @laporte2005, @wooldridge2005
 - Explosion of papers written just before 2020, published just after:

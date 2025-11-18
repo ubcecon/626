@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-11-21">
+<meta name="dcterms.date" content="2025-11-25">
 
 <title>ECON 626: Problem Set 7 – ECON 626</title>
 <style>
@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -154,7 +174,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link active" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> </a></li>
+  <li><a href="#series-regression-with-endogeneity" id="toc-series-regression-with-endogeneity" class="nav-link" data-scroll-target="#series-regression-with-endogeneity"><span class="header-section-number">2</span> Series Regression with Endogeneity</a>
+  <ul class="collapse">
+  <li><a href="#instrument" id="toc-instrument" class="nav-link" data-scroll-target="#instrument"><span class="header-section-number">2.1</span> Instrument</a></li>
+  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">2.2</span> Consistency</a></li>
+  <li><a href="#asymptotic-distribution" id="toc-asymptotic-distribution" class="nav-link" data-scroll-target="#asymptotic-distribution"><span class="header-section-number">2.3</span> Asymptotic Distribution</a></li>
+  </ul></li>
+  <li><a href="#informal-contracting-in-coffee-production" id="toc-informal-contracting-in-coffee-production" class="nav-link" data-scroll-target="#informal-contracting-in-coffee-production"><span class="header-section-number">3</span> Informal Contracting in Coffee Production</a>
+  <ul class="collapse">
+  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols"><span class="header-section-number">3.1</span> OLS</a></li>
+  <li><a href="#instrument-1" id="toc-instrument-1" class="nav-link" data-scroll-target="#instrument-1"><span class="header-section-number">3.2</span> Instrument</a></li>
+  <li><a href="#dependence" id="toc-dependence" class="nav-link" data-scroll-target="#dependence"><span class="header-section-number">3.3</span> Dependence</a></li>
+  <li><a href="#more-outcomes" id="toc-more-outcomes" class="nav-link" data-scroll-target="#more-outcomes"><span class="header-section-number">3.4</span> More Outcomes</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -174,7 +208,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 21, 2024</p>
+      <p class="date">November 25, 2025</p>
     </div>
   </div>
   
@@ -199,17 +233,68 @@ window.Quarto = {
 \def\indist{\,{\buildrel d \over \rightarrow}\,}
 \DeclareMathOperator*{\plim}{plim}
 \]</span></p>
-<section id="problem-2" class="level1">
-<h1>Problem 2</h1>
+<section id="section" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> </h1>
 <p>Consider the following linear regression model such that <span class="math display">\[
 Y_i = β_0 + X_i β_1 + u_i ,
 \]</span> where <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are observed random variables. Let us assume that <span class="math inline">\(\Er [u_i ] = 0\)</span> but <span class="math inline">\(\cov(X_i , u_i ) \neq 0\)</span>. Suppose that there exists a variable <span class="math inline">\(Z_i\)</span> such that <span class="math inline">\(\cov(X_i , Z_i ) &gt; 0\)</span> and <span class="math inline">\(\cov(Z_i , u_i ) &gt; 0\)</span>.</p>
 <p>Find the asymptotic bias of the 2SLS estimator of <span class="math inline">\(\hat{\beta}_1\)</span>. (Recall that the asymptotic bias of an estimator is its probability limit minus the true parameter.) Can you determine unambiguously whether the 2SLS estimator tends to underestimate or overestimate the parameter <span class="math inline">\(β_1\)</span> ? If so, give explanations how.</p>
+</section>
+<section id="series-regression-with-endogeneity" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Series Regression with Endogeneity</h1>
+<p>Suppose <span class="math display">\[
+y_i = \beta_0 + \beta_1 \cos(x_i) + \beta_2 \cos(2 x_i) + \cdots + \beta_k \cos(k x_i) + u_i
+\]</span> where <span class="math inline">\(x_i \in \R\)</span></p>
+<section id="instrument" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="instrument"><span class="header-section-number">2.1</span> Instrument</h2>
+<p>You suspect <span class="math inline">\(x_i\)</span> is related to <span class="math inline">\(u_i\)</span>, but you have another variable, <span class="math inline">\(z_i \in \R\)</span>, such that <span class="math inline">\(\Er[u_i | z_i] = 0\)</span>. Use this assumption to construct an estimator for <span class="math inline">\(\beta = (\beta_0, \cdots, \beta_k)'\)</span>.</p>
+</section>
+<section id="consistency" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="consistency"><span class="header-section-number">2.2</span> Consistency</h2>
+<p>Show that your estimator from part a is consistent. State any additional assumptions needed.</p>
+</section>
+<section id="asymptotic-distribution" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="asymptotic-distribution"><span class="header-section-number">2.3</span> Asymptotic Distribution</h2>
+<p>Find the asymptotic distribution of your estimator from part a. State any additional assumptions needed.</p>
+</section>
+</section>
+<section id="informal-contracting-in-coffee-production" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Informal Contracting in Coffee Production</h1>
+<p>In “Competition and Relational Contracts in the Rwanda Coffee Chain,” <span class="citation" data-cites="macchiavello2020">Macchiavello and Morjaria (<a href="#ref-macchiavello2020" role="doc-biblioref">2020</a>)</span> examine how more competition can lead to worse outcomes in an environment without formal contracts. The authors create an index of “relational contracting” between farmers and mills. Relational contracting consists of loans, delayed payments, and so on that are sustained by repeated interaction instead of any formal contract enforcement. The authors then want to estimate how competition (the number of mills) affects relational contracting.</p>
+<section id="ols" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="ols"><span class="header-section-number">3.1</span> OLS</h2>
+<p>The authors estimate <span class="math display">\[
+RC_m = \alpha + \beta C_m + \eta X_m + \gamma Z_m + \epsilon_m
+\]</span> where <span class="math inline">\(RC_m\)</span> is a relational contracting index for mill <span class="math inline">\(m\)</span>, <span class="math inline">\(C_m\)</span> is the number of competing mills within 10km of mill <span class="math inline">\(m\)</span>, <span class="math inline">\(X_m\)</span> are mill characteristics, and <span class="math inline">\(Z_m\)</span> are geographic characteristics of the land around the mill.</p>
+<p>Give one reason why <span class="math inline">\(\Er[C_m \epsilon_m]\)</span> might not be zero, speculate on the sign of <span class="math inline">\(\Er[C_m \epsilon_m]\)</span>, and say whether whether you expect <span class="math inline">\(\hat{\beta}^{OLS}\)</span> to be greater or less than <span class="math inline">\(\beta\)</span>.</p>
+</section>
+<section id="instrument-1" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="instrument-1"><span class="header-section-number">3.2</span> Instrument</h2>
+<p>As an instrument for <span class="math inline">\(C_m\)</span>, the authors use the predicted number of mills 5-10km away from an engineering model of coffee production. It predicts mill locations based on geography and local climate. Column (2) of Table II shows estimates of the first stage regression of <span class="math inline">\(C_m\)</span> on this instrument. What assumption can we check by looking at this regression? Are you confident that this assumption is met? If not, what should be done about it? <em>Hint:<span class="math inline">\(F=t^2 \approx \left(\frac{1.6}{0.4}\right)^2 \approx 16\)</span>.</em></p>
+</section>
+<section id="dependence" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="dependence"><span class="header-section-number">3.3</span> Dependence</h2>
+<p>The sample consists of mills in Rwanda, some of which might be near one another. Briefly, how does this affect the consistency and asymptotic distribution of the estimates of <span class="math inline">\(\beta\)</span> in Table II? What in the table, if anything, needs to be calculated differently than if observations were independent?</p>
+</section>
+<section id="more-outcomes" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="more-outcomes"><span class="header-section-number">3.4</span> More Outcomes</h2>
+<p>Table 3 shows estimates of the same model as table 2, except instead of the relational contracting index as the outcome, the outcome is one of the components of the index. Different columns show different components. As shown, the coefficients are all negative and most are statistically significant. Should this make us less concerned about the potential weak instrument problem? Why or why not? <em>Hint: these regressions all have the same first stage. A really good answer to this question would be fairly precise and perhaps derive the joint distribution of these estimates under weak instrument asymptotitcs.</em></p>
+<p><img src="mm-tabII.png" class="img-fluid" style="width:90.0%"></p>
+<p><img src="mm-tabIII.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="references" class="level1 unnumbered">
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-macchiavello2020" class="csl-entry" role="listitem">
+Macchiavello, Rocco, and Ameet Morjaria. 2020. <span>“Competition and Relational Contracts in the Rwanda Coffee Chain.”</span> <em>The Quarterly Journal of Economics</em> 136 (2): 1089–1143. <a href="https://doi.org/10.1093/qje/qjaa048">https://doi.org/10.1093/qje/qjaa048</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -283,7 +368,7 @@ Y_i = β_0 + X_i β_1 + u_i ,
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -2524,7 +2524,7 @@
     "href": "problemsets/07/ps07.html",
     "title": "ECON 626: Problem Set 7",
     "section": "",
-    "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]\n\nProblem 2\nConsider the following linear regression model such that \\[\nY_i = β_0 + X_i β_1 + u_i ,\n\\] where \\(X_i\\) and \\(Y_i\\) are observed random variables. Let us assume that \\(\\Er [u_i ] = 0\\) but \\(\\cov(X_i , u_i ) \\neq 0\\). Suppose that there exists a variable \\(Z_i\\) such that \\(\\cov(X_i , Z_i ) &gt; 0\\) and \\(\\cov(Z_i , u_i ) &gt; 0\\).\nFind the asymptotic bias of the 2SLS estimator of \\(\\hat{\\beta}_1\\). (Recall that the asymptotic bias of an estimator is its probability limit minus the true parameter.) Can you determine unambiguously whether the 2SLS estimator tends to underestimate or overestimate the parameter \\(β_1\\) ? If so, give explanations how."
+    "text": "\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\En{{\\mathbb{En}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\newcommand\\norm[1]{\\left\\lVert#1\\right\\rVert}\n\\def\\rank{{\\mathrm{rank}}}\n\\newcommand{\\inpr}{ \\overset{p^*_{\\scriptscriptstyle n}}{\\longrightarrow}}\n\\def\\inprob{{\\,{\\buildrel p \\over \\rightarrow}\\,}}\n\\def\\indist{\\,{\\buildrel d \\over \\rightarrow}\\,}\n\\DeclareMathOperator*{\\plim}{plim}\n\\]"
   },
   {
     "objectID": "problemsets/08/ps08.html",
@@ -2916,6 +2916,55 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#instrument",
+    "href": "problemsets/07/ps07.html#instrument",
+    "title": "ECON 626: Problem Set 7",
+    "section": "2.1 Instrument",
+    "text": "2.1 Instrument\nYou suspect \\(x_i\\) is related to \\(u_i\\), but you have another variable, \\(z_i \\in \\R\\), such that \\(\\Er[u_i | z_i] = 0\\). Use this assumption to construct an estimator for \\(\\beta = (\\beta_0, \\cdots, \\beta_k)'\\)."
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#consistency",
+    "href": "problemsets/07/ps07.html#consistency",
+    "title": "ECON 626: Problem Set 7",
+    "section": "2.2 Consistency",
+    "text": "2.2 Consistency\nShow that your estimator from part a is consistent. State any additional assumptions needed."
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#asymptotic-distribution",
+    "href": "problemsets/07/ps07.html#asymptotic-distribution",
+    "title": "ECON 626: Problem Set 7",
+    "section": "2.3 Asymptotic Distribution",
+    "text": "2.3 Asymptotic Distribution\nFind the asymptotic distribution of your estimator from part a. State any additional assumptions needed."
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#ols",
+    "href": "problemsets/07/ps07.html#ols",
+    "title": "ECON 626: Problem Set 7",
+    "section": "3.1 OLS",
+    "text": "3.1 OLS\nThe authors estimate \\[\nRC_m = \\alpha + \\beta C_m + \\eta X_m + \\gamma Z_m + \\epsilon_m\n\\] where \\(RC_m\\) is a relational contracting index for mill \\(m\\), \\(C_m\\) is the number of competing mills within 10km of mill \\(m\\), \\(X_m\\) are mill characteristics, and \\(Z_m\\) are geographic characteristics of the land around the mill.\nGive one reason why \\(\\Er[C_m \\epsilon_m]\\) might not be zero, speculate on the sign of \\(\\Er[C_m \\epsilon_m]\\), and say whether whether you expect \\(\\hat{\\beta}^{OLS}\\) to be greater or less than \\(\\beta\\)."
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#instrument-1",
+    "href": "problemsets/07/ps07.html#instrument-1",
+    "title": "ECON 626: Problem Set 7",
+    "section": "3.2 Instrument",
+    "text": "3.2 Instrument\nAs an instrument for \\(C_m\\), the authors use the predicted number of mills 5-10km away from an engineering model of coffee production. It predicts mill locations based on geography and local climate. Column (2) of Table II shows estimates of the first stage regression of \\(C_m\\) on this instrument. What assumption can we check by looking at this regression? Are you confident that this assumption is met? If not, what should be done about it? Hint:\\(F=t^2 \\approx \\left(\\frac{1.6}{0.4}\\right)^2 \\approx 16\\)."
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#dependence",
+    "href": "problemsets/07/ps07.html#dependence",
+    "title": "ECON 626: Problem Set 7",
+    "section": "3.3 Dependence",
+    "text": "3.3 Dependence\nThe sample consists of mills in Rwanda, some of which might be near one another. Briefly, how does this affect the consistency and asymptotic distribution of the estimates of \\(\\beta\\) in Table II? What in the table, if anything, needs to be calculated differently than if observations were independent?"
+  },
+  {
+    "objectID": "problemsets/07/ps07.html#more-outcomes",
+    "href": "problemsets/07/ps07.html#more-outcomes",
+    "title": "ECON 626: Problem Set 7",
+    "section": "3.4 More Outcomes",
+    "text": "3.4 More Outcomes\nTable 3 shows estimates of the same model as table 2, except instead of the relational contracting index as the outcome, the outcome is one of the components of the index. Different columns show different components. As shown, the coefficients are all negative and most are statistically significant. Should this make us less concerned about the potential weak instrument problem? Why or why not? Hint: these regressions all have the same first stage. A really good answer to this question would be fairly precise and perhaps derive the joint distribution of these estimates under weak instrument asymptotitcs."
   }
 ]

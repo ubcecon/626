@@ -711,7 +711,7 @@
     "href": "iv/iv.html#method-of-moments-estimation-1",
     "title": "Instrumental Variables Estimation",
     "section": "Method of Moments Estimation",
-    "text": "Method of Moments Estimation\n\n\\(d\\) equations, \\(k \\geq d\\) unknowns, so find \\[\n\\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\hat{\\beta}^{IV}) \\approx 0\n\\] by solving \\[\n\\begin{align*}\n\\hat{\\beta}^{IV} & = \\mathrm{arg}\\min_\\beta \\norm{ \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta) }_{W}^2 \\\\\n& = \\mathrm{arg}\\min_\\beta \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta\\right)' W \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta\\right)\n\\end{align*}\n\\]"
+    "text": "Method of Moments Estimation\n\n\\(d\\) equations, \\(k \\geq d\\) unknowns, so find \\[\n\\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\hat{\\beta}^{IV}) \\approx 0\n\\] by solving \\[\n\\begin{align*}\n\\hat{\\beta}^{IV} & = \\mathrm{arg}\\min_\\beta \\norm{ \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta) }_{W}^2 \\\\\n& = \\mathrm{arg}\\min_\\beta \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta) \\right)' W \\left( \\frac{1}{n} \\sum_{i=1}^n Z_i(Y_i - X_i'\\beta)\\right)\n\\end{align*}\n\\]"
   },
   {
     "objectID": "iv/iv.html#method-of-moments-estimation-2",
@@ -816,14 +816,14 @@
     "href": "iv/iv.html#testing-for-relevance-1",
     "title": "Instrumental Variables Estimation",
     "section": "Testing for Relevance",
-    "text": "Testing for Relevance\n\nStock and Yogo (2002) (table from Stock, Wright, and Yogo (2002)): first stage F &gt; threshold \\(\\approx 10\\) implies \\(Bias(\\hat{\\beta}^{IV}) &lt; 10\\% Bias(\\hat{\\beta}^{OLS})\\) and size of 5% test &lt; 15%\n\n\nswy-tab1.png"
+    "text": "Testing for Relevance\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n    b = biv(y,X,Z)\n    u = y - X*b\n    V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n    π = X \\ Z\n    e = X - Z*π\n    se = inv(Z'*Z)*sum(ei^2*z*z' for (ei,z) in zip(e,eachrow(Z)))*inv(Z'*Z)\n    t1 = π[1,1]/sqrt(se[1,1])\n    return((b - b0)./sqrt.(diag(V)), t1)\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nalpha = 0.001\nfor g in [1, 0.2, 0.1]\n    b_t1 = [tiv(sim(n,d=1,EZu=0,gamma=g)...) for _ in 1:S]\n    # crop outliers so figure looks okay\n    b = [bt[1][1] for bt in b_t1 if abs(bt[2][1])&gt;quantile(Normal(),1-alpha/2)]\n    b .= max.(b, -4)\n    b .= min.(b, 4)\n    println(\"γ=$g: retained $(length(b)) / $S simulations\")\n    plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig\n\n\nγ=1.0: retained 10000 / 10000 simulations\nγ=0.2: retained 9964 / 10000 simulations\nγ=0.1: retained 8491 / 10000 simulations"
   },
   {
     "objectID": "iv/iv.html#testing-for-relevance-2",
     "href": "iv/iv.html#testing-for-relevance-2",
     "title": "Instrumental Variables Estimation",
     "section": "Testing for Relevance",
-    "text": "Testing for Relevance\n\nLee et al. (2022) : F\\(&gt;&gt;10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F&gt;10\\) threshold, not that Stock and Yogo (2002) is wrong."
+    "text": "Testing for Relevance\n\nStock and Yogo (2002) (table from Stock, Wright, and Yogo (2002)): first stage F &gt; threshold \\(\\approx 10\\) implies \\(Bias(\\hat{\\beta}^{IV}) &lt; 10\\% Bias(\\hat{\\beta}^{OLS})\\) and size of 5% test &lt; 15%\n\n\nswy-tab1.png"
   },
   {
     "objectID": "iv/iv.html#identification-robust-inference",
@@ -865,7 +865,7 @@
     "href": "iv/iv.html#late",
     "title": "Instrumental Variables Estimation",
     "section": "LATE",
-    "text": "LATE\n\nWald estimator \\[\n\\frac{\\Er[Y_i | Z_i=1] - \\Er[Y_i|Z_i=0]}{\\Er[D_i|Z_i=1] - \\Er[D_i|Z_i=0]} =  \\frac{\\Er[Y_i(D_i(1))] - \\Er[Y_i(D_i(0))]}{\\Er[D_i(1)] - \\Er[D_i(0)]} \\text{ (exogeneity)\n\\]\n\n\\[\n= \\frac{\\Er[Y_i(D_i(1)) - Y_i(D_i(0)) | D_i(1) \\neq D_i(0)] P(D_i(1) \\neq D_i(0))} { P(D_i(1) &gt; D_i(0)) - P(D_i(1) &lt; D_i(0))}\n\\]\n\nAssume monotonicity \\(P(D_i(1)&lt;D_i(0)) = 0\\), then \\[\n\\frac{\\Er[Y_i | Z_i=1] - \\Er[Y_i|Z_i=0]}{\\Er[D_i|Z_i=1] - \\Er[D_i|Z_i=0]} = \\Er[Y_i(1) - Y_i(0) | D_i(1)=1, D_i(0) = 0 ]\n\\]\nlocal average treatment effect"
+    "text": "LATE\n\nWald estimator \\[\n\\frac{\\Er[Y_i | Z_i=1] - \\Er[Y_i|Z_i=0]}{\\Er[D_i|Z_i=1] - \\Er[D_i|Z_i=0]} =  \\frac{\\Er[Y_i(D_i(1))] - \\Er[Y_i(D_i(0))]}{\\Er[D_i(1)] - \\Er[D_i(0)]}\n\\]\n\n\\[\n= \\frac{\\Er[Y_i(D_i(1)) - Y_i(D_i(0)) | D_i(1) \\neq D_i(0)] P(D_i(1) \\neq D_i(0))} { P(D_i(1) &gt; D_i(0)) - P(D_i(1) &lt; D_i(0))}\n\\]\n\nAssume monotonicity \\(P(D_i(1)&lt;D_i(0)) = 0\\), then \\[\n\\frac{\\Er[Y_i | Z_i=1] - \\Er[Y_i|Z_i=0]}{\\Er[D_i|Z_i=1] - \\Er[D_i|Z_i=0]} = \\Er[Y_i(1) - Y_i(0) | D_i(1)=1, D_i(0) = 0 ]\n\\]\nlocal average treatment effect"
   },
   {
     "objectID": "iv/iv.html#ivlate",
@@ -2916,7 +2916,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nNov 19, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "problemsets/07/ps07.html#instrument",
@@ -2966,5 +2966,12 @@
     "title": "ECON 626: Problem Set 7",
     "section": "3.4 More Outcomes",
     "text": "3.4 More Outcomes\nTable 3 shows estimates of the same model as table 2, except instead of the relational contracting index as the outcome, the outcome is one of the components of the index. Different columns show different components. As shown, the coefficients are all negative and most are statistically significant. Should this make us less concerned about the potential weak instrument problem? Why or why not? Hint: these regressions all have the same first stage. A really good answer to this question would be fairly precise and perhaps derive the joint distribution of these estimates under weak instrument asymptotitcs."
+  },
+  {
+    "objectID": "iv/iv.html#testing-for-relevance-3",
+    "href": "iv/iv.html#testing-for-relevance-3",
+    "title": "Instrumental Variables Estimation",
+    "section": "Testing for Relevance",
+    "text": "Testing for Relevance\n\nLee et al. (2022) : F\\(&gt;&gt;10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F&gt;10\\) threshold, not that Stock and Yogo (2002) is wrong."
   }
 ]

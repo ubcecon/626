@@ -816,7 +816,7 @@
     "href": "iv/iv.html#testing-for-relevance-1",
     "title": "Instrumental Variables Estimation",
     "section": "Testing for Relevance",
-    "text": "Testing for Relevance\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n    b = biv(y,X,Z)\n    u = y - X*b\n    V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n    π = X \\ Z\n    e = X - Z*π\n    se = inv(Z'*Z)*sum(ei^2*z*z' for (ei,z) in zip(e,eachrow(Z)))*inv(Z'*Z)\n    t1 = π[1,1]/sqrt(se[1,1])\n    return((b - b0)./sqrt.(diag(V)), t1)\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nalpha = 0.001\nfor g in [1, 0.2, 0.1]\n    b_t1 = [tiv(sim(n,d=1,EZu=0,gamma=g)...) for _ in 1:S]\n    # crop outliers so figure looks okay\n    b = [bt[1][1] for bt in b_t1 if abs(bt[2][1])&gt;quantile(Normal(),1-alpha/2)]\n    b .= max.(b, -4)\n    b .= min.(b, 4)\n    println(\"γ=$g: retained $(length(b)) / $S simulations\")\n    plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig\n\n\nγ=1.0: retained 10000 / 10000 simulations\nγ=0.2: retained 9964 / 10000 simulations\nγ=0.1: retained 8491 / 10000 simulations"
+    "text": "Testing for Relevance\n\n\nCode\nfunction tiv(y,X,Z; b0 = ones(size(X,2)))\n    b = biv(y,X,Z)\n    u = y - X*b\n    V = var(u)*inv(X'*Z*inv(Z'*Z)*Z'*X)\n    π = X \\ Z\n    e = X - Z*π\n    se = inv(Z'*Z)*sum(ei^2*z*z' for (ei,z) in zip(e,eachrow(Z)))*inv(Z'*Z)\n    t1 = π[1,1]/sqrt(se[1,1])\n    return((b - b0)./sqrt.(diag(V)), t1)\nend\nn = 100\nS = 10_000\nplt = PlotlyLight.Plot()\nalpha = 0.001\nfor g in [1, 0.2, 0.1]\n    b_t1 = [tiv(sim(n,d=1,EZu=0,gamma=g)...) for _ in 1:S]\n    # crop outliers so figure looks okay\n    b = [bt[1][1] for bt in b_t1 if abs(bt[2][1])&gt;quantile(Normal(),1-alpha/2)]\n    b .= max.(b, -4)\n    b .= min.(b, 4)\n    println(\"γ=$g: retained $(length(b)) / $S simulations\")\n    plt(x=b, type=\"histogram\",name=\"γ=$g\")\nend\nfig=plt(x=randn(S), type=\"histogram\", name=\"Normal\")\n\nfig\n\n\nγ=1.0: retained 10000 / 10000 simulations\nγ=0.2: retained 9980 / 10000 simulations\nγ=0.1: retained 8518 / 10000 simulations"
   },
   {
     "objectID": "iv/iv.html#testing-for-relevance-2",
@@ -893,21 +893,21 @@
     "href": "iv/iv.html#sls-with-controls-is-not-late",
     "title": "Instrumental Variables Estimation",
     "section": "2SLS with Controls is not LATE",
-    "text": "2SLS with Controls is not LATE\n\nBlandhol et al. (2022) show \\[\n\\begin{align*}\n\\beta^{IV} \\inprob & \\Er\\left[\\omega(cp,X)\\Er[Y(1) - Y(0) |D(1)&gt;D(0), X] \\right] + \\\\\n&  + \\Er\\left[\\omega(at,X)\\Er[Y(1) - Y(0) |D(1)=D(0)=1, X] \\right]\n\\end{align*}\n\\] with \\[\n\\begin{align*}\n\\omega(cp,X) = & \\Er[Z|X](1 - L[Z|X])P(D(1)&gt;D(0)|X)\\Er[\\tilde{Z}D]^{-1} \\\\\n\\omega(at,X) = & \\Er[\\tilde{Z}|X] P(D(1)=D(0)=1|X)\\Er[\\tilde{Z}D]^{-1}\n\\end{align*}\n\\]\n\n\\(\\Er[\\tilde{Z}] = 0\\), so unless \\(\\Er[\\tilde{Z}|X] = 0\\), it will sometimes be negative"
+    "text": "2SLS with Controls is not LATE\n\nBlandhol et al. (2025) show \\[\n\\begin{align*}\n\\beta^{IV} \\inprob & \\Er\\left[\\omega(cp,X)\\Er[Y(1) - Y(0) |D(1)&gt;D(0), X] \\right] + \\\\\n&  + \\Er\\left[\\omega(at,X)\\Er[Y(1) - Y(0) |D(1)=D(0)=1, X] \\right]\n\\end{align*}\n\\] with \\[\n\\begin{align*}\n\\omega(cp,X) = & \\Er[Z|X](1 - L[Z|X])P(D(1)&gt;D(0)|X)\\Er[\\tilde{Z}D]^{-1} \\\\\n\\omega(at,X) = & \\Er[\\tilde{Z}|X] P(D(1)=D(0)=1|X)\\Er[\\tilde{Z}D]^{-1}\n\\end{align*}\n\\]\n\n\\(\\Er[\\tilde{Z}] = 0\\), so unless \\(\\Er[\\tilde{Z}|X] = 0\\), it will sometimes be negative"
   },
   {
     "objectID": "iv/iv.html#simulation-low-bias",
     "href": "iv/iv.html#simulation-low-bias",
     "title": "Instrumental Variables Estimation",
     "section": "Simulation: Low Bias",
-    "text": "Simulation: Low Bias\n\nusing Plots, Statistics, Distributions, Printf\n\nfunction sim(n; ezx = x-&gt;cdf(Normal(),x), Δ = x-&gt;x^2, covde=1, vare=2)\n  xd = randn(n)\n  x = randn(n) + xd\n  de = randn(n)\n  z = rand(n) .&lt; ezx.(x)\n  derr = randn(n)\n  d = (xd + derr + z + de .&gt; 0)\n  d1 = (xd + derr .+ 1 + de .&gt; 0)\n  d0 = (xd + derr .+ 0 + de .&gt; 0)\n  ϵ = de*covde + randn(n)*sqrt(vare-covde^2)\n  y = (Δ.(x) + de).*d + ϵ\n\n  return(y=y,x=x,z=z,d=d,Δ=(Δ.(x) + de), d0=d0, d1=d1)\nend\n\nfunction bols(y,d,x)\n  n = length(y)\n  X = hcat(ones(n), d, x)\n  return((X'*X) \\ X'*y)\nend\n\nfunction b2sls(y,d,x,z)\n  n = length(y)\n  Z = hcat(ones(n), z, x)\n  X = hcat(ones(n), d, x)\n  iZZ = inv(Z'*Z)\n  XZ = X'*Z\n  return((XZ*iZZ*XZ') \\ (XZ*iZZ*(Z'*y)))\nend\n\n\nfunction plotTE(y,d,x,z,Δ,d0,d1; ezx=x-&gt;cdf(Normal(),x))\n  te=scatter(x,Δ, group=[(t0,t1) for (t0,t1) in zip(d0,d1)], alpha=1.0, markersize=1,markerstrokewidth=0)\n  xlabel!(\"x\")\n  ylabel!(\"Treatment Effect\")\n  title!(\"Treatment Effects\")\n  xy=scatter(x,y,group=d,markersize=1,markerstrokewidth=0)\n  xlabel!(\"x\")\n  ylabel!(\"y\")\n  title!(\"Observed Data\")\n  xs = sort(x)\n  pz=plot(xs,ezx.(xs), xlabel=\"x\",ylabel=\"P(Z=1|X)\",title=\"P(Z|X)\",legend=:none)\n  n = length(z)\n  X = hcat(ones(n),x)\n  lzx = X*inv(X'*X)*X'*z\n  scatter!(x,lzx,label=\"L[Z|X]\",markersize=1,markerstrokewidth=0,alpha=0.5)\n\n  bo = bols(y,d,x)[2]\n  bi = b2sls(y,d,x,z)[2]\n  LATE = mean(Δ[d1.&gt;d0])\n  numbers=plot(xlims=(0,1),ylims=(0,1), axis=([], false))\n  annotate!([(0,0.8,(@sprintf(\"E[y1-y0|d1&gt;d0] = %.2f\",LATE),:left)),\n             (0,0.6,(@sprintf(\"βols = %.2f\",bo),:left)),\n             (0,0.4,(@sprintf(\"βiv = %.2f\",bi),:left))])\n\n\n  plot(xy,te,pz,numbers)\nend\n\ny,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x-&gt;1)\nplotTE(y,d,x,z,Δ,d0,d1)"
+    "text": "Simulation: Low Bias\n\nusing Plots, Statistics, Distributions, Printf\n\nfunction sim(n; ezx = x-&gt;cdf(Normal(),x), Δ = x-&gt;x^2, covde=1, vare=2)\n    xd = randn(n)\n    x = randn(n) + xd\n    de = randn(n)\n    z = rand(n) .&lt; ezx.(x)\n    derr = randn(n)\n    d = (xd + derr + z + de .&gt; 0)\n    d1 = (xd + derr .+ 1 + de .&gt; 0)\n    d0 = (xd + derr .+ 0 + de .&gt; 0)\n    ϵ = de*covde + randn(n)*sqrt(vare-covde^2)\n    y = (Δ.(x) + de).*d + ϵ\n\n    return(y=y,x=x,z=z,d=d,Δ=(Δ.(x) + de), d0=d0, d1=d1)\nend\n\nfunction bols(y,d,x)\n    n = length(y)\n    X = hcat(ones(n), d, x)\n    return((X'*X) \\ X'*y)\nend\n\nfunction b2sls(y,d,x,z)\n    n = length(y)\n    Z = hcat(ones(n), z, x)\n    X = hcat(ones(n), d, x)\n    iZZ = inv(Z'*Z)\n    XZ = X'*Z\n    return((XZ*iZZ*XZ') \\ (XZ*iZZ*(Z'*y)))\nend\n\n\nfunction plotTE(y,d,x,z,Δ,d0,d1; ezx=x-&gt;cdf(Normal(),x))\n    te=scatter(x,Δ, group=[(t0,t1) for (t0,t1) in zip(d0,d1)], alpha=0.2, markersize=1,markerstrokewidth=0)\n    xlabel!(\"x\")\n    ylabel!(\"Treatment Effect\")\n    title!(\"Treatment Effects\")\n    xy=scatter(x,y,group=d,markersize=1,markerstrokewidth=0, alpha=0.2)\n    xlabel!(\"x\")\n    ylabel!(\"y\")\n    title!(\"Observed Data\")\n    xs = sort(x)\n    pz=plot(xs,ezx.(xs), xlabel=\"x\",ylabel=\"P(Z=1|X)\",title=\"P(Z|X)\",legend=:none)\n    xlims!(pz, quantile(x,[0.01,0.99])...)\n\n    n = length(z)\n    X = hcat(ones(n),x)\n    lzx = X*inv(X'*X)*X'*z\n    scatter!(x,lzx,label=\"L[Z|X]\",markersize=1,markerstrokewidth=0,alpha=0.5)\n\n    bo = bols(y,d,x)[2]\n    bi = b2sls(y,d,x,z)[2]\n    LATE = mean(Δ[d1.&gt;d0])\n    numbers=plot(xlims=(0,1),ylims=(0,1), axis=([], false))\n    annotate!([(0,0.8,(@sprintf(\"E[y1-y0|d1&gt;d0] = %.2f\",LATE),:left)),\n               (0,0.6,(@sprintf(\"βols = %.2f\",bo),:left)),\n               (0,0.4,(@sprintf(\"βiv = %.2f\",bi),:left))])\n\n\n    plot(xy,te,pz,numbers)\nend"
   },
   {
     "objectID": "iv/iv.html#simulation-low-bias-output",
     "href": "iv/iv.html#simulation-low-bias-output",
     "title": "Instrumental Variables Estimation",
     "section": "Simulation: Low Bias",
-    "text": "Simulation: Low Bias"
+    "text": "Simulation: Low Bias\n\nplotTE (generic function with 1 method)"
   },
   {
     "objectID": "iv/iv.html#simulation-low-bias-1",
@@ -921,7 +921,7 @@
     "href": "iv/iv.html#simulation-high-bias",
     "title": "Instrumental Variables Estimation",
     "section": "Simulation: High Bias",
-    "text": "Simulation: High Bias\n\ny,x,z,d,Δ,d0,d1 = sim(5_000, Δ=x-&gt;1+x^3/10)\nplotTE(y,d,x,z,Δ,d0,d1)"
+    "text": "Simulation: High Bias\n\nezx = x-&gt;cdf(Normal(),x)\ny,x,z,d,Δ,d0,d1 = sim(25_000, Δ=x-&gt;(1+x^3/10), ezx=ezx)\nplotTE(y,d,x,z,Δ,d0,d1, ezx=ezx)"
   },
   {
     "objectID": "iv/iv.html#observations",
@@ -935,7 +935,7 @@
     "href": "iv/iv.html#what-to-do",
     "title": "Instrumental Variables Estimation",
     "section": "What to do?",
-    "text": "What to do?\n\nFlexibly control for \\(X\\)\nIf discrete, saturated regression\nOtherwise, double robust estimator for average conditional LATE\n\nChernozhukov et al. (2024) chapter 13, doubleml python & R package"
+    "text": "What to do?\n\nFlexibly control for \\(X\\)\nIf discrete, saturated regression\nOtherwise, doubly robust estimator for average conditional LATE\n\nChernozhukov et al. (2024) chapter 13, doubleml python & R package"
   },
   {
     "objectID": "iv/iv.html#further-reading-1",
@@ -2916,7 +2916,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nNov 19, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 22, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nNov 24, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 10, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "problemsets/07/ps07.html#instrument",
@@ -2973,5 +2973,19 @@
     "title": "Instrumental Variables Estimation",
     "section": "Testing for Relevance",
     "text": "Testing for Relevance\n\nLee et al. (2022) : F\\(&gt;&gt;10\\) is needed in practice1\n\nThe argument here is that practitioners misuse the \\(F&gt;10\\) threshold, not that Stock and Yogo (2002) is wrong."
+  },
+  {
+    "objectID": "iv/iv.html#simulation-low-bias-linear-ezx",
+    "href": "iv/iv.html#simulation-low-bias-linear-ezx",
+    "title": "Instrumental Variables Estimation",
+    "section": "Simulation: Low Bias (Linear \\(E[Z|X]\\))",
+    "text": "Simulation: Low Bias (Linear \\(E[Z|X]\\))\n\nezx = x-&gt;cdf(Normal(),x/10)\ny,x,z,d,Δ,d0,d1 = sim(25_000, Δ=x-&gt;(1+x^3/10), ezx = ezx)\nplotTE(y,d,x,z,Δ,d0,d1,  ezx = ezx)"
+  },
+  {
+    "objectID": "iv/iv.html#simulation-low-bias-constant-treatment-effect",
+    "href": "iv/iv.html#simulation-low-bias-constant-treatment-effect",
+    "title": "Instrumental Variables Estimation",
+    "section": "Simulation: Low Bias (Constant Treatment Effect)",
+    "text": "Simulation: Low Bias (Constant Treatment Effect)\n\nezx = x-&gt;cdf(Normal(),x)\ny,x,z,d,Δ,d0,d1 = sim(25_000, Δ=x-&gt;1, ezx=ezx)\nplotTE(y,d,x,z,Δ,d0,d1, ezx=ezx)"
   }
 ]

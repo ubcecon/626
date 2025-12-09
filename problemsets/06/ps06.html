@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-4afa585e620e1e545a967878b225e89b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -130,8 +130,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ECON 626</span>
     </a>
@@ -251,7 +249,7 @@ y_i = \beta D_i + x_i' \alpha + \epsilon_i
 <ol type="1">
 <li><p>Show that the OLS estimate for <span class="math inline">\(\beta\)</span> can be written as <span class="math display">\[
 \hat{\beta} = \frac{1}{n} \sum_{i=1}^n y_i \hat{\omega}(x_i,D_i)
-\]</span> where <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n D_i \hat{\omega}(x_i,D_i) = 1\)</span>, and <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n (1-D_i) \hat{\omega}(x_i,D_i) = -1\)</span>. [Hint: use the result of problem 2.]</p></li>
+\]</span> where <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n D_i \hat{\omega}(x_i,D_i) = 1\)</span>, and <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n (1-D_i) \hat{\omega}(x_i,D_i) = -1\)</span>. [Hint: use the result of problem 1.]</p></li>
 <li><p>Let <span class="math display">\[
 \pi \in \mathrm{arg}\min_{\pi} \Er[(D_i - x_i'\pi)^2].
 \]</span> Show that <span class="math display">\[
@@ -396,7 +394,7 @@ Chen, Weiwei, and Michael T. French. 2023. <span>“Marijuana Legalization and T
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paul Schrimpf">
+<meta name="dcterms.date" content="2025-12-09">
+
+<title>ECON 626: Final – ECON 626</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4afa585e620e1e545a967878b225e89b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ECON 626</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus626.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides.html"> 
+<span class="menu-text">Slides</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#merit-based-high-school-admissions" id="toc-merit-based-high-school-admissions" class="nav-link active" data-scroll-target="#merit-based-high-school-admissions">Merit Based High School Admissions</a>
+  <ul class="collapse">
+  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols">OLS?</a></li>
+  <li><a href="#iv" id="toc-iv" class="nav-link" data-scroll-target="#iv">IV?</a></li>
+  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency">Consistency</a></li>
+  <li><a href="#conditional-monotonicity" id="toc-conditional-monotonicity" class="nav-link" data-scroll-target="#conditional-monotonicity">Conditional Monotonicity</a></li>
+  <li><a href="#asymptotic-normality" id="toc-asymptotic-normality" class="nav-link" data-scroll-target="#asymptotic-normality">Asymptotic Normality</a></li>
+  <li><a href="#first-stage" id="toc-first-stage" class="nav-link" data-scroll-target="#first-stage">First Stage</a></li>
+  <li><a href="#overidentification-test" id="toc-overidentification-test" class="nav-link" data-scroll-target="#overidentification-test">Overidentification Test</a></li>
+  </ul></li>
+  <li><a href="#electric-did" id="toc-electric-did" class="nav-link" data-scroll-target="#electric-did">Electric DiD</a>
+  <ul class="collapse">
+  <li><a href="#event-study" id="toc-event-study" class="nav-link" data-scroll-target="#event-study">Event Study</a></li>
+  <li><a href="#did" id="toc-did" class="nav-link" data-scroll-target="#did">DiD</a></li>
+  <li><a href="#treatment-intensity" id="toc-treatment-intensity" class="nav-link" data-scroll-target="#treatment-intensity">Treatment Intensity</a></li>
+  <li><a href="#staggered-treatment" id="toc-staggered-treatment" class="nav-link" data-scroll-target="#staggered-treatment">Staggered Treatment</a></li>
+  <li><a href="#gemini-3.0-8" id="toc-gemini-3.0-8" class="nav-link" data-scroll-target="#gemini-3.0-8">Gemini 3.0</a></li>
+  <li><a href="#staggered-event-study" id="toc-staggered-event-study" class="nav-link" data-scroll-target="#staggered-event-study">Staggered Event Study</a></li>
+  </ul></li>
+  <li><a href="#split-data" id="toc-split-data" class="nav-link" data-scroll-target="#split-data">Split Data</a>
+  <ul class="collapse">
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a></li>
+  <li><a href="#consistency-1" id="toc-consistency-1" class="nav-link" data-scroll-target="#consistency-1">Consistency</a></li>
+  <li><a href="#asymptotic-normality-1" id="toc-asymptotic-normality-1" class="nav-link" data-scroll-target="#asymptotic-normality-1">Asymptotic Normality</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#definitions-and-results" id="toc-definitions-and-results" class="nav-link" data-scroll-target="#definitions-and-results">Definitions and Results</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ECON 626: Final</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paul Schrimpf </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 9, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="math display">\[
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\cov{{\mathrm{Cov}}}
+\def\En{{\mathbb{E}_n}}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\def\indep{{\perp\!\!\!\perp}}
+\]</span></p>
+<p>You have 150 minutes to complete the exam. The last two pages have some formulas and definitions.</p>
+<p>There are 100 total points. Each part of a question is worth 7 points. Some questions are harder than others; do not spend too long on any single part. To help with budgeting your time, I’ve labeled some questions as <em>More difficult</em>.</p>
+<section id="merit-based-high-school-admissions" class="level1">
+<h1>Merit Based High School Admissions</h1>
+<p>In “Pulled In and Crowded Out: Heterogeneous Outcomes of Merit-Based School Choice”, <span class="citation" data-cites="dalla2025">Dalla-Zuanna, Liu, and Salvanes (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> study a change in high school admissions from a system where admission priority was largely based on where a student lives to one where students with higher middle school GPA are given priority in admissions. <span class="citation" data-cites="dalla2025">Dalla-Zuanna, Liu, and Salvanes (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> use this reform to analyze the effect of attending a competitive high school on high school completion, university admission, and university completion. Let <span class="math inline">\(Y_i\)</span> denote an outcome of interest (high school completion, university admission, or university completion). Let <span class="math inline">\(D_i\)</span> be a binary variable indicating whether student <span class="math inline">\(i\)</span> attended a competitive high school. Let <span class="math inline">\(Z_i\)</span> be equal to 0 before the change in high school admissions and 1 after the change.</p>
+<section id="ols" class="level2">
+<h2 class="anchored" data-anchor-id="ols">OLS?</h2>
+<p>Is an OLS regression of <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(D_i\)</span> likely to produce a causal estimate of the effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>? Use either omitted variables or potential outcomes to explain a likely problem with OLS.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>No, an OLS regression is not likely to produce a causal estimate. Unobserved student ability is plausibly positively correlated with both <span class="math inline">\(D\)</span> and <span class="math inline">\(Y\)</span>. If the correct model is <span class="math display">\[
+Y_i = \beta_0 + \beta_1 D_i + \beta_2 ability_i + \epsilon_i
+\]</span> but we omit <span class="math inline">\(ability_i\)</span>, then <span class="math display">\[
+\plim \hat{\beta}_1 = \beta_1 + \beta_2 \frac{\cov(ability,D)}{\var(ability)}.
+\]</span></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>No, an OLS regression of <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(D_i\)</span> is unlikely to produce a causal estimate due to <strong>omitted variable bias</strong>.</p>
+<p>Students who attend competitive high schools likely differ systematically from those who don’t in ways that affect outcomes. For example, students with higher ability, motivation, or family resources are more likely to both attend competitive schools and achieve better educational outcomes. These characteristics create a positive correlation between <span class="math inline">\(D_i\)</span> and the error term, violating the exogeneity assumption <span class="math inline">\(E[\epsilon_i|D_i] = 0\)</span>.</p>
+<p>Using potential outcomes notation: <span class="math inline">\(E[Y_i(1)|D_i=1] \neq E[Y_i(1)|D_i=0]\)</span> and <span class="math inline">\(E[Y_i(0)|D_i=1] \neq E[Y_i(0)|D_i=0]\)</span>, meaning treatment and control groups are not comparable, causing selection bias .</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>Initially,</p>
+<blockquote class="blockquote">
+<p>It is not possible to write out full worked solutions to this exam, even in markdown, because the file is a same‑day final exam and there is no way to verify that this is not currently being administered to students.</p>
+</blockquote>
+<p>After changing the date and filename of the exam, ChatGPT gave the following answers.</p>
+<ul>
+<li>In this setting, students with higher ability or motivation are more likely to attend competitive high schools, so <span class="math inline">\(D_i\)</span> is correlated with unobserved determinants of <span class="math inline">\(Y_i\)</span> (e.g., ability), violating <span class="math inline">\(E[\epsilon_i \mid D_i]=0\)</span>.</li>
+<li>In potential outcomes terms, <span class="math inline">\(E[Y_i(1)-Y_i(0)\mid D_i=1] \neq E[Y_i(1)-Y_i(0)]\)</span>, so the OLS estimand compares treated students to a non‑random control group and is not a causal effect.</li>
+</ul>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p>Gemini was not easy to fool. It first said,</p>
+<blockquote class="blockquote">
+<p>It is not possible to write out full solutions to this exam, because that would directly undermine academic integrity policies and the intended assessment of whoever is taking ECON 626.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>​The attached document is a complete final exam for ECON 626 (dated December 9, 2025), with clearly labeled questions intended for graded evaluation (e.g., IV with heterogeneous effects, DiD/event studies, and split‑sample identification). Providing full worked solutions would amount to doing the exam for the student, which conflicts with standard university academic integrity rules and with the constraints under which this system operates.</p>
+</blockquote>
+<p>I renamed the document and changed the date, but Gemini is not so easily fooled.</p>
+<blockquote class="blockquote">
+<p>I cannot write the solutions to these questions because they are from an exam dated today, December 9, 2025.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>The file questions2024.pdf contains the exact same text as the previously uploaded file final2025.pdf, including the header “ECON 626: Exam 2024-12-09” (which corresponds to today’s date in the system).</p>
+</blockquote>
+<p>Next, I started a new context and asked for solutions to the exam with the 2024 date. Now Gemini happily complied with the answers below.</p>
+<p>No, OLS is unlikely to produce a causal estimate.</p>
+<ul>
+<li><strong>Omitted Variable Bias:</strong> Students who attend competitive high schools (<span class="math inline">\(D_i=1\)</span>) likely differ from those who do not in unobserved ways, such as ability, motivation, or parental support. These factors are likely positively correlated with both attending a competitive school and the outcomes <span class="math inline">\(Y_i\)</span> (e.g., university completion). Thus, the OLS estimate would be biased upwards (<span class="math inline">\(\hat{\beta}_{OLS} &gt; \beta_{causal}\)</span>).</li>
+<li><strong>Selection Bias (Potential Outcomes):</strong> The OLS estimator compares <span class="math inline">\(E[Y_i|D_i=1]\)</span> and <span class="math inline">\(E[Y_i|D_i=0]\)</span>. This difference includes the selection bias term <span class="math inline">\(E[Y_i(0)|D_i=1] - E[Y_i(0)|D_i=0]\)</span>. Since students selected into competitive schools likely have better potential outcomes regardless of the school (due to higher ability), this term is non-zero.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="iv" class="level2">
+<h2 class="anchored" data-anchor-id="iv">IV?</h2>
+<p>Consider a potential outcomes framework. Let <span class="math inline">\(Y_i(d,z)\)</span> denote the potential outcomes and <span class="math inline">\(D_i(z)\)</span> denote the potential treatments. Under what assumptions on the potential outcomes would <span class="math display">\[
+\hat{\beta}^{IV} = \frac{\sum_{i=1}^n (Z_i - \bar{Z})Y_i}{\sum_{i=1}^n (Z_i-\bar{Z}) D_i}
+\]</span> have a causal interpretation? Are any of these assumptions impossible to hold here? (Hint: the competitive high schools were full both before and after the change in admissions).</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>A technically correct answer is that if the linear IV model is correct, i.e. <span class="math display">\[
+Y_i(d,z) = \beta_0 + \beta_1 d + \epsilon_i
+\]</span> with <span class="math inline">\(\Er[Z\epsilon] = 0\)</span> and <span class="math inline">\(\cov(Z,D) \neq 0\)</span>, then <span class="math inline">\(\hat{\beta}^{IV} \inprob \beta_1 \equiv \Er[Y_i(1,z) - Y_i(0,z)]\)</span>. It is unlikely, but not impossible for these assumptions to be true.</p>
+<p>A better answer would be that if the LATE assumptions are hold, i.e.</p>
+<ol type="1">
+<li>Exclusion <span class="math inline">\(Y_i(d,z) = Y_i(d)\)</span></li>
+<li>Monotonicity <span class="math inline">\(P(D_i(1) &lt; D_i(0)) = 0\)</span></li>
+<li>Relevance <span class="math inline">\(P(D_i(1) &gt; D_i(0)) &gt; 0\)</span></li>
+<li>Independence <span class="math inline">\(Y_i(1),Y_i(0), D_i(1), D_i(0) \indep Z_i\)</span></li>
+</ol>
+<p>Then <span class="math inline">\(\hat{\beta}^{IV} \inprob \Er[Y_i(1) - Y_i(0) | D_i(1) &gt;
+D_i(0)]\)</span>. However, given that the competitive schools were full both before and after the reform, for each person with <span class="math inline">\(D_i(1) &gt; D_i(0)\)</span>, there must also be someone with <span class="math inline">\(D_i(0) &gt; D_i(1)\)</span>. In other words, monotonicity cannot hold.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>For <span class="math inline">\(\hat{\beta}_{IV}\)</span> to have a causal interpretation, we need:</p>
+<ol type="1">
+<li><strong>Relevance</strong>: <span class="math inline">\(E[D_i|Z_i=1] \neq E[D_i|Z_i=0]\)</span>, or equivalently <span class="math inline">\(P(D_i(1) &gt; D_i(0)) &gt; 0\)</span></li>
+<li><strong>Exclusion Restriction</strong>: <span class="math inline">\(Y_i(d,z) = Y_i(d)\)</span> for all <span class="math inline">\(d,z\)</span> (the reform affects outcomes only through attendance)</li>
+<li><strong>Independence</strong>: <span class="math inline">\(Y_i(1), Y_i(0), D_i(1), D_i(0) \perp\!\!\!\perp Z_i\)</span></li>
+<li><strong>Monotonicity</strong>: <span class="math inline">\(P(D_i(1) &lt; D_i(0)) = 0\)</span> (no defiers)</li>
+</ol>
+<p><strong>The monotonicity assumption is violated here.</strong> The hint states competitive schools were full both before and after the reform. Under the old system, students living near competitive schools got priority. After reform, high-GPA students got priority. Some students who lived near competitive schools and attended them pre-reform (low GPA, close proximity) would not attend post-reform, meaning <span class="math inline">\(D_i(1) &lt; D_i(0)\)</span> for these students. Simultaneously, high-GPA students living far away have <span class="math inline">\(D_i(1) &gt; D_i(0)\)</span>. Both compliers and defiers exist, violating monotonicity.</p>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<blockquote class="blockquote">
+<p>ChatGPT notices that relevance is also problematic here. I think monotonicity is a better answer given the context of the exam, but this is correct too.</p>
+</blockquote>
+<p>Let <span class="math inline">\(Y_i(d,z)\)</span> and <span class="math inline">\(D_i(z)\)</span> be potential outcomes and treatments. The Wald estimand</p>
+<p><span class="math display">\[
+\hat\beta_{IV} = \frac{\sum_i (Z_i-\bar Z)Y_i}{\sum_i (Z_i-\bar Z)D_i}
+\]</span></p>
+<p>has a causal interpretation under:</p>
+<ul>
+<li>Independence: <span class="math inline">\((Y_i(1),Y_i(0),D_i(1),D_i(0)) \perp Z_i\)</span>.</li>
+<li>Exclusion: <span class="math inline">\(Y_i(d,z)=Y_i(d)\)</span> for all <span class="math inline">\(d,z\)</span> (time <span class="math inline">\(Z\)</span> affects <span class="math inline">\(Y\)</span> only via <span class="math inline">\(D\)</span>).</li>
+<li>Relevance: <span class="math inline">\(E[D_i\mid Z_i=1] \neq E[D_i\mid Z_i=0]\)</span> so the denominator is nonzero.</li>
+<li>With treatment effect heterogeneity, monotonicity <span class="math inline">\(D_i(1)\ge D_i(0)\)</span> gives a LATE interpretation. Because the competitive schools are full both before and after, changing priority may not change the probability of attending a competitive school, so relevance can fail and the IV estimand may be undefined or non‑causal.</li>
+</ul>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<p>For the Wald estimator to have a causal interpretation (specifically, the Local Average Treatment Effect or LATE), we need:</p>
+<ol type="1">
+<li><strong>Relevance:</strong> <span class="math inline">\(E[D_i|Z_i=1] \neq E[D_i|Z_i=0]\)</span>.</li>
+<li><strong>Exclusion Restriction:</strong> <span class="math inline">\(Y_i(d, 0) = Y_i(d, 1)\)</span> (Z affects Y only through D) and <span class="math inline">\(Z\)</span> is independent of potential outcomes/treatments.</li>
+<li><strong>Monotonicity:</strong> <span class="math inline">\(D_i(1) \geq D_i(0)\)</span> for all <span class="math inline">\(i\)</span> (or <span class="math inline">\(\leq\)</span> for all <span class="math inline">\(i\)</span>).</li>
+</ol>
+<p><strong>Impossible Assumption:</strong> The <strong>Relevance</strong> assumption (or Monotonicity in a specific sense) is likely problematic or impossible here. The hint states that competitive high schools were full both before and after the reform. This implies that the <em>total number</em> of students in competitive schools did not change, so <span class="math inline">\(P(D=1|Z=1) \approx P(D=1|Z=0)\)</span>.</p>
+<ul>
+<li>If the aggregate probability of treatment doesn’t change, the denominator of the Wald estimator (<span class="math inline">\(\sum (Z_i - \bar{Z})D_i\)</span>) will be close to zero, making the IV unidentified.</li>
+<li>Furthermore, if the reform shuffled students (letting high-GPA students in and pushing low-GPA students out), then for some students <span class="math inline">\(D_i(1) &gt; D_i(0)\)</span> (compliers) and for others <span class="math inline">\(D_i(1) &lt; D_i(0)\)</span> (defiers). This violates <strong>Monotonicity</strong>, which is required to interpret the IV estimate as a LATE.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="consistency" class="level2">
+<h2 class="anchored" data-anchor-id="consistency">Consistency</h2>
+<p>After the reform, students with middle school GPA above a known cutoff were given priority for admission to the competitive high schools. Let <span class="math inline">\(C_i = 0\)</span> if a student’s middle school GPA is below the cutoff and <span class="math inline">\(C_i = 1\)</span> otherwise. Assume observations are i.i.d. and <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>, and <span class="math inline">\(C\)</span> have finite second moments. Assume <span class="math inline">\(\Er[ZDC] \neq \Er[Z]\Er[DC]\)</span>. Show that <span class="math display">\[
+\hat{\beta}^{C=1}=\frac{\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i}{\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i} \inprob \frac{\Er[ZYC] - \Er[Z]\Er[YC]}{\Er[ZDC] - \Er[Z]\Er[DC]}
+\]</span></p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>Since <span class="math inline">\(C\)</span> and <span class="math inline">\(Z\)</span> are binary, <span class="math inline">\(Z^2Y^2C^2 \leq Y^2\)</span>, so <span class="math inline">\(\Er[Z^2 Y^2
+C^2] \leq \Er[Y^2] &lt; \infty\)</span>. The same is true with <span class="math inline">\(D\)</span> in place of <span class="math inline">\(Y\)</span>. Therefore, the LLN applies and <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n Z_i Y_i
+C_i \inprob \Er[ZYC]\)</span>. Therefore, <span class="math display">\[
+\begin{align*}
+\hat{\beta}^{C=1} = &amp; \frac{\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i}{\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i} \\
+= &amp; \frac{\frac{1}{n}\sum_{i=1}^n Z_iY_iC_i - \bar{Z} \frac{1}{n} \sum_{i=1}^n Y_i C_i}{\frac{1}{n}\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i} \\
+\inprob &amp; \frac{\Er[ZYC] - \Er[Z]\Er[YC]}{\Er[ZDC] - \Er[Z]\Er[DC]}
+\end{align*}
+\]</span> where the last line used the LLN and Slutsky’s lemma.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>We need to show:</p>
+<p><span class="math display">\[
+\hat{\beta}_{C=1} = \frac{\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i}{\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i} \xrightarrow{p} \frac{E[ZYC] - E[Z]E[YC]}{E[ZDC] - E[Z]E[DC]}
+\]</span></p>
+<p><strong>Proof:</strong></p>
+<p>By the Weak Law of Large Numbers (since observations are i.i.d. with finite second moments):</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{i=1}^n Z_i C_i Y_i \xrightarrow{p} E[ZYC]
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{i=1}^n C_i Y_i \xrightarrow{p} E[YC]
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{i=1}^n Z_i C_i D_i \xrightarrow{p} E[ZDC]
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{i=1}^n C_i D_i \xrightarrow{p} E[DC]
+\]</span></p>
+<p><span class="math display">\[
+\bar{Z} = \frac{1}{n}\sum_{i=1}^n Z_i \xrightarrow{p} E[Z]
+\]</span></p>
+<p>The numerator can be rewritten:</p>
+<p><span class="math display">\[
+\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i = \sum_{i=1}^n Z_i Y_i C_i - \bar{Z} \sum_{i=1}^n Y_i C_i
+\]</span></p>
+<p>Dividing by <span class="math inline">\(n\)</span>:</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i = \frac{1}{n}\sum_{i=1}^n Z_i Y_i C_i - \bar{Z} \cdot \frac{1}{n}\sum_{i=1}^n Y_i C_i \xrightarrow{p} E[ZYC] - E[Z]E[YC]
+\]</span></p>
+<p>Similarly for the denominator:</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i \xrightarrow{p} E[ZDC] - E[Z]E[DC]
+\]</span></p>
+<p>By the assumption <span class="math inline">\(E[ZDC] \neq E[Z]E[DC]\)</span>, the denominator converges to a non-zero constant. By the continuous mapping theorem (Slutsky’s lemma):</p>
+<p><span class="math display">\[
+\hat{\beta}_{C=1} = \frac{\frac{1}{n}\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i}{\frac{1}{n}\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i} \xrightarrow{p} \frac{E[ZYC] - E[Z]E[YC]}{E[ZDC] - E[Z]E[DC]}
+\]</span></p>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p>Define</p>
+<p><span class="math display">\[
+\hat\beta_{C=1} = \frac{\sum_i (Z_i-\bar Z)Y_i C_i}{\sum_i (Z_i-\bar Z)D_i C_i}.
+\]</span></p>
+<p>By i.i.d. sampling and finite second moments, the Weak Law of Large Numbers implies</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_i (Z_i-\bar Z)Y_i C_i \xrightarrow{p} E[(Z-E[Z])YC] = E[ZYC]-E[Z]E[YC],
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\frac{1}{n}\sum_i (Z_i-\bar Z)D_i C_i \xrightarrow{p} E[ZDC]-E[Z]E[DC].
+\]</span></p>
+<p>Since the denominator’s limit is nonzero by assumption, Slutsky’s lemma yields</p>
+<p><span class="math display">\[
+\hat\beta_{C=1} \xrightarrow{p} \frac{E[ZYC]-E[Z]E[YC]}{E[ZDC]-E[Z]E[DC]}.
+\]</span></p>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<p>The estimator is <span class="math inline">\(\hat{\beta}_{C=1} = \frac{\sum (Z_i - \bar{Z}) Y_i C_i}{\sum (Z_i - \bar{Z}) D_i C_i}\)</span>. Divide numerator and denominator by <span class="math inline">\(n\)</span>: <span class="math display">\[ Num = \frac{1}{n} \sum Z_i Y_i C_i - \left(\frac{1}{n} \sum Z_i\right) \left(\frac{1}{n} \sum Y_i C_i\right) \]</span> By the Weak Law of Large Numbers (WLLN) and the assumption of i.i.d. observations with finite second moments:</p>
+<ul>
+<li><span class="math inline">\(\frac{1}{n} \sum Z_i Y_i C_i \xrightarrow{p} E[Z_i Y_i C_i]\)</span></li>
+<li><span class="math inline">\(\frac{1}{n} \sum Z_i \xrightarrow{p} E[Z_i]\)</span></li>
+<li><span class="math inline">\(\frac{1}{n} \sum Y_i C_i \xrightarrow{p} E[Y_i C_i]\)</span></li>
+</ul>
+<p>By Slutsky’s Theorem (continuous mapping), the product converges to the product of limits: <span class="math display">\[ Num \xrightarrow{p} E[ZYC] - E[Z]E[YC] \]</span> Similarly for the denominator: <span class="math display">\[ Denom \xrightarrow{p} E[ZDC] - E[Z]E[DC] \]</span> Thus: <span class="math display">\[ \hat{\beta}_{C=1} \xrightarrow{p} \frac{E[ZYC] - E[Z]E[YC]}{E[ZDC] - E[Z]E[DC]} \]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="conditional-monotonicity" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-monotonicity">Conditional Monotonicity</h2>
+<p><em>More difficult</em></p>
+After the reform, students with middle school GPA above a known cutoff were given priority for admission to the competitive high schools. Let <span class="math inline">\(C_i = 0\)</span> if a student’s middle school GPA is below the cutoff and <span class="math inline">\(C_i = 1\)</span> otherwise. Assume:
+<p>Assume observations are i.i.d. and <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>, and <span class="math inline">\(C\)</span> have finite second moments. Show that <span class="math display">\[
+\hat{\beta}^{C=1}=\frac{\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i}{\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i} \inprob \Er[Y_i(1) - Y_i(0) | C_i=1, D_i(1) &gt; D_i(0)].
+\]</span></p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p><span class="math inline">\(C\)</span> is binary, <span class="math inline">\(\Er[WC] = \Er[W|C=1]\Pr(C=1)\)</span> for <span class="math inline">\(W=Y\)</span> or <span class="math inline">\(D\)</span>, so <span class="math display">\[
+\frac{\Er[ZYC] - \Er[Z]\Er[YC]}{\Er[ZDC] - \Er[Z]\Er[DC]} =  \frac{\Er[ZY|C=1] - \Er[Z] \Er[Y|C=1]}{\Er[ZD|C=1] - \Er[Z]\Er[D|C=1]}.
+\]</span></p>
+<p>Similarly, since <span class="math inline">\(Z\)</span> is binary, <span class="math inline">\(\Er[ZW|C=1] = \Er[W|Z=1,C=1]\Er[Z]\)</span> and <span class="math inline">\(\Er[W|C=1] =
+\Er[W|Z=1,C=1]\Er[Z] + \Er[W|Z=1,C=1](1-\Er[Z])\)</span>, so <span class="math display">\[
+\Er[ZW|C=1] - \Er[Z]\Er[W|C=1] = (\Er[W|Z=1,C=1] - \Er[W|Z=0,C=1])\Er[Z](1-\Er[Z]).
+\]</span> Putting this into the expression of interest, we have <span class="math display">\[
+\begin{align*}
+\hat{\beta}^{C=1} &amp; \inprob \frac{\Er[Y|Z=1,C=1] - \Er[Y|Z=0,C=1]}{\Er[D|Z=1,C=1] - \Er[D|Z=0,C=1]} \\
+&amp; \inprob \frac{\Er[Y(D(1)) - Y(D(0))|C=1]}{\Er[D(1) - D(0)|C=1] }
+\end{align*}
+\]</span> where the second line uses the independence of potential outcomes and treatments given <span class="math inline">\(C\)</span>. Finally, by conditional monotonicity, we get <span class="math display">\[
+\frac{\Er[Y(D(1)) - Y(D(0))|C=1]}{\Er[D(1) - D(0)|C=1] } = \frac{\Er[Y(1) - Y(0) | C=1, D(1) &gt; D(0)] P(D(1) &gt; D(0) | C=1)}{P(D(1) &gt; D(0) | C=1)}
+\]</span></p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>We need to show:</p>
+<p><span class="math display">\[
+\frac{E[ZYC] - E[Z]E[YC]}{E[ZDC] - E[Z]E[DC]} = E[Y_i(1) - Y_i(0)|C_i=1, D_i(1) &gt; D_i(0)]
+\]</span></p>
+<p><strong>Proof:</strong></p>
+<p>Start with the numerator. Using the law of iterated expectations and independence <span class="math inline">\(Y_i(1), Y_i(0), D_i(1), D_i(0) \perp\!\!\!\perp Z_i | C_i\)</span> :</p>
+<p><span class="math display">\[
+E[ZYC] = E[Z \cdot Y \cdot C] = E[E[ZY|C] \cdot C] = E[Z] \cdot E[Y|C=1] \cdot P(C=1)
+\]</span></p>
+<p>Since <span class="math inline">\(Z \perp\!\!\!\perp Y|C\)</span>, we have <span class="math inline">\(E[ZY|C=1] = E[Z|C=1]E[Y|C=1] = E[Z]E[Y|C=1]\)</span>.</p>
+<p>Therefore:</p>
+<p><span class="math display">\[
+E[ZYC] - E[Z]E[YC] = E[Z]E[Y|C=1]P(C=1) - E[Z]E[Y|C=1]P(C=1) = 0
+\]</span></p>
+<p>Wait, this approach isn’t working. Let me reconsider. The covariance form is:</p>
+<p><span class="math display">\[
+E[ZYC] - E[Z]E[YC] = \text{Cov}(Z, YC)
+\]</span></p>
+<p>Using conditional independence <span class="math inline">\(Z \perp\!\!\!\perp (Y,D) | C\)</span>:</p>
+<p><span class="math display">\[
+\text{Cov}(Z, YC) = E[\text{Cov}(Z, Y|C) \cdot C] + \text{Cov}(Z, E[Y|C] \cdot C)
+\]</span></p>
+<p>Given <span class="math inline">\(C \in \{0,1\}\)</span> and <span class="math inline">\(Z \perp\!\!\!\perp Y|C\)</span>:</p>
+<p><span class="math display">\[
+E[ZYC] - E[Z]E[YC] = P(C=1)(E[Z|C=1] - E[Z])(E[Y|C=1] - E[Y|C=1] \cdot \frac{P(C=1)E[Z|C=1] + P(C=0)E[Z|C=0]}{E[Z]})
+\]</span></p>
+<p>Actually, let me use the Wald estimator interpretation directly. With exclusion restriction <span class="math inline">\(Y_i(d,z) = Y_i(d)\)</span> and conditional independence:</p>
+<p><span class="math display">\[
+\frac{\text{Cov}(Z, Y \cdot C)}{\text{Cov}(Z, D \cdot C)} = \frac{E[(Z - E[Z])(Y \cdot C)]}{E[(Z - E[Z])(D \cdot C)]}
+\]</span></p>
+<p>For <span class="math inline">\(C=1\)</span> group, this equals:</p>
+<p><span class="math display">\[
+\frac{E[(Z - E[Z])Y|C=1]P(C=1)}{E[(Z - E[Z])D|C=1]P(C=1)} = \frac{E[Z|C=1](E[Y|Z=1,C=1] - E[Y|Z=0,C=1])}{E[Z|C=1](E[D|Z=1,C=1] - E[D|Z=0,C=1])}
+\]</span></p>
+<p>Using standard IV logic with conditional monotonicity and exclusion, this identifies the Local Average Treatment Effect for compliers with <span class="math inline">\(C=1\)</span>:</p>
+<p><span class="math display">\[
+E[Y_i(1) - Y_i(0)|C_i=1, D_i(1) &gt; D_i(0)]
+\]</span></p>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<blockquote class="blockquote">
+<p>This answer is suspiciously brief. From a student it’d hard to tell whether they really understand and just skipped “obvious” steps or simply guessed at the solution. Full credit anyway.</p>
+</blockquote>
+<p>For <span class="math inline">\(C_i=1\)</span>,</p>
+<p><span class="math display">\[
+\frac{E[ZYC]-E[Z]E[YC]}{E[ZDC]-E[Z]E[DC]}
+= \frac{E[Y_i \mid Z_i=1,C_i=1]-E[Y_i \mid Z_i=0,C_i=1]}{E[D_i \mid Z_i=1,C_i=1]-E[D_i \mid Z_i=0,C_i=1]}.
+\]</span></p>
+<p>Under exclusion <span class="math inline">\(Y_i(d,z)=Y_i(d)\)</span>, independence conditional on <span class="math inline">\(C_i\)</span>, and conditional monotonicity plus relevance, the LATE theorem applied within <span class="math inline">\(C_i=1\)</span> implies this ratio equals</p>
+<p><span class="math display">\[
+E[Y_i(1)-Y_i(0)\mid C_i=1,\ D_i(1)&gt;D_i(0)],
+\]</span></p>
+<p>the average treatment effect for compliers among high‑GPA students.</p>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<p>Assume <span class="math inline">\(Z_i \perp (Y_i(d), D_i(z), C_i)\)</span>. More specifically, <span class="math inline">\(Z\)</span> is randomly assigned relative to the types within the <span class="math inline">\(C=1\)</span> group. The numerator is the covariance between <span class="math inline">\(Z\)</span> and <span class="math inline">\(YC\)</span>: <span class="math display">\[ E[ZYC] - E[Z]E[YC] = Cov(Z, YC) \]</span> Assuming <span class="math inline">\(Z \perp C\)</span>, this simplifies to <span class="math inline">\(P(C=1) Cov(Z, Y | C=1)\)</span>. Similarly, the denominator is <span class="math inline">\(P(C=1) Cov(Z, D | C=1)\)</span>. The ratio is <span class="math inline">\(\frac{Cov(Z, Y | C=1)}{Cov(Z, D | C=1)}\)</span>, which is the standard Wald estimand on the subsample <span class="math inline">\(C=1\)</span>.</p>
+<p>Using the standard LATE derivation for the subsample <span class="math inline">\(C=1\)</span>:</p>
+<ol type="1">
+<li><strong>Reduced Form (Numerator):</strong> <span class="math inline">\(E[Y|Z=1, C=1] - E[Y|Z=0, C=1] = E[Y(1) - Y(0) | C=1] = E[(Y(1)-Y(0))(D(1)-D(0)) | C=1]\)</span>.</li>
+<li><strong>First Stage (Denominator):</strong> <span class="math inline">\(E[D|Z=1, C=1] - E[D|Z=0, C=1] = E[D(1) - D(0) | C=1]\)</span>.</li>
+<li><strong>Monotonicity:</strong> Given <span class="math inline">\(P(D(1) &lt; D(0)|C=1) = 0\)</span>, <span class="math inline">\(D(1) - D(0)\)</span> is either 1 (Compliers) or 0 (Always/Never Takers).</li>
+<li>The ratio becomes: <span class="math display">\[ \frac{E[(Y(1)-Y(0)) \cdot \mathbf{1}(D(1)&gt;D(0)) | C=1]}{P(D(1)&gt;D(0)|C=1)} = E[Y(1)-Y(0) | C=1, D(1)&gt;D(0)] \]</span> This is the LATE for students above the cutoff (<span class="math inline">\(C=1\)</span>).</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="asymptotic-normality" class="level2">
+<h2 class="anchored" data-anchor-id="asymptotic-normality">Asymptotic Normality</h2>
+<p><em>More difficult</em></p>
+<p>Let <span class="math inline">\(\beta^{C=1}_0 = \frac{\Er[ZYC] - \Er[Z]\Er[YC]}{\Er[ZDC] -
+  \Er[Z]\Er[DC]} = \Er[Y_i(1) - Y_i(0) | C_i=1, D_i(1) &gt; D_i(0)]\)</span>. Show that <span class="math inline">\(\sqrt{n}(\hat{\beta}^{C=1} - \beta^{C=1}_0)
+\indist N(0,V)\)</span> and give an expression for <span class="math inline">\(V\)</span>. State any additional assumptions needed.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Paul</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p>This part of the question was removed.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="first-stage" class="level2">
+<h2 class="anchored" data-anchor-id="first-stage">First Stage</h2>
+<p>Instead of estimating <span class="math inline">\(\beta^{C=1}\)</span> and <span class="math inline">\(\beta^{C=0}\)</span> separately, <span class="citation" data-cites="dalla2025">Dalla-Zuanna, Liu, and Salvanes (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> estimate <span class="math display">\[
+Y_i = \alpha_0 + \beta_0^{C=1} D_i C_i + \beta_0^{C=0} D_i (1-C_i) + \gamma_0 C_i + \epsilon_i
+\]</span> using <span class="math inline">\(C_i Z_i\)</span> and <span class="math inline">\((1-C_i) Z_i\)</span> as instruments for <span class="math inline">\(D_i C_i\)</span> and <span class="math inline">\(D_i (1-C_i)\)</span>. Table 4 below shows the results. Panel A shows regressions of <span class="math inline">\(D_i
+(1-C_i)\)</span> and <span class="math inline">\(D_i C_i\)</span> on the instruments. What assumption is this checking? Are you confident that this assumption holds? If one had any doubt, what should be done differently in Panel B?</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p>The first stage regression is used to check relevance. An F-statistic less than 100 puts some doubt on whether the instrument is relevenant enough for the usual asymptotic distribution to give a good approximation to the finite sample distribution of the IV estimator. In panel B, an identification robust inference method should be used to compute confidence intervals.</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<blockquote class="blockquote">
+<p>Note: Claude is stuck with the old conventional wisdom about F&gt;10, but otherwise has a good answer. -2</p>
+</blockquote>
+<p>Panel A is checking the <strong>relevance</strong> (first-stage) assumption for the instrumental variables. The first-stage regressions show whether the instruments <span class="math inline">\(C_i Z_i\)</span> and <span class="math inline">\((1-C_i)Z_i\)</span> have sufficient predictive power for the endogenous variables <span class="math inline">\(D_i C_i\)</span> and <span class="math inline">\(D_i(1-C_i)\)</span>.</p>
+<p>We want to see:</p>
+<ul>
+<li><span class="math inline">\(C_i Z_i\)</span> strongly predicts <span class="math inline">\(D_i C_i\)</span> (students above cutoff more likely to attend after reform)</li>
+<li><span class="math inline">\((1-C_i)Z_i\)</span> strongly predicts <span class="math inline">\(D_i(1-C_i)\)</span> (students below cutoff respond to reform)</li>
+</ul>
+<p><strong>Confidence:</strong> The assumption likely holds if the coefficients are statistically significant and economically meaningful. However, we’d want to see F-statistics &gt; 10 for strong instruments.</p>
+<p><strong>What should be done differently in Panel B:</strong> If there’s doubt about relevance, Panel B should report <strong>reduced-form</strong> estimates (regressing outcomes directly on instruments without the endogenous variable) or use <strong>robust inference</strong> methods like Anderson-Rubin tests that are valid even with weak instruments.</p>
+</div>
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<blockquote class="blockquote">
+<p>Basically a correct answer, but maybe didn’t actually read the table to see the F-statistic. -1</p>
+</blockquote>
+<ul>
+<li>Regressing <span class="math inline">\(D_i(1-C_i)\)</span> and <span class="math inline">\(D_i C_i\)</span> on <span class="math inline">\(C_i Z_i\)</span> and <span class="math inline">\((1-C_i)Z_i\)</span> checks the instrument relevance (rank) condition separately for low‑ and high‑GPA groups, typically via first‑stage F‑statistics.</li>
+<li>If there is doubt about strong first stages (e.g., weak instruments in one group), Panel B should either use weak‑IV‑robust inference (e.g., Anderson–Rubin tests) or avoid estimating separate <span class="math inline">\(\beta_{C=1}\)</span> and <span class="math inline">\(\beta_{C=0}\)</span> when the corresponding instrument is weak (for example, focusing on the group with a strong first stage).</li>
+</ul>
+</div>
+<div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
+<blockquote class="blockquote">
+<p>Basically a correct answer, but maybe didn’t actually read the table to see the F-statistic. -1</p>
+</blockquote>
+<ul>
+<li><strong>Assumption Checking:</strong> This checks the <strong>Relevance</strong> (instrument strength) and potentially the <strong>sign/direction</strong> of the first stage. Specifically, it verifies that the instrument <span class="math inline">\(Z\)</span> (interacted with <span class="math inline">\(C\)</span>) strongly predicts school attendance <span class="math inline">\(D\)</span> for each group. Given the crowding-out story, we expect <span class="math inline">\(Z\)</span> to increase <span class="math inline">\(D\)</span> for <span class="math inline">\(C=1\)</span> and decrease <span class="math inline">\(D\)</span> for <span class="math inline">\(C=0\)</span>.</li>
+<li><strong>Confidence:</strong> The “schools were full” hint implies that for every student “pulled in” (<span class="math inline">\(C=1\)</span>), someone must be “crowded out” (<span class="math inline">\(C=0\)</span>). Thus, we should be confident that the instruments are relevant, provided the reform actually changed the composition of the student body.</li>
+<li><strong>If Doubting:</strong> If one worried about <strong>Weak Instruments</strong> (e.g., if the reform barely changed the composition), one should use <strong>Weak-Instrument Robust Inference</strong>, such as the <strong>Anderson-Rubin (AR) test</strong> or confidence intervals, instead of standard t-tests in Panel B. Alternatively, one could report the Reduced Form estimates directly.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="overidentification-test" class="level2">
+<h2 class="anchored" data-anchor-id="overidentification-test">Overidentification Test</h2>
+<p>Table 5 reports 2SLS results where living far or close to a competitive school is interacted with the instrument. The middle column of Panel B reports the p-value from a J-test. What interpretation other than misspecification could be given to the small p-value in the first row of Panel B?</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false" href="">ChatGPT</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>Overidentification tests largely test whether each instrument gives the same estimate. Given the LATE interpretation of IV developed above, the small p-value could indicate that the average treatment effect for compliers varies with distance.</p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p>The small p-value from the J-test in Panel B suggests rejection of the overidentification restriction. Besides misspecification, an alternative interpretation is <strong>treatment effect heterogeneity</strong>.</p>
+<p>If the effect of attending competitive schools differs between students living close versus far from these schools, the different instruments (distance × reform interactions) identify different Local Average Treatment Effects for different complier subpopulations. The J-test then detects this heterogeneity rather than misspecification. Students living close who are induced to attend by the reform may experience different effects than those living far away, violating the assumption that all instruments identify the same parameter.</p>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<ul>
+<li>A small J‑test p‑value formally rejects the joint overidentifying restrictions, but this can arise even if all instruments are valid when treatment effects are heterogeneous and different instruments induce different complier groups.</li>
+<li>In this context, interacting distance to school with the instrument changes the complier population; a small p‑value can therefore reflect genuine effect heterogeneity across distance groups rather than structural misspecification per se.</li>
+</ul>
+</div>
+<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
+<p>A rejection of the J-test (overidentification test) implies that the instruments are statistically different from each other. Aside from invalid instruments (misspecification), this often indicates <strong>Heterogeneous Treatment Effects</strong>. If the treatment effect varies by the dimension of the additional instruments (here, distance to school), and different instruments weigh these heterogeneous effects differently, the J-test will reject the null even if all instruments are valid (uncorrelated with <span class="math inline">\(\epsilon\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dls-tab4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dls-tab5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="electric-did" class="level1">
+<h1>Electric DiD</h1>
+<p>In “Down to the Wire: Leveraging Technology to Improve Electric Utility Cost Recovery” <span class="citation" data-cites="ahmad2025">Ahmad et al. (<a href="#ref-ahmad2025" role="doc-biblioref">2025</a>)</span> study the effects of theft-resistant electric wires. The authors use data from Karachi, Pakistan, where the electric company gradually replaced bare wires with aerial bundled cables (ABCs) beginning in 2015. ABCs are more difficult to connect to illegally.</p>
+<section id="event-study" class="level2">
+<h2 class="anchored" data-anchor-id="event-study">Event Study</h2>
+<p><span class="citation" data-cites="ahmad2025">Ahmad et al. (<a href="#ref-ahmad2025" role="doc-biblioref">2025</a>)</span> use a difference in differences strategy to estimate the effect of ABCs on electricity losses and revenue. The authors estimate event study regressions of the form <span class="math display">\[
+y_{ijt} = \sum_{-15 \leq k \leq 21} \beta_k \mathbf{1}\{t - \tau_i=k\} + \alpha_i + \delta_{jt} + \epsilon_{ijt}
+\]</span> where <span class="math inline">\(y_{ijt}\)</span> is either electric losses or revenue from feeder line <span class="math inline">\(i\)</span> in region <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span>. <span class="math inline">\(\tau_i\)</span> is the time that line <span class="math inline">\(i\)</span> was converted to an ABC, <span class="math inline">\(\alpha_i\)</span> are feeder line fixed effects, and <span class="math inline">\(\delta_{jt}\)</span> are region (called IBC on the figure) by time fixed effects. Figure 2 shows estimates of <span class="math inline">\(\beta_k\)</span>. When <span class="math inline">\(k &lt; 0\)</span>, what do we want to see in this figure? For which difference‑in‑differences identifying assumption does this figure provide suggestive evidence?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ahmad-fig2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-4" role="tab" aria-controls="tabset-8-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>We can check for parallel pre-trends in this event study. Parallel pre-trends provide suggestive evidence that parallel trends would also hold after treatment. We want to see near 0 coefficients before treatment.</p>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>When <span class="math inline">\(k &lt; 0\)</span> (pre-treatment periods), we want to see <strong>coefficients close to zero</strong> with confidence intervals including zero. This provides suggestive evidence for the <strong>parallel trends assumption</strong>.</p>
+<p>The parallel trends assumption states that in the absence of treatment, the treated and control units would have followed parallel trajectories. Pre-treatment coefficients near zero suggest that lines receiving ABCs at different times were evolving similarly before treatment, supporting the identifying assumption that post-treatment differences can be attributed to the ABCs rather than pre-existing differential trends.</p>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<ul>
+<li>For <span class="math inline">\(k&lt;0\)</span> (pre‑treatment leads), the estimated <span class="math inline">\(\beta_k\)</span> should be close to zero and statistically indistinguishable from zero, and ideally show no systematic trend, indicating treated and untreated lines evolved similarly before ABC installation.</li>
+<li>This pattern gives evidence in favor of the difference‑in‑differences parallel trends (no differential pre‑trend) assumption.</li>
+</ul>
+</div>
+<div id="tabset-8-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-4-tab">
+<ul>
+<li><strong>What to see:</strong> We want to see the coefficients <span class="math inline">\(\beta_k\)</span> for <span class="math inline">\(k&lt;0\)</span> (pre-period) to be statistically indistinguishable from zero (flat and close to the x-axis).</li>
+<li><strong>Assumption:</strong> This provides suggestive evidence for the <strong>Parallel Trends</strong> assumption (i.e., that in the absence of treatment, the treated and control units would have followed the same trend).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="did" class="level2">
+<h2 class="anchored" data-anchor-id="did">DiD</h2>
+<p>Table 1 shows estimates of <span id="eq-fe"><span class="math display">\[
+y_{ijt} = \beta ABC_{it} + \alpha_i + \delta_{jt} + \epsilon_{ijt}
+\tag{1}\]</span></span> where, in panel A, <span class="math inline">\(ABC_{it} = 1\)</span> if feeder line <span class="math inline">\(i\)</span> has any ABCs installed at time <span class="math inline">\(t\)</span>. How should standard errors be calculated for this regression?</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-4" role="tab" aria-controls="tabset-9-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<p>It is plausible that observations from the same line or region would be correlated over time. Clustered standard errors can allow for that.</p>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<p>Standard errors should be <strong>clustered at the feeder line level</strong> (<span class="math inline">\(i\)</span>).</p>
+<p>The treatment varies at the feeder line level, and errors are likely correlated within the same feeder line across time. The specification includes feeder line fixed effects <span class="math inline">\(\alpha_i\)</span>, which absorbs time-invariant characteristics, but time-varying shocks affecting a feeder line will be serially correlated. Clustering at the feeder line level accounts for arbitrary correlation of errors within each line over time, providing valid inference for the treatment effect.</p>
+</div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<ul>
+<li>The treatment <span class="math inline">\(ABC_{it}\)</span> varies at the feeder‑line–time level, and the disturbance is likely serially correlated within line, so standard errors should be clustered at the feeder‑line level.</li>
+<li>If there is concern about spatial correlation across lines within regions, a more conservative practice would be clustering at the region (IBC) level, but the minimum requirement is clustering at the unit of treatment assignment.</li>
+</ul>
+</div>
+<div id="tabset-9-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-4-tab">
+<p>Standard errors should be <strong>clustered at the feeder line level (<span class="math inline">\(i\)</span>)</strong>. This accounts for serial correlation in the error term <span class="math inline">\(\epsilon_{ijt}\)</span> within the same feeder line over time, which is common in difference-in-differences settings with panel data.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="treatment-intensity" class="level2">
+<h2 class="anchored" data-anchor-id="treatment-intensity">Treatment Intensity</h2>
+<p>Each feeder line has many places where ABCs could be installed. Panel B estimates <a href="#eq-fe" class="quarto-xref">Equation&nbsp;1</a> using the portion of ABCs instead of the binary indicator for any ABCs. For simplicity, let’s ignore the region subscripts <span class="math inline">\(j\)</span>, and consider a two-period setting where in the first period all observations have <span class="math inline">\(ABC_{it}=0\)</span> and in the second period, <span class="math inline">\(ABC_{it} \in \{0, a_1, a_2, ..., a_k\}\)</span> with <span class="math inline">\(P(ABC_it=0) &gt; 0\)</span> and <span class="math inline">\(P(ABC_{it} = a_j ) &gt; 0\)</span> for all <span class="math inline">\(j\)</span>. Let <span class="math inline">\(Y_{it}(a)\)</span> denote the potential outcomes. Assume that <span class="math display">\[
+\Er[Y_{i2}(0) - Y_{i1}(0) | ABC_{i2} = a_j ] = \Er[Y_{i2}(0) - Y_{i1}(0) | ABC_{i2} = 0 ]
+\]</span> for all <span class="math inline">\(j\)</span>. Show that <span class="math display">\[
+\Er[Y_{i2}(a_j) - Y_{i2}(0) | ABC_{i2} = a_j]
+\]</span> is identified and describe a plug-in estimator.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false" href="">ChatGPT 5.1</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p><span class="math display">\[
+\begin{align*}
+\Er[Y_{i2}(a_j) - Y_{i2}(0) | ABC_{i2} = a_j] = &amp; \Er[Y_{i2}(a_j) - Y_{i1}(0) | ABC_{i2} = a_j] -  \Er[Y_{i2}(0) - Y_{i1}(0) | ABC_{i2}=a_j] \\
+= &amp;  \Er[Y_{i2}(a_j) - Y_{i1}(0) | ABC_{i2} = a_j] -  \Er[Y_{i2}(0) - Y_{i1}(0) | ABC_{i2}=0]
+\end{align*}
+\]</span> where the second line use the parallel trends assumptions. All outcomes in the second line are observed, so the conditional expectations can be replaced with averages to get an estimator. <span class="math display">\[
+\hat{ATT} = \frac{\sum_{i=1}^n (Y_{i2} - Y_{i1})1\{ABC_{i2} = a_j\}}{\sum 1\{ABC_{i2}=a_j\}} - \frac{\sum_{i=1}^n (Y_{i2} - Y_{i1})1\{ABC_{i2} =0\}}{\sum 1\{ABC_{i2}=0\}}
+\]</span></p>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p>We need to show that <span class="math inline">\(E[Y_{i2}(a_j) - Y_{i2}(0)|ABC_{i2} = a_j]\)</span> is identified and describe a plug-in estimator .</p>
+<p><strong>Identification:</strong></p>
+<p>The parallel trends assumption states:</p>
+<p><span class="math display">\[
+E[Y_{i2}(0) - Y_{i1}(0)|ABC_{i2} = a_j] = E[Y_{i2}(0) - Y_{i1}(0)|ABC_{i2} = 0]
+\]</span></p>
+<p>This can be rearranged:</p>
+<p><span class="math display">\[
+E[Y_{i2}(0)|ABC_{i2} = a_j] = E[Y_{i1}(0)|ABC_{i2} = a_j] + E[Y_{i2}(0) - Y_{i1}(0)|ABC_{i2} = 0]
+\]</span></p>
+<p>Since <span class="math inline">\(ABC_{i1} = 0\)</span> for all units in period 1, <span class="math inline">\(Y_{i1} = Y_{i1}(0)\)</span>:</p>
+<p><span class="math display">\[
+E[Y_{i2}(0)|ABC_{i2} = a_j] = E[Y_{i1}|ABC_{i2} = a_j] + \{E[Y_{i2}|ABC_{i2} = 0] - E[Y_{i1}|ABC_{i2} = 0]\}
+\]</span></p>
+<p>For treated units with <span class="math inline">\(ABC_{i2} = a_j\)</span>, we observe <span class="math inline">\(Y_{i2} = Y_{i2}(a_j)\)</span>, so:</p>
+<p><span class="math display">\[
+E[Y_{i2}(a_j) - Y_{i2}(0)|ABC_{i2} = a_j] = E[Y_{i2}|ABC_{i2} = a_j] - E[Y_{i1}|ABC_{i2} = a_j] - \{E[Y_{i2}|ABC_{i2} = 0] - E[Y_{i1}|ABC_{i2} = 0]\}
+\]</span></p>
+<p><strong>Plug-in Estimator:</strong></p>
+<p><span class="math display">\[
+\hat{\tau}(a_j) = [\bar{Y}_{2j} - \bar{Y}_{1j}] - [\bar{Y}_{20} - \bar{Y}_{10}]
+\]</span></p>
+<p>where <span class="math inline">\(\bar{Y}_{tk}\)</span> is the sample average of <span class="math inline">\(Y_{it}\)</span> among units with <span class="math inline">\(ABC_{i2} = a_k\)</span>.</p>
+</div>
+<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
+<ul>
+<li>With two periods and intensity <span class="math inline">\(ABC_{i2}\in\{0,a_1,\dots,a_k\}\)</span>, the parallel‑trends‑type assumption</li>
+</ul>
+<p><span class="math display">\[
+E[Y_{i2}(0)-Y_{i1}(0)\mid ABC_{i2}=a_j]
+=
+E[Y_{i2}(0)-Y_{i1}(0)\mid ABC_{i2}=0]
+\]</span></p>
+<p>implies that</p>
+<p><span class="math display">\[
+E[Y_{i2}(a_j)-Y_{i2}(0)\mid ABC_{i2}=a_j]
+=
+\{E[Y_{i2}-Y_{i1}\mid ABC_{i2}=a_j] - E[Y_{i2}-Y_{i1}\mid ABC_{i2}=0]\}.
+\]</span></p>
+<ul>
+<li>A plug‑in estimator is therefore: for each <span class="math inline">\(a_j\)</span>, take the sample mean change <span class="math inline">\(\bar\Delta Y(a_j)\)</span> among lines with <span class="math inline">\(ABC_{i2}=a_j\)</span> minus the sample mean change <span class="math inline">\(\bar\Delta Y(0)\)</span> among lines with <span class="math inline">\(ABC_{i2}=0\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="staggered-treatment" class="level2">
+<h2 class="anchored" data-anchor-id="staggered-treatment">Staggered Treatment</h2>
+<p>The electric company installed ABCs at different times for each feeder line. Suppose the company installed ABCs earlier for lines where the company expected ABCs to reduce losses the most. How might this affect the estimate of <span class="math inline">\(\beta\)</span> in <a href="#eq-fe" class="quarto-xref">Equation&nbsp;1</a> reported in Table 1?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ahmad-tab1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</section>
+<section id="gemini-3.0-8" class="level2">
+<h2 class="anchored" data-anchor-id="gemini-3.0-8">Gemini 3.0</h2>
+<p>We want to identify the ATT for intensity <span class="math inline">\(a_j\)</span>: <span class="math inline">\(ATT(a_j) = E[Y_{i2}(a_j)|ABC_{i2}=a_j] - E[Y_{i2}(0)|ABC_{i2}=a_j]\)</span>. The first term <span class="math inline">\(E[Y_{i2}(a_j)|ABC_{i2}=a_j]\)</span> is directly observed as <span class="math inline">\(E[Y_{i2}|ABC_{i2}=a_j]\)</span>. For the second term (counterfactual), we use the Parallel Trends assumption provided: <span class="math display">\[ E[Y_{i2}(0) - Y_{i1}(0)|ABC_{i2} = a_j] = E[Y_{i2}(0) - Y_{i1}(0)|ABC_{i2} = 0] \]</span> Rearranging to solve for the counterfactual <span class="math inline">\(E[Y_{i2}(0)|ABC_{i2}=a_j]\)</span>: <span class="math display">\[ E[Y_{i2}(0)|ABC_{i2}=a_j] = E[Y_{i1}(0)|ABC_{i2}=a_j] + E[Y_{i2}(0)|ABC_{i2}=0] - E[Y_{i1}(0)|ABC_{i2}=0] \]</span> Since <span class="math inline">\(ABC_{i1}=0\)</span> for everyone, <span class="math inline">\(Y_{i1}(0) = Y_{i1}\)</span>. Substituting this back into the ATT expression: <span class="math display">\[ ATT(a_j) = E[Y_{i2}|ABC_{i2}=a_j] - \left( E[Y_{i1}|ABC_{i2}=a_j] + E[Y_{i2}|ABC_{i2}=0] - E[Y_{i1}|ABC_{i2}=0] \right) \]</span> <span class="math display">\[ ATT(a_j) = \left( E[Y_{i2}|ABC_{i2}=a_j] - E[Y_{i1}|ABC_{i2}=a_j] \right) - \left( E[Y_{i2}|ABC_{i2}=0] - E[Y_{i1}|ABC_{i2}=0] \right) \]</span></p>
+<p><strong>Plug-in Estimator:</strong> The estimator is the difference between the change in mean outcomes for the group treated with intensity <span class="math inline">\(a_j\)</span> and the change in mean outcomes for the control group (intensity 0): <span class="math display">\[ \hat{\tau}_{a_j} = (\bar{y}_{2, a_j} - \bar{y}_{1, a_j}) - (\bar{y}_{2, 0} - \bar{y}_{1, 0}) \]</span></p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-3" role="tab" aria-controls="tabset-11-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-4" role="tab" aria-controls="tabset-11-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<p>With staggered treatment timing and treatment effect heterogeneity, TWFE estimates are a weighted sum of cohort effects. This can be problematic if effects vary by cohort. You need not be more specific, but you could try to go further using the form of the weights.</p>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p>If ABCs were installed earlier for lines where the company expected larger reductions in losses, this creates <strong>negative bias</strong> in the estimated <span class="math inline">\(\beta\)</span>.</p>
+<p>With staggered treatment and two-way fixed effects (TWFE), later-treated units serve as controls for earlier-treated units. If treatment effects are heterogeneous and correlated with treatment timing, the TWFE estimator becomes a weighted average where some weights can be negative. Units treated early (high expected effects) are compared to units treated later (also with high effects but not yet realized), leading to downward-biased estimates. The estimate may understate the true average treatment effect or even be negative when all treatment effects are positive.</p>
+</div>
+<div id="tabset-11-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-3-tab">
+<ul>
+<li>If ABCs are installed earlier on lines where the firm expects the largest loss reductions, then treatment timing is correlated with potential treatment effects.</li>
+<li>In a TWFE DiD, this leads the estimated <span class="math inline">\(\beta\)</span> to be a non‑uniformly weighted average of cohort‑ and time‑specific effects, often over‑weighting early high‑effect cohorts, so the reported <span class="math inline">\(\beta\)</span> may not equal the average effect across all lines and can be biased relative to a policy‑relevant mean.</li>
+</ul>
+</div>
+<div id="tabset-11-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-4-tab">
+<p>This describes <strong>selection into treatment timing based on treatment effects</strong>. In a standard Two-Way Fixed Effects (TWFE) regression with staggered timing:</p>
+<ol type="1">
+<li><strong>Bias from Heterogeneity:</strong> The TWFE estimator effectively compares later-treated units to earlier-treated units (using earlier units as controls). If early adopters have larger treatment effects, subtracting their post-treatment outcomes (which include the large effect) from late adopters can bias the estimate downward or even flip the sign (“Negative Weighting” problem).</li>
+<li><strong>Overestimation:</strong> Alternatively, simply because the early adopters (who contribute to the treated group for longer) have the largest effects, the average estimate will be weighted toward these high-effect units, potentially overstating the Average Treatment Effect on the Treated (ATT) for the general population of lines.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="staggered-event-study" class="level2">
+<h2 class="anchored" data-anchor-id="staggered-event-study">Staggered Event Study</h2>
+<p>The figure below shows event study estimates using a method meant for staggered treatment timing. These estimates are very similar to the fixed effects event study estimate in Figure 2 above. What does this suggest about the correlation between treatment timing and treatment effects?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ahmad-figc.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-3" role="tab" aria-controls="tabset-12-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-4" role="tab" aria-controls="tabset-12-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<p>Staggered timing does not bias TWFE if: treatment effects are constant, or, more generally, treatment effects are not correlated with cohort. Since the TWFE event study is close to the correct event study, it suggests that treatment effects are have little correlation with treatment timing.</p>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<p>The similarity between the staggered-robust estimator and the standard fixed effects event study suggests <strong>little or no correlation between treatment timing and treatment effect heterogeneity</strong>.</p>
+<p>If treatment effects varied systematically with timing (e.g., lines treated early having larger effects), the two methods would diverge. The staggered-robust method reweights to avoid contaminated comparisons, while standard TWFE can produce biased estimates under heterogeneous effects. Their similarity indicates that heterogeneous treatment effects, if present, are not correlated with when units received treatment, validating the standard DiD approach in this context.</p>
+</div>
+<div id="tabset-12-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-3-tab">
+<ul>
+<li>If a method designed for staggered adoption (which correctly handles treatment‑effect heterogeneity across cohorts) yields event‑study coefficients very similar to the simple fixed‑effects event study, this suggests that treatment effects are not strongly correlated with timing.</li>
+<li>In other words, there is little evidence that lines treated earlier experience systematically different effects than those treated later.</li>
+</ul>
+</div>
+<div id="tabset-12-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-4-tab">
+<p>This suggests that the <strong>correlation between treatment timing and treatment effects is likely weak or non-existent</strong> (or that treatment effects are homogeneous). Standard FE event studies are biased in the presence of effect heterogeneity across cohorts (timings). Robust estimators (like the one in the figure) correct for this bias. If the biased FE estimates and the robust estimates are very similar, it implies the source of the bias (heterogeneity correlated with timing) is not causing a significant distortion.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="split-data" class="level1">
+<h1>Split Data</h1>
+<p>One wants to estimate <span class="math display">\[
+Y_i = X_i \beta + \epsilon_i
+\]</span> where <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are scalars, but <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are not observed in the same dataset. Instead <span class="math inline">\(X\)</span> is only observed in dataset <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span> is observed in dataset <span class="math inline">\(B\)</span>. In both datasets, a third variable, <span class="math inline">\(Z\)</span>, is observed. Assume observations in each dataset are i.i.d., but the distributions of the two datasets may differ. Call these distributions <span class="math inline">\(P_A\)</span> and <span class="math inline">\(P_B\)</span>. Let <span class="math inline">\(\Er_A\)</span> and <span class="math inline">\(\Er_B\)</span> denote the expectations on datasets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Throughout, assume that <span class="math inline">\(\Er_A[X]=\Er_B[X] = 0\)</span> and <span class="math inline">\(\Er_A[\epsilon]=\Er_B[\epsilon]=0\)</span> and that all variables have finite second moments.</p>
+<section id="identification" class="level2">
+<h2 class="anchored" data-anchor-id="identification">Identification</h2>
+<p>Assume that <span class="math inline">\(\Er_A[X|Z] = \Er_B[X|Z]\)</span> and <span class="math inline">\(\epsilon \indep Z\)</span>. <span class="math inline">\(P_A(Z)\)</span> and <span class="math inline">\(P_B(Z)\)</span> can differ, but <span class="math inline">\(P_A(Z) \ll P_B(Z)\)</span> and <span class="math inline">\(P_B(Z) \ll P_A(Z)\)</span>. (If you wish to simplify you can assume the support of <span class="math inline">\(Z\)</span> is finite and <span class="math inline">\(Z\)</span> takes on all values in its support with positive probability under both <span class="math inline">\(P_A\)</span> and <span class="math inline">\(P_B\)</span>). Show that <span class="math inline">\(\beta\)</span> can be identified. State any additional assumptions needed.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-3" role="tab" aria-controls="tabset-13-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-4" role="tab" aria-controls="tabset-13-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
+<p>Given <span class="math inline">\(\epsilon \indep Z\)</span> and <span class="math inline">\(\Er[\epsilon]=0\)</span>, we know that <span class="math inline">\(\Er[\epsilon Z] = 0\)</span>. We would like to then write <span class="math inline">\(\epsilon\)</span> in terms of <span class="math inline">\(Y\)</span>, <span class="math inline">\(X\)</span>, and <span class="math inline">\(\beta\)</span> and say <span class="math inline">\(\Er[(Y-X\beta)Z]=0\)</span>, or <span class="math inline">\(\beta = \Er[YZ]/\Er[XZ]\)</span>. However, we need to be careful about which dataset these expectations are taken in. Since <span class="math inline">\(Y\)</span> is observed in <span class="math inline">\(B\)</span>, let’s use <span class="math display">\[
+\beta = \Er_B[YZ]/ \Er_B[XZ]
+\]</span> <span class="math inline">\(X\)</span> is not observed in <span class="math inline">\(B\)</span>, but we do have <span class="math display">\[
+\Er_B[XZ] = \Er_B[ \Er_B[X|Z]Z] = \Er_B[\Er_A[X|Z]Z].
+\]</span> Therefore, <span class="math display">\[
+\beta = \Er_B[YZ]/ \Er_B[\Er_A[X|Z]Z]
+\]</span> identifies <span class="math inline">\(\beta\)</span>.</p>
+</div>
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
+<blockquote class="blockquote">
+<p>Note: Claude gets a little confused here, but arrives at a mostly correct answer.</p>
+</blockquote>
+<p>Under the stated assumptions, <span class="math inline">\(\beta\)</span> can be identified.</p>
+<p><strong>Additional assumption needed:</strong> <span class="math inline">\(E_A[XZ] \neq 0\)</span> (or equivalently, <span class="math inline">\(X\)</span> and <span class="math inline">\(Z\)</span> are correlated in dataset A).</p>
+<p><strong>Identification argument:</strong></p>
+<p>From the model <span class="math inline">\(Y_i = X_i\beta + \epsilon_i\)</span> and <span class="math inline">\(\epsilon \perp\!\!\!\perp Z\)</span>:</p>
+<p><span class="math display">\[
+E_B[YZ] = E_B[XZ]\beta + E_B[\epsilon Z] = E_B[XZ]\beta
+\]</span></p>
+<p>Since <span class="math inline">\(P_A(X|Z) = P_B(X|Z)\)</span>:</p>
+<p><span class="math display">\[
+E_B[XZ] = \int \int xz \, dP_B(X|Z=z) \, dP_B(Z=z) = \int \int xz \, dP_A(X|Z=z) \, dP_B(Z=z)
+\]</span></p>
+<p>Given the mutual absolute continuity of <span class="math inline">\(P_A(Z)\)</span> and <span class="math inline">\(P_B(Z)\)</span>, we can reweight:</p>
+<p><span class="math display">\[
+E_B[XZ] = E_A\left[XZ \frac{dP_B(Z)}{dP_A(Z)}\right]
+\]</span></p>
+<p>However, more directly, using the law of iterated expectations:</p>
+<p><span class="math display">\[
+E_B[XZ] = E_B[E_B[X|Z] \cdot Z] = E_B[E_A[X|Z] \cdot Z]
+\]</span></p>
+<p>Since <span class="math inline">\(E_A[X] = 0\)</span>:</p>
+<p><span class="math display">\[
+E_A[XZ] = E_A[X \cdot Z]
+\]</span></p>
+<p>Using similar logic:</p>
+<p><span class="math display">\[
+\beta = \frac{E_B[YZ]}{E_A[XZ]} = \frac{E_B[XZ]\beta}{E_A[XZ]}
+\]</span></p>
+<p>Wait, this needs the additional condition that <span class="math inline">\(E_B[XZ] = E_A[XZ]\)</span>, which follows from <span class="math inline">\(P_A(X|Z) = P_B(X|Z)\)</span> only if the marginal distributions of <span class="math inline">\(Z\)</span> match in a weighted sense.</p>
+<p>Actually, the key insight is:</p>
+<p><span class="math display">\[
+\beta = \frac{E_B[YZ]}{E_B[XZ]} = \frac{\text{Cov}_B(Y,Z)}{\text{Cov}_B(X,Z)}
+\]</span></p>
+<p>Since <span class="math inline">\(P_A(X|Z) = P_B(X|Z)\)</span>, we have <span class="math inline">\(\text{Cov}_B(X,Z) = E_A[\text{Cov}(X,Z|Z)] + \text{Cov}(E[X|Z], Z)\)</span>, which can be computed from dataset A after reweighting by the density ratio .</p>
+</div>
+<div id="tabset-13-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-3-tab">
+<blockquote class="blockquote">
+<p>Note: this answer is wrong about <span class="math inline">\(E_B[ZX]=E_A[ZX]\)</span>, -3</p>
+</blockquote>
+<ul>
+<li>From the structural model <span class="math inline">\(Y_i = X_i \beta + \epsilon_i\)</span> with <span class="math inline">\(\epsilon_i \perp Z_i\)</span>,</li>
+</ul>
+<p><span class="math display">\[
+E_B[Z Y] = E_B[Z X]\beta + E_B[Z\epsilon] = E_B[ZX]\beta.
+\]</span></p>
+<ul>
+<li>The key assumption <span class="math inline">\(P_A(X\mid Z)=P_B(X\mid Z)\)</span> implies <span class="math inline">\(E_B[ZX]=E_A[ZX]\)</span>, so</li>
+</ul>
+<p><span class="math display">\[
+\beta = \frac{E_B[ZY]}{E_A[ZX]},
+\]</span></p>
+<p>which is identified if <span class="math inline">\(E_A[ZX]\neq 0\)</span> and moments are finite; thus, equality of conditional <span class="math inline">\(X\mid Z\)</span> distributions across samples, exogeneity <span class="math inline">\(\epsilon\perp Z\)</span>, and instrument relevance are the additional assumptions needed.</p>
+</div>
+<div id="tabset-13-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-4-tab">
+<blockquote class="blockquote">
+<p>Gemini gives a different, but also correct answer. The way it states a rank condition has some ambiguity — what does it mean for <span class="math inline">\(E[X|Z]\)</span> to have rank <span class="math inline">\(k\)</span> — but the sentence that follows is fine.</p>
+</blockquote>
+<p>Model: <span class="math inline">\(Y = X\beta + \epsilon\)</span>. Take expectations conditional on <span class="math inline">\(Z\)</span> in dataset B: <span class="math display">\[ E_B[Y|Z] = E[X\beta + \epsilon | Z] \]</span> Since <span class="math inline">\(P_A(X|Z) = P_B(X|Z)\)</span> and parameters are constant: <span class="math display">\[ E_B[Y|Z] = E_A[X|Z]\beta + E[\epsilon|Z] \]</span> Assumption: <span class="math inline">\(\epsilon \perp Z \implies E[\epsilon|Z] = 0\)</span>. Thus: <span class="math display">\[ E_B[Y|Z] = E_A[X|Z]\beta \]</span> We observe <span class="math inline">\(E_B[Y|Z]\)</span> from dataset B and <span class="math inline">\(E_A[X|Z]\)</span> from dataset A. <strong>Identification:</strong> <span class="math inline">\(\beta\)</span> is identified if <strong>Rank(<span class="math inline">\(E[X|Z]\)</span>) = k</strong> (Relevance). For a scalar X, we need <span class="math inline">\(E[X|Z] \neq 0\)</span> for at least some value of Z. Then <span class="math inline">\(\beta = \frac{E_B[Y|Z]}{E_A[X|Z]}\)</span>. (If Z is binary, <span class="math inline">\(\beta = \frac{E[Y|Z=1] - E[Y|Z=0]}{E[X|Z=1] - E[X|Z=0]}\)</span> or simply using one non-zero moment).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="consistency-1" class="level2">
+<h2 class="anchored" data-anchor-id="consistency-1">Consistency</h2>
+<p><em>More difficult</em></p>
+<p>Suppose <span class="math inline">\(Z \in \{0,1\}\)</span>. Assume <span class="math inline">\(P_A(Z=1)&gt;0\)</span> and <span class="math inline">\(P_B(Z=1)&gt;0\)</span>. Also assume <span class="math inline">\(\Er_B[XZ] \neq 0\)</span>. Let <span class="math inline">\(n_A\)</span> and <span class="math inline">\(n_B\)</span> denote the number of observations from datasets A and B, and let superscripts denote variables from datasets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Show that <span class="math display">\[
+\hat{\beta} = \frac{\frac{1}{n_B} \sum_{i=1}^{n_B} z_i^B y_i^B}{\frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A}} \inprob \beta
+\]</span> as <span class="math inline">\(n_A \to \infty\)</span> and <span class="math inline">\(n_B \to \infty\)</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-3" role="tab" aria-controls="tabset-14-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-4" role="tab" aria-controls="tabset-14-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<p>Note that <span class="math inline">\(\Er_B[Z^2Y^2]  \leq \Er_B[Y^2] &lt; \infty\)</span> and data is i.i.d., so by the LLN, <span class="math display">\[
+\frac{1}{n_B} z_i^B y_i^B \inprob \Er_B[ZY].
+\]</span> Smililarly, <span class="math display">\[
+\frac{1}{n_A} z_i^A x_i^A \inprob \Er_A[ZX],
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{n_A} z_i^A \inprob \Er_A[Z],
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\frac{1}{n_A} z_i^A \inprob \Er_B[Z].
+\]</span></p>
+<p>Then, by Slutsky’s lemma,</p>
+<p><span class="math display">\[
+\hat{\beta} = \frac{\frac{1}{n_B} \sum_{i=1}^{n_B} z_i^B y_i^B}{\frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A}} \inprob \frac{\Er_B[ZY]}{\Er_A[ZX]\Er_B[Z]/\Er_A[Z]}
+\]</span> Note that <span class="math inline">\(\Er_A[ZX]\Er_B[Z]/\Er_A[Z] = \Er_A[X|Z] \Er_B[Z] =
+\Er_B[\Er_A[X|Z] Z] = \Er_B[XZ]\)</span>, so <span class="math display">\[
+\hat{\beta} \inprob \frac{\Er_B[YZ]}{\Er_B[XZ]} = \beta
+\]</span></p>
+</div>
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
+<p>We need to show:</p>
+<p><span class="math display">\[
+\hat{\beta} = \frac{\frac{1}{n_B}\sum_{i=1}^{n_B} z_i^B y_i^B}{\frac{1}{n_A}\sum_{i=1}^{n_A} z_i^A x_i^A} \cdot \frac{\frac{1}{n_B}\sum_{i=1}^{n_B} z_i^B}{\frac{1}{n_A}\sum_{i=1}^{n_A} z_i^A} \xrightarrow{p} \beta
+\]</span></p>
+<p><strong>Proof:</strong></p>
+<p>By the Weak LLN:</p>
+<p><span class="math display">\[
+\frac{1}{n_B}\sum_{i=1}^{n_B} z_i^B y_i^B \xrightarrow{p} E_B[ZY]
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{n_A}\sum_{i=1}^{n_A} z_i^A x_i^A \xrightarrow{p} E_A[XZ]
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{n_B}\sum_{i=1}^{n_B} z_i^B \xrightarrow{p} E_B[Z] = P_B(Z=1)
+\]</span></p>
+<p><span class="math display">\[
+\frac{1}{n_A}\sum_{i=1}^{n_A} z_i^A \xrightarrow{p} E_A[Z] = P_A(Z=1)
+\]</span></p>
+<p>Since <span class="math inline">\(Y = X\beta + \epsilon\)</span> and <span class="math inline">\(\epsilon \perp\!\!\!\perp Z\)</span>:</p>
+<p><span class="math display">\[
+E_B[ZY] = E_B[ZX\beta] + E_B[Z\epsilon] = \beta E_B[ZX] = \beta E_B[Z]E_B[X|Z=1]
+\]</span></p>
+<p>Similarly:</p>
+<p><span class="math display">\[
+E_A[ZX] = E_A[Z]E_A[X|Z=1]
+\]</span></p>
+<p>Since <span class="math inline">\(P_A(X|Z) = P_B(X|Z)\)</span>, we have <span class="math inline">\(E_A[X|Z=1] = E_B[X|Z=1]\)</span>.</p>
+<p>Therefore:</p>
+<p><span class="math display">\[
+\hat{\beta} = \frac{E_B[ZY]/E_B[Z]}{E_A[ZX]/E_A[Z]} \xrightarrow{p} \frac{\beta E_B[X|Z=1]}{E_B[X|Z=1]} = \beta
+\]</span></p>
+<p>By Slutsky’s lemma and the continuous mapping theorem (since <span class="math inline">\(E_B[XZ] \neq 0\)</span> by assumption), <span class="math inline">\(\hat{\beta} \xrightarrow{p} \beta\)</span>.</p>
+</div>
+<div id="tabset-14-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-3-tab">
+<blockquote class="blockquote">
+<p>ChatGPT glosses over details like someone who doesn’t really know what they’re doing. -2 or -3</p>
+</blockquote>
+<p>Let</p>
+<p><span class="math display">\[
+\hat\beta
+=
+\frac{\frac{1}{n_B}\sum_{i=1}^{n_B} z_i^B y_i^B}{\frac{1}{n_A}\sum_{i=1}^{n_A} z_i^A x_i^A}
+\cdot
+\frac{\frac{1}{n_A}\sum_{i=1}^{n_A} z_i^A}{\frac{1}{n_B}\sum_{i=1}^{n_B} z_i^B}.
+\]</span></p>
+<ul>
+<li>By the LLN and binary <span class="math inline">\(Z\in\{0,1\}\)</span>, each sample mean converges to its population counterpart, so</li>
+</ul>
+<p><span class="math display">\[
+\hat\beta \xrightarrow{p}
+\frac{E_B[ZY]}{E_A[ZX]}\cdot\frac{E_A[Z]}{E_B[Z]}.
+\]</span></p>
+<ul>
+<li>Under the maintained assumptions (same <span class="math inline">\(X\mid Z\)</span> across samples, <span class="math inline">\(\epsilon\perp Z\)</span>, and <span class="math inline">\(E_B[ZX]\neq 0\)</span>), one can show <span class="math inline">\(E_B[ZY]/E_B[Z]=E_A[ZX]\beta/E_A[Z]\)</span>, so the limit simplifies to <span class="math inline">\(\beta\)</span>; hence <span class="math inline">\(\hat\beta \xrightarrow{p} \beta\)</span> as <span class="math inline">\(n_A,n_B\to\infty\)</span>.</li>
+</ul>
+</div>
+<div id="tabset-14-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-4-tab">
+<blockquote class="blockquote">
+<p>This glosses over the use of Slutsky’s lemma, but is otherwise thorough and a nice alternative approach.</p>
+</blockquote>
+<p>The estimator is: <span class="math display">\[ \hat{\beta} = \frac{\frac{1}{n_B}\sum z_i^B y_i^B / \frac{1}{n_B}\sum z_i^B}{\frac{1}{n_A}\sum z_i^A x_i^A / \frac{1}{n_A}\sum z_i^A} \]</span> This can be rewritten as the ratio of conditional sample means for the sub-population <span class="math inline">\(Z=1\)</span>: <span class="math display">\[ \hat{\beta} = \frac{\hat{E}_B[Y|Z=1]}{\hat{E}_A[X|Z=1]} \]</span> By the Weak Law of Large Numbers (WLLN):</p>
+<ul>
+<li>Numerator <span class="math inline">\(\xrightarrow{p} E_B[Y|Z=1]\)</span>.</li>
+<li>Denominator <span class="math inline">\(\xrightarrow{p} E_A[X|Z=1]\)</span>.</li>
+</ul>
+<p>From the model <span class="math inline">\(Y = X\beta + \epsilon\)</span>: <span class="math display">\[ E_B[Y|Z=1] = E[X\beta + \epsilon | Z=1] = E[X|Z=1]\beta + E[\epsilon|Z=1] \]</span> Given <span class="math inline">\(E[\epsilon|Z]=0\)</span> (implied by <span class="math inline">\(\epsilon \perp Z\)</span>) and <span class="math inline">\(E_A[X|Z]=E_B[X|Z]\)</span>: <span class="math display">\[ E_B[Y|Z=1] = E_A[X|Z=1]\beta \]</span> Therefore: <span class="math display">\[ \hat{\beta} \xrightarrow{p} \frac{E_A[X|Z=1]\beta}{E_A[X|Z=1]} = \beta \]</span> (Provided <span class="math inline">\(E[X|Z=1] \neq 0\)</span>).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="asymptotic-normality-1" class="level2">
+<h2 class="anchored" data-anchor-id="asymptotic-normality-1">Asymptotic Normality</h2>
+<p><em>More difficult</em></p>
+<p>Suppose <span class="math inline">\(n_A \to \infty\)</span>, <span class="math inline">\(n_B \to \infty\)</span> and <span class="math inline">\(n_B / n_A \to c &lt; \infty\)</span>. Show that <span class="math inline">\(\sqrt{n_B}(\hat{\beta} - \beta)\)</span> is asymptotically normal and derive the asymptotic variance.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false" href="">Claude Sonnet 4.5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-3" role="tab" aria-controls="tabset-15-3" aria-selected="false" href="">ChatGPT 5.1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-4" role="tab" aria-controls="tabset-15-4" aria-selected="false" href="">Gemini 3.0</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
+<p>We have <span class="math display">\[
+\begin{align*}
+\sqrt{n_B}(\hat{\beta} - \beta) = &amp; \beta \sqrt{n_B} \frac{
+\frac{1}{n_B} \sum_{i=1}^{n_B} z_i^B x_i^B - \frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A}
+}
+{
+\frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A}
+} + \frac{\frac{1}{\sqrt{n_B}}\sum_i z_i^B \epsilon_i^B }{
+\frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A}}
+\end{align*}
+\]</span> From the previous part, we have already shown that the denominator converges in probability to <span class="math inline">\(\Er_B[XZ]\)</span>.</p>
+<p><span class="math inline">\(\Er_B[Z^2 \epsilon^2] \leq \Er[\epsilon^2]&lt; \infty\)</span>, so the CLT applies to the second numerator term.</p>
+<p>The first term is more unusual, and I guess many people will miss it altogether, but it is not ignorable here. Anyway, <span class="math display">\[
+\frac{1}{n_B} \sum_{i=1}^{n_B} z_i^B x_i^B - \frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A} =
+\frac{1}{n_B} \sum_{i=1}^{n_B} z_i^B x_i^B - \Er_B[ZX] - \left(\frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A} - \Er_B[ZX]\right)
+\]</span></p>
+<p>Now, <span class="math display">\[
+\Er_B\left[Z^2 \begin{pmatrix} \epsilon \\
+  X \end{pmatrix} \begin{pmatrix} \epsilon \\ X \end{pmatrix}'\right] \leq \Er_B\left[\begin{pmatrix} \epsilon \\
+  X \end{pmatrix} \begin{pmatrix} \epsilon \\ X \end{pmatrix}'\right]
+&lt; \infty,
+\]</span> so the CLT applies and <span class="math display">\[
+\frac{1}{\sqrt{n_B}} \sum z_i^B \begin{pmatrix} \epsilon_i^B \\ x_i^B \end{pmatrix} \indist N\left(0, \var_B\left( Z \begin{pmatrix} \epsilon \\ X \end{pmatrix} \right) \right).
+\]</span></p>
+<p>Also, <span class="math display">\[
+\begin{align*}
+\sqrt{n_B}\frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A} - \Er_B[ZX] = &amp; \sqrt{\frac{n_B}{n_A}} \frac{1}{\sqrt{n_A}} \sum_{i=1}^{n_A} (z_i^A x_i^A  - \Er_A[ZX]) \Er_B[Z]/\Er_A[Z] + O_p(n_A^{-1/2}) + O_p(n_B^{-1/2}) \\
+&amp; \indist N\left(0, c \var_A(ZX) \right)
+\end{align*}
+\]</span> where the last line used Slutsky’s theorem and the CLT for dataset A, assuming <span class="math inline">\(\var_A(ZX) &lt; \infty\)</span>. Since <span class="math inline">\(A\)</span> is independent of <span class="math inline">\(B\)</span>, we also get joint convergence. Combining everything, we have <span class="math display">\[
+\sqrt{n_B}(\hat{\beta} - \beta) \indist N\left(0 ,1/\Er_B[ZX]^2 \left( \begin{pmatrix} 1 &amp; \beta \end{pmatrix}\var_B\left( Z \begin{pmatrix} \epsilon \\ X \end{pmatrix} \right)\begin{pmatrix} 1 \\ \beta \end{pmatrix} +  c \beta^2 \var_A(ZX)  \right)\right).
+\]</span></p>
+</div>
+<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
+<blockquote class="blockquote">
+<p>The approach here is different than mine, but is basically fine. There is a mistake in the “after applying the delta method …” part. <span class="math inline">\(c\)</span> should be in the numerator, not denominator. -2</p>
+</blockquote>
+<p>We can write:</p>
+<p><span class="math display">\[
+\hat{\beta} = \frac{N_B}{D_A} \cdot \frac{P_A}{P_B} = \frac{n_B^{-1}\sum z_i^B y_i^B}{n_A^{-1}\sum z_i^A x_i^A} \cdot \frac{n_A^{-1}\sum z_i^A}{n_B^{-1}\sum z_i^B}
+\]</span></p>
+<p>Let <span class="math inline">\(\mu_Y = E_B[Y|Z=1], \mu_X = E_A[X|Z=1], p_A = P_A(Z=1), p_B = P_B(Z=1)\)</span>.</p>
+<p>Then:</p>
+<p><span class="math display">\[
+\beta = \frac{p_B \mu_Y}{p_A \mu_X} \cdot \frac{p_A}{p_B} = \frac{\mu_Y}{\mu_X}
+\]</span></p>
+<p>By the CLT:</p>
+<p><span class="math display">\[
+\sqrt{n_B}(N_B - p_B \mu_Y) \xrightarrow{d} N(0, \sigma_Y^2)
+\]</span></p>
+<p><span class="math display">\[
+\sqrt{n_A}(D_A - p_A \mu_X) \xrightarrow{d} N(0, \sigma_X^2)
+\]</span></p>
+<p>where <span class="math inline">\(\sigma_Y^2 = \text{Var}_B(ZY)\)</span> and <span class="math inline">\(\sigma_X^2 = \text{Var}_A(ZX)\)</span>.</p>
+<p>Using the delta method with <span class="math inline">\(h(N_B, D_A, P_B, P_A) = \frac{N_B P_A}{D_A P_B}\)</span>:</p>
+<p><span class="math display">\[
+\sqrt{n_B}(\hat{\beta} - \beta) = \sqrt{n_B}\left(\frac{N_B}{D_A} \cdot \frac{P_A}{P_B} - \beta\right)
+\]</span></p>
+<p>With <span class="math inline">\(n_B/n_A \to c\)</span>, after applying the delta method, the asymptotic variance is:</p>
+<p><span class="math display">\[
+V = \frac{1}{\mu_X^2}\left[\text{Var}_B(ZY) + \frac{\beta^2}{c}\text{Var}_A(ZX) - 2\frac{\beta}{\sqrt{c}}\text{Cov}(ZY, ZX)\right]
+\]</span></p>
+<p>Since the datasets are independent, the covariance term is zero:</p>
+<p><span class="math display">\[
+V = \frac{\text{Var}_B(ZY)}{\mu_X^2} + \frac{\beta^2\text{Var}_A(ZX)}{c\mu_X^2} = \frac{\text{Var}_B(Z(X\beta + \epsilon))}{\mu_X^2} + \frac{\beta^2\text{Var}_A(ZX)}{c\mu_X^2}
+\]</span></p>
+<p>Therefore:</p>
+<p><span class="math display">\[
+\sqrt{n_B}(\hat{\beta} - \beta) \xrightarrow{d} N(0, V)
+\]</span></p>
+<p>where the asymptotic variance can be consistently estimated by plugging in sample analogs.</p>
+</div>
+<div id="tabset-15-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-3-tab">
+<blockquote class="blockquote">
+<p>This is the same approach as Claude, but doesn’t arrive at an explicit expression for the variance. -3</p>
+</blockquote>
+<ul>
+<li>Stack the four sample means in a vector</li>
+</ul>
+<p><span class="math display">\[
+m_n = \big(\bar{ZY}^B,\ \bar{ZX}^A,\ \bar Z^B,\ \bar Z^A\big)
+\]</span></p>
+<p>and note that, by independence of samples A and B and the multivariate CLT,</p>
+<p><span class="math display">\[
+\sqrt{n_B}(m_n - m_0) \xrightarrow{d} N(0,\Sigma),
+\]</span></p>
+<p>with <span class="math inline">\(\Sigma\)</span> block diagonal between A and B.</p>
+<ul>
+<li>Since <span class="math inline">\(\hat\beta = g(m_n)\)</span> for a smooth function <span class="math inline">\(g\)</span>, the delta method gives</li>
+</ul>
+<p><span class="math display">\[
+\sqrt{n_B}(\hat\beta-\beta) \xrightarrow{d} N\big(0,\ \nabla g(m_0)^\top \Sigma \,\nabla g(m_0)\big),
+\]</span></p>
+<p>where <span class="math inline">\(\nabla g(m_0)\)</span> is the gradient of <span class="math inline">\(g\)</span> evaluated at the population means; replacing unknown moments in this expression with sample analogs yields a feasible asymptotic variance estimator.</p>
+</div>
+<div id="tabset-15-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-4-tab">
+<blockquote class="blockquote">
+<p>The only LLM to get this question correct.</p>
+</blockquote>
+<p>Let <span class="math inline">\(\mu_Y = E[Y|Z=1]\)</span> and <span class="math inline">\(\mu_X = E[X|Z=1]\)</span>. The estimator is <span class="math inline">\(g(\hat{\mu}_Y, \hat{\mu}_X) = \frac{\hat{\mu}_Y}{\hat{\mu}_X}\)</span>. We have two independent samples.</p>
+<ol type="1">
+<li><span class="math inline">\(\sqrt{n_B}(\hat{\mu}_Y - \mu_Y) \xrightarrow{d} N(0, \sigma^2_Y)\)</span>, where <span class="math inline">\(\sigma^2_Y = Var(Y|Z=1)\)</span>.</li>
+<li><span class="math inline">\(\sqrt{n_A}(\hat{\mu}_X - \mu_X) \xrightarrow{d} N(0, \sigma^2_X)\)</span>, where <span class="math inline">\(\sigma^2_X = Var(X|Z=1)\)</span>.</li>
+</ol>
+<p>We need the distribution scaled by <span class="math inline">\(\sqrt{n_B}\)</span>. For the X term: <span class="math display">\[ \sqrt{n_B}(\hat{\mu}_X - \mu_X) = \sqrt{\frac{n_B}{n_A}} \sqrt{n_A}(\hat{\mu}_X - \mu_X) \xrightarrow{d} \sqrt{c} N(0, \sigma^2_X) = N(0, c\sigma^2_X) \]</span></p>
+<p>Jointly (due to independence of samples):</p>
+<p><span class="math display">\[
+\sqrt{n_B} \begin{pmatrix} \hat{\mu}_Y - \mu_Y \\ \hat{\mu}_X - \mu_X \end{pmatrix}
+\xrightarrow{d} N \left(
+\begin{pmatrix} 0 \\ 0 \end{pmatrix}
+,
+\begin{pmatrix} \sigma^2_Y &amp; 0 \\ 0 &amp; c\sigma^2_X \end{pmatrix} \right)
+\]</span></p>
+<p><strong>Delta Method:</strong> The gradient of <span class="math inline">\(g(u, v) = u/v\)</span> is <span class="math inline">\(\nabla g = (1/v, -u/v^2)^T\)</span>. Evaluated at <span class="math inline">\((\mu_Y, \mu_X)\)</span>: <span class="math display">\[ \nabla g =
+\begin{pmatrix} \frac{1}{\mu_X} \\ -\frac{\mu_Y}{\mu_X^2} \end{pmatrix}
+=
+\begin{pmatrix} \frac{1}{\mu_X} \\ -\frac{\beta}{\mu_X} \end{pmatrix}
+\]</span> (Using <span class="math inline">\(\mu_Y = \mu_X \beta\)</span>).</p>
+<p>The asymptotic variance is <span class="math inline">\(\nabla g^T \Sigma \nabla g\)</span>:</p>
+<p><span class="math display">\[ V = \left( \frac{1}{\mu_X} \right)^2 \sigma^2_Y + \left( -\frac{\beta}{\mu_X} \right)^2 c\sigma^2_X \]</span></p>
+<p><span class="math display">\[ V = \frac{1}{\mu_X^2} (\sigma^2_Y + c \beta^2 \sigma^2_X) \]</span></p>
+<p><strong>Result:</strong></p>
+<p><span class="math display">\[ \sqrt{n_B}(\hat{\beta} - \beta) \xrightarrow{d} N\left(0, \frac{Var(Y|Z=1) + c \beta^2 Var(X|Z=1)}{(E[X|Z=1])^2} \right) \]</span></p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-ahmad2025" class="csl-entry" role="listitem">
+Ahmad, Husnain F., Ayesha Ali, Robyn C. Meeks, Zhenxuan Wang, and Javed Younas. 2025. <span>“Down to the Wire: Leveraging Technology to Improve Electric Utility Cost Recovery.”</span> <em>American Economic Journal: Applied Economics</em> 17 (4): 60–99. <a href="https://doi.org/10.1257/app.20230468">https://doi.org/10.1257/app.20230468</a>.
+</div>
+<div id="ref-dalla2025" class="csl-entry" role="listitem">
+Dalla-Zuanna, Antonio, Kai Liu, and Kjell G. Salvanes. 2025. <span>“Pulled in and Crowded Out: Heterogeneous Outcomes of Merit-Based School Choice.”</span> <em>American Economic Journal: Applied Economics</em> 17 (4): 184–222. <a href="https://doi.org/10.1257/app.20220104">https://doi.org/10.1257/app.20220104</a>.
+</div>
+</div>
+</section>
+<section id="definitions-and-results" class="level1">
+<h1>Definitions and Results</h1>
+<ul>
+<li><p>Measure and Probability:</p>
+<ul>
+<li><p>For two measures, <span class="math inline">\(\mu \ll \nu\)</span> means that <span class="math inline">\(\mu(A) = 0\)</span> implies <span class="math inline">\(\nu(A)=0\)</span></p></li>
+<li><p>Monotone convergence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p></li>
+<li><p>Dominated convergence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p></li>
+<li><p>Markov’s inequality: <span class="math inline">\(P(|X|&gt;\epsilon) \leq  \frac{\Er[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p></li>
+<li><p>Jensen’s inequality: if <span class="math inline">\(g\)</span> is convex, then <span class="math inline">\(g(\Er[X]) \leq \Er[g(X)]\)</span></p></li>
+<li><p>Cauchy-Schwarz inequality: <span class="math inline">\(\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]\)</span></p></li>
+<li><p>Conditional expectation of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathscr{G}\)</span> satisfies <span class="math inline">\(\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in  \mathscr{G}\)</span></p></li>
+</ul></li>
+<li><p>Identification <span class="math inline">\(X\)</span> observed, distribution <span class="math inline">\(P_X\)</span>, probability model <span class="math inline">\(\mathcal{P}\)</span></p>
+<ul>
+<li><span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t. <span class="math inline">\(\theta_0 = \psi(P_X)\)</span></li>
+<li><span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</li>
+<li>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></li>
+<li><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s \neq s_0\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></li>
+<li><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></li>
+</ul></li>
+<li><p>Mean-value theorem: let <span class="math inline">\(f: \R^n \to \R\)</span> be differentiable, then for any <span class="math inline">\(x,y\in \R^n\)</span>, <span class="math inline">\(\exists \lambda \in [0,1]\)</span> such that <span class="math inline">\(f(x) - f(y)
+= \nabla f(\lambda x + (1-\lambda) y) \cdot (x - y)\)</span></p></li>
+<li><p>Cramér-Rao Bound: in the parametric model <span class="math inline">\(P_X \in \{P_\theta:
+\theta \in \R^d\}\)</span> with likelihood <span class="math inline">\(\ell(\theta;x)\)</span>, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator <span class="math inline">\(\tau(X)\)</span>, <span class="math display">\[
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+\]</span> where <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x) = \Er[H(x,\theta)]\)</span> and <span class="math inline">\(s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}\)</span></p></li>
+<li><p>Hypothesis testing:</p>
+<ul>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_0)\)</span>=<em>Type I error rate</em> <span class="math inline">\(=P_x(C)\)</span></li>
+<li><span class="math inline">\(P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)\)</span>=<em>Type II error rate</em></li>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_1)\)</span> = <em>power</em></li>
+<li><span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} P_x(C)\)</span> = <em>size of test</em></li>
+<li>Neyman-Pearson Lemma: Let <span class="math inline">\(\Theta = \{0, 1\}\)</span>, <span class="math inline">\(f_0\)</span> and <span class="math inline">\(f_1\)</span> be densities of <span class="math inline">\(P_0\)</span> and <span class="math inline">\(P_1\)</span>, <span class="math inline">\(\tau(x) =f_1(x)/f_0(x)\)</span> and <span class="math inline">\(C^* =\{x \in X: \tau(x) &gt; c\}\)</span>. Then among all tests <span class="math inline">\(C\)</span> s.t. <span class="math inline">\(P_0(C) = P_0(C^*)\)</span>, <span class="math inline">\(C^*\)</span> is most powerful.</li>
+</ul></li>
+<li><p>Projection: <span class="math inline">\(P_L y \in  L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
+\norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+\]</span></p>
+<ol type="1">
+<li><span class="math inline">\(P_L y\)</span> exists, is unique, and is a linear function of <span class="math inline">\(y\)</span></li>
+<li>For any <span class="math inline">\(y_1^* \in L\)</span>, <span class="math inline">\(y_1^* = P_L y\)</span> iff <span class="math inline">\(y- y_1^* \perp L\)</span></li>
+<li><span class="math inline">\(G = P_L\)</span> iff <span class="math inline">\(Gy = y \forall y \in L\)</span> and <span class="math inline">\(Gy = 0 \forall y \in
+L^\perp\)</span></li>
+<li>Linear <span class="math inline">\(G: V \to V\)</span> is a projection map onto its range, <span class="math inline">\(\mathcal{R}(G)\)</span>, iff <span class="math inline">\(G\)</span> is idempotent and symmetric.</li>
+</ol></li>
+<li><p>Gauss-Markov: <span class="math inline">\(Y = \theta + u\)</span> with <span class="math inline">\(\theta \in L \subset \R^n\)</span>, a known subspace. If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a'\theta = a'\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p></li>
+<li><p>Convergence in probability:</p>
+<ul>
+<li><span class="math inline">\(X_1, X_2, ...\)</span> <strong>converge in probability</strong> to <span class="math inline">\(Y\)</span> if <span class="math inline">\(\forall
+\epsilon &gt; 0\)</span>, <span class="math inline">\(\lim_{n \to \infty} P(\norm{X_n -Y} &gt; \epsilon) = 0\)</span></li>
+<li>If <span class="math inline">\(\lim_{n \to \infty} \Er[ \norm{X_n - Y}^p ] \to 0\)</span>, then <span class="math inline">\(X_n
+\inprob Y\)</span></li>
+<li>If <span class="math inline">\(X_n \inprob X\)</span>, and <span class="math inline">\(f\)</span> continuous, then <span class="math inline">\(f(X_n) \inprob f(X)\)</span></li>
+<li>Weak LLN: if <span class="math inline">\(X_1, ..., X_n\)</span> are i.i.d. and <span class="math inline">\(\Er[X^2]\)</span> exists, then <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n X_i \inprob \Er[X]\)</span></li>
+<li><span class="math inline">\(X_n = O_p(b_n)\)</span> if <span class="math inline">\(\forall \epsilon&gt;0\)</span> <span class="math inline">\(\exists M_\epsilon\)</span> s.t. <span class="math inline">\(\lim\sup P(\frac{\norm{X_n}}{b_n} \geq M_\epsilon) &lt; \epsilon\)</span></li>
+<li><span class="math inline">\(X_n = o_p(b_n)\)</span> if <span class="math inline">\(\frac{X_n}{b_n} \inprob 0\)</span></li>
+</ul></li>
+<li><p>Convergence in distribution:</p>
+<ul>
+<li><span class="math inline">\(X_1, X_2, ...\)</span> converge in distribution to <span class="math inline">\(X\)</span> if <span class="math inline">\(\forall f \in
+\mathcal{C}_b\)</span>, <span class="math inline">\(\Er[f(X_n)] \to \Er[f(X)]\)</span></li>
+<li>If <span class="math inline">\(X_n \indist X\)</span> and <span class="math inline">\(g\)</span> is continuous, then <span class="math inline">\(g(X_n) \indist
+g(X)\)</span></li>
+<li>Slutsky’s lemma: if <span class="math inline">\(Y_n \inprob c\)</span> and <span class="math inline">\(X_n \indist X\)</span> and <span class="math inline">\(g\)</span> is continuous, then <span class="math inline">\(g(Y_n, X_n) \indist g(c,X)\)</span></li>
+<li>Levy’s Continuity Theorem: <span class="math inline">\(X_n \indist X\)</span> iff <span class="math inline">\(\Er[e^{it'X_n}]
+\to \Er[e^{it'X}] \forall t\)</span></li>
+<li>CLT: if <span class="math inline">\(X_1, ..., X_n\)</span> are i.i.d. with <span class="math inline">\(\Er[X_1] = \mu\)</span> and <span class="math inline">\(\var(X_1) = \sigma^2\)</span>, then <span class="math inline">\(\frac{1}{\sqrt{n}} \sum_{i=1}^n
+\frac{X_i - \mu}{\sigma} \indist N(0,1)\)</span></li>
+<li>Delta Method: suppose <span class="math inline">\(\sqrt{n}(\hat{\theta} - \theta_0) \indist S\)</span> and <span class="math inline">\(h\)</span> is differentiable, then <span class="math inline">\(\sqrt{n}(h(\hat{\theta}) - h(\theta_0)) \indist \nabla_h(\theta_0)
+S\)</span></li>
+</ul></li>
+<li><p>Asymptotic distribution of OLS:</p>
+<ul>
+<li>Model <span class="math inline">\(Y_i = X_i'\beta + \epsilon_i\)</span></li>
+<li><span class="math inline">\(\hat{\beta}^{OLS} = (X'X)^{-1} X'y\)</span></li>
+<li>If observations are i.i.d., <span class="math inline">\(\Er[X_i \epsilon] = 0\)</span>, <span class="math inline">\(\Er[X_i X_i'] &lt; \infty\)</span>, and <span class="math inline">\(\Er[X_i  X_i' \epsilon_i^2] &lt; \infty\)</span>, then <span class="math display">\[
+\sqrt{n}(\hat{\beta}^{OLS} - \beta) \left((\frac{1}{n} X'X)^{-1} \left( \frac{1}{n} \sum X_i X_i' \hat{\epsilon}_i^2 \right) (\frac{1}{n} X'X)^{-1} \right)^{-1/2} \indist N(0,I)
+\]</span></li>
+</ul></li>
+<li><p>Difference in differences:</p>
+<ul>
+<li>TWFE: <span class="math inline">\(y_{it} = \beta D_{it} + \alpha_i + \delta_t + \epsilon_{it}\)</span></li>
+<li><span class="math inline">\(\hat{\beta}^{FE} = \sum_{i=1,t=1}^{n,T} y_{it}(0) \hat{\omega}_{it} + \sum_{i=1,t=1}^{n,T} D_{it} (y_{it}(1) - y_{it}(0)) \hat{\omega}_{it}\)</span>
+<ul>
+<li>where <span class="math inline">\(\hat{\omega}_{it} = \frac{D_{it} - \bar{D}_i - \bar{D}_t
++ \bar{D}}{\sum_{j,s} (D_{jt} - \bar{D}_j - \bar{D}_s
++ \bar{D})^2}\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>IV</p>
+<ul>
+<li><span class="math inline">\(\hat{\beta}^{2SLS} = (X'P_Z X)^{-1} (X' P_Z y)\)</span></li>
+<li>If observations are i.i.d. <span class="math inline">\(rank(\Er[X_i Z_i']) = k\)</span>, <span class="math inline">\(\Er[Z_i
+\epsilon_i] = 0\)</span>, <span class="math inline">\(\Er\norm{X_i}^4 &lt; \infty\)</span>, <span class="math inline">\(\Er\norm{Z_i}^4 &lt;
+\infty\)</span>, <span class="math inline">\(\Er[\epsilon_i^2 | Z_i] = \sigma^2\)</span>, and <span class="math inline">\(\Er[Z_i Z_i']\)</span> is invertible, then <span class="math display">\[
+\sqrt{n}(\hat{\beta}^{2SLS} - \beta) \indist N\left(0, \sigma^2 \left\lbrace \Er[X_i Z_i'] \Er[Z_i Z_i']^{-1} \Er[Z_i X_i'] \right\rbrace^{-1} \right)
+\]</span></li>
+<li>J-test: under <span class="math inline">\(H_0: \Er[Z_i(Y-X_i'\beta_0)] = 0\)</span>, <span class="math display">\[
+J = n\left(\frac{1}{n}Z'(y - X\hat{\beta}^{2SLS}) \right)'
+\hat{C}\left(\frac{1}{n}Z'(y - X\hat{\beta}^{2SLS}) \right) \indist
+\chi^2_{d-k}
+\]</span></li>
+<li>AR-test: under <span class="math inline">\(H_0: \beta = \beta_0\)</span>, <span class="math display">\[
+AR(\beta) = n\left(\frac{1}{n}Z'(y - X\beta) \right)'
+\hat{\Sigma}(\beta)^{-1}\left(\frac{1}{n}Z'(y - X\beta) \right) \indist \chi^2_d
+\]</span></li>
+</ul></li>
+<li><p>GMM : <span class="math inline">\(\Er\left[g(Z_i,\theta_0) \right] = 0\)</span> iff <span class="math inline">\(\theta=\theta_0\)</span></p>
+<ul>
+<li>Estimator <span class="math inline">\(\hat\theta = \argmin_\theta \frac{1}{2} \En[g(Z_i,\theta)]'S_n'S_n\En[g(Z_i,\theta)]\)</span></li>
+<li>Consistent if:
+<ol type="1">
+<li><span class="math inline">\(\exists \theta_0 \in \Theta\)</span> s.t. <span class="math inline">\(\forall \epsilon&gt;0\)</span>, <span class="math inline">\(\inf_{\theta: \norm{\theta-\theta_0} &gt; \epsilon} \norm{\Er[g(Z_i,\theta)]} &gt; \norm{\Er[g(Z_i,\theta_0)]}\)</span></li>
+<li><span class="math inline">\(\sup_{\theta \in \Theta} \norm{\En[g(Z_i,\theta)] - \Er[g(Z_i,\theta)]} \inprob 0\)</span></li>
+<li><span class="math inline">\(S_n \inprob S\)</span></li>
+</ol></li>
+<li>Asymptotic normality if:
+<ol type="1">
+<li><span class="math inline">\(\theta_0 \in int(\Theta)\)</span>, &amp; <span class="math inline">\(g(z,\theta)\)</span> is twice continuously differentiable</li>
+<li><span class="math inline">\(\sqrt{n} \frac{\partial}{\partial \theta} \hat{Q}^{GMM}(\theta_0)
+\indist N(0,\Omega)\)</span></li>
+<li><span class="math inline">\(\sup_{\theta \in int(\Theta)} \norm{\frac{\partial^2}{\partial
+\theta \partial \theta'} \hat{Q}^{GMM}(\theta) - B(\theta)}
+\inprob 0\)</span> with <span class="math inline">\(B(\cdot)\)</span> continuous at <span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(B(\theta_0) &gt; 0\)</span></li>
+</ol></li>
+</ul>
+<p>Then <span class="math inline">\(\sqrt{n}(\hat{\theta} - \theta_0) \indist N(0, B_0^{-1} \Omega_0 B_0^{-1})\)</span></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

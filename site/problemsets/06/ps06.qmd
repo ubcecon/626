@@ -56,7 +56,7 @@ where $\beta \in \R$, $D_i \in \{0,1\}$ and $x_i \in \R^k$.
 $$
 \hat{\beta} = \frac{1}{n} \sum_{i=1}^n y_i \hat{\omega}(x_i,D_i)
 $$
-where $\frac{1}{n} \sum_{i=1}^n D_i \hat{\omega}(x_i,D_i) = 1$, and $\frac{1}{n} \sum_{i=1}^n (1-D_i) \hat{\omega}(x_i,D_i) = -1$. [Hint: use the result of problem 2.]
+where $\frac{1}{n} \sum_{i=1}^n D_i \hat{\omega}(x_i,D_i) = 1$, and $\frac{1}{n} \sum_{i=1}^n (1-D_i) \hat{\omega}(x_i,D_i) = -1$. [Hint: use the result of problem 1.]
 
 2. Let
 $$

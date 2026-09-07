@@ -1,11 +1,10 @@
 ---
 title: "ECON 626: Final"
-#author: "Paul Schrimpf"
+author: "Paul Schrimpf"
 date: "2024-12-14"
 bibliography: /home/paul/626/site/626.bib
 format:
   html:
-    self-contained: true
     css: styles.css
 ---
 

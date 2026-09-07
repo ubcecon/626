@@ -85,7 +85,7 @@ where the second line follows from the assumption that $\Er[\epsilon|w]=0$.
 
 Now, we can use the delta method on $f(\beta,\sigma^2) = \beta \sqrt{\sigma^2}$, so
 $$
-\sqrt{n} (\hat{\beta} \sqrt{\hat{\sigma}^2} - \beta\sigma) \indist N\left(0, \sqrt{\sigma^2}\Er[w^2]^{-2} \var(w\epsilon)+ \frac{\beta}{4 \sigma^2} \var((w_i - \Er[w])^4)\right)
+\sqrt{n} (\hat{\beta} \sqrt{\hat{\sigma}^2} - \beta\sigma) \indist N\left(0, \sigma^2\Er[w^2]^{-2} \var(w\epsilon)+ \frac{\beta^2}{4 \sigma^2} \var((w_i - \Er[w])^4)\right)
 $$
 
 :::

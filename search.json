@@ -2335,7 +2335,7 @@
     "href": "measure/measure.html#why-measure-theory",
     "title": "Measure",
     "section": "Why Measure Theory?",
-    "text": "Why Measure Theory?\n\nResolves some difficulties with infinity\nSimplifies some arguments\n\nExample from Pollard (2002), define independence as factorization of distribution functions \\[ P(X \\leq x \\cap Y \\leq y) = P(X \\leq x) P(Y \\leq y) \\]\nIf \\(X_1,X_2,X_3, X_4\\) are independent, show that \\[ Y = X_1 X_2 \\log\\left(\\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\\right) \\] is independent of \\[ Z =  sin\\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \\right) \\]\n\nUnifies treatment\n\n\\[\n\\def\\R{\\mathbb{R}}\n\\def\\B{\\mathscr{B}}\n\\]"
+    "text": "Why Measure Theory?\n\nResolves some difficulties with infinity\nSimplifies some arguments      \nUnifies treatment\n\ndiscrete vs continuous\nuni- vs multi-variate\n\n\n\\[\n\\def\\R{\\mathbb{R}}\n\\def\\B{\\mathscr{B}}\n\\]\n\nOne difficulty with infinity in probability is defining probability over uncountably infinite sets. In probability, we start with a sample space, say \\(\\Omega\\), and then say a probability is a mapping from subsets of \\(\\Omega\\) to \\([0,1]\\) satisfying some conditions. One question is can we define such a probability on all subsets of \\(\\Omega\\). If \\(\\Omega\\) is uncountable, then the answer no. We have to limit our attention to certain well behaved subsets. These turn out to be exactly a \\(\\sigma\\)-field, which we now define.\nAnother important difficulty with infinity is that the limit of bounded Riemann integrable functions need not be Riemann integrable. This concerns us because limits of random variables, which are functions, are essential for asymptotic theory and practical statistics."
   },
   {
     "objectID": "measure/measure.html#why-measure-theory-1",
@@ -2377,14 +2377,14 @@
     "href": "measure/measure.html#lebesgue-measure",
     "title": "Measure",
     "section": "Lebesgue Measure",
-    "text": "Lebesgue Measure\n\n\n\nTheorem\n\n\nThere exists a unique \\(\\sigma\\)-finite measure \\(\\mu\\) on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that for any \\(a\\leq b\\) with \\(a,b\\in \\mathbf{R}\\), \\[\n\\mu ((a,b])=b-a\n\\]"
+    "text": "Lebesgue Measure\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\)\n\n\n\n\nTheorem\n\n\nThere exists a unique \\(\\sigma\\)-finite measure \\(\\lambda\\) on \\((\\mathbf{R},\\mathscr{B}(\\mathbf{R}))\\) such that for any \\(a\\leq b\\) with \\(a,b\\in \\mathbf{R}\\), \\[\n\\lambda ((a,b])=b-a\n\\]"
   },
   {
     "objectID": "measure/measure.html#measurable-function",
     "href": "measure/measure.html#measurable-function",
     "title": "Measure",
     "section": "Measurable Function",
-    "text": "Measurable Function\n\nGiven a topology on \\(\\Omega\\), the Borel \\(\\sigma\\)-field, \\(\\mathscr{B}(\\Omega)\\), is the smallest \\(\\sigma\\)-field containing all open subsets of \\(\\Omega\\)\n\n\nWhen working with \\(R^d\\), we will generally use \\(\\B(\\R^d)\\) as our \\(\\sigma\\)-field.\n\n\n\\(f: \\Omega \\to \\R\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\B(\\R)\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)"
+    "text": "Measurable Function\n\nWhen working with \\(R^d\\), we will generally use \\(\\B(\\R^d)\\) as our \\(\\sigma\\)-field.\n\n\n\\(f: \\Omega \\to \\R\\) is (\\(\\mathscr{F}\\)-)measurable if \\(\\forall\\) \\(B \\in \\B(\\R)\\), \\(f^{-1}(B) \\in \\mathscr{F}\\)"
   },
   {
     "objectID": "measure/measure.html#measurability-and-continuity",

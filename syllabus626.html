@@ -2,19 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Paul Schrimpf">
-<meta name="dcterms.date" content="2025-09-08">
+<meta name="dcterms.date" content="2026-09-09">
 
 <title>Syllabus for ECON 626: Econometric Theory I – ECON 626</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -34,15 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4afa585e620e1e545a967878b225e89b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-205c157cc1ad17ef6203a2440e42a020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -82,8 +87,6 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">ECON 626</span>
     </a>
@@ -135,9 +138,9 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a>
   <ul class="collapse">
-  <li><a href="#problem-sets-25" id="toc-problem-sets-25" class="nav-link" data-scroll-target="#problem-sets-25">Problem Sets (25%)</a></li>
-  <li><a href="#midterm-exam-30" id="toc-midterm-exam-30" class="nav-link" data-scroll-target="#midterm-exam-30">Midterm Exam (30%)</a></li>
-  <li><a href="#final-exam-45" id="toc-final-exam-45" class="nav-link" data-scroll-target="#final-exam-45">Final Exam (45%)</a></li>
+  <li><a href="#problem-sets-15" id="toc-problem-sets-15" class="nav-link" data-scroll-target="#problem-sets-15">Problem Sets (15%)</a></li>
+  <li><a href="#midterm-exam-35" id="toc-midterm-exam-35" class="nav-link" data-scroll-target="#midterm-exam-35">Midterm Exam (35%)</a></li>
+  <li><a href="#final-exam-50" id="toc-final-exam-50" class="nav-link" data-scroll-target="#final-exam-50">Final Exam (50%)</a></li>
   </ul></li>
   <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description">Course Description</a></li>
   <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a>
@@ -172,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 8, 2025</p>
+      <p class="date">September 9, 2026</p>
     </div>
   </div>
   
@@ -201,8 +204,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="time-and-place" class="level3">
 <h3 class="anchored" data-anchor-id="time-and-place">Time and Place</h3>
-<p>Lecture: Mondays and Wednesdays 2:00pm - 3:20pm, Buchanan B306</p>
-<p>Tutorial: Wednesday 12:30pm - 1:50pm, Buchanan D214</p>
+<p>Lecture: Mondays and Wednesdays 2:00pm - 3:20pm, Iona 633</p>
+<p>Tutorial: Wednesday 12:30pm - 1:40pm, Buchanan D214</p>
 </section>
 <section id="textbooks" class="level3">
 <h3 class="anchored" data-anchor-id="textbooks">Textbooks</h3>
@@ -218,16 +221,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="grading" class="level2">
 <h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<section id="problem-sets-25" class="level3">
-<h3 class="anchored" data-anchor-id="problem-sets-25">Problem Sets (25%)</h3>
+<section id="problem-sets-15" class="level3">
+<h3 class="anchored" data-anchor-id="problem-sets-15">Problem Sets (15%)</h3>
 <p>There will be 6-9 problem sets. A problem set with the lowest grade will be dropped from final grading.</p>
 </section>
-<section id="midterm-exam-30" class="level3">
-<h3 class="anchored" data-anchor-id="midterm-exam-30">Midterm Exam (30%)</h3>
-<p>Given in class on Wednesday, October 15. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (25%) and the final exam (75%).</p>
+<section id="midterm-exam-35" class="level3">
+<h3 class="anchored" data-anchor-id="midterm-exam-35">Midterm Exam (35%)</h3>
+<p>Given in class on Wednesday, October 19. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (15%) and the final exam (85%).</p>
 </section>
-<section id="final-exam-45" class="level3">
-<h3 class="anchored" data-anchor-id="final-exam-45">Final Exam (45%)</h3>
+<section id="final-exam-50" class="level3">
+<h3 class="anchored" data-anchor-id="final-exam-50">Final Exam (50%)</h3>
 <p>Closed books and notes.</p>
 </section>
 </section>
@@ -415,7 +418,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

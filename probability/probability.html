@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2025-09-10">
+  <meta name="dcterms.date" content="2026-09-09">
   <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -33,7 +39,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -50,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -153,12 +158,12 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Paul Schrimpf 
+Paul Schrimpf
 </div>
 </div>
 </div>
 
-  <p class="date">2025-09-10</p>
+  <p class="date">2026-09-09</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -281,7 +286,7 @@ P_{X}(B)\equiv P\left\{ \omega \in \Omega :X(\omega )\in B\right\}
 </div>
 </div>
 <aside class="notes">
-<p>In many applications, the underlying probability <span class="math inline">\((\Omega, \matscr{F}, P)\)</span> will mostly sit in the background and most calculations will be done with <span class="math inline">\((\R, \mathscr{B})(\R), P_X)\)</span>.</p>
+<p>In many applications, the underlying probability space <span class="math inline">\((\Omega, \matscr{F}, P)\)</span> will mostly sit in the background and most calculations will be done with <span class="math inline">\((\R, \mathscr{B})(\R), P_X)\)</span>.</p>
 <p>Given an example.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -310,7 +315,7 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 </div>
 <aside class="notes">
-<p>By definition, we can go from <span class="math inline">\(P_X\)</span> to <span class="math inline">\(F_X\)</span>. By Cartheodary’s extension theorem, we can do the reverse. Either the CDF or <span class="math inline">\(P_X\)</span> tells completely characterizes the distribution.</p>
+<p>By definition, we can go from <span class="math inline">\(P_X\)</span> to <span class="math inline">\(F_X\)</span>. By Cartheodary’s extension theorem, we can do the reverse. Either the CDF or <span class="math inline">\(P_X\)</span> completely characterizes the distribution.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -617,6 +622,9 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 </div>
 </div>
 </div>
+<ul>
+<li><span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent iff <span class="math inline">\(F_{X_1,X_2}(x_1,x_2) = F_{X_1}(x_1) F_{X_2}(x_2)\)</span> for all <span class="math inline">\(x_1, x_2\)</span>.</li>
+</ul>
 <aside class="notes">
 <p>Show some simple example(s).</p>
 <style type="text/css">
@@ -666,8 +674,59 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 <h1>Conditioning</h1>
 
 </section>
+<section id="conditionial-distribution" class="slide level2">
+<h2>Conditionial Distribution</h2>
+<ul>
+<li><span class="math inline">\(X,Y\)</span> random variales with cdf <span class="math inline">\(F\)</span></li>
+<li>If <span class="math inline">\(P(X=x)&gt;0\)</span>, then conditional cdf is <span class="math display">\[
+F_{Y|X}(y|x) = P(Y\leq y | X=x) = \frac{P(Y \leq y \cap X=x)}{P(X=x)}
+\]</span></li>
+<li>If <span class="math inline">\(X\)</span> is continuous, then <span class="math display">\[
+F_{Y|X}(y|x) = \lim_{\epsilon \down 0} P(Y \leq y | x-\epsilon \leq X \leq x+\epsilon) = \frac{\partial F/\partial x(x,y)}{f_X(x)}
+\]</span></li>
+</ul>
+<aside class="notes">
+<p>Proof of last equality: <span class="math display">\[
+\begin{align*}
+P(Y \leq y | x-\epsilon \leq X \leq
+x+\epsilon) = &amp; \frac{ P(Y \leq y \cap x-\epsilon \leq X \leq x+\epsilon
+  )}{P(x-\epsilon \leq X \leq x+\epsilon)} \\
+  = &amp; \frac{F(y, x+\epsilon) - F(y,x-\epsilon)}{F_X(x+\epsilon) - F_X(x-\epsilon)}
+\end{align*}
+\]</span> Divide numerator and denominator by <span class="math inline">\(2\epsilon\)</span>, apply l’Hospital’s rule, and definition of derivative.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conditional-density" class="slide level2">
+<h2>Conditional Density</h2>
+<ul>
+<li><span class="math inline">\(f_{Y|X}(y|x) = \frac{\partial F_{Y|X}(y|x)}{\partial y} = \frac{f(x,y)}{f_x(x)}\)</span></li>
+</ul>
+</section>
 <section id="conditional-expectation" class="slide level2">
 <h2>Conditional Expectation</h2>
+<ul>
+<li>For continuous <span class="math inline">\(Y\)</span>, <span class="math display">\[
+\Er[Y|X=x] = \int y f_{Y|X}(y|x) dy
+\]</span></li>
+</ul>
+</section>
+<section id="condtional-expectation" class="slide level2">
+<h2>Condtional Expectation</h2>
+<ul>
+<li>Previous definition needs to be stated separately for continuous vs discrete</li>
+<li>Previous definition leads to ambiguity — how you take limits toward <span class="math inline">\(X=x\)</span> matters (Borel paradox)</li>
+<li>Measure theoretic definition avoids these problems, but is more abstract</li>
+</ul>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -777,15 +836,15 @@ P\left( \cap_{j=1}^s E_{i_j} | \mathscr{G} \right) = \prod_{j=1}^s P(E_{i_j} | \
 <h1>References</h1>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-cinlar2011" class="csl-entry" role="listitem">
 Çinlar, Erhan. 2011. <em>Probability and Stochastics</em>. Vol. 261. Springer.
 </div>
 <div id="ref-pollard2002" class="csl-entry" role="listitem">
-Pollard, David. 2002. <em>A User’s Guide to Measure Theoretic Probability</em>. 8. Cambridge University Press.
+Pollard, David. 2002. <em>A User’s Guide to Measure Theoretic Probability</em>. Cambridge University Press.
 </div>
 <div id="ref-song2021" class="csl-entry" role="listitem">
-Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
+Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
 </div>
 <div id="ref-spanos2019" class="csl-entry" role="listitem">
 Spanos, Aris. 2019. <em>Probability Theory and Statistical Inference: Empirical Modeling with Observational Data</em>. Cambridge University Press. <a href="https://ubc.summon.serialssolutions.com/2.0.0/link/0/eLvHCXMwlV3fb9MwELZY-0Jf2PghyjYUQHvgoVtju3aMxhCMVYCExANCEy-W7dhTtZGgtEPsv-fOTqq2CE1IVaUkl8S9XO8-5-4-E8Lo4Xi04RPMhFmTO1vKwLgqXZAA-51g3FhPmdgs1Sm61pi1dH4e-WBzXGqpwJbLN-juF4vXuGbMK5hkG3ezRfqyEHzSI_23n87Pvy9ft0AUKyAYxbWCIKoCzuAKN-BiggkmaUv_1B3strvjvOXn_GsQAzIw80twSOCsFvNVhgZsXYI57Qx2blWz2bqzp20Em94jv7sfe1Ef4pJZiPzA4PDNRONTYKubo9RmuGSJxHo5sGT4tCpKM_CWNWlthAdsmhR1wN6jquDMpKxt0vfYUbFD7vjqPhl8XhLFzh8QdfzDNJcnXxpwK7FM9yZLbAGZqcoMkXAkkjZX2ceuM_H4KJ7ykHybnn09_TBqV3MYGcBkVIy8tWESCiqFoZgcZNQoNrbIMAe4KJSA9SQzygrKnVKc5la4EuCOY4FLEzh7RHpVXfnHJFMyGA-eCSzQcxO8KgB9F85MbBF86eyQPF95KPrXVcw8z_WaXm4RUhzAK7tNCPnrQOjF8qlrZ2udSufk5v1erkjVTXulf8gOk-3on4l0RGO6LEf6xvGQ7IM5aTfD7xwTzwDyBAB1qTApSofkWWdoOt6jLfPVZ-9OY688U_zJf4xll9wFlBgL63K1R3qL5trvR5KKp-2_7A8NQRm-">https://ubc.summon.serialssolutions.com/2.0.0/link/0/eLvHCXMwlV3fb9MwELZY-0Jf2PghyjYUQHvgoVtju3aMxhCMVYCExANCEy-W7dhTtZGgtEPsv-fOTqq2CE1IVaUkl8S9XO8-5-4-E8Lo4Xi04RPMhFmTO1vKwLgqXZAA-51g3FhPmdgs1Sm61pi1dH4e-WBzXGqpwJbLN-juF4vXuGbMK5hkG3ezRfqyEHzSI_23n87Pvy9ft0AUKyAYxbWCIKoCzuAKN-BiggkmaUv_1B3strvjvOXn_GsQAzIw80twSOCsFvNVhgZsXYI57Qx2blWz2bqzp20Em94jv7sfe1Ef4pJZiPzA4PDNRONTYKubo9RmuGSJxHo5sGT4tCpKM_CWNWlthAdsmhR1wN6jquDMpKxt0vfYUbFD7vjqPhl8XhLFzh8QdfzDNJcnXxpwK7FM9yZLbAGZqcoMkXAkkjZX2ceuM_H4KJ7ykHybnn09_TBqV3MYGcBkVIy8tWESCiqFoZgcZNQoNrbIMAe4KJSA9SQzygrKnVKc5la4EuCOY4FLEzh7RHpVXfnHJFMyGA-eCSzQcxO8KgB9F85MbBF86eyQPF95KPrXVcw8z_WaXm4RUhzAK7tNCPnrQOjF8qlrZ2udSufk5v1erkjVTXulf8gOk-3on4l0RGO6LEf6xvGQ7IM5aTfD7xwTzwDyBAB1qTApSofkWWdoOt6jLfPVZ-9OY688U_zJf4xll9wFlBgL63K1R3qL5trvR5KKp-2_7A8NQRm-</a>.
@@ -1080,7 +1139,7 @@ Spanos, Aris. 2019. <em>Probability Theory and Statistical Inference: Empirical 
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

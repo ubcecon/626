@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,16 @@
 
 <title>ECON 626: Final – ECON 626</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -26,7 +32,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -54,15 +59,14 @@ div.csl-indent {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4afa585e620e1e545a967878b225e89b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-205c157cc1ad17ef6203a2440e42a020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,7 +96,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -174,33 +178,33 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#merit-based-high-school-admissions" id="toc-merit-based-high-school-admissions" class="nav-link active" data-scroll-target="#merit-based-high-school-admissions">Merit Based High School Admissions</a>
+  <li><a href="#merit-based-high-school-admissions" id="toc-merit-based-high-school-admissions" class="nav-link active" data-scroll-target="#merit-based-high-school-admissions"><span class="header-section-number">1</span> Merit Based High School Admissions</a>
   <ul class="collapse">
-  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols">OLS?</a></li>
-  <li><a href="#iv" id="toc-iv" class="nav-link" data-scroll-target="#iv">IV?</a></li>
-  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency">Consistency</a></li>
-  <li><a href="#conditional-monotonicity" id="toc-conditional-monotonicity" class="nav-link" data-scroll-target="#conditional-monotonicity">Conditional Monotonicity</a></li>
-  <li><a href="#asymptotic-normality" id="toc-asymptotic-normality" class="nav-link" data-scroll-target="#asymptotic-normality">Asymptotic Normality</a></li>
-  <li><a href="#first-stage" id="toc-first-stage" class="nav-link" data-scroll-target="#first-stage">First Stage</a></li>
-  <li><a href="#overidentification-test" id="toc-overidentification-test" class="nav-link" data-scroll-target="#overidentification-test">Overidentification Test</a></li>
+  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols"><span class="header-section-number">1.1</span> OLS?</a></li>
+  <li><a href="#iv" id="toc-iv" class="nav-link" data-scroll-target="#iv"><span class="header-section-number">1.2</span> IV?</a></li>
+  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">1.3</span> Consistency</a></li>
+  <li><a href="#conditional-monotonicity" id="toc-conditional-monotonicity" class="nav-link" data-scroll-target="#conditional-monotonicity"><span class="header-section-number">1.4</span> Conditional Monotonicity</a></li>
+  <li><a href="#asymptotic-normality" id="toc-asymptotic-normality" class="nav-link" data-scroll-target="#asymptotic-normality"><span class="header-section-number">1.5</span> Asymptotic Normality</a></li>
+  <li><a href="#first-stage" id="toc-first-stage" class="nav-link" data-scroll-target="#first-stage"><span class="header-section-number">1.6</span> First Stage</a></li>
+  <li><a href="#overidentification-test" id="toc-overidentification-test" class="nav-link" data-scroll-target="#overidentification-test"><span class="header-section-number">1.7</span> Overidentification Test</a></li>
   </ul></li>
-  <li><a href="#electric-did" id="toc-electric-did" class="nav-link" data-scroll-target="#electric-did">Electric DiD</a>
+  <li><a href="#electric-did" id="toc-electric-did" class="nav-link" data-scroll-target="#electric-did"><span class="header-section-number">2</span> Electric DiD</a>
   <ul class="collapse">
-  <li><a href="#event-study" id="toc-event-study" class="nav-link" data-scroll-target="#event-study">Event Study</a></li>
-  <li><a href="#did" id="toc-did" class="nav-link" data-scroll-target="#did">DiD</a></li>
-  <li><a href="#treatment-intensity" id="toc-treatment-intensity" class="nav-link" data-scroll-target="#treatment-intensity">Treatment Intensity</a></li>
-  <li><a href="#staggered-treatment" id="toc-staggered-treatment" class="nav-link" data-scroll-target="#staggered-treatment">Staggered Treatment</a></li>
-  <li><a href="#gemini-3.0-8" id="toc-gemini-3.0-8" class="nav-link" data-scroll-target="#gemini-3.0-8">Gemini 3.0</a></li>
-  <li><a href="#staggered-event-study" id="toc-staggered-event-study" class="nav-link" data-scroll-target="#staggered-event-study">Staggered Event Study</a></li>
+  <li><a href="#event-study" id="toc-event-study" class="nav-link" data-scroll-target="#event-study"><span class="header-section-number">2.1</span> Event Study</a></li>
+  <li><a href="#did" id="toc-did" class="nav-link" data-scroll-target="#did"><span class="header-section-number">2.2</span> DiD</a></li>
+  <li><a href="#treatment-intensity" id="toc-treatment-intensity" class="nav-link" data-scroll-target="#treatment-intensity"><span class="header-section-number">2.3</span> Treatment Intensity</a></li>
+  <li><a href="#staggered-treatment" id="toc-staggered-treatment" class="nav-link" data-scroll-target="#staggered-treatment"><span class="header-section-number">2.4</span> Staggered Treatment</a></li>
+  <li><a href="#gemini-3.0-8" id="toc-gemini-3.0-8" class="nav-link" data-scroll-target="#gemini-3.0-8"><span class="header-section-number">2.5</span> Gemini 3.0</a></li>
+  <li><a href="#staggered-event-study" id="toc-staggered-event-study" class="nav-link" data-scroll-target="#staggered-event-study"><span class="header-section-number">2.6</span> Staggered Event Study</a></li>
   </ul></li>
-  <li><a href="#split-data" id="toc-split-data" class="nav-link" data-scroll-target="#split-data">Split Data</a>
+  <li><a href="#split-data" id="toc-split-data" class="nav-link" data-scroll-target="#split-data"><span class="header-section-number">3</span> Split Data</a>
   <ul class="collapse">
-  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a></li>
-  <li><a href="#consistency-1" id="toc-consistency-1" class="nav-link" data-scroll-target="#consistency-1">Consistency</a></li>
-  <li><a href="#asymptotic-normality-1" id="toc-asymptotic-normality-1" class="nav-link" data-scroll-target="#asymptotic-normality-1">Asymptotic Normality</a></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification"><span class="header-section-number">3.1</span> Identification</a></li>
+  <li><a href="#consistency-1" id="toc-consistency-1" class="nav-link" data-scroll-target="#consistency-1"><span class="header-section-number">3.2</span> Consistency</a></li>
+  <li><a href="#asymptotic-normality-1" id="toc-asymptotic-normality-1" class="nav-link" data-scroll-target="#asymptotic-normality-1"><span class="header-section-number">3.3</span> Asymptotic Normality</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#definitions-and-results" id="toc-definitions-and-results" class="nav-link" data-scroll-target="#definitions-and-results">Definitions and Results</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4</span> References</a></li>
+  <li><a href="#definitions-and-results" id="toc-definitions-and-results" class="nav-link" data-scroll-target="#definitions-and-results"><span class="header-section-number">5</span> Definitions and Results</a></li>
   </ul>
 </nav>
     </div>
@@ -256,11 +260,11 @@ window.Quarto = {
 \]</span></p>
 <p>You have 150 minutes to complete the exam. The last two pages have some formulas and definitions.</p>
 <p>There are 100 total points. Each part of a question is worth 7 points. Some questions are harder than others; do not spend too long on any single part. To help with budgeting your time, I’ve labeled some questions as <em>More difficult</em>.</p>
-<section id="merit-based-high-school-admissions" class="level1">
-<h1>Merit Based High School Admissions</h1>
-<p>In “Pulled In and Crowded Out: Heterogeneous Outcomes of Merit-Based School Choice”, <span class="citation" data-cites="dalla2025">Dalla-Zuanna, Liu, and Salvanes (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> study a change in high school admissions from a system where admission priority was largely based on where a student lives to one where students with higher middle school GPA are given priority in admissions. <span class="citation" data-cites="dalla2025">Dalla-Zuanna, Liu, and Salvanes (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> use this reform to analyze the effect of attending a competitive high school on high school completion, university admission, and university completion. Let <span class="math inline">\(Y_i\)</span> denote an outcome of interest (high school completion, university admission, or university completion). Let <span class="math inline">\(D_i\)</span> be a binary variable indicating whether student <span class="math inline">\(i\)</span> attended a competitive high school. Let <span class="math inline">\(Z_i\)</span> be equal to 0 before the change in high school admissions and 1 after the change.</p>
-<section id="ols" class="level2">
-<h2 class="anchored" data-anchor-id="ols">OLS?</h2>
+<section id="merit-based-high-school-admissions" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Merit Based High School Admissions</h1>
+<p>In “Pulled In and Crowded Out: Heterogeneous Outcomes of Merit-Based School Choice”, <span class="citation" data-cites="dalla2025">Dalla-Zuanna et al. (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> study a change in high school admissions from a system where admission priority was largely based on where a student lives to one where students with higher middle school GPA are given priority in admissions. <span class="citation" data-cites="dalla2025">Dalla-Zuanna et al. (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> use this reform to analyze the effect of attending a competitive high school on high school completion, university admission, and university completion. Let <span class="math inline">\(Y_i\)</span> denote an outcome of interest (high school completion, university admission, or university completion). Let <span class="math inline">\(D_i\)</span> be a binary variable indicating whether student <span class="math inline">\(i\)</span> attended a competitive high school. Let <span class="math inline">\(Z_i\)</span> be equal to 0 before the change in high school admissions and 1 after the change.</p>
+<section id="ols" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="ols"><span class="header-section-number">1.1</span> OLS?</h2>
 <p>Is an OLS regression of <span class="math inline">\(Y_i\)</span> on <span class="math inline">\(D_i\)</span> likely to produce a causal estimate of the effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span>? Use either omitted variables or potential outcomes to explain a likely problem with OLS.</p>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span></p>
@@ -316,8 +320,8 @@ Y_i = \beta_0 + \beta_1 D_i + \beta_2 ability_i + \epsilon_i
 </div>
 </div>
 </section>
-<section id="iv" class="level2">
-<h2 class="anchored" data-anchor-id="iv">IV?</h2>
+<section id="iv" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="iv"><span class="header-section-number">1.2</span> IV?</h2>
 <p>Consider a potential outcomes framework. Let <span class="math inline">\(Y_i(d,z)\)</span> denote the potential outcomes and <span class="math inline">\(D_i(z)\)</span> denote the potential treatments. Under what assumptions on the potential outcomes would <span class="math display">\[
 \hat{\beta}^{IV} = \frac{\sum_{i=1}^n (Z_i - \bar{Z})Y_i}{\sum_{i=1}^n (Z_i-\bar{Z}) D_i}
 \]</span> have a causal interpretation? Are any of these assumptions impossible to hold here? (Hint: the competitive high schools were full both before and after the change in admissions).</p>
@@ -383,8 +387,8 @@ D_i(0)]\)</span>. However, given that the competitive schools were full both bef
 </div>
 </div>
 </section>
-<section id="consistency" class="level2">
-<h2 class="anchored" data-anchor-id="consistency">Consistency</h2>
+<section id="consistency" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="consistency"><span class="header-section-number">1.3</span> Consistency</h2>
 <p>After the reform, students with middle school GPA above a known cutoff were given priority for admission to the competitive high schools. Let <span class="math inline">\(C_i = 0\)</span> if a student’s middle school GPA is below the cutoff and <span class="math inline">\(C_i = 1\)</span> otherwise. Assume observations are i.i.d. and <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>, and <span class="math inline">\(C\)</span> have finite second moments. Assume <span class="math inline">\(\Er[ZDC] \neq \Er[Z]\Er[DC]\)</span>. Show that <span class="math display">\[
 \hat{\beta}^{C=1}=\frac{\sum_{i=1}^n (Z_i - \bar{Z})Y_i C_i}{\sum_{i=1}^n (Z_i - \bar{Z})D_i C_i} \inprob \frac{\Er[ZYC] - \Er[Z]\Er[YC]}{\Er[ZDC] - \Er[Z]\Er[DC]}
 \]</span></p>
@@ -474,8 +478,8 @@ C_i \inprob \Er[ZYC]\)</span>. Therefore, <span class="math display">\[
 </div>
 </div>
 </section>
-<section id="conditional-monotonicity" class="level2">
-<h2 class="anchored" data-anchor-id="conditional-monotonicity">Conditional Monotonicity</h2>
+<section id="conditional-monotonicity" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="conditional-monotonicity"><span class="header-section-number">1.4</span> Conditional Monotonicity</h2>
 <p><em>More difficult</em></p>
 After the reform, students with middle school GPA above a known cutoff were given priority for admission to the competitive high schools. Let <span class="math inline">\(C_i = 0\)</span> if a student’s middle school GPA is below the cutoff and <span class="math inline">\(C_i = 1\)</span> otherwise. Assume:
 <p>Assume observations are i.i.d. and <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>, and <span class="math inline">\(C\)</span> have finite second moments. Show that <span class="math display">\[
@@ -571,8 +575,8 @@ E[Y_i(1)-Y_i(0)\mid C_i=1,\ D_i(1)&gt;D_i(0)],
 </div>
 </div>
 </section>
-<section id="asymptotic-normality" class="level2">
-<h2 class="anchored" data-anchor-id="asymptotic-normality">Asymptotic Normality</h2>
+<section id="asymptotic-normality" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="asymptotic-normality"><span class="header-section-number">1.5</span> Asymptotic Normality</h2>
 <p><em>More difficult</em></p>
 <p>Let <span class="math inline">\(\beta^{C=1}_0 = \frac{\Er[ZYC] - \Er[Z]\Er[YC]}{\Er[ZDC] -
   \Er[Z]\Er[DC]} = \Er[Y_i(1) - Y_i(0) | C_i=1, D_i(1) &gt; D_i(0)]\)</span>. Show that <span class="math inline">\(\sqrt{n}(\hat{\beta}^{C=1} - \beta^{C=1}_0)
@@ -589,9 +593,9 @@ E[Y_i(1)-Y_i(0)\mid C_i=1,\ D_i(1)&gt;D_i(0)],
 </div>
 </div>
 </section>
-<section id="first-stage" class="level2">
-<h2 class="anchored" data-anchor-id="first-stage">First Stage</h2>
-<p>Instead of estimating <span class="math inline">\(\beta^{C=1}\)</span> and <span class="math inline">\(\beta^{C=0}\)</span> separately, <span class="citation" data-cites="dalla2025">Dalla-Zuanna, Liu, and Salvanes (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> estimate <span class="math display">\[
+<section id="first-stage" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="first-stage"><span class="header-section-number">1.6</span> First Stage</h2>
+<p>Instead of estimating <span class="math inline">\(\beta^{C=1}\)</span> and <span class="math inline">\(\beta^{C=0}\)</span> separately, <span class="citation" data-cites="dalla2025">Dalla-Zuanna et al. (<a href="#ref-dalla2025" role="doc-biblioref">2025</a>)</span> estimate <span class="math display">\[
 Y_i = \alpha_0 + \beta_0^{C=1} D_i C_i + \beta_0^{C=0} D_i (1-C_i) + \gamma_0 C_i + \epsilon_i
 \]</span> using <span class="math inline">\(C_i Z_i\)</span> and <span class="math inline">\((1-C_i) Z_i\)</span> as instruments for <span class="math inline">\(D_i C_i\)</span> and <span class="math inline">\(D_i (1-C_i)\)</span>. Table 4 below shows the results. Panel A shows regressions of <span class="math inline">\(D_i
 (1-C_i)\)</span> and <span class="math inline">\(D_i C_i\)</span> on the instruments. What assumption is this checking? Are you confident that this assumption holds? If one had any doubt, what should be done differently in Panel B?</p>
@@ -639,8 +643,8 @@ Y_i = \alpha_0 + \beta_0^{C=1} D_i C_i + \beta_0^{C=0} D_i (1-C_i) + \gamma_0 C_
 </div>
 </div>
 </section>
-<section id="overidentification-test" class="level2">
-<h2 class="anchored" data-anchor-id="overidentification-test">Overidentification Test</h2>
+<section id="overidentification-test" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="overidentification-test"><span class="header-section-number">1.7</span> Overidentification Test</h2>
 <p>Table 5 reports 2SLS results where living far or close to a competitive school is interacted with the instrument. The middle column of Panel B reports the p-value from a J-test. What interpretation other than misspecification could be given to the small p-value in the first row of Panel B?</p>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span></p>
@@ -679,11 +683,11 @@ Y_i = \alpha_0 + \beta_0^{C=1} D_i C_i + \beta_0^{C=0} D_i (1-C_i) + \gamma_0 C_
 <hr>
 </section>
 </section>
-<section id="electric-did" class="level1">
-<h1>Electric DiD</h1>
+<section id="electric-did" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Electric DiD</h1>
 <p>In “Down to the Wire: Leveraging Technology to Improve Electric Utility Cost Recovery” <span class="citation" data-cites="ahmad2025">Ahmad et al. (<a href="#ref-ahmad2025" role="doc-biblioref">2025</a>)</span> study the effects of theft-resistant electric wires. The authors use data from Karachi, Pakistan, where the electric company gradually replaced bare wires with aerial bundled cables (ABCs) beginning in 2015. ABCs are more difficult to connect to illegally.</p>
-<section id="event-study" class="level2">
-<h2 class="anchored" data-anchor-id="event-study">Event Study</h2>
+<section id="event-study" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="event-study"><span class="header-section-number">2.1</span> Event Study</h2>
 <p><span class="citation" data-cites="ahmad2025">Ahmad et al. (<a href="#ref-ahmad2025" role="doc-biblioref">2025</a>)</span> use a difference in differences strategy to estimate the effect of ABCs on electricity losses and revenue. The authors estimate event study regressions of the form <span class="math display">\[
 y_{ijt} = \sum_{-15 \leq k \leq 21} \beta_k \mathbf{1}\{t - \tau_i=k\} + \alpha_i + \delta_{jt} + \epsilon_{ijt}
 \]</span> where <span class="math inline">\(y_{ijt}\)</span> is either electric losses or revenue from feeder line <span class="math inline">\(i\)</span> in region <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span>. <span class="math inline">\(\tau_i\)</span> is the time that line <span class="math inline">\(i\)</span> was converted to an ABC, <span class="math inline">\(\alpha_i\)</span> are feeder line fixed effects, and <span class="math inline">\(\delta_{jt}\)</span> are region (called IBC on the figure) by time fixed effects. Figure 2 shows estimates of <span class="math inline">\(\beta_k\)</span>. When <span class="math inline">\(k &lt; 0\)</span>, what do we want to see in this figure? For which difference‑in‑differences identifying assumption does this figure provide suggestive evidence?</p>
@@ -720,8 +724,8 @@ y_{ijt} = \sum_{-15 \leq k \leq 21} \beta_k \mathbf{1}\{t - \tau_i=k\} + \alpha_
 </div>
 </div>
 </section>
-<section id="did" class="level2">
-<h2 class="anchored" data-anchor-id="did">DiD</h2>
+<section id="did" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="did"><span class="header-section-number">2.2</span> DiD</h2>
 <p>Table 1 shows estimates of <span id="eq-fe"><span class="math display">\[
 y_{ijt} = \beta ABC_{it} + \alpha_i + \delta_{jt} + \epsilon_{ijt}
 \tag{1}\]</span></span> where, in panel A, <span class="math inline">\(ABC_{it} = 1\)</span> if feeder line <span class="math inline">\(i\)</span> has any ABCs installed at time <span class="math inline">\(t\)</span>. How should standard errors be calculated for this regression?</p>
@@ -750,8 +754,8 @@ y_{ijt} = \beta ABC_{it} + \alpha_i + \delta_{jt} + \epsilon_{ijt}
 </div>
 </div>
 </section>
-<section id="treatment-intensity" class="level2">
-<h2 class="anchored" data-anchor-id="treatment-intensity">Treatment Intensity</h2>
+<section id="treatment-intensity" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="treatment-intensity"><span class="header-section-number">2.3</span> Treatment Intensity</h2>
 <p>Each feeder line has many places where ABCs could be installed. Panel B estimates <a href="#eq-fe" class="quarto-xref">Equation&nbsp;1</a> using the portion of ABCs instead of the binary indicator for any ABCs. For simplicity, let’s ignore the region subscripts <span class="math inline">\(j\)</span>, and consider a two-period setting where in the first period all observations have <span class="math inline">\(ABC_{it}=0\)</span> and in the second period, <span class="math inline">\(ABC_{it} \in \{0, a_1, a_2, ..., a_k\}\)</span> with <span class="math inline">\(P(ABC_it=0) &gt; 0\)</span> and <span class="math inline">\(P(ABC_{it} = a_j ) &gt; 0\)</span> for all <span class="math inline">\(j\)</span>. Let <span class="math inline">\(Y_{it}(a)\)</span> denote the potential outcomes. Assume that <span class="math display">\[
 \Er[Y_{i2}(0) - Y_{i1}(0) | ABC_{i2} = a_j ] = \Er[Y_{i2}(0) - Y_{i1}(0) | ABC_{i2} = 0 ]
 \]</span> for all <span class="math inline">\(j\)</span>. Show that <span class="math display">\[
@@ -820,8 +824,8 @@ E[Y_{i2}(a_j)-Y_{i2}(0)\mid ABC_{i2}=a_j]
 </div>
 </div>
 </section>
-<section id="staggered-treatment" class="level2">
-<h2 class="anchored" data-anchor-id="staggered-treatment">Staggered Treatment</h2>
+<section id="staggered-treatment" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="staggered-treatment"><span class="header-section-number">2.4</span> Staggered Treatment</h2>
 <p>The electric company installed ABCs at different times for each feeder line. Suppose the company installed ABCs earlier for lines where the company expected ABCs to reduce losses the most. How might this affect the estimate of <span class="math inline">\(\beta\)</span> in <a href="#eq-fe" class="quarto-xref">Equation&nbsp;1</a> reported in Table 1?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -829,8 +833,8 @@ E[Y_{i2}(a_j)-Y_{i2}(0)\mid ABC_{i2}=a_j]
 </figure>
 </div>
 </section>
-<section id="gemini-3.0-8" class="level2">
-<h2 class="anchored" data-anchor-id="gemini-3.0-8">Gemini 3.0</h2>
+<section id="gemini-3.0-8" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="gemini-3.0-8"><span class="header-section-number">2.5</span> Gemini 3.0</h2>
 <p>We want to identify the ATT for intensity <span class="math inline">\(a_j\)</span>: <span class="math inline">\(ATT(a_j) = E[Y_{i2}(a_j)|ABC_{i2}=a_j] - E[Y_{i2}(0)|ABC_{i2}=a_j]\)</span>. The first term <span class="math inline">\(E[Y_{i2}(a_j)|ABC_{i2}=a_j]\)</span> is directly observed as <span class="math inline">\(E[Y_{i2}|ABC_{i2}=a_j]\)</span>. For the second term (counterfactual), we use the Parallel Trends assumption provided: <span class="math display">\[ E[Y_{i2}(0) - Y_{i1}(0)|ABC_{i2} = a_j] = E[Y_{i2}(0) - Y_{i1}(0)|ABC_{i2} = 0] \]</span> Rearranging to solve for the counterfactual <span class="math inline">\(E[Y_{i2}(0)|ABC_{i2}=a_j]\)</span>: <span class="math display">\[ E[Y_{i2}(0)|ABC_{i2}=a_j] = E[Y_{i1}(0)|ABC_{i2}=a_j] + E[Y_{i2}(0)|ABC_{i2}=0] - E[Y_{i1}(0)|ABC_{i2}=0] \]</span> Since <span class="math inline">\(ABC_{i1}=0\)</span> for everyone, <span class="math inline">\(Y_{i1}(0) = Y_{i1}\)</span>. Substituting this back into the ATT expression: <span class="math display">\[ ATT(a_j) = E[Y_{i2}|ABC_{i2}=a_j] - \left( E[Y_{i1}|ABC_{i2}=a_j] + E[Y_{i2}|ABC_{i2}=0] - E[Y_{i1}|ABC_{i2}=0] \right) \]</span> <span class="math display">\[ ATT(a_j) = \left( E[Y_{i2}|ABC_{i2}=a_j] - E[Y_{i1}|ABC_{i2}=a_j] \right) - \left( E[Y_{i2}|ABC_{i2}=0] - E[Y_{i1}|ABC_{i2}=0] \right) \]</span></p>
 <p><strong>Plug-in Estimator:</strong> The estimator is the difference between the change in mean outcomes for the group treated with intensity <span class="math inline">\(a_j\)</span> and the change in mean outcomes for the control group (intensity 0): <span class="math display">\[ \hat{\tau}_{a_j} = (\bar{y}_{2, a_j} - \bar{y}_{1, a_j}) - (\bar{y}_{2, 0} - \bar{y}_{1, 0}) \]</span></p>
 <div class="proof solution">
@@ -862,8 +866,8 @@ E[Y_{i2}(a_j)-Y_{i2}(0)\mid ABC_{i2}=a_j]
 </div>
 </div>
 </section>
-<section id="staggered-event-study" class="level2">
-<h2 class="anchored" data-anchor-id="staggered-event-study">Staggered Event Study</h2>
+<section id="staggered-event-study" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="staggered-event-study"><span class="header-section-number">2.6</span> Staggered Event Study</h2>
 <p>The figure below shows event study estimates using a method meant for staggered treatment timing. These estimates are very similar to the fixed effects event study estimate in Figure 2 above. What does this suggest about the correlation between treatment timing and treatment effects?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -896,13 +900,13 @@ E[Y_{i2}(a_j)-Y_{i2}(0)\mid ABC_{i2}=a_j]
 </div>
 </section>
 </section>
-<section id="split-data" class="level1">
-<h1>Split Data</h1>
+<section id="split-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Split Data</h1>
 <p>One wants to estimate <span class="math display">\[
 Y_i = X_i \beta + \epsilon_i
 \]</span> where <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are scalars, but <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are not observed in the same dataset. Instead <span class="math inline">\(X\)</span> is only observed in dataset <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span> is observed in dataset <span class="math inline">\(B\)</span>. In both datasets, a third variable, <span class="math inline">\(Z\)</span>, is observed. Assume observations in each dataset are i.i.d., but the distributions of the two datasets may differ. Call these distributions <span class="math inline">\(P_A\)</span> and <span class="math inline">\(P_B\)</span>. Let <span class="math inline">\(\Er_A\)</span> and <span class="math inline">\(\Er_B\)</span> denote the expectations on datasets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Throughout, assume that <span class="math inline">\(\Er_A[X]=\Er_B[X] = 0\)</span> and <span class="math inline">\(\Er_A[\epsilon]=\Er_B[\epsilon]=0\)</span> and that all variables have finite second moments.</p>
-<section id="identification" class="level2">
-<h2 class="anchored" data-anchor-id="identification">Identification</h2>
+<section id="identification" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="identification"><span class="header-section-number">3.1</span> Identification</h2>
 <p>Assume that <span class="math inline">\(\Er_A[X|Z] = \Er_B[X|Z]\)</span> and <span class="math inline">\(\epsilon \indep Z\)</span>. <span class="math inline">\(P_A(Z)\)</span> and <span class="math inline">\(P_B(Z)\)</span> can differ, but <span class="math inline">\(P_A(Z) \ll P_B(Z)\)</span> and <span class="math inline">\(P_B(Z) \ll P_A(Z)\)</span>. (If you wish to simplify you can assume the support of <span class="math inline">\(Z\)</span> is finite and <span class="math inline">\(Z\)</span> takes on all values in its support with positive probability under both <span class="math inline">\(P_A\)</span> and <span class="math inline">\(P_B\)</span>). Show that <span class="math inline">\(\beta\)</span> can be identified. State any additional assumptions needed.</p>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span></p>
@@ -984,8 +988,8 @@ E_B[Z Y] = E_B[Z X]\beta + E_B[Z\epsilon] = E_B[ZX]\beta.
 </div>
 </div>
 </section>
-<section id="consistency-1" class="level2">
-<h2 class="anchored" data-anchor-id="consistency-1">Consistency</h2>
+<section id="consistency-1" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="consistency-1"><span class="header-section-number">3.2</span> Consistency</h2>
 <p><em>More difficult</em></p>
 <p>Suppose <span class="math inline">\(Z \in \{0,1\}\)</span>. Assume <span class="math inline">\(P_A(Z=1)&gt;0\)</span> and <span class="math inline">\(P_B(Z=1)&gt;0\)</span>. Also assume <span class="math inline">\(\Er_B[XZ] \neq 0\)</span>. Let <span class="math inline">\(n_A\)</span> and <span class="math inline">\(n_B\)</span> denote the number of observations from datasets A and B, and let superscripts denote variables from datasets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. Show that <span class="math display">\[
 \hat{\beta} = \frac{\frac{1}{n_B} \sum_{i=1}^{n_B} z_i^B y_i^B}{\frac{1}{n_A} \sum_{i=1}^{n_A} z_i^A x_i^A  \frac{1/n_B \sum_{i=1}^{n_B} z_i^B}{1/n_A \sum_{i=1}^{n_A} z_i^A}} \inprob \beta
@@ -1088,8 +1092,8 @@ E_A[ZX] = E_A[Z]E_A[X|Z=1]
 </div>
 </div>
 </section>
-<section id="asymptotic-normality-1" class="level2">
-<h2 class="anchored" data-anchor-id="asymptotic-normality-1">Asymptotic Normality</h2>
+<section id="asymptotic-normality-1" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="asymptotic-normality-1"><span class="header-section-number">3.3</span> Asymptotic Normality</h2>
 <p><em>More difficult</em></p>
 <p>Suppose <span class="math inline">\(n_A \to \infty\)</span>, <span class="math inline">\(n_B \to \infty\)</span> and <span class="math inline">\(n_B / n_A \to c &lt; \infty\)</span>. Show that <span class="math inline">\(\sqrt{n_B}(\hat{\beta} - \beta)\)</span> is asymptotically normal and derive the asymptotic variance.</p>
 <div class="proof solution">
@@ -1228,9 +1232,9 @@ m_n = \big(\bar{ZY}^B,\ \bar{ZX}^A,\ \bar Z^B,\ \bar Z^A\big)
 <hr>
 </section>
 </section>
-<section id="references" class="level1">
-<h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<section id="references" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-ahmad2025" class="csl-entry" role="listitem">
 Ahmad, Husnain F., Ayesha Ali, Robyn C. Meeks, Zhenxuan Wang, and Javed Younas. 2025. <span>“Down to the Wire: Leveraging Technology to Improve Electric Utility Cost Recovery.”</span> <em>American Economic Journal: Applied Economics</em> 17 (4): 60–99. <a href="https://doi.org/10.1257/app.20230468">https://doi.org/10.1257/app.20230468</a>.
 </div>
@@ -1239,8 +1243,8 @@ Dalla-Zuanna, Antonio, Kai Liu, and Kjell G. Salvanes. 2025. <span>“Pulled in 
 </div>
 </div>
 </section>
-<section id="definitions-and-results" class="level1">
-<h1>Definitions and Results</h1>
+<section id="definitions-and-results" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Definitions and Results</h1>
 <ul>
 <li><p>Measure and Probability:</p>
 <ul>

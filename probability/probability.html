@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2026-09-09">
+  <meta name="dcterms.date" content="2026-09-14">
   <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -163,7 +163,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2026-09-09</p>
+  <p class="date">2026-09-14</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -315,7 +315,7 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 </div>
 <aside class="notes">
-<p>By definition, we can go from <span class="math inline">\(P_X\)</span> to <span class="math inline">\(F_X\)</span>. By Cartheodary’s extension theorem, we can do the reverse. Either the CDF or <span class="math inline">\(P_X\)</span> completely characterizes the distribution.</p>
+<p>By definition, we can go from <span class="math inline">\(P_X\)</span> to <span class="math inline">\(F_X\)</span>. By Carathéodary’s extension theorem, we can do the reverse. Either the CDF or <span class="math inline">\(P_X\)</span> completely characterizes the distribution.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -337,7 +337,7 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 <div class="callout-content">
 <ol type="i">
-<li><p>Let <span class="math inline">\(X\)</span> be a random variable with distribution <span class="math inline">\(P_{X}\)</span>. When <span class="math inline">\(P_{X}\ll \lambda\)</span>, we call <span class="math inline">\(X\)</span> a <strong>continuous random variable</strong>, and call the Radon-Nikodym derivative <span class="math inline">\(f_X\equiv dP_{X}/d\lambda\)</span> the (probability) <strong>density function</strong> of <span class="math inline">\(P_{X}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X\)</span> be a random variable with distribution <span class="math inline">\(P_{X}\)</span>. When <span class="math inline">\(P_{X}\ll \lambda\)</span>, we call <span class="math inline">\(X\)</span> a <strong>(absolutely) continuous random variable</strong>, and call the Radon-Nikodym derivative <span class="math inline">\(f_X\equiv dP_{X}/d\lambda\)</span> the (probability) <strong>density function</strong> of <span class="math inline">\(P_{X}\)</span>.</p></li>
 <li><p>We say that <span class="math inline">\(X\)</span> is a <strong>discrete random variable</strong>, if there exists a countable set <span class="math inline">\(A\subset \R\)</span> and such that <span class="math inline">\(P_{X}A^{c}=0\)</span></p></li>
 </ol>
 </div>
@@ -369,6 +369,19 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 </div>
 </div>
 </div>
+<aside class="notes">
+<p><span class="math inline">\(X\)</span> being continuous implies that <span class="math inline">\(P_X(\{a\}) = 0\)</span> for all <span class="math inline">\(a \in \R\)</span> since <span class="math inline">\(\lambda(\{a\}) = 0\)</span>. By continuity of measure, <span class="math inline">\(P_{X}((-\infty, a]) = \lim_{\epsilon \downarrow 0} P_{X}((-\infty, a+\epsilon])\)</span>, so <span class="math display">\[F_X(a) = \lim_{\epsilon \downarrow 0} F_X(a+\epsilon).\]</span> Similarly, <span class="math display">\[F_x(a) = \lim_{\epsilon \uparrow 0} F_X(a-\epsilon).\]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!--- TODO: add examples or uses to go with these definitions --->
 </section></section>
 <section id="expectation" class="title-slide slide level1 center">
@@ -379,7 +392,7 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>The <strong>expection</strong> of <span class="math inline">\(X\)</span> is <span class="math inline">\(\Er [X] = \int_\Omega x dP\)</span></p>
+<p>The <strong>expectation</strong> of <span class="math inline">\(X\)</span> is <span class="math inline">\(\Er [X] = \int_\Omega X(\omega) dP(\omega)\)</span></p>
 </div>
 </div>
 </div>
@@ -392,7 +405,7 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 <p>If <span class="math inline">\(X\)</span> is continuous, i.e.&nbsp;<span class="math inline">\(P_X &lt;&lt; \lambda\)</span> where <span class="math inline">\(\lambda\)</span> is Lebesgue measure, then there is a Radon-Nikodym derivative, <span class="math inline">\(f_x\)</span>, and we can write the expectation as <span class="math display">\[
 \Er X = \int_{R} x f_x(x) d\lambda(x).
 \]</span></p>
-<p>For any measurable function <span class="math inline">\(g\)</span>, we can define <span class="math inline">\(\mathcal{E}_X: \{measurable functions\} \to \R\)</span> by <span class="math inline">\(\mathcal{E}_X(g) = \Er[g(X)]\)</span>. We could call this the expectation functional of <span class="math inline">\(X\)</span>. Taking <span class="math inline">\(g = 1\{X \leq x\}\)</span> for <span class="math inline">\(x \in \R\)</span>, we can recover the CDF, $F_X(x) = _X(1{X x }). Thus, the expectation functional is a third way, along with the CDF and probability measure, to describe the distribution of <span class="math inline">\(X\)</span>.</p>
+<p>For any measurable function <span class="math inline">\(g\)</span>, we can define <span class="math inline">\(\mathcal{E}_X: \{measurable functions\} \to \R\)</span> by <span class="math inline">\(\mathcal{E}_X(g) = \Er[g(X)]\)</span>. We could call this the expectation functional of <span class="math inline">\(X\)</span>. Taking <span class="math inline">\(g = 1\{X \leq x\}\)</span> for <span class="math inline">\(x \in \R\)</span>, we can recover the CDF, <span class="math inline">\(F_X(x) = \mathcal{E}_X(1\{X \leq x \})\)</span>. Thus, the expectation functional is a third way, along with the CDF and probability measure, to describe the distribution of <span class="math inline">\(X\)</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -651,7 +664,7 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 <p><strong>Theorem</strong></p>
 </div>
 <div class="callout-content">
-<p>Suppose that <span class="math inline">\(X=(X_1, X_2)\)</span> and <span class="math inline">\(Y=(Y_1, Y_2)\)</span> are independent, then <span class="math inline">\(f(X)\)</span> and <span class="math inline">\(g(Y)\)</span> are independent</p>
+<p>Suppose that <span class="math inline">\(X=(X_1, X_2)\)</span> and <span class="math inline">\(Y=(Y_1, Y_2)\)</span> are independent, then <span class="math inline">\(g(X)\)</span> and <span class="math inline">\(h(Y)\)</span> are independent</p>
 </div>
 </div>
 </div>
@@ -674,15 +687,15 @@ P\left(\cap_{j=1}^s E_{i_j}\right) = \prod_{j=1}^s P(E_{i_j})
 <h1>Conditioning</h1>
 
 </section>
-<section id="conditionial-distribution" class="slide level2">
-<h2>Conditionial Distribution</h2>
+<section id="conditional-distribution" class="slide level2">
+<h2>Conditional Distribution</h2>
 <ul>
 <li><span class="math inline">\(X,Y\)</span> random variales with cdf <span class="math inline">\(F\)</span></li>
 <li>If <span class="math inline">\(P(X=x)&gt;0\)</span>, then conditional cdf is <span class="math display">\[
 F_{Y|X}(y|x) = P(Y\leq y | X=x) = \frac{P(Y \leq y \cap X=x)}{P(X=x)}
 \]</span></li>
 <li>If <span class="math inline">\(X\)</span> is continuous, then <span class="math display">\[
-F_{Y|X}(y|x) = \lim_{\epsilon \down 0} P(Y \leq y | x-\epsilon \leq X \leq x+\epsilon) = \frac{\partial F/\partial x(x,y)}{f_X(x)}
+F_{Y|X}(y|x) = \lim_{\epsilon \downarrow 0} P(Y \leq y | x-\epsilon \leq X \leq x+\epsilon) = \frac{\partial F/\partial x(x,y)}{f_X(x)}
 \]</span></li>
 </ul>
 <aside class="notes">
@@ -720,13 +733,16 @@ x+\epsilon) = &amp; \frac{ P(Y \leq y \cap x-\epsilon \leq X \leq x+\epsilon
 \]</span></li>
 </ul>
 </section>
-<section id="condtional-expectation" class="slide level2">
-<h2>Condtional Expectation</h2>
+<section id="conditional-expectation-1" class="slide level2">
+<h2>Conditional Expectation</h2>
 <ul>
 <li>Previous definition needs to be stated separately for continuous vs discrete</li>
 <li>Previous definition leads to ambiguity — how you take limits toward <span class="math inline">\(X=x\)</span> matters (Borel paradox)</li>
 <li>Measure theoretic definition avoids these problems, but is more abstract</li>
 </ul>
+</section>
+<section id="conditional-expectation-2" class="slide level2">
+<h2>Conditional Expectation</h2>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -742,15 +758,11 @@ x+\epsilon) = &amp; \frac{ P(Y \leq y \cap x-\epsilon \leq X \leq x+\epsilon
 </div>
 </div>
 <ul>
-<li class="fragment">Ex: <span class="math inline">\(\{E_k\}_{k=1}^m\)</span> partition of <span class="math inline">\(\Omega\)</span>, let <span class="math inline">\(\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)\)</span>
-<ul>
-<li class="fragment"><span class="math inline">\(\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}\)</span>, then use 2 to solve for <span class="math inline">\(c_k\)</span></li>
-</ul></li>
 <li class="fragment">Existence from Radon-Nikodym theorem</li>
 <li class="fragment"><span class="math inline">\(\Er[Y|X] \equiv \Er[Y|\sigma(X)]\)</span></li>
 </ul>
 </section>
-<section id="conditional-expectation-1" class="slide level2">
+<section id="conditional-expectation-3" class="slide level2">
 <h2>Conditional Expectation</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -769,6 +781,26 @@ x+\epsilon) = &amp; \frac{ P(Y \leq y \cap x-\epsilon \leq X \leq x+\epsilon
 </div>
 </div>
 </div>
+<aside class="notes">
+<ol type="1">
+<li>Can be shown explicitly. For any <span class="math inline">\(\{E_k\}_{k=1}^m\)</span> partition of <span class="math inline">\(\Omega\)</span>, let <span class="math inline">\(\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)\)</span>
+<ul>
+<li><span class="math inline">\(\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}\)</span>, then use 2 from definition to solve for <span class="math inline">\(c_k\)</span>.</li>
+<li>Take the partition to be <span class="math inline">\(\{x_i\} \times \mathcal{Y}\)</span></li>
+</ul></li>
+<li>This is shown by verifying that this function satisfies (2).</li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="properties-of-conditional-expectation" class="slide level2">
 <h2>Properties of Conditional Expectation</h2>
@@ -802,7 +834,7 @@ x+\epsilon) = &amp; \frac{ P(Y \leq y \cap x-\epsilon \leq X \leq x+\epsilon
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(\mathscr{G}\)</span> be a sub <span class="math inline">\(\sigma\)</span>-field of <span class="math inline">\(\mathscr{F}\)</span>. Tthe <strong>conditional probability measure</strong> given <span class="math inline">\(\mathscr{G}\)</span> is defined to be a map <span class="math inline">\(P(\cdot \mid \mathscr{G})(\cdot ):\mathscr{F}\times \Omega \rightarrow [0,1]\)</span> such that</p>
+<p>Let <span class="math inline">\(\mathscr{G}\)</span> be a sub <span class="math inline">\(\sigma\)</span>-field of <span class="math inline">\(\mathscr{F}\)</span>. The <strong>conditional probability measure</strong> given <span class="math inline">\(\mathscr{G}\)</span> is defined to be a map <span class="math inline">\(P(\cdot \mid \mathscr{G})(\cdot ):\mathscr{F}\times \Omega \rightarrow [0,1]\)</span> such that</p>
 <ol type="1">
 <li><p>For each <span class="math inline">\(A\in \mathscr{F}\)</span>, <span class="math inline">\(P(A \mid \mathscr{G})(\cdot )=\mathbf{E}\left[ 1\{\omega \in A\} \mid \mathscr{G}\right] (\cdot )\)</span>, a.e.</p></li>
 <li><p>for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(P(\cdot \mid \mathscr{G})(\omega )\)</span> is a probability measure on <span class="math inline">\((\Omega ,\mathscr{F}).\)</span></p></li>

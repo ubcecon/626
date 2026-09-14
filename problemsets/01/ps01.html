@@ -2,18 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-15">
+<meta name="dcterms.date" content="2026-09-21">
 
 <title>ECON 626: Problem Set 1 – ECON 626</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -21,27 +27,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -53,15 +39,14 @@ div.csl-indent {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4afa585e620e1e545a967878b225e89b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-205c157cc1ad17ef6203a2440e42a020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -91,7 +76,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -130,8 +115,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ECON 626</span>
     </a>
@@ -198,7 +181,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 15, 2025</p>
+      <p class="date">September 21, 2026</p>
     </div>
   </div>
   
@@ -217,63 +200,9 @@ window.Quarto = {
 <li>Is <span class="math inline">\(\{\{a\}, \{c\}, \{a,b\}, \emptyset\}\)</span> a <span class="math inline">\(\sigma\)</span>-field?</li>
 <li>What is the smallest <span class="math inline">\(\sigma\)</span>-field containing <span class="math inline">\(\{\{a,b\},\{a,c\}\}\)</span>?</li>
 </ol>
-<!-- The proofs convergence theorems in chapter 1 of the notes assumed $\{f_n\}$ are measurable. There are situations where measurability is difficult to verify and can fail to hold with respect to what seems a natural Borel $\sigma$-algebra to use (see @vw1996 page 3 for an example).  One way to proceed in these situations, is to instead use outer measure and outer integrals, which we introduce in this exercise. -->
-<!-- Let  $(\Omega,\mathscr{F},\mu)$ be a measure space, -->
-<!-- $f : \Omega \to \mathbf{R}$. Define the **outer integral** of $f$ with respect to $\mu$ as -->
-<!-- $$ -->
-<!-- \int^* f d\mu = \inf_{g:\Omega \to \bar{\mathbf{R}}, g \geq f, g \text{ measurable}} \int g d\mu -->
-<!-- $$ -->
-<!-- Let $f_n: \Omega \to \mathbf{R}$. Assume $L \leq f_1(\omega) \leq f_2(\omega) -->
-<!-- \leq f_3(\omega) ...$ for all $\omega$, and $\lim_{n \to \infty} f_n (\omega) = f(\omega)$. -->
-<!-- Show the monotone convergence theorem for outer integrals, i.e. -->
-<!-- $$ -->
-<!-- \lim_{n \to \infty} \int^* f_n d\mu = \int^* f d\mu -->
-<!-- $$ -->
-<!-- ## Suggested steps: -->
-<!-- 1. Show that there exists a minimal measurable majorant of $f$, -->
-<!--   i.e. a measurable $f^* \geq f$ such that if $g \geq f$ and $g$ is measurable, -->
-<!--   then $f^* \leq g$ a.e. To do this, choose a sequence $h_n$ -->
-<!--   such that $\int h_n d\mu \downarrow \int^* f d\mu$, and let -->
-<!--   $f^*(\omega) = \lim_{n \to \infty} \inf_{1 \leq k \leq n} -->
-<!--   h_k(\omega)$. State why such $h_n$ exist and why this limit exists -->
-<!--   (recall the monotone convergence theorem for sequences of real numbers). -->
-<!-- 2. Use $f_n^*$, $f^*$, and the monotone convergence theorem for -->
-<!--    integrals of measurable functions to obtain the result. -->
-<!-- ::: {.callout-tip } -->
-<!-- If $g_1, g_2, ....$ are an increasing sequence of measurable -->
-<!-- functions from -->
-<!-- $\Omega \to \mathbb{R}$, and $g_n \to g$, then notice that since $g_n$ are increasing, -->
-<!-- $\lim_{n\to \infty} g_n = \sup_n g_n$. -->
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- g^{-1}((-\infty,x]) = & \{\omega: \lim g_n(\omega) \leq x \} \\ -->
-<!-- = & \{ \omega: \sup g_n(\omega) \leq x \} \\ -->
-<!-- = & \{ \omega: g_n(\omega) \leq x \forall n\} \\ -->
-<!-- = & \cap_n g_n^{-1}((-\infty, x]) -->
-<!-- \end{align*} -->
-<!-- $$ -->
-<!-- Each $g_n$ is measurable, so $g_n^{-1}((-\infty, x]) \in -->
-<!-- \mathscr{F}$.  The right hand side is a countable intersection, so it -->
-<!-- must also be in $\mathscr{F}$. Thus, $g^{-1}((-\infty, x]) \in -->
-<!-- \mathscr{F}$. The collection of all such sets generates -->
-<!-- $\mathscr{B}(\mathbb{R})$, so $g^{-1}(B) \in \mathscr{F}$ for any -->
-<!-- $B \in \mathscr{B}(\mathbb{R})$, that is, $g$ is measurable. -->
-<!--   - An analogous arguments would apply to a decreasing sequence. -->
-<!--   - For any convergent sequence, -->
-<!--   $\lim g_n = \lim_n \inf_{k \geq n}   g_k = \lim_n \sup_{k \geq n} g_k$, and the $\inf$ and $\sup$ are increasing and decreasing, so you can generalize this argument to any sequence. -->
-<!-- ::: -->
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p><span class="citation" data-cites="song2021">Song (<a href="#ref-song2021" role="doc-biblioref">2021</a>)</span> exercise 4.1.</p>
-<p>For a collection <span class="math inline">\(\mathscr{C}\)</span> of sets, we write <span class="math inline">\(\sigma (\mathscr{C})\)</span> to denote the smallest <span class="math inline">\(\sigma\)</span>-field that contains <span class="math inline">\(\mathscr{C}\)</span>, and say that <span class="math inline">\(\sigma (\mathscr{C})\)</span> is the <span class="math inline">\(\sigma\)</span>-field generated by <span class="math inline">\(\mathscr{C}\)</span>.</p>
-<ol type="1">
-<li><p>Let <span class="math inline">\(X\)</span> be a random variable on <span class="math inline">\((\Omega ,\mathscr{F})\)</span> and let <span class="math inline">\(\mathscr{G}\)</span> be the collection of the sets of the form <span class="math inline">\(\{\omega \in \Omega :X(\omega )\in B\}\)</span> with <span class="math inline">\(B\in \mathscr{B}(\mathbf{R})\)</span>. Then show that <span class="math inline">\(\mathscr{G}\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p></li>
-<li><p><em>Optional, more difficult</em> Show that <span class="math inline">\(\{X^{-1}(A):A\in \sigma (\mathscr{C})\}=\sigma(\{X^{-1}(A):A\in \mathscr{C}\})\)</span> for any subset <span class="math inline">\(\mathscr{C}\)</span> of <span class="math inline">\(\mathscr{B}(\mathbf{R})\)</span>.</p></li>
-</ol>
-</section>
-<section id="problem-3" class="level1">
-<h1>Problem 3</h1>
 <p>Suppose that <span class="math inline">\(f_n(x) \to f(x)\)</span> and <span class="math inline">\(f_n \geq 0\)</span>, <span class="math inline">\(\int f_n d\mu = 1\)</span> for all <span class="math inline">\(n\)</span> and <span class="math inline">\(f \geq 0\)</span>, <span class="math inline">\(\int f d\mu = 1\)</span>. Use Jensen’s inequality and the dominated convergence theorem to show that for any measurable set <span class="math inline">\(A\)</span>, <span class="math inline">\(\int_A f_n d\mu \to \int_A f d\mu\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -291,8 +220,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="problem-4" class="level1">
-<h1>Problem 4</h1>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
 <p>Show that if for some <span class="math inline">\(u &gt; 0\)</span>, <span class="math inline">\(E[|X|^u ] &lt; \infty\)</span> and <span class="math inline">\(E[|Y|^u ] &lt;
 \infty\)</span>, then for any <span class="math inline">\(q \in (0, u/2)\)</span>, <span class="math display">\[
 \lim_{a \to \infty} a^{q} P \left(|XY| &gt; a\right) = 0
@@ -311,12 +240,12 @@ Tip
 </div>
 </div>
 </section>
-<section id="problem-5" class="level1">
-<h1>Problem 5</h1>
+<section id="problem-4" class="level1">
+<h1>Problem 4</h1>
 <p>Consider repeatedly performing the same experiment <span class="math inline">\(n\)</span> times and recording some measurement.</p>
 <p>Each trial, the outcome is a random variable <span class="math inline">\(X_i\)</span> with sigma-field <span class="math inline">\(\mathscr{B}(\mathbf{R})\)</span> and distribution <span class="math inline">\(P_X\)</span>. The outcome of each trial has no influence on any other.</p>
 <ol type="1">
-<li>Show that there is a unique measure on <span class="math inline">\(\mathscr{B}(\mathbf{R}^n)\)</span> such that <span class="math inline">\(P_n(A_1 \times A_2 \times \cdots \times A_n) = P_X(A_1)P_X(A_n) \cdots P_X(A_n)\)</span> for all <span class="math inline">\(A_1, ..., A_n \in \mathscr{B}(\mathbf{R})\)</span>.</li>
+<li>(Optional) Show that there is a unique measure on <span class="math inline">\(\mathscr{B}(\mathbf{R}^n)\)</span> such that <span class="math inline">\(P_n(A_1 \times A_2 \times \cdots \times A_n) = P_X(A_1)P_X(A_n) \cdots P_X(A_n)\)</span> for all <span class="math inline">\(A_1, ..., A_n \in \mathscr{B}(\mathbf{R})\)</span>.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -328,22 +257,46 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use Carathéodary’s extension theorem.</p>
+<p>Use Carathéodary’s extension theorem. It is sufficient to write the argument for <span class="math inline">\(n=2\)</span>.</p>
 </div>
 </div>
 <ol start="2" type="1">
 <li>Suppose <span class="math inline">\(\mathrm{E}[X_1] = \mu\)</span> and <span class="math inline">\(P(|X_1-\mu| &gt; b) = 0\)</span>. Show that <span class="math inline">\(P\left( \left\vert \frac{1}{n} \sum_{i=1}^n X_i - \mu \right\vert &gt; \epsilon \right) \leq \frac{b^2}{n \epsilon^2}\)</span></li>
 </ol>
-
+</section>
+<section id="problem-5" class="level1">
+<h1>Problem 5</h1>
+<p>Let <span class="math inline">\(X\)</span> be a real-valued continuous random variable on <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> with induced probability measure <span class="math inline">\(P_X\)</span> satisfying <span class="math inline">\(P_X \ll \lambda\)</span>, where <span class="math inline">\(\lambda\)</span> denotes the Lebesgue measure on <span class="math inline">\((\mathbb{R}, \mathcal{B}(\mathbb{R}))\)</span>. By the Radon–Nikodym theorem, <span class="math inline">\(X\)</span> admits a probability density function:</p>
+<p><span class="math display">\[f_X \equiv \frac{dP_X}{d\lambda}\]</span></p>
+<p>Let <span class="math inline">\(g: \mathbb{R} \to \mathbb{R}\)</span> be strictly increasing and continuously differentiable, and define the transformed random variable <span class="math inline">\(Y = g(X)\)</span> with induced measure <span class="math inline">\(P_Y\)</span>.</p>
+<ol type="1">
+<li><p>For any <span class="math inline">\(y \in \mathbb{R}\)</span>, express the cumulative distribution function <span class="math inline">\(F_Y(y) = P_Y((-\infty, y])\)</span> as an integral of <span class="math inline">\(f_X\)</span> with respect to <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Substitute <span class="math inline">\(x=g^{-1}(y)\)</span> to rewrite <span class="math inline">\(P_Y((-\infty, y])\)</span> as an integral over the interval <span class="math inline">\((-\infty, y]\)</span>.</p></li>
+<li><p>Using the definition of the Radon–Nikodym derivative, deduce that <span class="math inline">\(P_Y \ll \lambda\)</span> and conclude that the density of <span class="math inline">\(Y\)</span> is:</p></li>
+</ol>
+<p><span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy}g^{-1}(y)\]</span></p>
+<p><strong>Part 1:</strong></p>
+<p>By definition of the induced pushforward measure and the fact that <span class="math inline">\(g\)</span> is strictly increasing:</p>
+<p><span class="math display">\[P_Y((-\infty, y]) = P(g(X) \le y) = P(X \le g^{-1}(y)) = P_X((-\infty, g^{-1}(y)])\]</span></p>
+<p>Since <span class="math inline">\(P_X \ll \lambda\)</span> with Radon–Nikodym derivative <span class="math inline">\(f_X\)</span>:</p>
+<p><span class="math display">\[P_Y((-\infty, y]) = \int_{-\infty}^{g^{-1}(y)} f_X(x) \, d\lambda(x)\]</span></p>
+<p><strong>Part 2:</strong></p>
+<p>Because <span class="math inline">\(g\)</span> is strictly increasing and <span class="math inline">\(C^1\)</span>, its inverse <span class="math inline">\(g^{-1}\)</span> is also strictly increasing and <span class="math inline">\(C^1\)</span>. Performing the substitution <span class="math inline">\(x = g^{-1}(u)\)</span>, with differential <span class="math inline">\(dx = (g^{-1})'(u) \, du\)</span>:</p>
+<p><span class="math display">\[\int_{-\infty}^{g^{-1}(y)} f_X(x) \, dx = \int_{-\infty}^{y} f_X(g^{-1}(u)) \frac{d}{du}g^{-1}(u) \, du\]</span></p>
+<p><strong>Part 3:</strong></p>
+<p>Define the non-negative Borel measurable function:</p>
+<p><span class="math display">\[h(u) \equiv f_X(g^{-1}(u)) \frac{d}{du}g^{-1}(u)\]</span></p>
+<p>From Part 2, for all intervals of the form <span class="math inline">\(I_y = (-\infty, y]\)</span>:</p>
+<p><span class="math display">\[P_Y(I_y) = \int_{I_y} h(u) \, d\lambda(u)\]</span></p>
+<p>Because the collection of intervals <span class="math inline">\(\{(-\infty, y] : y \in \mathbb{R}\}\)</span> forms a <span class="math inline">\(\pi\)</span>-system that generates the Borel <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span>, the equality extends uniquely to all Borel sets <span class="math inline">\(A \in \mathcal{B}(\mathbb{R})\)</span>:</p>
+<p><span class="math display">\[P_Y(A) = \int_A h(u) \, d\lambda(u)\]</span></p>
+<p>Thus, if <span class="math inline">\(\lambda(A) = 0\)</span>, then <span class="math inline">\(P_Y(A) = 0\)</span>, which proves <span class="math inline">\(P_Y \ll \lambda\)</span>. By the almost-everywhere uniqueness of the Radon–Nikodym derivative:</p>
+<p><span class="math display">\[f_Y(y) \equiv \frac{dP_Y}{d\lambda}(y) = h(y) = f_X(g^{-1}(y)) \frac{d}{dy}g^{-1}(y) \quad \text{a.e. } [\lambda]\]</span></p>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-song2021" class="csl-entry" role="listitem">
-Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -417,7 +370,7 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

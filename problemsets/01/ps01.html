@@ -275,23 +275,6 @@ Tip
 <li><p>Using the definition of the Radon–Nikodym derivative, deduce that <span class="math inline">\(P_Y \ll \lambda\)</span> and conclude that the density of <span class="math inline">\(Y\)</span> is:</p></li>
 </ol>
 <p><span class="math display">\[f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy}g^{-1}(y)\]</span></p>
-<p><strong>Part 1:</strong></p>
-<p>By definition of the induced pushforward measure and the fact that <span class="math inline">\(g\)</span> is strictly increasing:</p>
-<p><span class="math display">\[P_Y((-\infty, y]) = P(g(X) \le y) = P(X \le g^{-1}(y)) = P_X((-\infty, g^{-1}(y)])\]</span></p>
-<p>Since <span class="math inline">\(P_X \ll \lambda\)</span> with Radon–Nikodym derivative <span class="math inline">\(f_X\)</span>:</p>
-<p><span class="math display">\[P_Y((-\infty, y]) = \int_{-\infty}^{g^{-1}(y)} f_X(x) \, d\lambda(x)\]</span></p>
-<p><strong>Part 2:</strong></p>
-<p>Because <span class="math inline">\(g\)</span> is strictly increasing and <span class="math inline">\(C^1\)</span>, its inverse <span class="math inline">\(g^{-1}\)</span> is also strictly increasing and <span class="math inline">\(C^1\)</span>. Performing the substitution <span class="math inline">\(x = g^{-1}(u)\)</span>, with differential <span class="math inline">\(dx = (g^{-1})'(u) \, du\)</span>:</p>
-<p><span class="math display">\[\int_{-\infty}^{g^{-1}(y)} f_X(x) \, dx = \int_{-\infty}^{y} f_X(g^{-1}(u)) \frac{d}{du}g^{-1}(u) \, du\]</span></p>
-<p><strong>Part 3:</strong></p>
-<p>Define the non-negative Borel measurable function:</p>
-<p><span class="math display">\[h(u) \equiv f_X(g^{-1}(u)) \frac{d}{du}g^{-1}(u)\]</span></p>
-<p>From Part 2, for all intervals of the form <span class="math inline">\(I_y = (-\infty, y]\)</span>:</p>
-<p><span class="math display">\[P_Y(I_y) = \int_{I_y} h(u) \, d\lambda(u)\]</span></p>
-<p>Because the collection of intervals <span class="math inline">\(\{(-\infty, y] : y \in \mathbb{R}\}\)</span> forms a <span class="math inline">\(\pi\)</span>-system that generates the Borel <span class="math inline">\(\sigma\)</span>-algebra <span class="math inline">\(\mathcal{B}(\mathbb{R})\)</span>, the equality extends uniquely to all Borel sets <span class="math inline">\(A \in \mathcal{B}(\mathbb{R})\)</span>:</p>
-<p><span class="math display">\[P_Y(A) = \int_A h(u) \, d\lambda(u)\]</span></p>
-<p>Thus, if <span class="math inline">\(\lambda(A) = 0\)</span>, then <span class="math inline">\(P_Y(A) = 0\)</span>, which proves <span class="math inline">\(P_Y \ll \lambda\)</span>. By the almost-everywhere uniqueness of the Radon–Nikodym derivative:</p>
-<p><span class="math display">\[f_Y(y) \equiv \frac{dP_Y}{d\lambda}(y) = h(y) = f_X(g^{-1}(y)) \frac{d}{dy}g^{-1}(y) \quad \text{a.e. } [\lambda]\]</span></p>
 
 
 </section>

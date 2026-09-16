@@ -118,7 +118,7 @@ $$
 
 ::: {.notes}
 
-In many applications, the underlying probability $(\Omega, \matscr{F}, P)$ will mostly sit in the background and most calculations will be done with $(\R, \mathscr{B})(\R), P_X)$.
+In many applications, the underlying probability space $(\Omega, \matscr{F}, P)$ will mostly sit in the background and most calculations will be done with $(\R, \mathscr{B})(\R), P_X)$.
 
 Given an example.
 
@@ -141,7 +141,7 @@ $$
 
 ::: {.notes}
 
-By definition, we can go from $P_X$ to $F_X$. By Cartheodary's extension theorem, we can do the reverse. Either the CDF or $P_X$ tells completely characterizes the distribution.
+By definition, we can go from $P_X$ to $F_X$. By Carathéodary's extension theorem, we can do the reverse. Either the CDF or $P_X$ completely characterizes the distribution.
 
 :::
 
@@ -154,7 +154,7 @@ By definition, we can go from $P_X$ to $F_X$. By Cartheodary's extension theorem
 
 (i) Let $X$ be a random variable with
 distribution $P_{X}$. When $P_{X}\ll \lambda$, we call $X$ a
-**continuous random variable**, and call the Radon-Nikodym derivative
+**(absolutely) continuous random variable**, and call the Radon-Nikodym derivative
 $f_X\equiv dP_{X}/d\lambda$ the (probability) **density function** of $P_{X}$.
 
 (ii) We say that $X$ is a **discrete random variable**, if
@@ -179,6 +179,17 @@ Show that when $X$ is continuous, its CDF is a continuous function
 
 :::
 
+::: {.notes}
+
+$X$ being continuous implies that $P_X(\{a\}) = 0$
+for all $a \in \R$ since $\lambda(\{a\}) = 0$. By continuity of measure,
+$P_{X}((-\infty, a]) = \lim_{\epsilon \downarrow 0} P_{X}((-\infty, a+\epsilon])$, so
+$$F_X(a) = \lim_{\epsilon \downarrow 0} F_X(a+\epsilon).$$
+Similarly,
+$$F_x(a) = \lim_{\epsilon \uparrow 0} F_X(a-\epsilon).$$
+
+:::
+
 <!--- TODO: add examples or uses to go with these definitions --->
 
 # Expectation
@@ -187,7 +198,7 @@ Show that when $X$ is continuous, its CDF is a continuous function
 
 ### Definition
 
-The **expection** of $X$ is $\Er [X] = \int_\Omega x dP$
+The **expectation** of $X$ is $\Er [X] = \int_\Omega X(\omega) dP(\omega)$
 
 :::
 
@@ -203,7 +214,7 @@ $$
 $$
 
 
-For any measurable function $g$, we can define $\mathcal{E}_X: \{measurable functions\} \to \R$ by $\mathcal{E}_X(g) = \Er[g(X)]$. We could call this the expectation functional of $X$.  Taking $g = 1\{X \leq x\}$ for $x \in \R$, we can recover the CDF, $F_X(x) = \mathcal{E}_X(1\{X \leq x \}). Thus, the expectation functional is a third way, along with the CDF and probability measure, to describe the distribution of $X$.
+For any measurable function $g$, we can define $\mathcal{E}_X: \{measurable functions\} \to \R$ by $\mathcal{E}_X(g) = \Er[g(X)]$. We could call this the expectation functional of $X$.  Taking $g = 1\{X \leq x\}$ for $x \in \R$, we can recover the CDF, $F_X(x) = \mathcal{E}_X(1\{X \leq x \})$. Thus, the expectation functional is a third way, along with the CDF and probability measure, to describe the distribution of $X$.
 
 :::
 
@@ -269,11 +280,9 @@ $\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]$
 
 Proof:
 
-- $\Er[(X-Y)^2] \geq 0$, so
-- $2\Er[XY] \leq \Er[X^2] + \Er[Y^2]$
-- $\Er[XY] = \Er[\lambda X \lambda^{-1}Y]$, so
+- For any $\lambda \neq 0$, $\Er[(\lambda X - \lambda^{-1} Y)^2] \geq 0$, so
 - $2\Er[XY] \leq \lambda^2 \Er[X^2] + \lambda^{-2} \Er[Y^2]$
-- set $\lambda^2 = \sqrt{\Er[X^2]/\Er[Y^2]}$
+- set $\lambda^2 = \sqrt{\Er[Y^2]/\Er[X^2]}$
 
 :::
 
@@ -356,11 +365,16 @@ $\sigma(X_1), ..., \sigma(X_m)$ are independent
 
 :::
 
+- $X_1$ and $X_2$ are independent iff
+$F_{X_1,X_2}(x_1,x_2) = F_{X_1}(x_1) F_{X_2}(x_2)$ for all $x_1, x_2$.
+
 ::: {.notes}
 
 Show some simple example(s).
 
 :::
+
+
 
 ## Random Vectors
 
@@ -373,7 +387,7 @@ $\sigma$-field containing $\cup_{i=1}^n \sigma(X_i)$
 ### Theorem
 
 Suppose that $X=(X_1, X_2)$ and $Y=(Y_1, Y_2)$ are independent, then
-$f(X)$ and $g(Y)$ are independent
+$g(X)$ and $h(Y)$ are independent
 
 :::
 
@@ -385,6 +399,51 @@ As promised, an easy way to show obvious independence without any tedious calcul
 
 
 # Conditioning
+
+## Conditional Distribution
+
+- $X,Y$ random variales with cdf $F$
+- If $P(X=x)>0$, then conditional cdf is
+$$
+F_{Y|X}(y|x) = P(Y\leq y | X=x) = \frac{P(Y \leq y \cap X=x)}{P(X=x)}
+$$
+- If $X$ is continuous, then
+$$
+F_{Y|X}(y|x) = \lim_{\epsilon \downarrow 0} P(Y \leq y | x-\epsilon \leq X \leq x+\epsilon) = \frac{\partial F/\partial x(x,y)}{f_X(x)}
+$$
+
+::: {.notes}
+
+Proof of last equality:
+$$
+\begin{align*}
+P(Y \leq y | x-\epsilon \leq X \leq
+x+\epsilon) = & \frac{ P(Y \leq y \cap x-\epsilon \leq X \leq x+\epsilon
+  )}{P(x-\epsilon \leq X \leq x+\epsilon)} \\
+  = & \frac{F(y, x+\epsilon) - F(y,x-\epsilon)}{F_X(x+\epsilon) - F_X(x-\epsilon)}
+\end{align*}
+$$
+Divide numerator and denominator by $2\epsilon$, apply l'Hospital's rule, and definition of derivative.
+
+:::
+
+## Conditional Density
+
+- $f_{Y|X}(y|x) = \frac{\partial F_{Y|X}(y|x)}{\partial y} = \frac{f(x,y)}{f_x(x)}$
+
+## Conditional Expectation
+
+- For continuous $Y$,
+$$
+\Er[Y|X=x] = \int y f_{Y|X}(y|x) dy
+$$
+
+
+## Conditional Expectation
+
+- Previous definition needs to be stated separately for continuous vs discrete
+- Previous definition leads to ambiguity --- how you take limits toward $X=x$ matters (Borel paradox)
+- Measure theoretic definition avoids these problems, but is more abstract
 
 ## Conditional Expectation
 
@@ -404,9 +463,6 @@ of $Y$ given $\mathscr{G}$ is $\Er[Y|\mathscr{G}](\cdot): \Omega \to \R$ s.t.
 
 ::: {.incremental}
 
-- Ex: $\{E_k\}_{k=1}^m$ partition of $\Omega$, let
-$\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
-   - $\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}$, then use 2 to solve for $c_k$
 - Existence from Radon-Nikodym theorem
 - $\Er[Y|X] \equiv \Er[Y|\sigma(X)]$
 
@@ -431,6 +487,17 @@ $$
 
 :::
 
+::: {.notes}
+
+1. Can be shown explicitly. For any $\{E_k\}_{k=1}^m$ partition of $\Omega$, let
+$\mathscr{G} = \sigma(\{E_k\}_{k=1}^m)$
+   - $\Er[Y | \mathscr{G}](\omega) = \sum_{k=1}^m c_k 1\{\omega \in E_k\}$, then use 2 from definition to solve for $c_k$.
+   - Take the partition to be $\{x_i\} \times \mathcal{Y}$
+
+2. This is shown by verifying that this function satisfies (2).
+
+:::
+
 
 ## Properties of Conditional Expectation
 
@@ -440,6 +507,12 @@ $$
 - If $\sigma(X) \subset \sigma(Z)$, then $\Er[XY|Z] = X \Er[Y|Z]$
 - If $\sigma(X) \subset \sigma(Z)$, then $\Er[\Er[Y|Z]|X] = \Er[Y|X]$
 - If $Y$ and $X$ are independent, then $\Er[Y | X ] = \Er[Y]$
+
+:::
+
+::: {.notes}
+
+One way to prove these statements is to first show them for indicator functions, then approximate $X$ by a sequence of simple functions, finally apply a convergence theorem to get the result. The notes include such a proof for the last claim about independent variables.
 
 :::
 
@@ -458,13 +531,15 @@ $$
 
 :::
 
+
+
 ## Conditional Measure
 
 ::: {.callout-tip icon=false}
 
 ### Definition
 
-Let $\mathscr{G}$ be a sub $\sigma$-field of $\mathscr{F}$. Tthe **conditional probability measure**
+Let $\mathscr{G}$ be a sub $\sigma$-field of $\mathscr{F}$. The **conditional probability measure**
 given $\mathscr{G}$ is defined to be a map $P(\cdot \mid \mathscr{G})(\cdot ):\mathscr{F}\times \Omega \rightarrow [0,1]$ such that
 
 1. For each $A\in \mathscr{F}$, $P(A \mid \mathscr{G})(\cdot )=\mathbf{E}\left[ 1\{\omega \in A\} \mid \mathscr{G}\right] (\cdot )$, a.e.

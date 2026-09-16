@@ -33,35 +33,26 @@ engine: julia
 ## Why Measure Theory?
 
 ::: {.incremental}
-1. Simplifies some arguments
-    - Example from @pollard2002, define independence as factorization of distribution functions
-    $$ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) $$
-    - If $X_1,X_2,X_3, X_4$ are independent, show that
-    $$ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) $$
-    is independent of
-    $$ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) $$
-::::
+1. Resolves some difficulties with infinity
+
+2. Simplifies some arguments
+    <!-- - Example from @pollard2002, define independence as factorization of distribution functions -->
+    <!-- $$ P(X \leq x \cap Y \leq y) = P(X \leq x) P(Y \leq y) $$ -->
+    <!-- - If $X_1,X_2,X_3, X_4$ are independent, show that -->
+    <!-- $$ Y = X_1 X_2 \log\left(\frac{X_1^2 + X_2^3}{|X_1| + |X_2|}\right) $$ -->
+    <!-- is independent of -->
+    <!-- $$ Z =  sin\left(X_3 + X_3^2 + X_3X_4 + X_4^2 \right) $$ -->
+
+3. Unifies treatment
+   - discrete vs continuous
+   - uni- vs multi-variate
+
+:::
 
 $$
 \def\R{\mathbb{R}}
 \def\B{\mathscr{B}}
 $$
-
-## Why Measure Theory?
-
-
-
-::: {.incremental}
-
-1. Simplifies some arguments
-
-2. Unifies treatment
-   - discrete vs continuous
-   - uni- vs multi-variate
-3. Resolves some difficulties with infinity
-
-:::
-
 
 ::: {.notes}
 
@@ -154,13 +145,15 @@ Let $\Omega$ be countable with any $\mathscr{F}$, define $\mu(A)$ as the number 
 
 ## Lebesgue Measure
 
+- Given a topology on $\Omega$, the **Borel** $\sigma$-**field**, $\mathscr{B}(\Omega)$, is the smallest $\sigma$-field containing all open subsets of $\Omega$
+
 ::: {.callout-warning icon=false}
 
 ### Theorem
 
-There exists a unique $\sigma$-finite measure $\mu$ on $(\mathbf{R},\mathscr{B}(\mathbf{R}))$  such that for any $a\leq b$ with $a,b\in \mathbf{R}$,
+There exists a unique $\sigma$-finite measure $\lambda$ on $(\mathbf{R},\mathscr{B}(\mathbf{R}))$  such that for any $a\leq b$ with $a,b\in \mathbf{R}$,
 $$
-\mu ((a,b])=b-a
+\lambda ((a,b])=b-a
 $$
 
 :::
@@ -168,7 +161,6 @@ $$
 
 ## Measurable Function
 
-- Given a topology on $\Omega$, the **Borel** $\sigma$-**field**, $\mathscr{B}(\Omega)$, is the smallest $\sigma$-field containing all open subsets of $\Omega$
 
 ::: {.notes}
 
@@ -498,6 +490,34 @@ $$
 
 :::
 
+::: {.notes}
+
+For the exercise, we want to apply the theorem to
+
+$$
+\lim_{N \to \infty} \int \left\vert g(x) - \sum_{n=1}^N g_n(x) \right\vert d\mu(x).
+$$
+
+Let $f_N(x) = \left\vert g(x) - \sum_{n=1}^N g_n(x) \right\vert$. For
+each x, $f_N(x) \to 0$. To apply the theorem, we just need a dominating function. By the triangle inequality,
+$$
+f_N(x) \leq \vert g(x) \vert + \sum_{n=1}^N \vert g_n(x) \vert \leq  \vert g(x) \vert + \sum_{n=1}^\infty \vert g_n(x) \vert = G(x)
+$$
+To apply the theorem, we need $G(x)$ to be finite and integrable.
+
+$G(x) < \infty$ almost everywhere because (some details omitted)
+$$
+\infty \geq \sum_{n=1}^N \int | g_n | d\mu \geq \mu(\{x: \sum_{n=1}^N g_n(x) } \geq B\}) B
+$$
+
+$\int G d\nu < \infty$ because $\int \sum_{n=1}^\infty \vert g_n \vert
+d\mu = \sum_{n=1}^\infty \int |g_n| d\nu$ by the monotone convergence
+thereom, and $\int |g| d\mu = \int \left\vert \sum_{n=1}^\infty
+  g_n\right \vert d\mu \leq \int
+\sum_{n=1}^\infty \vert g_n \vert d\mu$.
+
+:::
+
 
 # Radon-Nikodym Derivatives
 
@@ -536,6 +556,10 @@ $$
 For any such $f$ and $g$, $\mu (\{\omega \in \Omega:f(\omega )\neq g(\omega )\})=0$
 
 :::
+
+- Often denote $f=\frac{d\nu}{d\mu}$
+
+- Example: measure space $(\R, \mathscr{B}(\R), \lambda)$, with measure $\nu((a,b)) = F(b)-F(a)$ for increasing function $F$, what is $\frac{d\nu}{d\lambda}$?
 
 ::: {.notes}
 

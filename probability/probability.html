@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2026-09-14">
+  <meta name="dcterms.date" content="2026-09-16">
   <title>ECON 626 – Probability</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -163,7 +163,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2026-09-14</p>
+  <p class="date">2026-09-16</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -502,11 +502,9 @@ F_X(t)=P_{X}\left( (-\infty ,t]\right) .
 <aside class="notes">
 <p>Proof:</p>
 <ul>
-<li><span class="math inline">\(\Er[(X-Y)^2] \geq 0\)</span>, so</li>
-<li><span class="math inline">\(2\Er[XY] \leq \Er[X^2] + \Er[Y^2]\)</span></li>
-<li><span class="math inline">\(\Er[XY] = \Er[\lambda X \lambda^{-1}Y]\)</span>, so</li>
+<li>For any <span class="math inline">\(\lambda \neq 0\)</span>, <span class="math inline">\(\Er[(\lambda X - \lambda^{-1} Y)^2] \geq 0\)</span>, so</li>
 <li><span class="math inline">\(2\Er[XY] \leq \lambda^2 \Er[X^2] + \lambda^{-2} \Er[Y^2]\)</span></li>
-<li>set <span class="math inline">\(\lambda^2 = \sqrt{\Er[X^2]/\Er[Y^2]}\)</span></li>
+<li>set <span class="math inline">\(\lambda^2 = \sqrt{\Er[Y^2]/\Er[X^2]}\)</span></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -810,6 +808,19 @@ x+\epsilon) = &amp; \frac{ P(Y \leq y \cap x-\epsilon \leq X \leq x+\epsilon
 <li class="fragment">If <span class="math inline">\(\sigma(X) \subset \sigma(Z)\)</span>, then <span class="math inline">\(\Er[\Er[Y|Z]|X] = \Er[Y|X]\)</span></li>
 <li class="fragment">If <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are independent, then <span class="math inline">\(\Er[Y | X ] = \Er[Y]\)</span></li>
 </ul>
+<aside class="notes">
+<p>One way to prove these statements is to first show them for indicator functions, then approximate <span class="math inline">\(X\)</span> by a sequence of simple functions, finally apply a convergence theorem to get the result. The notes include such a proof for the last claim about independent variables.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="erymathscrg-as-orthogonal-projection" class="slide level2">
 <h2><span class="math inline">\(\Er[Y|\mathscr{G}]\)</span> as Orthogonal Projection</h2>

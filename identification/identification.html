@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2025-09-22">
+  <meta name="dcterms.date" content="2026-09-21">
   <title>ECON 626 – Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -99,7 +105,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -116,7 +121,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -210,10 +215,6 @@
       margin-right: 0; 
     }
   </style>
-  <meta name="mermaid-theme" content="dark">
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -225,19 +226,19 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Paul Schrimpf 
+Paul Schrimpf
 </div>
 </div>
 </div>
 
-  <p class="date">2025-09-22</p>
+  <p class="date">2026-09-21</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
 <ul>
 <li>Required: <strong><span class="citation" data-cites="song2021">Song (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> chapter 4</strong> (which is the basis for these slides)</li>
 <li>Recommended: <span class="citation" data-cites="lewbel2019">Lewbel (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span></li>
-<li>Supplementary: <span class="citation" data-cites="matzkin2013">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>, <span class="citation" data-cites="causalmlbook">V. Chernozhukov et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></li>
+<li>Supplementary: <span class="citation" data-cites="matzkin2013">Matzkin (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="molinari2020">Molinari (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> , <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>, <!-- @causalmlbook --></li>
 </ul>
 <p><span class="math display">\[
 \def\Er{{\mathrm{E}}}
@@ -309,7 +310,7 @@ Paul Schrimpf
 <p>The motivating idea here is we observe data. We do not know exactly the distribution of the data, <span class="math inline">\(P_X\)</span>, but we are willing to assume it comes from some collection of distributions, <span class="math inline">\(\mathcal{P}\)</span>. For example, suppose the data is the result of flipping a possibly biased coin <span class="math inline">\(n\)</span> times. Then we could have <span class="math display">\[
 \mathcal{P} = \{ (\{0,1\}, 2^\{0,1\}, P(1) = p )^n : p \in [0,1] \}
 \]</span> where the probability space to the <span class="math inline">\(n\)</span> means the product space as constructed in the last question on problem set 1.</p>
-<p><span class="math inline">\(\theta_0\)</span> is some parameter of interest related to <span class="math inline">\(P_X\)</span>. In the example, there is not for <span class="math inline">\(\theta_0\)</span> to be other than <span class="math inline">\(p\)</span>, but in general <span class="math inline">\(\theta_0\)</span> could be some aspect of <span class="math inline">\(P_X\)</span> that we especially care about instead of a complete description of it.</p>
+<p><span class="math inline">\(\theta_0\)</span> is some parameter of interest related to <span class="math inline">\(P_X\)</span>. In the example, there is not much for <span class="math inline">\(\theta_0\)</span> to be other than <span class="math inline">\(p\)</span>, but in general <span class="math inline">\(\theta_0\)</span> could be some aspect of <span class="math inline">\(P_X\)</span> that we especially care about instead of a complete description of it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -367,8 +368,8 @@ Y = \alpha + \beta X + \epsilon
 {\int (x - \Er X)^2 dP_{X}(x)}  = \frac{ \cov(X,Y) }{ \var(X) }
 \]</span></p>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="assumptions" class="slide level2">
+<h2>Assumptions</h2>
 <ul>
 <li>Identification requires:
 <ol type="1">
@@ -496,20 +497,20 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <li><p>In example below, <span class="math inline">\(\Er[Y|x_1=1, x_2] &gt; \Er[Y|x_1=0,x_2]\)</span>, but <span class="math inline">\(\beta_1 &lt; 0\)</span></p></li>
 </ul>
 <div id="2" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
-<span id="cb1-2"><a></a>n <span class="op">=</span> <span class="fl">100_000</span></span>
-<span id="cb1-3"><a></a><span class="fu">EYX</span>(x) <span class="op">=</span> x[<span class="fl">2</span>]<span class="op">&gt;</span><span class="fl">0</span> ? <span class="op">-</span><span class="fl">1.0</span> <span class="op">+</span> <span class="fl">1.0</span><span class="op">*</span>x[<span class="fl">1</span>] <span class="op">:</span> (<span class="fl">1.0</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span>x[<span class="fl">1</span>])</span>
-<span id="cb1-4"><a></a>x2 <span class="op">=</span> <span class="fu">randn</span>(n)</span>
-<span id="cb1-5"><a></a>x1 <span class="op">=</span> (x2<span class="op">*</span><span class="fl">3</span> <span class="op">+</span> <span class="fu">randn</span>(n) <span class="op">.&gt;</span> <span class="fl">0</span>)</span>
-<span id="cb1-6"><a></a>X <span class="op">=</span> <span class="fu">hcat</span>(x1,x2)</span>
-<span id="cb1-7"><a></a>y <span class="op">=</span> <span class="fu">EYX</span>.(<span class="fu">eachrow</span>(X)) <span class="op">+</span> <span class="fu">randn</span>(n)</span>
-<span id="cb1-8"><a></a>X <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">ones</span>(n), X)</span>
-<span id="cb1-9"><a></a>β <span class="op">=</span> (X<span class="op">'*</span>X) <span class="op">\</span> (X<span class="op">'*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a aria-label="1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a aria-label="2"></a>n <span class="op">=</span> <span class="fl">100_000</span></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="fu">EYX</span>(x) <span class="op">=</span> x[<span class="fl">2</span>]<span class="op">&gt;</span><span class="fl">0</span> ? <span class="op">-</span><span class="fl">1.0</span> <span class="op">+</span> <span class="fl">1.0</span><span class="op">*</span>x[<span class="fl">1</span>] <span class="op">:</span> (<span class="fl">1.0</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">*</span>x[<span class="fl">1</span>])</span>
+<span id="cb1-4"><a aria-label="4"></a>x2 <span class="op">=</span> <span class="fu">randn</span>(n)</span>
+<span id="cb1-5"><a aria-label="5"></a>x1 <span class="op">=</span> (x2<span class="op">*</span><span class="fl">3</span> <span class="op">+</span> <span class="fu">randn</span>(n) <span class="op">.&gt;</span> <span class="fl">0</span>)</span>
+<span id="cb1-6"><a aria-label="6"></a>X <span class="op">=</span> <span class="fu">hcat</span>(x1,x2)</span>
+<span id="cb1-7"><a aria-label="7"></a>y <span class="op">=</span> <span class="fu">EYX</span>.(<span class="fu">eachrow</span>(X)) <span class="op">+</span> <span class="fu">randn</span>(n)</span>
+<span id="cb1-8"><a aria-label="8"></a>X <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">ones</span>(n), X)</span>
+<span id="cb1-9"><a aria-label="9"></a>β <span class="op">=</span> (X<span class="op">'*</span>X) <span class="op">\</span> (X<span class="op">'*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3-element Vector{Float64}:
-  0.5219908764122478
- -0.1441087025815694
- -0.36015012473683317</code></pre>
+  0.5227463381755414
+ -0.13785728660557217
+ -0.35945160302925655</code></pre>
 </div>
 </div>
 </section>
@@ -656,205 +657,133 @@ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section></section>
-<section>
-<section id="appendix-causal-diagrams" class="title-slide slide level1 center">
-<h1>Appendix: Causal Diagrams</h1>
-
-</section>
-<section id="causal-diagrams" class="slide level2">
-<h2>Causal Diagrams</h2>
-<ul>
-<li>Originate with Wright around 1920, e.g. <span class="citation" data-cites="wright1934">Wright (<a href="#/references" role="doc-biblioref" onclick="">1934</a>)</span></li>
-<li>Recently advocated by Pearl, e.g. <span class="citation" data-cites="pearl2015">Pearl (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>, <span class="citation" data-cites="pearl2018">Pearl and Mackenzie (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></li>
-<li>Recommended introduction <span class="citation" data-cites="imbens2020">Imbens (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> or <a href="https://www.causalml-book.org/">CausalMLBook</a> chapters 7 and 8</li>
-<li>Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
-<ul>
-<li>e.g. <span class="citation" data-cites="chernozhukov2021">Victor Chernozhukov, Kasahara, and Schrimpf (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="example-regression-2" class="slide level2">
-<h2>Example: Regression</h2>
-<!-- ```{r, engine = 'tikz'} -->
-<!--  \usetikzlibrary{positioning} -->
-<!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
-<!--                      obs/.style={circle, draw,black, text=black}] -->
-<!--  \node[obs] (X){$X_i$}; -->
-<!--  \node[obs] (Y) [right=of X] {$Y_i$}; -->
-<!--  \node(E) [below=of Y]{$\epsilon_i$}; -->
-<!--  \path[->] (X) edge (Y); -->
-<!--  \path[->] (E) edge[dashed] (Y); -->
-<!--  \end{tikzpicture} -->
+<!-- # Appendix: Causal Diagrams -->
+<!-- ## Causal Diagrams -->
+<!-- - Originate with Wright around 1920, e.g. @wright1934 -->
+<!-- - Recently advocated by Pearl, e.g. @pearl2015, @pearl2018 -->
+<!-- - Recommended introduction @imbens2020 or [CausalMLBook](https://www.causalml-book.org/) chapters 7 and 8 -->
+<!-- - Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach -->
+<!--      - e.g. @chernozhukov2021 -->
+<!-- ## Example: Regression -->
+<!-- <\!-- ```{r, engine = 'tikz'} -\-> -->
+<!-- <\!--  \usetikzlibrary{positioning} -\-> -->
+<!-- <\!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -\-> -->
+<!-- <\!--                      obs/.style={circle, draw,black, text=black}] -\-> -->
+<!-- <\!--  \node[obs] (X){$X_i$}; -\-> -->
+<!-- <\!--  \node[obs] (Y) [right=of X] {$Y_i$}; -\-> -->
+<!-- <\!--  \node(E) [below=of Y]{$\epsilon_i$}; -\-> -->
+<!-- <\!--  \path[->] (X) edge (Y); -\-> -->
+<!-- <\!--  \path[->] (E) edge[dashed] (Y); -\-> -->
+<!-- <\!--  \end{tikzpicture} -\-> -->
+<!-- <\!-- ``` -\-> -->
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- %%| fig-height: 2 -->
+<!-- flowchart LR -->
+<!--     X -\-> Y -->
+<!--     ϵ -.-> Y -->
 <!-- ``` -->
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-fig-height="2" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    X --&gt; Y
-    ϵ -.-&gt; Y
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<ul>
-<li>Arrow means <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span></li>
-<li>Dashed arrow means <span class="math inline">\(\epsilon\)</span> causes <span class="math inline">\(Y\)</span> and is unobserved (not universal, often dashed box around <span class="math inline">\(\epsilon\)</span> instead)</li>
-<li>Lack of connection between <span class="math inline">\(X\)</span> and <span class="math inline">\(\epsilon\)</span> means they are independent</li>
-</ul>
-</section>
-<section id="example-regression-3" class="slide level2">
-<h2>Example: Regression</h2>
-<p>If you believe:</p>
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    subgraph " Y"
-        Y[Wage]
-    end
-    subgraph X
-       E[Education] --&gt; Y
-       T[SAT] --&gt; E
-       F[Family SES] --&gt; E
-       F --&gt; Y
-    end
-    subgraph ϵ
-        I[Intelligence] -.-&gt; Y
-        L[Luck] -.-&gt; Y
-        I -.-&gt; T
-    end
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>then regression <span class="math inline">\(Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon\)</span> identifies causal effect of education on wages</p>
-</section>
-<section id="example-regression-4" class="slide level2">
-<h2>Example: Regression</h2>
-<p>But reality is likely more complex …</p>
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-   subgraph " Y"
-        Y[Wage]
-   end
-   subgraph X
-       E[Education] --&gt; Y
-       T[SAT] --&gt; E
-       F[Family SES] --&gt; E
-       F --&gt; Y
-   end
-   subgraph ϵ
-        I[Intelligence] -.-&gt; Y
-        L[Luck] -.-&gt; Y
-        G[Grit] -.-&gt; Y
-        G -.-&gt; E
-        L -.-&gt; E
-        I -.-&gt; T
-        I -.-&gt; E
-        I -.-&gt; G
-        G -.-&gt; I
-   end
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="example-potential-outcomes-2" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<div class="cell" data-reveal="true" data-fig-width="6.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    u -.-&gt; D
-    X --&gt; Y
-    X --&gt; D
-    D --&gt; Y
-    ϵ -.-&gt; Y
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="example-potential-outcomes-3" class="slide level2">
-<h2>Example: Potential Outcomes</h2>
-<div class="cell" data-reveal="true" data-fig-width="8" data-fig-height="6" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    subgraph Treatment
-        D[Naloxone distribution site opens]
-    end
-    subgraph Outcome
-        Y[ER visits for overdose]
-    end
-    u -.-&gt; D
-    D --&gt; Y
-    ϵ -.-&gt; Y
-    subgraph X
-        Income --&gt; Y
-        Unemployment --&gt; Y
-        Income --&gt; D
-        Unemployment --&gt; D
-        OD[OD rate prior to opening] --&gt; Y
-        OD --&gt; D
-        Crime --&gt; Y
-        Crime --&gt; D
-    end
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
-<section id="more-on-causal-graphs" class="slide level2">
-<h2>More on Causal Graphs</h2>
-<ul>
-<li class="fragment">Given a graph, what can be identified?
-<ul>
-<li class="fragment"><span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are d-separated by a collection of nodes <span class="math inline">\(S\)</span> if there are no paths between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> except through <span class="math inline">\(S\)</span></li>
-<li class="fragment">d-separation implies conditional independence <span class="math inline">\(Y \perp X | S\)</span></li>
-</ul></li>
-<li class="fragment">Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)
-<ul>
-<li class="fragment">Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible</li>
-<li class="fragment">But neighborhood of exceptions is large, so causal discovery very difficult</li>
-</ul></li>
-<li class="fragment"><span class="citation" data-cites="causalmlbook">V. Chernozhukov et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>, especially chapters 7 &amp; 8</li>
-</ul>
+<!-- - Arrow means $X$ causes $Y$ -->
+<!-- - Dashed arrow means $\epsilon$ causes $Y$ and is unobserved (not universal, often dashed box around $\epsilon$ instead) -->
+<!-- - Lack of connection between $X$ and $\epsilon$ means they are independent -->
+<!-- ## Example: Regression -->
+<!-- If you believe: -->
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- flowchart LR -->
+<!--     subgraph " Y" -->
+<!--         Y[Wage] -->
+<!--     end -->
+<!--     subgraph X -->
+<!--        E[Education] -\-> Y -->
+<!--        T[SAT] -\-> E -->
+<!--        F[Family SES] -\-> E -->
+<!--        F -\-> Y -->
+<!--     end -->
+<!--     subgraph ϵ -->
+<!--         I[Intelligence] -.-> Y -->
+<!--         L[Luck] -.-> Y -->
+<!--         I -.-> T -->
+<!--     end -->
+<!-- ``` -->
+<!-- then regression $Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon$ identifies causal effect of education on wages -->
+<!-- ## Example: Regression -->
+<!-- But reality is likely more complex ... -->
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- flowchart LR -->
+<!--    subgraph " Y" -->
+<!--         Y[Wage] -->
+<!--    end -->
+<!--    subgraph X -->
+<!--        E[Education] -\-> Y -->
+<!--        T[SAT] -\-> E -->
+<!--        F[Family SES] -\-> E -->
+<!--        F -\-> Y -->
+<!--    end -->
+<!--    subgraph ϵ -->
+<!--         I[Intelligence] -.-> Y -->
+<!--         L[Luck] -.-> Y -->
+<!--         G[Grit] -.-> Y -->
+<!--         G -.-> E -->
+<!--         L -.-> E -->
+<!--         I -.-> T -->
+<!--         I -.-> E -->
+<!--         I -.-> G -->
+<!--         G -.-> I -->
+<!--    end -->
+<!-- ``` -->
+<!-- ## Example: Potential Outcomes -->
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- flowchart LR -->
+<!--     u -.-> D -->
+<!--     X -\-> Y -->
+<!--     X -\-> D -->
+<!--     D -\-> Y -->
+<!--     ϵ -.-> Y -->
+<!-- ``` -->
+<!-- ## Example: Potential Outcomes -->
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 8 -->
+<!-- %%| fig-height: 6 -->
+<!-- flowchart LR -->
+<!--     subgraph Treatment -->
+<!--         D[Naloxone distribution site opens] -->
+<!--     end -->
+<!--     subgraph Outcome -->
+<!--         Y[ER visits for overdose] -->
+<!--     end -->
+<!--     u -.-> D -->
+<!--     D -\-> Y -->
+<!--     ϵ -.-> Y -->
+<!--     subgraph X -->
+<!--         Income -\-> Y -->
+<!--         Unemployment -\-> Y -->
+<!--         Income -\-> D -->
+<!--         Unemployment -\-> D -->
+<!--         OD[OD rate prior to opening] -\-> Y -->
+<!--         OD -\-> D -->
+<!--         Crime -\-> Y -->
+<!--         Crime -\-> D -->
+<!--     end -->
+<!-- ``` -->
+<!-- ## More on Causal Graphs -->
+<!-- ::: {.incremental} -->
+<!-- - Given a graph, what can be identified? -->
+<!--   - $Y$ and $X$ are d-separated by a collection of nodes $S$ if there are no paths between $Y$ and $X$ except through $S$ -->
+<!--   - d-separation implies conditional independence $Y \perp X | S$ -->
+<!-- - Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery) -->
+<!--   - Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible -->
+<!--   - But neighborhood of exceptions is large, so causal discovery very difficult -->
+<!-- - @causalmlbook, especially chapters 7 & 8 -->
+<!-- ::: -->
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-causalmlbook" class="csl-entry" role="listitem">
-Chernozhukov, V., C. Hansen, N. Kallus, M. Spindler, and V. Syrgkanis. 2024. <em>CasualMLBook: Applied Causal Inference Powered by ML and AI</em>. <a href="https://causalml-book.org/">https://causalml-book.org/</a>.
-</div>
-<div id="ref-chernozhukov2021" class="csl-entry" role="listitem">
-Chernozhukov, Victor, Hiroyuki Kasahara, and Paul Schrimpf. 2021. <span>“Causal Impact of Masks, Policies, Behavior on Early Covid-19 Pandemic in the US.”</span> <em>Journal of Econometrics</em> 220 (1): 23–62.
-</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-christensen2015" class="csl-entry" role="listitem">
 Christensen, Timothy M. 2015. <span>“Nonparametric Identification of Positive Eigenfunctions.”</span> <em>Econometric Theory</em> 31 (6): 1310–30.
 </div>
@@ -865,7 +794,7 @@ Cochran, William G. 1953. <span>“Matching in Analytical Studies.”</span> <em
 Fox, Jeremy T, Kyoo il Kim, Stephen P Ryan, and Patrick Bajari. 2012. <span>“The Random Coefficients Logit Model Is Identified.”</span> <em>Journal of Econometrics</em> 166 (2): 204–12.
 </div>
 <div id="ref-hsiao1983" class="csl-entry" role="listitem">
-Hsiao, Cheng. 1983. <span>“Chapter 4 Identification.”</span> In, 1:223–83. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(83)01008-9">https://doi.org/10.1016/S1573-4412(83)01008-9</a>.
+Hsiao, Cheng. 1983. <em>Chapter 4 Identification</em>. Vol. 1. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(83)01008-9">https://doi.org/10.1016/S1573-4412(83)01008-9</a>.
 </div>
 <div id="ref-imbens2020" class="csl-entry" role="listitem">
 Imbens, Guido W. 2020. <span>“Potential Outcome and Directed Acyclic Graph Approaches to Causality: Relevance for Empirical Practice in Economics.”</span> <em>Journal of Economic Literature</em> 58 (4): 1129–79. <a href="https://doi.org/10.1257/jel.20191597">https://doi.org/10.1257/jel.20191597</a>.
@@ -874,25 +803,16 @@ Imbens, Guido W. 2020. <span>“Potential Outcome and Directed Acyclic Graph App
 Lewbel, Arthur. 2019. <span>“The Identification Zoo: Meanings of Identification in Econometrics.”</span> <em>Journal of Economic Literature</em> 57 (4): 835–903. <a href="https://doi.org/10.1257/jel.20181361">https://doi.org/10.1257/jel.20181361</a>.
 </div>
 <div id="ref-matzkin2007" class="csl-entry" role="listitem">
-Matzkin, Rosa L. 2007. <span>“Chapter 73 Nonparametric Identification.”</span> In, edited by James J. Heckman and Edward E. Leamer, 6:5307–68. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
+Matzkin, Rosa L. 2007. <em>Chapter 73 Nonparametric Identification</em>. Edited by James J. Heckman and Edward E. Leamer. Vol. 6. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/S1573-4412(07)06073-4">https://doi.org/10.1016/S1573-4412(07)06073-4</a>.
 </div>
 <div id="ref-matzkin2013" class="csl-entry" role="listitem">
-———. 2013. <span>“Nonparametric Identification in Structural Economic Models.”</span> <em>Annu. Rev. Econ.</em> 5 (1): 457–86.
+Matzkin, Rosa L. 2013. <span>“Nonparametric Identification in Structural Economic Models.”</span> <em>Annu. Rev. Econ.</em> 5 (1): 457–86.
 </div>
 <div id="ref-molinari2020" class="csl-entry" role="listitem">
-Molinari, Francesca. 2020. <span>“Chapter 5 - Microeconometrics with Partial Identification.”</span> In <em>Handbook of Econometrics, Volume 7A</em>, edited by Steven N. Durlauf, Lars Peter Hansen, James J. Heckman, and Rosa L. Matzkin, 7:355–486. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/bs.hoe.2020.05.002">https://doi.org/10.1016/bs.hoe.2020.05.002</a>.
-</div>
-<div id="ref-pearl2015" class="csl-entry" role="listitem">
-Pearl, Judea. 2015. <span>“TRYGVE HAAVELMO AND THE EMERGENCE OF CAUSAL CALCULUS.”</span> <em>Econometric Theory</em> 31 (1): 152–79. <a href="https://doi.org/10.1017/S0266466614000231">https://doi.org/10.1017/S0266466614000231</a>.
-</div>
-<div id="ref-pearl2018" class="csl-entry" role="listitem">
-Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. Basic books.
+Molinari, Francesca. 2020. <span>“Chapter 5 - Microeconometrics with Partial Identification.”</span> In <em>Handbook of Econometrics, Volume 7A</em>, edited by Steven N. Durlauf, Lars Peter Hansen, James J. Heckman, and Rosa L. Matzkin, vol. 7. Handbook of Econometrics. Elsevier. https://doi.org/<a href="https://doi.org/10.1016/bs.hoe.2020.05.002">https://doi.org/10.1016/bs.hoe.2020.05.002</a>.
 </div>
 <div id="ref-song2021" class="csl-entry" role="listitem">
-Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
-</div>
-<div id="ref-wright1934" class="csl-entry" role="listitem">
-Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>The Annals of Mathematical Statistics</em> 5 (3): 161–215. <a href="http://www.jstor.org/stable/2957502">http://www.jstor.org/stable/2957502</a>.
+Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
 </div>
 </div>
 </section>
@@ -1186,7 +1106,7 @@ Wright, Sewall. 1934. <span>“The Method of Path Coefficients.”</span> <em>Th
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

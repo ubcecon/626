@@ -1915,7 +1915,7 @@
     "href": "estimation/estimation.html#reading",
     "title": "Estimation",
     "section": "Reading",
-    "text": "Reading\n\nRequired: Song (2021) chapter 4, sections 1.2 and 2 (which is the basis for these slides)\nSupplemental: Erich Leo Lehmann and Romano (n.d.) , Erich L. Lehmann and Casella (2006)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
+    "text": "Reading\n\nRequired: Song (2021) chapter 4, sections 1.2 and 2 (which is the basis for these slides)\nSupplemental: Lehmann and Romano (n.d.) , Lehmann and Casella (2006)\n\n\\[\n\\def\\Er{{\\mathrm{E}}}\n\\def\\cov{{\\mathrm{Cov}}}\n\\def\\var{{\\mathrm{Var}}}\n\\def\\R{{\\mathbb{R}}}\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#estimator",
@@ -1964,7 +1964,7 @@
     "href": "estimation/estimation.html#mean-squared-error",
     "title": "Estimation",
     "section": "Mean Squared Error",
-    "text": "Mean Squared Error\n\nLoss function \\(L: \\R^d \\times \\Theta \\to [0,\\infty)\\) with \\(L(\\theta,\\theta)=0\\)\nRisk of \\(\\hat{\\theta}\\) at \\(\\theta_0\\) = \\(\\Er[L(\\hat{\\theta}, \\theta_0)]\\)\nSquared error loss \\(L_2(\\theta, \\theta_0) = (\\theta-\\theta_0)'(\\theta-\\theta_0)\\)\nMean squared error \\[\nMSE(\\hat{\\theta}) = \\Er[ (\\theta-\\theta_0)'(\\theta-\\theta_0) ]\n\\]\nBias-variance decomposition \\[\nMSE(\\hat{\\theta}) = \\textrm{Bias}(\\hat{\\theta})'\\textrm{Bias}(\\hat{\\theta}) + \\textrm{tr}(\\var(\\hat{\\theta}))\n\\]"
+    "text": "Mean Squared Error\n\nSquared error loss \\(L_2(\\theta, \\theta_0) = (\\theta-\\theta_0)'(\\theta-\\theta_0)\\)\nMean squared error \\[\nMSE(\\hat{\\theta}) = \\Er[ (\\theta-\\theta_0)'(\\theta-\\theta_0) ]\n\\]\nBias-variance decomposition \\[\nMSE(\\hat{\\theta}) = \\textrm{Bias}(\\hat{\\theta})'\\textrm{Bias}(\\hat{\\theta}) + \\textrm{tr}(\\var(\\hat{\\theta}))\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#setup",
@@ -1978,21 +1978,21 @@
     "href": "estimation/estimation.html#score-equality",
     "title": "Estimation",
     "section": "Score Equality",
-    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\underbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{``score''}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]"
+    "text": "Score Equality\n\nIf \\(\\frac{\\partial}{\\partial \\theta} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial}{\\partial \\theta} f_X(x;\\theta) d\\mu(x)\\), then \\[\n\\int \\underbrace{\\frac{\\partial \\log \\ell(\\theta;x)}{\\partial \\theta}}_{\\text{\"score\"}=s(x,\\theta)} dP_\\theta(x) = 0\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#information-equality",
     "href": "estimation/estimation.html#information-equality",
     "title": "Estimation",
     "section": "Information Equality",
-    "text": "Information Equality\n\nFischer Information \\(I(\\theta) = \\int s(x,\\theta) s(x,\\theta)' dP_\\theta(x)\\)\nIf \\(\\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} f_X(x;\\theta)\nd\\mu(x)\\), then \\[\nI(\\theta) = -\\int \\underbrace{\\frac{\\partial^2 \\ell(\\theta;x)}{\\partial \\theta \\partial \\theta'}}_{\\text{``Hessian''}=h(x,\\theta)} dP_\\theta(x)\n\\]"
+    "text": "Information Equality\n\nFischer Information \\(I(\\theta) = \\int s(x,\\theta) s(x,\\theta)' dP_\\theta(x)\\)\nIf \\(\\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} \\int f_X(x;\\theta) d\\mu(x) =\n\\int \\frac{\\partial^2}{\\partial \\theta\\partial \\theta'} f_X(x;\\theta)\nd\\mu(x)\\), then \\[\nI(\\theta) = -\\int \\underbrace{\\frac{\\partial^2 \\log \\ell(\\theta;x)}{\\partial \\theta \\partial \\theta'}}_{\\text{\"Hessian\"}=h(x,\\theta)} dP_\\theta(x)\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#section",
     "href": "estimation/estimation.html#section",
     "title": "Estimation",
     "section": "",
-    "text": "If \\(T = \\tau(X)\\) is an unbiased estimator for \\(\\theta\\) and \\[\n\\frac{\\partial}{\\partial \\theta} \\int \\tau(x) f_X(x;\\theta) d\\mu(x) =\n\\int \\tau(x) \\frac{\\partial f_X(x,\\theta)}{\\partial \\theta\\partial \\theta'} d\\mu(x)\n\\] then \\[\n\\int \\tau(x) s(x,\\theta)'dP_\\theta(x) = I\n\\]"
+    "text": "If \\(T = \\tau(X)\\) is an unbiased estimator for \\(\\theta\\) and \\[\n\\frac{\\partial}{\\partial \\theta} \\int \\tau(x) f_X(x;\\theta) d\\mu(x) =\n\\int \\tau(x) \\frac{\\partial f_X(x,\\theta)}{\\partial \\theta} d\\mu(x)\n\\] then \\[\n\\int \\tau(x) s(x,\\theta)'dP_\\theta(x) = I\n\\]"
   },
   {
     "objectID": "estimation/estimation.html#cramér-rao-bound",
@@ -2167,7 +2167,7 @@
     "href": "identification/identification.html#caution",
     "title": "Identification",
     "section": "Caution",
-    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.5238009384200798\n -0.1439136609150552\n -0.35792817175987296"
+    "text": "Caution\n\nRegression being a linear approximation to \\(\\Er[Y|X]\\) does not mean \\(\\beta = \\Er[X X']^{-1} \\Er[X Y]\\) necessarily has the sign you want\nIn example below, \\(\\Er[Y|x_1=1, x_2] &gt; \\Er[Y|x_1=0,x_2]\\), but \\(\\beta_1 &lt; 0\\)\n\n\nusing LinearAlgebra\nn = 100_000\nEYX(x) = x[2]&gt;0 ? -1.0 + 1.0*x[1] : (1.0 + 0.1*x[1])\nx2 = randn(n)\nx1 = (x2*3 + randn(n) .&gt; 0)\nX = hcat(x1,x2)\ny = EYX.(eachrow(X)) + randn(n)\nX = hcat(ones(n), X)\nβ = (X'*X) \\ (X'*y)\n\n3-element Vector{Float64}:\n  0.5226655090702952\n -0.13343797382338\n -0.3513147652124974"
   },
   {
     "objectID": "identification/identification.html#example-potential-outcomes-1",
@@ -2216,7 +2216,7 @@
     "href": "identification/identification.html#example-multiple-regression-1",
     "title": "Identification",
     "section": "Example: Multiple Regression",
-    "text": "Example: Multiple Regression\n\\[\nY = X'\\beta + \\epsilon\n\\]\n\nAssume \\(\\Er[X\\epsilon] = 0\\)\n\n\nIf \\(\\beta\\) and \\(\\tilde{\\beta}\\) observationally equivalent, then \\(0 = \\Er[X(Y - X'\\beta)] = \\Er[X(Y-X'\\tilde{\\beta})]\\), so \\(0 = \\Er[XX'](\\beta - \\tilde{\\beta})\\)\n\\(X = [X_1\\, X_2]'\\), if rank \\(\\Er X X' = 1\\), then \\(\\beta_1, \\beta_2\\) is observationally equivalent to any \\(\\tilde{\\beta}_1, \\tilde{\\beta}_2\\) s.t. \\[\n\\tilde{\\beta}_1 + \\tilde{\\beta}_2 = \\beta_1 + \\beta_2 \\frac{\\cov(X_1, X_2)}{\\var(X_2)}\n\\]\n\\(\\theta_0 = \\lambda( \\beta ) = \\beta_1 + \\beta_2\\) is identified if rank \\(\\Er [X X'] \\geq 1\\)"
+    "text": "Example: Multiple Regression\n\\[\nY = X'\\beta + \\epsilon\n\\]\n\nAssume \\(\\Er[X\\epsilon] = 0\\)\n\n\nIf \\(\\beta\\) and \\(\\tilde{\\beta}\\) observationally equivalent, then \\(0 = \\Er[X(Y - X'\\beta)] = \\Er[X(Y-X'\\tilde{\\beta})]\\), so \\(0 = \\Er[XX'](\\beta - \\tilde{\\beta})\\)\n\\(X = [X_1\\, X_2]'\\), if rank \\(\\Er X X' = 1\\), then \\(\\beta_1, \\beta_2\\) is observationally equivalent to any \\(\\tilde{\\beta}_1, \\tilde{\\beta}_2\\) s.t. \\[\n\\tilde{\\beta}_1 + \\tilde{\\beta}_2 \\frac{\\cov(X_1, X_2)}{\\var(X_1)} = \\beta_1 + \\beta_2 \\frac{\\cov(X_1, X_2)}{\\var(X_1)}\n\\]\n\\(\\theta_0 = \\lambda( \\beta ) = \\beta_1 + \\beta_2\\frac{\\cov(X_1, X_2)}{\\var(X_1)}\\) is identified if rank \\(\\Er [X X'] \\geq 1\\)"
   },
   {
     "objectID": "identification/identification.html#example-random-coefficients-logit",
@@ -2916,7 +2916,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 9, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 21, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 29, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nNov 24, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 16, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 9, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 21, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 29, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 3\n\n\n\n\n\n\n\n\nSep 30, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nNov 24, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 16, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "problemsets/07/ps07.html#instrument",
@@ -3161,7 +3161,7 @@
     "href": "identification/identification.html#example-production-function-elasticity",
     "title": "Identification",
     "section": "Example: Production Function Elasticity",
-    "text": "Example: Production Function Elasticity\n\nData:\n\nRevenue \\(R_i = p_Y Y_i\\)\nMaterial expenditure \\(p_M M_i\\)\nCapital \\(K_i\\), labor \\(L_i\\)\n\nModel:\n\nCobb-Douglas production: \\(Y_i = A_i L_i^\\alpha K_i^\\beta M_i^\\gamma\\)\n\nAssume:\n\nCompetitive, flexibly chosen \\(M_i \\in \\argmax_M  \\Er\\left[p_Y A_i  L_i^\\alpha K_i^\\beta M^\\gamma - p_M M | \\mathcal{I}_i \\right]\\)\nOther inputs and prices known when choosing \\(M\\), i.e. \\(\\sigma(L) \\subset \\mathcal{I}\\), etc.\n\\(\\Er\\left[\\frac{p_Y Y}{p_M M}] &lt; \\infty\\)"
+    "text": "Example: Production Function Elasticity\n\nData:\n\nRevenue \\(R_i = p_Y Y_i\\)\nMaterial expenditure \\(p_M M_i\\)\nCapital \\(K_i\\), labor \\(L_i\\)\n\nModel:\n\nCobb-Douglas production: \\(Y_i = A_i L_i^\\alpha K_i^\\beta M_i^\\gamma\\)\n\nAssume:\n\nCompetitive, flexibly chosen \\(M_i \\in \\mathrm{arg}\\max_M  \\Er\\left[p_Y A_i  L_i^\\alpha K_i^\\beta M^\\gamma - p_M M | \\mathcal{I}_i \\right]\\)\nOther inputs and prices known when choosing \\(M\\), i.e. \\(\\sigma(L) \\subset \\mathcal{I}\\), etc.\n\\(\\Er\\left[\\frac{p_Y Y}{p_M M}\\right] &lt; \\infty\\)"
   },
   {
     "objectID": "identification/identification.html#example-production-function-elasticity-1",
@@ -3169,5 +3169,26 @@
     "title": "Identification",
     "section": "Example: Production Function Elasticity",
     "text": "Example: Production Function Elasticity\nWhat if production function is \\(Y_i = A_i F(L_i, K_i, M_i)\\), can the elasticity of output with respect to \\(M\\) be identified?"
+  },
+  {
+    "objectID": "estimation/estimation.html#mle-example",
+    "href": "estimation/estimation.html#mle-example",
+    "title": "Estimation",
+    "section": "MLE: Example",
+    "text": "MLE: Example\n\n\\(X_i \\sim N(\\mu, 1)\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#mle-example-1",
+    "href": "estimation/estimation.html#mle-example-1",
+    "title": "Estimation",
+    "section": "MLE: Example",
+    "text": "MLE: Example\n\n\\(Y_i = \\alpha_0 + \\beta_0 X_i + \\epsilon_i\\), \\(\\epsilon_i \\sim N(0, \\sigma_0^2)\\)"
+  },
+  {
+    "objectID": "estimation/estimation.html#loss-and-risk",
+    "href": "estimation/estimation.html#loss-and-risk",
+    "title": "Estimation",
+    "section": "Loss and Risk",
+    "text": "Loss and Risk\n\nLoss function \\(L: \\R^d \\times \\Theta \\to [0,\\infty)\\) with \\(L(\\theta,\\theta)=0\\)\nRisk of \\(\\hat{\\theta}\\) at \\(\\theta_0\\) = \\(\\Er[L(\\hat{\\theta}, \\theta_0)]\\)"
   }
 ]

@@ -468,9 +468,9 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 </ul></li>
 <li>Assume:
 <ol type="1">
-<li>Competitive, flexibly chosen <span class="math inline">\(M_i \in \argmax_M  \Er\left[p_Y A_i  L_i^\alpha K_i^\beta M^\gamma - p_M M | \mathcal{I}_i \right]\)</span></li>
+<li>Competitive, flexibly chosen <span class="math inline">\(M_i \in \mathrm{arg}\max_M  \Er\left[p_Y A_i  L_i^\alpha K_i^\beta M^\gamma - p_M M | \mathcal{I}_i \right]\)</span></li>
 <li>Other inputs and prices known when choosing <span class="math inline">\(M\)</span>, i.e.&nbsp;<span class="math inline">\(\sigma(L) \subset \mathcal{I}\)</span>, etc.</li>
-<li><span class="math inline">\(\Er\left[\frac{p_Y Y}{p_M M}] &lt; \infty\)</span></li>
+<li><span class="math inline">\(\Er\left[\frac{p_Y Y}{p_M M}\right] &lt; \infty\)</span></li>
 </ol></li>
 </ul>
 </section>
@@ -533,9 +533,9 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <span id="cb1-9"><a aria-label="9"></a>β <span class="op">=</span> (X<span class="op">'*</span>X) <span class="op">\</span> (X<span class="op">'*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3-element Vector{Float64}:
-  0.5238009384200798
- -0.1439136609150552
- -0.35792817175987296</code></pre>
+  0.5226655090702952
+ -0.13343797382338
+ -0.3513147652124974</code></pre>
 </div>
 </div>
 </section>
@@ -655,9 +655,9 @@ Y = X'\beta + \epsilon
 <ul>
 <li class="fragment"><p>If <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\tilde{\beta}\)</span> observationally equivalent, then <span class="math inline">\(0 = \Er[X(Y - X'\beta)] = \Er[X(Y-X'\tilde{\beta})]\)</span>, so <span class="math inline">\(0 = \Er[XX'](\beta - \tilde{\beta})\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\(X = [X_1\, X_2]'\)</span>, if rank <span class="math inline">\(\Er X X' = 1\)</span>, then <span class="math inline">\(\beta_1, \beta_2\)</span> is observationally equivalent to any <span class="math inline">\(\tilde{\beta}_1, \tilde{\beta}_2\)</span> s.t. <span class="math display">\[
-\tilde{\beta}_1 + \tilde{\beta}_2 = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_2)}
+\tilde{\beta}_1 + \tilde{\beta}_2 \frac{\cov(X_1, X_2)}{\var(X_1)} = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_1)}
 \]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2\)</span> is identified if rank <span class="math inline">\(\Er [X X'] \geq 1\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2\frac{\cov(X_1, X_2)}{\var(X_1)}\)</span> is identified if rank <span class="math inline">\(\Er [X X'] \geq 1\)</span></p></li>
 </ul>
 </section>
 <section id="example-random-coefficients-logit" class="slide level2">

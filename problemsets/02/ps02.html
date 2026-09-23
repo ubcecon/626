@@ -2,18 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-23">
+<meta name="dcterms.date" content="2026-09-29">
 
 <title>ECON 626: Problem Set 2 – ECON 626</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -33,15 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4afa585e620e1e545a967878b225e89b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-205c157cc1ad17ef6203a2440e42a020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -110,8 +115,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ECON 626</span>
     </a>
@@ -176,7 +179,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 23, 2025</p>
+      <p class="date">September 29, 2026</p>
     </div>
   </div>
   
@@ -195,23 +198,31 @@ window.Quarto = {
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
 <p>Let <span class="math inline">\(X_{1},...,X_{n}\)</span> be independent and identically distribution and <span class="math inline">\(P(X_{1}\leq t)=F(t)\)</span> for some function <span class="math inline">\(F\)</span>. Then, write the probability <span class="math inline">\(P(\max_{1\leq i\leq n}X_{i}\leq t)\)</span> in terms of <span class="math inline">\(F\)</span>.</p>
+<!-- # Problem 2 -->
+<!-- 1. Show that if $E[Y |X] = 0$, then $Y$ and $g(X)$ are uncorrelated for any (Borel) measurable -->
+<!-- function $g$. Do you have the same conclusion if we weaken the condition $E[Y |X] = 0$ to -->
+<!-- $E[Y |X] = a$ for some fixed constant $a \in \R$? -->
+<!-- 2. Suppose that $E[Y^2 |X] < a^2$ for some constant $a > 0$. Then, show that for any $b > 0$, -->
+<!-- $$ -->
+<!-- P\left(|Y − EY | > b\right) \leq \frac{a^2}{b^2}. -->
+<!-- $$ -->
+<!-- 3. Show that if $E[Y | \exp(X)] = E[Y]$, then the correlation between -->
+<!-- $E[Y | cos(X)]$ and $cos(X)$ is zero. -->
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<ol type="1">
-<li><p>Show that if <span class="math inline">\(E[Y |X] = 0\)</span>, then <span class="math inline">\(Y\)</span> and <span class="math inline">\(g(X)\)</span> are uncorrelated for any (Borel) measurable function <span class="math inline">\(g\)</span>. Do you have the same conclusion if we weaken the condition <span class="math inline">\(E[Y |X] = 0\)</span> to <span class="math inline">\(E[Y |X] = a\)</span> for some fixed constant <span class="math inline">\(a \in \R\)</span>?</p></li>
-<li><p>Suppose that <span class="math inline">\(E[Y^2 |X] &lt; a^2\)</span> for some constant <span class="math inline">\(a &gt; 0\)</span>. Then, show that for any <span class="math inline">\(b &gt; 0\)</span>, <span class="math display">\[
-P\left(|Y − EY | &gt; b\right) \leq \frac{a^2}{b^2}.
-\]</span></p></li>
-<li><p>Show that if <span class="math inline">\(E[Y | \exp(X)] = E[Y]\)</span>, then the correlation between <span class="math inline">\(E[Y | cos(X)]\)</span> and <span class="math inline">\(cos(X)\)</span> is zero.</p></li>
-</ol>
-</section>
-<section id="problem-3" class="level1">
-<h1>Problem 3</h1>
 <p>Let <span class="math inline">\(X: \Omega \to \R\)</span>, <span class="math inline">\(W:  \Omega \to \R\)</span>, <span class="math inline">\(Z: \Omega \to \R\)</span>, and <span class="math inline">\(D: \Omega \to \{0, 1\}\)</span> be random variables. Let <span class="math inline">\(Y = D X + (1-D) W\)</span>. Suppose that <span class="math inline">\(Y\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(Z\)</span> are observed, but <span class="math inline">\(X\)</span> and <span class="math inline">\(W\)</span> are not.</p>
 <ol type="1">
 <li><p>Suppose <span class="math inline">\(D\)</span> is independent of <span class="math inline">\(X\)</span>, <span class="math inline">\(W\)</span>. Then show that <span class="math inline">\(\Er[X - W]\)</span> is identified.</p></li>
 <li><p>Suppose <span class="math inline">\(Z\)</span> is independent of <span class="math inline">\(X\)</span> and <span class="math inline">\(W\)</span>, and <span class="math inline">\(\exists E_1, E_0 \in \sigma(Z)\)</span> such that <span class="math inline">\(P(D=1 | E_1) = 1\)</span> and <span class="math inline">\(P(D=0|E_0) = 1\)</span>. Then show that <span class="math inline">\(\Er[X-W]\)</span> is identified.</p></li>
+</ol>
+</section>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
+<p>Suppose <span class="math inline">\(Y_i = m(X_i' \beta + u_i)\)</span> for <span class="math inline">\(i=1, ... , n\)</span> with <span class="math inline">\(X_i \in \R^k\)</span> and <span class="math inline">\(m:\R \to \R\)</span> is a known function. Throughout, assume that observations are independent across <span class="math inline">\(i\)</span>, <span class="math inline">\(\Er[u] =0\)</span>, and <span class="math inline">\(u\)</span> is independent of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\Er[XX']\)</span> is nonsingular. <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are observed, but <span class="math inline">\(u\)</span> is not.</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(m\)</span> is strictly increasing show that <span class="math inline">\(\beta\)</span> is identified by explicitly writing <span class="math inline">\(\beta\)</span> as a function of the distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(m(z) = 1\{z \geq 0\}\)</span>. For simplicitly, let <span class="math inline">\(k=1\)</span> and <span class="math inline">\(X_i \in \{-1, 1\}\)</span>. Show that <span class="math inline">\(\beta\)</span> is not identified by finding an observationally equivalent <span class="math inline">\(\tilde{\beta}\)</span>.</p></li>
 </ol>
 
 
@@ -291,7 +302,7 @@ P\left(|Y − EY | &gt; b\right) \leq \frac{a^2}{b^2}.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

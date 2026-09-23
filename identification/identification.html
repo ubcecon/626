@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2026-09-21">
+  <meta name="dcterms.date" content="2026-09-23">
   <title>ECON 626 – Identification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -231,7 +231,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2026-09-21</p>
+  <p class="date">2026-09-23</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -452,6 +452,31 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <li>Overlap: <span class="math inline">\(\epsilon &lt; P(D=1|X=x) &lt; 1-\epsilon\)</span> for some <span class="math inline">\(\epsilon &gt; 0\)</span> and all <span class="math inline">\(x\)</span></li>
 </ol></li>
 </ul>
+</section>
+<section id="example-production-function-elasticity" class="slide level2">
+<h2>Example: Production Function Elasticity</h2>
+<ul>
+<li>Data:
+<ul>
+<li>Revenue <span class="math inline">\(R_i = p_Y Y_i\)</span></li>
+<li>Material expenditure <span class="math inline">\(p_M M_i\)</span></li>
+<li>Capital <span class="math inline">\(K_i\)</span>, labor <span class="math inline">\(L_i\)</span></li>
+</ul></li>
+<li>Model:
+<ul>
+<li>Cobb-Douglas production: <span class="math inline">\(Y_i = A_i L_i^\alpha K_i^\beta M_i^\gamma\)</span></li>
+</ul></li>
+<li>Assume:
+<ol type="1">
+<li>Competitive, flexibly chosen <span class="math inline">\(M_i \in \argmax_M  \Er\left[p_Y A_i  L_i^\alpha K_i^\beta M^\gamma - p_M M | \mathcal{I}_i \right]\)</span></li>
+<li>Other inputs and prices known when choosing <span class="math inline">\(M\)</span>, i.e.&nbsp;<span class="math inline">\(\sigma(L) \subset \mathcal{I}\)</span>, etc.</li>
+<li><span class="math inline">\(\Er\left[\frac{p_Y Y}{p_M M}] &lt; \infty\)</span></li>
+</ol></li>
+</ul>
+</section>
+<section id="example-production-function-elasticity-1" class="slide level2">
+<h2>Example: Production Function Elasticity</h2>
+<p>What if production function is <span class="math inline">\(Y_i = A_i F(L_i, K_i, M_i)\)</span>, can the elasticity of output with respect to <span class="math inline">\(M\)</span> be identified?</p>
 </section></section>
 <section>
 <section id="reintrepretation-of-estimators" class="title-slide slide level1 center">
@@ -508,9 +533,9 @@ Y = 1\{ \beta_0 + \beta_1 X &gt; u \}
 <span id="cb1-9"><a aria-label="9"></a>β <span class="op">=</span> (X<span class="op">'*</span>X) <span class="op">\</span> (X<span class="op">'*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>3-element Vector{Float64}:
-  0.5227463381755414
- -0.13785728660557217
- -0.35945160302925655</code></pre>
+  0.5238009384200798
+ -0.1439136609150552
+ -0.35792817175987296</code></pre>
 </div>
 </div>
 </section>
@@ -622,9 +647,13 @@ Y_i = \alpha D_i + X_i' \beta + \epsilon_i
 <section id="example-multiple-regression-1" class="slide level2">
 <h2>Example: Multiple Regression</h2>
 <p><span class="math display">\[
-Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
+Y = X'\beta + \epsilon
 \]</span></p>
 <ul>
+<li>Assume <span class="math inline">\(\Er[X\epsilon] = 0\)</span></li>
+</ul>
+<ul>
+<li class="fragment"><p>If <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\tilde{\beta}\)</span> observationally equivalent, then <span class="math inline">\(0 = \Er[X(Y - X'\beta)] = \Er[X(Y-X'\tilde{\beta})]\)</span>, so <span class="math inline">\(0 = \Er[XX'](\beta - \tilde{\beta})\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\(X = [X_1\, X_2]'\)</span>, if rank <span class="math inline">\(\Er X X' = 1\)</span>, then <span class="math inline">\(\beta_1, \beta_2\)</span> is observationally equivalent to any <span class="math inline">\(\tilde{\beta}_1, \tilde{\beta}_2\)</span> s.t. <span class="math display">\[
 \tilde{\beta}_1 + \tilde{\beta}_2 = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_2)}
 \]</span></p></li>

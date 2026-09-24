@@ -18,7 +18,7 @@
     "href": "syllabus626.html#grading",
     "title": "Syllabus for ECON 626: Econometric Theory I",
     "section": "Grading",
-    "text": "Grading\n\nProblem Sets (15%)\nThere will be 6-9 problem sets. A problem set with the lowest grade will be dropped from final grading.\n\n\nMidterm Exam (35%)\nGiven in class on Wednesday, October 19. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (15%) and the final exam (85%).\n\n\nFinal Exam (50%)\nClosed books and notes."
+    "text": "Grading\n\nProblem Sets (15%)\nThere will be 6-9 problem sets. A problem set with the lowest grade will be dropped from final grading.\n\n\nMidterm Exam (35%)\nGiven in class on Monday, October 19. Closed books and notes. There will be no make-up exam for midterm. When a student is excused from midterm exam, his or her grade will be based on reweighting of the problem sets (15%) and the final exam (85%).\n\n\nFinal Exam (50%)\nClosed books and notes."
   },
   {
     "objectID": "syllabus626.html#part-i-basics",
@@ -2482,7 +2482,7 @@
     "href": "problemsets/03/ps03.html",
     "title": "ECON 626: Problem Set 3",
     "section": "",
-    "text": "\\[\n\\def\\R{{\\mathbb{R}}}\n\\def\\Er{{\\mathrm{E}}}\n\\]\n\n\n\nProblem 1\nSuppose \\(Y_i = m(X_i' \\beta + u_i)\\) for \\(i=1, ... , n\\) with \\(X_i \\in \\R^k\\) and \\(m:\\R \\to \\R\\) is a known function. Throughout, assume that observations are independent across \\(i\\), \\(\\Er[u] =0\\), and \\(u\\) is independent of \\(X\\), and \\(\\Er[XX']\\) is nonsingular. \\(Y\\) and \\(X\\) are observed, but \\(u\\) is not.\n\nIf \\(m\\) is strictly increasing show that \\(\\beta\\) is identified by explicitly writing \\(\\beta\\) as a function of the distribution of \\(X\\) and \\(Y\\).\nSuppose \\(m(z) = 1\\{z \\geq 0\\}\\). For simplicitly, let \\(k=1\\) and \\(X_i \\in \\{-1, 1\\}\\). Show that \\(\\beta\\) is not identified by finding an observationally equivalent \\(\\tilde{\\beta}\\).\n\n\n\nProblem 2\nSong (2021) Chatper 4, exercise 1.3.\nConsider the binary choice model in Example 1.3 and assume that \\(\\tilde{\\beta}_0\\) and \\(\\tilde{\\beta}_1\\) have appropriate estimators \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\). Provide a sample analogue estimator of the average derivative, replacing \\(\\tilde{\\beta}_0\\) and \\(\\tilde{\\beta}_1\\) with \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\)\n\n\n\n\n\nReferences\n\nSong, Kyunchul. 2021. “Introduction to Econometrics.”"
+    "text": "\\[\n\\def\\R{{\\mathbb{R}}}\n\\def\\Er{{\\mathrm{E}}}\n\\]\n\n\n\n\n\n\n\n\n\nProblem 2\nSong (2021) Chatper 4, exercise 1.3.\nConsider the binary choice model in Example 1.3 and assume that \\(\\tilde{\\beta}_0\\) and \\(\\tilde{\\beta}_1\\) have appropriate estimators \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\). Provide a sample analogue estimator of the average derivative, replacing \\(\\tilde{\\beta}_0\\) and \\(\\tilde{\\beta}_1\\) with \\(\\hat{\\beta}_0\\) and \\(\\hat{\\beta}_1\\)\n\n\n\n\n\nReferences\n\nSong, Kyunchul. 2021. Introduction to Econometrics."
   },
   {
     "objectID": "problemsets/05/ps05.html",

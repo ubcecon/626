@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2026-09-23">
+  <meta name="dcterms.date" content="2026-09-28">
   <title>ECON 626 – Estimation</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -168,7 +168,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2026-09-23</p>
+  <p class="date">2026-09-28</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -271,6 +271,20 @@ Paul Schrimpf
 <li><span class="math inline">\(Y_i = \alpha_0 + \beta_0 X_i + \epsilon_i\)</span>, <span class="math inline">\(\epsilon_i \sim N(0, \sigma_0^2)\)</span></li>
 </ul>
 </section>
+<section id="mle-why-does-it-work" class="slide level2">
+<h2>MLE: why does it work?</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(X_i\)</span> i.i.d. with density <span class="math inline">\(f(x;\theta_0)\)</span></li>
+<li class="fragment">log-likelihood (divided by <span class="math inline">\(n\)</span>): <span class="math inline">\(\ell(\theta;x) = 1/n \sum_{i=1}^n \log f(x_i;\theta)\)</span></li>
+<li class="fragment"><span class="math inline">\(1/n \sum_{i=1}^n \log f(x_i;\theta) \approx \Er[ \log f(X;\theta) ]\)</span></li>
+<li class="fragment">$ - = $</li>
+<li class="fragment">Jensen’s inequality: <span class="math inline">\(\Er\left[ \log
+\frac{f(X;\theta)}{f(X;\theta_0)} \right] \leq \log
+\left(\Er\left[\frac{f(X;\theta)}{f(X;\theta_0)} \right] \right) =
+\log (1) = 0\)</span></li>
+<li class="fragment">So, <span class="math inline">\(\Er[ \log f(X;\theta) ] \leq \Er[ \log f(X;\theta_0) ]\)</span>, <span class="math inline">\(\theta_0\)</span> maximizes the expected log likelihood</li>
+</ul>
+</section>
 <section id="mle-equivariance" class="slide level2">
 <h2>MLE: Equivariance</h2>
 <div class="callout callout-warning no-icon callout-titled callout-style-default">
@@ -320,13 +334,26 @@ MSE(\hat{\theta}) = \textrm{Bias}(\hat{\theta})'\textrm{Bias}(\hat{\theta}) + \t
 \in \Theta \subset \R^d \}\)</span>, likelihood <span class="math inline">\(\ell(\theta;x) = f_X(x;\theta)\)</span></p></li>
 <li><p>Question: if an estimator is unbiased, what is the smallest possible variance?</p></li>
 </ul>
+<aside class="notes">
+<p>To motivate the following slides, consider the variance of the maximum likelihood estimator. To get an approximate expression for it, we take a first order expansion of the first order condition. This naturally involves the score and hessian.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="score-equality" class="slide level2">
 <h2>Score Equality</h2>
 <ul>
 <li>If <span class="math inline">\(\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =
 \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)\)</span>, then <span class="math display">\[
-\int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{"score"}=s(x,\theta)} dP_\theta(x) = 0
+\int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{score}=s(x,\theta)} dP_\theta(x) = 0
 \]</span></li>
 </ul>
 </section>
@@ -337,7 +364,7 @@ MSE(\hat{\theta}) = \textrm{Bias}(\hat{\theta})'\textrm{Bias}(\hat{\theta}) + \t
 <li>If <span class="math inline">\(\frac{\partial^2}{\partial \theta\partial \theta'} \int f_X(x;\theta) d\mu(x) =
 \int \frac{\partial^2}{\partial \theta\partial \theta'} f_X(x;\theta)
 d\mu(x)\)</span>, then <span class="math display">\[
-I(\theta) = -\int \underbrace{\frac{\partial^2 \log \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{"Hessian"}=h(x,\theta)} dP_\theta(x)
+I(\theta) = -\int \underbrace{\frac{\partial^2 \log \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{Hessian}=h(x,\theta)} dP_\theta(x)
 \]</span></li>
 </ul>
 </section>

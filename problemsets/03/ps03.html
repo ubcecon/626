@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-30">
 
-<title>ECON 626: Problem Set 3 – ECON 626</title>
+<title>ps03 – ECON 626</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,26 +26,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -176,64 +156,47 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link active" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">ECON 626: Problem Set 3</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 30, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<p>title: “ECON 626: Problem Set 3” #author: “Paul Schrimpf” date: 2026-10-08 bibliography: ../../626.bib —</p>
 <p><span class="math display">\[
 \def\R{{\mathbb{R}}}
 \def\Er{{\mathrm{E}}}
 \]</span></p>
-<!-- # Problem 1 -->
-<!-- In the linear model, $Y = \alpha + \beta X + \epsilon$, assume $\mathrm{Var}(X)>0$ and $\Er[\epsilon] = 0$. Show that without any more assumptions, $\beta$ is not identified by finding values of $\beta$ that are observationally equivalent. -->
-<!-- # Problem 1 -->
-<!-- Suppose $Y_i = m(X_i' \beta + u_i)$ for $i=1, ... , n$ with $X_i \in \R^k$ -->
-<!-- and  $m:\R \to \R$ is a known function. Throughout, assume that observations are independent across $i$, $\Er[u] =0$, -->
-<!-- and $u$ is independent of $X$, and $\Er[XX']$ is nonsingular. $Y$ and $X$ are observed, but $u$ is not. -->
-<!-- 1. If $m$ is strictly increasing show that $\beta$ is identified by explicitly writing $\beta$ as a function of the distribution of $X$ and $Y$. -->
-<!-- 2. Suppose $m(z) = 1\{z \geq 0\}$. For simplicitly, let $k=1$ and $X_i \in \{-1, 1\}$. Show that $\beta$ is not identified by finding an observationally equivalent $\tilde{\beta}$. -->
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<p><span class="citation" data-cites="song2021">@song2021</span> Chatper 4, exercise 1.3.</p>
+<p>Consider the binary choice model in Example 1.3 and assume that <span class="math inline">\(\tilde{\beta}_0\)</span> and <span class="math inline">\(\tilde{\beta}_1\)</span> have appropriate estimators <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Provide a sample analogue estimator of the average derivative, replacing <span class="math inline">\(\tilde{\beta}_0\)</span> and <span class="math inline">\(\tilde{\beta}_1\)</span> with <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span></p>
+</section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p><span class="citation" data-cites="song2021">Song (<a href="#ref-song2021" role="doc-biblioref">2021</a>)</span> Chatper 4, exercise 1.3.</p>
-<p>Consider the binary choice model in Example 1.3 and assume that <span class="math inline">\(\tilde{\beta}_0\)</span> and <span class="math inline">\(\tilde{\beta}_1\)</span> have appropriate estimators <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Provide a sample analogue estimator of the average derivative, replacing <span class="math inline">\(\tilde{\beta}_0\)</span> and <span class="math inline">\(\tilde{\beta}_1\)</span> with <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span></p>
-
+<p>The Rayleigh distribution has probability density function (with respect to Lebesgue measure) <span class="math display">\[
+f(x; \theta) = \frac{x}{\theta} \exp\left(-\frac{x^2}{2\theta}\right) \mathbf{1}\{x &gt; 0\},
+\]</span></p>
+<p>for <span class="math inline">\(\theta &gt; 0\)</span>. Suppose <span class="math inline">\(X_1, \dots, X_n\)</span> are independently and identically Rayleigh(<span class="math inline">\(\theta\)</span>) distributed.</p>
+<ol type="1">
+<li><p>Find the maximum likelihood estimator <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Show that the maximum likelihood estimator is unbiased.</p></li>
+<li><p>Calculate the variance of the maximum likelihood esitmator.</p></li>
+<li><p>Derive the Cramér–Rao lower bound for any unbiased estimator of <span class="math inline">\(\theta\)</span>. Determine whether <span class="math inline">\(\hat{\theta}^{MLE}\)</span> is a minimum variance unbiased estimator.</p></li>
+<li><p>Find the most powerful test of size <span class="math inline">\(\alpha\)</span> for testing <span class="math display">\[
+H_0: \theta = \theta_0 \quad \text{versus} \quad H_1: \theta = \theta_1,
+\]</span> where <span class="math inline">\(\theta_1 &gt; \theta_0\)</span>.</p></li>
+</ol>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-song2021" class="csl-entry" role="listitem">
-Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

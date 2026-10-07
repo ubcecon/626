@@ -67,14 +67,14 @@
     "href": "projection/projection.html#orthogonal-subspaces",
     "title": "Least Squares as a Projection",
     "section": "Orthogonal Subspaces",
-    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n\n\n\nDefinition\n\n\nAn \\(L \\subset V\\) is a subspace if \\(\\forall x, y \\in L\\), \\(\\alpha,\n\\beta \\in \\R\\), \\(\\alpha x + \\beta y \\in L\\)"
+    "text": "Orthogonal Subspaces\n\n\n\nDefinition\n\n\nGiven a subspace \\(L \\subset V\\) the orthogonal complement of \\(L\\) is \\[\nL^\\perp = \\{x \\in V: x' l = 0 \\,\\forall l \\in L\\}\n\\]\n\n\n\n\nFor any \\(y \\in V\\), \\(\\exists y_1 \\in L\\), \\(y_2 \\in L^\\perp\\) s.t. \\(y = y_1 + y_2\\)"
   },
   {
     "objectID": "projection/projection.html#orthogonal-subspaces-1",
     "href": "projection/projection.html#orthogonal-subspaces-1",
     "title": "Least Squares as a Projection",
     "section": "Orthogonal Subspaces",
-    "text": "Orthogonal Subspaces\n\n\\(V \\subseteq \\R^n\\), inner product space\n\\(L \\subset V\\) a subspace\n\n\n\n\nDefinition\n\n\nGiven a subspace \\(L \\subset V\\) the orthogonal complement of \\(L\\) is \\[\nL^\\perp = \\{x \\in V: x' l = 0 \\,\\forall l \\in L\\}\n\\]\n\n\n\n\nFor any \\(y \\in V\\), \\(\\exists y_1 \\in L\\), \\(y_2 \\in L^\\perp\\) s.t. \\(y = y_1 + y_2\\)"
+    "text": "Orthogonal Subspaces\n\n\n\nLemma 1.1\n\n\nLet \\(L_1\\) and \\(L_2\\) be subspaces of \\(V\\), then \\[\n(\\underbrace{L_1 + L_2}_{\\{l_1 + l_2 \\in V:  l_1 \\in L_2, l_2 \\in L_2\\}})^\\perp = L_1^\\perp \\cap L_2^\\perp\n\\] and \\[\n(L_1 \\cap L_2)^\\perp = L_1^\\perp + L_2^\\perp\n\\]"
   },
   {
     "objectID": "projection/projection.html#orthogonal-subspaces-2",
@@ -88,7 +88,7 @@
     "href": "projection/projection.html#projection",
     "title": "Least Squares as a Projection",
     "section": "Projection",
-    "text": "Projection\n\n\n\nDefinition\n\n\n\\(P_L y \\in  L\\) is the projection of \\(y\\) on \\(L\\) if \\[\n\\norm{y - P_L y } = \\inf_{w \\in L} \\norm{y - w}\n\\]\n\n\n\n\n\n\n\nProjection Theorem\n\n\n\n\\(P_L y\\) exists, is unique, and is a linear function of \\(y\\)\nFor any \\(y_1^* \\in L\\), \\(y_1^* = P_L y\\) iff \\(y- y_1^* \\perp L\\)\n\n\n\n\n\n2 implies if \\(y = y_1 + y_2\\) with \\(y_1 \\in L\\) and \\(y_2 \\in L^\\perp\\), then \\(y_1 = P_L y\\)"
+    "text": "Projection\n\n\n\n\n\nDefinition\n\n\n\\(P_L y \\in  L\\) is the projection of \\(y\\) on \\(L\\) if \\[\n\\norm{y - P_L y } = \\inf_{w \\in L} \\norm{y - w}\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProjection Theorem\n\n\n\n\\(P_L y\\) exists, is unique, and is a linear function of \\(y\\)\nFor any \\(y_1^* \\in L\\), \\(y_1^* = P_L y\\) iff \\(y- y_1^* \\perp L\\)\n\n\n\n\n\n2 implies if \\(y = y_1 + y_2\\) with \\(y_1 \\in L\\) and \\(y_2 \\in L^\\perp\\), then \\(y_1 = P_L y\\)"
   },
   {
     "objectID": "projection/projection.html#projection-map",
@@ -2916,7 +2916,7 @@
     "href": "slides.html",
     "title": "Slides",
     "section": "",
-    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 9, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 21, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 29, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nNov 24, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nSep 29, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 16, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nbibliography: ../../626.bib\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Asymptotic Theory of Least Squares\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Distribution\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nConvergence in Probability\n\n\n\n\n\n\n\n\nOct 27, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nDifference in Diffferences\n\n\n\n\n\n\n\n\nNov 17, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 14, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final\n\n\n\n\n\n\n\n\nDec 9, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Final - Solutions\n\n\n\n\n\n\n\n\nDec 13, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Review\n\n\n\n\n\n\n\n\nOct 24, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Midterm Solutions\n\n\n\n\n\n\n\n\nOct 26, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 1\n\n\n\n\n\n\n\n\nSep 21, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 2\n\n\n\n\n\n\n\n\nSep 29, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 4\n\n\n\n\n\n\n\n\nOct 7, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 5\n\n\n\n\n\n\n\n\nNov 4, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 6\n\n\n\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nNov 25, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 7\n\n\n\n\n\n\n\n\nDec 6, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nECON 626: Problem Set 8\n\n\n\n\n\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nEndogeneity\n\n\n\n\n\n\n\n\nNov 16, 2022\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nEstimation\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nGeneralized Method of Moments\n\n\n\n\n\n\n\n\nOct 21, 2024\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nIdentification\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nInstrumental Variables Estimation\n\n\n\n\n\n\n\n\nNov 24, 2025\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nLeast Squares as a Projection\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMeasure\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Solutions 2023\n\n\n\n\n\n\n\n\nOct 25, 2023\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nProbability\n\n\n\n\n\n\n\n\nSep 16, 2026\n\n\nPaul Schrimpf\n\n\n\n\n\n\n\n\n\n\n\n\nbibliography: ../../626.bib\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "problemsets/07/ps07.html#instrument",
@@ -3197,5 +3197,19 @@
     "title": "Estimation",
     "section": "MLE: why does it work?",
     "text": "MLE: why does it work?\n\n\\(X_i\\) i.i.d. with density \\(f(x;\\theta_0)\\)\nlog-likelihood (divided by \\(n\\)): \\(\\ell(\\theta;x) = 1/n \\sum_{i=1}^n \\log f(x_i;\\theta)\\)\n\\(1/n \\sum_{i=1}^n \\log f(x_i;\\theta) \\approx \\Er[ \\log f(X;\\theta) ]\\)\n$ - = $\nJensen’s inequality: \\(\\Er\\left[ \\log\n\\frac{f(X;\\theta)}{f(X;\\theta_0)} \\right] \\leq \\log\n\\left(\\Er\\left[\\frac{f(X;\\theta)}{f(X;\\theta_0)} \\right] \\right) =\n\\log (1) = 0\\)\nSo, \\(\\Er[ \\log f(X;\\theta) ] \\leq \\Er[ \\log f(X;\\theta_0) ]\\), \\(\\theta_0\\) maximizes the expected log likelihood"
+  },
+  {
+    "objectID": "projection/projection.html#linear-subspaces",
+    "href": "projection/projection.html#linear-subspaces",
+    "title": "Least Squares as a Projection",
+    "section": "Linear Subspaces",
+    "text": "Linear Subspaces\n\n\\(V \\subseteq \\R^n\\), complete inner product space (Hilbert space)\n\\(L \\subset V\\) a subspace\n\n\n\n\nDefinition\n\n\nAn \\(L \\subset V\\) is a subspace if \\(\\forall x, y \\in L\\), \\(\\alpha,\n\\beta \\in \\R\\), \\(\\alpha x + \\beta y \\in L\\)"
+  },
+  {
+    "objectID": "projection/projection.html#orthogonal-and-sums-of-subspaces",
+    "href": "projection/projection.html#orthogonal-and-sums-of-subspaces",
+    "title": "Least Squares as a Projection",
+    "section": "Orthogonal and Sums of Subspaces",
+    "text": "Orthogonal and Sums of Subspaces\n\n\n\n\n\nLemma 1.1\n\n\nLet \\(L_1\\) and \\(L_2\\) be subspaces of \\(V\\), then \\[\n(\\underbrace{L_1 + L_2}_{\\{l_1 + l_2 \\in V:  l_1 \\in L_2, l_2 \\in L_2\\}})^\\perp = L_1^\\perp \\cap L_2^\\perp\n\\] and \\[\n(L_1 \\cap L_2)^\\perp = L_1^\\perp + L_2^\\perp\n\\]"
   }
 ]

@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
   <meta name="dcterms.date" content="2024-10-21">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -33,7 +39,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -50,7 +55,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -155,7 +160,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Paul Schrimpf 
+Paul Schrimpf
 </div>
 </div>
 </div>
@@ -328,18 +333,18 @@ M^* &amp; = (\Gamma' \Sigma^{-1} \Gamma)^{-1}
 <h1>References</h1>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-hansen1982" class="csl-entry" role="listitem">
 Hansen, Lars Peter. 1982. <span>“Large Sample Properties of Generalized Method of Moments Estimators.”</span> <em>Econometrica</em> 50 (4): 1029–54. <a href="http://www.jstor.org/stable/1912775">http://www.jstor.org/stable/1912775</a>.
 </div>
 <div id="ref-hansen2010" class="csl-entry" role="listitem">
-———. 2010. <span>“Generalized Method of Moments Estimation.”</span> In <em>Macroeconometrics and Time Series Analysis</em>, edited by Steven N. Durlauf and Lawrence E. Blume, 105–18. London: Palgrave Macmillan UK. <a href="https://doi.org/10.1057/9780230280830_13">https://doi.org/10.1057/9780230280830_13</a>.
+Hansen, Lars Peter. 2010. <span>“Generalized Method of Moments Estimation.”</span> In <em>Macroeconometrics and Time Series Analysis</em>, edited by Steven N. Durlauf and Lawrence E. Blume. Palgrave Macmillan UK. <a href="https://doi.org/10.1057/9780230280830_13">https://doi.org/10.1057/9780230280830_13</a>.
 </div>
 <div id="ref-hs1982" class="csl-entry" role="listitem">
 Hansen, Lars Peter, and Kenneth J. Singleton. 1982. <span>“Generalized Instrumental Variables Estimation of Nonlinear Rational Expectations Models.”</span> <em>Econometrica</em> 50 (5): 1269–86. <a href="http://www.jstor.org/stable/1911873">http://www.jstor.org/stable/1911873</a>.
 </div>
 <div id="ref-song2021" class="csl-entry" role="listitem">
-Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
+Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
 </div>
 </div>
 </section>
@@ -635,7 +640,7 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

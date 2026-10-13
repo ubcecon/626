@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Paul Schrimpf">
   <meta name="dcterms.date" content="2024-10-21">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -99,7 +105,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -116,7 +121,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -224,7 +229,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Paul Schrimpf 
+Paul Schrimpf
 </div>
 </div>
 </div>
@@ -395,29 +400,29 @@ Paul Schrimpf
 <section id="heteroskedastic-robust-errors-with-homoskedastic-data" class="slide level2">
 <h2>Heteroskedastic Robust Errors with Homoskedastic Data</h2>
 <div id="2" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a></a><span class="im">using</span> <span class="bu">Statistics</span>, <span class="bu">LinearAlgebra</span></span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="kw">function</span> <span class="fu">sim</span>(n,k; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>)</span>
-<span id="cb1-4"><a></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
-<span id="cb1-5"><a></a>  ϵ <span class="op">=</span> <span class="fu">randn</span>(n)<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
-<span id="cb1-6"><a></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
-<span id="cb1-7"><a></a>  <span class="cf">return</span>(X,y)</span>
-<span id="cb1-8"><a></a><span class="kw">end</span></span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a><span class="kw">function</span> <span class="fu">ols</span>(X,y)</span>
-<span id="cb1-11"><a></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
-<span id="cb1-12"><a></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
-<span id="cb1-13"><a></a>  Vr, Vh <span class="op">=</span> <span class="fu">olsvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored)</span>
-<span id="cb1-14"><a></a>  <span class="cf">return</span>(β̂, Vr, Vh)</span>
-<span id="cb1-15"><a></a><span class="kw">end</span></span>
-<span id="cb1-16"><a></a></span>
-<span id="cb1-17"><a></a><span class="kw">function</span> <span class="fu">olsvar</span>(X, ϵ, XXf)</span>
-<span id="cb1-18"><a></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
-<span id="cb1-19"><a></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
-<span id="cb1-20"><a></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> n<span class="op">/</span>(n<span class="op">-</span>k)<span class="fu">*iXX*sum</span>(X[i,<span class="op">:</span>]<span class="op">*</span>X[i,<span class="op">:</span>]<span class="ch">'*ϵ[i]^2 for i ∈ axes(X)[1])*iXX</span></span>
-<span id="cb1-21"><a></a>  Vh <span class="op">=</span> n<span class="op">/</span>(n<span class="op">-</span>k)<span class="fu">*iXX*var</span>(ϵ)</span>
-<span id="cb1-22"><a></a>  <span class="cf">return</span>(Vr,Vh)</span>
-<span id="cb1-23"><a></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a aria-label="1"></a><span class="im">using</span> <span class="bu">Statistics</span>, <span class="bu">LinearAlgebra</span></span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="kw">function</span> <span class="fu">sim</span>(n,k; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>)</span>
+<span id="cb1-4"><a aria-label="4"></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
+<span id="cb1-5"><a aria-label="5"></a>  ϵ <span class="op">=</span> <span class="fu">randn</span>(n)<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
+<span id="cb1-6"><a aria-label="6"></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
+<span id="cb1-7"><a aria-label="7"></a>  <span class="cf">return</span>(X,y)</span>
+<span id="cb1-8"><a aria-label="8"></a><span class="kw">end</span></span>
+<span id="cb1-9"><a aria-label="9"></a></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="kw">function</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb1-11"><a aria-label="11"></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
+<span id="cb1-12"><a aria-label="12"></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
+<span id="cb1-13"><a aria-label="13"></a>  Vr, Vh <span class="op">=</span> <span class="fu">olsvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored)</span>
+<span id="cb1-14"><a aria-label="14"></a>  <span class="cf">return</span>(β̂, Vr, Vh)</span>
+<span id="cb1-15"><a aria-label="15"></a><span class="kw">end</span></span>
+<span id="cb1-16"><a aria-label="16"></a></span>
+<span id="cb1-17"><a aria-label="17"></a><span class="kw">function</span> <span class="fu">olsvar</span>(X, ϵ, XXf)</span>
+<span id="cb1-18"><a aria-label="18"></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb1-19"><a aria-label="19"></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
+<span id="cb1-20"><a aria-label="20"></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> n<span class="op">/</span>(n<span class="op">-</span>k)<span class="fu">*iXX*sum</span>(X[i,<span class="op">:</span>]<span class="op">*</span>X[i,<span class="op">:</span>]<span class="ch">'*ϵ[i]^2 for i ∈ axes(X)[1])*iXX</span></span>
+<span id="cb1-21"><a aria-label="21"></a>  Vh <span class="op">=</span> n<span class="op">/</span>(n<span class="op">-</span>k)<span class="fu">*iXX*var</span>(ϵ)</span>
+<span id="cb1-22"><a aria-label="22"></a>  <span class="cf">return</span>(Vr,Vh)</span>
+<span id="cb1-23"><a aria-label="23"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>olsvar (generic function with 1 method)</code></pre>
 </div>
@@ -428,36 +433,36 @@ Paul Schrimpf
 <div id="4" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a></a><span class="im">using</span> <span class="bu">PlotlyLight</span>, <span class="bu">Distributions</span>, <span class="bu">Cobweb</span></span>
-<span id="cb3-2"><a></a><span class="kw">function</span> <span class="fu">simsize</span>(n,k,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>)</span>
-<span id="cb3-3"><a></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
-<span id="cb3-4"><a></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
-<span id="cb3-5"><a></a>    X,y <span class="op">=</span> <span class="fu">sim</span>(n,k,β<span class="op">=</span>β,σ<span class="op">=</span>σ)</span>
-<span id="cb3-6"><a></a>    β̂, Vr, Vh <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
-<span id="cb3-7"><a></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
-<span id="cb3-8"><a></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vh[<span class="fl">1</span>,<span class="fl">1</span>])</span>
-<span id="cb3-9"><a></a>  <span class="cf">end</span></span>
-<span id="cb3-10"><a></a>  p <span class="op">=</span> <span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z)</span>
-<span id="cb3-11"><a></a>  <span class="cf">return</span>(p, z)</span>
-<span id="cb3-12"><a></a><span class="kw">end</span></span>
-<span id="cb3-13"><a></a><span class="kw">function</span> <span class="fu">makeplot</span>(p,z,n;   u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
-<span id="cb3-14"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
-<span id="cb3-15"><a></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
-<span id="cb3-16"><a></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">"</span></span>
-<span id="cb3-17"><a></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
-<span id="cb3-18"><a></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
-<span id="cb3-19"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
-<span id="cb3-20"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Homoskedasticity"</span>)</span>
-<span id="cb3-21"><a></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
-<span id="cb3-22"><a></a><span class="kw">end</span></span>
-<span id="cb3-23"><a></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
-<span id="cb3-24"><a></a>k <span class="op">=</span> <span class="fl">2</span></span>
-<span id="cb3-25"><a></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
-<span id="cb3-26"><a></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
-<span id="cb3-27"><a></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>)<span class="op">...</span>,n)</span>
-<span id="cb3-28"><a></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
-<span id="cb3-29"><a></a>  <span class="cf">end</span></span>
-<span id="cb3-30"><a></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a aria-label="1"></a><span class="im">using</span> <span class="bu">PlotlyLight</span>, <span class="bu">Distributions</span>, <span class="bu">Cobweb</span></span>
+<span id="cb3-2"><a aria-label="2"></a><span class="kw">function</span> <span class="fu">simsize</span>(n,k,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>)</span>
+<span id="cb3-3"><a aria-label="3"></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
+<span id="cb3-4"><a aria-label="4"></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
+<span id="cb3-5"><a aria-label="5"></a>    X,y <span class="op">=</span> <span class="fu">sim</span>(n,k,β<span class="op">=</span>β,σ<span class="op">=</span>σ)</span>
+<span id="cb3-6"><a aria-label="6"></a>    β̂, Vr, Vh <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb3-7"><a aria-label="7"></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb3-8"><a aria-label="8"></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vh[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb3-9"><a aria-label="9"></a>  <span class="cf">end</span></span>
+<span id="cb3-10"><a aria-label="10"></a>  p <span class="op">=</span> <span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z)</span>
+<span id="cb3-11"><a aria-label="11"></a>  <span class="cf">return</span>(p, z)</span>
+<span id="cb3-12"><a aria-label="12"></a><span class="kw">end</span></span>
+<span id="cb3-13"><a aria-label="13"></a><span class="kw">function</span> <span class="fu">makeplot</span>(p,z,n;   u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
+<span id="cb3-14"><a aria-label="14"></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb3-15"><a aria-label="15"></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
+<span id="cb3-16"><a aria-label="16"></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">"</span></span>
+<span id="cb3-17"><a aria-label="17"></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
+<span id="cb3-18"><a aria-label="18"></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
+<span id="cb3-19"><a aria-label="19"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
+<span id="cb3-20"><a aria-label="20"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Homoskedasticity"</span>)</span>
+<span id="cb3-21"><a aria-label="21"></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
+<span id="cb3-22"><a aria-label="22"></a><span class="kw">end</span></span>
+<span id="cb3-23"><a aria-label="23"></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
+<span id="cb3-24"><a aria-label="24"></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb3-25"><a aria-label="25"></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
+<span id="cb3-26"><a aria-label="26"></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb3-27"><a aria-label="27"></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>)<span class="op">...</span>,n)</span>
+<span id="cb3-28"><a aria-label="28"></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb3-29"><a aria-label="29"></a>  <span class="cf">end</span></span>
+<span id="cb3-30"><a aria-label="30"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="6" class="cell" data-execution_count="1">
@@ -495,21 +500,21 @@ Paul Schrimpf
 <div id="14" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a></a>n <span class="op">=</span> <span class="fl">250</span></span>
-<span id="cb4-2"><a></a>k <span class="op">=</span> <span class="fl">3</span></span>
-<span id="cb4-3"><a></a>Xh,yh <span class="op">=</span> <span class="fu">sim</span>(n,k)</span>
-<span id="cb4-4"><a></a>bh, _, _ <span class="op">=</span> <span class="fu">ols</span>(Xh,yh)</span>
-<span id="cb4-5"><a></a>eh <span class="op">=</span> yh <span class="op">-</span> Xh<span class="op">*</span>bh</span>
-<span id="cb4-6"><a></a>X,y <span class="op">=</span> <span class="fu">sim</span>(n,k, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))</span>
-<span id="cb4-7"><a></a>b, _, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
-<span id="cb4-8"><a></a><span class="cn">e</span> <span class="op">=</span> y <span class="op">-</span> X<span class="op">*</span>b</span>
-<span id="cb4-9"><a></a></span>
-<span id="cb4-10"><a></a>plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
-<span id="cb4-11"><a></a>plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
-<span id="cb4-12"><a></a><span class="fu">plt</span>(x <span class="op">=</span> <span class="fu">vec</span>(Xh<span class="op">*</span>bh), y<span class="op">=</span><span class="fu">vec</span>(eh), name<span class="op">=</span><span class="st">"Homoskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>, <span class="kw">type</span><span class="op">=</span><span class="st">"scatter"</span>)</span>
-<span id="cb4-13"><a></a>fig <span class="op">=</span><span class="fu">plt</span>(x <span class="op">=</span> <span class="fu">vec</span>(X<span class="op">*</span>b), y <span class="op">=</span> <span class="fu">vec</span>(<span class="cn">e</span>), name<span class="op">=</span><span class="st">"Heteroskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>)</span>
-<span id="cb4-14"><a></a>PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"resid.html"</span>)</span>
-<span id="cb4-15"><a></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">resid.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1000</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">650</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a aria-label="1"></a>n <span class="op">=</span> <span class="fl">250</span></span>
+<span id="cb4-2"><a aria-label="2"></a>k <span class="op">=</span> <span class="fl">3</span></span>
+<span id="cb4-3"><a aria-label="3"></a>Xh,yh <span class="op">=</span> <span class="fu">sim</span>(n,k)</span>
+<span id="cb4-4"><a aria-label="4"></a>bh, _, _ <span class="op">=</span> <span class="fu">ols</span>(Xh,yh)</span>
+<span id="cb4-5"><a aria-label="5"></a>eh <span class="op">=</span> yh <span class="op">-</span> Xh<span class="op">*</span>bh</span>
+<span id="cb4-6"><a aria-label="6"></a>X,y <span class="op">=</span> <span class="fu">sim</span>(n,k, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))</span>
+<span id="cb4-7"><a aria-label="7"></a>b, _, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb4-8"><a aria-label="8"></a><span class="cn">e</span> <span class="op">=</span> y <span class="op">-</span> X<span class="op">*</span>b</span>
+<span id="cb4-9"><a aria-label="9"></a></span>
+<span id="cb4-10"><a aria-label="10"></a>plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb4-11"><a aria-label="11"></a>plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
+<span id="cb4-12"><a aria-label="12"></a><span class="fu">plt</span>(x <span class="op">=</span> <span class="fu">vec</span>(Xh<span class="op">*</span>bh), y<span class="op">=</span><span class="fu">vec</span>(eh), name<span class="op">=</span><span class="st">"Homoskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>, <span class="kw">type</span><span class="op">=</span><span class="st">"scatter"</span>)</span>
+<span id="cb4-13"><a aria-label="13"></a>fig <span class="op">=</span><span class="fu">plt</span>(x <span class="op">=</span> <span class="fu">vec</span>(X<span class="op">*</span>b), y <span class="op">=</span> <span class="fu">vec</span>(<span class="cn">e</span>), name<span class="op">=</span><span class="st">"Heteroskedastic"</span>, mode<span class="op">=</span><span class="st">"markers"</span>)</span>
+<span id="cb4-14"><a aria-label="14"></a>PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"resid.html"</span>)</span>
+<span id="cb4-15"><a aria-label="15"></a><span class="fu">HTML</span>(<span class="st">"&lt;iframe src=</span><span class="sc">\"</span><span class="st">resid.html</span><span class="sc">\"</span><span class="st"> width=</span><span class="sc">\"</span><span class="st">1000</span><span class="sc">\"</span><span class="st">  height=</span><span class="sc">\"</span><span class="st">650</span><span class="sc">\"</span><span class="st">&gt;&lt;/iframe&gt;</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <iframe src="resid.html" width="1000" height="650"></iframe>
@@ -521,14 +526,14 @@ Paul Schrimpf
 <div id="16" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
-<span id="cb5-2"><a></a>k <span class="op">=</span> <span class="fl">2</span></span>
-<span id="cb5-3"><a></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
-<span id="cb5-4"><a></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
-<span id="cb5-5"><a></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))<span class="op">...</span>,n)</span>
-<span id="cb5-6"><a></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
-<span id="cb5-7"><a></a>  <span class="cf">end</span></span>
-<span id="cb5-8"><a></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a aria-label="1"></a>N <span class="op">=</span> [<span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">2500</span>, <span class="fl">10_000</span>]</span>
+<span id="cb5-2"><a aria-label="2"></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb5-3"><a aria-label="3"></a><span class="cf">for</span> n <span class="op">∈</span> N</span>
+<span id="cb5-4"><a aria-label="4"></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb5-5"><a aria-label="5"></a>    fig <span class="op">=</span> <span class="fu">makeplot</span>(<span class="fu">simsize</span>(n,k,<span class="fl">10_000</span>, σ<span class="op">=</span><span class="fu">x-&gt;</span>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fu">norm</span>(x<span class="op">'</span><span class="fu">*ones</span>(k) <span class="op">.+</span> <span class="fl">3</span>)<span class="op">/</span><span class="fl">3</span>))<span class="op">...</span>,n)</span>
+<span id="cb5-6"><a aria-label="6"></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_het_</span><span class="sc">$</span>n<span class="st">.html"</span>)</span>
+<span id="cb5-7"><a aria-label="7"></a>  <span class="cf">end</span></span>
+<span id="cb5-8"><a aria-label="8"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="18" class="cell" data-execution_count="1">
@@ -604,72 +609,72 @@ g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span><
 <section id="clustering" class="slide level2">
 <h2>Clustering</h2>
 <div id="26" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a></a><span class="kw">function</span> <span class="fu">olscl</span>(X,y, group<span class="op">=</span>group)</span>
-<span id="cb6-2"><a></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
-<span id="cb6-3"><a></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
-<span id="cb6-4"><a></a>  V <span class="op">=</span> <span class="fu">olsclvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored, group<span class="op">=</span>group)</span>
-<span id="cb6-5"><a></a>  <span class="cf">return</span>(β̂, V)</span>
-<span id="cb6-6"><a></a><span class="kw">end</span></span>
-<span id="cb6-7"><a></a></span>
-<span id="cb6-8"><a></a><span class="kw">function</span> <span class="fu">olsclvar</span>(X, ϵ, XXf; group<span class="op">=</span><span class="fu">axes</span>(X)[<span class="fl">1</span>])</span>
-<span id="cb6-9"><a></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
-<span id="cb6-10"><a></a>  groups<span class="op">=</span><span class="fu">unique</span>(group)</span>
-<span id="cb6-11"><a></a>  G <span class="op">=</span> <span class="fu">length</span>(groups)</span>
-<span id="cb6-12"><a></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
-<span id="cb6-13"><a></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> G<span class="op">/</span>(G<span class="op">-</span>k)<span class="op">*</span>iXX<span class="op">*</span></span>
-<span id="cb6-14"><a></a>    <span class="fu">sum</span>(X[group<span class="op">.==</span>g,<span class="op">:</span>]<span class="ch">'*ϵ[group.==g]*ϵ[group.==g]'</span><span class="op">*</span>X[group<span class="op">.==</span>g,<span class="op">:</span>] <span class="cf">for</span>  g <span class="kw">in</span> groups)<span class="op">*</span>iXX</span>
-<span id="cb6-15"><a></a>  <span class="cf">return</span>(Vr)</span>
-<span id="cb6-16"><a></a><span class="cf">end</span></span>
-<span id="cb6-17"><a></a></span>
-<span id="cb6-18"><a></a><span class="kw">function</span> <span class="fu">simcluster</span>(n,k,G; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-19"><a></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
-<span id="cb6-20"><a></a>  group <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>G,n)</span>
-<span id="cb6-21"><a></a>  <span class="cf">for</span> g <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>G <span class="co"># ensure all groups included</span></span>
-<span id="cb6-22"><a></a>    <span class="cf">if</span> <span class="fu">sum</span>(group<span class="op">.==</span>g)<span class="op">==</span><span class="fl">0</span></span>
-<span id="cb6-23"><a></a>      group[g]<span class="op">=</span>g</span>
-<span id="cb6-24"><a></a>    <span class="cf">end</span></span>
-<span id="cb6-25"><a></a>  <span class="cf">end</span></span>
-<span id="cb6-26"><a></a>  X[<span class="op">:</span>,<span class="fl">1</span>] <span class="op">.+=</span> (group<span class="op">.&gt;</span>(G<span class="op">/</span><span class="fl">2</span>))</span>
-<span id="cb6-27"><a></a>  u <span class="op">=</span> <span class="fu">randn</span>(G)</span>
-<span id="cb6-28"><a></a>  ϵ <span class="op">=</span> (ρ<span class="op">*</span>u[group] <span class="op">+</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>ρ<span class="op">^</span><span class="fl">2</span>)<span class="fu">*randn</span>(n))<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
-<span id="cb6-29"><a></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
-<span id="cb6-30"><a></a>  <span class="cf">return</span>(X,y, group)</span>
-<span id="cb6-31"><a></a><span class="kw">end</span></span>
-<span id="cb6-32"><a></a></span>
-<span id="cb6-33"><a></a><span class="kw">function</span> <span class="fu">simsizecluster</span>(n,k,G,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb6-34"><a></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
-<span id="cb6-35"><a></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
-<span id="cb6-36"><a></a>    X,y,group <span class="op">=</span> <span class="fu">simcluster</span>(n,k,G,β<span class="op">=</span>β,σ<span class="op">=</span>σ, ρ<span class="op">=</span>ρ)</span>
-<span id="cb6-37"><a></a>    β̂, Vcr <span class="op">=</span> <span class="fu">olscl</span>(X,y, group)</span>
-<span id="cb6-38"><a></a>    _, Vr, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
-<span id="cb6-39"><a></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vcr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
-<span id="cb6-40"><a></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
-<span id="cb6-41"><a></a>  <span class="cf">end</span></span>
-<span id="cb6-42"><a></a>  p <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z), <span class="fu">cdf</span>.(<span class="fu">TDist</span>(G<span class="op">-</span>k),z))</span>
-<span id="cb6-43"><a></a>  <span class="cf">return</span>(p, z)</span>
-<span id="cb6-44"><a></a><span class="kw">end</span></span>
-<span id="cb6-45"><a></a></span>
-<span id="cb6-46"><a></a><span class="kw">function</span> <span class="fu">makeplotcl</span>(p,z,n,g; u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
-<span id="cb6-47"><a></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
-<span id="cb6-48"><a></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
-<span id="cb6-49"><a></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">, G=</span><span class="sc">$</span>g<span class="st">"</span></span>
-<span id="cb6-50"><a></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
-<span id="cb6-51"><a></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
-<span id="cb6-52"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (Normal Distribution)"</span>)</span>
-<span id="cb6-53"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
-<span id="cb6-54"><a></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">3</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (t-Distribution)"</span>)</span>
-<span id="cb6-55"><a></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
-<span id="cb6-56"><a></a><span class="kw">end</span></span>
-<span id="cb6-57"><a></a></span>
-<span id="cb6-58"><a></a>N <span class="op">=</span> [<span class="fl">200</span>, <span class="fl">200</span>, <span class="fl">5000</span>, <span class="fl">5000</span>]</span>
-<span id="cb6-59"><a></a>G <span class="op">=</span> [<span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">10</span>, <span class="fl">100</span>]</span>
-<span id="cb6-60"><a></a>k <span class="op">=</span> <span class="fl">2</span></span>
-<span id="cb6-61"><a></a><span class="cf">for</span> (n,g) <span class="op">∈</span> <span class="fu">zip</span>(N,G)</span>
-<span id="cb6-62"><a></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
-<span id="cb6-63"><a></a>    fig <span class="op">=</span> <span class="fu">makeplotcl</span>(<span class="fu">simsizecluster</span>(n,k,g,<span class="fl">10_000</span>)<span class="op">...</span>,n,g)</span>
-<span id="cb6-64"><a></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
-<span id="cb6-65"><a></a>  <span class="cf">end</span></span>
-<span id="cb6-66"><a></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a aria-label="1"></a><span class="kw">function</span> <span class="fu">olscl</span>(X,y, group<span class="op">=</span>group)</span>
+<span id="cb6-2"><a aria-label="2"></a>  XXfactored <span class="op">=</span> <span class="fu">cholesky</span>(X<span class="op">'*</span>X)</span>
+<span id="cb6-3"><a aria-label="3"></a>  β̂ <span class="op">=</span> XXfactored <span class="op">\</span> X<span class="op">'*</span>y</span>
+<span id="cb6-4"><a aria-label="4"></a>  V <span class="op">=</span> <span class="fu">olsclvar</span>(X, y <span class="op">-</span> X<span class="op">*</span>β̂, XXfactored, group<span class="op">=</span>group)</span>
+<span id="cb6-5"><a aria-label="5"></a>  <span class="cf">return</span>(β̂, V)</span>
+<span id="cb6-6"><a aria-label="6"></a><span class="kw">end</span></span>
+<span id="cb6-7"><a aria-label="7"></a></span>
+<span id="cb6-8"><a aria-label="8"></a><span class="kw">function</span> <span class="fu">olsclvar</span>(X, ϵ, XXf; group<span class="op">=</span><span class="fu">axes</span>(X)[<span class="fl">1</span>])</span>
+<span id="cb6-9"><a aria-label="9"></a>  n, k <span class="op">=</span> <span class="fu">size</span>(X)</span>
+<span id="cb6-10"><a aria-label="10"></a>  groups<span class="op">=</span><span class="fu">unique</span>(group)</span>
+<span id="cb6-11"><a aria-label="11"></a>  G <span class="op">=</span> <span class="fu">length</span>(groups)</span>
+<span id="cb6-12"><a aria-label="12"></a>  iXX <span class="op">=</span> <span class="fu">inv</span>(XXf)</span>
+<span id="cb6-13"><a aria-label="13"></a>  <span class="pp">@views</span> <span class="pp">@inbounds</span> Vr <span class="op">=</span> G<span class="op">/</span>(G<span class="op">-</span>k)<span class="op">*</span>iXX<span class="op">*</span></span>
+<span id="cb6-14"><a aria-label="14"></a>    <span class="fu">sum</span>(X[group<span class="op">.==</span>g,<span class="op">:</span>]<span class="ch">'*ϵ[group.==g]*ϵ[group.==g]'</span><span class="op">*</span>X[group<span class="op">.==</span>g,<span class="op">:</span>] <span class="cf">for</span>  g <span class="kw">in</span> groups)<span class="op">*</span>iXX</span>
+<span id="cb6-15"><a aria-label="15"></a>  <span class="cf">return</span>(Vr)</span>
+<span id="cb6-16"><a aria-label="16"></a><span class="cf">end</span></span>
+<span id="cb6-17"><a aria-label="17"></a></span>
+<span id="cb6-18"><a aria-label="18"></a><span class="kw">function</span> <span class="fu">simcluster</span>(n,k,G; β<span class="op">=</span><span class="fu">ones</span>(k), σ <span class="op">=</span> x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-19"><a aria-label="19"></a>  X <span class="op">=</span> <span class="fu">randn</span>(n,k)</span>
+<span id="cb6-20"><a aria-label="20"></a>  group <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">1</span><span class="op">:</span>G,n)</span>
+<span id="cb6-21"><a aria-label="21"></a>  <span class="cf">for</span> g <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>G <span class="co"># ensure all groups included</span></span>
+<span id="cb6-22"><a aria-label="22"></a>    <span class="cf">if</span> <span class="fu">sum</span>(group<span class="op">.==</span>g)<span class="op">==</span><span class="fl">0</span></span>
+<span id="cb6-23"><a aria-label="23"></a>      group[g]<span class="op">=</span>g</span>
+<span id="cb6-24"><a aria-label="24"></a>    <span class="cf">end</span></span>
+<span id="cb6-25"><a aria-label="25"></a>  <span class="cf">end</span></span>
+<span id="cb6-26"><a aria-label="26"></a>  X[<span class="op">:</span>,<span class="fl">1</span>] <span class="op">.+=</span> (group<span class="op">.&gt;</span>(G<span class="op">/</span><span class="fl">2</span>))</span>
+<span id="cb6-27"><a aria-label="27"></a>  u <span class="op">=</span> <span class="fu">randn</span>(G)</span>
+<span id="cb6-28"><a aria-label="28"></a>  ϵ <span class="op">=</span> (ρ<span class="op">*</span>u[group] <span class="op">+</span> <span class="fu">sqrt</span>(<span class="fl">1</span><span class="op">-</span>ρ<span class="op">^</span><span class="fl">2</span>)<span class="fu">*randn</span>(n))<span class="op">.*</span><span class="fu">mapslices</span>(σ, X, dims<span class="op">=</span>[<span class="fl">2</span>])</span>
+<span id="cb6-29"><a aria-label="29"></a>  y <span class="op">=</span> X<span class="op">*</span>β <span class="op">+</span> ϵ</span>
+<span id="cb6-30"><a aria-label="30"></a>  <span class="cf">return</span>(X,y, group)</span>
+<span id="cb6-31"><a aria-label="31"></a><span class="kw">end</span></span>
+<span id="cb6-32"><a aria-label="32"></a></span>
+<span id="cb6-33"><a aria-label="33"></a><span class="kw">function</span> <span class="fu">simsizecluster</span>(n,k,G,S; β<span class="op">=</span><span class="fu">ones</span>(k), σ<span class="op">=</span>x<span class="op">-&gt;</span><span class="fl">1</span>, ρ<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb6-34"><a aria-label="34"></a>  z <span class="op">=</span> <span class="fu">zeros</span>(S,<span class="fl">2</span>)</span>
+<span id="cb6-35"><a aria-label="35"></a>  <span class="cf">for</span> s <span class="op">∈</span> <span class="fl">1</span><span class="op">:</span>S</span>
+<span id="cb6-36"><a aria-label="36"></a>    X,y,group <span class="op">=</span> <span class="fu">simcluster</span>(n,k,G,β<span class="op">=</span>β,σ<span class="op">=</span>σ, ρ<span class="op">=</span>ρ)</span>
+<span id="cb6-37"><a aria-label="37"></a>    β̂, Vcr <span class="op">=</span> <span class="fu">olscl</span>(X,y, group)</span>
+<span id="cb6-38"><a aria-label="38"></a>    _, Vr, _ <span class="op">=</span> <span class="fu">ols</span>(X,y)</span>
+<span id="cb6-39"><a aria-label="39"></a>    z[s,<span class="fl">1</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vcr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb6-40"><a aria-label="40"></a>    z[s,<span class="fl">2</span>] <span class="op">=</span> (β̂[<span class="fl">1</span>] <span class="op">-</span> β[<span class="fl">1</span>])<span class="op">/</span><span class="fu">sqrt</span>(Vr[<span class="fl">1</span>,<span class="fl">1</span>])</span>
+<span id="cb6-41"><a aria-label="41"></a>  <span class="cf">end</span></span>
+<span id="cb6-42"><a aria-label="42"></a>  p <span class="op">=</span> <span class="fu">hcat</span>(<span class="fu">cdf</span>.(<span class="fu">Normal</span>(),z), <span class="fu">cdf</span>.(<span class="fu">TDist</span>(G<span class="op">-</span>k),z))</span>
+<span id="cb6-43"><a aria-label="43"></a>  <span class="cf">return</span>(p, z)</span>
+<span id="cb6-44"><a aria-label="44"></a><span class="kw">end</span></span>
+<span id="cb6-45"><a aria-label="45"></a></span>
+<span id="cb6-46"><a aria-label="46"></a><span class="kw">function</span> <span class="fu">makeplotcl</span>(p,z,n,g; u <span class="op">=</span> <span class="fu">range</span>(<span class="fl">0</span>,<span class="fl">1</span>,length<span class="op">=</span><span class="fl">100</span>))</span>
+<span id="cb6-47"><a aria-label="47"></a>  plt <span class="op">=</span> <span class="fu">Plot</span>()</span>
+<span id="cb6-48"><a aria-label="48"></a>  plt.layout <span class="op">=</span> <span class="fu">Config</span>()</span>
+<span id="cb6-49"><a aria-label="49"></a>  plt.layout.title<span class="op">=</span><span class="st">"N=</span><span class="sc">$</span>n<span class="st">, G=</span><span class="sc">$</span>g<span class="st">"</span></span>
+<span id="cb6-50"><a aria-label="50"></a>  plt.layout.yaxis.title.text<span class="op">=</span><span class="st">"x - P(asymptotic p-value &lt; x)"</span></span>
+<span id="cb6-51"><a aria-label="51"></a>  plt.layout.xaxis.title.text<span class="op">=</span><span class="st">"x"</span></span>
+<span id="cb6-52"><a aria-label="52"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">1</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (Normal Distribution)"</span>)</span>
+<span id="cb6-53"><a aria-label="53"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">2</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Heteroskedasticity Robust"</span>)</span>
+<span id="cb6-54"><a aria-label="54"></a>  <span class="fu">plt</span>(x<span class="op">=</span>u, y<span class="op">=</span>(u <span class="op">.-</span> (<span class="fu">x-&gt;mean</span>(p[<span class="op">:</span>,<span class="fl">3</span>]<span class="op">.&lt;=</span>x)).(u)), name<span class="op">=</span><span class="st">"Clustered (t-Distribution)"</span>)</span>
+<span id="cb6-55"><a aria-label="55"></a>  <span class="cf">return</span>(<span class="fu">plt</span>())</span>
+<span id="cb6-56"><a aria-label="56"></a><span class="kw">end</span></span>
+<span id="cb6-57"><a aria-label="57"></a></span>
+<span id="cb6-58"><a aria-label="58"></a>N <span class="op">=</span> [<span class="fl">200</span>, <span class="fl">200</span>, <span class="fl">5000</span>, <span class="fl">5000</span>]</span>
+<span id="cb6-59"><a aria-label="59"></a>G <span class="op">=</span> [<span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">10</span>, <span class="fl">100</span>]</span>
+<span id="cb6-60"><a aria-label="60"></a>k <span class="op">=</span> <span class="fl">2</span></span>
+<span id="cb6-61"><a aria-label="61"></a><span class="cf">for</span> (n,g) <span class="op">∈</span> <span class="fu">zip</span>(N,G)</span>
+<span id="cb6-62"><a aria-label="62"></a>  <span class="cf">if</span> !<span class="fu">isfile</span>(<span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
+<span id="cb6-63"><a aria-label="63"></a>    fig <span class="op">=</span> <span class="fu">makeplotcl</span>(<span class="fu">simsizecluster</span>(n,k,g,<span class="fl">10_000</span>)<span class="op">...</span>,n,g)</span>
+<span id="cb6-64"><a aria-label="64"></a>    PlotlyLight.<span class="fu">save</span>(fig, <span class="st">"size_cluster_</span><span class="sc">$</span>(n)<span class="st">_</span><span class="sc">$</span>g<span class="st">.html"</span>)</span>
+<span id="cb6-65"><a aria-label="65"></a>  <span class="cf">end</span></span>
+<span id="cb6-66"><a aria-label="66"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="clustering-1" class="slide level2">
@@ -883,18 +888,18 @@ LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R' \hat{\lambda} \indist \chi^2
 <h1>References</h1>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-dedecker2007" class="csl-entry" role="listitem">
-Dedecker, Jérôme, Paul Doukhan, Gabriel Lang, León R José Rafael, Sana Louhichi, and Clémentine Prieur. 2007. <span>“Weak Dependence.”</span> In <em>Weak Dependence: With Examples and Applications</em>, 9–20. Springer. <a href="https://link.springer.com/book/10.1007/978-0-387-69952-3">https://link.springer.com/book/10.1007/978-0-387-69952-3</a>.
+Dedecker, Jérôme, Paul Doukhan, Gabriel Lang, León R José Rafael, Sana Louhichi, and Clémentine Prieur. 2007. <span>“Weak Dependence.”</span> In <em>Weak Dependence: With Examples and Applications</em>. Springer. <a href="https://link.springer.com/book/10.1007/978-0-387-69952-3">https://link.springer.com/book/10.1007/978-0-387-69952-3</a>.
 </div>
 <div id="ref-mikusheva2007" class="csl-entry" role="listitem">
-Mikusheva, Anna, and Paul Schrimpf. 2007. <span>“14.384 Time Series Analysis, Fall 2007 (Revised 2009).”</span> <a href="http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/">http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/</a>.
+Mikusheva, Anna, and Paul Schrimpf. 2007. <em>14.384 Time Series Analysis, Fall 2007 (Revised 2009)</em>. <a href="http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/">http://ocw.mit.edu/courses/economics/14-384-time-series-analysis-fall-2013/lecture-notes/</a>.
 </div>
 <div id="ref-newey1987" class="csl-entry" role="listitem">
 Newey, Whitney K, and Kenneth D West. 1987. <span>“A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix.”</span> <em>Econometrica</em> 55 (3): 703–8.
 </div>
 <div id="ref-song2021" class="csl-entry" role="listitem">
-Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
+Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
 </div>
 </div>
 </section>
@@ -1190,7 +1195,7 @@ Song, Kyunchul. 2021. <span>“Introduction to Econometrics.”</span>
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/ubcecon\.github\.io\/626\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

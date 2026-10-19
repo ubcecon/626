@@ -1,6 +1,0 @@
----
-title: "Slides"
-listing:
-  contents: "*/*.qmd"
-sort: date
----

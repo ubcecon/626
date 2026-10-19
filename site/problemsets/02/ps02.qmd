@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 2"
 #author: "Paul Schrimpf"
-date: 2025-09-23
+date: 2026-09-29
 bibliography: ../../626.bib
 ---
 
@@ -15,21 +15,21 @@ $$
 Let $X_{1},...,X_{n}$ be independent and identically distribution and $P(X_{1}\leq t)=F(t)$ for some function $F$. Then, write the probability
 $P(\max_{1\leq i\leq n}X_{i}\leq t)$ in terms of $F$.
 
+<!-- # Problem 2 -->
+
+<!-- 1. Show that if $E[Y |X] = 0$, then $Y$ and $g(X)$ are uncorrelated for any (Borel) measurable -->
+<!-- function $g$. Do you have the same conclusion if we weaken the condition $E[Y |X] = 0$ to -->
+<!-- $E[Y |X] = a$ for some fixed constant $a \in \R$? -->
+
+<!-- 2. Suppose that $E[Y^2 |X] < a^2$ for some constant $a > 0$. Then, show that for any $b > 0$, -->
+<!-- $$ -->
+<!-- P\left(|Y − EY | > b\right) \leq \frac{a^2}{b^2}. -->
+<!-- $$ -->
+
+<!-- 3. Show that if $E[Y | \exp(X)] = E[Y]$, then the correlation between -->
+<!-- $E[Y | cos(X)]$ and $cos(X)$ is zero. -->
+
 # Problem 2
-
-1. Show that if $E[Y |X] = 0$, then $Y$ and $g(X)$ are uncorrelated for any (Borel) measurable
-function $g$. Do you have the same conclusion if we weaken the condition $E[Y |X] = 0$ to
-$E[Y |X] = a$ for some fixed constant $a \in \R$?
-
-2. Suppose that $E[Y^2 |X] < a^2$ for some constant $a > 0$. Then, show that for any $b > 0$,
-$$
-P\left(|Y − EY | > b\right) \leq \frac{a^2}{b^2}.
-$$
-
-3. Show that if $E[Y | \exp(X)] = E[Y]$, then the correlation between
-$E[Y | cos(X)]$ and $cos(X)$ is zero.
-
-# Problem 3
 
 Let $X: \Omega \to \R$, $W:  \Omega \to \R$, $Z: \Omega \to \R$, and $D: \Omega \to \{0, 1\}$ be random variables.
 Let $Y = D X + (1-D) W$.  Suppose that $Y$, $D$, and $Z$ are observed, but $X$ and $W$ are not.
@@ -39,3 +39,13 @@ Let $Y = D X + (1-D) W$.  Suppose that $Y$, $D$, and $Z$ are observed, but $X$ a
 2. Suppose $Z$ is independent of $X$ and $W$, and
 $\exists E_1, E_0 \in \sigma(Z)$ such that $P(D=1 | E_1) = 1$ and  $P(D=0|E_0) = 1$.
 Then show that $\Er[X-W]$ is identified.
+
+# Problem 3
+
+Suppose $Y_i = m(X_i' \beta + u_i)$ for $i=1, ... , n$ with $X_i \in \R^k$
+and  $m:\R \to \R$ is a known function. Throughout, assume that observations are independent across $i$, $\Er[u] =0$,
+and $u$ is independent of $X$, and $\Er[XX']$ is nonsingular. $Y$ and $X$ are observed, but $u$ is not.
+
+1. If $m$ is strictly increasing show that $\beta$ is identified by explicitly writing $\beta$ as a function of the distribution of $X$ and $Y$.
+
+2. Suppose $m(z) = 1\{z \geq 0\}$. For simplicitly, let $k=1$ and $X_i \in \{-1, 1\}$. Show that $\beta$ is not identified by finding an observationally equivalent $\tilde{\beta}$.

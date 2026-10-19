@@ -1,0 +1,523 @@
+---
+title: "ECON 626: Midterm"
+author: "Paul Schrimpf"
+date: "2026-10-19"
+bibliography: ~/626/site/626.bib
+format:
+    css: styles.css
+    number-sections: true
+---
+
+::: {.hidden}
+
+$$
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\Pr{{\mathrm{P}}}
+\def\var{{\mathrm{Var}}}
+\renewcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\cov{{\mathrm{Cov}}}
+\def\En{{\mathbb{E}_n}}
+\def\rank{{\mathrm{rank}}}
+\renewcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+$$
+
+:::
+
+# Problem 1: Means of Normal Random Variables
+
+## MLE
+
+Suppose $X_1, ..., X_n$ are independent and identically distributed as
+$N(\mu,\sigma^2)$. The normal pdf is $\phi(x;\mu,\sigma^2) =
+\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}.$
+
+### Estimator
+
+Write the loglikelihood, $\log \ell(\mu,\sigma^2;\mathbf{X})$, and
+show that the maximum likelihood estimator for $\mu$ is $\hat{\mu} =
+\frac{1}{n} \sum_{i=1}^n X_i$.
+
+::: {.solution}
+
+The loglikelihood is:
+$$
+\log \ell(\mu,\sigma^2;\mathbf{X}) = \sum_{i=1}^n -1/2 \log(2\pi \sigma^2) - 1/2 \frac{(x_i - \mu)^2}{\sigma^2}
+$$
+The first order condition for $\mu$ is
+$$
+0 = \sum \frac{x_i - \hat{\mu}}{\hat{\sigma}^2}
+$$
+so
+$$
+\hat{\mu} = \frac{1}{n} \sum_{i=1}^n x_i
+$$
+
+:::
+
+### Variance of Estimator
+
+Calculate the variance of $\hat{\mu}$.
+
+::: {.solution}
+
+$$
+\begin{align*}
+\var(\hat{\mu}) = & \var\left( \frac{1}{n} \sum_{i=1}^n x_i \right) \\
+= & \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(x_i,x_j) \\
+= & \frac{1}{n^2} \sum_{i=1}^n \var(x_i) \\
+= & \frac{1}{n^2} n \sigma^2 \\
+= & \frac{\sigma^2}{n}
+\end{align*}
+$$
+
+:::
+
+### Cramér-Rao Lower Bound
+
+When $\sigma^2$ is known, the Cramér-Rao lower bound for $\mu$ is
+$\sigma^2/n$. Now suppose $\sigma^2$ is unknown. Compute the 2x2
+information matrix and find the Cramér-Rao lower bound for an unbiased
+estimator of $\mu$. Does knowing $\sigma^2$ improve the estimation of
+$\mu$?
+
+::: {.solution}
+
+We can take the parameters to be either $\mu, \sigma^2$ or $\mu, \sigma$. It affects the algebra, but not the answer. Here, I use $\sigma^2$.
+The score is
+$$
+s(\mu,\sigma^2;\mathbf{X}) = \begin{pmatrix}
+\sum \frac{x_i - \mu}{\sigma^2} \\
+\sum \frac{1}{2 \pi \sigma^2} + 1/2\frac{(x_i - \mu)^2}{(\sigma^2)^2}
+\end{pmatrix}
+$$
+and the Hessian is
+$$
+H(\mu,\sigma^2;\mathbf{X}) = & \begin{pmatrix}
+-\frac{n}{\sigma^2} & \sum -\frac{x_i - \mu}{(\sigma^2)^2} \\
+\sum -\frac{x_i - \mu}{(\sigma^2)^2} & -\frac{n}{2\pi (\sigma^2)^2} - \sum \frac{(x_i-\mu)^2}{(\sigma^2)^3}
+\end{pmatrix}.
+$$
+
+The information matrix is minus the expected hessian, which is
+$$
+I = \begin{pmatrix} \frac{n}{\sigma^2} & 0 \\
+0 & \frac{n}{2\pi (\sigma^2)^2} + \frac{n}{(\sigma^2)^2}
+\end{pmatrix}
+$$
+
+So the Cramer Rao lower bound is
+$$
+\var(\mu,\sigma^2) \geq I^{-1} = \begin{pmatrix}
+\frac{\sigma^2}{n} & 0 \\
+0 & \frac{2\pi (\sigma^2)^2}{n(1+2\pi)}.
+\end{pmatrix}
+$$
+In particular, the lower bound for the variance of $\mu$ is $\sigma^2/n$, the same as if $\sigma^2$ were known.
+
+:::
+
+
+## Testing
+
+Now suppose the data consists of two groups with $n$ observations
+each:
+
+$$
+X^a_i \sim N(\mu_a, 1) \text{ for }i = 1,..., n
+$$
+
+and
+
+$$
+X^b_j \sim N(\mu_b, 1) \text{ for }j = 1,..., n
+$$
+
+As above, observations are independent. It can be shown that the
+critical region for a likelihood ratio test for testing $H_0: \mu_a =
+\mu_a^0, \mu_b = \mu_b^0$ against $H_1: \mu_a = \mu_a^1, \mu_b =
+\mu_b^1$ can be written as
+$$
+C = \left\lbrace \mathbf{X} : (\mu_a^1 - \mu_a^0) \sum_{i=1}^{n}
+ X_i^a + (\mu_b^1 - \mu_b^0) \sum_{j=1}^{n}
+ X_j^b > c \right\rbrace
+$$
+
+### Most Powerful
+
+Show that the likelihood ratio test is uniformly most
+powerful for testing $H_0: \mu_a = \mu_a^0, \mu_b = \mu_b^0$ against
+all alternatives with $\mu_a^1 > \mu^0_a$ and $\mu^1_a - \mu^0_a = -(\mu^1_b - \mu^0_b)$, and
+that the test can be written as
+$$
+C = \left\lbrace \mathbf{X}: \frac{1}{n} \sum_{i=1}^{n} X_i^a -
+\frac{1}{n} \sum_{j=1}^{n} X_j^b > c \right\rbrace
+$$
+for a modified constant $c$.
+
+::: {.solution}
+
+As stated in the question, the most powerful test for point hypotheses is
+$$
+C = \left\lbrace \mathbf{X} : (\mu_a^1 - \mu_a^0) \sum_{i=1}^{n}
+ X_i^a + (\mu_b^1 - \mu_b^0) \sum_{j=1}^{n}
+ X_j^b > c \right\rbrace
+$$
+Given the assumptions here, and denoting $\mu^1_a - \mu^0_a = \Delta$, we can write the test as
+$$
+C = \left\lbrace \mathbf{X} : \sum_{i=1}^{n}
+ X_i^a - \sum_{j=1}^{n}
+ X_j^b > c/\Delta \right\rbrace.
+$$
+To control size, $c/\Delta$ much be such that
+$$
+\alpha = P_0(C) = P_0(\sum_{i=1}^{n}
+ X_i^a - \sum_{j=1}^{n}
+ X_j^b > c/\Delta)
+$$
+Given the normality assumption, under $H_0$,
+$$
+\sum_{i=1}^{n}
+ X_i^a - \sum_{j=1}^{n}
+ X_j^b \sim N(0, 2n\sigma^2)
+$$
+so
+$$
+\alpha = P_0(\sum_{i=1}^{n}
+ X_i^a - \sum_{j=1}^{n}
+ X_j^b > c/\Delta) = 1 - \Phi\left(\frac{\sum_{i=1}^{n}
+ X_i^a - \sum_{j=1}^{n}
+ X_j^b}{\sqrt{2n\sigma^2}}\right)
+$$
+or $c/\Delta = \Phi^{-1}( 1 - \alpha)\sqrt{2n\sigma^2}$. The critical region,
+$$
+C = \left\lbrace \mathbf{X} : \sum_{i=1}^{n}
+ X_i^a - \sum_{j=1}^{n}
+ X_j^b > \Phi^{-1}(1-\alpha)\sqrt{2n\sigma^2} \right\rbrace.
+$$
+is the same for all $\Delta>0$, so this test is uniformly most powerfull.
+
+An acceptable solution here need not solved for $c/\Delta$ like this. You would do that in the next part anyway though.
+
+:::
+
+
+### Size
+
+When testing the composite null, $H_0: \mu_a - \mu_b = 0$ against $H_1:
+\mu_a - \mu_b > 0$, show that $c$ can be chosen so that the critical
+region,
+$$
+C = \left\lbrace \mathbf{X}: \frac{1}{n} \sum_{i=1}^{n} X_i^a -
+\frac{1}{n} \sum_{j=1}^{n} X_j^b > c \right\rbrace,
+$$
+has size $\alpha$. [Hint: if $W$ and $Z$ are independent and normal with
+means $\mu_W, \mu_Z$ and variances $\sigma^2_W$ and $\sigma^2_Z$, then
+$aW+bZ$ is $N(a \mu_W + b \mu_Z, a^2 \sigma^2_W + b^2 \sigma^2_Z)$].
+
+::: {.solution}
+
+I did this in the previous part.
+
+:::
+
+### The difference between significant and not significant is not significant
+
+In applied research it is common to report tests of
+
+$$
+H_{0a}: \mu_a = 0 \text{ vs } H_{1a}: \mu_a > 0 \text{ with } C_a =
+\{\mathbf{X}: \frac{1}{\sqrt{n}}\sum_{i=1}^{n} X_i^a > 1.645\}
+$$
+
+and
+
+$$
+H_{0b}: \mu_b = 0 \text{ vs } H_{1b}: \mu_b > 0 \text{ with } C_b =
+\{\mathbf{X}: \frac{1}{\sqrt{n}}\sum_{j=1}^{n} X_j^b > 1.645\}.
+$$
+
+Each of these tests analyzed by itself has size 0.05.
+If $\mathbf{X} \in C_a$ and $\mathbf{X} \not\in C_b$, it is often
+interpreted as evidence that $\mu_a > \mu_b$. Suppose $n =
+100$, $\frac{1}{\sqrt{n}}\sum_{i=1}^{n} X_i^a = 2.2$, and
+$\frac{1}{\sqrt{n}}\sum_{j=1}^{n} X_j^b = 1.0$.
+
+1. What is the outcome of testing $H_{0a}$ and $H_{0b}$ separately?
+
+2. In the "Size" part above, for a size of 0.05, the critical region can
+be written as
+
+$$
+C = \left\lbrace \mathbf{X}: \frac{1}{n} \sum_{i=1}^{n} X_i^a -
+\frac{1}{n} \sum_{j=1}^{n} X_j^b > 1.645 \sqrt{\frac{2}{n}} \right\rbrace.
+$$
+
+Would this test reject or fail to reject $H_0: \mu_a - \mu_b = 0$?
+
+::: {.solution}
+
+1. $H_{0a}$ would be rejected size 2.2 > 1.645$, but $H_{0b}$ would not be.
+
+2. Multiplying by $\sqrt{n}$,
+$$
+C = \left\lbrace \mathbf{X}: \frac{1}{\sqrt{n}} \sum_{i=1}^{n} X_i^a -
+\frac{1}{\sqrt{n}} \sum_{j=1}^{n} X_j^b > 1.645 \sqrt{2} \right\rbrace.
+$$
+and $2.2 - 1.0 = 1.1 < 1.645 \sqrt{2}$, so we would fail to reject the hypothesis that the means are equal.
+
+:::
+
+
+---
+
+# Problem 2: Conditional Expectations
+
+Let $X,Y,Z$ be random variables defined on the probability space
+$(\Omega, \mathcal{F}, P)$ with $\Er[Y^2] < \infty$.
+
+## Iterated Expectations
+
+Let $\epsilon_1 = Y - \Er[Y|X,Z]$ and $\epsilon_2 = \Er[Y|X,Z] -
+\Er[Y|X]$. Show that  $\Er[\epsilon_1 \epsilon_2|X] = 0$ and
+$\Er[\epsilon_1 \epsilon_2] = 0$.
+
+::: {.solution}
+
+Using iterated expectation and the definition of $\epsilon$,
+$$
+\begin{align*}
+\Er[\epsilon_1 \epsilon_2 | X] = & \Er[(Y - \Er[Y|X,Z])(\Er[Y|X,Z] - \Er[Y|X] ) | X] \\
+= & \Er\left[\Er\left[(Y - \Er[Y|X,Z])(\Er[Y|X,Z] - \Er[Y|X] )| X,Z\right] | X\right] \\
+= & \Er\left[ (\Er[Y|X,Z] - \Er[Y|X,Z])(\Er[Y|X,Z] - \Er[Y|X]) | X \right] \\
+= & 0
+\end{align*}
+$$
+and by iterated expectations, $\Er[\epsilon_1 \epsilon_2] =
+\Er[\Er[\epsilon_1 \epsilon_2|X]] = 0$.
+
+:::
+
+## Conditional Total Variance
+
+The conditional variance is $\var(Y|X) = \Er[(Y -
+\Er[Y|X])^2|X]$. Show that
+$$
+\var(Y|X) = \Er\left[\var(Y|X,Z)|X\right] + \var\left(\Er[Y|X,Z]|X\right)
+$$
+[Hint: use $Y - \Er[Y|X] = \epsilon_1 + \epsilon_2$ and the result of the
+previous part.]
+
+::: {.solution}
+
+Following the hint,
+$$
+\begin{align*}
+\var(Y|X) = & \Er[(Y - \Er[Y|X])^2|X] \\
+= & \Er[(\epsilon_1 + \epsilon_2)^2 | X] \\
+= & \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X] + \Er[\epsilon_1\epsilon_2|X] \\
+= & \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X]
+\end{align*}
+$$
+where the last line followed from the result of the previous part.
+
+Using the definitions of $\epsilon$,
+$$
+\begin{align*}
+\var(Y|X) = & \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X] \\
+= & \Er[(Y - \Er[Y|X,Z])^2|X]  + \Er[(\Er[Y|X,Z] - \Er[Y|X])^2|X] \\
+= & \Er[\Er[(Y - \Er[Y|X,Z])^2|X,Z]|X]  + \Er[(\Er[Y|X,Z] - \Er[Y|X])^2|X] \\
+= & \Er[\var(Y|X,Z)|X] + \var(\Er[Y|X,Z]|X)
+\end{align*}
+$$
+
+:::
+
+\newpage
+
+# Problem 3: Non-asymptotic Bound for OLS
+
+Consider the classical linear regression model,
+$$
+y=X\beta+\epsilon, \,\, \Er[\epsilon|X]=0,\,\, \var(\epsilon|X)=\sigma^2 I_n
+$$
+where $X$ is an $n \times k$ matrix of full column rank $k$.
+
+Let $\hat{\beta}=(X'X)^{-1} X'y$ be the OLS estimator, and let $c\in
+\R^k$  define a linear combination $\theta=c'\beta$, estimated by $\hat{\theta}=c'\hat{\beta}.$
+
+## Expectation
+
+Compute $\Er[\hat{\theta}|X]$.
+
+::: {.solution}
+
+$$
+\begin{align*}
+\Er[\hat{\theta}|X] = & \Er[c'(X'X)^{-1} X'y | X] \\
+= & c'(X'X)^{-1} X'\Er[y|X] \\
+= & c'(X'X)^{-1} X' \Er[X\beta + \epsilon|X] \\
+= & c'\beta
+\end{align*}
+$$
+
+:::
+
+## Variance
+
+Show $\var(\hat{\theta}|X)=\sigma^2 c'(X'X)^{-1}c.$
+
+::: {.solution}
+
+$$
+\begin{align*}
+\var(\hat{\theta}|X) = & \var(c'(X'X)^{-1}X'y|X) \\
+= & c'(X'X)^{-1} X'\var(X\beta + \epsilon |X) X(X'X)^{-1} c \\
+= & c'(X'X)^{-1} X'\var(\epsilon |X) X(X'X)^{-1} c \\
+= & c'(X'X)^{-1} X'\sigma^2 I_n X(X'X)^{-1} c \\
+= & \sigma^2 c'(X'X)^{-1} c
+\end{align*}
+$$
+
+:::
+
+## Error Bound
+
+Use Markov's inequality to find an upper bound for
+$\Pr(|\hat{\theta} -\theta| > \delta|X)$.
+[Hint: you may use without proof the fact that Markov's inequality
+holds conditionally as well as unconditionally.]
+
+::: {.solution}
+
+Markov's inequality with $k=2$ gives
+
+$$
+\Pr(|\hat{\theta} -\theta| > \delta|X) \leq \frac{\Er[(\hat{\theta}-\theta)^2|X]}{\delta^2}
+$$
+or using the previous part,
+$$
+\Pr(|\hat{\theta} -\theta| > \delta|X) \leq \frac{\sigma^2 c'(X'X)^{-1} c}{\delta^2}
+$$
+:::
+
+## Required Sample Size
+
+Assume $c' (X'X)^{-1}c \leq 1/n$.
+Suppose a researcher wants $\Pr(|\hat{\theta} -\theta| \leq \delta|X)
+\geq 0.95$. Based on the bound from the previous part, what is the
+minimum $n$ as a function of $\delta$ and
+$\sigma^2$ required? [Hint: if you did not solve the previous part,
+you may use $\Pr(|\hat{\theta} - \theta| > \delta|X) \leq B / (n\delta^2$). The correct $B$ depends on $c$, $X$, $\sigma^2$, etc, but you can leave it as $B$ if you did not solve the previous part.]
+
+::: {.solution}
+
+We have
+$$
+\Pr(|\hat{\theta} -\theta| > \delta|X) \leq \frac{\sigma^2 c'(X'X)^{-1} c}{\delta^2} \leq \frac{\sigma^2}{n \delta^2}
+$$
+or
+$$
+\Pr(|\hat{\theta} -\theta| \leq \delta|X) \geq 1-\frac{\sigma^2}{n \delta^2}
+$$
+so we need $1-\frac{\sigma^2}{n \delta^2} \geq 0.95$ or
+$20 \frac{\sigma^2}{\delta^2} \leq n$
+
+:::
+
+
+
+\newpage
+
+# Definitions and Results
+
+- Measure and Probability:
+
+    - A collection of subsets, $\mathscr{F}$, of $\Omega$ is a $\sigma$*-field* , if
+       1. $\Omega \in \mathscr{F}$
+       2. If $A \in \mathscr{F}$, then $A^c \in \mathscr{F}$
+       3. If $A_1, A_2, ... \in \mathscr{F}$, then $\cup_{j=1}^\infty A_j \in \mathscr{F}$
+
+    - A measure, $\mu: \mathcal{F} \to [0, \infty]$ s.t.
+       1. $\mu(\emptyset) = 0$
+       2. If $A_1, A_2, ... \in \mathscr{F}$ are pairwise disjoint, then $\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)$
+
+    - Lebesgue integral is
+       1. Positive: if $f \geq 0$ a.e., then $\int f d\mu \geq 0$
+       2. Linear:  $\int (af + bg) d\mu = a\int f d\mu + b \int g d \mu$
+
+    - Radon-Nikodym derivative: if $\nu \ll \mu$, then $\exists$ nonnegative measurable function, $\frac{d\nu}{d\mu}$, s.t.
+       $$
+       \nu(A) = \int_A \frac{d\nu}{d\mu} d\mu
+       $$
+
+    - Monotone convergence: If $f_n:\Omega \to \mathbf{R}$ are measurable, $f_{n}\geq 0$, and for each $\omega \in \Omega$,
+$f_{n}(\omega )\uparrow f(\omega )$, then $\int f_{n}d\mu \uparrow \int fd\mu$ as $n\rightarrow \infty$
+
+    - Dominated convergence: If $f_n:\Omega \to \mathbf{R}$ are measurable, and for each $\omega \in \Omega$, $f_{n}(\omega )\rightarrow f(\omega ).$ Furthermore, for some $g\geq 0$ such that $\int gd\mu <\infty$, $|f_{n}|\leq g$ for each $n\geq 1$. Then, $\int f_{n}d\mu \rightarrow \int fd\mu$
+
+   - Markov's inequality: $P(|X|>\epsilon) \leq  \frac{\Er[|X|^k]}{\epsilon^k}$ $\forall \epsilon > 0, k > 0$
+
+   - Jensen's inequality: if $g$ is convex, then $g(\Er[X]) \leq \Er[g(X)]$
+
+   - Cauchy-Schwarz inequality: $\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]$
+
+   - $\sigma(X)$ is $\sigma$**-field generated by** $X$, it is
+       - smallest $\sigma$-field w.r.t. which $X$ is measurable
+       - $\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}$
+
+    - $\sigma(W) \subset \sigma(X)$ iff $\exists$ $g$ s.t. $W = g(X)$
+
+    - Events $A_1, ..., A_m$ are **independent** if for any sub-collection $A_{i_1}, ..., A_{i_s}$
+    $$
+    P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
+    $$
+    $\sigma$-fields are independent if this is true for any events from them. Random variables are independent if their $\sigma$-fields are.
+
+    - Conditional expectation of $Y$ given $\sigma$-field $\mathscr{G}$ satisfies
+    $\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP$ $\forall A \in  \mathscr{G}$
+
+- Identification $X$ observed, distribution $P_X$, probability model $\mathcal{P}$
+   -  $\theta_0 \in \R^k$ is **identified** in $\mathcal{P}$ if there exists a known
+      $\psi: \mathcal{P} \to \R^k$ s.t. $\theta_0 = \psi(P_X)$
+  - $\mathcal{P} = \{ P(\cdot; s) : s \in S \}$,  two structures $s$ and $\tilde{s}$ in $S$ are **observationally equivalent**  if they imply the same distribution for the observed data, i.e.
+  $$ P(B;s) = P(B; \tilde{s}) $$
+  for all $B \in \sigma(X)$.
+  - Let $\lambda: S \to \R^k$, $\theta$ is **observationally equivalent** to $\tilde{\theta}$ if $\exists s, \tilde{s} \in S$  that are observationally equivalent and $\theta = \lambda(s)$ and $\tilde{\theta} = \lambda(\tilde{s})$
+  - $s_0 \in S$ is **identified** if there is no $s \neq s_0$ that is observationally equivalent to $s_0$
+  - $\theta_0$ is **identified** (in $S$) if there is no observationally equivalent $\theta \neq \theta_0$
+
+\newpage
+
+- Cramér-Rao Bound: in the parametric model $P_X \in \{P_\theta:
+\theta \in \R^d\}$ with likelihood $\ell(\theta;x)$, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator $\tau(X)$,
+$$
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+$$
+where $I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x) = -\Er[H(x,\theta)]$ and
+$s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}$
+
+- Hypothesis testing:
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_0)$=*Type I error rate* $=P_x(C)$
+  - $P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)$=*Type II error rate*
+  - $P(\text{reject } H_0 | P_x \in \mathcal{P}_1)$ = *power*
+  - $\sup_{P_x \in \mathcal{P}_0} P_x(C)$ = *size of test*
+  - Neyman-Pearson Lemma: Let $\Theta = \{0, 1\}$,  $f_0$ and $f_1$ be densities of $P_0$ and $P_1$,
+    $\tau(x) =f_1(x)/f_0(x)$ and $C^* =\{x \in X: \tau(x) > c\}$. Then among all
+    tests $C$ s.t. $P_0(C) = P_0(C^*)$, $C^*$ is most powerful.
+
+- Projection: $P_L y \in  L$ is the **projection** of $y$ on $L$ if
+  $$
+  \norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+  $$
+  1. $P_L y$ exists, is unique, and is a linear function of $y$
+  2. For any $y_1^* \in L$, $y_1^* = P_L y$ iff $y- y_1^* \perp L$
+  3. $G = P_L$ iff $Gy = y \forall y \in L$ and $Gy = 0 \forall y \in
+  L^\perp$
+  4.  Linear $G: V \to V$ is a projection map onto its range, $\mathcal{R}(G)$, iff $G$ is idempotent and symmetric.
+
+- Gauss-Markov: $Y = \theta + u$ with $\theta \in L \subset \R^n$, a
+  known subspace. If $\Er[u] = 0$ and $\Er[uu'] = \sigma^2 I_n$, then
+  the best linear unbiased estimator (BLUE) of $a'\theta$ is $a'\hat{\theta}$ where $\hat{\theta} = P_L y$

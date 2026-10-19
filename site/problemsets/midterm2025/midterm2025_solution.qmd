@@ -13,8 +13,8 @@ format:
 ---
 
 # Problem 1
-
-$$
+$
+$
 \def\R{{\mathbb{R}}}
 \def\Er{{\mathrm{E}}}
 \def\var{{\mathrm{Var}}}

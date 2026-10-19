@@ -25,7 +25,7 @@ bibliography: ../626.bib
 
 - Required: **@song2021 chapter 4** (which is the basis for these slides)
 - Recommended: @lewbel2019
-- Supplementary: @matzkin2013, @molinari2020 , @imbens2020, @causalmlbook
+- Supplementary: @matzkin2013, @molinari2020 , @imbens2020, <!-- @causalmlbook -->
 
 $$
 \def\Er{{\mathrm{E}}}
@@ -89,7 +89,7 @@ $$
 $$
 where the probability space to the $n$ means the product space as constructed in the last question on problem set 1.
 
-$\theta_0$ is some parameter of interest related to $P_X$. In the example, there is not for $\theta_0$ to be other than $p$, but in general $\theta_0$ could be some aspect of $P_X$ that we especially care about instead of a complete description of it.
+$\theta_0$ is some parameter of interest related to $P_X$. In the example, there is not much for $\theta_0$ to be other than $p$, but in general $\theta_0$ could be some aspect of $P_X$ that we especially care about instead of a complete description of it.
 
 :::
 
@@ -135,7 +135,7 @@ $$
 $$
 
 
-##
+## Assumptions
 
 - Identification requires:
     1. Usually innocuous regularity conditions
@@ -204,6 +204,26 @@ More generally, think about importance of statistical assumptions in terms of ho
 - Assume:
     1. Unconfoundedness: $(Y_{i,0}, Y_{i,1})$ conditionally independent of $D_i$ given $X_i$
     2. Overlap: $\epsilon < P(D=1|X=x) < 1-\epsilon$ for  some $\epsilon > 0$ and all $x$
+
+## Example: Production Function Elasticity
+
+- Data:
+  - Revenue $R_i = p_Y Y_i$
+  - Material expenditure $p_M M_i$
+  - Capital $K_i$, labor $L_i$
+
+- Model:
+  - Cobb-Douglas production: $Y_i = A_i L_i^\alpha K_i^\beta M_i^\gamma$
+
+- Assume:
+  1. Competitive, flexibly chosen $M_i \in \mathrm{arg}\max_M  \Er\left[p_Y A_i  L_i^\alpha K_i^\beta M^\gamma - p_M M | \mathcal{I}_i \right]$
+  2. Other inputs and prices known when choosing $M$, i.e. $\sigma(L) \subset \mathcal{I}$, etc.
+  3. $\Er\left[\frac{p_Y Y}{p_M M}\right] < \infty$
+
+## Example: Production Function Elasticity
+
+What if production function is $Y_i = A_i F(L_i, K_i, M_i)$, can the elasticity of output with respect to $M$ be identified?
+
 
 # Reintrepretation of Estimators
 
@@ -341,19 +361,22 @@ $\tilde{\theta} = \lambda(\tilde{s})$
 ## Example: Multiple Regression
 
 $$
-Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon
+Y = X'\beta + \epsilon
 $$
 
+- Assume $\Er[X\epsilon] = 0$
+
 ::: {.incremental}
+
+- If $\beta$ and $\tilde{\beta}$ observationally equivalent, then $0 = \Er[X(Y - X'\beta)] = \Er[X(Y-X'\tilde{\beta})]$, so $0 = \Er[XX'](\beta - \tilde{\beta})$
 
 - $X = [X_1\, X_2]'$, if rank $\Er X X' = 1$, then $\beta_1, \beta_2$
 is observationally equivalent to any $\tilde{\beta}_1, \tilde{\beta}_2$ s.t.
 $$
-\tilde{\beta}_1 + \tilde{\beta}_2 = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_2)}
+\tilde{\beta}_1 + \tilde{\beta}_2 \frac{\cov(X_1, X_2)}{\var(X_1)} = \beta_1 + \beta_2 \frac{\cov(X_1, X_2)}{\var(X_1)}
 $$
 
-- $\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2$ is identified if
-rank $\Er [X X'] \geq 1$
+- $\theta_0 = \lambda( \beta ) = \beta_1 + \beta_2\frac{\cov(X_1, X_2)}{\var(X_1)}$ is identified if rank $\Er [X X'] \geq 1$
 
 :::
 
@@ -379,145 +402,145 @@ some high level mathematical result.
 :::
 
 
-# Appendix: Causal Diagrams
+<!-- # Appendix: Causal Diagrams -->
 
-## Causal Diagrams
+<!-- ## Causal Diagrams -->
 
-- Originate with Wright around 1920, e.g. @wright1934
-- Recently advocated by Pearl, e.g. @pearl2015, @pearl2018
-- Recommended introduction @imbens2020 or [CausalMLBook](https://www.causalml-book.org/) chapters 7 and 8
-- Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach
-     - e.g. @chernozhukov2021
+<!-- - Originate with Wright around 1920, e.g. @wright1934 -->
+<!-- - Recently advocated by Pearl, e.g. @pearl2015, @pearl2018 -->
+<!-- - Recommended introduction @imbens2020 or [CausalMLBook](https://www.causalml-book.org/) chapters 7 and 8 -->
+<!-- - Sometimes useful expository tool for explaining identifying restriction, but should not be your only or primary approach -->
+<!--      - e.g. @chernozhukov2021 -->
 
-## Example: Regression
+<!-- ## Example: Regression -->
 
-<!-- ```{r, engine = 'tikz'} -->
-<!--  \usetikzlibrary{positioning} -->
-<!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -->
-<!--                      obs/.style={circle, draw,black, text=black}] -->
-<!--  \node[obs] (X){$X_i$}; -->
-<!--  \node[obs] (Y) [right=of X] {$Y_i$}; -->
-<!--  \node(E) [below=of Y]{$\epsilon_i$}; -->
-<!--  \path[->] (X) edge (Y); -->
-<!--  \path[->] (E) edge[dashed] (Y); -->
-<!--  \end{tikzpicture} -->
+<!-- <\!-- ```{r, engine = 'tikz'} -\-> -->
+<!-- <\!--  \usetikzlibrary{positioning} -\-> -->
+<!-- <\!--  \begin{tikzpicture}[-latex, auto, node distance=1.5cm and 2cm, on grid, thick, scale=10, -\-> -->
+<!-- <\!--                      obs/.style={circle, draw,black, text=black}] -\-> -->
+<!-- <\!--  \node[obs] (X){$X_i$}; -\-> -->
+<!-- <\!--  \node[obs] (Y) [right=of X] {$Y_i$}; -\-> -->
+<!-- <\!--  \node(E) [below=of Y]{$\epsilon_i$}; -\-> -->
+<!-- <\!--  \path[->] (X) edge (Y); -\-> -->
+<!-- <\!--  \path[->] (E) edge[dashed] (Y); -\-> -->
+<!-- <\!--  \end{tikzpicture} -\-> -->
+<!-- <\!-- ``` -\-> -->
+
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- %%| fig-height: 2 -->
+<!-- flowchart LR -->
+<!--     X -\-> Y -->
+<!--     ϵ -.-> Y -->
+<!-- ``` -->
+<!-- - Arrow means $X$ causes $Y$ -->
+<!-- - Dashed arrow means $\epsilon$ causes $Y$ and is unobserved (not universal, often dashed box around $\epsilon$ instead) -->
+<!-- - Lack of connection between $X$ and $\epsilon$ means they are independent -->
+
+<!-- ## Example: Regression -->
+
+<!-- If you believe: -->
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- flowchart LR -->
+<!--     subgraph " Y" -->
+<!--         Y[Wage] -->
+<!--     end -->
+<!--     subgraph X -->
+<!--        E[Education] -\-> Y -->
+<!--        T[SAT] -\-> E -->
+<!--        F[Family SES] -\-> E -->
+<!--        F -\-> Y -->
+<!--     end -->
+<!--     subgraph ϵ -->
+<!--         I[Intelligence] -.-> Y -->
+<!--         L[Luck] -.-> Y -->
+<!--         I -.-> T -->
+<!--     end -->
+<!-- ``` -->
+<!-- then regression $Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon$ identifies causal effect of education on wages -->
+
+<!-- ## Example: Regression -->
+
+<!-- But reality is likely more complex ... -->
+
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- flowchart LR -->
+<!--    subgraph " Y" -->
+<!--         Y[Wage] -->
+<!--    end -->
+<!--    subgraph X -->
+<!--        E[Education] -\-> Y -->
+<!--        T[SAT] -\-> E -->
+<!--        F[Family SES] -\-> E -->
+<!--        F -\-> Y -->
+<!--    end -->
+<!--    subgraph ϵ -->
+<!--         I[Intelligence] -.-> Y -->
+<!--         L[Luck] -.-> Y -->
+<!--         G[Grit] -.-> Y -->
+<!--         G -.-> E -->
+<!--         L -.-> E -->
+<!--         I -.-> T -->
+<!--         I -.-> E -->
+<!--         I -.-> G -->
+<!--         G -.-> I -->
+<!--    end -->
 <!-- ``` -->
 
-```{mermaid}
-%%| fig-width: 6.5
-%%| fig-height: 2
-flowchart LR
-    X --> Y
-    ϵ -.-> Y
-```
-- Arrow means $X$ causes $Y$
-- Dashed arrow means $\epsilon$ causes $Y$ and is unobserved (not universal, often dashed box around $\epsilon$ instead)
-- Lack of connection between $X$ and $\epsilon$ means they are independent
+<!-- ## Example: Potential Outcomes -->
 
-## Example: Regression
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 6.5 -->
+<!-- flowchart LR -->
+<!--     u -.-> D -->
+<!--     X -\-> Y -->
+<!--     X -\-> D -->
+<!--     D -\-> Y -->
+<!--     ϵ -.-> Y -->
+<!-- ``` -->
 
-If you believe:
-```{mermaid}
-%%| fig-width: 6.5
-flowchart LR
-    subgraph " Y"
-        Y[Wage]
-    end
-    subgraph X
-       E[Education] --> Y
-       T[SAT] --> E
-       F[Family SES] --> E
-       F --> Y
-    end
-    subgraph ϵ
-        I[Intelligence] -.-> Y
-        L[Luck] -.-> Y
-        I -.-> T
-    end
-```
-then regression $Wage = \beta_1 Education + \beta_2 SAT + \beta_3 FamilySES + \epsilon$ identifies causal effect of education on wages
+<!-- ## Example: Potential Outcomes -->
 
-## Example: Regression
+<!-- ```{mermaid} -->
+<!-- %%| fig-width: 8 -->
+<!-- %%| fig-height: 6 -->
+<!-- flowchart LR -->
+<!--     subgraph Treatment -->
+<!--         D[Naloxone distribution site opens] -->
+<!--     end -->
+<!--     subgraph Outcome -->
+<!--         Y[ER visits for overdose] -->
+<!--     end -->
+<!--     u -.-> D -->
+<!--     D -\-> Y -->
+<!--     ϵ -.-> Y -->
+<!--     subgraph X -->
+<!--         Income -\-> Y -->
+<!--         Unemployment -\-> Y -->
+<!--         Income -\-> D -->
+<!--         Unemployment -\-> D -->
+<!--         OD[OD rate prior to opening] -\-> Y -->
+<!--         OD -\-> D -->
+<!--         Crime -\-> Y -->
+<!--         Crime -\-> D -->
+<!--     end -->
+<!-- ``` -->
 
-But reality is likely more complex ...
+<!-- ## More on Causal Graphs -->
 
-```{mermaid}
-%%| fig-width: 6.5
-flowchart LR
-   subgraph " Y"
-        Y[Wage]
-   end
-   subgraph X
-       E[Education] --> Y
-       T[SAT] --> E
-       F[Family SES] --> E
-       F --> Y
-   end
-   subgraph ϵ
-        I[Intelligence] -.-> Y
-        L[Luck] -.-> Y
-        G[Grit] -.-> Y
-        G -.-> E
-        L -.-> E
-        I -.-> T
-        I -.-> E
-        I -.-> G
-        G -.-> I
-   end
-```
+<!-- ::: {.incremental} -->
 
-## Example: Potential Outcomes
+<!-- - Given a graph, what can be identified? -->
+<!--   - $Y$ and $X$ are d-separated by a collection of nodes $S$ if there are no paths between $Y$ and $X$ except through $S$ -->
+<!--   - d-separation implies conditional independence $Y \perp X | S$ -->
+<!-- - Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery) -->
+<!--   - Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible -->
+<!--   - But neighborhood of exceptions is large, so causal discovery very difficult -->
+<!-- - @causalmlbook, especially chapters 7 & 8 -->
 
-```{mermaid}
-%%| fig-width: 6.5
-flowchart LR
-    u -.-> D
-    X --> Y
-    X --> D
-    D --> Y
-    ϵ -.-> Y
-```
-
-## Example: Potential Outcomes
-
-```{mermaid}
-%%| fig-width: 8
-%%| fig-height: 6
-flowchart LR
-    subgraph Treatment
-        D[Naloxone distribution site opens]
-    end
-    subgraph Outcome
-        Y[ER visits for overdose]
-    end
-    u -.-> D
-    D --> Y
-    ϵ -.-> Y
-    subgraph X
-        Income --> Y
-        Unemployment --> Y
-        Income --> D
-        Unemployment --> D
-        OD[OD rate prior to opening] --> Y
-        OD --> D
-        Crime --> Y
-        Crime --> D
-    end
-```
-
-## More on Causal Graphs
-
-::: {.incremental}
-
-- Given a graph, what can be identified?
-  - $Y$ and $X$ are d-separated by a collection of nodes $S$ if there are no paths between $Y$ and $X$ except through $S$
-  - d-separation implies conditional independence $Y \perp X | S$
-- Does conditional independence imply d-separation? Can we estimate counditional independence to find out the correct causal graph? (Causal discovery)
-  - Conditional independence does not automatically imply d-separation, but exceptions have measure 0, so maybe causal discovery possible
-  - But neighborhood of exceptions is large, so causal discovery very difficult
-- @causalmlbook, especially chapters 7 & 8
-
-:::
+<!-- ::: -->
 
 
 # References

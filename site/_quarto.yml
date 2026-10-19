@@ -13,7 +13,8 @@ website:
       - href: syllabus626.qmd
         text: Syllabus
       - about.qmd
-      - slides.qmd
+      - href: problemsets.qmd
+        text: Assignments and Exams
 
 format:
   html:

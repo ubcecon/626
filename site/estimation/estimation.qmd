@@ -102,12 +102,27 @@ Log-likelihood.
 
 :::
 
-## MLE: Examples
+## MLE: Example
+
+- $X_i \sim N(\mu, 1)$
+
+## MLE: Example
+
+- $Y_i = \alpha_0 + \beta_0 X_i + \epsilon_i$, $\epsilon_i \sim N(0, \sigma_0^2)$
+
+## MLE: why does it work?
 
 ::: {.incremental}
 
-- $X_i \sim N(\mu, 1)$
-- $Y_i = \alpha_0 + \beta_0 X_i + \epsilon_i$, $\epsilon_i \sim N(0, \sigma_0^2)$
+- $X_i$ i.i.d. with density $f(x;\theta_0)$
+- log-likelihood (divided by $n$): $\ell(\theta;x) = 1/n \sum_{i=1}^n \log f(x_i;\theta)$
+- $1/n \sum_{i=1}^n \log f(x_i;\theta) \approx \Er[ \log f(X;\theta) ]$
+- $ \Er[ \log f(X;\theta) ] - \Er[ \log f(X;\theta_0) ] = \Er\left[ \log \frac{f(X;\theta)}{f(X;\theta_0)} \right]$
+- Jensen's inequality: $\Er\left[ \log
+  \frac{f(X;\theta)}{f(X;\theta_0)} \right] \leq \log
+\left(\Er\left[\frac{f(X;\theta)}{f(X;\theta_0)} \right] \right) =
+\log (1) = 0$
+- So, $\Er[ \log f(X;\theta) ] \leq \Er[ \log f(X;\theta_0) ]$, $\theta_0$ maximizes the expected log likelihood
 
 :::
 
@@ -124,10 +139,13 @@ $g:\Theta \to G$, the MLE of $g(\theta)$ is $g(\hat{\theta})$.
 
 # Quality of Estimators
 
-## Mean Squared Error
+## Loss and Risk
 
 - **Loss function** $L: \R^d \times \Theta \to [0,\infty)$ with $L(\theta,\theta)=0$
 - **Risk** of $\hat{\theta}$ at $\theta_0$ = $\Er[L(\hat{\theta}, \theta_0)]$
+
+## Mean Squared Error
+
 - Squared error loss $L_2(\theta, \theta_0) = (\theta-\theta_0)'(\theta-\theta_0)$
 - Mean squared error
 $$
@@ -147,12 +165,18 @@ $$
 
 - Question: if an estimator is unbiased, what is the smallest possible variance?
 
+::: {.notes}
+
+To motivate the following slides, consider the variance of the maximum likelihood estimator. To get an approximate expression for it, we take a first order expansion of the first order condition.  This naturally involves the score and hessian.
+
+:::
+
 ## Score Equality
 
 - If $\frac{\partial}{\partial \theta} \int f_X(x;\theta) d\mu(x) =
  \int \frac{\partial}{\partial \theta} f_X(x;\theta) d\mu(x)$, then
  $$
- \int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{``score''}=s(x,\theta)} dP_\theta(x) = 0
+ \int \underbrace{\frac{\partial \log \ell(\theta;x)}{\partial \theta}}_{\text{score}=s(x,\theta)} dP_\theta(x) = 0
  $$
 
 ## Information Equality
@@ -162,7 +186,7 @@ $$
  \int \frac{\partial^2}{\partial \theta\partial \theta'} f_X(x;\theta)
  d\mu(x)$, then
  $$
- I(\theta) = -\int \underbrace{\frac{\partial^2 \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{``Hessian''}=h(x,\theta)} dP_\theta(x)
+ I(\theta) = -\int \underbrace{\frac{\partial^2 \log \ell(\theta;x)}{\partial \theta \partial \theta'}}_{\text{Hessian}=h(x,\theta)} dP_\theta(x)
  $$
 
 ##
@@ -170,7 +194,7 @@ $$
 - If $T = \tau(X)$ is an unbiased estimator for $\theta$ and
 $$
 \frac{\partial}{\partial \theta} \int \tau(x) f_X(x;\theta) d\mu(x) =
- \int \tau(x) \frac{\partial f_X(x,\theta)}{\partial \theta\partial \theta'} d\mu(x)
+ \int \tau(x) \frac{\partial f_X(x,\theta)}{\partial \theta} d\mu(x)
 $$
 then
 $$

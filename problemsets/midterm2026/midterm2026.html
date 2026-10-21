@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paul Schrimpf">
+<meta name="dcterms.date" content="2026-10-19">
+
+<title>ECON 626: Midterm – ECON 626</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-205c157cc1ad17ef6203a2440e42a020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ECON 626</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus626.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../problemsets.html"> 
+<span class="menu-text">Assignments and Exams</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problem-1-means-of-normal-random-variables" id="toc-problem-1-means-of-normal-random-variables" class="nav-link active" data-scroll-target="#problem-1-means-of-normal-random-variables"><span class="header-section-number">1</span> Problem 1: Means of Normal Random Variables</a>
+  <ul class="collapse">
+  <li><a href="#mle" id="toc-mle" class="nav-link" data-scroll-target="#mle"><span class="header-section-number">1.1</span> MLE</a>
+  <ul class="collapse">
+  <li><a href="#estimator" id="toc-estimator" class="nav-link" data-scroll-target="#estimator"><span class="header-section-number">1.1.1</span> Estimator</a></li>
+  <li><a href="#variance-of-estimator" id="toc-variance-of-estimator" class="nav-link" data-scroll-target="#variance-of-estimator"><span class="header-section-number">1.1.2</span> Variance of Estimator</a></li>
+  <li><a href="#cramér-rao-lower-bound" id="toc-cramér-rao-lower-bound" class="nav-link" data-scroll-target="#cramér-rao-lower-bound"><span class="header-section-number">1.1.3</span> Cramér-Rao Lower Bound</a></li>
+  </ul></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing"><span class="header-section-number">1.2</span> Testing</a>
+  <ul class="collapse">
+  <li><a href="#most-powerful" id="toc-most-powerful" class="nav-link" data-scroll-target="#most-powerful"><span class="header-section-number">1.2.1</span> Most Powerful</a></li>
+  <li><a href="#size" id="toc-size" class="nav-link" data-scroll-target="#size"><span class="header-section-number">1.2.2</span> Size</a></li>
+  <li><a href="#the-difference-between-significant-and-not-significant-is-not-significant" id="toc-the-difference-between-significant-and-not-significant-is-not-significant" class="nav-link" data-scroll-target="#the-difference-between-significant-and-not-significant-is-not-significant"><span class="header-section-number">1.2.3</span> The difference between significant and not significant is not significant</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#problem-2-conditional-expectations" id="toc-problem-2-conditional-expectations" class="nav-link" data-scroll-target="#problem-2-conditional-expectations"><span class="header-section-number">2</span> Problem 2: Conditional Expectations</a>
+  <ul class="collapse">
+  <li><a href="#iterated-expectations" id="toc-iterated-expectations" class="nav-link" data-scroll-target="#iterated-expectations"><span class="header-section-number">2.1</span> Iterated Expectations</a></li>
+  <li><a href="#conditional-total-variance" id="toc-conditional-total-variance" class="nav-link" data-scroll-target="#conditional-total-variance"><span class="header-section-number">2.2</span> Conditional Total Variance</a></li>
+  </ul></li>
+  <li><a href="#problem-3-non-asymptotic-bound-for-ols" id="toc-problem-3-non-asymptotic-bound-for-ols" class="nav-link" data-scroll-target="#problem-3-non-asymptotic-bound-for-ols"><span class="header-section-number">3</span> Problem 3: Non-asymptotic Bound for OLS</a>
+  <ul class="collapse">
+  <li><a href="#expectation" id="toc-expectation" class="nav-link" data-scroll-target="#expectation"><span class="header-section-number">3.1</span> Expectation</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">3.2</span> Variance</a></li>
+  <li><a href="#error-bound" id="toc-error-bound" class="nav-link" data-scroll-target="#error-bound"><span class="header-section-number">3.3</span> Error Bound</a></li>
+  <li><a href="#required-sample-size" id="toc-required-sample-size" class="nav-link" data-scroll-target="#required-sample-size"><span class="header-section-number">3.4</span> Required Sample Size</a></li>
+  </ul></li>
+  <li><a href="#definitions-and-results" id="toc-definitions-and-results" class="nav-link" data-scroll-target="#definitions-and-results"><span class="header-section-number">4</span> Definitions and Results</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ECON 626: Midterm</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paul Schrimpf </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 19, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p><span class="math display">\[
+\def\R{{\mathbb{R}}}
+\def\Er{{\mathrm{E}}}
+\def\Pr{{\mathrm{P}}}
+\def\var{{\mathrm{Var}}}
+\renewcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\cov{{\mathrm{Cov}}}
+\def\En{{\mathbb{E}_n}}
+\def\rank{{\mathrm{rank}}}
+\renewcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\]</span></p>
+</div>
+<section id="problem-1-means-of-normal-random-variables" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Problem 1: Means of Normal Random Variables</h1>
+<section id="mle" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="mle"><span class="header-section-number">1.1</span> MLE</h2>
+<p>Suppose <span class="math inline">\(X_1, ..., X_n\)</span> are independent and identically distributed as <span class="math inline">\(N(\mu,\sigma^2)\)</span>. The normal pdf is <span class="math inline">\(\phi(x;\mu,\sigma^2) =
+\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}.\)</span></p>
+<section id="estimator" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="estimator"><span class="header-section-number">1.1.1</span> Estimator</h3>
+<p>Write the loglikelihood, <span class="math inline">\(\log \ell(\mu,\sigma^2;\mathbf{X})\)</span>, and show that the maximum likelihood estimator for <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\hat{\mu} =
+\frac{1}{n} \sum_{i=1}^n X_i\)</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>The loglikelihood is: <span class="math display">\[
+\log \ell(\mu,\sigma^2;\mathbf{X}) = \sum_{i=1}^n -1/2 \log(2\pi \sigma^2) - 1/2 \frac{(x_i - \mu)^2}{\sigma^2}
+\]</span> The first order condition for <span class="math inline">\(\mu\)</span> is <span class="math display">\[
+0 = \sum \frac{x_i - \hat{\mu}}{\hat{\sigma}^2}
+\]</span> so <span class="math display">\[
+\hat{\mu} = \frac{1}{n} \sum_{i=1}^n x_i
+\]</span></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="1">
+<li><p><strong>Log-Likelihood Function:</strong> Since <span class="math inline">\(X_1, \dots, X_n \overset{\text{iid}}{\sim} N(\mu, \sigma^2)\)</span>, the joint likelihood function is: <span class="math display">\[
+\ell(\mu, \sigma^2; \mathbf{X}) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(X_i - \mu)^2}{2\sigma^2}\right) = (2\pi\sigma^2)^{-n/2} \exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i - \mu)^2\right).
+\]</span> Taking the natural logarithm: <span class="math display">\[
+\log \ell(\mu, \sigma^2; \mathbf{X}) = -\frac{n}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^n (X_i - \mu)^2.
+\]</span></p></li>
+<li><p><strong>First-Order Condition:</strong> Taking the derivative with respect to <span class="math inline">\(\mu\)</span>: <span class="math display">\[
+\frac{\partial \log \ell(\mu, \sigma^2; \mathbf{X})}{\partial \mu} = \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu).
+\]</span> Setting this first-order condition to zero: <span class="math display">\[
+\frac{1}{\hat{\sigma}^2}\sum_{i=1}^n (X_i - \hat{\mu}) = 0 \implies \sum_{i=1}^n X_i - n\hat{\mu} = 0 \implies \hat{\mu} = \frac{1}{n}\sum_{i=1}^n X_i.
+\]</span> Since <span class="math inline">\(\frac{\partial^2 \log \ell}{\partial \mu^2} = -\frac{n}{\sigma^2} &lt; 0\)</span> for any <span class="math inline">\(\sigma^2 &gt; 0\)</span>, <span class="math inline">\(\hat{\mu}\)</span> uniquely maximizes the log-likelihood.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variance-of-estimator" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="variance-of-estimator"><span class="header-section-number">1.1.2</span> Variance of Estimator</h3>
+<p>Calculate the variance of <span class="math inline">\(\hat{\mu}\)</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p><span class="math display">\[
+\begin{align*}
+\var(\hat{\mu}) = &amp; \var\left( \frac{1}{n} \sum_{i=1}^n x_i \right) \\
+= &amp; \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(x_i,x_j) \\
+= &amp; \frac{1}{n^2} \sum_{i=1}^n \var(x_i) \\
+= &amp; \frac{1}{n^2} n \sigma^2 \\
+= &amp; \frac{\sigma^2}{n}
+\end{align*}
+\]</span></p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Using the linearity of expectations and independence of <span class="math inline">\(X_1, \dots, X_n\)</span>: <span class="math display">\[
+\var(\hat{\mu}) = \var\left(\frac{1}{n}\sum_{i=1}^n X_i\right) = \frac{1}{n^2}\sum_{i=1}^n \var(X_i) = \frac{1}{n^2}(n\sigma^2) = \frac{\sigma^2}{n}.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="cramér-rao-lower-bound" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="cramér-rao-lower-bound"><span class="header-section-number">1.1.3</span> Cramér-Rao Lower Bound</h3>
+<p>When <span class="math inline">\(\sigma^2\)</span> is known, the Cramér-Rao lower bound for <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma^2/n\)</span>. Now suppose <span class="math inline">\(\sigma^2\)</span> is unknown. Compute the 2x2 information matrix and find the Cramér-Rao lower bound for an unbiased estimator of <span class="math inline">\(\mu\)</span>. Does knowing <span class="math inline">\(\sigma^2\)</span> improve the estimation of <span class="math inline">\(\mu\)</span>?</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>We can take the parameters to be either <span class="math inline">\(\mu, \sigma^2\)</span> or <span class="math inline">\(\mu, \sigma\)</span>. It affects the algebra, but not the answer. Here, I use <span class="math inline">\(\sigma^2\)</span>. The score is <span class="math display">\[
+s(\mu,\sigma^2;\mathbf{X}) = \begin{pmatrix}
+\sum \frac{x_i - \mu}{\sigma^2} \\
+\sum -\frac{1}{2 \sigma^2} + 1/2\frac{(x_i - \mu)^2}{(\sigma^2)^2}
+\end{pmatrix}
+\]</span> and the Hessian is <span class="math display">\[
+H(\mu,\sigma^2;\mathbf{X}) = \begin{pmatrix}
+-\frac{n}{\sigma^2} &amp; \sum -\frac{x_i - \mu}{(\sigma^2)^2} \\
+\sum -\frac{x_i - \mu}{(\sigma^2)^2} &amp; \frac{n}{2 (\sigma^2)^2} - \sum \frac{(x_i-\mu)^2}{(\sigma^2)^3}
+\end{pmatrix}.
+\]</span></p>
+<p>The information matrix is minus the expected hessian, which is <span class="math display">\[
+I = \begin{pmatrix} \frac{n}{\sigma^2} &amp; 0 \\
+0 &amp; -\frac{n}{2 (\sigma^2)^2} + \frac{n}{(\sigma^2)^2}
+\end{pmatrix}
+\]</span></p>
+<p>So the Cramer Rao lower bound is <span class="math display">\[
+\var(\mu,\sigma^2) \geq I^{-1} = \begin{pmatrix}
+\frac{\sigma^2}{n} &amp; 0 \\
+0 &amp; \frac{2(\sigma^2)^2}{n}.
+\end{pmatrix}
+\]</span> In particular, the lower bound for the variance of <span class="math inline">\(\mu\)</span> is <span class="math inline">\(\sigma^2/n\)</span>, the same as if <span class="math inline">\(\sigma^2\)</span> were known.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<ol type="1">
+<li><p><strong>Score Equations:</strong> Let the parameter vector be <span class="math inline">\(\theta = (\mu, \sigma^2)'\)</span>. The log-likelihood is: <span class="math display">\[
+\log \ell(\mu, \sigma^2; \mathbf{X}) = -\frac{n}{2}\log(2\pi) - \frac{n}{2}\log(\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^n (X_i - \mu)^2.
+\]</span> The first-order partial derivatives are: <span class="math display">\[
+\frac{\partial \log \ell}{\partial \mu} = \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu),
+\]</span> <span class="math display">\[
+\frac{\partial \log \ell}{\partial (\sigma^2)} = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4}\sum_{i=1}^n (X_i - \mu)^2.
+\]</span></p></li>
+<li><p><strong>Hessian and Information Matrix:</strong> Taking second derivatives: <span class="math display">\[
+\frac{\partial^2 \log \ell}{\partial \mu^2} = -\frac{n}{\sigma^2},
+\]</span> <span class="math display">\[
+\frac{\partial^2 \log \ell}{\partial \mu \partial (\sigma^2)} = -\frac{1}{\sigma^4}\sum_{i=1}^n (X_i - \mu),
+\]</span> <span class="math display">\[
+\frac{\partial^2 \log \ell}{\partial (\sigma^2)^2} = \frac{n}{2\sigma^4} - \frac{1}{\sigma^6}\sum_{i=1}^n (X_i - \mu)^2.
+\]</span> Taking the negative expectation using <span class="math inline">\(\Er[X_i - \mu] = 0\)</span> and <span class="math inline">\(\Er[(X_i - \mu)^2] = \sigma^2\)</span>:</p>
+<ul>
+<li><span class="math inline">\(I_{11} = -\Er\left[\frac{\partial^2 \log \ell}{\partial \mu^2}\right] = \frac{n}{\sigma^2}\)</span></li>
+<li><span class="math inline">\(I_{12} = I_{21} = -\Er\left[\frac{\partial^2 \log \ell}{\partial \mu \partial (\sigma^2)}\right] = 0\)</span></li>
+<li><span class="math inline">\(I_{22} = -\Er\left[\frac{\partial^2 \log \ell}{\partial (\sigma^2)^2}\right] = -\frac{n}{2\sigma^4} + \frac{n\sigma^2}{\sigma^6} = \frac{n}{2\sigma^4}\)</span></li>
+</ul>
+<p>The Fisher information matrix is: <span class="math display">\[
+I(\mu, \sigma^2) = \begin{pmatrix} \frac{n}{\sigma^2} &amp; 0 \\ 0 &amp; \frac{n}{2\sigma^4} \end{pmatrix}.
+\]</span></p></li>
+<li><p><strong>Cramér-Rao Lower Bound:</strong> Inverting the diagonal information matrix: <span class="math display">\[
+I(\mu, \sigma^2)^{-1} = \begin{pmatrix} \frac{\sigma^2}{n} &amp; 0 \\ 0 &amp; \frac{2\sigma^4}{n} \end{pmatrix}.
+\]</span> The Cramér-Rao lower bound for an unbiased estimator of <span class="math inline">\(\mu\)</span> is the <span class="math inline">\((1,1)\)</span> element of <span class="math inline">\(I^{-1}\)</span>: <span class="math display">\[
+\text{CRLB}(\mu) = \frac{\sigma^2}{n}.
+\]</span></p></li>
+<li><p><strong>Does knowing <span class="math inline">\(\sigma^2\)</span> improve the estimation of <span class="math inline">\(\mu\)</span>?</strong> <strong>No.</strong> Because the Fisher information matrix is block-diagonal between <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> (<span class="math inline">\(I_{12} = 0\)</span>), the score with respect to <span class="math inline">\(\mu\)</span> is orthogonal to the score with respect to <span class="math inline">\(\sigma^2\)</span>. Hence, <span class="math inline">\([I^{-1}]_{11} = \frac{1}{I_{11}} = \frac{\sigma^2}{n}\)</span>, which is identical to the bound when <span class="math inline">\(\sigma^2\)</span> is known. Furthermore, <span class="math inline">\(\hat{\mu} = \frac{1}{n}\sum_{i=1}^n X_i\)</span> does not require knowledge of <span class="math inline">\(\sigma^2\)</span> and achieves this bound in both cases.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="testing" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="testing"><span class="header-section-number">1.2</span> Testing</h2>
+<p>Now suppose the data consists of two groups with <span class="math inline">\(n\)</span> observations each:</p>
+<p><span class="math display">\[
+X^a_i \sim N(\mu_a, 1) \text{ for }i = 1,..., n
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+X^b_j \sim N(\mu_b, 1) \text{ for }j = 1,..., n
+\]</span></p>
+<p>As above, observations are independent. It can be shown that the critical region for a likelihood ratio test for testing <span class="math inline">\(H_0: \mu_a =
+\mu_a^0, \mu_b = \mu_b^0\)</span> against <span class="math inline">\(H_1: \mu_a = \mu_a^1, \mu_b =
+\mu_b^1\)</span> can be written as <span class="math display">\[
+C = \left\lbrace \mathbf{X} : (\mu_a^1 - \mu_a^0) \sum_{i=1}^{n}
+X_i^a + (\mu_b^1 - \mu_b^0) \sum_{j=1}^{n}
+X_j^b &gt; c \right\rbrace
+\]</span></p>
+<section id="most-powerful" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="most-powerful"><span class="header-section-number">1.2.1</span> Most Powerful</h3>
+<p>Show that the likelihood ratio test is uniformly most powerful for testing <span class="math inline">\(H_0: \mu_a = \mu_a^0, \mu_b = \mu_b^0\)</span> against all alternatives with <span class="math inline">\(\mu_a^1 &gt; \mu^0_a\)</span> and <span class="math inline">\(\mu^1_a - \mu^0_a = -(\mu^1_b - \mu^0_b)\)</span>, and that the test can be written as <span class="math display">\[
+C = \left\lbrace \mathbf{X}: \frac{1}{n} \sum_{i=1}^{n} X_i^a -
+\frac{1}{n} \sum_{j=1}^{n} X_j^b &gt; c \right\rbrace
+\]</span> for a modified constant <span class="math inline">\(c\)</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>As stated in the question, the most powerful test for point hypotheses is <span class="math display">\[
+C = \left\lbrace \mathbf{X} : (\mu_a^1 - \mu_a^0) \sum_{i=1}^{n}
+X_i^a + (\mu_b^1 - \mu_b^0) \sum_{j=1}^{n}
+X_j^b &gt; c \right\rbrace
+\]</span> Given the assumptions here, and denoting <span class="math inline">\(\mu^1_a - \mu^0_a = \Delta\)</span>, we can write the test as <span class="math display">\[
+C = \left\lbrace \mathbf{X} : \sum_{i=1}^{n}
+X_i^a - \sum_{j=1}^{n}
+X_j^b &gt; c/\Delta \right\rbrace.
+\]</span> To control size, <span class="math inline">\(c/\Delta\)</span> must be such that <span class="math display">\[
+\alpha = P_0(C) = P_0(\sum_{i=1}^{n}
+X_i^a - \sum_{j=1}^{n}
+X_j^b &gt; c/\Delta)
+\]</span> Given the normality assumption, under <span class="math inline">\(H_0\)</span>, <span class="math display">\[
+\sum_{i=1}^{n}
+X_i^a - \sum_{j=1}^{n}
+X_j^b \sim N(0, 2n\sigma^2)
+\]</span> so <span class="math display">\[
+\alpha = P_0(\sum_{i=1}^{n}
+X_i^a - \sum_{j=1}^{n}
+X_j^b &gt; c/\Delta) = 1 - \Phi\left(\frac{c/\Delta}{\sqrt{2n\sigma^2}}\right)
+\]</span> or <span class="math inline">\(c/\Delta = \Phi^{-1}( 1 - \alpha)\sqrt{2n\sigma^2}\)</span>. The critical region, <span class="math display">\[
+C = \left\lbrace \mathbf{X} : \sum_{i=1}^{n}
+X_i^a - \sum_{j=1}^{n}
+X_j^b &gt; \Phi^{-1}(1-\alpha)\sqrt{2n\sigma^2} \right\rbrace.
+\]</span> is the same for all <span class="math inline">\(\Delta&gt;0\)</span>, so this test is uniformly most powerful.</p>
+<p>An acceptable solution here need not solved for <span class="math inline">\(c/\Delta\)</span> like this. You would do that in the next part anyway though.</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>Let <span class="math inline">\(\Delta = \mu_a^1 - \mu_a^0 &gt; 0\)</span>. The condition <span class="math inline">\(\mu_a^1 - \mu_a^0 = -(\mu_b^1 - \mu_b^0)\)</span> implies <span class="math inline">\(\mu_b^1 - \mu_b^0 = -\Delta\)</span>.</p>
+<p>Substituting this into the likelihood ratio test critical region: <span class="math display">\[
+C = \left\{ \mathbf{X} : \Delta \sum_{i=1}^n X_i^a - \Delta \sum_{j=1}^n X_j^b &gt; c' \right\}.
+\]</span> Since <span class="math inline">\(\Delta &gt; 0\)</span>, dividing both sides by <span class="math inline">\(n\Delta &gt; 0\)</span> preserves the inequality: <span class="math display">\[
+C = \left\{ \mathbf{X} : \frac{1}{n}\sum_{i=1}^n X_i^a - \frac{1}{n}\sum_{j=1}^n X_j^b &gt; \frac{c'}{n\Delta} \equiv c \right\}.
+\]</span> By the Neyman-Pearson Lemma, the likelihood ratio test is the most powerful test of its size for testing <span class="math inline">\(H_0\)</span> against any specific alternative <span class="math inline">\((\mu_a^1, \mu_b^1)\)</span> satisfying these conditions. Since the test statistic <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n X_i^a - \frac{1}{n}\sum_{j=1}^n X_j^b\)</span> and the critical region do not depend on the specific value of <span class="math inline">\(\Delta &gt; 0\)</span>, the same critical region maximizes power against all alternatives in this class simultaneously. Therefore, the test is <strong>Uniformly Most Powerful (UMP)</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="size" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="size"><span class="header-section-number">1.2.2</span> Size</h3>
+<p>When testing the composite null, <span class="math inline">\(H_0: \mu_a - \mu_b = 0\)</span> against <span class="math inline">\(H_1:
+\mu_a - \mu_b &gt; 0\)</span>, show that <span class="math inline">\(c\)</span> can be chosen so that the critical region, <span class="math display">\[
+C = \left\lbrace \mathbf{X}: \frac{1}{n} \sum_{i=1}^{n} X_i^a -
+\frac{1}{n} \sum_{j=1}^{n} X_j^b &gt; c \right\rbrace,
+\]</span> has size <span class="math inline">\(\alpha\)</span>. [Hint: if <span class="math inline">\(W\)</span> and <span class="math inline">\(Z\)</span> are independent and normal with means <span class="math inline">\(\mu_W, \mu_Z\)</span> and variances <span class="math inline">\(\sigma^2_W\)</span> and <span class="math inline">\(\sigma^2_Z\)</span>, then <span class="math inline">\(aW+bZ\)</span> is <span class="math inline">\(N(a \mu_W + b \mu_Z, a^2 \sigma^2_W + b^2 \sigma^2_Z)\)</span>].</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p>I did this in the previous part.</p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p>Let <span class="math inline">\(W = \bar{X}^a = \frac{1}{n}\sum_{i=1}^n X_i^a \sim N(\mu_a, 1/n)\)</span> and <span class="math inline">\(Z = \bar{X}^b = \frac{1}{n}\sum_{j=1}^n X_j^b \sim N(\mu_b, 1/n)\)</span>.</p>
+<p>Since <span class="math inline">\(W\)</span> and <span class="math inline">\(Z\)</span> are independent, applying the hint with <span class="math inline">\(a = 1\)</span> and <span class="math inline">\(b = -1\)</span> gives: <span class="math display">\[
+\bar{X}^a - \bar{X}^b \sim N\left(\mu_a - \mu_b, \; \frac{1}{n} + \frac{1}{n}\right) = N\left(\mu_a - \mu_b, \; \frac{2}{n}\right).
+\]</span> Under the null hypothesis <span class="math inline">\(H_0: \mu_a - \mu_b = 0\)</span>: <span class="math display">\[
+\bar{X}^a - \bar{X}^b \sim N\left(0, \frac{2}{n}\right) \implies \frac{\bar{X}^a - \bar{X}^b}{\sqrt{2/n}} \sim N(0, 1).
+\]</span> The probability of rejecting <span class="math inline">\(H_0\)</span> under any distribution in <span class="math inline">\(H_0\)</span> is: <span class="math display">\[
+\Pr\left(\bar{X}^a - \bar{X}^b &gt; c \;\middle|\; \mu_a - \mu_b = 0\right) = 1 - \Phi\left(\frac{c}{\sqrt{2/n}}\right).
+\]</span> Setting this rejection probability equal to <span class="math inline">\(\alpha\)</span>: <span class="math display">\[
+1 - \Phi\left(\frac{c}{\sqrt{2/n}}\right) = \alpha \iff \Phi\left(\frac{c}{\sqrt{2/n}}\right) = 1 - \alpha.
+\]</span> Therefore, choosing <span class="math display">\[
+c = \Phi^{-1}(1 - \alpha)\sqrt{\frac{2}{n}}
+\]</span> ensures that the critical region has exact size <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-difference-between-significant-and-not-significant-is-not-significant" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="the-difference-between-significant-and-not-significant-is-not-significant"><span class="header-section-number">1.2.3</span> The difference between significant and not significant is not significant</h3>
+<p>In applied research it is common to report tests of</p>
+<p><span class="math display">\[
+H_{0a}: \mu_a = 0 \text{ vs } H_{1a}: \mu_a &gt; 0 \text{ with } C_a =
+\{\mathbf{X}: \frac{1}{\sqrt{n}}\sum_{i=1}^{n} X_i^a &gt; 1.645\}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+H_{0b}: \mu_b = 0 \text{ vs } H_{1b}: \mu_b &gt; 0 \text{ with } C_b =
+\{\mathbf{X}: \frac{1}{\sqrt{n}}\sum_{j=1}^{n} X_j^b &gt; 1.645\}.
+\]</span></p>
+<p>Each of these tests analyzed by itself has size 0.05. If <span class="math inline">\(\mathbf{X} \in C_a\)</span> and <span class="math inline">\(\mathbf{X} \not\in C_b\)</span>, it is often interpreted as evidence that <span class="math inline">\(\mu_a &gt; \mu_b\)</span>. Suppose <span class="math inline">\(n =
+100\)</span>, <span class="math inline">\(\frac{1}{\sqrt{n}}\sum_{i=1}^{n} X_i^a = 2.2\)</span>, and <span class="math inline">\(\frac{1}{\sqrt{n}}\sum_{j=1}^{n} X_j^b = 1.0\)</span>.</p>
+<ol type="1">
+<li><p>What is the outcome of testing <span class="math inline">\(H_{0a}\)</span> and <span class="math inline">\(H_{0b}\)</span> separately?</p></li>
+<li><p>In the “Size” part above, for a size of 0.05, the critical region can be written as</p></li>
+</ol>
+<p><span class="math display">\[
+C = \left\lbrace \mathbf{X}: \frac{1}{n} \sum_{i=1}^{n} X_i^a -
+\frac{1}{n} \sum_{j=1}^{n} X_j^b &gt; 1.645 \sqrt{\frac{2}{n}} \right\rbrace.
+\]</span></p>
+<p>Would this test reject or fail to reject <span class="math inline">\(H_0: \mu_a - \mu_b = 0\)</span>?</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<ol type="1">
+<li><p><span class="math inline">\(H_{0a}\)</span> would be rejected since 2.2 &gt; 1.645$, but <span class="math inline">\(H_{0b}\)</span> would not be.</p></li>
+<li><p>Multiplying by <span class="math inline">\(\sqrt{n}\)</span>, <span class="math display">\[
+C = \left\lbrace \mathbf{X}: \frac{1}{\sqrt{n}} \sum_{i=1}^{n} X_i^a -
+\frac{1}{\sqrt{n}} \sum_{j=1}^{n} X_j^b &gt; 1.645 \sqrt{2} \right\rbrace.
+\]</span> and <span class="math inline">\(2.2 - 1.0 = 1.2 &lt; 1.645 \sqrt{2}\)</span>, so we would fail to reject the hypothesis that the means are equal.</p></li>
+</ol>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<ol type="1">
+<li><p><strong>Separate Tests:</strong></p>
+<ul>
+<li>For <span class="math inline">\(H_{0a}: \mu_a = 0\)</span> vs <span class="math inline">\(H_{1a}: \mu_a &gt; 0\)</span>: The test statistic is <span class="math inline">\(\frac{1}{\sqrt{n}}\sum_{i=1}^n X_i^a = 2.2 &gt; 1.645\)</span>. Hence, we <strong>reject <span class="math inline">\(H_{0a}\)</span></strong> at the 5% level.</li>
+<li>For <span class="math inline">\(H_{0b}: \mu_b = 0\)</span> vs <span class="math inline">\(H_{1b}: \mu_b &gt; 0\)</span>: The test statistic is <span class="math inline">\(\frac{1}{\sqrt{n}}\sum_{j=1}^n X_j^b = 1.0 \le 1.645\)</span>. Hence, we <strong>fail to reject <span class="math inline">\(H_{0b}\)</span></strong> at the 5% level.</li>
+</ul></li>
+<li><p><strong>Test of <span class="math inline">\(H_0: \mu_a - \mu_b = 0\)</span>:</strong> Multiplying the inequality defining <span class="math inline">\(C\)</span> by <span class="math inline">\(\sqrt{n}\)</span>: <span class="math display">\[
+\frac{1}{\sqrt{n}}\sum_{i=1}^n X_i^a - \frac{1}{\sqrt{n}}\sum_{j=1}^n X_j^b &gt; 1.645\sqrt{2}.
+\]</span> Evaluating the difference between the two sample statistics: <span class="math display">\[
+2.2 - 1.0 = 1.2.
+\]</span> The critical threshold is: <span class="math display">\[
+1.645\sqrt{2} \approx 1.645 \times 1.4142 \approx 2.326.
+\]</span> Since <span class="math inline">\(1.2 \le 2.326\)</span>, we <strong>fail to reject <span class="math inline">\(H_0: \mu_a - \mu_b = 0\)</span></strong>.</p>
+<p><em>(This demonstrates that finding a significant effect in one group and an insignificant effect in another does not imply that the difference between the two groups is statistically significant).</em></p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="problem-2-conditional-expectations" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Problem 2: Conditional Expectations</h1>
+<p>Let <span class="math inline">\(X,Y,Z\)</span> be random variables defined on the probability space <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> with <span class="math inline">\(\Er[Y^2] &lt; \infty\)</span>.</p>
+<section id="iterated-expectations" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="iterated-expectations"><span class="header-section-number">2.1</span> Iterated Expectations</h2>
+<p>Let <span class="math inline">\(\epsilon_1 = Y - \Er[Y|X,Z]\)</span> and <span class="math inline">\(\epsilon_2 = \Er[Y|X,Z] -
+\Er[Y|X]\)</span>. Show that <span class="math inline">\(\Er[\epsilon_1 \epsilon_2|X] = 0\)</span> and <span class="math inline">\(\Er[\epsilon_1 \epsilon_2] = 0\)</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>Using iterated expectation and the definition of <span class="math inline">\(\epsilon\)</span>, <span class="math display">\[
+\begin{align*}
+\Er[\epsilon_1 \epsilon_2 | X] = &amp; \Er[(Y - \Er[Y|X,Z])(\Er[Y|X,Z] - \Er[Y|X] ) | X] \\
+= &amp; \Er\left[\Er\left[(Y - \Er[Y|X,Z])(\Er[Y|X,Z] - \Er[Y|X] )| X,Z\right] | X\right] \\
+= &amp; \Er\left[ (\Er[Y|X,Z] - \Er[Y|X,Z])(\Er[Y|X,Z] - \Er[Y|X]) | X \right] \\
+= &amp; 0
+\end{align*}
+\]</span> and by iterated expectations, <span class="math inline">\(\Er[\epsilon_1 \epsilon_2] =
+\Er[\Er[\epsilon_1 \epsilon_2|X]] = 0\)</span>.</p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<ol type="1">
+<li><p><strong>Showing <span class="math inline">\(\Er[\epsilon_1 \epsilon_2 \mid X] = 0\)</span>:</strong> Since <span class="math inline">\(\sigma(X) \subseteq \sigma(X, Z)\)</span>, the term <span class="math inline">\(\epsilon_2 = \Er[Y|X,Z] - \Er[Y|X]\)</span> is measurable with respect to <span class="math inline">\(\sigma(X, Z)\)</span>. By the Law of Iterated Expectations: <span class="math display">\[
+\Er[\epsilon_1 \epsilon_2 \mid X] = \Er\left[ \Er[\epsilon_1 \epsilon_2 \mid X, Z] \;\middle|\; X \right].
+\]</span> Taking out what is known given <span class="math inline">\((X, Z)\)</span>: <span class="math display">\[
+\Er[\epsilon_1 \epsilon_2 \mid X, Z] = \epsilon_2 \Er[\epsilon_1 \mid X, Z].
+\]</span> Since <span class="math inline">\(\epsilon_1 = Y - \Er[Y|X,Z]\)</span>: <span class="math display">\[
+\Er[\epsilon_1 \mid X, Z] = \Er[Y - \Er[Y|X,Z] \mid X, Z] = \Er[Y \mid X, Z] - \Er[Y \mid X, Z] = 0.
+\]</span> Therefore, <span class="math inline">\(\Er[\epsilon_1 \epsilon_2 \mid X, Z] = 0\)</span>, which implies: <span class="math display">\[
+\Er[\epsilon_1 \epsilon_2 \mid X] = \Er[0 \mid X] = 0.
+\]</span></p></li>
+<li><p><strong>Showing <span class="math inline">\(\Er[\epsilon_1 \epsilon_2] = 0\)</span>:</strong> Applying iterated expectations unconditionally: <span class="math display">\[
+\Er[\epsilon_1 \epsilon_2] = \Er\left[\Er[\epsilon_1 \epsilon_2 \mid X]\right] = \Er[0] = 0.
+\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="conditional-total-variance" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="conditional-total-variance"><span class="header-section-number">2.2</span> Conditional Total Variance</h2>
+<p>The conditional variance is <span class="math inline">\(\var(Y|X) = \Er[(Y -
+\Er[Y|X])^2|X]\)</span>. Show that <span class="math display">\[
+\var(Y|X) = \Er\left[\var(Y|X,Z)|X\right] + \var\left(\Er[Y|X,Z]|X\right)
+\]</span> [Hint: use <span class="math inline">\(Y - \Er[Y|X] = \epsilon_1 + \epsilon_2\)</span> and the result of the previous part.]</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>Following the hint, <span class="math display">\[
+\begin{align*}
+\var(Y|X) = &amp; \Er[(Y - \Er[Y|X])^2|X] \\
+= &amp; \Er[(\epsilon_1 + \epsilon_2)^2 | X] \\
+= &amp; \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X] + 2\Er[\epsilon_1\epsilon_2|X] \\
+= &amp; \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X]
+\end{align*}
+\]</span> where the last line followed from the result of the previous part.</p>
+<p>Using the definitions of <span class="math inline">\(\epsilon\)</span>, <span class="math display">\[
+\begin{align*}
+\var(Y|X) = &amp; \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X] \\
+= &amp; \Er[(Y - \Er[Y|X,Z])^2|X]  + \Er[(\Er[Y|X,Z] - \Er[Y|X])^2|X] \\
+= &amp; \Er[\Er[(Y - \Er[Y|X,Z])^2|X,Z]|X]  + \Er[(\Er[Y|X,Z] - \Er[Y|X])^2|X] \\
+= &amp; \Er[\var(Y|X,Z)|X] + \var(\Er[Y|X,Z]|X)
+\end{align*}
+\]</span></p>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>Using the decomposition <span class="math inline">\(Y - \Er[Y|X] = \epsilon_1 + \epsilon_2\)</span>: <span class="math display">\[
+\begin{aligned}
+\var(Y \mid X) &amp;= \Er\left[(Y - \Er[Y|X])^2 \;\middle|\; X\right] \\
+&amp;= \Er\left[(\epsilon_1 + \epsilon_2)^2 \;\middle|\; X\right] \\
+&amp;= \Er[\epsilon_1^2 \mid X] + \Er[\epsilon_2^2 \mid X] + 2\Er[\epsilon_1\epsilon_2 \mid X].
+\end{aligned}
+\]</span> From the previous part, <span class="math inline">\(\Er[\epsilon_1\epsilon_2 \mid X] = 0\)</span>, so the cross-term vanishes: <span class="math display">\[
+\var(Y \mid X) = \Er[\epsilon_1^2 \mid X] + \Er[\epsilon_2^2 \mid X].
+\]</span> Evaluating the two remaining terms: 1. By the Law of Iterated Expectations: <span class="math display">\[
+   \Er[\epsilon_1^2 \mid X] = \Er\left[\Er[(Y - \Er[Y|X,Z])^2 \mid X, Z] \;\middle|\; X\right] = \Er[\var(Y \mid X, Z) \mid X].
+   \]</span> 2. Since <span class="math inline">\(\Er[\Er[Y|X,Z] \mid X] = \Er[Y \mid X]\)</span>: <span class="math display">\[
+   \Er[\epsilon_2^2 \mid X] = \Er\left[(\Er[Y|X,Z] - \Er[\Er[Y|X,Z] \mid X])^2 \;\middle|\; X\right] = \var(\Er[Y \mid X, Z] \mid X).
+   \]</span> Combining the two terms yields: <span class="math display">\[
+\var(Y \mid X) = \Er\left[\var(Y \mid X, Z) \mid X\right] + \var\left(\Er[Y \mid X, Z] \mid X\right).
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="problem-3-non-asymptotic-bound-for-ols" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Problem 3: Non-asymptotic Bound for OLS</h1>
+<p>Consider the classical linear regression model, <span class="math display">\[
+y=X\beta+\epsilon, \,\, \Er[\epsilon|X]=0,\,\, \var(\epsilon|X)=\sigma^2 I_n
+\]</span> where <span class="math inline">\(X\)</span> is an <span class="math inline">\(n \times k\)</span> matrix of full column rank <span class="math inline">\(k\)</span>.</p>
+<p>Let <span class="math inline">\(\hat{\beta}=(X'X)^{-1} X'y\)</span> be the OLS estimator, and let <span class="math inline">\(c\in
+\R^k\)</span> define a linear combination <span class="math inline">\(\theta=c'\beta\)</span>, estimated by <span class="math inline">\(\hat{\theta}=c'\hat{\beta}.\)</span></p>
+<section id="expectation" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="expectation"><span class="header-section-number">3.1</span> Expectation</h2>
+<p>Compute <span class="math inline">\(\Er[\hat{\theta}|X]\)</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<p><span class="math display">\[
+\begin{align*}
+\Er[\hat{\theta}|X] = &amp; \Er[c'(X'X)^{-1} X'y | X] \\
+= &amp; c'(X'X)^{-1} X'\Er[y|X] \\
+= &amp; c'(X'X)^{-1} X' \Er[X\beta + \epsilon|X] \\
+= &amp; c'\beta
+\end{align*}
+\]</span></p>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<p>Substituting <span class="math inline">\(y = X\beta + \epsilon\)</span> into the estimator <span class="math inline">\(\hat{\theta} = c'(X'X)^{-1}X'y\)</span>: <span class="math display">\[
+\hat{\theta} = c'(X'X)^{-1}X'(X\beta + \epsilon) = c'\beta + c'(X'X)^{-1}X'\epsilon = \theta + c'(X'X)^{-1}X'\epsilon.
+\]</span> Taking the conditional expectation given <span class="math inline">\(X\)</span>, and using <span class="math inline">\(\Er[\epsilon \mid X] = 0\)</span>: <span class="math display">\[
+\Er[\hat{\theta} \mid X] = c'\beta + c'(X'X)^{-1}X'\Er[\epsilon \mid X] = c'\beta = \theta.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variance" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="variance"><span class="header-section-number">3.2</span> Variance</h2>
+<p>Show <span class="math inline">\(\var(\hat{\theta}|X)=\sigma^2 c'(X'X)^{-1}c.\)</span></p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p><span class="math display">\[
+\begin{align*}
+\var(\hat{\theta}|X) = &amp; \var(c'(X'X)^{-1}X'y|X) \\
+= &amp; c'(X'X)^{-1} X'\var(X\beta + \epsilon |X) X(X'X)^{-1} c \\
+= &amp; c'(X'X)^{-1} X'\var(\epsilon |X) X(X'X)^{-1} c \\
+= &amp; c'(X'X)^{-1} X'\sigma^2 I_n X(X'X)^{-1} c \\
+= &amp; \sigma^2 c'(X'X)^{-1} c
+\end{align*}
+\]</span></p>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p>Using <span class="math inline">\(\hat{\theta} - \theta = c'(X'X)^{-1}X'\epsilon\)</span>: <span class="math display">\[
+\begin{aligned}
+\var(\hat{\theta} \mid X) &amp;= \Er\left[(\hat{\theta} - \theta)^2 \;\middle|\; X\right] \\
+&amp;= \Er\left[c'(X'X)^{-1}X'\epsilon \epsilon' X(X'X)^{-1}c \;\middle|\; X\right] \\
+&amp;= c'(X'X)^{-1}X'\Er[\epsilon\epsilon' \mid X] X(X'X)^{-1}c.
+\end{aligned}
+\]</span> Since <span class="math inline">\(\var(\epsilon \mid X) = \Er[\epsilon\epsilon' \mid X] = \sigma^2 I_n\)</span>: <span class="math display">\[
+\var(\hat{\theta} \mid X) = \sigma^2 c'(X'X)^{-1}X'X(X'X)^{-1}c = \sigma^2 c'(X'X)^{-1}c.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-bound" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="error-bound"><span class="header-section-number">3.3</span> Error Bound</h2>
+<p>Use Markov’s inequality to find an upper bound for <span class="math inline">\(\Pr(|\hat{\theta} -\theta| &gt; \delta|X)\)</span>. [Hint: you may use without proof the fact that Markov’s inequality holds conditionally as well as unconditionally.]</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<p>Markov’s inequality with <span class="math inline">\(k=2\)</span> gives</p>
+<p><span class="math display">\[
+\Pr(|\hat{\theta} -\theta| &gt; \delta|X) \leq \frac{\Er[(\hat{\theta}-\theta)^2|X]}{\delta^2}
+\]</span> or using the previous part, <span class="math display">\[
+\Pr(|\hat{\theta} -\theta| &gt; \delta|X) \leq \frac{\sigma^2 c'(X'X)^{-1} c}{\delta^2}
+\]</span></p>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p>Applying Markov’s inequality conditionally with <span class="math inline">\(k = 2\)</span>: <span class="math display">\[
+\Pr(|\hat{\theta} - \theta| &gt; \delta \mid X) = \Pr\left((\hat{\theta} - \theta)^2 &gt; \delta^2 \;\middle|\; X\right) \le \frac{\Er\left[(\hat{\theta} - \theta)^2 \;\middle|\; X\right]}{\delta^2}.
+\]</span> Using the conditional variance from the previous part <span class="math inline">\(\Er[(\hat{\theta}-\theta)^2 \mid X] = \var(\hat{\theta} \mid X) = \sigma^2 c'(X'X)^{-1}c\)</span>: <span class="math display">\[
+\Pr(|\hat{\theta} - \theta| &gt; \delta \mid X) \le \frac{\sigma^2 c'(X'X)^{-1}c}{\delta^2}.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="required-sample-size" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="required-sample-size"><span class="header-section-number">3.4</span> Required Sample Size</h2>
+<p>Assume <span class="math inline">\(c' (X'X)^{-1}c \leq 1/n\)</span>. Suppose a researcher wants <span class="math inline">\(\Pr(|\hat{\theta} -\theta| \leq \delta|X)
+\geq 0.95\)</span>. Based on the bound from the previous part, what is the minimum <span class="math inline">\(n\)</span> as a function of <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\sigma^2\)</span> required? [Hint: if you did not solve the previous part, you may use <span class="math inline">\(\Pr(|\hat{\theta} - \theta| &gt; \delta|X) \leq B / (n\delta^2\)</span>). The correct <span class="math inline">\(B\)</span> depends on <span class="math inline">\(c\)</span>, <span class="math inline">\(X\)</span>, <span class="math inline">\(\sigma^2\)</span>, etc, but you can leave it as <span class="math inline">\(B\)</span> if you did not solve the previous part.]</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">Paul</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false" href="">Gemini 3.8 Flash</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<p>We have <span class="math display">\[
+\Pr(|\hat{\theta} -\theta| &gt; \delta|X) \leq \frac{\sigma^2 c'(X'X)^{-1} c}{\delta^2} \leq \frac{\sigma^2}{n \delta^2}
+\]</span> or <span class="math display">\[
+\Pr(|\hat{\theta} -\theta| \leq \delta|X) \geq 1-\frac{\sigma^2}{n \delta^2}
+\]</span> so we need <span class="math inline">\(1-\frac{\sigma^2}{n \delta^2} \geq 0.95\)</span> or <span class="math inline">\(20 \frac{\sigma^2}{\delta^2} \leq n\)</span></p>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<p>Using <span class="math inline">\(c'(X'X)^{-1}c \le 1/n\)</span> and the error bound from the previous part: <span class="math display">\[
+\Pr(|\hat{\theta} - \theta| &gt; \delta \mid X) \le \frac{\sigma^2 c'(X'X)^{-1}c}{\delta^2} \le \frac{\sigma^2}{n\delta^2}.
+\]</span> Taking the complement: <span class="math display">\[
+\Pr(|\hat{\theta} - \theta| \le \delta \mid X) = 1 - \Pr(|\hat{\theta} - \theta| &gt; \delta \mid X) \ge 1 - \frac{\sigma^2}{n\delta^2}.
+\]</span> To guarantee <span class="math inline">\(\Pr(|\hat{\theta} - \theta| \le \delta \mid X) \ge 0.95\)</span>, it suffices that: <span class="math display">\[
+1 - \frac{\sigma^2}{n\delta^2} \ge 0.95 \iff \frac{\sigma^2}{n\delta^2} \le 0.05 = \frac{1}{20} \iff n \ge \frac{20\sigma^2}{\delta^2}.
+\]</span> Thus, the minimum sample size required is: <span class="math display">\[
+n = \left\lceil \frac{20\sigma^2}{\delta^2} \right\rceil \quad \left(\text{or } n \ge 20\frac{\sigma^2}{\delta^2}\right).
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="definitions-and-results" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Definitions and Results</h1>
+<ul>
+<li><p>Measure and Probability:</p>
+<ul>
+<li><p>A collection of subsets, <span class="math inline">\(\mathscr{F}\)</span>, of <span class="math inline">\(\Omega\)</span> is a <span class="math inline">\(\sigma\)</span><em>-field</em> , if</p>
+<ol type="1">
+<li><span class="math inline">\(\Omega \in \mathscr{F}\)</span></li>
+<li>If <span class="math inline">\(A \in \mathscr{F}\)</span>, then <span class="math inline">\(A^c \in \mathscr{F}\)</span></li>
+<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span>, then <span class="math inline">\(\cup_{j=1}^\infty A_j \in \mathscr{F}\)</span></li>
+</ol></li>
+<li><p>A measure, <span class="math inline">\(\mu: \mathcal{F} \to [0, \infty]\)</span> s.t.</p>
+<ol type="1">
+<li><span class="math inline">\(\mu(\emptyset) = 0\)</span></li>
+<li>If <span class="math inline">\(A_1, A_2, ... \in \mathscr{F}\)</span> are pairwise disjoint, then <span class="math inline">\(\mu\left(\cup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)\)</span></li>
+</ol></li>
+<li><p>Lebesgue integral is</p>
+<ol type="1">
+<li>Positive: if <span class="math inline">\(f \geq 0\)</span> a.e., then <span class="math inline">\(\int f d\mu \geq 0\)</span></li>
+<li>Linear: <span class="math inline">\(\int (af + bg) d\mu = a\int f d\mu + b \int g d \mu\)</span></li>
+</ol></li>
+<li><p>Radon-Nikodym derivative: if <span class="math inline">\(\nu \ll \mu\)</span>, then <span class="math inline">\(\exists\)</span> nonnegative measurable function, <span class="math inline">\(\frac{d\nu}{d\mu}\)</span>, s.t. <span class="math display">\[
+\nu(A) = \int_A \frac{d\nu}{d\mu} d\mu
+\]</span></p></li>
+<li><p>Monotone convergence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p></li>
+<li><p>Dominated convergence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p></li>
+<li><p>Markov’s inequality: <span class="math inline">\(P(|X|&gt;\epsilon) \leq  \frac{\Er[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p></li>
+<li><p>Jensen’s inequality: if <span class="math inline">\(g\)</span> is convex, then <span class="math inline">\(g(\Er[X]) \leq \Er[g(X)]\)</span></p></li>
+<li><p>Cauchy-Schwarz inequality: <span class="math inline">\(\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]\)</span></p></li>
+<li><p><span class="math inline">\(\sigma(X)\)</span> is <span class="math inline">\(\sigma\)</span><strong>-field generated by</strong> <span class="math inline">\(X\)</span>, it is</p>
+<ul>
+<li>smallest <span class="math inline">\(\sigma\)</span>-field w.r.t. which <span class="math inline">\(X\)</span> is measurable</li>
+<li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(\sigma(W) \subset \sigma(X)\)</span> iff <span class="math inline">\(\exists\)</span> <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(W = g(X)\)</span></p></li>
+<li><p>Events <span class="math inline">\(A_1, ..., A_m\)</span> are <strong>independent</strong> if for any sub-collection <span class="math inline">\(A_{i_1}, ..., A_{i_s}\)</span> <span class="math display">\[
+  P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
+  \]</span> <span class="math inline">\(\sigma\)</span>-fields are independent if this is true for any events from them. Random variables are independent if their <span class="math inline">\(\sigma\)</span>-fields are.</p></li>
+<li><p>Conditional expectation of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathscr{G}\)</span> satisfies <span class="math inline">\(\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in  \mathscr{G}\)</span></p></li>
+</ul></li>
+<li><p>Identification <span class="math inline">\(X\)</span> observed, distribution <span class="math inline">\(P_X\)</span>, probability model <span class="math inline">\(\mathcal{P}\)</span></p>
+<ul>
+<li><span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t. <span class="math inline">\(\theta_0 = \psi(P_X)\)</span></li>
+<li><span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</li>
+<li>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></li>
+<li><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s \neq s_0\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></li>
+<li><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></li>
+</ul></li>
+</ul>
+<ul>
+<li><p>Cramér-Rao Bound: in the parametric model <span class="math inline">\(P_X \in \{P_\theta:
+\theta \in \R^d\}\)</span> with likelihood <span class="math inline">\(\ell(\theta;x)\)</span>, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator <span class="math inline">\(\tau(X)\)</span>, <span class="math display">\[
+\var_\theta(\tau(X))  \geq I(\theta)^{-1}
+\]</span> where <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)' dP_\theta(x) = -\Er[H(x,\theta)]\)</span> and <span class="math inline">\(s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}\)</span></p></li>
+<li><p>Hypothesis testing:</p>
+<ul>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_0)\)</span>=<em>Type I error rate</em> <span class="math inline">\(=P_x(C)\)</span></li>
+<li><span class="math inline">\(P(\text{fail to reject } H_0 | P_x \in \mathcal{P}_1)\)</span>=<em>Type II error rate</em></li>
+<li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_1)\)</span> = <em>power</em></li>
+<li><span class="math inline">\(\sup_{P_x \in \mathcal{P}_0} P_x(C)\)</span> = <em>size of test</em></li>
+<li>Neyman-Pearson Lemma: Let <span class="math inline">\(\Theta = \{0, 1\}\)</span>, <span class="math inline">\(f_0\)</span> and <span class="math inline">\(f_1\)</span> be densities of <span class="math inline">\(P_0\)</span> and <span class="math inline">\(P_1\)</span>, <span class="math inline">\(\tau(x) =f_1(x)/f_0(x)\)</span> and <span class="math inline">\(C^* =\{x \in X: \tau(x) &gt; c\}\)</span>. Then among all tests <span class="math inline">\(C\)</span> s.t. <span class="math inline">\(P_0(C) = P_0(C^*)\)</span>, <span class="math inline">\(C^*\)</span> is most powerful.</li>
+</ul></li>
+<li><p>Projection: <span class="math inline">\(P_L y \in  L\)</span> is the <strong>projection</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(L\)</span> if <span class="math display">\[
+\norm{y - P_L y } = \inf_{w \in L} \norm{y - w}
+\]</span></p>
+<ol type="1">
+<li><span class="math inline">\(P_L y\)</span> exists, is unique, and is a linear function of <span class="math inline">\(y\)</span></li>
+<li>For any <span class="math inline">\(y_1^* \in L\)</span>, <span class="math inline">\(y_1^* = P_L y\)</span> iff <span class="math inline">\(y- y_1^* \perp L\)</span></li>
+<li><span class="math inline">\(G = P_L\)</span> iff <span class="math inline">\(Gy = y \forall y \in L\)</span> and <span class="math inline">\(Gy = 0 \forall y \in
+L^\perp\)</span></li>
+<li>Linear <span class="math inline">\(G: V \to V\)</span> is a projection map onto its range, <span class="math inline">\(\mathcal{R}(G)\)</span>, iff <span class="math inline">\(G\)</span> is idempotent and symmetric.</li>
+</ol></li>
+<li><p>Gauss-Markov: <span class="math inline">\(Y = \theta + u\)</span> with <span class="math inline">\(\theta \in L \subset \R^n\)</span>, a known subspace. If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu'] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a'\theta\)</span> is <span class="math inline">\(a'\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

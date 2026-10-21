@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -4147,6 +4147,10 @@ window.Quarto = {
 .reveal .slides section .callout {
 font-size:1.0em;
 }
+.solution {
+background-color: #ffe9cf;
+font-family: serif;
+}
 
 
 
@@ -4249,13 +4253,9 @@ font-family: serif;
 
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p><span class="math display">\[
-\def\R{{\mathbb{R}}}
-\def\Er{{\mathrm{E}}}
-\def\var{{\mathrm{Var}}}
-\]</span></p>
+<p>$ $ $$</p>
 <p>Suppose <span class="math inline">\(y_i = x_i \beta_i + \epsilon_i\)</span> for <span class="math inline">\(i=1, ..., n\)</span> with <span class="math inline">\(x_i
-\in \R\)</span>. <span class="math inline">\(y_i\)</span> and <span class="math inline">\(x_i\)</span> are observed, but <span class="math inline">\(\beta_i\)</span> and <span class="math inline">\(\epsilon_i\)</span> are not. Assume that independent of <span class="math inline">\(x_i\)</span> and idependent and identically across <span class="math inline">\(i\)</span>, <span class="math display">\[
+\in {\mathbb{R}}\)</span>. <span class="math inline">\(y_i\)</span> and <span class="math inline">\(x_i\)</span> are observed, but <span class="math inline">\(\beta_i\)</span> and <span class="math inline">\(\epsilon_i\)</span> are not. Assume that independent of <span class="math inline">\(x_i\)</span> and idependent and identically across <span class="math inline">\(i\)</span>, <span class="math display">\[
 \begin{pmatrix}
 \beta_i \\
 \epsilon_i
@@ -4264,38 +4264,38 @@ font-family: serif;
 <section id="identification" class="level2">
 <h2 class="anchored" data-anchor-id="identification">Identification</h2>
 <ol type="1">
-<li><p>Show that <span class="math inline">\(\bar{\beta}\)</span> is identified. [Hint: consider <span class="math inline">\(\Er\left[x_i\left(
+<li><p>Show that <span class="math inline">\(\bar{\beta}\)</span> is identified. [Hint: consider <span class="math inline">\({\mathrm{E}}\left[x_i\left(
 (\beta_i - \bar{\beta})x_i + \epsilon_i\right)\right]\)</span> and write <span class="math inline">\((\beta_i - \bar{\beta})x_i + \epsilon_i\)</span> in terms of <span class="math inline">\(y_i\)</span>, <span class="math inline">\(x_i\)</span>, and <span class="math inline">\(\bar{\beta}\)</span>.]</p></li>
-<li><p>Show that <span class="math inline">\(\sigma_\beta^2\)</span> and <span class="math inline">\(\sigma_\epsilon^2\)</span> are identified. [Hint: look at <span class="math inline">\(\Er[(y_i - x_i \bar{\beta})^2 | x_i]\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(\sigma_\beta^2\)</span> and <span class="math inline">\(\sigma_\epsilon^2\)</span> are identified. [Hint: look at <span class="math inline">\({\mathrm{E}}[(y_i - x_i \bar{\beta})^2 | x_i]\)</span>.</p></li>
 </ol>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span></p>
 <ol type="1">
 <li><p>As suggested by the hint, notice that since <span class="math inline">\(\beta_i\)</span> and <span class="math inline">\(\epsilon_i\)</span> are independent of <span class="math inline">\(x_i\)</span>, <span class="math display">\[
-0 = \Er\left[x_i \left((\beta_i - \bar{\beta}) x_i + \epsilon_i \right) \right]
+0 = {\mathrm{E}}\left[x_i \left((\beta_i - \bar{\beta}) x_i + \epsilon_i \right) \right]
 \]</span> rewriting in terms of observables, we have <span class="math display">\[
-0 = \Er\left[x_i (y_i - x_i \bar{\beta}) \right]
-\]</span> solving for <span class="math inline">\(\bar{\beta}\)</span> gives <span class="math inline">\(\bar{\beta} = \Er[x_i^2]^{-1} \Er[x_i y_i]\)</span></p></li>
+0 = {\mathrm{E}}\left[x_i (y_i - x_i \bar{\beta}) \right]
+\]</span> solving for <span class="math inline">\(\bar{\beta}\)</span> gives <span class="math inline">\(\bar{\beta} = {\mathrm{E}}[x_i^2]^{-1} {\mathrm{E}}[x_i y_i]\)</span></p></li>
 <li><p>The assumptions and model imply that <span class="math display">\[
 \begin{align*}
-\Er[(y_i - x_i \bar{\beta})^2 | x_i] = &amp; \Er[((\beta_i - \bar{\beta})x_i + \epsilon_i)^2|x_i] \\
+{\mathrm{E}}[(y_i - x_i \bar{\beta})^2 | x_i] = &amp; {\mathrm{E}}[((\beta_i - \bar{\beta})x_i + \epsilon_i)^2|x_i] \\
 = &amp; \sigma_\beta^2 x_i^2 + \sigma_\epsilon^2
 \end{align*}
-\]</span> The left hand side is identified because it is a conditional expectation of observed data and the already identified <span class="math inline">\(\bar{\beta}\)</span>. If <span class="math inline">\(x_i\)</span> takes on two different values with positive probability, then we can simply look at the above equation for those two values of <span class="math inline">\(x_i\)</span> and solve for the <span class="math inline">\(\sigma\)</span>’s. If <span class="math inline">\(x\)</span> is continuously distributed we should be more careful to deal with the fact that <span class="math inline">\(\Er[\cdot|x]\)</span> is only unique almost everywhere. To do so, note that for any function <span class="math inline">\(g\)</span>, <span class="math display">\[
+\]</span> The left hand side is identified because it is a conditional expectation of observed data and the already identified <span class="math inline">\(\bar{\beta}\)</span>. If <span class="math inline">\(x_i\)</span> takes on two different values with positive probability, then we can simply look at the above equation for those two values of <span class="math inline">\(x_i\)</span> and solve for the <span class="math inline">\(\sigma\)</span>’s. If <span class="math inline">\(x\)</span> is continuously distributed we should be more careful to deal with the fact that <span class="math inline">\({\mathrm{E}}[\cdot|x]\)</span> is only unique almost everywhere. To do so, note that for any function <span class="math inline">\(g\)</span>, <span class="math display">\[
 \begin{align*}
-\Er\left[ (y_i - x_i \bar{\beta})^2 g(x_i) \right] = &amp; \sigma_\beta^2 \Er[x_i^2 g(x_i)] + \sigma_\epsilon^2 \Er[g(x_i)]
+{\mathrm{E}}\left[ (y_i - x_i \bar{\beta})^2 g(x_i) \right] = &amp; \sigma_\beta^2 {\mathrm{E}}[x_i^2 g(x_i)] + \sigma_\epsilon^2 {\mathrm{E}}[g(x_i)]
 \end{align*}
 \]</span> choosing e.g. <span class="math inline">\(g() = 1\)</span> and <span class="math inline">\(g(x) = x\)</span> gives two equations to solve for the <span class="math inline">\(\sigma\)</span>’s <span class="math display">\[
 \begin{align*}
-\Er\left[ (y_i - x_i \bar{\beta})^2 \right] = &amp; \sigma_\beta^2 \Er[x_i^2 ] + \sigma_\epsilon^2  \\
-\Er\left[ (y_i - x_i \bar{\beta})^2 x_i \right] = &amp; \sigma_\beta^2 \Er[x_i^3 ] + \sigma_\epsilon^2 \Er[x_i]
+{\mathrm{E}}\left[ (y_i - x_i \bar{\beta})^2 \right] = &amp; \sigma_\beta^2 {\mathrm{E}}[x_i^2 ] + \sigma_\epsilon^2  \\
+{\mathrm{E}}\left[ (y_i - x_i \bar{\beta})^2 x_i \right] = &amp; \sigma_\beta^2 {\mathrm{E}}[x_i^3 ] + \sigma_\epsilon^2 {\mathrm{E}}[x_i]
 \end{align*}
 \]</span> so <span class="math display">\[
 \begin{align*}
-\sigma_\beta^2 = &amp; \frac{\Er\left[(y_i - x_i \bar{\beta})^2 x_i \right] - \Er\left[ (y_i - x_i \bar{\beta})^2 \right]\Er[x_i]}{\Er[x_i^3] - \Er[x_i] \Er[x_i^2]} \\
-\sigma_\epsilon^2 = &amp; \Er\left[ (y_i - x_i \bar{\beta})^2 \right] - \sigma_\beta^2 \Er[x_i^2 ]
+\sigma_\beta^2 = &amp; \frac{{\mathrm{E}}\left[(y_i - x_i \bar{\beta})^2 x_i \right] - {\mathrm{E}}\left[ (y_i - x_i \bar{\beta})^2 \right]{\mathrm{E}}[x_i]}{{\mathrm{E}}[x_i^3] - {\mathrm{E}}[x_i] {\mathrm{E}}[x_i^2]} \\
+\sigma_\epsilon^2 = &amp; {\mathrm{E}}\left[ (y_i - x_i \bar{\beta})^2 \right] - \sigma_\beta^2 {\mathrm{E}}[x_i^2 ]
 \end{align*}
-\]</span> identifies the <span class="math inline">\(\sigma\)</span>s assuming <span class="math inline">\(\Er[x_i^3] - \Er[x_i] \Er[x_i^2] \neq 0\)</span>.</p></li>
+\]</span> identifies the <span class="math inline">\(\sigma\)</span>s assuming <span class="math inline">\({\mathrm{E}}[x_i^3] - {\mathrm{E}}[x_i] {\mathrm{E}}[x_i^2] \neq 0\)</span>.</p></li>
 </ol>
 </div>
 </section>
@@ -4328,7 +4328,7 @@ e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span>. If <span class="math inline">\(A\)</s
 <h2 class="anchored" data-anchor-id="efficiency">Efficiency</h2>
 <p>For this part, you can treat <span class="math inline">\(x\)</span> as nonstochastic.</p>
 <ol type="1">
-<li><p>Show that for any known function, <span class="math inline">\(w: \R \to \R^+\)</span>, <span class="math inline">\(\hat{\beta}^w =
+<li><p>Show that for any known function, <span class="math inline">\(w: {\mathbb{R}}\to {\mathbb{R}}^+\)</span>, <span class="math inline">\(\hat{\beta}^w =
 \left(\sum_{i=1}^n w(x_i) x_i^2 \right)^{-1}\left(\sum_{i=1}^n w(x_i)
   x_i y\right)\)</span> is an unbiased, linear in <span class="math inline">\(y\)</span>, estimate of <span class="math inline">\(\bar{\beta}\)</span>.</p></li>
 <li><p>What choice of <span class="math inline">\(w\)</span> leads to the smallest variance of <span class="math inline">\(\hat{\beta}^{w}\)</span>?</p></li>
@@ -4339,7 +4339,7 @@ e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span>. If <span class="math inline">\(A\)</s
 <ol type="1">
 <li><p>To show it is unbiased, we substitute in the model for <span class="math inline">\(y\)</span> and use iterated expectations. <span class="math display">\[
 \begin{align*}
-\Er[\hat{\beta}^w] = &amp; \Er\left[ \Er[\left(\sum_{i=1}^n w(x_i) x_i^2 \right)^{-1}\left(\sum_{i=1}^n w(x_i)
+{\mathrm{E}}[\hat{\beta}^w] = &amp; {\mathrm{E}}\left[ {\mathrm{E}}[\left(\sum_{i=1}^n w(x_i) x_i^2 \right)^{-1}\left(\sum_{i=1}^n w(x_i)
   x_i (x_i \bar{\beta} + x_i(\beta_i - \bar{\beta}) +\epsilon_i) \right)| x_1, ..., x_n]\right] \\
   = &amp; \bar{\beta}
 \end{align*}
@@ -4348,20 +4348,20 @@ e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span>. If <span class="math inline">\(A\)</s
 y_i = x_i \bar{\beta} + \underbrace{(\beta_i - \bar{\beta})x_i + \epsilon_i}_{u_i}
 \]</span> the errors, <span class="math inline">\(u_i\)</span>, are not homoskedastic. However, if we multiple by <span class="math inline">\(\frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}}\)</span>, to get <span class="math display">\[
 \frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}} y_i = \frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}} x_i \bar{\beta} + \underbrace{\frac{1}{\sqrt{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}} u_i}_{\tilde{u}_i}
-\]</span> then the <span class="math inline">\(\tilde{u}\)</span> have <span class="math inline">\(\Er[\tilde{u}\tilde{u}&#39;] = I\)</span>. Therefore, by the Gauss Markov theorem, the best linear unbiased estimator for <span class="math inline">\(\bar{\beta}\)</span> is least squares in this transformed model, <span class="math display">\[
+\]</span> then the <span class="math inline">\(\tilde{u}\)</span> have <span class="math inline">\({\mathrm{E}}[\tilde{u}\tilde{u}&#39;] = I\)</span>. Therefore, by the Gauss Markov theorem, the best linear unbiased estimator for <span class="math inline">\(\bar{\beta}\)</span> is least squares in this transformed model, <span class="math display">\[
 \hat{\beta}^* = \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-1}  \left(\sum \frac{x_i y_i}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2} \right).
 \]</span> Also, any choice of <span class="math inline">\(w()\)</span> leads to a linear, unbiased estimator in the transformed model, so the best possible <span class="math inline">\(w()\)</span> must be exactly the one in <span class="math inline">\(\hat{\beta}^*\)</span>, <span class="math inline">\(w(x_i) = \frac{1}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\)</span>.</p></li>
 <li><p>The Cramer-Rao lower bound is</p></li>
 </ol>
 <p><span class="math display">\[
-\Er[-H(\beta)]^{-1} = [\sum_i x_i^2\frac{1}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2} ]^{-1}
+{\mathrm{E}}[-H(\beta)]^{-1} = [\sum_i x_i^2\frac{1}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2} ]^{-1}
 \]</span></p>
 <p>The variance of <span class="math inline">\(\hat{\beta}^*\)</span> is</p>
 <p><span class="math display">\[
 \begin{align*}
-Var(\hat{\beta}^*) = &amp; \Er\left[ \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-2}  \left(\sum \frac{x_i ((\beta_i - \bar{\beta})x_i + \epsilon_i)}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^2 \right] \\
+Var(\hat{\beta}^*) = &amp; {\mathrm{E}}\left[ \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-2}  \left(\sum \frac{x_i ((\beta_i - \bar{\beta})x_i + \epsilon_i)}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^2 \right] \\
 = &amp; \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-2}
-\left( \sum_i \frac{x_i^2 (\Er[(\beta_i - \bar{\beta})^2]x_i^2 + \sigma_\epsilon^2)}{(\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2)^2} \right) \\
+\left( \sum_i \frac{x_i^2 ({\mathrm{E}}[(\beta_i - \bar{\beta})^2]x_i^2 + \sigma_\epsilon^2)}{(\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2)^2} \right) \\
 = &amp; \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i^2 + \sigma_\epsilon^2}\right)^{-1}
 \end{align*}
 \]</span></p>
@@ -4379,7 +4379,7 @@ Var(\hat{\beta}^*) = &amp; \Er\left[ \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i
 \end{cases}\)</span>. List the elements of <span class="math inline">\(\sigma(X)\)</span>.</p></li>
 <li><p>Let <span class="math inline">\(Y(\omega) = \begin{cases} 1 &amp; \text{ if } \omega = ♠️ \\
   0 &amp; \text{ otherwise}
-\end{cases}\)</span>. Assume that <span class="math inline">\(\Er[X] &gt; 0\)</span> and <span class="math inline">\(\Er[Y]&gt;0\)</span>. Could <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent?</p></li>
+\end{cases}\)</span>. Assume that <span class="math inline">\({\mathrm{E}}[X] &gt; 0\)</span> and <span class="math inline">\({\mathrm{E}}[Y]&gt;0\)</span>. Could <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent?</p></li>
 </ol>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span></p>
@@ -4394,7 +4394,7 @@ Var(\hat{\beta}^*) = &amp; \Er\left[ \left( \sum \frac{x_i^2}{\sigma_\beta^2 x_i
 </section>
 <section id="problem-3" class="level1">
 <h1>Problem 3</h1>
-<p>Suppose <span class="math inline">\(Z_i \in S^k \subseteq \R^k\)</span> where <span class="math inline">\(S^k = \{ z \in \R^k : 0
+<p>Suppose <span class="math inline">\(Z_i \in S^k \subseteq {\mathbb{R}}^k\)</span> where <span class="math inline">\(S^k = \{ z \in {\mathbb{R}}^k : 0
 \leq z_j \leq 1 \text{ and } \sum_{j=1}^k z_j = 1\}\)</span> are independent and identically distributed for <span class="math inline">\(i = 1, ..., n\)</span>. Assume that the pdf of <span class="math inline">\(Z_i\)</span> is <span class="math display">\[
 f(z_i; \alpha) = \frac{\Gamma(k \alpha)}{\Gamma(\alpha)^k} \prod_{j=1}^k z_{ij}^{\alpha-1}
 \]</span> where <span class="math inline">\(\Gamma\)</span> is the gamma function (its exact value will not be important for what follows) and scalar parameter <span class="math inline">\(\alpha&gt;0\)</span>.</p>
@@ -4456,34 +4456,34 @@ P(CR | H_0) = P(\sum_{i=1}^n \sum_{j=1}^k \log(z_{ij}) &gt; c^*) = size.
 \]</span></p></li>
 <li><p>Monotone convergence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, <span class="math inline">\(f_{n}\geq 0\)</span>, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\uparrow f(\omega )\)</span>, then <span class="math inline">\(\int f_{n}d\mu \uparrow \int fd\mu\)</span> as <span class="math inline">\(n\rightarrow \infty\)</span></p></li>
 <li><p>Dominated converegence: If <span class="math inline">\(f_n:\Omega \to \mathbf{R}\)</span> are measurable, and for each <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(f_{n}(\omega )\rightarrow f(\omega ).\)</span> Furthermore, for some <span class="math inline">\(g\geq 0\)</span> such that <span class="math inline">\(\int gd\mu &lt;\infty\)</span>, <span class="math inline">\(|f_{n}|\leq g\)</span> for each <span class="math inline">\(n\geq 1\)</span>. Then, <span class="math inline">\(\int f_{n}d\mu \rightarrow \int fd\mu\)</span></p></li>
-<li><p>Markov’s inequality: <span class="math inline">\(P(|X|&gt;\epsilon) \leq  \frac{\Er[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p></li>
-<li><p>Jensen’s inequality: if <span class="math inline">\(g\)</span> is convex, then <span class="math inline">\(g(\Er[X]) \leq \Er[g(X)]\)</span></p></li>
-<li><p>Cauchy-Schwarz inequality: <span class="math inline">\(\left(\Er[XY]\right)^2 \leq \Er[X^2] \Er[Y^2]\)</span></p></li>
+<li><p>Markov’s inequality: <span class="math inline">\(P(|X|&gt;\epsilon) \leq  \frac{{\mathrm{E}}[|X|^k]}{\epsilon^k}\)</span> <span class="math inline">\(\forall \epsilon &gt; 0, k &gt; 0\)</span></p></li>
+<li><p>Jensen’s inequality: if <span class="math inline">\(g\)</span> is convex, then <span class="math inline">\(g({\mathrm{E}}[X]) \leq {\mathrm{E}}[g(X)]\)</span></p></li>
+<li><p>Cauchy-Schwarz inequality: <span class="math inline">\(\left({\mathrm{E}}[XY]\right)^2 \leq {\mathrm{E}}[X^2] {\mathrm{E}}[Y^2]\)</span></p></li>
 <li><p><span class="math inline">\(\sigma(X)\)</span> is <span class="math inline">\(\sigma\)</span><strong>-field generated by</strong> <span class="math inline">\(X\)</span>, it is</p>
 <ul>
 <li>smallest <span class="math inline">\(\sigma\)</span>-field w.r.t. which <span class="math inline">\(X\)</span> is measurable</li>
-<li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}(\R)\}\)</span></li>
+<li><span class="math inline">\(\sigma(X) = \{X^{-1}(B): B \in \mathscr{B}({\mathbb{R}})\}\)</span></li>
 </ul></li>
 <li><p><span class="math inline">\(\sigma(W) \subset \sigma(X)\)</span> iff <span class="math inline">\(\exists\)</span> <span class="math inline">\(g\)</span> s.t. <span class="math inline">\(W = g(X)\)</span></p></li>
 <li><p>Events <span class="math inline">\(A_1, ..., A_m\)</span> are <strong>independent</strong> if for any sub-collection <span class="math inline">\(A_{i_1}, ..., A_{i_s}\)</span> <span class="math display">\[
   P\left(\cap_{j=1}^s A_{i_j}\right) = \prod_{j=1}^s P(A_{i_j})
   \]</span> <span class="math inline">\(\sigma\)</span>-fields are independent if this is true for any events from them. Random variables are independent if their <span class="math inline">\(\sigma\)</span>-fields are.</p></li>
-<li><p>Conditional expection of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathscr{G}\)</span> satisfies <span class="math inline">\(\int_A \Er[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in  \mathscr{G}\)</span></p></li>
+<li><p>Conditional expection of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathscr{G}\)</span> satisfies <span class="math inline">\(\int_A {\mathrm{E}}[Y|\mathscr{G}] dP = \int_A Y dP\)</span> <span class="math inline">\(\forall A \in  \mathscr{G}\)</span></p></li>
 </ul></li>
 <li><p>Identification <span class="math inline">\(X\)</span> observed, distribution <span class="math inline">\(P_X\)</span>, probability model <span class="math inline">\(\mathcal{P}\)</span></p>
 <ul>
-<li><span class="math inline">\(\theta_0 \in \R^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to \R^k\)</span> s.t. <span class="math inline">\(\theta_0 = \psi(P_X)\)</span></li>
+<li><span class="math inline">\(\theta_0 \in {\mathbb{R}}^k\)</span> is <strong>identified</strong> in <span class="math inline">\(\mathcal{P}\)</span> if there exists a known <span class="math inline">\(\psi: \mathcal{P} \to {\mathbb{R}}^k\)</span> s.t. <span class="math inline">\(\theta_0 = \psi(P_X)\)</span></li>
 <li><span class="math inline">\(\mathcal{P} = \{ P(\cdot; s) : s \in S \}\)</span>, two structures <span class="math inline">\(s\)</span> and <span class="math inline">\(\tilde{s}\)</span> in <span class="math inline">\(S\)</span> are <strong>observationally equivalent</strong> if they imply the same distribution for the observed data, i.e. <span class="math display">\[ P(B;s) = P(B; \tilde{s}) \]</span> for all <span class="math inline">\(B \in \sigma(X)\)</span>.</li>
-<li>Let <span class="math inline">\(\lambda: S \to \R^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></li>
+<li>Let <span class="math inline">\(\lambda: S \to {\mathbb{R}}^k\)</span>, <span class="math inline">\(\theta\)</span> is <strong>observationally equivalent</strong> to <span class="math inline">\(\tilde{\theta}\)</span> if <span class="math inline">\(\exists s, \tilde{s} \in S\)</span> that are observationally equivalent and <span class="math inline">\(\theta = \lambda(s)\)</span> and <span class="math inline">\(\tilde{\theta} = \lambda(\tilde{s})\)</span></li>
 <li><span class="math inline">\(s_0 \in S\)</span> is <strong>identified</strong> if there is no <span class="math inline">\(s \neq s_0\)</span> that is observationally equivalent to <span class="math inline">\(s_0\)</span></li>
 <li><span class="math inline">\(\theta_0\)</span> is <strong>identified</strong> (in <span class="math inline">\(S\)</span>) if there is no observationally equivalent <span class="math inline">\(\theta \neq \theta_0\)</span></li>
 </ul></li>
 </ul>
 <ul>
 <li><p>Cramér-Rao Bound: in the parametric model <span class="math inline">\(P_X \in \{P_\theta:
-\theta \in \R^d\}\)</span> with likelihood <span class="math inline">\(\ell(\theta;x)\)</span>, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator <span class="math inline">\(\tau(X)\)</span>, <span class="math display">\[
-\var_\theta(\tau(X))  \geq I(\theta)^{-1}
-\]</span> where <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)&#39; dP_\theta(x) = -\Er[H(x,\theta)]\)</span> and <span class="math inline">\(s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}\)</span></p></li>
+\theta \in {\mathbb{R}}^d\}\)</span> with likelihood <span class="math inline">\(\ell(\theta;x)\)</span>, if appropriate derivatives and integrals can be interchanged, then for any unbiased estimator <span class="math inline">\(\tau(X)\)</span>, <span class="math display">\[
+{\mathrm{Var}}_\theta(\tau(X))  \geq I(\theta)^{-1}
+\]</span> where <span class="math inline">\(I(\theta) = \int s(x,\theta) s(x,\theta)&#39; dP_\theta(x) = -{\mathrm{E}}[H(x,\theta)]\)</span> and <span class="math inline">\(s(x,\theta) = \frac{\partial \log \ell(\theta;x)}{\partial \theta}\)</span></p></li>
 <li><p>Hypothesis testing:</p>
 <ul>
 <li><span class="math inline">\(P(\text{reject } H_0 | P_x \in \mathcal{P}_0)\)</span>=<em>Type I error rate</em> <span class="math inline">\(=P_x(C)\)</span></li>
@@ -4502,7 +4502,7 @@ P(CR | H_0) = P(\sum_{i=1}^n \sum_{j=1}^k \log(z_{ij}) &gt; c^*) = size.
 L^\perp\)</span></li>
 <li>Linear <span class="math inline">\(G: V \to V\)</span> is a projection map onto its range, <span class="math inline">\(\mathcal{R}(G)\)</span>, iff <span class="math inline">\(G\)</span> is idempotent and symmetric.</li>
 </ol></li>
-<li><p>Gauss-Markov: <span class="math inline">\(Y = \theta + u\)</span> with <span class="math inline">\(\theta \in L \subset \R^n\)</span>, a known subspace. If <span class="math inline">\(\Er[u] = 0\)</span> and <span class="math inline">\(\Er[uu&#39;] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a&#39;\theta = a&#39;\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p></li>
+<li><p>Gauss-Markov: <span class="math inline">\(Y = \theta + u\)</span> with <span class="math inline">\(\theta \in L \subset {\mathbb{R}}^n\)</span>, a known subspace. If <span class="math inline">\({\mathrm{E}}[u] = 0\)</span> and <span class="math inline">\({\mathrm{E}}[uu&#39;] = \sigma^2 I_n\)</span>, then the best linear unbiased estimator (BLUE) of <span class="math inline">\(a&#39;\theta = a&#39;\hat{\theta}\)</span> where <span class="math inline">\(\hat{\theta} = P_L y\)</span></p></li>
 </ul>
 
 

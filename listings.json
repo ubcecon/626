@@ -25,6 +25,8 @@
   {
     "listing": "/problemsets.html",
     "items": [
+      "/problemsets/04/ps04.html",
+      "/problemsets/midterm2026/midterm2026.html",
       "/problemsets/03/ps03.html",
       "/problemsets/02/ps02.html",
       "/problemsets/01/ps01.html",
@@ -33,7 +35,6 @@
       "/problemsets/06/ps06.html",
       "/problemsets/05/ps05.html",
       "/problemsets/midterm2025/midterm2025_solution.html",
-      "/problemsets/04/ps04.html",
       "/problemsets/final2024/final2024_solution.html",
       "/problemsets/08/ps08.html",
       "/problemsets/midterm2024/midterm2024_solution.html",

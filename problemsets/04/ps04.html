@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-07">
+<meta name="dcterms.date" content="2026-10-29">
 
 <title>ECON 626: Problem Set 4 – ECON 626</title>
 <style>
@@ -27,7 +27,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -43,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-205c157cc1ad17ef6203a2440e42a020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -157,8 +176,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-1-sufficient-statistics-and-efficiency-via-projection" id="toc-problem-1-sufficient-statistics-and-efficiency-via-projection" class="nav-link active" data-scroll-target="#problem-1-sufficient-statistics-and-efficiency-via-projection">Problem 1: Sufficient Statistics and Efficiency via Projection</a></li>
+  <li><a href="#problem-2-cramér-rao-bounds-and-semiparametric-efficiency" id="toc-problem-2-cramér-rao-bounds-and-semiparametric-efficiency" class="nav-link" data-scroll-target="#problem-2-cramér-rao-bounds-and-semiparametric-efficiency">Problem 2: Cramér-Rao Bounds and Semiparametric Efficiency</a></li>
   </ul>
 </nav>
     </div>
@@ -178,7 +197,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 7, 2025</p>
+      <p class="date">October 29, 2026</p>
     </div>
   </div>
   
@@ -193,32 +212,87 @@ window.Quarto = {
 <p><span class="math display">\[
 \def\R{{\mathbb{R}}}
 \def\Er{{\mathrm{E}}}
+\def\var{{\mathrm{Var}}}
+\def\cov{{\mathrm{Cov}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
 \]</span></p>
-<section id="problem-1" class="level1">
-<h1>Problem 1</h1>
-<p>The exponential distribution has density (with respect to Lesbegue measure) <span class="math display">\[
-f(X;\lambda) = \frac{1}{\lambda} e^{-X/\lambda} 1\{X &gt; 0\}
-\]</span> for <span class="math inline">\(\lambda&gt;0\)</span>. Suppose <span class="math inline">\(X_1, ... , X_n\)</span> are independently exponential<span class="math inline">\((\lambda)\)</span> distributed .</p>
+<section id="problem-1-sufficient-statistics-and-efficiency-via-projection" class="level1">
+<h1>Problem 1: Sufficient Statistics and Efficiency via Projection</h1>
+<p>Read chapter 6, especially 6.2 and 6.3 of <span class="citation" data-cites="song2021">Song (<a href="#ref-song2021" role="doc-biblioref">2021</a>)</span>.</p>
+<p>In the lecture slides (<em>Projection Geometry</em>), we saw that in any complete inner product space <span class="math inline">\(V\)</span>, the projection <span class="math inline">\(P_L y\)</span> of a vector <span class="math inline">\(y\)</span> onto a subspace <span class="math inline">\(L\)</span> is the unique element in <span class="math inline">\(L\)</span> such that the residual is orthogonal to <span class="math inline">\(L\)</span>: <span class="math inline">\(y - P_L y \perp L\)</span>.</p>
+<p>Here, let <span class="math inline">\(V = \mathcal{L}^2\)</span> be the Hilbert space of square-integrable random variables with inner product <span class="math inline">\(\langle Y_1, Y_2 \rangle = \Er[Y_1 Y_2]\)</span> and norm <span class="math inline">\(\norm{Y} = \sqrt{\Er[Y^2]}\)</span>. When <span class="math inline">\(L = \mathcal{L}^2(\sigma(T))\)</span> is the subspace of random variables that are functions of a statistic <span class="math inline">\(T\)</span>, the projection map <span class="math inline">\(P_L\)</span> is the conditional expectation: <span class="math inline">\(P_L Y = \Er[Y \mid T]\)</span>.</p>
+<p>Now suppose <span class="math inline">\(X_1, \dots, X_n\)</span> are i.i.d. <span class="math inline">\(\text{Uniform}(0,\theta)\)</span> with <span class="math inline">\(\theta &gt; 0\)</span>.</p>
 <ol type="1">
-<li><p>Show that the maximum likelihood estimator for <span class="math inline">\(\lambda\)</span> is <span class="math inline">\(\hat{\lambda}^{MLE} = \frac{1}{n} \sum_{i=1}^n X_i\)</span></p></li>
-<li><p>Derive the Cramér Rao lower bound for any unbiased estimator for <span class="math inline">\(\lambda\)</span>. Is <span class="math inline">\(\hat{\lambda}^{MLE}\)</span> a minimum variance unbiased estimator?</p></li>
-<li><p>Find the most powerful test of size <span class="math inline">\(\alpha\)</span> for testing <span class="math inline">\(H_0: \lambda = \lambda_0\)</span> versus <span class="math inline">\(H_1:\lambda = \lambda_1\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(T = \max_{1 \leq i \leq n} X_i\)</span> is a sufficient statistic for <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Consider the crude unbiased estimator <span class="math inline">\(W = 2\bar{X} = \frac{2}{n}\sum_{i=1}^n X_i\)</span>. According to the Rao-Blackwell Theorem, we can improve <span class="math inline">\(W\)</span> by projecting it onto the subspace <span class="math inline">\(L = \mathcal{L}^2(\sigma(T))\)</span> generated by the sufficient statistic. Show that this projection is: <span class="math display">\[
+\hat{\theta} \equiv P_L(2\bar{X}) = \Er[2\bar{X} \mid T] = \frac{n+1}{n} T.
+\]</span> <em>Hint: Given <span class="math inline">\(\max_{1 \leq j \leq n} X_j = t\)</span>, for each <span class="math inline">\(i\)</span>, <span class="math inline">\(X_i = t\)</span> with probability <span class="math inline">\(1/n\)</span>, and with probability <span class="math inline">\(\frac{n-1}{n}\)</span>, <span class="math inline">\(X_i \sim \text{Uniform}(0, t)\)</span>.</em></p></li>
+<li><p>By the <strong>Projection Theorem</strong> from the slides, the decomposition <span class="math inline">\(W = P_L W + (W - P_L W)\)</span> has orthogonal components: <span class="math inline">\(P_L W \perp (W - P_L W)\)</span>.</p>
+<ol type="a">
+<li><p>Use this orthogonality to deduce the Pythagorean variance decomposition: <span class="math display">\[
+\var(2\bar{X}) = \var(\hat{\theta}) + \var(2\bar{X} - \hat{\theta}),
+\]</span> and explain why this implies that the projection <span class="math inline">\(\hat{\theta}\)</span> must have weakly smaller variance than <span class="math inline">\(2\bar{X}\)</span>.</p></li>
+<li><p>Verify this explicitly by computing <span class="math inline">\(\var(2\bar{X})\)</span> and <span class="math inline">\(\var(\hat{\theta})\)</span>. <!-- Compare their rates of convergence as $n \to \infty$  --></p></li>
+</ol></li>
+<li><p>Does this model satisfy the regularity conditions for the Cramér-Rao lower bound? Why or why not? Explain why the Lehmann-Scheffé Theorem nevertheless guarantees that the projected estimator <span class="math inline">\(\hat{\theta}\)</span> is the unique minimum variance unbiased estimator.</p></li>
 </ol>
 </section>
-<section id="problem-2" class="level1">
-<h1>Problem 2</h1>
-<p>Suppose <span class="math inline">\(X_1, ... , X_n\)</span> are independently uniformly distributed on <span class="math inline">\((0,\theta)\)</span>.</p>
+<section id="problem-2-cramér-rao-bounds-and-semiparametric-efficiency" class="level1">
+<h1>Problem 2: Cramér-Rao Bounds and Semiparametric Efficiency</h1>
+<p>In this problem, we explore how understanding the Cramér-Rao lower bound as a projection can help extend the theory to semiparametric efficiency bounds.</p>
 <ol type="1">
-<li><p>Show that <span class="math inline">\(2 \bar{X} = \frac{2}{n} \sum_{i=1}^n X_i\)</span> is an unbiased estimator for <span class="math inline">\(\theta\)</span>.</p></li>
-<li><p>Show that <span class="math inline">\(\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i\)</span> is an unbiased estimator for <span class="math inline">\(\theta\)</span> with <span class="math inline">\(Var(\hat{\theta}) &lt; Var(2 \bar{X})\)</span>.</p></li>
-<li><p>Is there a Cramér Rao lower bound for the variance of <span class="math inline">\(\theta\)</span>? Why or why not?</p></li>
-<li><p><strong>(Optional and challenging)</strong> Show that <span class="math inline">\(\hat{\theta} = \frac{n+1}{n} \max_{1 \leq i \leq n} X_i\)</span> is a minimum variance unbiased estimator for <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p><strong>The Cramér-Rao bound is a 1-dimensional projection</strong>: Consider a parametric model with scalar parameter <span class="math inline">\(\theta\)</span>, score <span class="math inline">\(s(X) = \frac{\partial \log f(X;\theta)}{\partial \theta}\)</span>, and Fisher information <span class="math inline">\(I = \Er[s(X)^2] &gt; 0\)</span>. Let <span class="math inline">\(\hat{\theta}\)</span> be any unbiased estimator of <span class="math inline">\(\theta\)</span>.</p>
+<ol type="a">
+<li><p>Differentiating the unbiasedness identity <span class="math inline">\(\Er_\theta[\hat{\theta}] = \theta\)</span> under the integral sign, show that <span class="math display">\[
+\langle \hat{\theta} - \theta, s(X) \rangle \equiv \Er[(\hat{\theta} - \theta) s(X)] = 1.
+\]</span></p></li>
+<li><p>In the Hilbert space <span class="math inline">\(V = L^2_0(P)\)</span> of mean-zero random variables, let <span class="math display">\[
+L = \text{span}\{s(X)\} = \{c s(X) : c \in \R\}
+\]</span> be the 1-dimensional subspace spanned by the score. Using the formula for projection onto a line from the slides, show that the projection of the estimation error <span class="math inline">\(\hat{\theta} - \theta\)</span> onto <span class="math inline">\(L\)</span> is <span class="math display">\[
+P_L(\hat{\theta} - \theta) = \frac{\langle \hat{\theta} - \theta, s(X) \rangle}{\norm{s(X)}^2} s(X) = \frac{s(X)}{I}.
+\]</span></p></li>
+<li><p>Use the Pythagorean identity, <span class="math display">\[
+\norm{\hat{\theta} - \theta}^2 = \norm{P_L(\hat{\theta} - \theta)}^2 + \norm{(\hat{\theta} - \theta) - P_L(\hat{\theta} - \theta)}^2,
+\]</span> to deduce that <span class="math inline">\(\var(\hat{\theta}) \geq \norm{P_L(\hat{\theta} - \theta)}^2 = \frac{1}{I}\)</span>. Conclude that the Cramér-Rao lower bound is achieved if and only if the residual is zero, i.e., <span class="math inline">\(\hat{\theta} - \theta = \frac{s(X)}{I}\)</span> almost surely.</p></li>
+</ol></li>
+<li><p><strong>Parametric submodels and the hardest direction</strong>: Now consider estimating the population mean <span class="math inline">\(\mu = \Er[X]\)</span> in a semiparametric model where the density <span class="math inline">\(f(x)\)</span> is unknown. Consider a 1-dimensional parametric submodel (a curve through <span class="math inline">\(f\)</span> in the space of densities): <span class="math display">\[
+f_t(x) = f(x)\big(1 + t \cdot s(x)\big), \quad t \in (-\epsilon, \epsilon),
+\]</span> where <span class="math inline">\(s(x)\)</span> is a score satisfying <span class="math inline">\(\Er[s(X)] = 0\)</span> and <span class="math inline">\(\Er[s(X)^2] &gt; 0\)</span>.</p>
+<ol type="a">
+<li><p>Show that the derivative of the mean along this submodel at <span class="math inline">\(t = 0\)</span> is <span class="math display">\[
+\mu'(0) \equiv \left. \frac{d}{dt} \Er_{f_t}[X] \right|_{t=0} = \Er[(X - \mu) s(X)] = \langle \phi, s \rangle,
+\]</span> where <span class="math inline">\(\phi(X) = X - \mu\)</span> is the influence function (gradient).</p></li>
+<li><p>Along this submodel, the Cramér-Rao lower bound for estimating <span class="math inline">\(\mu\)</span> is <span class="math display">\[
+CR(s) = \frac{\langle \phi, s \rangle^2}{\norm{s}^2}.
+\]</span> Notice that <span class="math inline">\(CR(s) = \norm{P_{\text{span}\{s\}} \phi}^2\)</span>: the Cramér-Rao bound along submodel <span class="math inline">\(s\)</span> is simply the squared length of the projection of the gradient <span class="math inline">\(\phi\)</span> onto the 1D subspace spanned by <span class="math inline">\(s\)</span>!</p></li>
+<li><p>The semiparametric efficiency bound is the bound for the <em>hardest</em> (least favorable) submodel: <span class="math display">\[
+V^* = \sup_{s \neq 0} CR(s) = \sup_{s \neq 0} \norm{P_{\text{span}\{s\}} \phi}^2.
+\]</span> Show that <span class="math inline">\(V^* = \norm{\phi}^2 = \var(X)\)</span>, and explain why the sample mean <span class="math inline">\(\bar{X}\)</span> achieves this bound.</p></li>
+</ol></li>
+<li><p><strong>Restricted models and projection onto the tangent space</strong>: Now suppose we observe <span class="math inline">\(W = (Y, Z)'\)</span> and wish to estimate <span class="math inline">\(\mu = \Er[Y]\)</span>, but economic theory provides the restriction that <span class="math inline">\(\Er[Z] = 0\)</span>.</p>
+<ol type="a">
+<li><p>Show that for any submodel <span class="math inline">\(f_t(w) = f(w)(1 + t \cdot s(w))\)</span> satisfying <span class="math inline">\(\Er_t[Z] = 0\)</span> for all <span class="math inline">\(t\)</span>, the score <span class="math inline">\(s(W)\)</span> must be orthogonal to <span class="math inline">\(Z\)</span>: <span class="math display">\[
+\langle Z, s \rangle = \Er[Z s(W)] = 0.
+\]</span> The subspace of all such scores is the <strong>tangent space</strong> <span class="math inline">\(\mathcal{T} = \{s \in L^2_0(P) : s \perp Z\}\)</span>.</p></li>
+<li><p>The unrestricted gradient is <span class="math inline">\(\phi(W) = Y - \mu\)</span>. Using the projection formula from the slides (Theorem 1.4: <span class="math inline">\(P_{L \cap L_0^\perp} = P_L - P_{L_0}\)</span>), show that the orthogonal projection of <span class="math inline">\(\phi(W)\)</span> onto the tangent space <span class="math inline">\(\mathcal{T} = (\text{span}\{Z\})^\perp\)</span> is <span class="math display">\[
+\phi^*(W) \equiv P_\mathcal{T} \phi = (Y - \mu) - \frac{\cov(Y, Z)}{\var(Z)} Z.
+\]</span></p></li>
+<li><p>Deduce that the restricted semiparametric efficiency bound is the squared length of this projection: <span class="math display">\[
+V^* = \sup_{s \neq 0, s \in \mathcal{T}} CR(s) = \norm{P_\mathcal{T} \phi}^2 = \var(Y) - \frac{\cov(Y, Z)^2}{\var(Z)} = \var(Y)(1 - \rho^2),
+\]</span> where <span class="math inline">\(\rho = \text{Corr}(Y, Z)\)</span>.</p></li>
+<li><p>How does the geometric fact that <span class="math inline">\(\norm{P_\mathcal{T} \phi}^2 \leq \norm{\phi}^2\)</span> translate into intuition about the value of model restrictions? Verify that the regression estimator <span class="math inline">\(\hat{\mu} = \bar{Y} - \hat{\beta}\bar{Z}\)</span> achieves this bound.</p></li>
+</ol></li>
 </ol>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-song2021" class="csl-entry" role="listitem">
+Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

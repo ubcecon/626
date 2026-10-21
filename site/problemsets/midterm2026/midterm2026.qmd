@@ -2,8 +2,9 @@
 title: "ECON 626: Midterm"
 author: "Paul Schrimpf"
 date: "2026-10-19"
-bibliography: ~/626/site/626.bib
+#bibliography: ~/626/site/626.bib
 format:
+  html:
     css: styles.css
     number-sections: true
 ---
@@ -42,6 +43,10 @@ show that the maximum likelihood estimator for $\mu$ is $\hat{\mu} =
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 The loglikelihood is:
 $$
 \log \ell(\mu,\sigma^2;\mathbf{X}) = \sum_{i=1}^n -1/2 \log(2\pi \sigma^2) - 1/2 \frac{(x_i - \mu)^2}{\sigma^2}
@@ -55,6 +60,31 @@ $$
 \hat{\mu} = \frac{1}{n} \sum_{i=1}^n x_i
 $$
 
+## Gemini 3.8 Flash
+
+1. **Log-Likelihood Function:**
+   Since $X_1, \dots, X_n \overset{\text{iid}}{\sim} N(\mu, \sigma^2)$, the joint likelihood function is:
+   $$
+   \ell(\mu, \sigma^2; \mathbf{X}) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(X_i - \mu)^2}{2\sigma^2}\right) = (2\pi\sigma^2)^{-n/2} \exp\left(-\frac{1}{2\sigma^2}\sum_{i=1}^n (X_i - \mu)^2\right).
+   $$
+   Taking the natural logarithm:
+   $$
+   \log \ell(\mu, \sigma^2; \mathbf{X}) = -\frac{n}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^n (X_i - \mu)^2.
+   $$
+
+2. **First-Order Condition:**
+   Taking the derivative with respect to $\mu$:
+   $$
+   \frac{\partial \log \ell(\mu, \sigma^2; \mathbf{X})}{\partial \mu} = \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu).
+   $$
+   Setting this first-order condition to zero:
+   $$
+   \frac{1}{\hat{\sigma}^2}\sum_{i=1}^n (X_i - \hat{\mu}) = 0 \implies \sum_{i=1}^n X_i - n\hat{\mu} = 0 \implies \hat{\mu} = \frac{1}{n}\sum_{i=1}^n X_i.
+   $$
+   Since $\frac{\partial^2 \log \ell}{\partial \mu^2} = -\frac{n}{\sigma^2} < 0$ for any $\sigma^2 > 0$, $\hat{\mu}$ uniquely maximizes the log-likelihood.
+
+:::
+
 :::
 
 ### Variance of Estimator
@@ -62,6 +92,10 @@ $$
 Calculate the variance of $\hat{\mu}$.
 
 ::: {.solution}
+
+::: {.panel-tabset}
+
+## Paul
 
 $$
 \begin{align*}
@@ -72,6 +106,15 @@ $$
 = & \frac{\sigma^2}{n}
 \end{align*}
 $$
+
+## Gemini 3.8 Flash
+
+Using the linearity of expectations and independence of $X_1, \dots, X_n$:
+$$
+\var(\hat{\mu}) = \var\left(\frac{1}{n}\sum_{i=1}^n X_i\right) = \frac{1}{n^2}\sum_{i=1}^n \var(X_i) = \frac{1}{n^2}(n\sigma^2) = \frac{\sigma^2}{n}.
+$$
+
+:::
 
 :::
 
@@ -85,26 +128,30 @@ $\mu$?
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 We can take the parameters to be either $\mu, \sigma^2$ or $\mu, \sigma$. It affects the algebra, but not the answer. Here, I use $\sigma^2$.
 The score is
 $$
 s(\mu,\sigma^2;\mathbf{X}) = \begin{pmatrix}
 \sum \frac{x_i - \mu}{\sigma^2} \\
-\sum \frac{1}{2 \pi \sigma^2} + 1/2\frac{(x_i - \mu)^2}{(\sigma^2)^2}
+\sum -\frac{1}{2 \sigma^2} + 1/2\frac{(x_i - \mu)^2}{(\sigma^2)^2}
 \end{pmatrix}
 $$
 and the Hessian is
 $$
-H(\mu,\sigma^2;\mathbf{X}) = & \begin{pmatrix}
+H(\mu,\sigma^2;\mathbf{X}) = \begin{pmatrix}
 -\frac{n}{\sigma^2} & \sum -\frac{x_i - \mu}{(\sigma^2)^2} \\
-\sum -\frac{x_i - \mu}{(\sigma^2)^2} & -\frac{n}{2\pi (\sigma^2)^2} - \sum \frac{(x_i-\mu)^2}{(\sigma^2)^3}
+\sum -\frac{x_i - \mu}{(\sigma^2)^2} & \frac{n}{2 (\sigma^2)^2} - \sum \frac{(x_i-\mu)^2}{(\sigma^2)^3}
 \end{pmatrix}.
 $$
 
 The information matrix is minus the expected hessian, which is
 $$
 I = \begin{pmatrix} \frac{n}{\sigma^2} & 0 \\
-0 & \frac{n}{2\pi (\sigma^2)^2} + \frac{n}{(\sigma^2)^2}
+0 & -\frac{n}{2 (\sigma^2)^2} + \frac{n}{(\sigma^2)^2}
 \end{pmatrix}
 $$
 
@@ -112,10 +159,61 @@ So the Cramer Rao lower bound is
 $$
 \var(\mu,\sigma^2) \geq I^{-1} = \begin{pmatrix}
 \frac{\sigma^2}{n} & 0 \\
-0 & \frac{2\pi (\sigma^2)^2}{n(1+2\pi)}.
+0 & \frac{2(\sigma^2)^2}{n}.
 \end{pmatrix}
 $$
 In particular, the lower bound for the variance of $\mu$ is $\sigma^2/n$, the same as if $\sigma^2$ were known.
+
+## Gemini 3.8 Flash
+
+1. **Score Equations:**
+   Let the parameter vector be $\theta = (\mu, \sigma^2)'$. The log-likelihood is:
+   $$
+   \log \ell(\mu, \sigma^2; \mathbf{X}) = -\frac{n}{2}\log(2\pi) - \frac{n}{2}\log(\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^n (X_i - \mu)^2.
+   $$
+   The first-order partial derivatives are:
+   $$
+   \frac{\partial \log \ell}{\partial \mu} = \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu),
+   $$
+   $$
+   \frac{\partial \log \ell}{\partial (\sigma^2)} = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4}\sum_{i=1}^n (X_i - \mu)^2.
+   $$
+
+2. **Hessian and Information Matrix:**
+   Taking second derivatives:
+   $$
+   \frac{\partial^2 \log \ell}{\partial \mu^2} = -\frac{n}{\sigma^2},
+   $$
+   $$
+   \frac{\partial^2 \log \ell}{\partial \mu \partial (\sigma^2)} = -\frac{1}{\sigma^4}\sum_{i=1}^n (X_i - \mu),
+   $$
+   $$
+   \frac{\partial^2 \log \ell}{\partial (\sigma^2)^2} = \frac{n}{2\sigma^4} - \frac{1}{\sigma^6}\sum_{i=1}^n (X_i - \mu)^2.
+   $$
+   Taking the negative expectation using $\Er[X_i - \mu] = 0$ and $\Er[(X_i - \mu)^2] = \sigma^2$:
+   - $I_{11} = -\Er\left[\frac{\partial^2 \log \ell}{\partial \mu^2}\right] = \frac{n}{\sigma^2}$
+   - $I_{12} = I_{21} = -\Er\left[\frac{\partial^2 \log \ell}{\partial \mu \partial (\sigma^2)}\right] = 0$
+   - $I_{22} = -\Er\left[\frac{\partial^2 \log \ell}{\partial (\sigma^2)^2}\right] = -\frac{n}{2\sigma^4} + \frac{n\sigma^2}{\sigma^6} = \frac{n}{2\sigma^4}$
+
+   The Fisher information matrix is:
+   $$
+   I(\mu, \sigma^2) = \begin{pmatrix} \frac{n}{\sigma^2} & 0 \\ 0 & \frac{n}{2\sigma^4} \end{pmatrix}.
+   $$
+
+3. **Cramér-Rao Lower Bound:**
+   Inverting the diagonal information matrix:
+   $$
+   I(\mu, \sigma^2)^{-1} = \begin{pmatrix} \frac{\sigma^2}{n} & 0 \\ 0 & \frac{2\sigma^4}{n} \end{pmatrix}.
+   $$
+   The Cramér-Rao lower bound for an unbiased estimator of $\mu$ is the $(1,1)$ element of $I^{-1}$:
+   $$
+   \text{CRLB}(\mu) = \frac{\sigma^2}{n}.
+   $$
+
+4. **Does knowing $\sigma^2$ improve the estimation of $\mu$?**
+   **No.** Because the Fisher information matrix is block-diagonal between $\mu$ and $\sigma^2$ ($I_{12} = 0$), the score with respect to $\mu$ is orthogonal to the score with respect to $\sigma^2$. Hence, $[I^{-1}]_{11} = \frac{1}{I_{11}} = \frac{\sigma^2}{n}$, which is identical to the bound when $\sigma^2$ is known. Furthermore, $\hat{\mu} = \frac{1}{n}\sum_{i=1}^n X_i$ does not require knowledge of $\sigma^2$ and achieves this bound in both cases.
+
+:::
 
 :::
 
@@ -159,6 +257,10 @@ for a modified constant $c$.
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 As stated in the question, the most powerful test for point hypotheses is
 $$
 C = \left\lbrace \mathbf{X} : (\mu_a^1 - \mu_a^0) \sum_{i=1}^{n}
@@ -171,7 +273,7 @@ C = \left\lbrace \mathbf{X} : \sum_{i=1}^{n}
  X_i^a - \sum_{j=1}^{n}
  X_j^b > c/\Delta \right\rbrace.
 $$
-To control size, $c/\Delta$ much be such that
+To control size, $c/\Delta$ must be such that
 $$
 \alpha = P_0(C) = P_0(\sum_{i=1}^{n}
  X_i^a - \sum_{j=1}^{n}
@@ -187,9 +289,7 @@ so
 $$
 \alpha = P_0(\sum_{i=1}^{n}
  X_i^a - \sum_{j=1}^{n}
- X_j^b > c/\Delta) = 1 - \Phi\left(\frac{\sum_{i=1}^{n}
- X_i^a - \sum_{j=1}^{n}
- X_j^b}{\sqrt{2n\sigma^2}}\right)
+ X_j^b > c/\Delta) = 1 - \Phi\left(\frac{c/\Delta}{\sqrt{2n\sigma^2}}\right)
 $$
 or $c/\Delta = \Phi^{-1}( 1 - \alpha)\sqrt{2n\sigma^2}$. The critical region,
 $$
@@ -197,9 +297,25 @@ C = \left\lbrace \mathbf{X} : \sum_{i=1}^{n}
  X_i^a - \sum_{j=1}^{n}
  X_j^b > \Phi^{-1}(1-\alpha)\sqrt{2n\sigma^2} \right\rbrace.
 $$
-is the same for all $\Delta>0$, so this test is uniformly most powerfull.
+is the same for all $\Delta>0$, so this test is uniformly most powerful.
 
 An acceptable solution here need not solved for $c/\Delta$ like this. You would do that in the next part anyway though.
+
+## Gemini 3.8 Flash
+
+Let $\Delta = \mu_a^1 - \mu_a^0 > 0$. The condition $\mu_a^1 - \mu_a^0 = -(\mu_b^1 - \mu_b^0)$ implies $\mu_b^1 - \mu_b^0 = -\Delta$.
+
+Substituting this into the likelihood ratio test critical region:
+$$
+C = \left\{ \mathbf{X} : \Delta \sum_{i=1}^n X_i^a - \Delta \sum_{j=1}^n X_j^b > c' \right\}.
+$$
+Since $\Delta > 0$, dividing both sides by $n\Delta > 0$ preserves the inequality:
+$$
+C = \left\{ \mathbf{X} : \frac{1}{n}\sum_{i=1}^n X_i^a - \frac{1}{n}\sum_{j=1}^n X_j^b > \frac{c'}{n\Delta} \equiv c \right\}.
+$$
+By the Neyman-Pearson Lemma, the likelihood ratio test is the most powerful test of its size for testing $H_0$ against any specific alternative $(\mu_a^1, \mu_b^1)$ satisfying these conditions. Since the test statistic $\frac{1}{n}\sum_{i=1}^n X_i^a - \frac{1}{n}\sum_{j=1}^n X_j^b$ and the critical region do not depend on the specific value of $\Delta > 0$, the same critical region maximizes power against all alternatives in this class simultaneously. Therefore, the test is **Uniformly Most Powerful (UMP)**.
+
+:::
 
 :::
 
@@ -219,7 +335,39 @@ $aW+bZ$ is $N(a \mu_W + b \mu_Z, a^2 \sigma^2_W + b^2 \sigma^2_Z)$].
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 I did this in the previous part.
+
+## Gemini 3.8 Flash
+
+Let $W = \bar{X}^a = \frac{1}{n}\sum_{i=1}^n X_i^a \sim N(\mu_a, 1/n)$ and $Z = \bar{X}^b = \frac{1}{n}\sum_{j=1}^n X_j^b \sim N(\mu_b, 1/n)$.
+
+Since $W$ and $Z$ are independent, applying the hint with $a = 1$ and $b = -1$ gives:
+$$
+\bar{X}^a - \bar{X}^b \sim N\left(\mu_a - \mu_b, \; \frac{1}{n} + \frac{1}{n}\right) = N\left(\mu_a - \mu_b, \; \frac{2}{n}\right).
+$$
+Under the null hypothesis $H_0: \mu_a - \mu_b = 0$:
+$$
+\bar{X}^a - \bar{X}^b \sim N\left(0, \frac{2}{n}\right) \implies \frac{\bar{X}^a - \bar{X}^b}{\sqrt{2/n}} \sim N(0, 1).
+$$
+The probability of rejecting $H_0$ under any distribution in $H_0$ is:
+$$
+\Pr\left(\bar{X}^a - \bar{X}^b > c \;\middle|\; \mu_a - \mu_b = 0\right) = 1 - \Phi\left(\frac{c}{\sqrt{2/n}}\right).
+$$
+Setting this rejection probability equal to $\alpha$:
+$$
+1 - \Phi\left(\frac{c}{\sqrt{2/n}}\right) = \alpha \iff \Phi\left(\frac{c}{\sqrt{2/n}}\right) = 1 - \alpha.
+$$
+Therefore, choosing
+$$
+c = \Phi^{-1}(1 - \alpha)\sqrt{\frac{2}{n}}
+$$
+ensures that the critical region has exact size $\alpha$.
+
+:::
 
 :::
 
@@ -259,14 +407,43 @@ Would this test reject or fail to reject $H_0: \mu_a - \mu_b = 0$?
 
 ::: {.solution}
 
-1. $H_{0a}$ would be rejected size 2.2 > 1.645$, but $H_{0b}$ would not be.
+::: {.panel-tabset}
+
+## Paul
+
+1. $H_{0a}$ would be rejected since 2.2 > 1.645$, but $H_{0b}$ would not be.
 
 2. Multiplying by $\sqrt{n}$,
 $$
 C = \left\lbrace \mathbf{X}: \frac{1}{\sqrt{n}} \sum_{i=1}^{n} X_i^a -
 \frac{1}{\sqrt{n}} \sum_{j=1}^{n} X_j^b > 1.645 \sqrt{2} \right\rbrace.
 $$
-and $2.2 - 1.0 = 1.1 < 1.645 \sqrt{2}$, so we would fail to reject the hypothesis that the means are equal.
+and $2.2 - 1.0 = 1.2 < 1.645 \sqrt{2}$, so we would fail to reject the hypothesis that the means are equal.
+
+## Gemini 3.8 Flash
+
+1. **Separate Tests:**
+   - For $H_{0a}: \mu_a = 0$ vs $H_{1a}: \mu_a > 0$: The test statistic is $\frac{1}{\sqrt{n}}\sum_{i=1}^n X_i^a = 2.2 > 1.645$. Hence, we **reject $H_{0a}$** at the 5% level.
+   - For $H_{0b}: \mu_b = 0$ vs $H_{1b}: \mu_b > 0$: The test statistic is $\frac{1}{\sqrt{n}}\sum_{j=1}^n X_j^b = 1.0 \le 1.645$. Hence, we **fail to reject $H_{0b}$** at the 5% level.
+
+2. **Test of $H_0: \mu_a - \mu_b = 0$:**
+   Multiplying the inequality defining $C$ by $\sqrt{n}$:
+   $$
+   \frac{1}{\sqrt{n}}\sum_{i=1}^n X_i^a - \frac{1}{\sqrt{n}}\sum_{j=1}^n X_j^b > 1.645\sqrt{2}.
+   $$
+   Evaluating the difference between the two sample statistics:
+   $$
+   2.2 - 1.0 = 1.2.
+   $$
+   The critical threshold is:
+   $$
+   1.645\sqrt{2} \approx 1.645 \times 1.4142 \approx 2.326.
+   $$
+   Since $1.2 \le 2.326$, we **fail to reject $H_0: \mu_a - \mu_b = 0$**.
+
+   *(This demonstrates that finding a significant effect in one group and an insignificant effect in another does not imply that the difference between the two groups is statistically significant).*
+
+:::
 
 :::
 
@@ -286,6 +463,10 @@ $\Er[\epsilon_1 \epsilon_2] = 0$.
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 Using iterated expectation and the definition of $\epsilon$,
 $$
 \begin{align*}
@@ -297,6 +478,35 @@ $$
 $$
 and by iterated expectations, $\Er[\epsilon_1 \epsilon_2] =
 \Er[\Er[\epsilon_1 \epsilon_2|X]] = 0$.
+
+## Gemini 3.8 Flash
+
+1. **Showing $\Er[\epsilon_1 \epsilon_2 \mid X] = 0$:**
+   Since $\sigma(X) \subseteq \sigma(X, Z)$, the term $\epsilon_2 = \Er[Y|X,Z] - \Er[Y|X]$ is measurable with respect to $\sigma(X, Z)$.
+   By the Law of Iterated Expectations:
+   $$
+   \Er[\epsilon_1 \epsilon_2 \mid X] = \Er\left[ \Er[\epsilon_1 \epsilon_2 \mid X, Z] \;\middle|\; X \right].
+   $$
+   Taking out what is known given $(X, Z)$:
+   $$
+   \Er[\epsilon_1 \epsilon_2 \mid X, Z] = \epsilon_2 \Er[\epsilon_1 \mid X, Z].
+   $$
+   Since $\epsilon_1 = Y - \Er[Y|X,Z]$:
+   $$
+   \Er[\epsilon_1 \mid X, Z] = \Er[Y - \Er[Y|X,Z] \mid X, Z] = \Er[Y \mid X, Z] - \Er[Y \mid X, Z] = 0.
+   $$
+   Therefore, $\Er[\epsilon_1 \epsilon_2 \mid X, Z] = 0$, which implies:
+   $$
+   \Er[\epsilon_1 \epsilon_2 \mid X] = \Er[0 \mid X] = 0.
+   $$
+
+2. **Showing $\Er[\epsilon_1 \epsilon_2] = 0$:**
+   Applying iterated expectations unconditionally:
+   $$
+   \Er[\epsilon_1 \epsilon_2] = \Er\left[\Er[\epsilon_1 \epsilon_2 \mid X]\right] = \Er[0] = 0.
+   $$
+
+:::
 
 :::
 
@@ -312,12 +522,16 @@ previous part.]
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 Following the hint,
 $$
 \begin{align*}
 \var(Y|X) = & \Er[(Y - \Er[Y|X])^2|X] \\
 = & \Er[(\epsilon_1 + \epsilon_2)^2 | X] \\
-= & \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X] + \Er[\epsilon_1\epsilon_2|X] \\
+= & \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X] + 2\Er[\epsilon_1\epsilon_2|X] \\
 = & \Er[\epsilon_1^2 |X] + \Er[\epsilon_2^2|X]
 \end{align*}
 $$
@@ -332,6 +546,36 @@ $$
 = & \Er[\var(Y|X,Z)|X] + \var(\Er[Y|X,Z]|X)
 \end{align*}
 $$
+
+## Gemini 3.8 Flash
+
+Using the decomposition $Y - \Er[Y|X] = \epsilon_1 + \epsilon_2$:
+$$
+\begin{aligned}
+\var(Y \mid X) &= \Er\left[(Y - \Er[Y|X])^2 \;\middle|\; X\right] \\
+&= \Er\left[(\epsilon_1 + \epsilon_2)^2 \;\middle|\; X\right] \\
+&= \Er[\epsilon_1^2 \mid X] + \Er[\epsilon_2^2 \mid X] + 2\Er[\epsilon_1\epsilon_2 \mid X].
+\end{aligned}
+$$
+From the previous part, $\Er[\epsilon_1\epsilon_2 \mid X] = 0$, so the cross-term vanishes:
+$$
+\var(Y \mid X) = \Er[\epsilon_1^2 \mid X] + \Er[\epsilon_2^2 \mid X].
+$$
+Evaluating the two remaining terms:
+1. By the Law of Iterated Expectations:
+   $$
+   \Er[\epsilon_1^2 \mid X] = \Er\left[\Er[(Y - \Er[Y|X,Z])^2 \mid X, Z] \;\middle|\; X\right] = \Er[\var(Y \mid X, Z) \mid X].
+   $$
+2. Since $\Er[\Er[Y|X,Z] \mid X] = \Er[Y \mid X]$:
+   $$
+   \Er[\epsilon_2^2 \mid X] = \Er\left[(\Er[Y|X,Z] - \Er[\Er[Y|X,Z] \mid X])^2 \;\middle|\; X\right] = \var(\Er[Y \mid X, Z] \mid X).
+   $$
+Combining the two terms yields:
+$$
+\var(Y \mid X) = \Er\left[\var(Y \mid X, Z) \mid X\right] + \var\left(\Er[Y \mid X, Z] \mid X\right).
+$$
+
+:::
 
 :::
 
@@ -354,6 +598,10 @@ Compute $\Er[\hat{\theta}|X]$.
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 $$
 \begin{align*}
 \Er[\hat{\theta}|X] = & \Er[c'(X'X)^{-1} X'y | X] \\
@@ -363,6 +611,19 @@ $$
 \end{align*}
 $$
 
+## Gemini 3.8 Flash
+
+Substituting $y = X\beta + \epsilon$ into the estimator $\hat{\theta} = c'(X'X)^{-1}X'y$:
+$$
+\hat{\theta} = c'(X'X)^{-1}X'(X\beta + \epsilon) = c'\beta + c'(X'X)^{-1}X'\epsilon = \theta + c'(X'X)^{-1}X'\epsilon.
+$$
+Taking the conditional expectation given $X$, and using $\Er[\epsilon \mid X] = 0$:
+$$
+\Er[\hat{\theta} \mid X] = c'\beta + c'(X'X)^{-1}X'\Er[\epsilon \mid X] = c'\beta = \theta.
+$$
+
+:::
+
 :::
 
 ## Variance
@@ -370,6 +631,10 @@ $$
 Show $\var(\hat{\theta}|X)=\sigma^2 c'(X'X)^{-1}c.$
 
 ::: {.solution}
+
+::: {.panel-tabset}
+
+## Paul
 
 $$
 \begin{align*}
@@ -380,6 +645,23 @@ $$
 = & \sigma^2 c'(X'X)^{-1} c
 \end{align*}
 $$
+
+## Gemini 3.8 Flash
+
+Using $\hat{\theta} - \theta = c'(X'X)^{-1}X'\epsilon$:
+$$
+\begin{aligned}
+\var(\hat{\theta} \mid X) &= \Er\left[(\hat{\theta} - \theta)^2 \;\middle|\; X\right] \\
+&= \Er\left[c'(X'X)^{-1}X'\epsilon \epsilon' X(X'X)^{-1}c \;\middle|\; X\right] \\
+&= c'(X'X)^{-1}X'\Er[\epsilon\epsilon' \mid X] X(X'X)^{-1}c.
+\end{aligned}
+$$
+Since $\var(\epsilon \mid X) = \Er[\epsilon\epsilon' \mid X] = \sigma^2 I_n$:
+$$
+\var(\hat{\theta} \mid X) = \sigma^2 c'(X'X)^{-1}X'X(X'X)^{-1}c = \sigma^2 c'(X'X)^{-1}c.
+$$
+
+:::
 
 :::
 
@@ -392,6 +674,10 @@ holds conditionally as well as unconditionally.]
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 Markov's inequality with $k=2$ gives
 
 $$
@@ -401,6 +687,20 @@ or using the previous part,
 $$
 \Pr(|\hat{\theta} -\theta| > \delta|X) \leq \frac{\sigma^2 c'(X'X)^{-1} c}{\delta^2}
 $$
+
+## Gemini 3.8 Flash
+
+Applying Markov's inequality conditionally with $k = 2$:
+$$
+\Pr(|\hat{\theta} - \theta| > \delta \mid X) = \Pr\left((\hat{\theta} - \theta)^2 > \delta^2 \;\middle|\; X\right) \le \frac{\Er\left[(\hat{\theta} - \theta)^2 \;\middle|\; X\right]}{\delta^2}.
+$$
+Using the conditional variance from the previous part $\Er[(\hat{\theta}-\theta)^2 \mid X] = \var(\hat{\theta} \mid X) = \sigma^2 c'(X'X)^{-1}c$:
+$$
+\Pr(|\hat{\theta} - \theta| > \delta \mid X) \le \frac{\sigma^2 c'(X'X)^{-1}c}{\delta^2}.
+$$
+
+:::
+
 :::
 
 ## Required Sample Size
@@ -414,6 +714,10 @@ you may use $\Pr(|\hat{\theta} - \theta| > \delta|X) \leq B / (n\delta^2$). The 
 
 ::: {.solution}
 
+::: {.panel-tabset}
+
+## Paul
+
 We have
 $$
 \Pr(|\hat{\theta} -\theta| > \delta|X) \leq \frac{\sigma^2 c'(X'X)^{-1} c}{\delta^2} \leq \frac{\sigma^2}{n \delta^2}
@@ -424,6 +728,27 @@ $$
 $$
 so we need $1-\frac{\sigma^2}{n \delta^2} \geq 0.95$ or
 $20 \frac{\sigma^2}{\delta^2} \leq n$
+
+## Gemini 3.8 Flash
+
+Using $c'(X'X)^{-1}c \le 1/n$ and the error bound from the previous part:
+$$
+\Pr(|\hat{\theta} - \theta| > \delta \mid X) \le \frac{\sigma^2 c'(X'X)^{-1}c}{\delta^2} \le \frac{\sigma^2}{n\delta^2}.
+$$
+Taking the complement:
+$$
+\Pr(|\hat{\theta} - \theta| \le \delta \mid X) = 1 - \Pr(|\hat{\theta} - \theta| > \delta \mid X) \ge 1 - \frac{\sigma^2}{n\delta^2}.
+$$
+To guarantee $\Pr(|\hat{\theta} - \theta| \le \delta \mid X) \ge 0.95$, it suffices that:
+$$
+1 - \frac{\sigma^2}{n\delta^2} \ge 0.95 \iff \frac{\sigma^2}{n\delta^2} \le 0.05 = \frac{1}{20} \iff n \ge \frac{20\sigma^2}{\delta^2}.
+$$
+Thus, the minimum sample size required is:
+$$
+n = \left\lceil \frac{20\sigma^2}{\delta^2} \right\rceil \quad \left(\text{or } n \ge 20\frac{\sigma^2}{\delta^2}\right).
+$$
+
+:::
 
 :::
 

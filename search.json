@@ -1348,14 +1348,14 @@
     "href": "asymptotics/inprobability.html#lp-convergence",
     "title": "Convergence in Probability",
     "section": "\\(L^p\\) convergence",
-    "text": "\\(L^p\\) convergence\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in \\(L^p\\) to the random vector \\(Y\\) if \\[\n\\lim_{n \\to \\infty} \\Er\\left[ \\norm{X_n-Y}^p \\right] \\to 0\n\\]\n\n\n\n\n\\(p=2\\) called convergence in mean square"
+    "text": "\\(L^p\\) convergence\n\n\n\nDefinition\n\n\nRandom vectors \\(X_1, X_2, ...\\) converge in \\(L^p\\) to the random vector \\(Y\\) if \\[\n\\lim_{n \\to \\infty} \\Er\\left[ \\norm{X_n-Y}^p \\right] = 0\n\\]\n\n\n\n\n\\(p=2\\) called convergence in mean square"
   },
   {
     "objectID": "asymptotics/inprobability.html#markovs-inequality",
     "href": "asymptotics/inprobability.html#markovs-inequality",
     "title": "Convergence in Probability",
     "section": "Markov’s Inequality",
-    "text": "Markov’s Inequality\n\n\n\nMarkov’s Inequality\n\n\n\\(P(|X|&gt;\\epsilon) \\leq \\frac{\\Er[|X|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon &gt; 0, k &gt; 0\\)\n\n\n\n\n\\(P\\left( \\norm{X_n - Y} &gt; \\epsilon \\right) \\leq \\frac{\\Er[ \\norm{X_n - Y}^k]} {\\epsilon_k}\\)"
+    "text": "Markov’s Inequality\n\n\n\nMarkov’s Inequality\n\n\n\\(P(|X|&gt;\\epsilon) \\leq \\frac{\\Er[|X|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon &gt; 0, k &gt; 0\\)\n\n\n\n\n\\(P\\left( \\norm{X_n - Y} &gt; \\epsilon \\right) \\leq \\frac{\\Er[ \\norm{X_n - Y}^k]} {\\epsilon^k}\\)"
   },
   {
     "objectID": "asymptotics/inprobability.html#convergence-in-lp-implies-convergence-in-probability",
@@ -1376,7 +1376,7 @@
     "href": "asymptotics/inprobability.html#consistency-of-least-squares",
     "title": "Convergence in Probability",
     "section": "Consistency of Least-Squares",
-    "text": "Consistency of Least-Squares\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} = (X'X)^{-1} X' y\\) \\(\\inprob \\beta_0\\)?\nSufficient that \\(MSE(\\hat{\\beta}) = tr[\\var(\\hat{\\beta})] +\nBias(\\hat{\\beta})'Bias(\\hat{\\beta}) \\to 0\\)\n\\(\\var(\\hat{\\beta}) = \\sigma^2 (X'X)^{-1}\\) (treating \\(X\\) as non-stochastic)\n\\(tr((X'X)^{-1}) \\leq \\frac{k}{\\lambda_{min}(X'X)}\\)"
+    "text": "Consistency of Least-Squares\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} = (X'X)^{-1} X' y\\) \\(\\inprob \\beta_0\\)?\nSufficient that \\(MSE(\\hat{\\beta}) = tr[\\var(\\hat{\\beta})] +\nBias(\\hat{\\beta})'Bias(\\hat{\\beta}) \\to 0\\)\n\\(\\var(\\hat{\\beta}) = \\Er[\\var(\\hat{\\beta}|X)] +\n\\var(\\Er[\\hat{\\beta}|X]) = \\sigma^2 \\Er[(X'X)^{-1}] + 0\\)\n\\(tr((X'X)^{-1}) \\leq \\frac{k}{\\lambda_{\\min}(X'X)}\\)"
   },
   {
     "objectID": "asymptotics/inprobability.html#convergence-in-probability-of-functions",
@@ -1397,14 +1397,14 @@
     "href": "asymptotics/inprobability.html#consistency-of-least-squares-revisited",
     "title": "Convergence in Probability",
     "section": "Consistency of Least Squares Revisited",
-    "text": "Consistency of Least Squares Revisited\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} \\inprob \\beta_0\\)?\nTreat \\(X\\) as stochastic\n\\(\\hat{\\beta} = \\left(\\frac{1}{n} \\sum_{i=1}^n X_i X_i' \\right)^{-1} \\left(\\frac{1}{n} \\sum_{i=1}^n X_i y_i \\right)\\)\nIf WLLN applies to \\(\\frac{1}{n} \\sum_{i=1}^n X_i X_i'\\) and \\(\\frac{1}{n} \\sum_{i=1}^n X_i y_i\\) (and \\(\\Er[X_i X_i']^{-1}\\) exists)\nSufficient for i.i.d, \\(\\Er[X_i u_i] = 0\\), 4th moments of \\(X_i\\) to exist, \\(\\Er[u_i^2]\\) to exist"
+    "text": "Consistency of Least Squares Revisited\n\nIn \\(y = X \\beta_0 + u\\), when does \\(\\hat{\\beta} \\inprob \\beta_0\\)?\n\\(\\hat{\\beta} = \\left(\\frac{1}{n} \\sum_{i=1}^n X_i X_i' \\right)^{-1} \\left(\\frac{1}{n} \\sum_{i=1}^n X_i y_i \\right)\\)\nIf WLLN applies to \\(\\frac{1}{n} \\sum_{i=1}^n X_i X_i'\\) and \\(\\frac{1}{n} \\sum_{i=1}^n X_i y_i\\) (and \\(\\Er[X_i X_i']^{-1}\\) exists)\nSufficient for i.i.d, \\(\\Er[X_i u_i] = 0\\), 4th moments of \\(X_i\\) to exist, \\(\\Er[u_i^2]\\) to exist"
   },
   {
     "objectID": "asymptotics/inprobability.html#convergence-rates-1",
     "href": "asymptotics/inprobability.html#convergence-rates-1",
     "title": "Convergence in Probability",
     "section": "Convergence Rates",
-    "text": "Convergence Rates\n\n\n\nDefinition\n\n\nGiven a sequence of random variables, \\(X_1, X_2, ...\\) and constants \\(b_1, b_2, ...\\), then\n\n\\(X_n = O_p(b_n)\\) if for all \\(\\epsilon &gt; 0\\) there exists \\(M_\\epsilon\\) s.t. \\[\n\\lim\\sup P\\left(\\frac{\\norm{X_n}}{b_n} \\geq  M_\\epsilon \\right) &lt; \\epsilon\n\\]\n\\(X_n = o_p(b_n)\\) if \\(\\frac{X_n}{b_n} \\inprob 0\\)"
+    "text": "Convergence Rates\n\n\n\nDefinition\n\n\nGiven a sequence of random variables, \\(X_1, X_2, ...\\) and constants \\(b_1, b_2, ...\\), then\n\n\\(X_n = O_p(b_n)\\) if for all \\(\\epsilon &gt; 0\\) there exists \\(M_\\epsilon\\) s.t. \\[\n\\limsup P\\left(\\frac{\\norm{X_n}}{b_n} \\geq  M_\\epsilon \\right) &lt; \\epsilon\n\\]\n\\(X_n = o_p(b_n)\\) if \\(\\frac{X_n}{b_n} \\inprob 0\\)"
   },
   {
     "objectID": "asymptotics/inprobability.html#example-little-o_p",
@@ -1467,7 +1467,7 @@
     "href": "asymptotics/inprobability.html#application-generalization-bound",
     "title": "Convergence in Probability",
     "section": "Application: Generalization Bound",
-    "text": "Application: Generalization Bound\n\nGiven \\(\\hat{\\beta} = \\mathrm{arg}\\min \\frac{1}{n} \\sum_{i=1}^n \\ell( y_i, x_i; \\beta)\\), can we bound \\[\n\\Er[\\ell(y_i,x_i;\\hat{\\beta})]?\n\\]\nYes, under reasonable assumptions, we can show \\[\nP\\left( \\Er[\\ell(Y,X;\\beta)] \\geq \\frac{1}{n} \\sum_{i=1}^n \\ell \\left(y_i, x_i;\\beta \\right) + \\sqrt{\\frac{C_0 + C_1 \\log(1/\\delta) + k/2\\log(n)}{n}} \\forall \\beta \\in \\mathscr{B} \\right) \\leq \\delta\n\\]\nTo show use:\n\nNon-asymptotic bound for fixed \\(\\beta\\) from above\nUnion-bound argument over finitely many different values of \\(\\beta\\)\nCompactness to approximate infinite values of \\(\\beta\\) with finite set"
+    "text": "Application: Generalization Bound\n\nGiven \\(\\hat{\\beta} = \\mathrm{arg}\\min \\frac{1}{n} \\sum_{i=1}^n \\ell( y_i, x_i; \\beta)\\), can we bound \\[\n\\Er[\\ell(y_i,x_i;\\hat{\\beta})]?\n\\]\nYes, under reasonable assumptions, we can show \\[\nP\\left( \\Er[\\ell(Y,X;\\beta)] \\geq \\frac{1}{n} \\sum_{i=1}^n \\ell \\left(y_i, x_i;\\beta \\right) + \\sqrt{\\frac{C_0 + C_1 \\log(1/\\delta) + k/2\\log(n)}{n}} \\forall \\beta \\in \\mathscr{B} \\right) \\leq \\delta\n\\]\nTo show use:\n\nNon-asymptotic bound for fixed \\(\\beta\\) from above\nUnion-bound argument over finitely many different values of \\(\\beta\\)\nCompactness to approximate infinite values of \\(\\beta\\) with finite set (\\(\\epsilon\\)-net / covering)"
   },
   {
     "objectID": "about.html",
@@ -3281,5 +3281,33 @@
     "title": "ECON 626: Midterm",
     "section": "3.4 Required Sample Size",
     "text": "3.4 Required Sample Size\nAssume \\(c' (X'X)^{-1}c \\leq 1/n\\). Suppose a researcher wants \\(\\Pr(|\\hat{\\theta} -\\theta| \\leq \\delta|X)\n\\geq 0.95\\). Based on the bound from the previous part, what is the minimum \\(n\\) as a function of \\(\\delta\\) and \\(\\sigma^2\\) required? [Hint: if you did not solve the previous part, you may use \\(\\Pr(|\\hat{\\theta} - \\theta| &gt; \\delta|X) \\leq B / (n\\delta^2\\)). The correct \\(B\\) depends on \\(c\\), \\(X\\), \\(\\sigma^2\\), etc, but you can leave it as \\(B\\) if you did not solve the previous part.]\n\nSolution. \n\nPaulGemini 3.8 Flash\n\n\nWe have \\[\n\\Pr(|\\hat{\\theta} -\\theta| &gt; \\delta|X) \\leq \\frac{\\sigma^2 c'(X'X)^{-1} c}{\\delta^2} \\leq \\frac{\\sigma^2}{n \\delta^2}\n\\] or \\[\n\\Pr(|\\hat{\\theta} -\\theta| \\leq \\delta|X) \\geq 1-\\frac{\\sigma^2}{n \\delta^2}\n\\] so we need \\(1-\\frac{\\sigma^2}{n \\delta^2} \\geq 0.95\\) or \\(20 \\frac{\\sigma^2}{\\delta^2} \\leq n\\)\n\n\nUsing \\(c'(X'X)^{-1}c \\le 1/n\\) and the error bound from the previous part: \\[\n\\Pr(|\\hat{\\theta} - \\theta| &gt; \\delta \\mid X) \\le \\frac{\\sigma^2 c'(X'X)^{-1}c}{\\delta^2} \\le \\frac{\\sigma^2}{n\\delta^2}.\n\\] Taking the complement: \\[\n\\Pr(|\\hat{\\theta} - \\theta| \\le \\delta \\mid X) = 1 - \\Pr(|\\hat{\\theta} - \\theta| &gt; \\delta \\mid X) \\ge 1 - \\frac{\\sigma^2}{n\\delta^2}.\n\\] To guarantee \\(\\Pr(|\\hat{\\theta} - \\theta| \\le \\delta \\mid X) \\ge 0.95\\), it suffices that: \\[\n1 - \\frac{\\sigma^2}{n\\delta^2} \\ge 0.95 \\iff \\frac{\\sigma^2}{n\\delta^2} \\le 0.05 = \\frac{1}{20} \\iff n \\ge \\frac{20\\sigma^2}{\\delta^2}.\n\\] Thus, the minimum sample size required is: \\[\nn = \\left\\lceil \\frac{20\\sigma^2}{\\delta^2} \\right\\rceil \\quad \\left(\\text{or } n \\ge 20\\frac{\\sigma^2}{\\delta^2}\\right).\n\\]"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#simulation-of-stochastic-order-1",
+    "href": "asymptotics/inprobability.html#simulation-of-stochastic-order-1",
+    "title": "Convergence in Probability",
+    "section": "Simulation of Stochastic Order",
+    "text": "Simulation of Stochastic Order\n\n\\(\\min_{i} x_i = o_p(n^{-1/2})\\) implies all simulations should be below \\(n^{-1/2}\\) for \\(n\\) large enough\n\n\n\nCode\nusing Distributions, Plots, Statistics, Random, LaTeXStrings\nRandom.seed!(1234)\nS = 100\nn = 2:400\ndistribution = Exponential(1)\ndgp(n) = rand(distribution, n)\nm₀ = minimum(distribution)\nfig = plot()\nfor s in 1:S\n    data = dgp(maximum(n))\n    plot!(fig, n, abs.(minimum.(data[1:i] for i in n) .- m₀), alpha=0.2, label=false, color=:blue)\nend\nplot!(fig, n, 1 ./ sqrt.(n), label=L\"n^{-1/2}\", lw=3)\nplot!(fig, n, 1 ./(n), label=L\"n^{-1}\", lw=3)\nylims!(fig, (0, 1/sqrt(10)))\nfig"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#non-asymptotic-bounds-chernoff-bound",
+    "href": "asymptotics/inprobability.html#non-asymptotic-bounds-chernoff-bound",
+    "title": "Convergence in Probability",
+    "section": "Non-Asymptotic Bounds: Chernoff Bound",
+    "text": "Non-Asymptotic Bounds: Chernoff Bound\n\nLet \\(\\Er[X] = \\mu\\)\nMarkov’s inequality: \\(P(|X - \\mu |&gt;\\epsilon) \\leq \\frac{\\Er[|X - \\mu|^k]}{\\epsilon^k}\\) \\(\\forall \\epsilon &gt; 0, k &gt; 0\\)\nIdea: minimize right side over \\(k\\) to get a tighter bound\nChernoff bound technique: apply Markov’s inequality to the exponential \\(e^{\\lambda(X-\\mu)}\\) for \\(\\lambda &gt; 0\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#non-asymptotic-bounds-sub-gaussian-variables",
+    "href": "asymptotics/inprobability.html#non-asymptotic-bounds-sub-gaussian-variables",
+    "title": "Convergence in Probability",
+    "section": "Non-Asymptotic Bounds: Sub-Gaussian Variables",
+    "text": "Non-Asymptotic Bounds: Sub-Gaussian Variables\n\nMarkov’s inequality for \\(e^{\\lambda(X-\\mu)}\\): \\[\nP(X-\\mu&gt;\\epsilon) = P\\left( e^{\\lambda (X - \\mu)} &gt; e^{\\lambda \\epsilon} \\right) \\leq e^{-\\lambda \\epsilon} \\Er\\left[e^{\\lambda (X-\\mu)}\\right]\n\\]\n\\(M_{X-\\mu}(\\lambda)=\\Er\\left[e^{\\lambda (X-\\mu)}\\right]\\) is the (centered) moment generating function\n\\(X\\) is sub-Gaussian with variance proxy \\(\\sigma^2\\) if \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] \\leq e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\)\n\nNormal distribution: if \\(X \\sim N(\\mu, \\sigma^2)\\), then \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] = e^{\\frac{\\lambda^2 \\sigma^2}{2}}\\)\nBounded variables (Hoeffding’s Lemma): if \\(|X| \\leq b\\), then \\(\\Er\\left[e^{\\lambda (X-\\mu)}\\right] \\leq e^{\\lambda^2 b^2}\\)"
+  },
+  {
+    "objectID": "asymptotics/inprobability.html#non-asymptotic-bounds-sub-gaussian-concentration",
+    "href": "asymptotics/inprobability.html#non-asymptotic-bounds-sub-gaussian-concentration",
+    "title": "Convergence in Probability",
+    "section": "Non-Asymptotic Bounds: Sub-Gaussian Concentration",
+    "text": "Non-Asymptotic Bounds: Sub-Gaussian Concentration\n\nChernoff bound for sub-Gaussian variable: \\[\nP(X-\\mu&gt;\\epsilon) \\leq \\inf_{\\lambda \\geq 0} e^{-\\lambda \\epsilon + \\lambda^2 \\sigma^2/2} = e^{-\\frac{\\epsilon^2}{2 \\sigma^2}}\n\\]\nHoeffding-type inequality for sample means: if \\(X_1, \\dots, X_n\\) are independent and sub-Gaussian(\\(\\sigma^2\\)), then \\(\\frac{1}{n}\\sum_{i=1}^n X_i - \\mu\\) is sub-Gaussian(\\(\\sigma^2/n\\)): \\[\nP\\left(\\frac{1}{n} \\sum_{i=1}^n X_i-\\mu &gt;\\epsilon\\right) \\leq e^{-\\frac{\\epsilon^2 n}{2 \\sigma^2}}\n\\]"
   }
 ]

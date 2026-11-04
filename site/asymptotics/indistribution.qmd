@@ -47,7 +47,7 @@ $$
 ### Definition
 
 Random vectors $X_1, X_2, ...$ **converge in distribution** to the random
-vector $X$ if for all $f \in \underbrace{\mathcal{C}_b}$ (continuous and bounded)
+vector $X$ if for all $f \in \mathcal{C}_b$ (continuous and bounded)
 $$
 \Er[ f(X_n) ] \to \Er[f(X)]
 $$
@@ -312,7 +312,7 @@ $$
 
 We need some additional assumptions for this to have good
 answer.  At a high level, we want $\frac{1}{n} \sum x_i \inprob \Er[x]$, and
-$\frac{1}{n} \sum_{i=1}^n \left(x_i - \frac{1}{n} \sum_j=1^n x_j \right)^2 - \sigma^2 \indist W$ for some known random variable $W$. Sufficient more primitive assumptions would be that $x_i$ is i.i.d. with mean $\mu$, variance $\sigma^2>0$, and finite fourth moment.
+$\frac{1}{n} \sum_{i=1}^n \left(x_i - \frac{1}{n} \sum_{j=1}^n x_j \right)^2 - \sigma^2 \indist W$ for some known random variable $W$. Sufficient more primitive assumptions would be that $x_i$ is i.i.d. with mean $\mu$, variance $\sigma^2>0$, and finite fourth moment.
 
 
 :::
@@ -339,7 +339,7 @@ y_i = x_i'\beta_0 + \epsilon_i
 $$
 - What is the asymptotic distribution of
 $$
-M(\beta) = \left\Vert \frac{1}{\sqrt{n}} \sum_{i=1} x_i (y_i - x_i'\beta) \right\Vert^2
+M(\beta) = \left\Vert \frac{1}{\sqrt{n}} \sum_{i=1}^n x_i (y_i - x_i'\beta) \right\Vert^2
 $$
 when $\beta=\beta_0$?
 
@@ -366,7 +366,7 @@ Assume that for each $n$, $X_{n,1}, ..., X_{n,k(n)}$ are independent
 with $\Er[X_{nj}] = 0$, and $\frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er[X_{nj}^2]  = 1$
 and for any $\epsilon>0$,
 $$
-\lim_{n \to \infty} \frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er\left[ X_{nj}^2 1\{|X_{nj}|>\epsilon \sqrt{k(n)}  \right]  = 0
+\lim_{n \to \infty} \frac{1}{k(n)} \sum_{j=1}^{k(n)} \Er\left[ X_{nj}^2 1\{|X_{nj}|>\epsilon \sqrt{k(n)}\}  \right]  = 0
 $$
 Then,
 $$
@@ -400,7 +400,7 @@ $$
 
 ### Theorem 1.1
 
-If $X_n \indist X$ if and only if $P(X_n \leq t) \to P(X \leq t)$ for
+$X_n \indist X$ if and only if $P(X_n \leq t) \to P(X \leq t)$ for
 all $t$ where $P(X \leq t)$ is continuous
 
 :::
@@ -449,7 +449,7 @@ This is based on @tao2010  https://terrytao.wordpress.com/2010/01/05/254a-notes-
 
 Let $G_i \sim N(0,1)$. Define
 $$
-Z_{n,i} = \frac{X_1 + \cdots X_i + G_{i+1} + \cdots G_n}{\sqrt{n}},
+Z_{n,i} = \frac{X_1 + \cdots + X_i + G_{i+1} + \cdots + G_n}{\sqrt{n}},
 $$
 so that $Z_{n,n} = \frac{1}{\sqrt{n}} \sum_{i=1}^n X_i$ and $Z_{n,0} \equiv G$.
 
@@ -465,7 +465,7 @@ $$
 $$
 and
 $$
-\varphi(Z_{n,i+i}) = \varphi(S_{n,i}) + \varphi'(S_{n,i}) \frac{X_{i+1}}{\sqrt{n}} + \frac{1}{2}\varphi''(S_{n,i}) \frac{X_{i+1}^2}{n} + O\left( \frac{|X_{i+1}|^3}{n^{3/2}} \sup \varphi'''(x) \right).
+\varphi(Z_{n,i+1}) = \varphi(S_{n,i}) + \varphi'(S_{n,i}) \frac{X_{i+1}}{\sqrt{n}} + \frac{1}{2}\varphi''(S_{n,i}) \frac{X_{i+1}^2}{n} + O\left( \frac{|X_{i+1}|^3}{n^{3/2}} \sup \varphi'''(x) \right).
 $$
 
 We have assumed that $\Er[X_i] = \Er[G_i]$ and $\Er[X_i^2] = \Er[G_i^2]$, so
@@ -577,7 +577,7 @@ plotcdfwithbounds(unif,e3)
 ::: {.callout .note}
 
 ### Multivariate Berry-Esseen Theorem
-If $X_i \in \R^d$ are independent with $\Er[X] = 0$,
+If $X_i \in \R^d$ are independent with $\Er[X_i] = 0$,
 $\var\left(\frac{1}{\sqrt{n}} \sum_{i=1}^n X_i \right)=\Sigma$ with
 $diagonal(\Sigma) = (1, ..., 1)'$,
 $\Vert X_i \Vert_{\infty} \leq B_n$,
@@ -585,7 +585,7 @@ and $Z \sim N(0,\Sigma)$, then
 $$
 \sup_{A \subset \R^d, \text{rectangle}} \left\vert
 P\left(\frac{1}{\sqrt{n}} \sum_{i=1}^n X_i \in A \right) - P(Z \in A) \right\vert \leq
-C B_n \sqrt{\frac{\log(d)^3}{n \lambda_{min}(\Sigma)}} \log(n)
+C B_n \sqrt{\frac{\log(d)^3}{n \lambda_{\min}(\Sigma)}} \log(n)
 $$
 
 :::

@@ -79,7 +79,7 @@ observations, $Y=\theta_0$, a constant.
 Random vectors $X_1, X_2, ...$ **converge in $L^p$** to the random
 vector $Y$ if
 $$
-\lim_{n \to \infty} \Er\left[ \norm{X_n-Y}^p \right] \to 0
+\lim_{n \to \infty} \Er\left[ \norm{X_n-Y}^p \right] = 0
 $$
 
 :::
@@ -97,7 +97,7 @@ $\forall \epsilon > 0, k > 0$
 
 :::
 
--  $P\left( \norm{X_n - Y} > \epsilon \right) \leq \frac{\Er[ \norm{X_n - Y}^k]} {\epsilon_k}$
+-  $P\left( \norm{X_n - Y} > \epsilon \right) \leq \frac{\Er[ \norm{X_n - Y}^k]} {\epsilon^k}$
 
 
 ## Convergence in  $L^p$ implies convergence in probability
@@ -124,8 +124,7 @@ MSE(\hat{\theta}_n) = & \Er[ \norm{\hat{\theta}_n - \theta_0}^2 ] \\
 \end{aligned}
 $$
 - If $MSE(\hat{\theta}_n) \to 0$, then $\hat{\theta}_n \inprob \theta_0$
-- If $\lim_{n \to \infty} \Er[\hat{\theta}_n]  \neq \theta_0$, then
-$\plim \hat{\theta}_n \neq \theta_0$
+- Under uniform integrability (e.g. $\sup_{n} \Er[\norm{\hat{\theta}_n}^4] < \infty$), if $\lim_{n \to \infty} \Er[\hat{\theta}_n] \neq \theta_0$, then $\plim \hat{\theta}_n \neq \theta_0$
 
 
 ## Consistency of Least-Squares
@@ -138,9 +137,10 @@ $\inprob \beta_0$?
 - Sufficient that $MSE(\hat{\beta}) = tr[\var(\hat{\beta})] +
 Bias(\hat{\beta})'Bias(\hat{\beta}) \to 0$
 
-- $\var(\hat{\beta}) = \sigma^2 (X'X)^{-1}$ (treating $X$ as non-stochastic)
+- $\var(\hat{\beta}) = \Er[\var(\hat{\beta}|X)] +
+\var(\Er[\hat{\beta}|X]) = \sigma^2 \Er[(X'X)^{-1}] + 0$
 
-- $tr((X'X)^{-1}) \leq \frac{k}{\lambda_{min}(X'X)}$
+- $tr(\var(\hat{\beta})) \leq \sigma^2 \Er\left[\frac{k}{\lambda_{\min}(X'X)}\right] \to 0$ ensures consistency
 
 :::
 
@@ -189,8 +189,6 @@ $$
 
 - In $y = X \beta_0 + u$, when does $\hat{\beta} \inprob \beta_0$?
 
-- Treat $X$ as stochastic
-
 - $\hat{\beta} = \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \right)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i y_i \right)$
 
 - If WLLN applies to $\frac{1}{n} \sum_{i=1}^n X_i X_i'$ and
@@ -214,7 +212,7 @@ $b_1, b_2, ...$, then
 - $X_n = O_p(b_n)$ if for all $\epsilon > 0$ there exists $M_\epsilon$
 s.t.
 $$
-\lim\sup P\left(\frac{\norm{X_n}}{b_n} \geq  M_\epsilon \right) < \epsilon
+\limsup P\left(\frac{\norm{X_n}}{b_n} \geq  M_\epsilon \right) < \epsilon
 $$
 - $X_n = o_p(b_n)$ if $\frac{X_n}{b_n} \inprob 0$
 
@@ -242,6 +240,7 @@ $$
 
 ## Example: Big $O_p$
 
+::: {.incremental}
 - Real valued $X_1, ..., X_n$ i.i.d., with $\Er[X] = \mu$, $\var(X_i) = \sigma^2$
 
 - Markov's inequality
@@ -253,11 +252,12 @@ $$
   $$
   P\left( \frac{|\En X_i - \mu |}{n^{-1/2}} > \underbrace{\sigma \epsilon^{-1/2}}_{M_\epsilon} \right) \leq \epsilon
   $$
-  so $|\En X_i - \mu | = O_p(n^{-\alpha})$ for $\alpha \in (0, 1/2]$
+  so $|\En X_i - \mu | = O_p(n^{-1/2})$
+:::
 
 ## Simulation of Stochastic Order
 
-- $\frac{1}{n} \sum_{i=1}^n x_i = O_p(n^{-1/2})$ means that by scaling the red line by $M_\epsilon$, we can make the probability of the blue lines being above it less than $\epsilon$
+- $|\frac{1}{n} \sum_{i=1}^n x_i - \mu| = O_p(n^{-1/2})$ means that by scaling the red line by $M_\epsilon$, we can make the probability of the blue lines being above it less than $\epsilon$
 
 ```{julia}
 #| code-fold: true
@@ -279,9 +279,9 @@ fig
 ```
 
 
-## Simulation of Stochatic Order
+## Simulation of Stochastic Order
 
-- $\min_{i} x_i = o_p(1/n^{-1/2})$ implies all simulations should be below $n^{-1/2}$ for $n$ large enough
+- $\min_{i} x_i = o_p(n^{-1/2})$ implies all simulations should be below $n^{-1/2}$ for $n$ large enough
 
 ```{julia}
 #| code-fold: true
@@ -318,34 +318,36 @@ fig
 
 # Non-Asymptotic Bounds
 
-## Non-Asymptotic Bounds
+## Non-Asymptotic Bounds: Chernoff Bound
 
 - Let $\Er[X] = \mu$
 - Markov's inequality: $P(|X - \mu |>\epsilon) \leq \frac{\Er[|X - \mu|^k]}{\epsilon^k}$
 $\forall \epsilon > 0, k > 0$
-- Idea: minimize left side over $k$ to get a tighter bound
+- Idea: minimize right side over $k$ to get a tighter bound
+- **Chernoff bound technique**: apply Markov's inequality to the exponential $e^{\lambda(X-\mu)}$ for $\lambda > 0$
 
-## Non-Asymptotic Bounds
+## Non-Asymptotic Bounds: Sub-Gaussian Variables
 
-- Markov's inequality for $e^{\lambda(X-\mu)}$
+- Markov's inequality for $e^{\lambda(X-\mu)}$:
 $$
 P(X-\mu>\epsilon) = P\left( e^{\lambda (X - \mu)} > e^{\lambda \epsilon} \right) \leq e^{-\lambda \epsilon} \Er\left[e^{\lambda (X-\mu)}\right]
 $$
-- $M_X(\lambda)=\Er\left[e^{\lambda (X-\mu)}\right]$ is the (centered) moment generating function
-   - If $X \sim N(\mu, \sigma^2)$, then
+- $M_{X-\mu}(\lambda)=\Er\left[e^{\lambda (X-\mu)}\right]$ is the (centered) moment generating function
+- $X$ is **sub-Gaussian** with variance proxy $\sigma^2$ if $\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}$
+   - Normal distribution: if $X \sim N(\mu, \sigma^2)$, then
    $\Er\left[e^{\lambda (X-\mu)}\right] = e^{\frac{\lambda^2 \sigma^2}{2}}$
-   - If $|X| \leq b$, then $\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\lambda^2 b^2}$
+   - Bounded variables (**Hoeffding's Lemma**): if $|X| \leq b$, then $\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\frac{\lambda^2 b^2}{2}}$
 
-## Non-Asymptotic Bounds
+## Non-Asymptotic Bounds: Sub-Gaussian Concentration
 
 ::: {.incremental}
 
-- Suppose $\Er\left[e^{\lambda (X-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}$, then
+- **Chernoff bound for sub-Gaussian variable**:
 $$
 P(X-\mu>\epsilon) \leq \inf_{\lambda \geq 0} e^{-\lambda \epsilon + \lambda^2 \sigma^2/2} = e^{-\frac{\epsilon^2}{2 \sigma^2}}
 $$
 
-- Suppose $\Er\left[e^{\lambda (X_i-\mu)}\right] \leq e^{\frac{\lambda^2 \sigma^2}{2}}$ and $X_i$ are independent, then
+- **Hoeffding-type inequality for sample means**: if $X_1, \dots, X_n$ are independent and sub-Gaussian($\sigma^2$), then $\frac{1}{n}\sum_{i=1}^n X_i - \mu$ is sub-Gaussian($\sigma^2/n$):
 $$
 P\left(\frac{1}{n} \sum_{i=1}^n X_i-\mu >\epsilon\right) \leq e^{-\frac{\epsilon^2 n}{2 \sigma^2}}
 $$
@@ -365,13 +367,13 @@ $$
 
 - Yes, under reasonable assumptions, we can show
 $$
-P\left( \Er[\ell(Y,X;\beta)] \geq \frac{1}{n} \sum_{i=1}^n \ell \left(y_i, x_i;\beta \right) + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + k/2\log(n)}{n}} \forall \beta \in \mathscr{B} \right) \leq \delta
+P\left( \Er[\ell(Y,X;\beta)] \leq \frac{1}{n} \sum_{i=1}^n \ell \left(y_i, x_i;\beta \right) + \sqrt{\frac{C_0 + C_1 \log(1/\delta) + \frac{k}{2}\log(n)}{n}} \quad \forall \beta \in \mathcal{B} \right) \geq 1 - \delta
 $$
 
 - To show use:
     - Non-asymptotic bound for fixed $\beta$ from above
     - Union-bound argument over finitely many different values of $\beta$
-    - Compactness to approximate infinite values of $\beta$ with finite set
+    - Compactness to approximate infinite values of $\beta$ with finite set ($\epsilon$-net / covering)
 
 :::
 

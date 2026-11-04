@@ -80,8 +80,8 @@ Consistent, $\hat{\beta} \inprob \beta$,  if
 
 - Using non-iid WLLN from [convergence in distribution slides](indistribution.qmd) ("low level assumption"):
     - For both $Z_i = X_i'$ and $Z_i = \epsilon_i$,
-        - $\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j
-            Z_j) - \Er[X_j Z_j]\right)' 1\{\right] = 0$ for $i \neq j$ and
+        - $\Er\left[\left((X_i Z_i) - \Er[X_i Z_i] \right) \left((X_j
+            Z_j) - \Er[X_j Z_j]\right)' \right] = 0$ for $i \neq j$ and
         - $\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0$
     - $\Er[X_i \epsilon_i] = 0$ for all $i$
     - $\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er[X_i X_i'] = C$  is invertible
@@ -121,7 +121,7 @@ $\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)$ if:
 ::: {.incremental}
 - Using Lindeberg's CLT and non-iid WLLN:
     - $(X_i, \epsilon_i) \perp (X_j, \epsilon_j)$ if $i \neq j$, and
-    - $\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i X_i' - \Er[X_i X_i']) (X_i X_i' - \Er[X_i X_i])'] \to 0$, and
+    - $\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i X_i' - \Er[X_i X_i']) (X_i X_i' - \Er[X_i X_i'])'] \to 0$, and
     - $\frac{1}{n} \sum_{i=1}^n \Er[X_i \epsilon_i^2 X_i'] = \Omega_n$ is non singular, and $\Omega_n \to \Omega$, and
     - $\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er\left[ c'( X_i
       \epsilon_i^2 X_i') c 1\{ | c'( X_i \epsilon_i)| > \delta
@@ -139,7 +139,7 @@ $\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)$ if:
 
 If $\hat{\Sigma} \inprob \Sigma$, $\Sigma$ is nonsingular, and $\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)$, then
 $$
-\sqrt{n}(\hat{\beta} - \beta)\hat{\Sigma}^{-1/2} \indist N(0, I)
+\hat{\Sigma}^{-1/2}\sqrt{n}(\hat{\beta} - \beta) \indist N(0, I)
 $$
 
 :::
@@ -168,7 +168,7 @@ $\epsilon$ is **homoskedastic** if $\Er[\epsilon_i^2 | X_i] = \sigma^2$, otherwi
 
 - With heteroskedasticity, $\Sigma = \Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}$ and can be (with appropriate assumptions) consistently estimated by
 $$
-\hat{\Sigma}^{robust} = (\frac{1}{n} X ' X)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \epsilon_i^2 \right) (\frac{1}{n} X'X)^{-1}
+\hat{\Sigma}^{robust} = (\frac{1}{n} X ' X)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \hat{\epsilon}_i^2 \right) (\frac{1}{n} X'X)^{-1}
 $$
 
 - Even with homoskedasticity, there is little downside to using $\hat{\Sigma}^{robust}$, so always used in practice
@@ -317,10 +317,10 @@ HTML("<iframe src=\"size_het_$(N[4]).html\" width=\"1000\"  height=\"650\"></ifr
 
 - $\sqrt{n} (\hat{\beta} - \beta) \indist N(0, \Er[X_iX_i']^{-1} V
 \Er[X_i X_i']^{-1})$ if $\frac{1}{n} X'X \inprob \Er[X_iX_i']$
-and $\frac{1}{n} X'\epsilon \indist N(0,V)$
-- Generally, $V = \lim_{n \to \infty} \var\left( \frac{1}{n} X'\epsilon \right)$
+and $\frac{1}{\sqrt{n}} X'\epsilon \indist N(0,V)$
+- Generally, $V = \lim_{n \to \infty} \var\left( \frac{1}{\sqrt{n}} X'\epsilon \right)$
 $$
- \var\left( \frac{1}{n} X'\epsilon \right) = \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j)
+ \var\left( \frac{1}{\sqrt{n}} X'\epsilon \right) = \frac{1}{n} \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j)
 $$
  - $n(n-1)/2$ different $\cov(X_i \epsilon_i, X_j \epsilon_j)$, so need some restriction
 
@@ -332,8 +332,8 @@ g(j)$, and $\Er[X_i \epsilon_i] = 0$
 
 $$
 \begin{aligned}
-\sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j) = & \sum_{h=1}^G \sum_{i \in g_h} \sum_{j \in g_h} \cov(X_i \epsilon_i, X_j, \epsilon_j) \\
-= & \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right]
+\sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j) = & \sum_{h=1}^G \sum_{i \in g_h} \sum_{j \in g_h} \cov(X_i \epsilon_i, X_j \epsilon_j) \\
+= & \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)\left(\sum_{i \in g_h} X_i \epsilon_i \right)' \right]
 \end{aligned}
 $$
 
@@ -342,14 +342,15 @@ $$
 - Strengthening some assumptions to apply Lindeberg's CLT to  $\left(\sum_{i \in g_h} X_i \epsilon_i \right)$  we get
 
 $$
-\frac{1}{\sqrt{G}} \left(\sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \right) \left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)^{-1/2} \indist N(0, I)
+\left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)\left(\sum_{i \in g_h} X_i \epsilon_i \right)' \right] \right)^{-1/2} \frac{1}{\sqrt{G}} \sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \indist N(0, I)
 $$
 
 - Thus,
 
 $$
-\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, \Er[X_i X_i']^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)  \Er[X_i X_i']^{-1} \right)
+\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, C^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)\left(\sum_{i \in g_h} X_i \epsilon_i \right)' \right] \right)  C^{-1} \right)
 $$
+where $C = \plim_{G \to \infty} \frac{1}{G} X'X$
 
 ## Clustering
 
@@ -477,7 +478,7 @@ if $\sum_{j=-\infty}^{\infty} |\gamma_j| < \infty$, then $\frac{1}{n}
 - Long run variance:
 $$
 \begin{align*}
-\frac{1}{\sqrt{n}} \var\left( \sum_{i=1}^n x_i\right) = &  \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \\
+\frac{1}{n} \var\left( \sum_{i=1}^n x_i\right) = &  \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \\
 \to & \gamma_0 + 2 \sum_{k=1}^\infty \gamma_k \equiv \mathcal{J} = \text{long-run variance}
 \end{align*}
 $$
@@ -514,14 +515,14 @@ $$
 
 ## Time Dependence - OLS
 
-- If LLN applies $X'X$ and CLT to $X \epsilon$, then
+- If LLN applies to $X'X$ and CLT to $X \epsilon$, then
 $$
 \sqrt{n} (\hat{\beta} - \beta) \indist N(0, M^{-1} \mathcal{J} M^{-1})
 $$
-with $M = \plim \frac{1}{n} X'X$ and $\mathcal{J} = \var(X_i \epsilon_i) + 2\sum_{k=1}^\infty \cov(X_i \epsilon_i, X_{i+k} \epsilon_{i+k})$
+with $M = \plim \frac{1}{n} X'X$ and $\mathcal{J} = \sum_{k=-\infty}^\infty \cov(X_i \epsilon_i, X_{i+k} \epsilon_{i+k})$
 - Consistently estimate $\mathcal{J}$ by (@newey1987)
 $$
-\hat{\mathcal{J}} = \sum_{-S_n}^{S_n}k_n(j) \underbrace{\hat{\gamma}_j}_{=\frac{1}{n} \sum_{i=1}^{n-j} (X_i \hat{\epsilon}_i) (X_{i+j} \hat{\epsilon}_{i+j})'}
+\hat{\mathcal{J}} = \sum_{j=-S_n}^{S_n}k_n(j) \underbrace{\hat{\gamma}_j}_{=\frac{1}{n} \sum_{i=1}^{n-j} (X_i \hat{\epsilon}_i) (X_{i+j} \hat{\epsilon}_{i+j})'}
 $$
 with $k_n(j) \to 1$, and $S_n \to \infty$ and $S_n^3/n \to 0$
 
@@ -561,13 +562,13 @@ $$
 - Under $H_0$, $\lambda = 0$, so form test statistic based on $\hat{\lambda} \approx 0$
 - From FOC:
 $$
-R'\hat{\lambda} = X'(y - X'\hat{\beta}_R)/\hat{\sigma}^2_R = X'\hat{\epsilon}_r/\hat{\sigma}^2_R
+R'\hat{\lambda} = X'(y - X\hat{\beta}_R)/\hat{\sigma}^2_R = X'\hat{\epsilon}_R/\hat{\sigma}^2_R
 $$
 - To find distribution, note that
 $$
 \begin{pmatrix}
 \hat{\beta}_R \\
-\hat{\lambda}/2
+\hat{\lambda}
 \end{pmatrix} =
 \begin{pmatrix}
 X'X/\sigma^2 & R' \\
@@ -587,7 +588,7 @@ $$
 $$
 and
 $$
-\hat{\beta}_R = \hat{\beta} - (X'X)^{-1}(R (X'X)^{-1} R)^{-1} (R \hat{\beta} - r)
+\hat{\beta}_R = \hat{\beta} - (X'X)^{-1}R'(R (X'X)^{-1} R')^{-1} (R \hat{\beta} - r)
 $$
 
 ## Lagrange Multiplier
@@ -617,7 +618,7 @@ $$
 & - 2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] = \\
 = & -n\log \hat{\sigma}^2 + n \log\hat{\sigma}_R^2 \\
 = & -n\log\left(\frac{1}{n} \norm{y-X\hat{\beta}}^2\right) + n \log \left(\frac{1}{n}\norm{y - X \hat{\beta}_R}^2 \right) \\
-= & n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta}) X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\
+= & n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta})' X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\
 = & n \log (1 + W/n) \indist \chi^2_{rank(R)} (\text{with homoskedasticity})
 \end{align*}
 $$

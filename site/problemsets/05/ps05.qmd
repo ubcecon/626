@@ -1,7 +1,7 @@
 ---
 title: "ECON 626: Problem Set 5"
 #author: "Paul Schrimpf"
-date: 2025-11-04
+date: 2026-11-10
 bibliography: ../../626.bib
 ---
 
@@ -15,14 +15,14 @@ $$
 $$
 
 
+<!-- # Problem 1 -->
+
+<!-- Suppose $X_n = O_p(a_n)$ and $Y_n - c = O_p(a_n)$ for $c \neq 0$ -->
+<!-- and $a_n \to 0$. Show that $\frac{X_n}{Y_n} = O_p(a_n)$. -->
+
+<!-- *Hint: $\frac{X_n}{Y_n} = \frac{X_n}{c} + \frac{X_n}{Y_n} (c - Y_n) \frac{1}{c}$, use Lemma 3.3 and Exericse 3.1 from @song2021.* -->
+
 # Problem 1
-
-Suppose $X_n = O_p(a_n)$ and $Y_n - c = O_p(a_n)$ for $c \neq 0$
-and $a_n \to 0$. Show that $\frac{X_n}{Y_n} = O_p(a_n)$.
-
-*Hint: $\frac{X_n}{Y_n} = \frac{X_n}{c} + \frac{X_n}{Y_n} (c - Y_n) \frac{1}{c}$, use Lemma 3.3 and Exericse 3.1 from @song2021.*
-
-# Problem 2
 
 Suppose that each individual person $i$ has potential outcomes $Y_i(1)$ and $Y_i(0)$ depending on the treated state or the untreated state. The average treatment effect is defined to be
 $$
@@ -68,7 +68,7 @@ is a consistent estimator for $\tau$.
 
 <!-- 4.  -->
 
-# Problem 3
+# Problem 2
 
 Consider the simple regression model
 $$

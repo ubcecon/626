@@ -6,15 +6,15 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.19">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.11.9">
 
   <meta name="author" content="Paul Schrimpf">
-  <meta name="dcterms.date" content="2024-10-21">
+  <meta name="dcterms.date" content="2026-11-04">
   <title>ECON 626 – Asymptotic Theory of Least Squares</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
@@ -121,7 +121,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-84b150702567ae7e15cad124fb9039e2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-cc8b919cb54a81e0e7637d206f4c56fe.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -234,7 +234,7 @@ Paul Schrimpf
 </div>
 </div>
 
-  <p class="date">2024-10-21</p>
+  <p class="date">2026-11-04</p>
 </section>
 <section id="reading" class="slide level2">
 <h2>Reading</h2>
@@ -295,8 +295,8 @@ Paul Schrimpf
 <ul>
 <li>For both <span class="math inline">\(Z_i = X_i'\)</span> and <span class="math inline">\(Z_i = \epsilon_i\)</span>,
 <ul>
-<li><span class="math inline">\(\Er\left[\left((X_i Z_i) - \Er[X_i Z_i'] \right) \left((X_j
-  Z_j) - \Er[X_j Z_j]\right)' 1\{\right] = 0\)</span> for <span class="math inline">\(i \neq j\)</span> and</li>
+<li><span class="math inline">\(\Er\left[\left((X_i Z_i) - \Er[X_i Z_i] \right) \left((X_j
+  Z_j) - \Er[X_j Z_j]\right)' \right] = 0\)</span> for <span class="math inline">\(i \neq j\)</span> and</li>
 <li><span class="math inline">\(\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i Z_i - \Er[X_i Z_i]) (X_i Z_i - \Er[X_i Z_i])'] \to 0\)</span></li>
 </ul></li>
 <li><span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span> for all <span class="math inline">\(i\)</span></li>
@@ -336,7 +336,7 @@ Paul Schrimpf
 <li class="fragment">Using Lindeberg’s CLT and non-iid WLLN:
 <ul>
 <li class="fragment"><span class="math inline">\((X_i, \epsilon_i) \perp (X_j, \epsilon_j)\)</span> if <span class="math inline">\(i \neq j\)</span>, and</li>
-<li class="fragment"><span class="math inline">\(\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i X_i' - \Er[X_i X_i']) (X_i X_i' - \Er[X_i X_i])'] \to 0\)</span>, and</li>
+<li class="fragment"><span class="math inline">\(\frac{1}{n} \max_{1  \leq i \leq n} \Er[ (X_i X_i' - \Er[X_i X_i']) (X_i X_i' - \Er[X_i X_i'])'] \to 0\)</span>, and</li>
 <li class="fragment"><span class="math inline">\(\frac{1}{n} \sum_{i=1}^n \Er[X_i \epsilon_i^2 X_i'] = \Omega_n\)</span> is non singular, and <span class="math inline">\(\Omega_n \to \Omega\)</span>, and</li>
 <li class="fragment"><span class="math inline">\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \Er\left[ c'( X_i
 \epsilon_i^2 X_i') c 1\{ | c'( X_i \epsilon_i)| &gt; \delta
@@ -357,7 +357,7 @@ Paul Schrimpf
 </div>
 <div class="callout-content">
 <p>If <span class="math inline">\(\hat{\Sigma} \inprob \Sigma\)</span>, <span class="math inline">\(\Sigma\)</span> is nonsingular, and <span class="math inline">\(\sqrt{n}(\hat{\beta} - \beta) \indist N(0, \Sigma)\)</span>, then <span class="math display">\[
-\sqrt{n}(\hat{\beta} - \beta)\hat{\Sigma}^{-1/2} \indist N(0, I)
+\hat{\Sigma}^{-1/2}\sqrt{n}(\hat{\beta} - \beta) \indist N(0, I)
 \]</span></p>
 </div>
 </div>
@@ -392,7 +392,7 @@ Paul Schrimpf
 <ul>
 <li><p>With homoskedasticity, <span class="math inline">\(\Sigma = \Er[X_i X_i']^{-1} \sigma^2\)</span></p></li>
 <li><p>With heteroskedasticity, <span class="math inline">\(\Sigma = \Er[X_i X_i']^{-1} \var(X_i \epsilon_i) \Er[X_i X_i']^{-1}\)</span> and can be (with appropriate assumptions) consistently estimated by <span class="math display">\[
-\hat{\Sigma}^{robust} = (\frac{1}{n} X ' X)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \epsilon_i^2 \right) (\frac{1}{n} X'X)^{-1}
+\hat{\Sigma}^{robust} = (\frac{1}{n} X ' X)^{-1} \left(\frac{1}{n} \sum_{i=1}^n X_i X_i' \hat{\epsilon}_i^2 \right) (\frac{1}{n} X'X)^{-1}
 \]</span></p></li>
 <li><p>Even with homoskedasticity, there is little downside to using <span class="math inline">\(\hat{\Sigma}^{robust}\)</span>, so always used in practice</p></li>
 </ul>
@@ -570,9 +570,9 @@ Paul Schrimpf
 <h2>Dependence</h2>
 <ul>
 <li><span class="math inline">\(\sqrt{n} (\hat{\beta} - \beta) \indist N(0, \Er[X_iX_i']^{-1} V
-\Er[X_i X_i']^{-1})\)</span> if <span class="math inline">\(\frac{1}{n} X'X \inprob \Er[X_iX_i']\)</span> and <span class="math inline">\(\frac{1}{n} X'\epsilon \indist N(0,V)\)</span></li>
-<li>Generally, <span class="math inline">\(V = \lim_{n \to \infty} \var\left( \frac{1}{n} X'\epsilon \right)\)</span> <span class="math display">\[
-\var\left( \frac{1}{n} X'\epsilon \right) = \frac{1}{n^2} \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j)
+\Er[X_i X_i']^{-1})\)</span> if <span class="math inline">\(\frac{1}{n} X'X \inprob \Er[X_iX_i']\)</span> and <span class="math inline">\(\frac{1}{\sqrt{n}} X'\epsilon \indist N(0,V)\)</span></li>
+<li>Generally, <span class="math inline">\(V = \lim_{n \to \infty} \var\left( \frac{1}{\sqrt{n}} X'\epsilon \right)\)</span> <span class="math display">\[
+\var\left( \frac{1}{\sqrt{n}} X'\epsilon \right) = \frac{1}{n} \sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j)
 \]</span></li>
 <li><span class="math inline">\(n(n-1)/2\)</span> different <span class="math inline">\(\cov(X_i \epsilon_i, X_j \epsilon_j)\)</span>, so need some restriction</li>
 </ul>
@@ -586,8 +586,8 @@ g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span><
 </ul>
 <p><span class="math display">\[
 \begin{aligned}
-\sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j) = &amp; \sum_{h=1}^G \sum_{i \in g_h} \sum_{j \in g_h} \cov(X_i \epsilon_i, X_j, \epsilon_j) \\
-= &amp; \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right]
+\sum_{i=1}^n \sum_{j=1}^n \cov(X_i \epsilon_i, X_j \epsilon_j) = &amp; \sum_{h=1}^G \sum_{i \in g_h} \sum_{j \in g_h} \cov(X_i \epsilon_i, X_j \epsilon_j) \\
+= &amp; \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)\left(\sum_{i \in g_h} X_i \epsilon_i \right)' \right]
 \end{aligned}
 \]</span></p>
 </section>
@@ -597,14 +597,14 @@ g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span><
 <li>Strengthening some assumptions to apply Lindeberg’s CLT to <span class="math inline">\(\left(\sum_{i \in g_h} X_i \epsilon_i \right)\)</span> we get</li>
 </ul>
 <p><span class="math display">\[
-\frac{1}{\sqrt{G}} \left(\sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \right) \left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)^{-1/2} \indist N(0, I)
+\left( \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)\left(\sum_{i \in g_h} X_i \epsilon_i \right)' \right] \right)^{-1/2} \frac{1}{\sqrt{G}} \sum_{h = 1}^G \left(\sum_{i \in g_h} X_i \epsilon_i \right) \indist N(0, I)
 \]</span></p>
 <ul>
 <li>Thus,</li>
 </ul>
 <p><span class="math display">\[
-\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, \Er[X_i X_i']^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)^2 \right] \right)  \Er[X_i X_i']^{-1} \right)
-\]</span></p>
+\sqrt{G} (\hat{\beta} - \beta) \indist N\left(0, C^{-1} \left(\lim_{G \to \infty} \frac{1}{G} \sum_{h=1}^G \Er\left[\left(\sum_{i \in g_h} X_i \epsilon_i \right)\left(\sum_{i \in g_h} X_i \epsilon_i \right)' \right] \right)  C^{-1} \right)
+\]</span> where <span class="math inline">\(C = \plim_{G \to \infty} \frac{1}{G} X'X\)</span></p>
 </section>
 <section id="clustering" class="slide level2">
 <h2>Clustering</h2>
@@ -742,7 +742,7 @@ g(j)\)</span>, and <span class="math inline">\(\Er[X_i \epsilon_i] = 0\)</span><
 <ul>
 <li>Long run variance: <span class="math display">\[
 \begin{align*}
-\frac{1}{\sqrt{n}} \var\left( \sum_{i=1}^n x_i\right) = &amp;  \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \\
+\frac{1}{n} \var\left( \sum_{i=1}^n x_i\right) = &amp;  \gamma_0 + 2 \sum_{k=1}^n \gamma_k \left(1 - \frac{k}{n} \right)  \\
 \to &amp; \gamma_0 + 2 \sum_{k=1}^\infty \gamma_k \equiv \mathcal{J} = \text{long-run variance}
 \end{align*}
 \]</span></li>
@@ -781,11 +781,11 @@ h(y_{t+k+s}, ..., y_{t+k+s+l})) = 0\)</span> for all bounded <span class="math i
 <section id="time-dependence---ols" class="slide level2">
 <h2>Time Dependence - OLS</h2>
 <ul>
-<li>If LLN applies <span class="math inline">\(X'X\)</span> and CLT to <span class="math inline">\(X \epsilon\)</span>, then <span class="math display">\[
+<li>If LLN applies to <span class="math inline">\(X'X\)</span> and CLT to <span class="math inline">\(X \epsilon\)</span>, then <span class="math display">\[
 \sqrt{n} (\hat{\beta} - \beta) \indist N(0, M^{-1} \mathcal{J} M^{-1})
-\]</span> with <span class="math inline">\(M = \plim \frac{1}{n} X'X\)</span> and <span class="math inline">\(\mathcal{J} = \var(X_i \epsilon_i) + 2\sum_{k=1}^\infty \cov(X_i \epsilon_i, X_{i+k} \epsilon_{i+k})\)</span></li>
+\]</span> with <span class="math inline">\(M = \plim \frac{1}{n} X'X\)</span> and <span class="math inline">\(\mathcal{J} = \sum_{k=-\infty}^\infty \cov(X_i \epsilon_i, X_{i+k} \epsilon_{i+k})\)</span></li>
 <li>Consistently estimate <span class="math inline">\(\mathcal{J}\)</span> by (<span class="citation" data-cites="newey1987">Newey and West (<a href="#/references" role="doc-biblioref" onclick="">1987</a>)</span>) <span class="math display">\[
-\hat{\mathcal{J}} = \sum_{-S_n}^{S_n}k_n(j) \underbrace{\hat{\gamma}_j}_{=\frac{1}{n} \sum_{i=1}^{n-j} (X_i \hat{\epsilon}_i) (X_{i+j} \hat{\epsilon}_{i+j})'}
+\hat{\mathcal{J}} = \sum_{j=-S_n}^{S_n}k_n(j) \underbrace{\hat{\gamma}_j}_{=\frac{1}{n} \sum_{i=1}^{n-j} (X_i \hat{\epsilon}_i) (X_{i+j} \hat{\epsilon}_{i+j})'}
 \]</span> with <span class="math inline">\(k_n(j) \to 1\)</span>, and <span class="math inline">\(S_n \to \infty\)</span> and <span class="math inline">\(S_n^3/n \to 0\)</span></li>
 </ul>
 </section></section>
@@ -826,12 +826,12 @@ R\hat{\beta}_R - r &amp; = 0
 <ul>
 <li>Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\lambda = 0\)</span>, so form test statistic based on <span class="math inline">\(\hat{\lambda} \approx 0\)</span></li>
 <li>From FOC: <span class="math display">\[
-R'\hat{\lambda} = X'(y - X'\hat{\beta}_R)/\hat{\sigma}^2_R = X'\hat{\epsilon}_r/\hat{\sigma}^2_R
+R'\hat{\lambda} = X'(y - X\hat{\beta}_R)/\hat{\sigma}^2_R = X'\hat{\epsilon}_R/\hat{\sigma}^2_R
 \]</span></li>
 <li>To find distribution, note that <span class="math display">\[
 \begin{pmatrix}
 \hat{\beta}_R \\
-\hat{\lambda}/2
+\hat{\lambda}
 \end{pmatrix} =
 \begin{pmatrix}
 X'X/\sigma^2 &amp; R' \\
@@ -850,7 +850,7 @@ X'y/\sigma^2 \\
 <li>so (using partitioned inverse), <span class="math display">\[
 \hat{\lambda} = (R\hat{\sigma}_R^2 (X'X)^{-1} R')^{-1} (R \hat{\beta} - r)
 \]</span> and <span class="math display">\[
-\hat{\beta}_R = \hat{\beta} - (X'X)^{-1}(R (X'X)^{-1} R)^{-1} (R \hat{\beta} - r)
+\hat{\beta}_R = \hat{\beta} - (X'X)^{-1}R'(R (X'X)^{-1} R')^{-1} (R \hat{\beta} - r)
 \]</span></li>
 </ul>
 </section>
@@ -878,7 +878,7 @@ LM = \hat{\lambda}'R \hat{\sigma}^2_R (X'X)^{-1} R' \hat{\lambda} \indist \chi^2
 &amp; - 2\max_{b,\sigma: Rb = r} \left[-\frac{n}{2} \log \sigma^2 + \sum_{i=1}^n \frac{-1}{2\sigma^2} (y_i - X_i b)^2 \right] = \\
 = &amp; -n\log \hat{\sigma}^2 + n \log\hat{\sigma}_R^2 \\
 = &amp; -n\log\left(\frac{1}{n} \norm{y-X\hat{\beta}}^2\right) + n \log \left(\frac{1}{n}\norm{y - X \hat{\beta}_R}^2 \right) \\
-= &amp; n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta}) X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\
+= &amp; n \log \left(\frac{\frac{1}{n}\norm{y-X\hat{\beta}}^2 + \frac{1}{n}(\hat{\beta}_R-\hat{\beta})' X'X (\hat{\beta}_R-\hat{\beta})}{\frac{1}{n}\norm{y-X\hat{\beta}}^2}\right) \\
 = &amp; n \log (1 + W/n) \indist \chi^2_{rank(R)} (\text{with homoskedasticity})
 \end{align*}
 \]</span></li>
@@ -939,7 +939,7 @@ Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"\u003ci class=\"fas fa-gear\">\u003c/i>","content":"\u003cul class=\"slide-menu-items\">\n\u003cli class=\"slide-tool-item active\" data-item=\"0\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\">\u003ckbd>f\u003c/kbd> Fullscreen\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"1\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\">\u003ckbd>s\u003c/kbd> Speaker View\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"2\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\">\u003ckbd>o\u003c/kbd> Slide Overview\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"3\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\">\u003ckbd>e\u003c/kbd> PDF Export Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"4\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\">\u003ckbd>r\u003c/kbd> Scroll View Mode\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"5\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\">\u003ckbd>b\u003c/kbd> Toggle Chalkboard\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"6\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\">\u003ckbd>c\u003c/kbd> Toggle Notes Canvas\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"7\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\">\u003ckbd>d\u003c/kbd> Download Drawings\u003c/a>\u003c/li>\n\u003cli class=\"slide-tool-item\" data-item=\"8\">\u003ca href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\">\u003ckbd>?\u003c/kbd> Keyboard Help\u003c/a>\u003c/li>\n\u003c/ul>"}],"openButton":true,"openButtonLabel":"Slide menu"},
 'chalkboard': {"buttons":true,"theme":"whiteboard","boardmarkerWidth":2,"chalkWidth":2,"chalkEffect":0},
 'smaller': true,
  
@@ -1200,7 +1200,8 @@ Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
           // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          window.quartoDecorateExternalLinks = function (root) {
+         var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
           for (var i=0; i<links.length; i++) {
             const link = links[i];
             if (!isInternal(link.href)) {
@@ -1209,8 +1210,69 @@ Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
               if (link.dataset.originalHref !== undefined) {
                 link.href = link.dataset.originalHref;
               }
+              if (!link.classList.contains('no-external-icon')) {
+              }
             }
           }
+          };
+          window.quartoDecorateExternalLinks(window.document);
+        // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+        // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+        const hideOnEscAndFocusOut = {
+          name: 'hideOnEscAndFocusOut',
+          defaultValue: true,
+          fn(instance) {
+            const dismiss = () => {
+              // A show scheduled by the trigger delay would otherwise reopen it
+              instance.clearDelayTimeouts();
+              instance.hide();
+            };
+            const onKeyDown = (event) => {
+              if (event.key !== 'Escape') {
+                return;
+              }
+              // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+              // except an open reveal.js slide menu, which Esc should close too.
+              // The menu handles keys only when its keyboard option is on.
+              const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+                window.Reveal.getConfig().menu?.keyboard !== false;
+              if (!menuHandlesEsc) {
+                event.stopPropagation();
+              }
+              if (instance.popper.contains(window.document.activeElement)) {
+                // Disabled while refocusing so the focus trigger does not reopen it
+                instance.disable();
+                instance.reference.focus();
+                instance.enable();
+              }
+              dismiss();
+            };
+            const onFocusOut = (event) => {
+              const target = event.relatedTarget;
+              if (target && !instance.reference.contains(target) &&
+                  !instance.popper.contains(target)) {
+                dismiss();
+              }
+            };
+            // On the trigger too: a click trigger (code-annotations: select) has no
+            // blur handling. Attached for the instance's lifetime so leaving the
+            // trigger also cancels a show still pending on the trigger delay.
+            instance.reference.addEventListener('focusout', onFocusOut);
+            return {
+              onShow() {
+                window.document.addEventListener('keydown', onKeyDown, true);
+                instance.popper.addEventListener('focusout', onFocusOut);
+              },
+              onHide() {
+                window.document.removeEventListener('keydown', onKeyDown, true);
+                instance.popper.removeEventListener('focusout', onFocusOut);
+              },
+              onDestroy() {
+                instance.reference.removeEventListener('focusout', onFocusOut);
+              },
+            };
+          },
+        };
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
           const config = {
             allowHTML: true,
@@ -1224,6 +1286,7 @@ Song, Kyunchul. 2021. <em>Introduction to Econometrics</em>.
             interactiveBorder: 10,
             theme: 'light-border',
             placement: 'bottom-start',
+            plugins: [hideOnEscAndFocusOut],
           };
           if (contentFn) {
             config.content = contentFn;

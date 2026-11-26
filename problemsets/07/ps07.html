@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-11-25">
+<meta name="dcterms.date" content="2026-12-03">
 
 <title>ECON 626: Problem Set 7 – ECON 626</title>
 <style>
@@ -58,14 +58,15 @@ div.csl-indent {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-205c157cc1ad17ef6203a2440e42a020.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-61358d1eb81277b502a8dce54f6dfdcc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,19 +128,18 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ECON 626</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -164,6 +164,7 @@ window.Quarto = {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -172,30 +173,35 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> </a></li>
-  <li><a href="#series-regression-with-endogeneity" id="toc-series-regression-with-endogeneity" class="nav-link" data-scroll-target="#series-regression-with-endogeneity"><span class="header-section-number">2</span> Series Regression with Endogeneity</a>
+  <li><a href="#series-regression-with-endogeneity" id="toc-series-regression-with-endogeneity" class="nav-link active" data-scroll-target="#series-regression-with-endogeneity"><span class="header-section-number">1</span> Series Regression with Endogeneity</a>
   <ul class="collapse">
-  <li><a href="#instrument" id="toc-instrument" class="nav-link" data-scroll-target="#instrument"><span class="header-section-number">2.1</span> Instrument</a></li>
-  <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency"><span class="header-section-number">2.2</span> Consistency</a></li>
-  <li><a href="#asymptotic-distribution" id="toc-asymptotic-distribution" class="nav-link" data-scroll-target="#asymptotic-distribution"><span class="header-section-number">2.3</span> Asymptotic Distribution</a></li>
+  <li><a href="#sec-series-instrument" id="toc-sec-series-instrument" class="nav-link" data-scroll-target="#sec-series-instrument"><span class="header-section-number">1.1</span> Instrument</a></li>
+  <li><a href="#sec-series-consistency" id="toc-sec-series-consistency" class="nav-link" data-scroll-target="#sec-series-consistency"><span class="header-section-number">1.2</span> Consistency</a></li>
+  <li><a href="#sec-series-asymptotic" id="toc-sec-series-asymptotic" class="nav-link" data-scroll-target="#sec-series-asymptotic"><span class="header-section-number">1.3</span> Asymptotic Distribution</a></li>
   </ul></li>
-  <li><a href="#informal-contracting-in-coffee-production" id="toc-informal-contracting-in-coffee-production" class="nav-link" data-scroll-target="#informal-contracting-in-coffee-production"><span class="header-section-number">3</span> Informal Contracting in Coffee Production</a>
+  <li><a href="#informal-contracting-in-coffee-production" id="toc-informal-contracting-in-coffee-production" class="nav-link" data-scroll-target="#informal-contracting-in-coffee-production"><span class="header-section-number">2</span> Informal Contracting in Coffee Production</a>
   <ul class="collapse">
-  <li><a href="#ols" id="toc-ols" class="nav-link" data-scroll-target="#ols"><span class="header-section-number">3.1</span> OLS</a></li>
-  <li><a href="#instrument-1" id="toc-instrument-1" class="nav-link" data-scroll-target="#instrument-1"><span class="header-section-number">3.2</span> Instrument</a></li>
-  <li><a href="#dependence" id="toc-dependence" class="nav-link" data-scroll-target="#dependence"><span class="header-section-number">3.3</span> Dependence</a></li>
-  <li><a href="#more-outcomes" id="toc-more-outcomes" class="nav-link" data-scroll-target="#more-outcomes"><span class="header-section-number">3.4</span> More Outcomes</a></li>
+  <li><a href="#sec-coffee-ols" id="toc-sec-coffee-ols" class="nav-link" data-scroll-target="#sec-coffee-ols"><span class="header-section-number">2.1</span> OLS</a></li>
+  <li><a href="#sec-coffee-instrument" id="toc-sec-coffee-instrument" class="nav-link" data-scroll-target="#sec-coffee-instrument"><span class="header-section-number">2.2</span> Instrument</a></li>
+  <li><a href="#sec-coffee-dependence" id="toc-sec-coffee-dependence" class="nav-link" data-scroll-target="#sec-coffee-dependence"><span class="header-section-number">2.3</span> Dependence</a></li>
+  <li><a href="#sec-coffee-more-outcomes" id="toc-sec-coffee-more-outcomes" class="nav-link" data-scroll-target="#sec-coffee-more-outcomes"><span class="header-section-number">2.4</span> More Outcomes</a></li>
+  </ul></li>
+  <li><a href="#dynamic-panel-model" id="toc-dynamic-panel-model" class="nav-link" data-scroll-target="#dynamic-panel-model"><span class="header-section-number">3</span> Dynamic Panel Model</a>
+  <ul class="collapse">
+  <li><a href="#sec-panel-first-differences" id="toc-sec-panel-first-differences" class="nav-link" data-scroll-target="#sec-panel-first-differences"><span class="header-section-number">3.1</span> First Differences</a></li>
+  <li><a href="#sec-panel-fixed-effects" id="toc-sec-panel-fixed-effects" class="nav-link" data-scroll-target="#sec-panel-fixed-effects"><span class="header-section-number">3.2</span> Fixed Effects Inconsistent</a></li>
+  <li><a href="#sec-panel-gmm" id="toc-sec-panel-gmm" class="nav-link" data-scroll-target="#sec-panel-gmm"><span class="header-section-number">3.3</span> GMM</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -210,7 +216,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 25, 2025</p>
+      <p class="date">December 3, 2026</p>
     </div>
   </div>
   
@@ -235,54 +241,85 @@ window.Quarto = {
 \def\indist{\,{\buildrel d \over \rightarrow}\,}
 \DeclareMathOperator*{\plim}{plim}
 \]</span></p>
-<section id="section" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> </h1>
-<p>Consider the following linear regression model such that <span class="math display">\[
-Y_i = β_0 + X_i β_1 + u_i ,
-\]</span> where <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span> are observed random variables. Let us assume that <span class="math inline">\(\Er [u_i ] = 0\)</span> but <span class="math inline">\(\cov(X_i , u_i ) \neq 0\)</span>. Suppose that there exists a variable <span class="math inline">\(Z_i\)</span> such that <span class="math inline">\(\cov(X_i , Z_i ) &gt; 0\)</span> and <span class="math inline">\(\cov(Z_i , u_i ) &gt; 0\)</span>.</p>
-<p>Find the asymptotic bias of the 2SLS estimator of <span class="math inline">\(\hat{\beta}_1\)</span>. (Recall that the asymptotic bias of an estimator is its probability limit minus the true parameter.) Can you determine unambiguously whether the 2SLS estimator tends to underestimate or overestimate the parameter <span class="math inline">\(β_1\)</span> ? If so, give explanations how.</p>
-</section>
-<section id="series-regression-with-endogeneity" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Series Regression with Endogeneity</h1>
+<section id="series-regression-with-endogeneity" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Series Regression with Endogeneity</h1>
 <p>Suppose <span class="math display">\[
 y_i = \beta_0 + \beta_1 \cos(x_i) + \beta_2 \cos(2 x_i) + \cdots + \beta_k \cos(k x_i) + u_i
 \]</span> where <span class="math inline">\(x_i \in \R\)</span></p>
-<section id="instrument" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="instrument"><span class="header-section-number">2.1</span> Instrument</h2>
-<p>You suspect <span class="math inline">\(x_i\)</span> is related to <span class="math inline">\(u_i\)</span>, but you have another variable, <span class="math inline">\(z_i \in \R\)</span>, such that <span class="math inline">\(\Er[u_i | z_i] = 0\)</span>. Use this assumption to construct an estimator for <span class="math inline">\(\beta = (\beta_0, \cdots, \beta_k)'\)</span>.</p>
+<section id="sec-series-instrument" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-series-instrument"><span class="header-section-number">1.1</span> Instrument</h2>
+<p>You suspect <span class="math inline">\(x_i\)</span> is related to <span class="math inline">\(u_i\)</span>, but you have another variable, <span class="math inline">\(z_i \in \R\)</span>, such that <span class="math inline">\(\Er[u_i | z_i] = 0\)</span>. Let <span class="math inline">\(h(z_i) = (h_0(z_i),\ldots,h_k(z_i))'\)</span> be a vector of functions of <span class="math inline">\(z_i\)</span>. Use moment conditions of the form <span class="math inline">\(\Er[h(z_i) u_i]=0\)</span> to construct an estimator for <span class="math inline">\(\beta = (\beta_0, \ldots, \beta_k)'\)</span>. State a relevance or rank condition needed for identification.</p>
 </section>
-<section id="consistency" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="consistency"><span class="header-section-number">2.2</span> Consistency</h2>
-<p>Show that your estimator from part a is consistent. State any additional assumptions needed.</p>
+<section id="sec-series-consistency" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-series-consistency"><span class="header-section-number">1.2</span> Consistency</h2>
+<p>Show that the estimator from <a href="#sec-series-instrument" class="quarto-xref">Section&nbsp;1.1</a> is consistent. State any additional assumptions needed.</p>
 </section>
-<section id="asymptotic-distribution" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="asymptotic-distribution"><span class="header-section-number">2.3</span> Asymptotic Distribution</h2>
-<p>Find the asymptotic distribution of your estimator from part a. State any additional assumptions needed.</p>
+<section id="sec-series-asymptotic" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-series-asymptotic"><span class="header-section-number">1.3</span> Asymptotic Distribution</h2>
+<p>Find the asymptotic distribution of the estimator from <a href="#sec-series-instrument" class="quarto-xref">Section&nbsp;1.1</a>. State any additional assumptions needed.</p>
 </section>
 </section>
-<section id="informal-contracting-in-coffee-production" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Informal Contracting in Coffee Production</h1>
+<section id="informal-contracting-in-coffee-production" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Informal Contracting in Coffee Production</h1>
 <p>In “Competition and Relational Contracts in the Rwanda Coffee Chain,” <span class="citation" data-cites="macchiavello2020">Macchiavello and Morjaria (<a href="#ref-macchiavello2020" role="doc-biblioref">2020</a>)</span> examine how more competition can lead to worse outcomes in an environment without formal contracts. The authors create an index of “relational contracting” between farmers and mills. Relational contracting consists of loans, delayed payments, and so on that are sustained by repeated interaction instead of any formal contract enforcement. The authors then want to estimate how competition (the number of mills) affects relational contracting.</p>
-<section id="ols" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="ols"><span class="header-section-number">3.1</span> OLS</h2>
+<section id="sec-coffee-ols" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-coffee-ols"><span class="header-section-number">2.1</span> OLS</h2>
 <p>The authors estimate <span class="math display">\[
 RC_m = \alpha + \beta C_m + \eta X_m + \gamma Z_m + \epsilon_m
-\]</span> where <span class="math inline">\(RC_m\)</span> is a relational contracting index for mill <span class="math inline">\(m\)</span>, <span class="math inline">\(C_m\)</span> is the number of competing mills within 10km of mill <span class="math inline">\(m\)</span>, <span class="math inline">\(X_m\)</span> are mill characteristics, and <span class="math inline">\(Z_m\)</span> are geographic characteristics of the land around the mill.</p>
-<p>Give one reason why <span class="math inline">\(\Er[C_m \epsilon_m]\)</span> might not be zero, speculate on the sign of <span class="math inline">\(\Er[C_m \epsilon_m]\)</span>, and say whether whether you expect <span class="math inline">\(\hat{\beta}^{OLS}\)</span> to be greater or less than <span class="math inline">\(\beta\)</span>.</p>
+\]</span> where <span class="math inline">\(RC_m\)</span> is a relational contracting index for mill <span class="math inline">\(m\)</span>, <span class="math inline">\(C_m\)</span> is the number of competing mills within 10 km of mill <span class="math inline">\(m\)</span>, <span class="math inline">\(X_m\)</span> are mill characteristics, and <span class="math inline">\(Z_m\)</span> are geographic characteristics of the land around the mill.</p>
+<p>Give one reason why <span class="math inline">\(\Er[C_m \epsilon_m]\)</span> might not be zero, speculate on the sign of <span class="math inline">\(\Er[C_m \epsilon_m]\)</span>, and say whether you expect <span class="math inline">\(\hat{\beta}^{OLS}\)</span> to be greater or less than <span class="math inline">\(\beta\)</span>.</p>
+<div id="fig-coffee-table-ii" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coffee-table-ii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="mm-tabII.png" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coffee-table-ii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Table II: First-stage and IV estimates.
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="instrument-1" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="instrument-1"><span class="header-section-number">3.2</span> Instrument</h2>
-<p>As an instrument for <span class="math inline">\(C_m\)</span>, the authors use the predicted number of mills 5-10km away from an engineering model of coffee production. It predicts mill locations based on geography and local climate. Column (2) of Table II shows estimates of the first stage regression of <span class="math inline">\(C_m\)</span> on this instrument. What assumption can we check by looking at this regression? Are you confident that this assumption is met? If not, what should be done about it? <em>Hint:<span class="math inline">\(F=t^2 \approx \left(\frac{1.6}{0.4}\right)^2 \approx 16\)</span>.</em></p>
+<section id="sec-coffee-instrument" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-coffee-instrument"><span class="header-section-number">2.2</span> Instrument</h2>
+<p>As an instrument for <span class="math inline">\(C_m\)</span>, the authors use the predicted number of mills 5–10 km away from an engineering model of coffee production. It predicts mill locations based on geography and local climate. Column (2) of <a href="#fig-coffee-table-ii" class="quarto-xref">Figure&nbsp;1</a> shows estimates of the first stage regression of <span class="math inline">\(C_m\)</span> on this instrument. Which instrument assumption can we check by looking at this regression? Are you confident that this assumption is met? If not, what should be done about it? Can this first-stage regression check the instrument’s exclusion restriction? <em>Hint: <span class="math inline">\(F=t^2 \approx \left(\frac{1.6}{0.4}\right)^2 \approx 16\)</span>.</em></p>
 </section>
-<section id="dependence" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="dependence"><span class="header-section-number">3.3</span> Dependence</h2>
-<p>The sample consists of mills in Rwanda, some of which might be near one another. Briefly, how does this affect the consistency and asymptotic distribution of the estimates of <span class="math inline">\(\beta\)</span> in Table II? What in the table, if anything, needs to be calculated differently than if observations were independent?</p>
+<section id="sec-coffee-dependence" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-coffee-dependence"><span class="header-section-number">2.3</span> Dependence</h2>
+<p>The sample consists of mills in Rwanda, some of which might be near one another. Briefly, how does this affect the consistency and asymptotic distribution of the estimates of <span class="math inline">\(\beta\)</span> in <a href="#fig-coffee-table-ii" class="quarto-xref">Figure&nbsp;1</a>? If the observations exhibit spatial dependence, what in the table, if anything, needs to be calculated differently than if observations were independent? Explain how a spatially robust standard-error calculation would depend on an assumption about the geographic range of dependence.</p>
+<div id="fig-coffee-table-iii" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coffee-table-iii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="mm-tabIII.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coffee-table-iii-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Table III: IV estimates for components of relational contracting.
+</figcaption>
+</figure>
+</div>
 </section>
-<section id="more-outcomes" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="more-outcomes"><span class="header-section-number">3.4</span> More Outcomes</h2>
-<p>Table 3 shows estimates of the same model as table 2, except instead of the relational contracting index as the outcome, the outcome is one of the components of the index. Different columns show different components. As shown, the coefficients are all negative and most are statistically significant. Should this make us less concerned about the potential weak instrument problem? Why or why not? <em>Hint: these regressions all have the same first stage. A really good answer to this question would be fairly precise and perhaps derive the joint distribution of these estimates under weak instrument asymptotitcs.</em></p>
-<p><img src="mm-tabII.png" class="img-fluid" style="width:90.0%"></p>
-<p><img src="mm-tabIII.png" class="img-fluid"></p>
+<section id="sec-coffee-more-outcomes" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-coffee-more-outcomes"><span class="header-section-number">2.4</span> More Outcomes</h2>
+<p><a href="#fig-coffee-table-iii" class="quarto-xref">Figure&nbsp;2</a> shows estimates of the same model as <a href="#fig-coffee-table-ii" class="quarto-xref">Figure&nbsp;1</a>, except that, instead of the relational contracting index, the outcome is one of the components of the index. Different columns show different components. As shown, the coefficients are all negative and most are statistically significant. Should this make us less concerned about the potential weak-instrument problem? Why or why not? <em>Hint: these regressions all have the same first stage. A really good answer to this question would be fairly precise and perhaps derive the joint distribution of these estimates under weak-instrument asymptotics.</em></p>
+</section>
+</section>
+<section id="dynamic-panel-model" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Dynamic Panel Model</h1>
+<p>Consider the model: <span class="math display">\[
+y_{it} = \rho y_{it-1} + x_{it}'\beta + \alpha_i + u_{it}
+\]</span> for <span class="math inline">\(i=1,\ldots,N\)</span> and <span class="math inline">\(t=1,\ldots,T\)</span>. Assume observations are independent across <span class="math inline">\(i\)</span>, <span class="math inline">\(x\)</span> is strictly exogenous, <span class="math inline">\(\Er[x_{it} u_{is}] = 0 \forall s,t\)</span>, and <span class="math inline">\(y_{it-1}\)</span> is weakly exogenous, <span class="math inline">\(\Er[y_{it-1} u_{it+s}] = 0\)</span> for <span class="math inline">\(s \geq 0\)</span>. Also assume the <span class="math inline">\(u_{it}\)</span> errors are serially uncorrelated.</p>
+<section id="sec-panel-first-differences" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-panel-first-differences"><span class="header-section-number">3.1</span> First Differences</h2>
+<p>Let <span class="math inline">\(\Delta y_{it} = y_{it} - y_{it-1}\)</span>. Take differences of the model to eliminate <span class="math inline">\(\alpha_i\)</span>, leaving <span class="math display">\[
+\Delta y_{it} = \rho \Delta y_{it-1} + \Delta x_{it}'\beta + \Delta u_{it}.
+\]</span> Will OLS on this equation be consistent?</p>
+</section>
+<section id="sec-panel-fixed-effects" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-panel-fixed-effects"><span class="header-section-number">3.2</span> Fixed Effects Inconsistent</h2>
+<p>Show that for <span class="math inline">\(T\)</span> fixed and <span class="math inline">\(N \to \infty\)</span>, the fixed effects estimator, i.e.&nbsp;demeaning <span class="math inline">\(y_{it}\)</span>, <span class="math inline">\(y_{it-1}\)</span>, and <span class="math inline">\(x_{it}\)</span> over the estimation periods and running the resulting regression, is not consistent. Carefully state which observations are used to compute each average. <em>Hint: what is <span class="math inline">\(\Er[\bar{y}_i u_{it}]\)</span>?</em></p>
+</section>
+<section id="sec-panel-gmm" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-panel-gmm"><span class="header-section-number">3.3</span> GMM</h2>
+<p>Assume <span class="math inline">\(T \geq 3\)</span>. Argue that <span class="math inline">\(\Er[\Delta u_{it} y_{it-\ell}]=0\)</span> for <span class="math inline">\(\ell \geq 2\)</span>, and that <span class="math inline">\(\Er[\Delta y_{it-1} y_{it-\ell}] \neq 0\)</span>. Use this fact, along with the assumptions above to derive a GMM estimator for <span class="math inline">\(\rho\)</span> and <span class="math inline">\(\beta\)</span>. State the periods for which each moment condition is available.</p>
 </section>
 </section>
 <section id="references" class="level1 unnumbered">
@@ -375,7 +412,8 @@ Macchiavello, Rocco, and Ameet Morjaria. 2020. <span>“Competition and Relation
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -384,8 +422,69 @@ Macchiavello, Rocco, and Ameet Morjaria. 2020. <span>“Competition and Relation
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -399,6 +498,7 @@ Macchiavello, Rocco, and Ameet Morjaria. 2020. <span>“Competition and Relation
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -561,44 +661,54 @@ Macchiavello, Rocco, and Ameet Morjaria. 2020. <span>“Competition and Relation
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -696,6 +806,9 @@ Macchiavello, Rocco, and Ameet Morjaria. 2020. <span>“Competition and Relation
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

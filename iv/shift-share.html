@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Paul Schrimpf">
+<meta name="dcterms.date" content="2026-11-24">
+
+<title>Shift-Share Instrumental Variables – ECON 626</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-61358d1eb81277b502a8dce54f6dfdcc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ECON 626</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus626.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../problemsets.html"> 
+<span class="menu-text">Assignments and Exams</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reading" id="toc-reading" class="nav-link active" data-scroll-target="#reading">Reading</a></li>
+  <li><a href="#motivation-setup" id="toc-motivation-setup" class="nav-link" data-scroll-target="#motivation-setup">Motivation &amp; Setup</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-shift-share-instrument" id="toc-what-is-a-shift-share-instrument" class="nav-link" data-scroll-target="#what-is-a-shift-share-instrument">What Is a Shift-Share Instrument?</a></li>
+  <li><a href="#empirical-example-1-the-china-shock" id="toc-empirical-example-1-the-china-shock" class="nav-link" data-scroll-target="#empirical-example-1-the-china-shock">Empirical Example 1: The China Shock</a></li>
+  <li><a href="#empirical-example-2-immigration-local-labor-markets" id="toc-empirical-example-2-immigration-local-labor-markets" class="nav-link" data-scroll-target="#empirical-example-2-immigration-local-labor-markets">Empirical Example 2: Immigration &amp; Local Labor Markets</a></li>
+  </ul></li>
+  <li><a href="#identification" id="toc-identification" class="nav-link" data-scroll-target="#identification">Identification</a>
+  <ul class="collapse">
+  <li><a href="#two-paths-to-identification" id="toc-two-paths-to-identification" class="nav-link" data-scroll-target="#two-paths-to-identification">Two Paths to Identification</a></li>
+  <li><a href="#path-1-exogenous-shares-goldsmith2020" id="toc-path-1-exogenous-shares-goldsmith2020" class="nav-link" data-scroll-target="#path-1-exogenous-shares-goldsmith2020">Path 1: Exogenous Shares (<span class="citation" data-cites="goldsmith2020">Goldsmith-Pinkham et al. (2020)</span>)</a></li>
+  <li><a href="#path-2-exogenous-shocks-borusyak2022" id="toc-path-2-exogenous-shocks-borusyak2022" class="nav-link" data-scroll-target="#path-2-exogenous-shocks-borusyak2022">Path 2: Exogenous Shocks (<span class="citation" data-cites="borusyak2022">Borusyak et al. (2022)</span>)</a></li>
+  </ul></li>
+  <li><a href="#pitfalls" id="toc-pitfalls" class="nav-link" data-scroll-target="#pitfalls">Pitfalls</a>
+  <ul class="collapse">
+  <li><a href="#pitfall-1-incomplete-shares" id="toc-pitfall-1-incomplete-shares" class="nav-link" data-scroll-target="#pitfall-1-incomplete-shares">Pitfall 1: Incomplete Shares</a></li>
+  <li><a href="#pitfall-2-non-random-exposure-to-exogenous-shocks" id="toc-pitfall-2-non-random-exposure-to-exogenous-shocks" class="nav-link" data-scroll-target="#pitfall-2-non-random-exposure-to-exogenous-shocks">Pitfall 2: Non-Random Exposure to Exogenous Shocks</a></li>
+  <li><a href="#pitfall-3-inference-cross-regional-correlation" id="toc-pitfall-3-inference-cross-regional-correlation" class="nav-link" data-scroll-target="#pitfall-3-inference-cross-regional-correlation">Pitfall 3: Inference &amp; Cross-Regional Correlation</a></li>
+  <li><a href="#pitfall-4-serial-correlation-dynamic-adjustment" id="toc-pitfall-4-serial-correlation-dynamic-adjustment" class="nav-link" data-scroll-target="#pitfall-4-serial-correlation-dynamic-adjustment">Pitfall 4: Serial Correlation &amp; Dynamic Adjustment</a></li>
+  <li><a href="#pitfall-5-concentration-weak-effective-sample-size" id="toc-pitfall-5-concentration-weak-effective-sample-size" class="nav-link" data-scroll-target="#pitfall-5-concentration-weak-effective-sample-size">Pitfall 5: Concentration &amp; Weak Effective Sample Size</a></li>
+  </ul></li>
+  <li><a href="#recommendations-for-practice" id="toc-recommendations-for-practice" class="nav-link" data-scroll-target="#recommendations-for-practice">Recommendations for Practice</a>
+  <ul class="collapse">
+  <li><a href="#practical-checklist-borusyak2025" id="toc-practical-checklist-borusyak2025" class="nav-link" data-scroll-target="#practical-checklist-borusyak2025">Practical Checklist (<span class="citation" data-cites="borusyak2025">Borusyak et al. (2025)</span>)</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="shift-share.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Shift-Share Instrumental Variables</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Paul Schrimpf </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 24, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="reading" class="level2">
+<h2 class="anchored" data-anchor-id="reading">Reading</h2>
+<ul>
+<li>Overview &amp; practical guide: <strong><span class="citation" data-cites="borusyak2025">Borusyak et al. (<a href="#ref-borusyak2025" role="doc-biblioref">2025</a>)</span></strong></li>
+<li>Methodological foundations:
+<ul>
+<li>Exogenous shares: <span class="citation" data-cites="goldsmith2020">Goldsmith-Pinkham et al. (<a href="#ref-goldsmith2020" role="doc-biblioref">2020</a>)</span></li>
+<li>Exogenous shocks: <span class="citation" data-cites="borusyak2022">Borusyak et al. (<a href="#ref-borusyak2022" role="doc-biblioref">2022</a>)</span>, <span class="citation" data-cites="borusyak2023">Borusyak and Hull (<a href="#ref-borusyak2023" role="doc-biblioref">2023</a>)</span></li>
+<li>Inference: <span class="citation" data-cites="adao2019">Adão et al. (<a href="#ref-adao2019" role="doc-biblioref">2019</a>)</span></li>
+<li>Dynamics &amp; serial correlation: <span class="citation" data-cites="jaeger2018">Jaeger et al. (<a href="#ref-jaeger2018" role="doc-biblioref">2018</a>)</span></li>
+</ul></li>
+<li>Empirical examples: <span class="citation" data-cites="autor2013">Autor et al. (<a href="#ref-autor2013" role="doc-biblioref">2013</a>)</span>, <span class="citation" data-cites="card2001">Card (<a href="#ref-card2001" role="doc-biblioref">2001</a>)</span></li>
+</ul>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>AI Usage Declaration:</strong> These slides and speaker notes were drafted using Gemini 4 Hydrogen, based on the listed literature, and reviewed by the instructor.</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\def\Er{{\mathrm{E}}}
+\def\En{{\mathbb{E}_n}}
+\def\cov{{\mathrm{Cov}}}
+\def\var{{\mathrm{Var}}}
+\def\R{{\mathbb{R}}}
+\def\indep{{\perp\!\!\!\perp}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\def\rank{{\mathrm{rank}}}
+\newcommand{\inpr}{ \overset{p^*_{\scriptscriptstyle n}}{\longrightarrow}}
+\def\inprob{{\,{\buildrel p \over \rightarrow}\,}}
+\def\indist{\,{\buildrel d \over \rightarrow}\,}
+\DeclareMathOperator*{\plim}{plim}
+\]</span></p>
+<div class="notes">
+<p>This lecture covers shift-share (Bartik) instrumental variables, which have become one of the most widely used quasi-experimental designs in applied microeconomics—especially in labor, trade, urban, and public economics.</p>
+<p>A good starting point for students is Borusyak, Hull, and Jaravel (2025) in the <em>Journal of Economic Perspectives</em>, which distills a decade of rapid methodological progress into a practical checklist. The deeper theoretical foundations come from three landmark papers: Goldsmith-Pinkham, Sorkin, and Swift (2020, AER) on share-based identification, Borusyak, Hull, and Jaravel (2022, REStud) on shock-based identification, and Adão, Kolesár, and Morales (2019, QJE) on inference. We will also cover two crucial extensions: Borusyak and Hull (2023, Econometrica) on recentering when exposure is nonrandom, and Jaeger, Ruist, and Stuhler (2018) on dynamic confounding in immigration settings.</p>
+</div>
+</section>
+<section id="motivation-setup" class="level1">
+<h1>Motivation &amp; Setup</h1>
+<section id="what-is-a-shift-share-instrument" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-shift-share-instrument">What Is a Shift-Share Instrument?</h2>
+<ul>
+<li>Units <span class="math inline">\(\ell = 1, \dots, L\)</span> (e.g., commuting zones, cities, firms)</li>
+<li>Sectors / groups <span class="math inline">\(k = 1, \dots, K\)</span> (e.g., industries, origin countries)</li>
+<li>Model of interest: <span class="math display">\[
+Y_\ell = \beta X_\ell + W_\ell' \gamma + u_\ell
+\]</span></li>
+<li><strong>Shift-share (Bartik) instrument</strong>: <span class="math display">\[
+Z_\ell = \sum_{k=1}^K s_{\ell k} g_k
+\]</span>
+<ul>
+<li><span class="math inline">\(s_{\ell k} \ge 0\)</span>: <strong>shares</strong> measuring unit <span class="math inline">\(\ell\)</span>’s exposure to sector <span class="math inline">\(k\)</span> (often pre-determined)</li>
+<li><span class="math inline">\(g_k\)</span>: <strong>shifts</strong> (aggregate shocks) affecting sector <span class="math inline">\(k\)</span></li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Why do researchers construct shift-share instruments? Often we want to estimate the effect of a local economic variable <span class="math inline">\(X_\ell\)</span> (such as local import competition, local immigrant inflows, or local labor demand growth) on a local outcome <span class="math inline">\(Y_\ell\)</span> (such as wages or employment). Direct OLS of <span class="math inline">\(Y_\ell\)</span> on <span class="math inline">\(X_\ell\)</span> is confounded by local demand or productivity shocks in <span class="math inline">\(u_\ell\)</span>.</p>
+<p>The shift-share instrument <span class="math inline">\(Z_\ell = \sum_k s_{\ell k} g_k\)</span> combines two ingredients: local exposure shares <span class="math inline">\(s_{\ell k}\)</span> (how important sector <span class="math inline">\(k\)</span> is in region <span class="math inline">\(\ell\)</span> at baseline) and aggregate shifts <span class="math inline">\(g_k\)</span> (national or global shocks to sector <span class="math inline">\(k\)</span>). Originally popularized by Bartik (1991) and Blanchard and Katz (1992) to instrument for local labor demand, the design is now ubiquitous across applied fields.</p>
+<p>Emphasize right away that <span class="math inline">\(Z_\ell\)</span> is a single instrument built from <span class="math inline">\(K\)</span> shares and <span class="math inline">\(K\)</span> shocks. A major theme of the recent literature is that <em>either</em> the shares <span class="math inline">\(s_{\ell k}\)</span> <em>or</em> the shocks <span class="math inline">\(g_k\)</span> can justify exogeneity—and which one you rely on changes everything about diagnostics, controls, and standard errors.</p>
+</div>
+</section>
+<section id="empirical-example-1-the-china-shock" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-example-1-the-china-shock">Empirical Example 1: The China Shock</h2>
+<ul>
+<li><span class="citation" data-cites="autor2013">Autor et al. (<a href="#ref-autor2013" role="doc-biblioref">2013</a>)</span> study the local labor market effects of Chinese import competition in the U.S. (1990–2007)</li>
+<li>Units <span class="math inline">\(\ell\)</span>: <span class="math inline">\(722\)</span> U.S. commuting zones; sectors <span class="math inline">\(k\)</span>: <span class="math inline">\(\approx 400\)</span> manufacturing industries</li>
+<li>Outcome <span class="math inline">\(Y_\ell\)</span>: decadal change in manufacturing employment share or wages</li>
+<li>Endogenous <span class="math inline">\(X_\ell\)</span>: local growth in Chinese imports per worker</li>
+<li>Shift-share instrument: <span class="math display">\[
+Z_\ell = \sum_{k=1}^K s_{\ell k} g_k
+\]</span>
+<ul>
+<li><span class="math inline">\(s_{\ell k}\)</span>: commuting zone <span class="math inline">\(\ell\)</span>’s lagged share of employment in industry <span class="math inline">\(k\)</span></li>
+<li><span class="math inline">\(g_k\)</span>: growth in Chinese exports to <em>other</em> high-income countries in industry <span class="math inline">\(k\)</span></li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Autor, Dorn, and Hanson (2013, AER) is the canonical modern shift-share application and the running example in Borusyak, Hull, and Jaravel (2022, 2025) and Adão, Kolesár, and Morales (2019).</p>
+<p>Why is <span class="math inline">\(X_\ell\)</span> endogenous? Actual U.S. imports from China in a commuting zone reflect both Chinese supply shocks (productivity growth, WTO accession) and U.S.-specific demand shocks in <span class="math inline">\(u_\ell\)</span>. To isolate the Chinese supply component, ADH instrument with <span class="math inline">\(Z_\ell\)</span>, replacing U.S. industry import growth with Chinese import growth to eight other high-income countries (<span class="math inline">\(g_k\)</span>), weighted by each commuting zone’s lagged industry employment shares (<span class="math inline">\(s_{\ell k}\)</span>).</p>
+<p>Notice a key feature here: the shares <span class="math inline">\(s_{\ell k}\)</span> do <em>not</em> sum to one across manufacturing industries! The sum <span class="math inline">\(S_\ell = \sum_k s_{\ell k}\)</span> is the total manufacturing employment share in commuting zone <span class="math inline">\(\ell\)</span>, which varies widely across the U.S. We will come back to this “incomplete shares” issue—it turns out to be a major source of omitted variable bias if ignored. Also notice how natural it is to think of identification here as coming from the <span class="math inline">\(K \approx 400\)</span> industry-level Chinese supply shocks <span class="math inline">\(g_k\)</span>, rather than assuming initial manufacturing specialization <span class="math inline">\(s_{\ell k}\)</span> is randomly assigned across commuting zones.</p>
+</div>
+</section>
+<section id="empirical-example-2-immigration-local-labor-markets" class="level2">
+<h2 class="anchored" data-anchor-id="empirical-example-2-immigration-local-labor-markets">Empirical Example 2: Immigration &amp; Local Labor Markets</h2>
+<ul>
+<li><span class="citation" data-cites="card2001">Card (<a href="#ref-card2001" role="doc-biblioref">2001</a>)</span> studies how immigrant inflows affect native wages and employment across U.S. cities</li>
+<li>Units <span class="math inline">\(\ell\)</span>: metropolitan areas (cities <span class="math inline">\(\times\)</span> skill/occupation cells); groups <span class="math inline">\(k\)</span>: origin countries</li>
+<li>Outcome <span class="math inline">\(Y_\ell\)</span>: native wage or employment rate</li>
+<li>Endogenous <span class="math inline">\(X_\ell\)</span>: local inflow of new immigrants</li>
+<li>Shift-share instrument: <span class="math display">\[
+Z_\ell = \sum_{k=1}^K s_{\ell k} g_k
+\]</span>
+<ul>
+<li><span class="math inline">\(s_{\ell k}\)</span>: historical share of immigrants from country <span class="math inline">\(k\)</span> living in city <span class="math inline">\(\ell\)</span> (e.g., 1970 or 1980)</li>
+<li><span class="math inline">\(g_k\)</span>: total national inflow of new immigrants from country <span class="math inline">\(k\)</span></li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Card (2001, JoLE) is the second canonical example—often called the “past-settlement” or “ethnic enclave” instrument. Immigrants do not choose cities randomly; they move to cities with booming labor markets, creating positive omitted variable bias in OLS.</p>
+<p>Card’s instrument uses the fact that new immigrants tend to settle where earlier compatriots already live. So if a city had 20% of Mexican immigrants in 1980 (<span class="math inline">\(s_{\ell k} = 0.20\)</span>) and <span class="math inline">\(g_k\)</span> Mexican immigrants arrive nationally in the 1990s, the predicted local inflow is <span class="math inline">\(0.20 \cdot g_k\)</span>, summed across origin countries <span class="math inline">\(k\)</span>.</p>
+<p>Notice how different this example is from the China shock! First, the number of origin countries <span class="math inline">\(K\)</span> with large flows is often relatively small (e.g., Mexico, Philippines, India, China), so shock-based asymptotics may be fragile. Second, historical settlement shares <span class="math inline">\(s_{\ell k}\)</span> are very persistent over time, and national inflows <span class="math inline">\(g_{kt}\)</span> are strongly serially correlated across decades—which leads directly to the Jaeger, Ruist, and Stuhler (2018) critique about conflating short-run and long-run effects.</p>
+</div>
+</section>
+</section>
+<section id="identification" class="level1">
+<h1>Identification</h1>
+<section id="two-paths-to-identification" class="level2">
+<h2 class="anchored" data-anchor-id="two-paths-to-identification">Two Paths to Identification</h2>
+<ul>
+<li>After partialling out controls <span class="math inline">\(W_\ell\)</span>, the IV estimand requires <span class="math display">\[
+\Er\left[\frac{1}{L}\sum_{\ell=1}^L Z_\ell u_\ell\right] = 0
+\]</span></li>
+<li>Substitute <span class="math inline">\(Z_\ell = \sum_{k=1}^K s_{\ell k} g_k\)</span> and <strong>swap the order of summation</strong>: <span class="math display">\[
+\frac{1}{L}\sum_{\ell=1}^L Z_\ell u_\ell
+= \frac{1}{L}\sum_{\ell=1}^L \left(\sum_{k=1}^K s_{\ell k} g_k\right) u_\ell
+= \sum_{k=1}^K g_k \underbrace{\left(\frac{1}{L}\sum_{\ell=1}^L s_{\ell k} u_\ell\right)}_{\text{exposure-weighted residual}}
+\]</span></li>
+<li>Two distinct ways this expectation can be zero:
+<ol type="1">
+<li><strong>Exogenous shares</strong> (<span class="citation" data-cites="goldsmith2020">Goldsmith-Pinkham et al. (<a href="#ref-goldsmith2020" role="doc-biblioref">2020</a>)</span>): <span class="math inline">\(\Er[s_{\ell k} u_\ell] = 0\)</span> for each <span class="math inline">\(k\)</span></li>
+<li><strong>Exogenous shocks</strong> (<span class="citation" data-cites="borusyak2022">Borusyak et al. (<a href="#ref-borusyak2022" role="doc-biblioref">2022</a>)</span>): <span class="math inline">\(\Er[g_k \bar{u}_k] = 0\)</span> across many <span class="math inline">\(k\)</span></li>
+</ol></li>
+</ul>
+<div class="notes">
+<p>This single algebraic identity—swapping the sum over regions <span class="math inline">\(\ell\)</span> and sectors <span class="math inline">\(k\)</span>—is the heart of the entire shift-share literature.</p>
+<p>Look at the right-hand side: <span class="math inline">\(\sum_{k=1}^K g_k \left(\frac{1}{L}\sum_{\ell=1}^L s_{\ell k} u_\ell\right)\)</span>. For this to have mean zero: - Path 1 (Goldsmith-Pinkham, Sorkin, &amp; Swift 2020) assumes that <em>for each sector <span class="math inline">\(k\)</span></em>, the shares <span class="math inline">\(s_{\ell k}\)</span> are uncorrelated with the regional error <span class="math inline">\(u_\ell\)</span>: <span class="math inline">\(\Er[s_{\ell k} u_\ell] = 0\)</span>. In this view, the shocks <span class="math inline">\(g_k\)</span> are just fixed weights that combine <span class="math inline">\(K\)</span> valid instruments <span class="math inline">\((s_{\ell 1}, \dots, s_{\ell K})\)</span> into one scalar instrument <span class="math inline">\(Z_\ell\)</span>. - Path 2 (Borusyak, Hull, &amp; Jaravel 2022) allows the shares <span class="math inline">\(s_{\ell k}\)</span> to be arbitrarily correlated with <span class="math inline">\(u_\ell\)</span>! Instead, it assumes that the <em>shocks</em> <span class="math inline">\(g_k\)</span> are quasi-randomly assigned across a large number of sectors <span class="math inline">\(K\)</span>, so that <span class="math inline">\(g_k\)</span> is uncorrelated with the sector-level average residual <span class="math inline">\(\bar{u}_k\)</span>.</p>
+<p>Students often ask: “Do both have to hold?” No! Only one needs to hold, and in most applications one is far more plausible than the other. For instance, in Autor-Dorn-Hanson, nobody believes a commuting zone’s manufacturing specialization is unrelated to local wage trends (<span class="math inline">\(\Er[s_{\ell k} u_\ell] \ne 0\)</span>), so Path 2 (exogenous Chinese supply shocks) is the natural justification. Conversely, if <span class="math inline">\(K\)</span> is small (say, 5 origin countries in an immigration study), Path 2 has almost no power across shocks, so you are implicitly relying on Path 1 (exogenous shares).</p>
+</div>
+</section>
+<section id="path-1-exogenous-shares-goldsmith2020" class="level2">
+<h2 class="anchored" data-anchor-id="path-1-exogenous-shares-goldsmith2020">Path 1: Exogenous Shares (<span class="citation" data-cites="goldsmith2020">Goldsmith-Pinkham et al. (<a href="#ref-goldsmith2020" role="doc-biblioref">2020</a>)</span>)</h2>
+<ul>
+<li><strong>Assumption</strong>: <span class="math inline">\(\Er[u_\ell \mid s_{\ell 1}, \dots, s_{\ell K}, W_\ell] = 0\)</span> (as <span class="math inline">\(L \to \infty\)</span>, with <span class="math inline">\(K\)</span> fixed)
+<ul>
+<li>Effectively, the shares <span class="math inline">\(s_{\ell 1}, \dots, s_{\ell K}\)</span> are <span class="math inline">\(K\)</span> separate valid instruments</li>
+<li>In difference / panel specifications, this is a <strong>parallel trends</strong> assumption: regions with different initial shares would have evolved similarly absent the shocks</li>
+</ul></li>
+<li><strong>Rotemberg weights decomposition</strong>: <span class="math display">\[
+\hat{\beta}_{SSIV} = \sum_{k=1}^K \hat{\alpha}_k \hat{\beta}_k, \qquad \sum_{k=1}^K \hat{\alpha}_k = 1
+\]</span>
+<ul>
+<li><span class="math inline">\(\hat{\beta}_k\)</span>: just-identified IV estimate using only share <span class="math inline">\(s_{\ell k}\)</span> as the instrument</li>
+<li><span class="math inline">\(\hat{\alpha}_k\)</span>: <strong>Rotemberg weight</strong> measuring how much sector <span class="math inline">\(k\)</span> contributes to <span class="math inline">\(\hat{\beta}_{SSIV}\)</span></li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Goldsmith-Pinkham, Sorkin, and Swift (2020) show that when you treat the shocks <span class="math inline">\(g_k\)</span> as fixed, using the single shift-share instrument <span class="math inline">\(Z_\ell\)</span> is numerically identical to a GMM / 2SLS estimator that uses the vector of all <span class="math inline">\(K\)</span> shares <span class="math inline">\((s_{\ell 1}, \dots, s_{\ell K})\)</span> as instruments with a specific weight matrix given by <span class="math inline">\(g_k\)</span>.</p>
+<p>More usefully, they show that <span class="math inline">\(\hat{\beta}_{SSIV}\)</span> can be decomposed into a weighted average of <span class="math inline">\(K\)</span> just-identified IV estimates <span class="math inline">\(\hat{\beta}_k\)</span> (each using a single share <span class="math inline">\(s_{\ell k}\)</span> as the instrument). The weights <span class="math inline">\(\hat{\alpha}_k\)</span> (named after Rotemberg 1983) sum to 1, though some can be negative! What is the intuition? If <span class="math inline">\(\hat{\alpha}_k\)</span> is large for industry <span class="math inline">\(k\)</span> (say, electronic computers or apparel), that means variation in that specific industry’s share is driving most of your identification. You can then inspect the top-weighted industries directly: are regions with high initial employment in those industries different on observables or pre-trends? You can also run overidentification tests (e.g., Hansen’s <span class="math inline">\(J\)</span> test) across the shares, though with the caveat that if treatment effects are heterogeneous (<span class="math inline">\(\beta_\ell\)</span> varies across regions), <span class="math inline">\(\hat{\beta}_k\)</span> can differ across <span class="math inline">\(k\)</span> even when all shares are valid.</p>
+</div>
+</section>
+<section id="path-2-exogenous-shocks-borusyak2022" class="level2">
+<h2 class="anchored" data-anchor-id="path-2-exogenous-shocks-borusyak2022">Path 2: Exogenous Shocks (<span class="citation" data-cites="borusyak2022">Borusyak et al. (<a href="#ref-borusyak2022" role="doc-biblioref">2022</a>)</span>)</h2>
+<ul>
+<li><strong>Assumption</strong>: Shocks <span class="math inline">\(g_k\)</span> are quasi-randomly assigned across many independent (or clustered) sectors <span class="math inline">\(K\)</span>:
+<ol type="1">
+<li><strong>Quasi-random shocks</strong>: <span class="math inline">\(\Er[g_k \mid \bar{u}_k, s_k, q_k] = q_k' \mu\)</span> for some controls <span class="math inline">\(q_k\)</span></li>
+<li><strong>Many independent shocks</strong>: <span class="math inline">\(\sum_{k=1}^K s_k^2 \to 0\)</span>, where <span class="math inline">\(s_k = \frac{1}{L}\sum_{\ell=1}^L s_{\ell k}\)</span> is average exposure to sector <span class="math inline">\(k\)</span></li>
+</ol></li>
+<li><strong>Shock-level equivalence</strong>: <span class="math inline">\(\hat{\beta}_{SSIV}\)</span> equals a <strong>shock-level IV regression</strong> weighted by <span class="math inline">\(s_k\)</span>:
+<ul>
+<li>Regress exposure-weighted outcome <span class="math inline">\(\bar{Y}_k\)</span> on exposure-weighted treatment <span class="math inline">\(\bar{X}_k\)</span>, instrumented by <span class="math inline">\(g_k\)</span>, with weights <span class="math inline">\(s_k\)</span></li>
+<li>Here <span class="math inline">\(\bar{Y}_k = \frac{\sum_\ell s_{\ell k} Y_\ell^\perp}{\sum_\ell s_{\ell k}}\)</span> (similarly <span class="math inline">\(\bar{X}_k\)</span>), where <span class="math inline">\(Y_\ell^\perp, X_\ell^\perp\)</span> have controls <span class="math inline">\(W_\ell\)</span> partialled out</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Borusyak, Hull, and Jaravel (2022) flip the perspective completely. Suppose <span class="math inline">\(s_{\ell k}\)</span> is endogenous—say, regions with lots of manufacturing also have lower educational attainment or different secular trends. Can <span class="math inline">\(Z_\ell\)</span> still be valid?</p>
+<p>Yes! Look back at <span class="math inline">\(\sum_k g_k \left(\frac{1}{L}\sum_\ell s_{\ell k} u_\ell\right)\)</span>. Define <span class="math inline">\(s_k = \frac{1}{L}\sum_\ell s_{\ell k}\)</span> (total exposure to sector <span class="math inline">\(k\)</span>) and <span class="math inline">\(\bar{u}_k = \frac{\sum_\ell s_{\ell k} u_\ell}{\sum_\ell s_{\ell k}}\)</span> (the exposure-weighted average residual in sector <span class="math inline">\(k\)</span>). Then the orthogonality condition is simply <span class="math inline">\(\sum_{k=1}^K s_k g_k \bar{u}_k \approx 0\)</span>. If <span class="math inline">\(g_k\)</span> is mean-independent of <span class="math inline">\(\bar{u}_k\)</span> (conditional on shock-level controls <span class="math inline">\(q_k\)</span> and exposure <span class="math inline">\(s_k\)</span>), and no single sector dominates total exposure (so the Herfindahl index <span class="math inline">\(\sum_k s_k^2 \to 0\)</span>, meaning the effective number of shocks <span class="math inline">\(1/\sum_k s_k^2\)</span> is large), then by a law of large numbers across <em>sectors</em> <span class="math inline">\(k\)</span>, <span class="math inline">\(\hat{\beta}_{SSIV}\)</span> is consistent!</p>
+<p>The shock-level equivalence theorem is super practical: instead of doing all your diagnostics at the region level, you can aggregate the data to the shock level (e.g., using <code>ssaggregate</code> in Stata/R), run shock-level balance checks, visualize the shock-level first stage and reduced form, and cluster standard errors at the shock level.</p>
+</div>
+</section>
+</section>
+<section id="pitfalls" class="level1">
+<h1>Pitfalls</h1>
+<section id="pitfall-1-incomplete-shares" class="level2">
+<h2 class="anchored" data-anchor-id="pitfall-1-incomplete-shares">Pitfall 1: Incomplete Shares</h2>
+<ul>
+<li>Often <span class="math inline">\(\sum_{k=1}^K s_{\ell k} = S_\ell \neq 1\)</span> (e.g., total manufacturing share in <span class="citation" data-cites="autor2013">Autor et al. (<a href="#ref-autor2013" role="doc-biblioref">2013</a>)</span>, or total foreign-born share in <span class="citation" data-cites="card2001">Card (<a href="#ref-card2001" role="doc-biblioref">2001</a>)</span>)</li>
+<li>Suppose shocks have nonzero mean <span class="math inline">\(\Er[g_k \mid s] = \mu \neq 0\)</span>: <span class="math display">\[
+Z_\ell = \sum_{k=1}^K s_{\ell k} g_k = \mu S_\ell + \sum_{k=1}^K s_{\ell k}(g_k - \mu)
+\]</span></li>
+<li>Even if <span class="math inline">\(g_k - \mu\)</span> is purely random, <span class="math inline">\(Z_\ell\)</span> is correlated with <span class="math inline">\(S_\ell\)</span>!</li>
+<li>If <span class="math inline">\(S_\ell\)</span> correlates with <span class="math inline">\(u_\ell\)</span> (e.g., manufacturing hubs have different wage trends), <span class="math inline">\(\hat{\beta}_{SSIV}\)</span> is <strong>biased</strong></li>
+<li><strong>Fix</strong>: Include <span class="math inline">\(S_\ell\)</span> (interacted with period fixed effects in panels) in <span class="math inline">\(W_\ell\)</span></li>
+</ul>
+<div class="notes">
+<p>This is one of the most important practical discoveries in Borusyak, Hull, and Jaravel (2022). In Autor, Dorn, and Hanson (2013), <span class="math inline">\(s_{\ell k}\)</span> is the share of <em>total</em> commuting-zone employment in manufacturing industry <span class="math inline">\(k\)</span>. Because non-manufacturing sectors are excluded, <span class="math inline">\(S_\ell = \sum_k s_{\ell k}\)</span> is the commuting zone’s overall manufacturing share, which ranges from near 0% to over 40%.</p>
+<p>Meanwhile, Chinese exports to high-income countries grew in almost <em>every</em> manufacturing industry, so <span class="math inline">\(\mu = \Er[g_k] &gt; 0\)</span>. Consequently, <span class="math inline">\(Z_\ell = \mu S_\ell + \sum_k s_{\ell k}(g_k - \mu)\)</span> is mechanically higher in manufacturing-heavy commuting zones! If manufacturing-heavy commuting zones were already experiencing secular employment declines unrelated to China, omitting <span class="math inline">\(S_\ell\)</span> from the controls <span class="math inline">\(W_\ell\)</span> creates severe omitted variable bias.</p>
+<p>Controlling for <span class="math inline">\(S_\ell\)</span> (or <span class="math inline">\(S_{\ell t}\)</span> interacted with time dummies in a stacked-differences panel) restores orthogonality under exogenous shocks, because it isolates the variation in <span class="math inline">\(Z_\ell\)</span> coming from <em>which</em> manufacturing industries a region specializes in, rather than how much manufacturing it has overall.</p>
+</div>
+</section>
+<section id="pitfall-2-non-random-exposure-to-exogenous-shocks" class="level2">
+<h2 class="anchored" data-anchor-id="pitfall-2-non-random-exposure-to-exogenous-shocks">Pitfall 2: Non-Random Exposure to Exogenous Shocks</h2>
+<ul>
+<li>Generalization of incomplete shares (<span class="citation" data-cites="borusyak2023">Borusyak and Hull (<a href="#ref-borusyak2023" role="doc-biblioref">2023</a>)</span>):
+<ul>
+<li>Even when shocks <span class="math inline">\(g = (g_1, \dots, g_K)\)</span> are exogenous, expected exposure <span class="math display">\[
+\mu_\ell(s) = \Er[Z_\ell \mid s] = \sum_{k=1}^K s_{\ell k} \Er[g_k \mid s]
+\]</span> can vary across units <span class="math inline">\(\ell\)</span> and correlate with <span class="math inline">\(u_\ell\)</span></li>
+</ul></li>
+<li><strong>Example</strong>: Regions near borders or ports, or central nodes in a network, have systematically higher expected exposure regardless of which shock realizes</li>
+<li><strong>Fix (Recentering)</strong>: Subtract expected exposure from the instrument: <span class="math display">\[
+\tilde{Z}_\ell = Z_\ell - \mu_\ell(s)
+\]</span> or control flexibly for <span class="math inline">\(\mu_\ell(s)\)</span> (computed by permuting/simulating counterfactual shocks)</li>
+</ul>
+<div class="notes">
+<p>Borusyak and Hull (2023, Econometrica) generalize the incomplete-shares insight to <em>any</em> formula that combines exogenous shocks with nonrandom exposure—including shift-share instruments, network spillovers, and simulated policy instruments.</p>
+<p>Suppose Chinese import growth is systematically larger in certain broad subsectors (say, low-skill labor-intensive goods), and some regions have higher exposure to those subsectors. Even if the exact industry-level shocks <span class="math inline">\(g_k\)</span> are quasi-random around their subsector means, the expected value <span class="math inline">\(\Er[Z_\ell \mid s]\)</span> varies across regions.</p>
+<p>The fix is simple and powerful: <strong>recentering</strong>. Specify a counterfactual distribution of shocks (for example, permuting shocks within broad industry groups, or demeaning within groups), compute the average simulated instrument <span class="math inline">\(\mu_\ell(s) = \Er[Z_\ell \mid s]\)</span> across counterfactual shock draws, and use <span class="math inline">\(\tilde{Z}_\ell = Z_\ell - \mu_\ell(s)\)</span> as your instrument (or include <span class="math inline">\(\mu_\ell(s)\)</span> as a control). Notice that controlling for <span class="math inline">\(S_\ell\)</span> in Pitfall 1 is just a special case where <span class="math inline">\(\Er[g_k \mid s] = \mu\)</span> is constant, so <span class="math inline">\(\mu_\ell(s) = \mu S_\ell\)</span>.</p>
+</div>
+</section>
+<section id="pitfall-3-inference-cross-regional-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="pitfall-3-inference-cross-regional-correlation">Pitfall 3: Inference &amp; Cross-Regional Correlation</h2>
+<ul>
+<li>Conventional (heteroskedasticity-robust or geographically clustered) SEs assume <span class="math inline">\(u_\ell\)</span> is independent across regions</li>
+<li><strong>Problem</strong> (<span class="citation" data-cites="adao2019">Adão et al. (<a href="#ref-adao2019" role="doc-biblioref">2019</a>)</span>): Regions with similar sectoral shares <span class="math inline">\(s_{\ell k}\)</span> share common unobserved sectoral shocks in <span class="math inline">\(u_\ell\)</span>, inducing correlation across <span class="math inline">\(\ell\)</span> <em>regardless of geographic distance</em>
+<ul>
+<li>In placebo exercises with randomly generated <span class="math inline">\(g_k\)</span>, conventional 5% tests reject up to <strong>55% of the time</strong>!</li>
+</ul></li>
+<li><strong>Fixes</strong>:
+<ul>
+<li><strong>AKM SEs</strong> (<span class="citation" data-cites="adao2019">Adão et al. (<a href="#ref-adao2019" role="doc-biblioref">2019</a>)</span>): exposure-robust variance estimator accounting for cross-regional correlation in residuals</li>
+<li><strong>Shock-level SEs</strong> (<span class="citation" data-cites="borusyak2022">Borusyak et al. (<a href="#ref-borusyak2022" role="doc-biblioref">2022</a>)</span>): run the equivalent shock-level IV regression and cluster SEs at the shock (or broader sector) level</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>This is the main result of Adão, Kolesár, and Morales (2019, QJE). Suppose we regress regional wage changes on a shift-share variable using <em>purely random, simulated</em> industry shocks <span class="math inline">\(g_k\)</span>. Under the null hypothesis of no effect, a 5% test should reject 5% of the time. Yet AKM show that using standard Eicker-Huber-White SEs or state-clustered SEs rejects the null up to 55% of the time!</p>
+<p>Why? Because the regression residual <span class="math inline">\(u_\ell\)</span> itself contains unobserved industry-level shocks (say, domestic automation or demand shifts in textiles). Two commuting zones—say, one in North Carolina and one in Maine—that both have large textile shares will have correlated residuals <span class="math inline">\(u_\ell\)</span> <em>and</em> correlated instruments <span class="math inline">\(Z_\ell\)</span>, even though they are in different states! Standard geographic clustering misses this completely.</p>
+<p>Both AKM (2019) and Borusyak, Hull, and Jaravel (2022) provide valid inference. AKM derive an analytical exposure-robust standard error formula in the region-level regression. BHJ show that when you transform the data to the shock level, standard heteroskedasticity-robust (or sector-clustered) SEs in the shock-level regression automatically yield valid asymptotic inference! In practice, BHJ’s shock-level SEs and AKM’s SEs are closely related, and both are much more reliable than conventional region-level SEs.</p>
+</div>
+</section>
+<section id="pitfall-4-serial-correlation-dynamic-adjustment" class="level2">
+<h2 class="anchored" data-anchor-id="pitfall-4-serial-correlation-dynamic-adjustment">Pitfall 4: Serial Correlation &amp; Dynamic Adjustment</h2>
+<ul>
+<li>In panel / stacked-differences settings (especially immigration, <span class="citation" data-cites="jaeger2018">Jaeger et al. (<a href="#ref-jaeger2018" role="doc-biblioref">2018</a>)</span>):
+<ul>
+<li>Shares <span class="math inline">\(s_{\ell k}\)</span> (e.g., ethnic enclaves) are highly persistent over time</li>
+<li>Shocks <span class="math inline">\(g_{kt}\)</span> (e.g., origin-country migration waves) are serially correlated</li>
+</ul></li>
+<li>Consequence: <span class="math inline">\(Z_{\ell t}\)</span> is correlated with <em>past</em> shocks <span class="math inline">\(Z_{\ell, t-1}\)</span></li>
+<li>If outcomes adjust slowly (e.g., native out-migration, capital reallocation), <span class="math inline">\(\hat{\beta}_{SSIV}\)</span> <strong>conflates short-run impact and long-run adjustment</strong></li>
+<li><strong>Fix</strong>: Include lagged treatment <span class="math inline">\(X_{\ell, t-1}\)</span> instrumented by lagged shift-share <span class="math inline">\(Z_{\ell, t-1}\)</span> (multiple instrumentation) when shocks have independent variation over time</li>
+</ul>
+<div class="notes">
+<p>Jaeger, Ruist, and Stuhler (2018) highlight a subtle dynamic pitfall that is especially severe in immigration shift-share designs like Card (2001).</p>
+<p>In the U.S., the national mix of immigrants by origin country changes slowly across decades, and historical settlement shares are very persistent. As a result, the shift-share instrument in the 1990s is strongly correlated with the shift-share instrument in the 1980s. If an immigration wave in the 1980s depressed local wages in the short run, and native workers or firms gradually adjusted during the 1990s (pushing wages back up), then a standard 1990s shift-share regression picks up both the negative short-run effect of 1990s arrivals <em>and</em> the positive mean-reverting adjustment to 1980s arrivals!</p>
+<p>Their proposed solution is to include both current and lagged inflows <span class="math inline">\((X_{\ell t}, X_{\ell, t-1})\)</span> in the regression, instrumented by <span class="math inline">\((Z_{\ell t}, Z_{\ell, t-1})\)</span>. This works if there is enough change in the origin-country composition <span class="math inline">\(g_{kt}\)</span> over time so that <span class="math inline">\(Z_{\ell t}\)</span> and <span class="math inline">\(Z_{\ell, t-1}\)</span> are not collinear.</p>
+</div>
+</section>
+<section id="pitfall-5-concentration-weak-effective-sample-size" class="level2">
+<h2 class="anchored" data-anchor-id="pitfall-5-concentration-weak-effective-sample-size">Pitfall 5: Concentration &amp; Weak Effective Sample Size</h2>
+<ul>
+<li><strong>Under exogenous shocks</strong>: Consistency requires <span class="math inline">\(\sum_{k=1}^K s_k^2 \to 0\)</span>
+<ul>
+<li>Effective number of shocks is <span class="math inline">\(1 / \sum_k s_k^2\)</span> (inverse Herfindahl index of sector exposures)</li>
+<li>Even if <span class="math inline">\(L = 722\)</span> regions, if 3 industries account for 80% of exposure, you effectively have <span class="math inline">\(N_{\text{eff}} \approx 3\)</span> observations!</li>
+</ul></li>
+<li><strong>Under exogenous shares</strong>: Rotemberg weights often reveal extreme concentration
+<ul>
+<li><span class="citation" data-cites="goldsmith2020">Goldsmith-Pinkham et al. (<a href="#ref-goldsmith2020" role="doc-biblioref">2020</a>)</span> show that in many classic Bartik applications, the top 5 industries carry over half of the total Rotemberg weight <span class="math inline">\(\sum \hat{\alpha}_k\)</span></li>
+<li>Some <span class="math inline">\(\hat{\alpha}_k\)</span> can even be negative, complicating causal interpretation under heterogeneous effects</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>A deceptive feature of shift-share designs is that the region-level sample size <span class="math inline">\(L\)</span> (e.g., 722 commuting zones or 3,000 counties) can look huge, giving a false sense of precision and power.</p>
+<p>Under shock-based identification, your true sample size is governed by the <em>shocks</em>, not the regions! Specifically, Borusyak, Hull, and Jaravel (2022) recommend reporting the inverse Herfindahl index of exposure weights, <span class="math inline">\(1 / \sum_k s_k^2\)</span>, along with the largest sector shares <span class="math inline">\(\max_k s_k\)</span>. If the effective number of shocks is small—as in Card (2001) when a few origin countries dominate—shock-based asymptotics and shock-level SEs are unreliable.</p>
+<p>Under share-based identification, Goldsmith-Pinkham, Sorkin, and Swift (2020) show that looking at the top Rotemberg weights <span class="math inline">\(\hat{\alpha}_k\)</span> is equally eye-opening: you often discover that your entire 2SLS estimate is essentially driven by 2 or 3 specific industries (or 1–2 origin countries). Knowing which sectors drive the estimate lets you scrutinize those specific sectors for confounding pre-trends.</p>
+</div>
+</section>
+</section>
+<section id="recommendations-for-practice" class="level1">
+<h1>Recommendations for Practice</h1>
+<section id="practical-checklist-borusyak2025" class="level2">
+<h2 class="anchored" data-anchor-id="practical-checklist-borusyak2025">Practical Checklist (<span class="citation" data-cites="borusyak2025">Borusyak et al. (<a href="#ref-borusyak2025" role="doc-biblioref">2025</a>)</span>)</h2>
+<ol type="1">
+<li><strong>Declare your identification strategy</strong>: Are you relying on <em>exogenous shocks</em> or <em>exogenous shares</em>?</li>
+<li><strong>If relying on exogenous shocks</strong>:
+<ul>
+<li>Control for sum of shares <span class="math inline">\(S_\ell\)</span> (incomplete shares) and recenter if exposure is nonrandom (<span class="citation" data-cites="borusyak2023">Borusyak and Hull (<a href="#ref-borusyak2023" role="doc-biblioref">2023</a>)</span>)</li>
+<li>Report effective number of shocks (<span class="math inline">\(1/\sum_k s_k^2\)</span>) and largest shock weights</li>
+<li>Run shock-level balance tests and shock-level IV regressions (<code>ssaggregate</code>)</li>
+<li>Use exposure-robust SEs (<span class="citation" data-cites="adao2019">Adão et al. (<a href="#ref-adao2019" role="doc-biblioref">2019</a>)</span>) or shock-level clustered SEs (<span class="citation" data-cites="borusyak2022">Borusyak et al. (<a href="#ref-borusyak2022" role="doc-biblioref">2022</a>)</span>)</li>
+</ul></li>
+<li><strong>If relying on exogenous shares</strong>:
+<ul>
+<li>Compute Rotemberg weights <span class="math inline">\(\hat{\alpha}_k\)</span> (<span class="citation" data-cites="goldsmith2020">Goldsmith-Pinkham et al. (<a href="#ref-goldsmith2020" role="doc-biblioref">2020</a>)</span>) and inspect the top-weighted sectors</li>
+<li>Test balance and pre-trends for the highest-weighted shares</li>
+<li>Check sensitivity / overidentification across shares</li>
+</ul></li>
+<li><strong>In dynamic panels</strong>: Check serial correlation of <span class="math inline">\(g_{kt}\)</span> and <span class="math inline">\(Z_{\ell t}\)</span>; control for lagged shocks if needed (<span class="citation" data-cites="jaeger2018">Jaeger et al. (<a href="#ref-jaeger2018" role="doc-biblioref">2018</a>)</span>)</li>
+</ol>
+<div class="notes">
+<p>To wrap up, here is a concrete checklist drawn from Borusyak, Hull, and Jaravel (2025) and the broader methodological literature.</p>
+<p>First, never treat a shift-share instrument as a “black box.” Be explicit in your paper about whether your identification argument rests on quasi-random shocks (many independent <span class="math inline">\(g_k\)</span>) or quasi-random shares (exogenous <span class="math inline">\(s_{\ell k}\)</span>).</p>
+<p>Second, if you are in the exogenous-shocks camp (like Autor-Dorn-Hanson): always check whether shares sum to 1, and if not, control for <span class="math inline">\(S_\ell\)</span> (or recenter via counterfactual shocks). Aggregate to the shock level to check balance on pre-determined shock characteristics and to compute the effective number of shocks. And never report only conventional region-level SEs—use AKM or shock-level SEs.</p>
+<p>Third, if you are in the exogenous-shares camp (more plausible when <span class="math inline">\(K\)</span> is small): compute Rotemberg weights to see which sectors are doing the heavy lifting, and run balance/pre-trend checks specifically on those top-weighted shares.</p>
+<p>Finally, in multi-period panels, check whether lagged shocks are confounding short-run and long-run effects.</p>
+</div>
+</section>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-adao2019" class="csl-entry" role="listitem">
+Adão, Rodrigo, Michal Kolesár, and Eduardo Morales. 2019. <span>“Shift-Share Designs: Theory and Inference.”</span> <em>The Quarterly Journal of Economics</em> 134 (4): 1949–2010.
+</div>
+<div id="ref-autor2013" class="csl-entry" role="listitem">
+Autor, David H., David Dorn, and Gordon H. Hanson. 2013. <span>“The China Syndrome: Local Labor Market Effects of Import Competition in the <span>United States</span>.”</span> <em>American Economic Review</em> 103 (6): 2121–68.
+</div>
+<div id="ref-borusyak2023" class="csl-entry" role="listitem">
+Borusyak, Kirill, and Peter Hull. 2023. <span>“Nonrandom Exposure to Exogenous Shocks.”</span> <em>Econometrica</em> 91 (6): 2155–85.
+</div>
+<div id="ref-borusyak2022" class="csl-entry" role="listitem">
+Borusyak, Kirill, Peter Hull, and Xavier Jaravel. 2022. <span>“Quasi-Experimental Shift-Share Research Designs.”</span> <em>The Review of Economic Studies</em> 89 (1): 181–213. <a href="https://doi.org/10.1093/restud/rdab030">https://doi.org/10.1093/restud/rdab030</a>.
+</div>
+<div id="ref-borusyak2025" class="csl-entry" role="listitem">
+Borusyak, Kirill, Peter Hull, and Xavier Jaravel. 2025. <span>“A Practical Guide to Shift-Share Instruments.”</span> <em>Journal of Economic Perspectives</em> 39 (1): 181–204.
+</div>
+<div id="ref-card2001" class="csl-entry" role="listitem">
+Card, David. 2001. <span>“Immigrant Inflows, Native Outflows, and the Local Labor Market Impacts of Higher Immigration.”</span> <em>Journal of Labor Economics</em> 19 (1): 22–64. <a href="https://doi.org/10.1086/209979">https://doi.org/10.1086/209979</a>.
+</div>
+<div id="ref-goldsmith2020" class="csl-entry" role="listitem">
+Goldsmith-Pinkham, Paul, Isaac Sorkin, and Henry Swift. 2020. <span>“Bartik Instruments: What, When, Why, and How.”</span> <em>American Economic Review</em> 110 (8): 2586–624.
+</div>
+<div id="ref-jaeger2018" class="csl-entry" role="listitem">
+Jaeger, David A., Joakim Ruist, and Jan Stuhler. 2018. <em>Shift-Share Instruments and the Impact of Immigration</em>. Working Paper No. 24285. National Bureau of Economic Research.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
